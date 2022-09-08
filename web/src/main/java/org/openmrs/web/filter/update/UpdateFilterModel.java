@@ -31,18 +31,18 @@ public class UpdateFilterModel {
 	private static final Logger log = LoggerFactory.getLogger(UpdateFilterModel.class);
 	
 	// automatically given to the .vm files and used there
-	public static final String HEADER_TEMPLATE = "org/openmrs/web/filter/update/header.vm";
+	public static final /*~~>*/String HEADER_TEMPLATE = "org/openmrs/web/filter/update/header.vm";
 
 	// automatically given to the .vm files and used there
-	public static final String FOOTER_TEMPLATE = "org/openmrs/web/filter/update/footer.vm";
+	public static final /*~~>*/String FOOTER_TEMPLATE = "org/openmrs/web/filter/update/footer.vm";
 		
 	public List<OpenMRSChangeSet> changes = null;
 	
-	public String superuserrole = RoleConstants.SUPERUSER;
+	public /*~~>*/String superuserrole = /*~~>*/RoleConstants.SUPERUSER;
 
-	public String setupPageUrl = WebConstants.SETUP_PAGE_URL;
+	public /*~~>*/String setupPageUrl = /*~~>*/WebConstants.SETUP_PAGE_URL;
 	
-	public static final String OPENMRS_VERSION = OpenmrsConstants.OPENMRS_VERSION_SHORT;
+	public static final /*~~>*/String OPENMRS_VERSION = /*~~>*/OpenmrsConstants.OPENMRS_VERSION_SHORT;
 	
 	public Boolean updateRequired = false;
 	

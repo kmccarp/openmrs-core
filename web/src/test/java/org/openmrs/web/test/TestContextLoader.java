@@ -28,18 +28,18 @@ public class TestContextLoader extends AbstractContextLoader {
 	}
 	
 	@Override
-	public final ConfigurableApplicationContext loadContext(String... locations) throws Exception {
+	public final ConfigurableApplicationContext loadContext(/*~~>*/String... locations) throws Exception {
 		XmlWebApplicationContext context = new XmlWebApplicationContext();
 		context.setConfigLocations(locations);
 		MockServletContext sc = new MockServletContext();
-		sc.setAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, context);
+		sc.setAttribute(/*~~>*/WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, context);
 		context.setServletContext(sc);
 		context.refresh();
 		return context;
 	}
 	
 	@Override
-	protected String getResourceSuffix() {
+	protected /*~~>*/String getResourceSuffix() {
 		return "-context.xml";
 	}
 	

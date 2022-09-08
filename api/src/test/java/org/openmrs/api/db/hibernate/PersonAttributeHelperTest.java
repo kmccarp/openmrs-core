@@ -23,7 +23,7 @@ public class PersonAttributeHelperTest extends BaseContextSensitiveTest {
 	
 	private static final Logger log = LoggerFactory.getLogger(PersonAttributeHelperTest.class);
 	
-	private final static String PEOPLE_FROM_THE_SHIRE_XML = "org/openmrs/api/db/hibernate/include/HibernatePersonDAOTest-people.xml";
+	private final static /*~~>*/String PEOPLE_FROM_THE_SHIRE_XML = "org/openmrs/api/db/hibernate/include/HibernatePersonDAOTest-people.xml";
 	
 	private SessionFactory sessionFactory = null;
 	

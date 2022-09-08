@@ -45,8 +45,8 @@ public class PersonDAOTest extends BaseContextSensitiveTest {
 		PersonAttributeType pat = Context.getPersonService().getPersonAttributeType(1);
 		
 		// save the name from the db for later checks
-		String origName = pat.getName();
-		String newName = "Race Updated";
+		/*~~>*/String origName = pat.getName();
+		/*~~>*/String newName = "Race Updated";
 		
 		assertFalse(newName.equals(origName));
 		
@@ -55,7 +55,7 @@ public class PersonDAOTest extends BaseContextSensitiveTest {
 		
 		// the value from the database should match the original name from the 
 		// pat right after /it/ was fetched from the database
-		String nameFromDatabase = dao.getSavedPersonAttributeTypeName(pat);
+		/*~~>*/String nameFromDatabase = dao.getSavedPersonAttributeTypeName(pat);
 		assertEquals(origName, nameFromDatabase);
 	}
 	

@@ -84,7 +84,7 @@ public class HibernateSerializedObjectDAO implements SerializedObjectDAO {
 	 * @see SerializedObjectDAO#getSerializedObjectByUuid(String)
 	 */
 	@Override
-	public SerializedObject getSerializedObjectByUuid(String uuid) throws DAOException {
+	public SerializedObject getSerializedObjectByUuid(/*~~>*/String uuid) throws DAOException {
 		SerializedObject ret = null;
 		if (uuid != null) {
 			Criteria c = sessionFactory.getCurrentSession().createCriteria(SerializedObject.class);
@@ -98,7 +98,7 @@ public class HibernateSerializedObjectDAO implements SerializedObjectDAO {
 	 * @see SerializedObjectDAO#getObjectByUuid(Class, String)
 	 */
 	@Override
-	public <T extends OpenmrsObject> T getObjectByUuid(Class<T> baseClass, String uuid) throws DAOException {
+	public <T extends OpenmrsObject> T getObjectByUuid(Class<T> baseClass, /*~~>*/String uuid) throws DAOException {
 		SerializedObject o = getSerializedObjectByUuid(uuid);
 		if (o != null) {
 			return convertSerializedObject(baseClass, o);
@@ -111,7 +111,7 @@ public class HibernateSerializedObjectDAO implements SerializedObjectDAO {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<SerializedObject> getAllSerializedObjectsByName(Class<?> type, String name, boolean exactMatchOnly)
+	public List<SerializedObject> getAllSerializedObjectsByName(Class<?> type, /*~~>*/String name, boolean exactMatchOnly)
 	        throws DAOException {
 		Criteria c = sessionFactory.getCurrentSession().createCriteria(SerializedObject.class);
 		c.add(Restrictions.or(Restrictions.eq("type", type.getName()), Restrictions.eq("subtype", type.getName())));
@@ -127,7 +127,7 @@ public class HibernateSerializedObjectDAO implements SerializedObjectDAO {
 	 * @see SerializedObjectDAO#getAllObjectsByName(Class, String, boolean)
 	 */
 	@Override
-	public <T extends OpenmrsMetadata> List<T> getAllObjectsByName(Class<T> type, String name, boolean exactMatchOnly)
+	public <T extends OpenmrsMetadata> List<T> getAllObjectsByName(Class<T> type, /*~~>*/String name, boolean exactMatchOnly)
 	        throws DAOException {
 		List<T> ret = new ArrayList<>();
 		List<SerializedObject> objects = getAllSerializedObjectsByName(type, name, exactMatchOnly);
@@ -215,7 +215,7 @@ public class HibernateSerializedObjectDAO implements SerializedObjectDAO {
 			serializedObject.setDateChanged(auditableObj.getDateChanged());
 		}
 		
-		String data;
+		/*~~>*/String data;
 		try {
 			data = serializer.serialize(object);
 		}

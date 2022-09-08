@@ -28,7 +28,7 @@ public class WeakPasswordException extends PasswordException {
 		super("error.password.weak");
 	}
 	
-	public WeakPasswordException(String message) {
+	public WeakPasswordException(/*~~>*/String message) {
 		super(message);
 	}
 }

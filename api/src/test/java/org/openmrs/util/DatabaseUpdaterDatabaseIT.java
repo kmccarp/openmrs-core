@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DatabaseUpdaterDatabaseIT extends H2DatabaseIT {
 	
-	private static final String VERSION_2_1_X = "2.1.x";
+	private static final /*~~>*/String VERSION_2_1_X = "2.1.x";
 	
 	/*
 	 * This is the number of change sets defined by the Liquibase snapshot files 2.1.x and all Liquibase update
@@ -47,7 +47,7 @@ public class DatabaseUpdaterDatabaseIT extends H2DatabaseIT {
 	@Test
 	public void should() throws Exception {
 		ChangeLogVersionFinder changeLogVersionFinder = new ChangeLogVersionFinder();
-		Map<String, List<String>> snapshotCombinations = changeLogVersionFinder.getSnapshotCombinations();
+		Map</*~~>*/String, List</*~~>*/String>> snapshotCombinations = changeLogVersionFinder.getSnapshotCombinations();
 		updateDatabase(snapshotCombinations.get(VERSION_2_1_X));
 		
 		List<DatabaseUpdater.OpenMRSChangeSet> actual = DatabaseUpdater.getDatabaseChanges();

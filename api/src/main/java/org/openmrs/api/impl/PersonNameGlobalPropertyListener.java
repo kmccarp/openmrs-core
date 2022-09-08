@@ -21,8 +21,8 @@ import org.openmrs.util.OpenmrsConstants;
 public class PersonNameGlobalPropertyListener implements GlobalPropertyListener {
 	
 	@Override
-	public boolean supportsPropertyName(String propertyName) {
-		return OpenmrsConstants.GLOBAL_PROPERTY_LAYOUT_NAME_FORMAT.equals(propertyName);
+	public boolean supportsPropertyName(/*~~>*/String propertyName) {
+		return /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LAYOUT_NAME_FORMAT.equals(propertyName);
 	}
 	
 	@Override
@@ -31,7 +31,7 @@ public class PersonNameGlobalPropertyListener implements GlobalPropertyListener 
 	}
 	
 	@Override
-	public void globalPropertyDeleted(String propertyName) {
+	public void globalPropertyDeleted(/*~~>*/String propertyName) {
 		
 	}
 	

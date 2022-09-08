@@ -23,35 +23,35 @@ import org.openmrs.web.WebConstants;
 public class InitializationWizardModel {
 	
 	// automatically given to the .vm files and used there
-	public static final String HEADER_TEMPLATE = "org/openmrs/web/filter/initialization/header.vm";
+	public static final /*~~>*/String HEADER_TEMPLATE = "org/openmrs/web/filter/initialization/header.vm";
 	
 	// automatically given to the .vm files and used there
-	public static final String FOOTER_TEMPLATE = "org/openmrs/web/filter/initialization/footer.vm";
+	public static final /*~~>*/String FOOTER_TEMPLATE = "org/openmrs/web/filter/initialization/footer.vm";
 	
 	// Values for installMethod field.
-	public static final String INSTALL_METHOD_SIMPLE = "simple";
+	public static final /*~~>*/String INSTALL_METHOD_SIMPLE = "simple";
 	
-	public static final String INSTALL_METHOD_ADVANCED = "advanced";
+	public static final /*~~>*/String INSTALL_METHOD_ADVANCED = "advanced";
 	
-	public static final String INSTALL_METHOD_TESTING = "testing";
+	public static final /*~~>*/String INSTALL_METHOD_TESTING = "testing";
 	
-	public static final String INSTALL_METHOD_AUTO = "auto";
+	public static final /*~~>*/String INSTALL_METHOD_AUTO = "auto";
 	
 	// Default OpenMRS admin password set by the simple installation.
-	public static final String ADMIN_DEFAULT_PASSWORD = "Admin123";
+	public static final /*~~>*/String ADMIN_DEFAULT_PASSWORD = "Admin123";
 	
-	public static final String OPENMRS_VERSION = OpenmrsConstants.OPENMRS_VERSION_SHORT;
+	public static final /*~~>*/String OPENMRS_VERSION = /*~~>*/OpenmrsConstants.OPENMRS_VERSION_SHORT;
 	
 	/**
 	 * Default database name to use unless user specifies another in the wizard or they are creating
 	 * a test installation
 	 */
-	public static final String DEFAULT_DATABASE_NAME = WebConstants.WEBAPP_NAME;
+	public static final /*~~>*/String DEFAULT_DATABASE_NAME = /*~~>*/WebConstants.WEBAPP_NAME;
 	
 	/**
 	 * Records completed tasks and are displayed at the top of the page upon error
 	 */
-	public List<String> workLog = new ArrayList<>();
+	public List</*~~>*/String> workLog = new ArrayList<>();
 	
 	/**
 	 * Whether the runtime properties file could possible be created. (only read by the velocity
@@ -65,7 +65,7 @@ public class InitializationWizardModel {
 	 * velocity scripts)
 	 */
 	
-	public String cannotCreateErrorMessage = "";
+	public /*~~>*/String cannotCreateErrorMessage = "";
 	
 	/**
 	 * Whether the runtime file can be edited (only read by the velocity scripts)
@@ -77,9 +77,9 @@ public class InitializationWizardModel {
 	 * The location of the runtime properties file (only read by the velocity scripts)
 	 */
 	
-	public String runtimePropertiesPath = "";
+	public /*~~>*/String runtimePropertiesPath = "";
 	
-	public String installMethod = INSTALL_METHOD_SIMPLE;
+	public /*~~>*/String installMethod = INSTALL_METHOD_SIMPLE;
 	
 	/**
 	 * True/false marker for the question "Do you currently have an OpenMRS database installed"
@@ -95,54 +95,54 @@ public class InitializationWizardModel {
 	/**
 	 * Filled out by the user on the databasesetup.vm page
 	 */
-	public String databaseName = DEFAULT_DATABASE_NAME;
+	public /*~~>*/String databaseName = DEFAULT_DATABASE_NAME;
 	
 	/**
 	 * Filled out by user on the databasesetup.vm page Looks like:
 	 */
-	public String databaseConnection = "jdbc:mysql://localhost:3306/@DBNAME@?autoReconnect=true&sessionVariables=default_storage_engine=InnoDB&useUnicode=true&characterEncoding=UTF-8";
+	public /*~~>*/String databaseConnection = "jdbc:mysql://localhost:3306/@DBNAME@?autoReconnect=true&sessionVariables=default_storage_engine=InnoDB&useUnicode=true&characterEncoding=UTF-8";
 	
 	/**
 	 * Optional Database Driver string filled in on databasesetup.vm
 	 */
-	public String databaseDriver = "";
+	public /*~~>*/String databaseDriver = "";
 	
 	/**
 	 * MySQL root account password used for simple installation. Filled in simplesetup.vm.
 	 */
-	public String databaseRootPassword = "";
+	public /*~~>*/String databaseRootPassword = "";
 	
 	/**
 	 * Filled in on databasesetup.vm
 	 */
-	public String createDatabaseUsername = "root";
+	public /*~~>*/String createDatabaseUsername = "root";
 	
 	/**
 	 * Filled in on databasesetup.vm
 	 */
-	public String createDatabasePassword = "";
+	public /*~~>*/String createDatabasePassword = "";
 	
 	/**
 	 * DB user that can create an openmrs db user Filled in on databasetablesanduser.vm
 	 */
-	public String createUserUsername = "root";
+	public /*~~>*/String createUserUsername = "root";
 	
 	/**
 	 * DB user that can create an openmrs db user Filled in on databasetablesanduser.vm
 	 */
-	public String createUserPassword = "";
+	public /*~~>*/String createUserPassword = "";
 	
 	/**
 	 * The username of a user that exists that can read/write to openmrs. Entered on
 	 * databasetablesanduser page
 	 */
-	public String currentDatabaseUsername = "";
+	public /*~~>*/String currentDatabaseUsername = "";
 	
 	/**
 	 * The password of a user that exists that can read/write to openmrs. Entered on
 	 * databasetablesanduser page
 	 */
-	public String currentDatabasePassword = "";
+	public /*~~>*/String currentDatabasePassword = "";
 	
 	/**
 	 * Asked for on the databasetablesanduser.vm page to know if their existing database has the
@@ -180,51 +180,51 @@ public class InitializationWizardModel {
 	/**
 	 * Password for the admin user if the database was created now
 	 */
-	public String adminUserPassword = ADMIN_DEFAULT_PASSWORD;
+	public /*~~>*/String adminUserPassword = ADMIN_DEFAULT_PASSWORD;
 	
 	/**
 	 * Implementation name.
 	 */
-	public String implementationIdName = "";
+	public /*~~>*/String implementationIdName = "";
 	
 	/**
 	 * Implementation ID.
 	 */
-	public String implementationId = "";
+	public /*~~>*/String implementationId = "";
 	
 	/**
 	 * Pass phrase used to validate who uses your implementation ID.
 	 */
-	public String implementationIdPassPhrase = "";
+	public /*~~>*/String implementationIdPassPhrase = "";
 	
 	/**
 	 * Text describing the implementation.
 	 */
-	public String implementationIdDescription = "";
+	public /*~~>*/String implementationIdDescription = "";
 	
-	public String setupPageUrl = WebConstants.SETUP_PAGE_URL;
+	public /*~~>*/String setupPageUrl = /*~~>*/WebConstants.SETUP_PAGE_URL;
 	
 	/**
 	 * The tasks to be executed that the user selected from the wizard's prompts
 	 */
 	public List<WizardTask> tasksToExecute;
 	
-	public String localeToSave = "";
+	public /*~~>*/String localeToSave = "";
 	
 	/**
 	 * The url to the remote system
 	 */
-	public String remoteUrl = "";
+	public /*~~>*/String remoteUrl = "";
 	
 	/**
 	 * The username to use to authenticate to the remote system
 	 */
-	public String remoteUsername = "";
+	public /*~~>*/String remoteUsername = "";
 	
 	/**
 	 * The password to use to authenticate to the remote system
 	 */
-	public String remotePassword = "";
+	public /*~~>*/String remotePassword = "";
 	
 	/**
 	 * The current step. e.g Step 1 of ...

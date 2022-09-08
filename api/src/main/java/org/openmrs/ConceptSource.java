@@ -23,9 +23,9 @@ public class ConceptSource extends BaseChangeableOpenmrsMetadata {
 	
 	private Integer conceptSourceId;
 	
-	private String hl7Code;
+	private /*~~>*/String hl7Code;
 	
-	private String uniqueId;
+	private /*~~>*/String uniqueId;
 	
 	// Constructors
 	
@@ -55,29 +55,29 @@ public class ConceptSource extends BaseChangeableOpenmrsMetadata {
 	/**
 	 * @return Returns the hl7Code.
 	 */
-	public String getHl7Code() {
+	public /*~~>*/String getHl7Code() {
 		return hl7Code;
 	}
 	
 	/**
 	 * @param hl7Code The hl7Code to set.
 	 */
-	public void setHl7Code(String hl7Code) {
-		this.hl7Code = hl7Code;
+	public void setHl7Code(/*~~>*/String hl7Code) {
+		/*~~>*/this.hl7Code = hl7Code;
 	}
 	
 	/**
 	 * @return the unique id
 	 */
-	public String getUniqueId() {
+	public /*~~>*/String getUniqueId() {
 		return uniqueId;
 	}
 	
 	/**
 	 * @param uniqueId the unique id to set
 	 */
-	public void setUniqueId(String uniqueId) {
-		this.uniqueId = uniqueId;
+	public void setUniqueId(/*~~>*/String uniqueId) {
+		/*~~>*/this.uniqueId = uniqueId;
 	}
 	
 	/**

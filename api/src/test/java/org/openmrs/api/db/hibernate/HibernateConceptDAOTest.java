@@ -31,8 +31,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class HibernateConceptDAOTest extends BaseContextSensitiveTest {
 	
-	private static final String PROVIDERS_INITIAL_XML = "org/openmrs/api/db/hibernate/include/HibernateConceptTestDataSet.xml";
-	protected static final String CONCEPT_ATTRIBUTE_TYPE_XML = "org/openmrs/api/include/ConceptServiceTest-conceptAttributeType.xml";
+	private static final /*~~>*/String PROVIDERS_INITIAL_XML = "org/openmrs/api/db/hibernate/include/HibernateConceptTestDataSet.xml";
+	protected static final /*~~>*/String CONCEPT_ATTRIBUTE_TYPE_XML = "org/openmrs/api/include/ConceptServiceTest-conceptAttributeType.xml";
 
 	@Autowired
 	private HibernateConceptDAO dao;

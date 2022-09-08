@@ -107,7 +107,7 @@ public class GZIPResponseWrapper extends HttpServletResponseWrapper {
 	 * @see javax.servlet.http.HttpServletResponse#sendError(int, java.lang.String)
 	 */
 	@Override
-	public void sendError(int error, String message) throws IOException {
+	public void sendError(int error, /*~~>*/String message) throws IOException {
 		super.sendError(error, message);
 		this.error = error;
 		

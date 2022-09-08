@@ -34,7 +34,7 @@ public abstract class AbstractSnapshotTuner {
 	
 	private static final Logger log = LoggerFactory.getLogger(AbstractSnapshotTuner.class);
 	
-	private static final String OPENMRS_LICENSE_HEADER = "<!--\n" + "\n"
+	private static final /*~~>*/String OPENMRS_LICENSE_HEADER = "<!--\n" + "\n"
 	        + "    This Source Code Form is subject to the terms of the Mozilla Public License,\n"
 	        + "    v. 2.0. If a copy of the MPL was not distributed with this file, You can\n"
 	        + "    obtain one at http://mozilla.org/MPL/2.0/. OpenMRS is also distributed under\n"
@@ -42,9 +42,9 @@ public abstract class AbstractSnapshotTuner {
 	        + "    Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS\n"
 	        + "    graphic logo is a trademark of OpenMRS Inc.\n" + "\n" + "-->\n";
 	
-	private static final String OPENMRS_LICENSE_SNIPPET = "the terms of the Healthcare Disclaimer located at http://openmrs.org/license";
+	private static final /*~~>*/String OPENMRS_LICENSE_SNIPPET = "the terms of the Healthcare Disclaimer located at http://openmrs.org/license";
 	
-	private Map<String, String> namespaceUris;
+	private Map</*~~>*/String, /*~~>*/String> namespaceUris;
 	
 	public AbstractSnapshotTuner() {
 		namespaceUris = new HashMap<>();
@@ -53,17 +53,17 @@ public abstract class AbstractSnapshotTuner {
 	
 	public abstract Document updateChangeLog(Document document);
 	
-	public void addLicenseHeaderToFileIfNeeded(String path) throws IOException {
+	public void addLicenseHeaderToFileIfNeeded(/*~~>*/String path) throws IOException {
 		if (!isLicenseHeaderInFile(path)) {
 			log.info("Adding the OpenMRS license header to file '{}'....", path);
-			String content = addLicenseHeaderToFileContent(path);
+			/*~~>*/String content = addLicenseHeaderToFileContent(path);
 			deleteFile(path);
 			writeFile(content, path);
 		}
 		log.info("The file '{}' already contains the OpenMRS license header.", path);
 	}
 	
-	public void createUpdatedChangeLogFile(String sourcePath, String targetPath) throws DocumentException, IOException {
+	public void createUpdatedChangeLogFile(/*~~>*/String sourcePath, /*~~>*/String targetPath) throws DocumentException, IOException {
 		deleteFile(targetPath);
 		log.info("Updating generated Liquibase file:  '{}'...", sourcePath);
 		Document document = readChangeLogFile(sourcePath);
@@ -72,11 +72,11 @@ public abstract class AbstractSnapshotTuner {
 		log.info("The updated file is available under:  '{}'", targetPath);
 	}
 	
-	public Map<String, String> getNamespaceUris() {
+	public Map</*~~>*/String, /*~~>*/String> getNamespaceUris() {
 		return namespaceUris;
 	}
 	
-	String addLicenseHeaderToFileContent(String path) throws FileNotFoundException {
+	/*~~>*/String addLicenseHeaderToFileContent(/*~~>*/String path) throws FileNotFoundException {
 		Scanner scanner = null;
 		StringBuffer buffer = new StringBuffer();
 		
@@ -99,7 +99,7 @@ public abstract class AbstractSnapshotTuner {
 			}
 		}
 		catch (FileNotFoundException e) {
-			log.error(String.format("file '{}' was not found", path), e);
+			log.error(/*~~>*/String.format("file '{}' was not found", path), e);
 			throw e;
 		}
 		finally {
@@ -109,7 +109,7 @@ public abstract class AbstractSnapshotTuner {
 		return buffer.toString();
 	}
 	
-	void deleteFile(String path) {
+	void deleteFile(/*~~>*/String path) {
 		File file = Paths.get(path).toFile();
 		if (file.exists() && file.isFile()) {
 			log.info("Deleting updated file from previous run: '{}'...", path);
@@ -117,7 +117,7 @@ public abstract class AbstractSnapshotTuner {
 		}
 	}
 	
-	boolean isLicenseHeaderInFile(String path) throws FileNotFoundException {
+	boolean isLicenseHeaderInFile(/*~~>*/String path) throws FileNotFoundException {
 		Scanner scanner = null;
 		try {
 			scanner = new Scanner(new File(path));
@@ -128,7 +128,7 @@ public abstract class AbstractSnapshotTuner {
 			}
 		}
 		catch (FileNotFoundException e) {
-			log.error(String.format("file '{}' was not found", path), e);
+			log.error(/*~~>*/String.format("file '{}' was not found", path), e);
 			throw e;
 		}
 		finally {
@@ -137,7 +137,7 @@ public abstract class AbstractSnapshotTuner {
 		return false;
 	}
 	
-	Document readChangeLogFile(String path) throws DocumentException {
+	Document readChangeLogFile(/*~~>*/String path) throws DocumentException {
 		File file = Paths.get(path).toFile();
 		if (!file.exists()) {
 			log.error("The source file '{}' does not exist. Please generate both Liquibase changelog files and retry. "
@@ -151,13 +151,13 @@ public abstract class AbstractSnapshotTuner {
 			document = reader.read(file);
 		}
 		catch (DocumentException e) {
-			log.error(String.format("processing the file '{}' raised an exception", path), e);
+			log.error(/*~~>*/String.format("processing the file '{}' raised an exception", path), e);
 			throw e;
 		}
 		return document;
 	}
 	
-	Document readChangeLogResource(String resourceName) throws DocumentException {
+	Document readChangeLogResource(/*~~>*/String resourceName) throws DocumentException {
 		File file = new File(getClass().getClassLoader().getResource(resourceName).getFile());
 		SAXReader reader = new SAXReader();
 		Document document = null;
@@ -165,13 +165,13 @@ public abstract class AbstractSnapshotTuner {
 			document = reader.read(file);
 		}
 		catch (DocumentException e) {
-			log.error(String.format("processing the resource '{}' raised an exception", resourceName), e);
+			log.error(/*~~>*/String.format("processing the resource '{}' raised an exception", resourceName), e);
 			throw e;
 		}
 		return document;
 	}
 	
-	private String readFile(File file) throws FileNotFoundException {
+	private /*~~>*/String readFile(File file) throws FileNotFoundException {
 		Scanner scanner = null;
 		StringBuffer buffer = new StringBuffer();
 		try {
@@ -181,7 +181,7 @@ public abstract class AbstractSnapshotTuner {
 			}
 		}
 		catch (FileNotFoundException e) {
-			log.error(String.format("file '{}' was not found", file.getPath()), e);
+			log.error(/*~~>*/String.format("file '{}' was not found", file.getPath()), e);
 			throw e;
 		}
 		finally {
@@ -190,17 +190,17 @@ public abstract class AbstractSnapshotTuner {
 		return buffer.toString();
 	}
 	
-	String readFile(String path) throws FileNotFoundException {
+	/*~~>*/String readFile(/*~~>*/String path) throws FileNotFoundException {
 		File file = Paths.get(path).toFile();
 		return readFile(file);
 	}
 	
-	String readResource(String resourceName) throws FileNotFoundException {
+	/*~~>*/String readResource(/*~~>*/String resourceName) throws FileNotFoundException {
 		File file = new File(getClass().getClassLoader().getResource(resourceName).getFile());
 		return readFile(file);
 	}
 	
-	void writeChangeLogFile(Document document, String path) throws IOException {
+	void writeChangeLogFile(Document document, /*~~>*/String path) throws IOException {
 		XMLWriter xmlWriter = null;
 		try {
 			File file = Paths.get(path).toFile();
@@ -210,7 +210,7 @@ public abstract class AbstractSnapshotTuner {
 			xmlWriter.write(document);
 		}
 		catch (IOException e) {
-			log.error(String.format("writing the updated changelog file to '%s' raised an exception", path), e);
+			log.error(/*~~>*/String.format("writing the updated changelog file to '%s' raised an exception", path), e);
 			throw e;
 		}
 		finally {
@@ -218,13 +218,13 @@ public abstract class AbstractSnapshotTuner {
 				xmlWriter.close();
 			}
 			catch (IOException e) {
-				log.error(String.format("closing the xml writer for '%s' raised an exception", path), e);
+				log.error(/*~~>*/String.format("closing the xml writer for '%s' raised an exception", path), e);
 				throw e;
 			}
 		}
 	}
 	
-	void writeFile(String content, String path) throws IOException {
+	void writeFile(/*~~>*/String content, /*~~>*/String path) throws IOException {
 		BufferedWriter writer = null;
 		try {
 			File file = Paths.get(path).toFile();
@@ -232,7 +232,7 @@ public abstract class AbstractSnapshotTuner {
 			writer.write(content);
 		}
 		catch (IOException e) {
-			log.error(String.format("writing a file to '%s' raised an exception", path), e);
+			log.error(/*~~>*/String.format("writing a file to '%s' raised an exception", path), e);
 			throw e;
 		}
 		finally {
@@ -240,7 +240,7 @@ public abstract class AbstractSnapshotTuner {
 				writer.close();
 			}
 			catch (IOException e) {
-				log.error(String.format("closing the writer for '%s' raised an exception", path), e);
+				log.error(/*~~>*/String.format("closing the writer for '%s' raised an exception", path), e);
 				throw e;
 			}
 		}

@@ -20,7 +20,7 @@ public class Privilege extends BaseChangeableOpenmrsMetadata {
 	
 	// Fields
 	
-	private String privilege;
+	private /*~~>*/String privilege;
 	
 	// Constructors
 	
@@ -29,12 +29,12 @@ public class Privilege extends BaseChangeableOpenmrsMetadata {
 	}
 	
 	/** constructor with id */
-	public Privilege(String privilege) {
-		this.privilege = privilege;
+	public Privilege(/*~~>*/String privilege) {
+		/*~~>*/this.privilege = privilege;
 	}
 	
-	public Privilege(String privilege, String description) {
-		this.privilege = privilege;
+	public Privilege(/*~~>*/String privilege, /*~~>*/String description) {
+		/*~~>*/this.privilege = privilege;
 		setDescription(description);
 	}
 	
@@ -43,19 +43,19 @@ public class Privilege extends BaseChangeableOpenmrsMetadata {
 	/**
 	 * @return Returns the privilege.
 	 */
-	public String getPrivilege() {
+	public /*~~>*/String getPrivilege() {
 		return privilege;
 	}
 	
 	/**
 	 * @param privilege The privilege to set.
 	 */
-	public void setPrivilege(String privilege) {
-		this.privilege = privilege;
+	public void setPrivilege(/*~~>*/String privilege) {
+		/*~~>*/this.privilege = privilege;
 	}
 	
 	@Override
-	public String getName() {
+	public /*~~>*/String getName() {
 		return this.getPrivilege();
 	}
 	
@@ -63,8 +63,8 @@ public class Privilege extends BaseChangeableOpenmrsMetadata {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
-		return this.privilege;
+	public /*~~>*/String toString() {
+		return /*~~>*/this.privilege;
 	}
 	
 	/**

@@ -28,7 +28,7 @@ public class ConceptStopWord extends BaseOpenmrsObject {
 	// Fields
 	private Integer conceptStopWordId;
 	
-	private String value;
+	private /*~~>*/String value;
 	
 	private Locale locale;
 	
@@ -46,7 +46,7 @@ public class ConceptStopWord extends BaseOpenmrsObject {
 	 * 
 	 * @param value
 	 */
-	public ConceptStopWord(String value) {
+	public ConceptStopWord(/*~~>*/String value) {
 		this(value, Context.getLocale());
 	}
 	
@@ -57,18 +57,18 @@ public class ConceptStopWord extends BaseOpenmrsObject {
 	 * @param value
 	 * @param locale
 	 */
-	public ConceptStopWord(String value, Locale locale) {
+	public ConceptStopWord(/*~~>*/String value, Locale locale) {
 		setValue(value);
 		setLocale(locale);
 	}
 	
-	public String getValue() {
+	public /*~~>*/String getValue() {
 		return value;
 	}
 	
-	public void setValue(String value) {
+	public void setValue(/*~~>*/String value) {
 		if (StringUtils.hasText(value)) {
-			this.value = value.toUpperCase();
+			/*~~>*/this.value = value.toUpperCase();
 		}
 	}
 	
@@ -102,7 +102,7 @@ public class ConceptStopWord extends BaseOpenmrsObject {
 	 * @see Object#toString()
 	 */
 	@Override
-	public String toString() {
-		return "ConceptStopWord: " + this.value + ", Locale: " + locale;
+	public /*~~>*/String toString() {
+		return "ConceptStopWord: " + /*~~>*/this.value + ", Locale: " + locale;
 	}
 }

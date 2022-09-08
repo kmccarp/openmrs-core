@@ -38,7 +38,7 @@ public class ConceptDrugValidatorTest {
 	 */
 	@Test
 	public void supports_shouldRejectClassesNotExtendingDrug() {
-		assertFalse(new ConceptDrugValidator().supports(String.class));
+		assertFalse(new ConceptDrugValidator().supports(/*~~>*/String.class));
 	}
 	
 	/**

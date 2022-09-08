@@ -26,7 +26,7 @@ public class ModuleClassLoaderTest extends BaseContextSensitiveTest {
 	
 	Module mockModule;
 	
-	Map<String, String> mockModules;
+	Map</*~~>*/String, /*~~>*/String> mockModules;
 	
 	@BeforeEach
 	public void before() {

@@ -18,7 +18,7 @@ public class CycleException extends Exception {
 	public CycleException() {
 	}
 	
-	public CycleException(String message, Object extraData) {
+	public CycleException(/*~~>*/String message, Object extraData) {
 		super(message);
 		this.extraData = extraData;
 	}

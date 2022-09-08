@@ -45,11 +45,11 @@ public class HibernateOrderDAOTest extends BaseContextSensitiveTest {
 	@Autowired
 	private HibernateOrderDAO dao;
 
-	private static final String ORDER_SET = "org/openmrs/api/include/OrderSetServiceTest-general.xml";
+	private static final /*~~>*/String ORDER_SET = "org/openmrs/api/include/OrderSetServiceTest-general.xml";
 	
-	private static final String ORDER_GROUP = "org/openmrs/api/include/OrderServiceTest-createOrderGroup.xml";
+	private static final /*~~>*/String ORDER_GROUP = "org/openmrs/api/include/OrderServiceTest-createOrderGroup.xml";
 
-	private static final String ORDER_ATTRIBUTES = "org/openmrs/api/include/OrderServiceTest-createOrderAttributes.xml";
+	private static final /*~~>*/String ORDER_ATTRIBUTES = "org/openmrs/api/include/OrderServiceTest-createOrderAttributes.xml";
 	
 	@BeforeEach
 	public void setUp() {
@@ -163,7 +163,7 @@ public class HibernateOrderDAOTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getOrderGroupAttributeTypeByName_shouldGetOrderGroupAttributeTypeByName() {
-		final String NAME = "ECG";
+		final /*~~>*/String NAME = "ECG";
 		OrderGroupAttributeType OrderGroupAttributeType = dao.getOrderGroupAttributeTypeByName(NAME);
 		assertEquals(NAME, OrderGroupAttributeType.getName());
 		assertEquals(4, OrderGroupAttributeType.getId());
@@ -176,7 +176,7 @@ public class HibernateOrderDAOTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void deleteOrderGroupAttributeType_shouldDeleteOrderGroupAttributeTypeFromDatabase() {
-		final String UUID = "9cf1bdb2-d18e-11ea-87d0-0242ac130003";
+		final /*~~>*/String UUID = "9cf1bdb2-d18e-11ea-87d0-0242ac130003";
 		OrderGroupAttributeType orderGroupAttributeType = dao.getOrderGroupAttributeTypeByUuid(UUID);
 		assertNotNull(orderGroupAttributeType);
 		dao.deleteOrderGroupAttributeType(orderGroupAttributeType);
@@ -215,7 +215,7 @@ public class HibernateOrderDAOTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getOrderAttributeTypeByName_shouldReturnOrderAttributeTypeUsingProvidedName() {
-		final String NAME = "Referral";
+		final /*~~>*/String NAME = "Referral";
 		OrderAttributeType orderAttributeType = dao.getOrderAttributeTypeByName(NAME);
 		assertEquals(NAME, orderAttributeType.getName());
 		assertEquals(1, orderAttributeType.getId());
@@ -228,7 +228,7 @@ public class HibernateOrderDAOTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void deleteOrderAttributeType_shouldDeleteTheProvidedOrderAttributeTypeFromDatabase() {
-		final String UUID = "9a9e852b-868a-4c78-8e4d-805b52d4b33f";
+		final /*~~>*/String UUID = "9a9e852b-868a-4c78-8e4d-805b52d4b33f";
 		final int ORIGINAL_COUNT = dao.getAllOrderAttributeTypes().size();
 		OrderAttributeType orderAttributeType = dao.getOrderAttributeTypeByUuid(UUID);
 		assertNotNull(orderAttributeType);

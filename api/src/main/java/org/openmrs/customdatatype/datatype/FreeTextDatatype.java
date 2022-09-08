@@ -17,13 +17,13 @@ import org.springframework.stereotype.Component;
  * @since 1.9
  */
 @Component
-public class FreeTextDatatype extends SerializingCustomDatatype<String> {
+public class FreeTextDatatype extends SerializingCustomDatatype</*~~>*/String> {
 	
 	/**
 	 * @see org.openmrs.customdatatype.SerializingCustomDatatype#serialize(java.lang.Object)
 	 */
 	@Override
-	public String serialize(String typedValue) {
+	public /*~~>*/String serialize(/*~~>*/String typedValue) {
 		return typedValue;
 	}
 	
@@ -31,7 +31,7 @@ public class FreeTextDatatype extends SerializingCustomDatatype<String> {
 	 * @see org.openmrs.customdatatype.SerializingCustomDatatype#deserialize(java.lang.String)
 	 */
 	@Override
-	public String deserialize(String serializedValue) {
+	public /*~~>*/String deserialize(/*~~>*/String serializedValue) {
 		return serializedValue;
 	}
 	

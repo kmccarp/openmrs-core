@@ -32,7 +32,7 @@ import org.springframework.util.Assert;
 public class BinaryDataHandler extends AbstractHandler implements ComplexObsHandler {
 	
 	/** Views supported by this handler */
-	private static final String[] supportedViews = { ComplexObsHandler.RAW_VIEW, };
+	private static final /*~~>*/String[] supportedViews = { /*~~>*/ComplexObsHandler.RAW_VIEW, };
 	
 	private static final Logger log = LoggerFactory.getLogger(BinaryDataHandler.class);
 	
@@ -50,18 +50,18 @@ public class BinaryDataHandler extends AbstractHandler implements ComplexObsHand
 	 * @see org.openmrs.obs.ComplexObsHandler#getObs(org.openmrs.Obs, java.lang.String)
 	 */
 	@Override
-	public Obs getObs(Obs obs, String view) {
+	public Obs getObs(Obs obs, /*~~>*/String view) {
 		File file = getComplexDataFile(obs);
 		log.debug("value complex: " + obs.getValueComplex());
 		log.debug("file path: " + file.getAbsolutePath());
 		ComplexData complexData = null;
 		
 		// Raw view (i.e. the file as is)
-		if (ComplexObsHandler.RAW_VIEW.equals(view)) {
+		if (/*~~>*/ComplexObsHandler.RAW_VIEW.equals(view)) {
 			// to handle problem with downloading/saving files with blank spaces or commas in their names
 			// also need to remove the "file" text appended to the end of the file name
-			String[] names = obs.getValueComplex().split("\\|");
-			String originalFilename = names[0];
+			/*~~>*/String[] names = obs.getValueComplex().split("\\|");
+			/*~~>*/String originalFilename = names[0];
 			originalFilename = originalFilename.replaceAll(",", "").replaceAll(" ", "").replaceAll("file$", "");
 			
 			try {
@@ -79,7 +79,7 @@ public class BinaryDataHandler extends AbstractHandler implements ComplexObsHand
 		Assert.notNull(complexData, "Complex data must not be null");
 		
 		// Get the Mime Type and set it
-		String mimeType = OpenmrsUtil.getFileMimeType(file);
+		/*~~>*/String mimeType = OpenmrsUtil.getFileMimeType(file);
 		complexData.setMimeType(mimeType);
 		
 		obs.setComplexData(complexData);
@@ -91,7 +91,7 @@ public class BinaryDataHandler extends AbstractHandler implements ComplexObsHand
 	 * @see org.openmrs.obs.ComplexObsHandler#getSupportedViews()
 	 */
 	@Override
-	public String[] getSupportedViews() {
+	public /*~~>*//*~~>*/String[] getSupportedViews() {
 		return supportedViews;
 	}
 	

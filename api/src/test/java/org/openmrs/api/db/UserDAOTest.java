@@ -27,11 +27,11 @@ import org.openmrs.util.Security;
 
 public class UserDAOTest extends BaseContextSensitiveTest {
 	
-	public static final String SECRET_QUESTION = "What is the answer?";
+	public static final /*~~>*/String SECRET_QUESTION = "What is the answer?";
 	
-	public static final String SECRET_ANSWER = "42";
+	public static final /*~~>*/String SECRET_ANSWER = "42";
 	
-	public static final String PASSWORD = "Openmr5xy";
+	public static final /*~~>*/String PASSWORD = "Openmr5xy";
 	
 	private User userJoe;
 	
@@ -74,10 +74,10 @@ public class UserDAOTest extends BaseContextSensitiveTest {
 		u.setPerson(new Person());
 		u.getPerson().setGender("M");
 		
-		String wildcards[] = new String[] { "_" }; // we used to also test %, but UserValidator actually doesn't allow that in usernames. TODO: remove the loop
+		/*~~>*/String wildcards[] = new /*~~>*/String[] { "_" }; // we used to also test %, but UserValidator actually doesn't allow that in usernames. TODO: remove the loop
 		//for each of the wildcards in the array, insert a user with a username or names
 		//with the wildcards and carry out a search for that user
-		for (String wildcard : wildcards) {
+		for (/*~~>*/String wildcard : wildcards) {
 			
 			PersonName name = new PersonName(wildcard + "cats", wildcard + "and", wildcard + "dogs");
 			name.setDateCreated(new Date());
@@ -90,7 +90,7 @@ public class UserDAOTest extends BaseContextSensitiveTest {
 			assertEquals(1, size);
 			
 			//if actually the search returned the matching name or system id
-			String userName = (dao.getUsers(wildcard + "ca", null, false, null, null).get(0).getUsername());
+			/*~~>*/String userName = (dao.getUsers(wildcard + "ca", null, false, null, null).get(0).getUsername());
 			assertEquals( wildcard + "test" + wildcard, userName, "Test failed since no user containing the character " + wildcard + " was found, ");
 			
 		}
@@ -108,7 +108,7 @@ public class UserDAOTest extends BaseContextSensitiveTest {
 		dao.changePassword(userJoe, PASSWORD);
 		dao.changeQuestionAnswer(userJoe, SECRET_QUESTION, SECRET_ANSWER);
 		LoginCredential lc = dao.getLoginCredential(userJoe);
-		String hashedSecretAnswer = Security.encodeString(SECRET_ANSWER + lc.getSalt());
+		/*~~>*/String hashedSecretAnswer = Security.encodeString(SECRET_ANSWER + lc.getSalt());
 		assertEquals(SECRET_QUESTION, lc.getSecretQuestion(), "question should be set");
 		assertEquals(hashedSecretAnswer, lc.getSecretAnswer(), "answer should be set");
 		dao.changePassword(userJoe, "Openmr6zz");
@@ -122,7 +122,7 @@ public class UserDAOTest extends BaseContextSensitiveTest {
 		dao.saveUser(userJoe, PASSWORD);
 		dao.changeQuestionAnswer(userJoe, SECRET_QUESTION, SECRET_ANSWER);
 		LoginCredential lc = dao.getLoginCredential(userJoe);
-		String hashedSecretAnswer = Security.encodeString(SECRET_ANSWER + lc.getSalt());
+		/*~~>*/String hashedSecretAnswer = Security.encodeString(SECRET_ANSWER + lc.getSalt());
 		assertEquals(SECRET_QUESTION, lc.getSecretQuestion(), "question should be set");
 		assertEquals(hashedSecretAnswer, lc.getSecretAnswer(), "answer should be set");
 		userJoe.setUserProperty("foo", "bar");
@@ -137,7 +137,7 @@ public class UserDAOTest extends BaseContextSensitiveTest {
 		dao.changePassword(userJoe, PASSWORD);
 		dao.changeQuestionAnswer(userJoe, SECRET_QUESTION, SECRET_ANSWER);
 		LoginCredential lc = dao.getLoginCredential(userJoe);
-		String hashedSecretAnswer = Security.encodeString(SECRET_ANSWER + lc.getSalt());
+		/*~~>*/String hashedSecretAnswer = Security.encodeString(SECRET_ANSWER + lc.getSalt());
 		assertEquals(SECRET_QUESTION, lc.getSecretQuestion(), "question should be set");
 		assertEquals( hashedSecretAnswer, lc.getSecretAnswer(), "answer should be set");
 		Context.authenticate(userJoe.getUsername(), PASSWORD);
@@ -152,7 +152,7 @@ public class UserDAOTest extends BaseContextSensitiveTest {
 		dao.changePassword(userJoe, PASSWORD);
 		dao.changeQuestionAnswer(userJoe, SECRET_QUESTION, SECRET_ANSWER);
 		LoginCredential lc = dao.getLoginCredential(userJoe);
-		String hashedSecretAnswer = Security.encodeString(SECRET_ANSWER + lc.getSalt());
+		/*~~>*/String hashedSecretAnswer = Security.encodeString(SECRET_ANSWER + lc.getSalt());
 		assertEquals(SECRET_QUESTION, lc.getSecretQuestion(), "question should be set");
 		assertEquals(hashedSecretAnswer, lc.getSecretAnswer(), "answer should be set");
 		userJoe.setUserProperty("foo", "bar");

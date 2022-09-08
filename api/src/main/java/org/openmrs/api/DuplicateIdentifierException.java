@@ -18,15 +18,15 @@ public class DuplicateIdentifierException extends PatientIdentifierException {
 	public DuplicateIdentifierException() {
 	}
 	
-	public DuplicateIdentifierException(String message) {
+	public DuplicateIdentifierException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public DuplicateIdentifierException(String message, PatientIdentifier identifier) {
+	public DuplicateIdentifierException(/*~~>*/String message, PatientIdentifier identifier) {
 		super(message, identifier);
 	}
 	
-	public DuplicateIdentifierException(String message, Throwable cause) {
+	public DuplicateIdentifierException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

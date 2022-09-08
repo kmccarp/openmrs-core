@@ -61,7 +61,7 @@ public class DrugValidator implements Validator {
 		} else {
 			Drug drug = (Drug) obj;
 			Set<DrugReferenceMap> drugReferenceMaps = drug.getDrugReferenceMaps();
-			Set<String> mappedTermUuids = new HashSet<>();
+			Set</*~~>*/String> mappedTermUuids = new HashSet<>();
 			int index = 0;
 			for (DrugReferenceMap referenceMap : drugReferenceMaps) {
 				Drug mappedDrug = referenceMap.getDrug();

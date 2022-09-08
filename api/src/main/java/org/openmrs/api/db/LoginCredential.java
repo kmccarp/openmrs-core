@@ -27,19 +27,19 @@ public class LoginCredential extends BaseOpenmrsObject implements OpenmrsObject 
 	
 	private Integer userId;
 	
-	private String hashedPassword;
+	private /*~~>*/String hashedPassword;
 	
-	private String salt;
+	private /*~~>*/String salt;
 	
-	private String secretQuestion;
+	private /*~~>*/String secretQuestion;
 	
-	private String secretAnswer;
+	private /*~~>*/String secretAnswer;
 	
 	private User changedBy;
 	
 	private Date dateChanged;
 	
-	private String activationKey;
+	private /*~~>*/String activationKey;
 	
 	public LoginCredential() {
 	}
@@ -75,29 +75,29 @@ public class LoginCredential extends BaseOpenmrsObject implements OpenmrsObject 
 	/**
 	 * @return the password
 	 */
-	public String getHashedPassword() {
+	public /*~~>*/String getHashedPassword() {
 		return hashedPassword;
 	}
 	
 	/**
 	 * @param password the password to set
 	 */
-	public void setHashedPassword(String password) {
-		this.hashedPassword = password;
+	public void setHashedPassword(/*~~>*/String password) {
+		/*~~>*/this.hashedPassword = password;
 	}
 	
 	/**
 	 * @return the salt
 	 */
-	public String getSalt() {
+	public /*~~>*/String getSalt() {
 		return salt;
 	}
 	
 	/**
 	 * @param salt the salt to set
 	 */
-	public void setSalt(String salt) {
-		this.salt = salt;
+	public void setSalt(/*~~>*/String salt) {
+		/*~~>*/this.salt = salt;
 	}
 	
 	/**
@@ -117,36 +117,36 @@ public class LoginCredential extends BaseOpenmrsObject implements OpenmrsObject 
 	/**
 	 * @return the secretAnswer
 	 */
-	public String getSecretAnswer() {
+	public /*~~>*/String getSecretAnswer() {
 		return secretAnswer;
 	}
 	
 	/**
 	 * @param secretAnswer the secretAnswer to set
 	 */
-	public void setSecretAnswer(String secretAnswer) {
-		this.secretAnswer = secretAnswer;
+	public void setSecretAnswer(/*~~>*/String secretAnswer) {
+		/*~~>*/this.secretAnswer = secretAnswer;
 	}
 	
 	/**
 	 * @return the secretQuestion
 	 */
-	public String getSecretQuestion() {
+	public /*~~>*/String getSecretQuestion() {
 		return secretQuestion;
 	}
 	
 	/**
 	 * @param secretQuestion the secretQuestion to set
 	 */
-	public void setSecretQuestion(String secretQuestion) {
-		this.secretQuestion = secretQuestion;
+	public void setSecretQuestion(/*~~>*/String secretQuestion) {
+		/*~~>*/this.secretQuestion = secretQuestion;
 	}
 	
 	/**
 	 * @param pw
 	 * @return Whether pw is the correct cleartext password for this user
 	 */
-	public boolean checkPassword(String pw) {
+	public boolean checkPassword(/*~~>*/String pw) {
 		return Security.hashMatches(getHashedPassword(), pw + getSalt());
 	}
 	
@@ -169,14 +169,14 @@ public class LoginCredential extends BaseOpenmrsObject implements OpenmrsObject 
 	/**
 	 * @returns the activation key
 	 */
-	public String getActivationKey() {
+	public /*~~>*/String getActivationKey() {
 		return activationKey;
 	}
 	
  	/**
 	 * @param activationKey the activation key to set.
 	 */
-	public void setActivationKey(String activationKey) {
-		this.activationKey = activationKey;
+	public void setActivationKey(/*~~>*/String activationKey) {
+		/*~~>*/this.activationKey = activationKey;
 	}
 }

@@ -27,13 +27,13 @@ public class MessageTest {
 	 */
 	private Message createTestMessage1() {
 		int id = 1;
-		String recipients = "recipient1@example.com,recipient2@example.com";
-		String sender = "foo@bar.com";
-		String subject = "tres important";
-		String content = "message";
-		String attachment = "attachment";
-		String attachmentContentType = "text/plain";
-		String attachmentFileName = "moo.txt";
+		/*~~>*/String recipients = "recipient1@example.com,recipient2@example.com";
+		/*~~>*/String sender = "foo@bar.com";
+		/*~~>*/String subject = "tres important";
+		/*~~>*/String content = "message";
+		/*~~>*/String attachment = "attachment";
+		/*~~>*/String attachmentContentType = "text/plain";
+		/*~~>*/String attachmentFileName = "moo.txt";
 		
 		return new Message(id, recipients, sender, subject, content, attachment, attachmentContentType, attachmentFileName);
 	}
@@ -46,10 +46,10 @@ public class MessageTest {
 	 */
 	private Message createTestMessage2() {
 		int id = 1;
-		String recipients = "recipient1@example.com";
-		String sender = "foo@bar.com";
-		String subject = "moo";
-		String content = "message";
+		/*~~>*/String recipients = "recipient1@example.com";
+		/*~~>*/String sender = "foo@bar.com";
+		/*~~>*/String subject = "moo";
+		/*~~>*/String content = "message";
 		
 		return new Message(id, recipients, sender, subject, content);
 	}
@@ -60,13 +60,13 @@ public class MessageTest {
 	@Test
 	public void Message_shouldFillInAllParameters() {
 		int id = 1;
-		String recipients = "recipient1@example.com,recipient2@example.com";
-		String sender = "foo@bar.com";
-		String subject = "tres important";
-		String content = "message";
-		String attachment = "attachment";
-		String attachmentContentType = "text/plain";
-		String attachmentFileName = "moo.txt";
+		/*~~>*/String recipients = "recipient1@example.com,recipient2@example.com";
+		/*~~>*/String sender = "foo@bar.com";
+		/*~~>*/String subject = "tres important";
+		/*~~>*/String content = "message";
+		/*~~>*/String attachment = "attachment";
+		/*~~>*/String attachmentContentType = "text/plain";
+		/*~~>*/String attachmentFileName = "moo.txt";
 		
 		Message toTest = new Message(id, recipients, sender, subject, content, attachment, attachmentContentType,
 		        attachmentFileName);
@@ -84,7 +84,7 @@ public class MessageTest {
 	public void setRecipients_shouldSetMultipleRecipients() {
 		Message testMessage = createTestMessage1();
 		
-		String recipients = "recipient1@example.com,recipient2@example.com";
+		/*~~>*/String recipients = "recipient1@example.com,recipient2@example.com";
 		
 		testMessage.setRecipients(recipients);
 		
@@ -98,8 +98,8 @@ public class MessageTest {
 	public void addRecipient_shouldAddNewRecipient() {
 		Message testMessage = createTestMessage1();
 		
-		String oldRecipients = testMessage.getRecipients();
-		String newRecipient = "bob@example.com";
+		/*~~>*/String oldRecipients = testMessage.getRecipients();
+		/*~~>*/String newRecipient = "bob@example.com";
 		
 		testMessage.addRecipient(newRecipient);
 		

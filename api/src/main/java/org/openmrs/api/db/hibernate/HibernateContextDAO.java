@@ -88,8 +88,8 @@ public class HibernateContextDAO implements ContextDAO {
 	 */
 	@Override
 	@Transactional(noRollbackFor = ContextAuthenticationException.class)
-	public User authenticate(String login, String password) throws ContextAuthenticationException {
-		String errorMsg = "Invalid username and/or password: " + login;
+	public User authenticate(/*~~>*/String login, /*~~>*/String password) throws ContextAuthenticationException {
+		/*~~>*/String errorMsg = "Invalid username and/or password: " + login;
 
 		Session session = sessionFactory.getCurrentSession();
 
@@ -97,7 +97,7 @@ public class HibernateContextDAO implements ContextDAO {
 
 		if (StringUtils.isNotBlank(login)) {
 			// loginWithoutDash is used to compare to the system id
-			String loginWithDash = login;
+			/*~~>*/String loginWithDash = login;
 			if (login.matches("\\d{2,}")) {
 				loginWithDash = login.substring(0, login.length() - 1) + "-" + login.charAt(login.length() - 1);
 			}
@@ -120,7 +120,7 @@ public class HibernateContextDAO implements ContextDAO {
 		if (candidateUser != null && password != null) {
 			log.debug("Candidate user id: {}", candidateUser.getUserId());
 
-			String lockoutTimeString = candidateUser.getUserProperty(OpenmrsConstants.USER_PROPERTY_LOCKOUT_TIMESTAMP, null);
+			/*~~>*/String lockoutTimeString = candidateUser.getUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_LOCKOUT_TIMESTAMP, null);
 			Long lockoutTime = null;
 			if (lockoutTimeString != null && !"0".equals(lockoutTimeString)) {
 				try {
@@ -128,7 +128,7 @@ public class HibernateContextDAO implements ContextDAO {
 					lockoutTime = Long.valueOf(lockoutTimeString);
 				}
 				catch (NumberFormatException e) {
-					log.warn("bad value stored in {} user property: {}", OpenmrsConstants.USER_PROPERTY_LOCKOUT_TIMESTAMP,
+					log.warn("bad value stored in {} user property: {}", /*~~>*/OpenmrsConstants.USER_PROPERTY_LOCKOUT_TIMESTAMP,
 						lockoutTimeString);
 				}
 			}
@@ -138,11 +138,11 @@ public class HibernateContextDAO implements ContextDAO {
 				// unlock them after 5 mins, otherwise reset the timestamp
 				// to now and make them wait another 5 mins
 				if (System.currentTimeMillis() - lockoutTime > 300000) {
-					candidateUser.setUserProperty(OpenmrsConstants.USER_PROPERTY_LOGIN_ATTEMPTS, "0");
-					candidateUser.removeUserProperty(OpenmrsConstants.USER_PROPERTY_LOCKOUT_TIMESTAMP);
+					candidateUser.setUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_LOGIN_ATTEMPTS, "0");
+					candidateUser.removeUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_LOCKOUT_TIMESTAMP);
 					saveUserProperties(candidateUser);
 				} else {
-					candidateUser.setUserProperty(OpenmrsConstants.USER_PROPERTY_LOCKOUT_TIMESTAMP, String.valueOf(System
+					candidateUser.setUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_LOCKOUT_TIMESTAMP, /*~~>*/String.valueOf(System
 						.currentTimeMillis()));
 					throw new ContextAuthenticationException(
 						"Invalid number of connection attempts. Please try again later.");
@@ -154,8 +154,8 @@ public class HibernateContextDAO implements ContextDAO {
 				.addScalar("password", StandardBasicTypes.STRING).addScalar("salt", StandardBasicTypes.STRING)
 				.setParameter(1, candidateUser.getUserId()).uniqueResult();
 
-			String passwordOnRecord = (String) passwordAndSalt[0];
-			String saltOnRecord = (String) passwordAndSalt[1];
+			/*~~>*/String passwordOnRecord = (/*~~>*/String) passwordAndSalt[0];
+			/*~~>*/String saltOnRecord = (/*~~>*/String) passwordAndSalt[1];
 
 			// if the username and password match, hydrate the user and return it
 			if (passwordOnRecord != null && Security.hashMatches(passwordOnRecord, password + saltOnRecord)) {
@@ -167,8 +167,8 @@ public class HibernateContextDAO implements ContextDAO {
 				// only clean up if the were some login failures, otherwise all should be clean
 				int attempts = getUsersLoginAttempts(candidateUser);
 				if (attempts > 0) {
-					candidateUser.setUserProperty(OpenmrsConstants.USER_PROPERTY_LOGIN_ATTEMPTS, "0");
-					candidateUser.removeUserProperty(OpenmrsConstants.USER_PROPERTY_LOCKOUT_TIMESTAMP);
+					candidateUser.setUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_LOGIN_ATTEMPTS, "0");
+					candidateUser.removeUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_LOCKOUT_TIMESTAMP);
 					saveUserProperties(candidateUser);
 				}
 
@@ -185,19 +185,19 @@ public class HibernateContextDAO implements ContextDAO {
 				int allowedFailedLoginCount = 7;
 				try {
 					allowedFailedLoginCount = Integer.parseInt(Context.getAdministrationService().getGlobalProperty(
-						OpenmrsConstants.GP_ALLOWED_FAILED_LOGINS_BEFORE_LOCKOUT).trim());
+						/*~~>*/OpenmrsConstants.GP_ALLOWED_FAILED_LOGINS_BEFORE_LOCKOUT).trim());
 				}
 				catch (Exception ex) {
 					log.error("Unable to convert the global property {} to a valid integer. Using default value of 7.",
-						OpenmrsConstants.GP_ALLOWED_FAILED_LOGINS_BEFORE_LOCKOUT);
+						/*~~>*/OpenmrsConstants.GP_ALLOWED_FAILED_LOGINS_BEFORE_LOCKOUT);
 				}
 
 				if (attempts > allowedFailedLoginCount) {
 					// set the user as locked out at this exact time
-					candidateUser.setUserProperty(OpenmrsConstants.USER_PROPERTY_LOCKOUT_TIMESTAMP, String.valueOf(System
+					candidateUser.setUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_LOCKOUT_TIMESTAMP, /*~~>*/String.valueOf(System
 						.currentTimeMillis()));
 				} else {
-					candidateUser.setUserProperty(OpenmrsConstants.USER_PROPERTY_LOGIN_ATTEMPTS, String.valueOf(attempts));
+					candidateUser.setUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_LOGIN_ATTEMPTS, /*~~>*/String.valueOf(attempts));
 				}
 
 				saveUserProperties(candidateUser);
@@ -215,7 +215,7 @@ public class HibernateContextDAO implements ContextDAO {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public User getUserByUuid(String uuid) {
+	public User getUserByUuid(/*~~>*/String uuid) {
 		
 		// don't flush here in case we're in the AuditableInterceptor.  Will cause a StackOverflowEx otherwise
 		FlushMode flushMode = sessionFactory.getCurrentSession().getHibernateFlushMode();
@@ -235,7 +235,7 @@ public class HibernateContextDAO implements ContextDAO {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public User getUserByUsername(String username) {
+	public User getUserByUsername(/*~~>*/String username) {
 		return userDao.getUserByUsername(username);
 	}
 	
@@ -245,7 +245,7 @@ public class HibernateContextDAO implements ContextDAO {
 	 */
 	@Override
 	@Transactional
-	public User createUser(User user, String password, List<String> roleNames) throws Exception {
+	public User createUser(User user, /*~~>*/String password, List</*~~>*/String> roleNames) throws Exception {
 		return Daemon.createUser(user, password, roleNames);
 	}
 	
@@ -265,7 +265,7 @@ public class HibernateContextDAO implements ContextDAO {
 	 * @return the # of login attempts for this user defaulting to zero if none defined
 	 */
 	private int getUsersLoginAttempts(User user) {
-		String attemptsString = user.getUserProperty(OpenmrsConstants.USER_PROPERTY_LOGIN_ATTEMPTS, "0");
+		/*~~>*/String attemptsString = user.getUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_LOGIN_ATTEMPTS, "0");
 		int attempts = 0;
 		try {
 			attempts = Integer.parseInt(attemptsString);
@@ -397,7 +397,7 @@ public class HibernateContextDAO implements ContextDAO {
 		if (sessionFactory.getStatistics().isStatisticsEnabled()) {
 			log.debug("Getting query statistics: ");
 			Statistics stats = sessionFactory.getStatistics();
-			for (String query : stats.getQueries()) {
+			for (/*~~>*/String query : stats.getQueries()) {
 				log.info("QUERY: " + query);
 				QueryStatistics qstats = stats.getQueryStatistics(query);
 				log.info("Cache Hit Count : " + qstats.getCacheHitCount());
@@ -420,13 +420,13 @@ public class HibernateContextDAO implements ContextDAO {
 	@Override
 	public void mergeDefaultRuntimeProperties(Properties runtimeProperties) {
 		
-		Map<String, String> cache = new HashMap<>();
+		Map</*~~>*/String, /*~~>*/String> cache = new HashMap<>();
 		// loop over runtime properties and precede each with "hibernate" if
 		// it isn't already
 		for (Map.Entry<Object, Object> entry : runtimeProperties.entrySet()) {
 			Object key = entry.getKey();
-			String prop = (String) key;
-			String value = (String) entry.getValue();
+			/*~~>*/String prop = (/*~~>*/String) key;
+			/*~~>*/String value = (/*~~>*/String) entry.getValue();
 			log.trace("Setting property: " + prop + ":" + value);
 			if (!prop.startsWith("hibernate") && !runtimeProperties.containsKey("hibernate." + prop)) {
 				cache.put("hibernate." + prop, value);
@@ -505,7 +505,7 @@ public class HibernateContextDAO implements ContextDAO {
 	 */
 	@Override
 	public void setupSearchIndex() {
-		String gp = Context.getAdministrationService().getGlobalProperty(OpenmrsConstants.GP_SEARCH_INDEX_VERSION, "");
+		/*~~>*/String gp = Context.getAdministrationService().getGlobalProperty(/*~~>*/OpenmrsConstants.GP_SEARCH_INDEX_VERSION, "");
 		
 		if (!OpenmrsConstants.SEARCH_INDEX_VERSION.toString().equals(gp)) {
 			updateSearchIndex();
@@ -521,9 +521,9 @@ public class HibernateContextDAO implements ContextDAO {
 			log.info("Updating the search index... It may take a few minutes.");
 			fullTextSessionFactory.getFullTextSession().createIndexer().startAndWait();
 			GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(
-			    OpenmrsConstants.GP_SEARCH_INDEX_VERSION);
+			    /*~~>*/OpenmrsConstants.GP_SEARCH_INDEX_VERSION);
 			if (gp == null) {
-				gp = new GlobalProperty(OpenmrsConstants.GP_SEARCH_INDEX_VERSION);
+				gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GP_SEARCH_INDEX_VERSION);
 			}
 			gp.setPropertyValue(OpenmrsConstants.SEARCH_INDEX_VERSION.toString());
 			Context.getAdministrationService().saveGlobalProperty(gp);

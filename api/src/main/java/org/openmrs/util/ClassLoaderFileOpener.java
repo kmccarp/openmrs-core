@@ -37,7 +37,7 @@ public class ClassLoaderFileOpener extends AbstractResourceAccessor {
 	}
 	
 	@Override
-	public InputStreamList openStreams(String context, String path) throws IOException {
+	public InputStreamList openStreams(/*~~>*/String context, /*~~>*/String path) throws IOException {
 		InputStreamList result = new InputStreamList();
 		
 		if (path.isEmpty()) {
@@ -58,12 +58,12 @@ public class ClassLoaderFileOpener extends AbstractResourceAccessor {
 	}
 	
 	@Override
-	public SortedSet<String> list(String s, String s1, boolean b, boolean b1, boolean b2) throws IOException {
+	public SortedSet</*~~>*/String> list(/*~~>*/String s, /*~~>*/String s1, boolean b, boolean b1, boolean b2) throws IOException {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public SortedSet<String> describeLocations() {
+	public SortedSet</*~~>*/String> describeLocations() {
 		return null;
 	}
 }

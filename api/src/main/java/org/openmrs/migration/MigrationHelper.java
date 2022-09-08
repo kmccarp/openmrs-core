@@ -68,7 +68,7 @@ public class MigrationHelper {
 	private MigrationHelper() {
 	}
 	
-	private static final String DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
+	private static final /*~~>*/String DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
 	private static final Logger log = LoggerFactory.getLogger(MigrationHelper.class);
 	
@@ -78,7 +78,7 @@ public class MigrationHelper {
 	 * @deprecated since 2.2.0 migrate the method to your code base if needed
 	 */
 	@Deprecated
-	public static Date parseDate(String s) throws ParseException {
+	public static Date parseDate(/*~~>*/String s) throws ParseException {
 		if (s == null || s.length() == 0) {
 			return null;
 		} else {
@@ -94,7 +94,7 @@ public class MigrationHelper {
 	 * @deprecated since 2.2.0 migrate the method to your code base if needed
 	 */
 	@Deprecated
-	public static Document parseXml(String xml) throws ParserConfigurationException {
+	public static Document parseXml(/*~~>*/String xml) throws ParserConfigurationException {
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		try {
 			// Disable resolution of external entities. See TRUNK-3942 
@@ -107,7 +107,7 @@ public class MigrationHelper {
 		}
 	}
 	
-	private static void findNodesNamed(Node node, String lookForName, Collection<Node> ret) {
+	private static void findNodesNamed(Node node, /*~~>*/String lookForName, Collection<Node> ret) {
 		if (node.getNodeName().equals(lookForName)) {
 			ret.add(node);
 		} else {
@@ -135,7 +135,7 @@ public class MigrationHelper {
 		findNodesNamed(document, "user", toAdd);
 		for (Node node : toAdd) {
 			Element e = (Element) node;
-			String username = e.getAttribute("username");
+			/*~~>*/String username = e.getAttribute("username");
 			if (username == null || username.length() == 0) {
 				throw new IllegalArgumentException("each <user /> element must define a user_name attribute");
 			}
@@ -151,7 +151,7 @@ public class MigrationHelper {
 			user.setDateChanged(parseDate(e.getAttribute("date_changed")));
 			
 			// Generate a temporary password: 8-12 random characters
-			String pass;
+			/*~~>*/String pass;
 			{
 				int length = rand.nextInt(4) + 8;
 				char[] password = new char[length];
@@ -159,7 +159,7 @@ public class MigrationHelper {
 					int randDecimalAsciiVal = rand.nextInt(93) + 33;
 					password[x] = (char) randDecimalAsciiVal;
 				}
-				pass = new String(password);
+				pass = new /*~~>*/String(password);
 			}
 			us.createUser(user, pass);
 			++ret;
@@ -181,7 +181,7 @@ public class MigrationHelper {
 		findNodesNamed(document, "location", toAdd);
 		for (Node node : toAdd) {
 			Element e = (Element) node;
-			String name = e.getAttribute("name");
+			/*~~>*/String name = e.getAttribute("name");
 			if (name == null || name.length() == 0) {
 				throw new IllegalArgumentException("each <location /> element must define a name attribute");
 			}
@@ -210,26 +210,26 @@ public class MigrationHelper {
 	 * @deprecated since 2.2.0 migrate the method to your code base if needed
 	 */
 	@Deprecated
-	public static int importRelationships(Collection<String> relationships, boolean autoCreateUsers, boolean autoAddRole) {
+	public static int importRelationships(Collection</*~~>*/String> relationships, boolean autoCreateUsers, boolean autoAddRole) {
 		PatientService ps = Context.getPatientService();
 		UserService us = Context.getUserService();
 		PersonService personService = Context.getPersonService();
 		List<Relationship> relsToAdd = new ArrayList<>();
 		Random rand = new Random();
-		for (String s : relationships) {
+		for (/*~~>*/String s : relationships) {
 			if (s.contains(":")) {
 				s = s.substring(s.indexOf(":") + 1);
 			}
-			String[] ss = s.split(",");
+			/*~~>*/String[] ss = s.split(",");
 			if (ss.length < 5) {
 				throw new IllegalArgumentException("The line '" + s + "' is in the wrong format");
 			}
-			String userLastName = ss[0];
-			String userFirstName = ss[1];
-			String username = (userFirstName + userLastName).replaceAll(" ", "");
-			String relationshipType = ss[2];
-			String identifierType = ss[3];
-			String identifier = ss[4];
+			/*~~>*/String userLastName = ss[0];
+			/*~~>*/String userFirstName = ss[1];
+			/*~~>*/String username = (userFirstName + userLastName).replaceAll(" ", "");
+			/*~~>*/String relationshipType = ss[2];
+			/*~~>*/String identifierType = ss[3];
+			/*~~>*/String identifier = ss[4];
 			User user = null;
 			{ // first try looking for non-voided users
 				List<User> users = us.getUsersByName(userFirstName, userLastName, false);
@@ -257,7 +257,7 @@ public class MigrationHelper {
 				user.addName(pn);
 				user.setUsername(username);
 				// Generate a temporary password: 8-12 random characters
-				String pass;
+				/*~~>*/String pass;
 				{
 					int length = rand.nextInt(4) + 8;
 					char[] password = new char[length];
@@ -265,7 +265,7 @@ public class MigrationHelper {
 						int randDecimalAsciiVal = rand.nextInt(93) + 33;
 						password[x] = (char) randDecimalAsciiVal;
 					}
-					pass = new String(password);
+					pass = new /*~~>*/String(password);
 				}
 				if (autoAddRole) {
 					Role role = us.getRole(relationshipType);
@@ -307,23 +307,23 @@ public class MigrationHelper {
 	 * @deprecated since 2.2.0 migrate the method to your code base if needed
 	 */
 	@Deprecated
-	public static int importProgramsAndStatuses(List<String> programWorkflow) throws ParseException {
+	public static int importProgramsAndStatuses(List</*~~>*/String> programWorkflow) throws ParseException {
 		ProgramWorkflowService pws = Context.getProgramWorkflowService();
 		PatientService ps = Context.getPatientService();
 		List<PatientProgram> patientPrograms = new ArrayList<>();
-		Map<String, PatientProgram> knownPatientPrograms = new HashMap<>();
-		Map<String, Program> programsByName = new HashMap<>();
+		Map</*~~>*/String, PatientProgram> knownPatientPrograms = new HashMap<>();
+		Map</*~~>*/String, Program> programsByName = new HashMap<>();
 		for (Program program : pws.getAllPrograms()) {
 			programsByName.put(program.getConcept().getName(Context.getLocale(), false).getName(), program);
 		}
-		for (String s : programWorkflow) {
+		for (/*~~>*/String s : programWorkflow) {
 			// ENROLLMENT:HIVEMR-V1,9266,IMB HIV PROGRAM,2005-08-25,
 			log.debug(s);
 			if (s.startsWith("ENROLLMENT:")) {
 				s = s.substring(s.indexOf(":") + 1);
-				String[] temp = s.split(",");
+				/*~~>*/String[] temp = s.split(",");
 				PatientIdentifierType pit = ps.getPatientIdentifierTypeByName(temp[0]);
-				String identifier = temp[1];
+				/*~~>*/String identifier = temp[1];
 				List<PatientIdentifier> pis = ps.getPatientIdentifiers(identifier, Collections.singletonList(pit), null,
 				    null, null);
 				if (pis.size() != 1) {
@@ -347,7 +347,7 @@ public class MigrationHelper {
 			} else if (s.startsWith("STATUS:")) {
 				// STATUS:HIVEMR-V1,9266,IMB HIV PROGRAM,TREATMENT STATUS,ACTIVE,2005-08-25,,
 				s = s.substring(s.indexOf(":") + 1);
-				String[] temp = s.split(",");
+				/*~~>*/String[] temp = s.split(",");
 				Program program = programsByName.get(temp[2]);
 				if (program == null) {
 					throw new RuntimeException("Couldn't find program \"" + temp[2] + "\" in " + programsByName);

@@ -59,7 +59,7 @@ public class HibernateConditionDAO implements ConditionDAO {
 	 * @return the condition associated with the UUID.
 	 */
 	@Override
-	public Condition getConditionByUuid(String uuid) {
+	public Condition getConditionByUuid(/*~~>*/String uuid) {
 		return sessionFactory.getCurrentSession().createQuery("from Condition c where c.uuid = :uuid", Condition.class)
 				.setParameter("uuid", uuid).uniqueResult();
 	}

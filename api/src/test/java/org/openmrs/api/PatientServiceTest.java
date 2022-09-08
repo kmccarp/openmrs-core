@@ -91,29 +91,29 @@ import org.openmrs.util.OpenmrsUtil;
 public class PatientServiceTest extends BaseContextSensitiveTest {
 	
 	// Datasets
-	protected static final String CREATE_PATIENT_XML = "org/openmrs/api/include/PatientServiceTest-createPatient.xml";
+	protected static final /*~~>*/String CREATE_PATIENT_XML = "org/openmrs/api/include/PatientServiceTest-createPatient.xml";
 
-	protected static final String CREATE_PATIENT_WITH_PATIENT_IDENTIFIER_PROGRAM_XML = "org/openmrs/api/include/PatientServiceTest-createPatientWithPatientProgramIdentifier.xml";
+	protected static final /*~~>*/String CREATE_PATIENT_WITH_PATIENT_IDENTIFIER_PROGRAM_XML = "org/openmrs/api/include/PatientServiceTest-createPatientWithPatientProgramIdentifier.xml";
 
-	protected static final String CREATE_PATIENT_VALID_IDENT_XML = "org/openmrs/api/include/PatientServiceTest-createPatientValidIdent.xml";
+	protected static final /*~~>*/String CREATE_PATIENT_VALID_IDENT_XML = "org/openmrs/api/include/PatientServiceTest-createPatientValidIdent.xml";
 	
-	protected static final String JOHN_PATIENTS_XML = "org/openmrs/api/include/PatientServiceTest-lotsOfJohns.xml";
+	protected static final /*~~>*/String JOHN_PATIENTS_XML = "org/openmrs/api/include/PatientServiceTest-lotsOfJohns.xml";
 	
-	protected static final String USERS_WHO_ARE_PATIENTS_XML = "org/openmrs/api/include/PatientServiceTest-usersWhoArePatients.xml";
+	protected static final /*~~>*/String USERS_WHO_ARE_PATIENTS_XML = "org/openmrs/api/include/PatientServiceTest-usersWhoArePatients.xml";
 	
-	protected static final String USER_WHO_IS_NOT_PATIENT_XML = "org/openmrs/api/include/PatientServiceTest-userNotAPatient.xml";
+	protected static final /*~~>*/String USER_WHO_IS_NOT_PATIENT_XML = "org/openmrs/api/include/PatientServiceTest-userNotAPatient.xml";
 	
-	protected static final String FIND_PATIENTS_XML = "org/openmrs/api/include/PatientServiceTest-findPatients.xml";
+	protected static final /*~~>*/String FIND_PATIENTS_XML = "org/openmrs/api/include/PatientServiceTest-findPatients.xml";
 	
-	protected static final String FIND_PATIENTS_ACCENTS_XML = "org/openmrs/api/include/PatientServiceTest-findPatientsAccents.xml";
+	protected static final /*~~>*/String FIND_PATIENTS_ACCENTS_XML = "org/openmrs/api/include/PatientServiceTest-findPatientsAccents.xml";
 	
-	private static final String PATIENT_RELATIONSHIPS_XML = "org/openmrs/api/include/PersonServiceTest-createRelationship.xml";
+	private static final /*~~>*/String PATIENT_RELATIONSHIPS_XML = "org/openmrs/api/include/PersonServiceTest-createRelationship.xml";
 	
-	private static final String ENCOUNTERS_FOR_VISITS_XML = "org/openmrs/api/include/PersonServiceTest-encountersForVisits.xml";
+	private static final /*~~>*/String ENCOUNTERS_FOR_VISITS_XML = "org/openmrs/api/include/PersonServiceTest-encountersForVisits.xml";
 	
-	private static final String PATIENT_MERGE_XML = "org/openmrs/api/include/PatientServiceTest-mergePatients.xml";
+	private static final /*~~>*/String PATIENT_MERGE_XML = "org/openmrs/api/include/PatientServiceTest-mergePatients.xml";
 
-	private static final String PATIENT_MERGE_OBS_WITH_GROUP_MEMBER = "org/openmrs/api/include/PatientServiceTest-mergePatientWithExistingObsHavingGroupMember.xml";
+	private static final /*~~>*/String PATIENT_MERGE_OBS_WITH_GROUP_MEMBER = "org/openmrs/api/include/PatientServiceTest-mergePatientWithExistingObsHavingGroupMember.xml";
 	
 	// Services
 	protected static PatientService patientService = null;
@@ -159,7 +159,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		}));
 	}
 
-	private boolean hasActiveOrderOfType(Patient patient, String orderTypeName) {
+	private boolean hasActiveOrderOfType(Patient patient, /*~~>*/String orderTypeName) {
 		OrderType drugOrder = Context.getOrderService().getOrderTypeByName(orderTypeName);
 		List<Order> preferredPatientOrders = Context.getOrderService().getAllOrdersByPatient(patient).stream()
 				.filter(Order::isActive)
@@ -367,7 +367,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		
 		// get a list of patients with this identifier, make sure the john
 		// patient is actually there
-		String identifier = firstJohnPatient.getPatientIdentifier().getIdentifier();
+		/*~~>*/String identifier = firstJohnPatient.getPatientIdentifier().getIdentifier();
 		assertNotNull("Uh oh, the patient doesn't have an identifier", identifier);
 		List<Patient> patients = patientService.getPatients(identifier, null, null, false);
 		assertTrue(patients.contains(firstJohnPatient), "Odd. The firstJohnPatient isn't in the list of patients for this identifier");
@@ -586,13 +586,13 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void getPatients_shouldForceSearchStringToBeGreaterThanMinsearchcharactersGlobalProperty() throws Exception {
 		// make sure we can get patients with the default of 3
-		Context.getAdministrationService().setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE, OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_START);
+		Context.getAdministrationService().setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE, /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_START);
 		
 		assertEquals(1, Context.getPatientService().getPatients("Colle").size());
 		
 		Context.clearSession();
 		Context.getAdministrationService().saveGlobalProperty(
-		    new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_MIN_SEARCH_CHARACTERS, "4"));
+		    new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_MIN_SEARCH_CHARACTERS, "4"));
 		
 		assertEquals(0, Context.getPatientService().getPatients("Col").size());
 	}
@@ -611,7 +611,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		
 		Context.clearSession();
 		Context.getAdministrationService().saveGlobalProperty(
-		    new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_MIN_SEARCH_CHARACTERS, "1"));
+		    new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_MIN_SEARCH_CHARACTERS, "1"));
 		
 		// there is a patient will middle name "F", so this should generate a hit.
 		assertEquals(1, Context.getPatientService().getPatients("F").size());
@@ -668,7 +668,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		Visit visit4 = visitService.getVisit(4);
 		Visit visit5 = visitService.getVisit(5);
 		
-		List<String> encounterUuidsThatShouldBeMoved = new ArrayList<>();
+		List</*~~>*/String> encounterUuidsThatShouldBeMoved = new ArrayList<>();
 		encounterUuidsThatShouldBeMoved.add(Context.getEncounterService().getEncounter(6).getUuid());
 		for (Visit v : Arrays.asList(visit1, visit2, visit3)) {
 			for (Encounter e : v.getEncounters()) {
@@ -1300,7 +1300,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	public void getPatientIdentifierTypeByName_shouldFetchPatientIdentifierTypeThatExactlyMatchesGivenName()
 	    throws Exception {
 		
-		String identifierTypeName = "OpenMRS Identification Number";
+		/*~~>*/String identifierTypeName = "OpenMRS Identification Number";
 		PatientIdentifierType identifierType = Context.getPatientService()
 		        .getPatientIdentifierTypeByName(identifierTypeName);
 		assertNotNull(identifierType);
@@ -1621,7 +1621,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getPatientByUuid_shouldFindObjectGivenValidUuid() throws Exception {
-		String uuid = "da7f524f-27ce-4bb2-86d6-6d1d05312bd5";
+		/*~~>*/String uuid = "da7f524f-27ce-4bb2-86d6-6d1d05312bd5";
 		Patient patient = Context.getPatientService().getPatientByUuid(uuid);
 		assertEquals(2, (int) patient.getPatientId());
 	}
@@ -1639,7 +1639,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getPatientIdentifierByUuid_shouldFindObjectGivenValidUuid() throws Exception {
-		String uuid = "ff41928c-3bca-48d9-a4dc-9198f6b2873b";
+		/*~~>*/String uuid = "ff41928c-3bca-48d9-a4dc-9198f6b2873b";
 		PatientIdentifier patientIdentifier = Context.getPatientService().getPatientIdentifierByUuid(uuid);
 		assertEquals(1, (int) patientIdentifier.getPatientIdentifierId());
 	}
@@ -1657,7 +1657,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getPatientIdentifierTypeByUuid_shouldFindObjectGivenValidUuid() throws Exception {
-		String uuid = "1a339fe9-38bc-4ab3-b180-320988c0b968";
+		/*~~>*/String uuid = "1a339fe9-38bc-4ab3-b180-320988c0b968";
 		PatientIdentifierType patientIdentifierType = Context.getPatientService().getPatientIdentifierTypeByUuid(uuid);
 		assertEquals(1, (int) patientIdentifierType.getPatientIdentifierTypeId());
 	}
@@ -1748,7 +1748,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		assertFalse(contains(new ArrayList<>(preferred.getIdentifiers()), voidedPI.getIdentifier()));
 	}
 	
-	public static boolean contains(List<PatientIdentifier> list, String identifier) {
+	public static boolean contains(List<PatientIdentifier> list, /*~~>*/String identifier) {
 		for (PatientIdentifier patientIdentifier : list) {
 			if (patientIdentifier.getIdentifier().equals(identifier)) {
 				return true;
@@ -1783,7 +1783,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getPatientByUuid_shouldFetchPatientWithGivenUuid() throws Exception {
-		String uuid = "da7f524f-27ce-4bb2-86d6-6d1d05312bd5";
+		/*~~>*/String uuid = "da7f524f-27ce-4bb2-86d6-6d1d05312bd5";
 		Patient patient = Context.getPatientService().getPatientByUuid(uuid);
 		assertEquals(2, (int) patient.getPatientId());
 	}
@@ -1801,7 +1801,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getPatientIdentifierByUuid_shouldFetchPatientIdentifierWithGivenUuid() throws Exception {
-		String uuid = "ff41928c-3bca-48d9-a4dc-9198f6b2873b";
+		/*~~>*/String uuid = "ff41928c-3bca-48d9-a4dc-9198f6b2873b";
 		PatientIdentifier patientIdentifier = Context.getPatientService().getPatientIdentifierByUuid(uuid);
 		assertEquals(1, (int) patientIdentifier.getPatientIdentifierId());
 	}
@@ -1852,7 +1852,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void getPatients_shouldSupportSimpleRegex() throws Exception {
 		Context.getAdministrationService().saveGlobalProperty(
-		    new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_IDENTIFIER_REGEX, "^0*@SEARCH@([A-Z]+-[0-9])?$"));
+		    new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_IDENTIFIER_REGEX, "^0*@SEARCH@([A-Z]+-[0-9])?$"));
 		PatientIdentifier identifier = new PatientIdentifier("1234-4", new PatientIdentifierType(1), new Location(1));
 		identifier.setCreator(new User(1));
 		identifier.setDateCreated(new Date());
@@ -2036,7 +2036,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void getPatients_shouldSupportPatternUsingLastDigitAsCheckDigit() throws Exception {
 		Context.getAdministrationService().saveGlobalProperty(
-		    new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_IDENTIFIER_SEARCH_PATTERN,
+		    new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_IDENTIFIER_SEARCH_PATTERN,
 		            "@SEARCH@,0@SEARCH@,@SEARCH-1@-@CHECKDIGIT@,0@SEARCH-1@-@CHECKDIGIT@"));
 		// "^(0*@SEARCH-1@-@CHECKDIGIT@)$"));
 		PatientIdentifier identifier = new PatientIdentifier("1234-4", new PatientIdentifierType(1), new Location(1));
@@ -2259,7 +2259,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		PersonMergeLog audit = mergeAndRetrieveAudit(preferred, notPreferred);
 		
 		//find the UUID of the address that was added by the merge
-		String addedAddressUuid = null;
+		/*~~>*/String addedAddressUuid = null;
 		preferred = patientService.getPatient(999);
 		for (PersonAddress a : preferred.getAddresses()) {
 			if (a.getAddress1().equals(address.getAddress1())) {
@@ -2291,7 +2291,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		PersonMergeLog audit = mergeAndRetrieveAudit(preferred, notPreferred);
 		
 		//find the UUID of the attribute that was added by the merge
-		String addedAttributeUuid = null;
+		/*~~>*/String addedAttributeUuid = null;
 		preferred = patientService.getPatient(999);
 		for (PersonAttribute a : preferred.getAttributes()) {
 			if (a.getValue().equals(attribute.getValue())) {
@@ -2325,7 +2325,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		PersonMergeLog audit = mergeAndRetrieveAudit(preferred, notPreferred);
 		
 		//find the UUID of the identifier that was added by the merge
-		String addedIdentifierUuid = null;
+		/*~~>*/String addedIdentifierUuid = null;
 		preferred = patientService.getPatient(999);
 		for (PatientIdentifier id : preferred.getIdentifiers()) {
 			if (id.getIdentifier().equals(patientIdentifier.getIdentifier())) {
@@ -2356,7 +2356,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		PersonMergeLog audit = mergeAndRetrieveAudit(preferred, notPreferred);
 		
 		//find the UUID of the name that was added by the merge
-		String addedNameUuid = null;
+		/*~~>*/String addedNameUuid = null;
 		preferred = patientService.getPatient(999);
 		for (PersonName n : preferred.getNames()) {
 			if (n.getFullName().equals(name.getFullName())) {
@@ -2385,7 +2385,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		PersonMergeLog audit = mergeAndRetrieveAudit(preferred, notPreferred);
 		
 		//find the UUID of the program to which the preferred patient was enrolled as a result of the merge
-		String enrolledProgramUuid = null;
+		/*~~>*/String enrolledProgramUuid = null;
 		List<PatientProgram> programs = Context.getProgramWorkflowService().getPatientPrograms(preferred, null, null, null,
 		    null, null, false);
 		for (PatientProgram p : programs) {
@@ -2414,7 +2414,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		
 		//find the UUID of the created relationship as a result of the merge
 		//note: since patient 2 is related to patient 1. patient 7 should now be related to patient 1
-		String createdRelationshipUuid = null;
+		/*~~>*/String createdRelationshipUuid = null;
 		List<Relationship> relationships = personService.getRelationshipsByPerson(preferred);
 		for (Relationship r : relationships) {
 			if (r.getPersonB().getId().equals(1) || r.getPersonA().getId().equals(1)) {
@@ -2476,7 +2476,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		
 		//merge the two patients and retrieve the audit object
 		PersonMergeLog audit = mergeAndRetrieveAudit(preferred, notPreferred);
-		String uuid = null;
+		/*~~>*/String uuid = null;
 		List<Obs> observations = Context.getObsService().getObservationsByPerson(preferred);
 		for (Obs o : observations) {
 			if (obs.getComment().equals(o.getComment())) {
@@ -2667,7 +2667,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		return result.get(0);
 	}
 	
-	private boolean isValueInList(String value, List<String> list) {
+	private boolean isValueInList(/*~~>*/String value, List</*~~>*/String> list) {
 		return (list != null && list.contains(value));
 	}
 	
@@ -2940,7 +2940,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 		patientService.mergePatients(preferredPatient, nonPreferredPatient);
 		Set<PersonName> names = preferredPatient.getNames();
 		
-		if ((PersonName.getFormat()).equals(OpenmrsConstants.PERSON_NAME_FORMAT_LONG)) {
+		if ((PersonName.getFormat()).equals(/*~~>*/OpenmrsConstants.PERSON_NAME_FORMAT_LONG)) {
 			assertThat(names, containsFullName("President John Fitzgerald Kennedy Esq."));
 		} else {
 			assertThat(names, containsFullName("John Fitzgerald Kennedy"));
@@ -3100,7 +3100,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getPatients_shouldFindAPatientsWithAMatchingIdentifierWithNoDigits() throws Exception {
-		final String identifier = "XYZ";
+		final /*~~>*/String identifier = "XYZ";
 		Patient patient = patientService.getPatient(2);
 		assertEquals(0, patientService.getPatients(identifier, null, null).size());
 		PatientIdentifier pId = new PatientIdentifier(identifier, patientService.getPatientIdentifierType(5),
@@ -3118,7 +3118,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getCountOfPatients_shouldReturnTheRightCountOfPatientsWithAMatchingIdentifierWithNoDigits() throws Exception {
-		final String identifier = "XYZ";
+		final /*~~>*/String identifier = "XYZ";
 		Patient patient = patientService.getPatient(2);
 		assertEquals(0, patientService.getCountOfPatients(identifier).intValue());
 		PatientIdentifier pId = new PatientIdentifier(identifier, patientService.getPatientIdentifierType(5),
@@ -3144,8 +3144,8 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	 * 
 	 * @param propertyValue value for patient identifier types locked GP
 	 */
-	public void createPatientIdentifierTypeLockedGPAndSetValue(String propertyValue) {
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_IDENTIFIER_TYPES_LOCKED);
+	public void createPatientIdentifierTypeLockedGPAndSetValue(/*~~>*/String propertyValue) {
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_IDENTIFIER_TYPES_LOCKED);
 		gp.setPropertyValue(propertyValue);
 		Context.getAdministrationService().saveGlobalProperty(gp);
 	}
@@ -3180,7 +3180,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	public void retirePatientIdentifierType_shouldRetireAndSetReasonAndRetiredByAndDate() {
 		PatientService ps = Context.getPatientService();
 		PatientIdentifierType pit = ps.getPatientIdentifierType(1);
-		String reason = "moved away";
+		/*~~>*/String reason = "moved away";
 		PatientIdentifierType result = ps.retirePatientIdentifierType(pit, reason);
 
 		assertTrue(result.getRetired());
@@ -3213,7 +3213,7 @@ public class PatientServiceTest extends BaseContextSensitiveTest {
 	
 	@Test
 	public void mergePatients_shouldFailIfMultiplePatientsHaveActiveOrderOfSameType() throws Exception {
-		String message = Context.getMessageSourceService().getMessage("Patient.merge.cannotHaveSameTypeActiveOrders",
+		/*~~>*/String message = Context.getMessageSourceService().getMessage("Patient.merge.cannotHaveSameTypeActiveOrders",
 				new Object[] { "2", "7", "Drug order" }, Context.getLocale());
 		Patient preferredPatient = patientService.getPatient(2);
 		Patient notPreferredPatient = patientService.getPatient(7);

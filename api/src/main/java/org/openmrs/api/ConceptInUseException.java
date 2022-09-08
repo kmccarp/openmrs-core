@@ -31,7 +31,7 @@ public class ConceptInUseException extends APIException {
 	 * 
 	 * @param message the String to show to the user as to why the concepts are locked
 	 */
-	public ConceptInUseException(String message) {
+	public ConceptInUseException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -42,7 +42,7 @@ public class ConceptInUseException extends APIException {
 	 * @param message the String to show to the user as to why the concepts are locked
 	 * @param cause the parent exception
 	 */
-	public ConceptInUseException(String message, Throwable cause) {
+	public ConceptInUseException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

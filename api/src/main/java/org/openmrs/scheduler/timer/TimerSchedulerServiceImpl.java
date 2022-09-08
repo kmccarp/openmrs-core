@@ -387,7 +387,7 @@ public class TimerSchedulerServiceImpl extends BaseOpenmrsService implements Sch
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public TaskDefinition getTaskByName(String name) {
+	public TaskDefinition getTaskByName(/*~~>*/String name) {
 		log.debug("get task {}", name);
 		TaskDefinition foundTask = null;
 		try {
@@ -434,12 +434,12 @@ public class TimerSchedulerServiceImpl extends BaseOpenmrsService implements Sch
 	 * Get system variables.
 	 */
 	@Override
-	public SortedMap<String, String> getSystemVariables() {
-		SortedMap<String, String> systemVariables = new TreeMap<>();
+	public SortedMap</*~~>*/String, /*~~>*/String> getSystemVariables() {
+		SortedMap</*~~>*/String, /*~~>*/String> systemVariables = new TreeMap<>();
 		// scheduler username and password can be found in the global properties
 		// TODO Look into java.util.concurrent.TimeUnit class.  
 		// TODO Remove this from global properties.  This is a constant value that should never change.  
-		systemVariables.put("SCHEDULER_MILLIS_PER_SECOND", String.valueOf(SchedulerConstants.SCHEDULER_MILLIS_PER_SECOND));
+		systemVariables.put("SCHEDULER_MILLIS_PER_SECOND", /*~~>*/String.valueOf(SchedulerConstants.SCHEDULER_MILLIS_PER_SECOND));
 		return systemVariables;
 	}
 	
@@ -504,7 +504,7 @@ public class TimerSchedulerServiceImpl extends BaseOpenmrsService implements Sch
 	 *      internationalization of string status messages
 	 */
 	@Override
-	public String getStatus(Integer id) {
+	public /*~~>*/String getStatus(Integer id) {
 		
 		// Get the scheduled timer task
 		TimerSchedulerTask scheduledTask = scheduledTasks.get(id);
@@ -545,7 +545,7 @@ public class TimerSchedulerServiceImpl extends BaseOpenmrsService implements Sch
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public TaskDefinition getTaskByUuid(String uuid) {
+	public TaskDefinition getTaskByUuid(/*~~>*/String uuid) {
 		return getSchedulerDAO().getTaskByUuid(uuid);
 	}
 	

@@ -65,18 +65,18 @@ public class DefaultMessageSourceServiceImpl implements MessageSourceService {
 	}
 	
 	@Override
-	public String getMessage(String code, Object[] args, String defaultMessage, Locale locale) {
+	public /*~~>*/String getMessage(/*~~>*/String code, Object[] args, /*~~>*/String defaultMessage, Locale locale) {
 		return getMessage(code);
 	}
 
 	@Override
-	public String getMessage(String code, Object[] args, Locale locale) throws NoSuchMessageException {
+	public /*~~>*/String getMessage(/*~~>*/String code, Object[] args, Locale locale) throws NoSuchMessageException {
 		return getMessage(code);
 	}
 	
 	@Override
-	public String getMessage(String s) {
-		return (String)props.get(s);
+	public /*~~>*/String getMessage(/*~~>*/String s) {
+		return (/*~~>*/String)props.get(s);
 	}
 	
 	@Override
@@ -100,7 +100,7 @@ public class DefaultMessageSourceServiceImpl implements MessageSourceService {
 	}
 
 	@Override
-	public PresentationMessage getPresentation(String key, Locale forLocale) {
+	public PresentationMessage getPresentation(/*~~>*/String key, Locale forLocale) {
 		return null;
 	}
 
@@ -115,7 +115,7 @@ public class DefaultMessageSourceServiceImpl implements MessageSourceService {
 	}
 
 	@Override
-	public String getMessage(MessageSourceResolvable resolvable, Locale locale) throws NoSuchMessageException {
+	public /*~~>*/String getMessage(MessageSourceResolvable resolvable, Locale locale) throws NoSuchMessageException {
 		return null;
 	}
 

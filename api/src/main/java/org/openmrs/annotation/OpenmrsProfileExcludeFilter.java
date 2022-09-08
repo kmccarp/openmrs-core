@@ -39,7 +39,7 @@ public class OpenmrsProfileExcludeFilter implements TypeFilter {
 	 */
 	@Override
 	public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
-		Map<String, Object> openmrsProfileAttributes = metadataReader.getAnnotationMetadata().getAnnotationAttributes(
+		Map</*~~>*/String, Object> openmrsProfileAttributes = metadataReader.getAnnotationMetadata().getAnnotationAttributes(
 				"org.openmrs.annotation.OpenmrsProfile");
 		if (openmrsProfileAttributes != null) {
 			return !matchOpenmrsProfileAttributes(openmrsProfileAttributes);
@@ -49,30 +49,30 @@ public class OpenmrsProfileExcludeFilter implements TypeFilter {
 		}
 	}
 
-	public boolean matchOpenmrsProfileAttributes(Map<String, Object> openmrsProfile) {
+	public boolean matchOpenmrsProfileAttributes(Map</*~~>*/String, Object> openmrsProfile) {
 		Object openmrsPlatformVersion = openmrsProfile.get("openmrsPlatformVersion");
-		if (StringUtils.isBlank((String) openmrsPlatformVersion)) {
+		if (StringUtils.isBlank((/*~~>*/String) openmrsPlatformVersion)) {
 			//Left for backwards compatibility
 			openmrsPlatformVersion = openmrsProfile.get("openmrsVersion");
 		}
 
-		if (StringUtils.isNotBlank((String) openmrsPlatformVersion)
-				&& !ModuleUtil.matchRequiredVersions(OpenmrsConstants.OPENMRS_VERSION_SHORT, (String) openmrsPlatformVersion)) {
+		if (StringUtils.isNotBlank((/*~~>*/String) openmrsPlatformVersion)
+				&& !ModuleUtil.matchRequiredVersions(/*~~>*/OpenmrsConstants.OPENMRS_VERSION_SHORT, (/*~~>*/String) openmrsPlatformVersion)) {
 			return false;
 		}
 
-		String[] modules = (String[]) openmrsProfile.get("modules");
+		/*~~>*/String[] modules = (/*~~>*//*~~>*/String[]) openmrsProfile.get("modules");
 
-		for (String moduleAndVersion : modules) {
+		for (/*~~>*/String moduleAndVersion : modules) {
 			if ("!".equals(moduleAndVersion.substring(0, 1))) {
 				if (ModuleFactory.isModuleStarted(moduleAndVersion.substring(1))) {
 					return false;
 				}
 			}
 			else {
-				String[] splitModuleAndVersion = moduleAndVersion.split(":");
-				String moduleId = splitModuleAndVersion[0];
-				String moduleVersion = splitModuleAndVersion[1];
+				/*~~>*/String[] splitModuleAndVersion = moduleAndVersion.split(":");
+				/*~~>*/String moduleId = splitModuleAndVersion[0];
+				/*~~>*/String moduleVersion = splitModuleAndVersion[1];
 
 				boolean moduleMatched = false;
 				for (Module module : ModuleFactory.getStartedModules()) {

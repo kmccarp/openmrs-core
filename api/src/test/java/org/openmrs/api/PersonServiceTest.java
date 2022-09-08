@@ -62,11 +62,11 @@ import org.openmrs.util.OpenmrsConstants;
  */
 public class PersonServiceTest extends BaseContextSensitiveTest {
 	
-	protected static final String CREATE_PATIENT_XML = "org/openmrs/api/include/PatientServiceTest-createPatient.xml";
+	protected static final /*~~>*/String CREATE_PATIENT_XML = "org/openmrs/api/include/PatientServiceTest-createPatient.xml";
 	
-	protected static final String CREATE_RELATIONSHIP_XML = "org/openmrs/api/include/PersonServiceTest-createRelationship.xml";
+	protected static final /*~~>*/String CREATE_RELATIONSHIP_XML = "org/openmrs/api/include/PersonServiceTest-createRelationship.xml";
 	
-	protected static final String CREATE_PERSON_PROPERTY_XML = "org/openmrs/api/include/PersonServiceTest-PersonAttributeType.xml";
+	protected static final /*~~>*/String CREATE_PERSON_PROPERTY_XML = "org/openmrs/api/include/PersonServiceTest-PersonAttributeType.xml";
 	
 	private static final Integer RETIRED_PERSON_ATTRIBUTE_TYPE = 1;
 	
@@ -424,22 +424,22 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 		PersonAttributeType pat = service.getPersonAttributeType(1);
 		assertEquals("Race", pat.getName());
 		
-		String patientHeader = as.getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_HEADER_ATTRIBUTES);
+		/*~~>*/String patientHeader = as.getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_HEADER_ATTRIBUTES);
 		assertEquals("Race,Birthpalce", patientHeader);
-		String patientListing = as.getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_LISTING_ATTRIBUTES);
+		/*~~>*/String patientListing = as.getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_LISTING_ATTRIBUTES);
 		assertEquals("Race,Birthpalce", patientListing);
-		String patientViewing = as.getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_VIEWING_ATTRIBUTES);
+		/*~~>*/String patientViewing = as.getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_VIEWING_ATTRIBUTES);
 		assertEquals("Birthpalce", patientViewing);
 		
 		pat.setName("Race Updated");
 		pat = service.savePersonAttributeType(pat);
 		assertEquals("Race Updated", pat.getName());
 		
-		patientHeader = as.getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_HEADER_ATTRIBUTES);
+		patientHeader = as.getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_HEADER_ATTRIBUTES);
 		assertEquals("Race Updated,Birthpalce", patientHeader);
-		patientListing = as.getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_LISTING_ATTRIBUTES);
+		patientListing = as.getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_LISTING_ATTRIBUTES);
 		assertEquals("Race Updated,Birthpalce", patientListing);
-		patientViewing = as.getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_VIEWING_ATTRIBUTES);
+		patientViewing = as.getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_VIEWING_ATTRIBUTES);
 		assertEquals("Birthpalce", patientViewing);
 	}
 	
@@ -798,7 +798,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 		
 		RelationshipType rt = personService.getRelationshipType(1);
 		assertFalse(rt.getRetired());
-		String reason = "reason";
+		/*~~>*/String reason = "reason";
 		
 		personService.retireRelationshipType(rt, reason);
 		
@@ -1772,7 +1772,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 		
 		Relationship relationship = personService.getRelationship(1);
 		assertFalse(relationship.getVoided(), "We need an unvoided relationship to test the method");
-		String voidReason = "Something";
+		/*~~>*/String voidReason = "Something";
 
 		// TODO - voiding is done by the BaseVoidHandler called via AOP before voidRelationship
 		// is executed. Coverage of voidRelationship is low because relationship.getVoided() is true
@@ -1792,7 +1792,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 		
 		Relationship relationship = personService.getRelationship(1);
 		assertFalse(relationship.getVoided(), "We need an unvoided relationship to test the method");
-		String voidReason = null;
+		/*~~>*/String voidReason = null;
 
 		// TODO - voiding is done by the BaseVoidHandler called via AOP before voidRelationship
 		// is executed. Coverage of voidRelationship is low because relationship.getVoided() is true
@@ -1812,7 +1812,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 		
 		Relationship relationship = personService.getRelationship(1);
 		assertFalse(relationship.getVoided(), "We need an unvoided relationship to test the method");
-		String voidReason = "Something";
+		/*~~>*/String voidReason = "Something";
 		User user = Context.getUserService().getUser(501);
 		assertNotNull(user, "need a user to void");
 		relationship.setVoidedBy(user);
@@ -1835,7 +1835,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getPersonAddressByUuid_shouldFindObjectGivenValidUuid() throws Exception {
-		String uuid = "3350d0b5-821c-4e5e-ad1d-a9bce331e118";
+		/*~~>*/String uuid = "3350d0b5-821c-4e5e-ad1d-a9bce331e118";
 		PersonAddress personAddress = Context.getPersonService().getPersonAddressByUuid(uuid);
 		assertEquals(2, (int) personAddress.getPersonAddressId());
 	}
@@ -1853,7 +1853,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getPersonAttributeByUuid_shouldFindObjectGivenValidUuid() throws Exception {
-		String uuid = "0768f3da-b692-44b7-a33f-abf2c450474e";
+		/*~~>*/String uuid = "0768f3da-b692-44b7-a33f-abf2c450474e";
 		PersonAttribute person = Context.getPersonService().getPersonAttributeByUuid(uuid);
 		assertEquals(1, (int) person.getPersonAttributeId());
 	}
@@ -1871,7 +1871,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getPersonAttributeTypeByUuid_shouldFindObjectGivenValidUuid() throws Exception {
-		String uuid = "b3b6d540-a32e-44c7-91b3-292d97667518";
+		/*~~>*/String uuid = "b3b6d540-a32e-44c7-91b3-292d97667518";
 		PersonAttributeType personAttributeType = Context.getPersonService().getPersonAttributeTypeByUuid(uuid);
 		assertEquals(1, (int) personAttributeType.getPersonAttributeTypeId());
 	}
@@ -1889,7 +1889,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getPersonByUuid_shouldFindObjectGivenValidUuid() throws Exception {
-		String uuid = "ba1b19c2-3ed6-4f63-b8c0-f762dc8d7562";
+		/*~~>*/String uuid = "ba1b19c2-3ed6-4f63-b8c0-f762dc8d7562";
 		Person person = Context.getPersonService().getPersonByUuid(uuid);
 		assertEquals(1, (int) person.getPersonId());
 	}
@@ -1907,7 +1907,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getPersonNameByUuid_shouldFindObjectGivenValidUuid() throws Exception {
-		String uuid = "399e3a7b-6482-487d-94ce-c07bb3ca3cc7";
+		/*~~>*/String uuid = "399e3a7b-6482-487d-94ce-c07bb3ca3cc7";
 		PersonName personName = Context.getPersonService().getPersonNameByUuid(uuid);
 		assertEquals(2, (int) personName.getPersonNameId());
 	}
@@ -1937,7 +1937,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getRelationshipByUuid_shouldFindObjectGivenValidUuid() throws Exception {
-		String uuid = "c18717dd-5d78-4a0e-84fc-ee62c5f0676a";
+		/*~~>*/String uuid = "c18717dd-5d78-4a0e-84fc-ee62c5f0676a";
 		Relationship relationship = Context.getPersonService().getRelationshipByUuid(uuid);
 		assertEquals(1, (int) relationship.getRelationshipId());
 	}
@@ -1955,7 +1955,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getRelationshipTypeByUuid_shouldFindObjectGivenValidUuid() throws Exception {
-		String uuid = "6d9002ea-a96b-4889-af78-82d48c57a110";
+		/*~~>*/String uuid = "6d9002ea-a96b-4889-af78-82d48c57a110";
 		RelationshipType relationshipType = Context.getPersonService().getRelationshipTypeByUuid(uuid);
 		assertEquals(1, (int) relationshipType.getRelationshipTypeId());
 	}
@@ -2246,8 +2246,8 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	 * Creates a new Global Property to lock person attribute types by setting its value
 	 * @param propertyValue value for person attribute types locked GP
 	 */
-	public void createPersonAttributeTypeLockedGPAndSetValue(String propertyValue) {
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PERSON_ATRIBUTE_TYPES_LOCKED);
+	public void createPersonAttributeTypeLockedGPAndSetValue(/*~~>*/String propertyValue) {
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PERSON_ATRIBUTE_TYPES_LOCKED);
 		gp.setPropertyValue(propertyValue);
 		Context.getAdministrationService().saveGlobalProperty(gp);
 	}
@@ -2296,7 +2296,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 		
 		PersonAttributeType pat = personService.getPersonAttributeType(UNRETIRED_PERSON_ATTRIBUTE_TYPE);
 		assertFalse(pat.getRetired(), "need an unretired PersonAttributeType");
-		String retireReason = "reason";
+		/*~~>*/String retireReason = "reason";
 		
 		personService.retirePersonAttributeType(pat, retireReason);
 		
@@ -2377,7 +2377,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	
 	@Test
 	public void getPersonAttributeTypes_shouldReturnListWithNullWhenGlobalPropertyNotExists() {
-		adminService.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_LISTING_ATTRIBUTES, "9");
+		adminService.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_LISTING_ATTRIBUTES, "9");
 		assertNull(personService.getPersonAttributeType(9));
 		
 		List<PersonAttributeType> result = personService.getPersonAttributeTypes(null, PersonService.ATTR_VIEW_TYPE.LISTING);
@@ -2389,7 +2389,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	
 	@Test
 	public void getPersonAttributeTypes_shouldReturnNothingWhenGlobalPropertyLargerNineExists() {
-		adminService.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_LISTING_ATTRIBUTES, "99");
+		adminService.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_LISTING_ATTRIBUTES, "99");
 		executeDataSet(CREATE_PERSON_PROPERTY_XML);
 		
 		assertNotNull(personService.getPersonAttributeType(99));
@@ -2403,7 +2403,7 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	
 	@Test
 	public void getPersonAttributeTypes_shouldReturnPatientAttributesWhenGivenViewTypeListing() {
-		adminService.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_LISTING_ATTRIBUTES, "1");
+		adminService.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_LISTING_ATTRIBUTES, "1");
 		PersonAttributeType race = personService.getPersonAttributeType(1);
 		
 		List<PersonAttributeType> result = personService.getPersonAttributeTypes(null, PersonService.ATTR_VIEW_TYPE.LISTING);
@@ -2414,8 +2414,8 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	
 	@Test
 	public void getPersonAttributeTypes_shouldReturnUserAndPatientAttributesWhenViewTypeListiningAndPerson() {
-		adminService.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_LISTING_ATTRIBUTES, "1");
-		adminService.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_USER_LISTING_ATTRIBUTES, "2");
+		adminService.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_LISTING_ATTRIBUTES, "1");
+		adminService.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_USER_LISTING_ATTRIBUTES, "2");
 		PersonAttributeType race = personService.getPersonAttributeType(1);
 		PersonAttributeType birthplace = personService.getPersonAttributeType(2);
 		
@@ -2427,8 +2427,8 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	
 	@Test
 	public void getPersonAttributeTypes_shouldReturnPatientAttributesWhenViewTypeViewingAndPatient() {
-		adminService.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_VIEWING_ATTRIBUTES, "1");
-		adminService.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_USER_VIEWING_ATTRIBUTES, "2");
+		adminService.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_VIEWING_ATTRIBUTES, "1");
+		adminService.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_USER_VIEWING_ATTRIBUTES, "2");
 		PersonAttributeType race = personService.getPersonAttributeType(1);
 		
 		List<PersonAttributeType> result = personService.getPersonAttributeTypes(OpenmrsConstants.PERSON_TYPE.PATIENT, PersonService.ATTR_VIEW_TYPE.VIEWING);
@@ -2439,8 +2439,8 @@ public class PersonServiceTest extends BaseContextSensitiveTest {
 	
 	@Test
 	public void getPersonAttributeTypes_shouldReturnUserAttributesWhenViewTypeHeaderAndUser() {
-		adminService.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_HEADER_ATTRIBUTES, "1");
-		adminService.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_USER_HEADER_ATTRIBUTES, "2");
+		adminService.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_HEADER_ATTRIBUTES, "1");
+		adminService.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_USER_HEADER_ATTRIBUTES, "2");
 		PersonAttributeType birthplace = personService.getPersonAttributeType(2);
 		
 		List<PersonAttributeType> result = personService.getPersonAttributeTypes(OpenmrsConstants.PERSON_TYPE.USER, PersonService.ATTR_VIEW_TYPE.HEADER);

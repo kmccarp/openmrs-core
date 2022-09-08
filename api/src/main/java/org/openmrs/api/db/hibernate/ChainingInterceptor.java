@@ -61,7 +61,7 @@ public class ChainingInterceptor implements Interceptor {
 	}
 	
 	@Override
-	public void onDelete(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types) {
+	public void onDelete(Object entity, Serializable id, Object[] state, /*~~>*/String[] propertyNames, Type[] types) {
 		for (Interceptor i : interceptors) {
 			i.onDelete(entity, id, state, propertyNames, types);
 		}
@@ -69,7 +69,7 @@ public class ChainingInterceptor implements Interceptor {
 	
 	@Override
 	public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState,
-	        String[] propertyNames, Type[] types) {
+	        /*~~>*/String[] propertyNames, Type[] types) {
 		boolean objectChanged = false;
 		
 		for (Interceptor i : interceptors) {
@@ -81,7 +81,7 @@ public class ChainingInterceptor implements Interceptor {
 	}
 	
 	@Override
-	public boolean onLoad(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types) {
+	public boolean onLoad(Object entity, Serializable id, Object[] state, /*~~>*/String[] propertyNames, Type[] types) {
 		boolean objectChanged = false;
 		
 		for (Interceptor i : interceptors) {
@@ -93,7 +93,7 @@ public class ChainingInterceptor implements Interceptor {
 	}
 	
 	@Override
-	public boolean onSave(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types) {
+	public boolean onSave(Object entity, Serializable id, Object[] state, /*~~>*/String[] propertyNames, Type[] types) {
 		boolean objectChanged = false;
 		
 		for (Interceptor i : interceptors) {
@@ -141,7 +141,7 @@ public class ChainingInterceptor implements Interceptor {
 	
 	// returns the first non-null response from all interceptors
 	@Override
-	public Object instantiate(String entityName, EntityMode entityMode, Serializable id) {
+	public Object instantiate(/*~~>*/String entityName, EntityMode entityMode, Serializable id) {
 		for (Interceptor i : interceptors) {
 			Object o = i.instantiate(entityName, entityMode, id);
 			if (o != null) {
@@ -154,7 +154,7 @@ public class ChainingInterceptor implements Interceptor {
 	
 	@Override
 	public int[] findDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState,
-	        String[] propertyNames, Type[] types) {
+	        /*~~>*/String[] propertyNames, Type[] types) {
 		
 		List<Integer> uniqueIndices = new LinkedList<>();
 		
@@ -186,9 +186,9 @@ public class ChainingInterceptor implements Interceptor {
 	
 	// returns the first non-null name from the interceptors
 	@Override
-	public String getEntityName(Object object) {
+	public /*~~>*/String getEntityName(Object object) {
 		for (Interceptor i : interceptors) {
-			String name = i.getEntityName(object);
+			/*~~>*/String name = i.getEntityName(object);
 			if (name != null) {
 				return name;
 			}
@@ -198,7 +198,7 @@ public class ChainingInterceptor implements Interceptor {
 	}
 	
 	@Override
-	public Object getEntity(String entityName, Serializable id) {
+	public Object getEntity(/*~~>*/String entityName, Serializable id) {
 		for (Interceptor i : interceptors) {
 			Object o = i.getEntity(entityName, id);
 			if (o != null) {
@@ -232,7 +232,7 @@ public class ChainingInterceptor implements Interceptor {
 	
 	// passes the sql returned from each previous onPrepareStatement onto the next
 	@Override
-	public String onPrepareStatement(String sql) {
+	public /*~~>*/String onPrepareStatement(/*~~>*/String sql) {
 		for (Interceptor i : interceptors) {
 			sql = i.onPrepareStatement(sql);
 		}

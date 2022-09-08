@@ -36,14 +36,14 @@ import org.junit.jupiter.api.io.TempDir;
 
 public class CoreDataTunerTest {
 	
-	private static final String LIQUIBASE_CORE_DATA_SNAPSHOT_XML = Paths
+	private static final /*~~>*/String LIQUIBASE_CORE_DATA_SNAPSHOT_XML = Paths
 	        .get("org", "openmrs", "liquibase", "snapshots", "core-data", "liquibase-core-data-SNAPSHOT.xml").toString();
 	
-	private static final String LIQUIBASE_CORE_DATA_UPDATED_SNAPSHOT_XML = Paths
+	private static final /*~~>*/String LIQUIBASE_CORE_DATA_UPDATED_SNAPSHOT_XML = Paths
 	        .get("org", "openmrs", "liquibase", "snapshots", "core-data", "liquibase-core-data-UPDATED-SNAPSHOT.xml")
 	        .toString();
 	
-	private static String PATH_TO_TEST_RESOURCES = Paths.get("src", "test", "resources").toString();
+	private static /*~~>*/String PATH_TO_TEST_RESOURCES = Paths.get("src", "test", "resources").toString();
 	
 	public static final int TWENTY_FIVE = 25;
 	
@@ -53,7 +53,7 @@ public class CoreDataTunerTest {
 	
 	private Document document;
 	
-	private Map<String, String> namespaceUris;
+	private Map</*~~>*/String, /*~~>*/String> namespaceUris;
 	
 	private CoreDataTuner coreDataTuner;
 	
@@ -67,8 +67,8 @@ public class CoreDataTunerTest {
 	@Test
 	public void shouldCreateUpdatedChangeLogFile(@TempDir Path tempDir) throws DocumentException, IOException {
 		// given
-		String sourcePath = PATH_TO_TEST_RESOURCES + File.separator + LIQUIBASE_CORE_DATA_SNAPSHOT_XML;
-		String targetPath = tempDir.resolve("liquibase-core-data-UPDATED-SNAPSHOT.xml").toString();
+		/*~~>*/String sourcePath = PATH_TO_TEST_RESOURCES + /*~~>*/File.separator + LIQUIBASE_CORE_DATA_SNAPSHOT_XML;
+		/*~~>*/String targetPath = tempDir.resolve("liquibase-core-data-UPDATED-SNAPSHOT.xml").toString();
 		
 		// when
 		coreDataTuner.createUpdatedChangeLogFile(sourcePath, targetPath);
@@ -121,8 +121,8 @@ public class CoreDataTunerTest {
 		List<Node> actualChangeSetNodes = xPath.selectNodes(actualDocument);
 		assertEquals(TWENTY_FIVE, actualChangeSetNodes.size());
 		
-		List<String> actualTableNames = getTableNames(actualDocument);
-		List<String> expectedTableNames = mergeLists(coreDataTuner.getFirstTableNames(), coreDataTuner.getTableNames());
+		List</*~~>*/String> actualTableNames = getTableNames(actualDocument);
+		List</*~~>*/String> expectedTableNames = mergeLists(coreDataTuner.getFirstTableNames(), coreDataTuner.getTableNames());
 		assertEquals(expectedTableNames, actualTableNames);
 	}
 	
@@ -134,11 +134,11 @@ public class CoreDataTunerTest {
 	
 	@Test
 	public void shouldMergeTableNamesInTargetOrder() {
-		List<String> first = Arrays.asList("one", "five");
-		List<String> second = Arrays.asList("one", "two", "three", "four", "five");
+		List</*~~>*/String> first = Arrays.asList("one", "five");
+		List</*~~>*/String> second = Arrays.asList("one", "two", "three", "four", "five");
 		
-		List<String> actual = mergeLists(first, second);
-		List<String> expected = Arrays.asList("one", "five", "two", "three", "four");
+		List</*~~>*/String> actual = mergeLists(first, second);
+		List</*~~>*/String> expected = Arrays.asList("one", "five", "two", "three", "four");
 		
 		assertEquals(expected, actual);
 	}
@@ -146,10 +146,10 @@ public class CoreDataTunerTest {
 	@Test
 	public void shouldDetectThatSecondListDoesNotContainFirstList() {
 		assertThrows(AssertionError.class, () -> {
-			List<String> first = Arrays.asList("one", "six");
-			List<String> second = Arrays.asList("one", "two", "three", "four", "five");
+			List</*~~>*/String> first = Arrays.asList("one", "six");
+			List</*~~>*/String> second = Arrays.asList("one", "two", "three", "four", "five");
 			
-			List<String> actual = mergeLists(first, second);
+			List</*~~>*/String> actual = mergeLists(first, second);
 		});
 	}
 	
@@ -171,19 +171,19 @@ public class CoreDataTunerTest {
 	
 	@Test
 	public void shouldGetTableNames() {
-		List<String> expected = Arrays.asList("care_setting", "concept", "concept_class", "concept_datatype",
+		List</*~~>*/String> expected = Arrays.asList("care_setting", "concept", "concept_class", "concept_datatype",
 		    "concept_map_type", "concept_name", "concept_stop_word", "encounter_role", "field_type", "global_property",
 		    "hl7_source", "liquibasechangelog", "liquibasechangeloglock", "location", "order_type",
 		    "patient_identifier_type", "person", "person_attribute_type", "person_name", "privilege", "relationship_type",
 		    "role", "role_privilege", "scheduler_task_config", "user_property", "user_role", "users");
 		
-		List<String> actual = getTableNames(document);
+		List</*~~>*/String> actual = getTableNames(document);
 		
 		assertEquals(expected.size(), actual.size());
 		assertTrue(actual.containsAll(expected));
 	}
 	
-	private void assertAttributeValue(Document document, String xPathAsString, String expected) {
+	private void assertAttributeValue(Document document, /*~~>*/String xPathAsString, /*~~>*/String expected) {
 		XPath xPath = DocumentHelper.createXPath(xPathAsString);
 		xPath.setNamespaceURIs(namespaceUris);
 		
@@ -191,20 +191,20 @@ public class CoreDataTunerTest {
 		assertEquals(expected, element.attribute("value").getValue());
 	}
 	
-	private List<String> mergeLists(List<String> first, List<String> second) {
+	private List</*~~>*/String> mergeLists(List</*~~>*/String> first, List</*~~>*/String> second) {
 		assert second.containsAll(first) : "second list must contain all elements of first list";
 		
-		List<String> secondWithOutFirst = new ArrayList<>(second);
+		List</*~~>*/String> secondWithOutFirst = new ArrayList<>(second);
 		secondWithOutFirst.removeAll(first);
 		
-		List<String> result = new ArrayList<>();
+		List</*~~>*/String> result = new ArrayList<>();
 		result.addAll(first);
 		result.addAll(secondWithOutFirst);
 		return result;
 	}
 	
-	private List<String> getTableNames(Document document) {
-		List<String> result = new ArrayList<>();
+	private List</*~~>*/String> getTableNames(Document document) {
+		List</*~~>*/String> result = new ArrayList<>();
 		
 		XPath xPath = DocumentHelper.createXPath("//dbchangelog:insert/attribute::tableName");
 		xPath.setNamespaceURIs(namespaceUris);
@@ -212,7 +212,7 @@ public class CoreDataTunerTest {
 		List<Node> nodes = xPath.selectNodes(document);
 		
 		for (Node node : nodes) {
-			String tableName = node.getStringValue();
+			/*~~>*/String tableName = node.getStringValue();
 			if (!result.contains(tableName)) {
 				result.add(tableName);
 			}

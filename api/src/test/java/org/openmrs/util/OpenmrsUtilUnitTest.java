@@ -41,7 +41,7 @@ import org.openmrs.ConceptNumeric;
  */
 public class OpenmrsUtilUnitTest {
 
-	private List<String> moduleList;
+	private List</*~~>*/String> moduleList;
 
 	@BeforeEach
 	public void setUp() {
@@ -56,7 +56,7 @@ public class OpenmrsUtilUnitTest {
 	@Test
 	public void parseParameterList_shouldReturnKeyPairsGivenParametersSeparatedByPipe() {
 
-		Map<String, String> actual = OpenmrsUtil.parseParameterList("role_id=role|person_id=person");
+		Map</*~~>*/String, /*~~>*/String> actual = OpenmrsUtil.parseParameterList("role_id=role|person_id=person");
 		
 		assertThat(actual, hasEntry("role_id", "role"));
 		assertThat(actual, hasEntry("person_id", "person"));
@@ -66,7 +66,7 @@ public class OpenmrsUtilUnitTest {
 	@Test
 	public void parseParameterList_shouldReturnKeyPairsGivenOnePairAndOmitTrailingPipe() {
 
-		Map<String, String> actual = OpenmrsUtil.parseParameterList("role_id=role|");
+		Map</*~~>*/String, /*~~>*/String> actual = OpenmrsUtil.parseParameterList("role_id=role|");
 		
 		assertThat(actual, hasEntry("role_id", "role"));
 		assertEquals(1, actual.size());
@@ -75,7 +75,7 @@ public class OpenmrsUtilUnitTest {
 	@Test
 	public void parseParameterList_shouldReturnKeyPairsGivenOnePairWithoutValue() {
 
-		Map<String, String> actual = OpenmrsUtil.parseParameterList("role_id=");
+		Map</*~~>*/String, /*~~>*/String> actual = OpenmrsUtil.parseParameterList("role_id=");
 		
 		assertThat(actual, hasEntry("role_id", ""));
 		assertEquals(1, actual.size());
@@ -137,7 +137,7 @@ public class OpenmrsUtilUnitTest {
 	@Test
 	public void join_shouldReturnListElementsJoinedBySeparatorIfGivenCollectionContainsNull() {
 
-		List<String> listWithNull = Arrays.asList("module1", null, "module2");
+		List</*~~>*/String> listWithNull = Arrays.asList("module1", null, "module2");
 
 		assertThat(OpenmrsUtil.join(listWithNull, ","), is("module1,null,module2"));
 	}
@@ -157,7 +157,7 @@ public class OpenmrsUtilUnitTest {
 	@Test
 	public void isStringInArray_shouldReturnTrueIfStringIsInArray() {
 
-		String[] array = new String[]{"element1","element2","element3"};
+		/*~~>*/String[] array = new /*~~>*/String[]{"element1","element2","element3"};
 
 		assertTrue(OpenmrsUtil.isStringInArray("element1", array));
 	}
@@ -165,7 +165,7 @@ public class OpenmrsUtilUnitTest {
 	@Test
 	public void isStringInArray_shouldReturnFalseIfStringIsNotInArray() {
 
-		String[] array = new String[]{"element1","element2","element3"};
+		/*~~>*/String[] array = new /*~~>*/String[]{"element1","element2","element3"};
 
 		assertFalse(OpenmrsUtil.isStringInArray("element4", array));
 	}

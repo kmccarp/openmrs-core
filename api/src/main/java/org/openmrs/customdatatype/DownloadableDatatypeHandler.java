@@ -24,7 +24,7 @@ public interface DownloadableDatatypeHandler<T> extends CustomDatatypeHandler<Cu
 	 * @return the MIME type that should be communicated to any client downloading the given custom value.
 	 * Should not return null.
 	 */
-	String getContentType(CustomDatatype<T> dt, String valueReference);
+	/*~~>*/String getContentType(CustomDatatype<T> dt, /*~~>*/String valueReference);
 	
 	/**
 	 * @param dt the datatype this handler handles
@@ -32,7 +32,7 @@ public interface DownloadableDatatypeHandler<T> extends CustomDatatypeHandler<Cu
 	 * @return the filename that should be communicated to any client downloading the given custom value.
 	 * May return null, in which case the framework will choose a meaningless filename.
 	 */
-	String getFilename(CustomDatatype<T> dt, String valueReference);
+	/*~~>*/String getFilename(CustomDatatype<T> dt, /*~~>*/String valueReference);
 	
 	/**
 	 * Writes the custom value to os. Implementations should assume that the caller has set up the stream,
@@ -44,6 +44,6 @@ public interface DownloadableDatatypeHandler<T> extends CustomDatatypeHandler<Cu
 	 * @param os the output stream to be written to
 	 * @throws IOException if there is an IO error writing to the stream 
 	 */
-	void writeToStream(CustomDatatype<T> dt, String valueReference, OutputStream os) throws IOException;
+	void writeToStream(CustomDatatype<T> dt, /*~~>*/String valueReference, OutputStream os) throws IOException;
 	
 }

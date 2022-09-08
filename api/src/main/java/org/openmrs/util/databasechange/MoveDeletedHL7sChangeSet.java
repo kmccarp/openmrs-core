@@ -91,7 +91,7 @@ public class MoveDeletedHL7sChangeSet implements CustomTaskChange {
 	 * @see CustomChange#getConfirmationMessage()
 	 */
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished moving deleted changesets";
 	}
 	

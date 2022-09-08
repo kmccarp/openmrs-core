@@ -206,8 +206,8 @@ public class BaseAttributeTypeValidatorTest extends BaseContextSensitiveTest {
 		attributeType.setName("name");
 		attributeType.setMinOccurs(1);
 		attributeType.setDatatypeClassname(RegexValidatedTextDatatype.class.getName());
-		attributeType.setDatatypeConfig(new String(new char[66000]));
-		attributeType.setHandlerConfig(new String(new char[66000]));
+		attributeType.setDatatypeConfig(new /*~~>*/String(new char[66000]));
+		attributeType.setHandlerConfig(new /*~~>*/String(new char[66000]));
 		
 		validator.validate(attributeType, errors);
 		

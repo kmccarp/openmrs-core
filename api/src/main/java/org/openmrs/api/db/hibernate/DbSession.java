@@ -66,7 +66,7 @@ public class DbSession {
 	 *
 	 * @return The tenant identifier associated with this session, or {@code null}
 	 */
-	public String getTenantIdentifier() {
+	public /*~~>*/String getTenantIdentifier() {
 		return getSession().getTenantIdentifier();
 	}
 	
@@ -99,7 +99,7 @@ public class DbSession {
 	 * @param queryName the name of a query defined externally
 	 * @return The query instance for manipulation and execution
 	 */
-	public Query getNamedQuery(String queryName) {
+	public Query getNamedQuery(/*~~>*/String queryName) {
 		return getSession().getNamedQuery(queryName);
 	}
 	
@@ -109,7 +109,7 @@ public class DbSession {
 	 * @param queryString The HQL query
 	 * @return The query instance for manipulation and execution
 	 */
-	public Query createQuery(String queryString) {
+	public Query createQuery(/*~~>*/String queryString) {
 		return getSession().createQuery(queryString);
 	}
 	
@@ -119,7 +119,7 @@ public class DbSession {
 	 * @param queryString The SQL query
 	 * @return The query instance for manipulation and execution
 	 */
-	public SQLQuery createSQLQuery(String queryString) {
+	public SQLQuery createSQLQuery(/*~~>*/String queryString) {
 		return getSession().createSQLQuery(queryString);
 	}
 	
@@ -130,7 +130,7 @@ public class DbSession {
 	 * @return The ProcedureCall
 	 * @see javax.persistence.NamedStoredProcedureQuery
 	 */
-	public ProcedureCall getNamedProcedureCall(String name) {
+	public ProcedureCall getNamedProcedureCall(/*~~>*/String name) {
 		return getSession().getNamedProcedureCall(name);
 	}
 	
@@ -140,7 +140,7 @@ public class DbSession {
 	 * @param procedureName The name of the procedure.
 	 * @return The representation of the procedure call.
 	 */
-	public ProcedureCall createStoredProcedureCall(String procedureName) {
+	public ProcedureCall createStoredProcedureCall(/*~~>*/String procedureName) {
 		return getSession().createStoredProcedureCall(procedureName);
 	}
 	
@@ -152,7 +152,7 @@ public class DbSession {
 	 * @param resultClasses The entity(s) to map the result on to.
 	 * @return The representation of the procedure call.
 	 */
-	public ProcedureCall createStoredProcedureCall(String procedureName, Class... resultClasses) {
+	public ProcedureCall createStoredProcedureCall(/*~~>*/String procedureName, Class... resultClasses) {
 		return getSession().createStoredProcedureCall(procedureName, resultClasses);
 	}
 	
@@ -163,7 +163,7 @@ public class DbSession {
 	 * @param resultSetMappings The explicit result set mapping(s) to use for mapping the results
 	 * @return The representation of the procedure call.
 	 */
-	public ProcedureCall createStoredProcedureCall(String procedureName, String... resultSetMappings) {
+	public ProcedureCall createStoredProcedureCall(/*~~>*/String procedureName, /*~~>*/String... resultSetMappings) {
 		return getSession().createStoredProcedureCall(procedureName, resultSetMappings);
 	}
 	
@@ -185,7 +185,7 @@ public class DbSession {
 	 * @param alias The alias to use
 	 * @return The criteria instance for manipulation and execution
 	 */
-	public Criteria createCriteria(Class persistentClass, String alias) {
+	public Criteria createCriteria(Class persistentClass, /*~~>*/String alias) {
 		return getSession().createCriteria(persistentClass, alias);
 	}
 	
@@ -195,7 +195,7 @@ public class DbSession {
 	 * @param entityName The entity name @return The criteria instance for manipulation and
 	 *            execution
 	 */
-	public Criteria createCriteria(String entityName) {
+	public Criteria createCriteria(/*~~>*/String entityName) {
 		return getSession().createCriteria(entityName);
 	}
 	
@@ -206,7 +206,7 @@ public class DbSession {
 	 * @param alias The alias to use
 	 * @return The criteria instance for manipulation and execution
 	 */
-	public Criteria createCriteria(String entityName, String alias) {
+	public Criteria createCriteria(/*~~>*/String entityName, /*~~>*/String alias) {
 		return getSession().createCriteria(entityName, alias);
 	}
 	
@@ -434,7 +434,7 @@ public class DbSession {
 	 * @param lockOptions contains the lock level
 	 * @return the persistent instance or proxy
 	 */
-	public Object load(String entityName, Serializable id, LockOptions lockOptions) {
+	public Object load(/*~~>*/String entityName, Serializable id, LockOptions lockOptions) {
 		return getSession().load(entityName, id, lockOptions);
 	}
 	
@@ -468,7 +468,7 @@ public class DbSession {
 	 * @param id a valid identifier of an existing persistent instance of the class
 	 * @return the persistent instance or proxy
 	 */
-	public Object load(String entityName, Serializable id) {
+	public Object load(/*~~>*/String entityName, Serializable id) {
 		return getSession().load(entityName, id);
 	}
 	
@@ -504,7 +504,7 @@ public class DbSession {
 	 * @param object a detached instance of a persistent class
 	 * @param replicationMode The replication mode to use
 	 */
-	public void replicate(String entityName, Object object, ReplicationMode replicationMode) {
+	public void replicate(/*~~>*/String entityName, Object object, ReplicationMode replicationMode) {
 		getSession().replicate(entityName, object, replicationMode);
 	}
 	
@@ -531,7 +531,7 @@ public class DbSession {
 	 * @param object a transient instance of a persistent class
 	 * @return the generated identifier
 	 */
-	public Serializable save(String entityName, Object object) {
+	public Serializable save(/*~~>*/String entityName, Object object) {
 		return getSession().save(entityName, object);
 	}
 	
@@ -564,7 +564,7 @@ public class DbSession {
 	 * @see Session#save(String,Object)
 	 * @see Session#update(String,Object)
 	 */
-	public void saveOrUpdate(String entityName, Object object) {
+	public void saveOrUpdate(/*~~>*/String entityName, Object object) {
 		getSession().saveOrUpdate(entityName, object);
 	}
 	
@@ -589,7 +589,7 @@ public class DbSession {
 	 * @param entityName The entity name
 	 * @param object a detached instance containing updated state
 	 */
-	public void update(String entityName, Object object) {
+	public void update(/*~~>*/String entityName, Object object) {
 		getSession().update(entityName, object);
 	}
 	
@@ -624,7 +624,7 @@ public class DbSession {
 	 * @param object a detached instance with state to be copied
 	 * @return an updated persistent instance
 	 */
-	public Object merge(String entityName, Object object) {
+	public Object merge(/*~~>*/String entityName, Object object) {
 		return getSession().merge(entityName, object);
 	}
 	
@@ -649,7 +649,7 @@ public class DbSession {
 	 * @param entityName The entity name
 	 * @param object a transient instance to be made persistent
 	 */
-	public void persist(String entityName, Object object) {
+	public void persist(/*~~>*/String entityName, Object object) {
 		getSession().persist(entityName, object);
 	}
 	
@@ -674,7 +674,7 @@ public class DbSession {
 	 * @param entityName The entity name for the instance to be removed.
 	 * @param object the instance to be removed
 	 */
-	public void delete(String entityName, Object object) {
+	public void delete(/*~~>*/String entityName, Object object) {
 		getSession().delete(entityName, object);
 	}
 	
@@ -722,7 +722,7 @@ public class DbSession {
 	 * @param entityName a persistent class
 	 * @param object a persistent or detached instance
 	 */
-	public void refresh(String entityName, Object object) {
+	public void refresh(/*~~>*/String entityName, Object object) {
 		getSession().refresh(entityName, object);
 	}
 	
@@ -747,7 +747,7 @@ public class DbSession {
 	 * @param object a persistent or detached instance
 	 * @param lockOptions contains the lock mode to use
 	 */
-	public void refresh(String entityName, Object object, LockOptions lockOptions) {
+	public void refresh(/*~~>*/String entityName, Object object, LockOptions lockOptions) {
 		getSession().refresh(entityName, object, lockOptions);
 	}
 	
@@ -771,7 +771,7 @@ public class DbSession {
 	 * @param queryString a Hibernate query fragment.
 	 * @return The query instance for manipulation and execution
 	 */
-	public Query createFilter(Object collection, String queryString) {
+	public Query createFilter(Object collection, /*~~>*/String queryString) {
 		return getSession().createFilter(collection, queryString);
 	}
 	
@@ -821,7 +821,7 @@ public class DbSession {
 	 * @param id an identifier
 	 * @return a persistent instance or null
 	 */
-	public Object get(String entityName, Serializable id) {
+	public Object get(/*~~>*/String entityName, Serializable id) {
 		return getSession().get(entityName, id);
 	}
 	
@@ -836,7 +836,7 @@ public class DbSession {
 	 * @param lockOptions contains the lock mode
 	 * @return a persistent instance or null
 	 */
-	public Object get(String entityName, Serializable id, LockOptions lockOptions) {
+	public Object get(/*~~>*/String entityName, Serializable id, LockOptions lockOptions) {
 		return getSession().get(entityName, id, lockOptions);
 	}
 	
@@ -846,7 +846,7 @@ public class DbSession {
 	 * @param object a persistent entity
 	 * @return the entity name
 	 */
-	public String getEntityName(Object object) {
+	public /*~~>*/String getEntityName(Object object) {
 		return getSession().getEntityName(object);
 	}
 	
@@ -858,7 +858,7 @@ public class DbSession {
 	 * @return load delegate for loading the specified entity type by primary key
 	 * @throws HibernateException If the specified entity name cannot be resolved as an entity name
 	 */
-	public IdentifierLoadAccess byId(String entityName) {
+	public IdentifierLoadAccess byId(/*~~>*/String entityName) {
 		return getSession().byId(entityName);
 	}
 	
@@ -882,7 +882,7 @@ public class DbSession {
 	 * @return load delegate for loading the specified entity type by natural id
 	 * @throws HibernateException If the specified entity name cannot be resolved as an entity name
 	 */
-	public NaturalIdLoadAccess byNaturalId(String entityName) {
+	public NaturalIdLoadAccess byNaturalId(/*~~>*/String entityName) {
 		return getSession().byNaturalId(entityName);
 	}
 	
@@ -908,7 +908,7 @@ public class DbSession {
 	 *             entity, or if the entity does not define a natural-id or if its natural-id is
 	 *             made up of multiple attributes.
 	 */
-	public SimpleNaturalIdLoadAccess bySimpleNaturalId(String entityName) {
+	public SimpleNaturalIdLoadAccess bySimpleNaturalId(/*~~>*/String entityName) {
 		return getSession().bySimpleNaturalId(entityName);
 	}
 	
@@ -932,7 +932,7 @@ public class DbSession {
 	 * @param filterName The name of the filter to be enabled.
 	 * @return The Filter instance representing the enabled filter.
 	 */
-	public Filter enableFilter(String filterName) {
+	public Filter enableFilter(/*~~>*/String filterName) {
 		return getSession().enableFilter(filterName);
 	}
 	
@@ -942,7 +942,7 @@ public class DbSession {
 	 * @param filterName The name of the filter to be retrieved.
 	 * @return The Filter instance representing the enabled filter.
 	 */
-	public Filter getEnabledFilter(String filterName) {
+	public Filter getEnabledFilter(/*~~>*/String filterName) {
 		return getSession().getEnabledFilter(filterName);
 	}
 	
@@ -951,7 +951,7 @@ public class DbSession {
 	 *
 	 * @param filterName The name of the filter to be disabled.
 	 */
-	public void disableFilter(String filterName) {
+	public void disableFilter(/*~~>*/String filterName) {
 		getSession().disableFilter(filterName);
 	}
 	
@@ -1056,7 +1056,7 @@ public class DbSession {
 	 *             profile names
 	 * @see org.hibernate.engine.profile.FetchProfile for discussion of this feature
 	 */
-	public boolean isFetchProfileEnabled(String name) throws UnknownProfileException {
+	public boolean isFetchProfileEnabled(/*~~>*/String name) throws UnknownProfileException {
 		return getSession().isFetchProfileEnabled(name);
 	}
 	
@@ -1069,7 +1069,7 @@ public class DbSession {
 	 *             profile names
 	 * @see org.hibernate.engine.profile.FetchProfile for discussion of this feature
 	 */
-	public void enableFetchProfile(String name) throws UnknownProfileException {
+	public void enableFetchProfile(/*~~>*/String name) throws UnknownProfileException {
 		getSession().enableFetchProfile(name);
 	}
 	
@@ -1082,7 +1082,7 @@ public class DbSession {
 	 *             profile names
 	 * @see org.hibernate.engine.profile.FetchProfile for discussion of this feature
 	 */
-	public void disableFetchProfile(String name) throws UnknownProfileException {
+	public void disableFetchProfile(/*~~>*/String name) throws UnknownProfileException {
 		getSession().disableFetchProfile(name);
 	}
 	

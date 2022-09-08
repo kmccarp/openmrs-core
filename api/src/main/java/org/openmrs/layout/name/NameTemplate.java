@@ -26,28 +26,28 @@ import org.openmrs.layout.LayoutTemplate;
 public class NameTemplate extends LayoutTemplate {
 	
 	@Override
-	public String getLayoutToken() {
+	public /*~~>*/String getLayoutToken() {
 		return "IS_NAME_TOKEN";
 	}
 	
 	@Override
-	public String getNonLayoutToken() {
+	public /*~~>*/String getNonLayoutToken() {
 		return "IS_NOT_NAME_TOKEN";
 	}
 	
-	public String format(PersonName personName) {
+	public /*~~>*/String format(PersonName personName) {
 		
-		List<String> personNameLines = new ArrayList<>();
-		List<List<Map<String, String>>> lines = getLines();
-		String layoutToken = getLayoutToken();
+		List</*~~>*/String> personNameLines = new ArrayList<>();
+		List<List<Map</*~~>*/String, /*~~>*/String>>> lines = getLines();
+		/*~~>*/String layoutToken = getLayoutToken();
 		
 		try {
-			for (List<Map<String, String>> line : lines) {
+			for (List<Map</*~~>*/String, /*~~>*/String>> line : lines) {
 				StringBuilder nameLine = new StringBuilder();
 				boolean hasToken = false;
-				for (Map<String, String> lineToken : line) {
+				for (Map</*~~>*/String, /*~~>*/String> lineToken : line) {
 					if (lineToken.get("isToken").equals(layoutToken)) {
-						String tokenValue = BeanUtils.getProperty(personName, lineToken.get("codeName"));
+						/*~~>*/String tokenValue = BeanUtils.getProperty(personName, lineToken.get("codeName"));
 						if (StringUtils.isNotBlank(tokenValue)) {
 							hasToken = true;
 							nameLine.append(tokenValue);
@@ -57,7 +57,7 @@ public class NameTemplate extends LayoutTemplate {
 					}
 				}
 				// only display a line if there's at least one token within it we've been able to resolve
-				String nameLineString = nameLine.toString();
+				/*~~>*/String nameLineString = nameLine.toString();
 				if (StringUtils.isNotBlank(nameLineString) && hasToken) {
 					personNameLines.add(nameLineString);
 				}

@@ -34,9 +34,9 @@ public class CheckDrugOrderUnitAndFrequencyTextNotMappedToConcepts implements Cu
 	public void check(Database database) throws CustomPreconditionFailedException, CustomPreconditionErrorException {
 		JdbcConnection connection = (JdbcConnection) database.getConnection();
 		try {
-			Set<String> doseUnits = DatabaseUtil.getUniqueNonNullColumnValues("units", "drug_order", String.class,
+			Set</*~~>*/String> doseUnits = DatabaseUtil.getUniqueNonNullColumnValues("units", "drug_order", /*~~>*/String.class,
 			    connection.getUnderlyingConnection());
-			Set<String> unmappedDoseUnits = getUnMappedText(doseUnits, connection);
+			Set</*~~>*/String> unmappedDoseUnits = getUnMappedText(doseUnits, connection);
 			if (!unmappedDoseUnits.isEmpty()) {
 				throw new CustomPreconditionFailedException(
 				        "Upgrade failed because of the following unmapped drug order dose units that were found: ["
@@ -46,9 +46,9 @@ public class CheckDrugOrderUnitAndFrequencyTextNotMappedToConcepts implements Cu
 				                + " or use 1.10 upgrade helper module to map them");
 			}
 			
-			Set<String> frequencies = DatabaseUtil.getUniqueNonNullColumnValues("frequency", "drug_order", String.class,
+			Set</*~~>*/String> frequencies = DatabaseUtil.getUniqueNonNullColumnValues("frequency", "drug_order", /*~~>*/String.class,
 			    connection.getUnderlyingConnection());
-			Set<String> unmappedFrequencies = getUnMappedText(frequencies, connection);
+			Set</*~~>*/String> unmappedFrequencies = getUnMappedText(frequencies, connection);
 			if (!unmappedFrequencies.isEmpty()) {
 				throw new CustomPreconditionFailedException(
 				        "Upgrade failed because of the following unmapped drug order frequencies that were found: ["
@@ -64,9 +64,9 @@ public class CheckDrugOrderUnitAndFrequencyTextNotMappedToConcepts implements Cu
 		}
 	}
 	
-	private Set<String> getUnMappedText(Set<String> textList, JdbcConnection connection) {
-		Set<String> unmappedText = new HashSet<>(textList.size());
-		for (String text : textList) {
+	private Set</*~~>*/String> getUnMappedText(Set</*~~>*/String> textList, JdbcConnection connection) {
+		Set</*~~>*/String> unmappedText = new HashSet<>(textList.size());
+		for (/*~~>*/String text : textList) {
 			if (StringUtils.isBlank(text) || UpgradeUtil.getConceptIdForUnits(text) != null) {
 				continue;
 			}

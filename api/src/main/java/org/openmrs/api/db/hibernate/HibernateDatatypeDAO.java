@@ -56,7 +56,7 @@ public class HibernateDatatypeDAO implements DatatypeDAO {
 	 * @see org.openmrs.api.db.DatatypeDAO#getClobDatatypeStorageByUuid(java.lang.String)
 	 */
 	@Override
-	public ClobDatatypeStorage getClobDatatypeStorageByUuid(String uuid) {
+	public ClobDatatypeStorage getClobDatatypeStorageByUuid(/*~~>*/String uuid) {
 		return (ClobDatatypeStorage) session().createCriteria(ClobDatatypeStorage.class).add(Restrictions.eq("uuid", uuid))
 		        .uniqueResult();
 	}

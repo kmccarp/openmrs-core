@@ -37,7 +37,7 @@ public class DatabaseUtil {
 	
 	private static final Logger log = LoggerFactory.getLogger(DatabaseUtil.class);
 
-	public static final String ORDER_ENTRY_UPGRADE_SETTINGS_FILENAME = "order_entry_upgrade_settings.txt";
+	public static final /*~~>*/String ORDER_ENTRY_UPGRADE_SETTINGS_FILENAME = "order_entry_upgrade_settings.txt";
 
 	/**
 	 * Executes the passed SQL query, enforcing select only if that parameter is set Load the jdbc
@@ -52,7 +52,7 @@ public class DatabaseUtil {
 	 * @param connectionDriver the database driver class name, such as "com.mysql.cj.jdbc.Driver"
 	 * @throws ClassNotFoundException
 	 */
-	public static String loadDatabaseDriver(String connectionUrl, String connectionDriver) throws ClassNotFoundException {
+	public static /*~~>*/String loadDatabaseDriver(/*~~>*/String connectionUrl, /*~~>*/String connectionDriver) throws ClassNotFoundException {
 		if (StringUtils.hasText(connectionDriver)) {
 			Class.forName(connectionDriver);
 			log.debug("set user defined Database driver class: " + connectionDriver);
@@ -84,12 +84,12 @@ public class DatabaseUtil {
 	/**
 	 * Executes the passed SQL query, enforcing select only if that parameter is set for given Session
 	 */
-	public static List<List<Object>> executeSQL(Session session, String sql, boolean selectOnly) throws DAOException {
+	public static List<List<Object>> executeSQL(Session session, /*~~>*/String sql, boolean selectOnly) throws DAOException {
 		sql = sql.trim();
 		boolean dataManipulation = checkQueryForManipulationCommands(sql, selectOnly);
 		
 		final List<List<Object>> result = new ArrayList<>();
-		final String query = sql;
+		final /*~~>*/String query = sql;
 		final boolean sessionDataManipulation = dataManipulation;
 		
 		session.doWork(conn -> populateResultsFromSQLQuery(conn, query, sessionDataManipulation, result));
@@ -100,7 +100,7 @@ public class DatabaseUtil {
 	/**
 	 * Executes the passed SQL query, enforcing select only if that parameter is set for given Connection
 	 */
-	public static List<List<Object>> executeSQL(Connection conn, String sql, boolean selectOnly) throws DAOException {
+	public static List<List<Object>> executeSQL(Connection conn, /*~~>*/String sql, boolean selectOnly) throws DAOException {
 		sql = sql.trim();
 		boolean dataManipulation = checkQueryForManipulationCommands(sql, selectOnly);
 		List<List<Object>> result = new ArrayList<>();
@@ -108,10 +108,10 @@ public class DatabaseUtil {
 		return result;
 	}
 	
-	private static boolean checkQueryForManipulationCommands(String sql, boolean selectOnly) {
+	private static boolean checkQueryForManipulationCommands(/*~~>*/String sql, boolean selectOnly) {
 		boolean dataManipulation = false;
 		
-		String sqlLower = sql.toLowerCase();
+		/*~~>*/String sqlLower = sql.toLowerCase();
 		if (sqlLower.startsWith("insert") || sqlLower.startsWith("update") || sqlLower.startsWith("delete")
 		        || sqlLower.startsWith("alter") || sqlLower.startsWith("drop") || sqlLower.startsWith("create")
 		        || sqlLower.startsWith("rename")) {
@@ -124,7 +124,7 @@ public class DatabaseUtil {
 		return dataManipulation;
 	}
 	
-	private static void populateResultsFromSQLQuery(Connection conn, String sql, boolean dataManipulation,
+	private static void populateResultsFromSQLQuery(Connection conn, /*~~>*/String sql, boolean dataManipulation,
 	        List<List<Object>> results) {
 		PreparedStatement ps = null;
 		try {
@@ -174,11 +174,11 @@ public class DatabaseUtil {
 	 * @return set of unique values
 	 * @throws Exception
 	 */
-	public static <T> Set<T> getUniqueNonNullColumnValues(String columnName, String tableName, Class<T> type,
+	public static <T> Set<T> getUniqueNonNullColumnValues(/*~~>*/String columnName, /*~~>*/String tableName, Class<T> type,
 	        Connection connection) throws Exception {
 		Set<T> uniqueValues = new HashSet<>();
-		final String alias = "unique_values";
-		String select = "SELECT DISTINCT " + columnName + " AS " + alias + " FROM " + tableName + " WHERE " + columnName
+		final /*~~>*/String alias = "unique_values";
+		/*~~>*/String select = "SELECT DISTINCT " + columnName + " AS " + alias + " FROM " + tableName + " WHERE " + columnName
 		        + " IS NOT NULL";
 		List<List<Object>> rows = DatabaseUtil.executeSQL(connection, select, true);
 		for (List<Object> row : rows) {

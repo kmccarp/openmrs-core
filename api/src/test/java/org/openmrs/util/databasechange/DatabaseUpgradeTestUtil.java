@@ -62,9 +62,9 @@ public class DatabaseUpgradeTestUtil {
 	
 	private final File tempDBFile;
 	
-	private final String connectionUrl;
+	private final /*~~>*/String connectionUrl;
 	
-	public DatabaseUpgradeTestUtil(String initialDatabasePath) throws IOException, SQLException {
+	public DatabaseUpgradeTestUtil(/*~~>*/String initialDatabasePath) throws IOException, SQLException {
 		InputStream databaseInputStream = getClass().getResourceAsStream(initialDatabasePath);
 		
 		tempDir = File.createTempFile("openmrs-tests-temp-", "");
@@ -102,7 +102,7 @@ public class DatabaseUpgradeTestUtil {
 			IOUtils.closeQuietly(tempDBOutputStream);
 		}
 		
-		String databaseUrl = tempDir.getAbsolutePath().replace("\\", "/") + "/openmrs";
+		/*~~>*/String databaseUrl = tempDir.getAbsolutePath().replace("\\", "/") + "/openmrs";
 		
 		connectionUrl = "jdbc:h2:" + databaseUrl + ";AUTO_RECONNECT=TRUE;DB_CLOSE_DELAY=-1";
 		
@@ -124,7 +124,7 @@ public class DatabaseUpgradeTestUtil {
 		
 		try {
 			dbUnitConnection = new DatabaseConnection(connection);
-			dbUnitConnection.getConfig().setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY, new H2DataTypeFactory());
+			dbUnitConnection.getConfig().setProperty(/*~~>*/DatabaseConfig.PROPERTY_DATATYPE_FACTORY, new H2DataTypeFactory());
 		}
 		catch (DatabaseUnitException e) {
 			tempDir.delete();
@@ -148,7 +148,7 @@ public class DatabaseUpgradeTestUtil {
 		return connection;
 	}
 	
-	public void executeDataset(String path) throws IOException, SQLException {
+	public void executeDataset(/*~~>*/String path) throws IOException, SQLException {
 		InputStream inputStream = getClass().getResourceAsStream(path);
 		ReplacementDataSet replacementDataSet;
 		try {
@@ -175,20 +175,20 @@ public class DatabaseUpgradeTestUtil {
 		}
 	}
 	
-	public List<Map<String, String>> select(String tableName, String where, String columnName, String... columnNames)
+	public List<Map</*~~>*/String, /*~~>*/String>> select(/*~~>*/String tableName, /*~~>*/String where, /*~~>*/String columnName, /*~~>*/String... columnNames)
 	        throws SQLException {
-		String[] allColumnNames = ArrayUtils.addAll(new String[] { columnName }, columnNames);
+		/*~~>*/String[] allColumnNames = ArrayUtils.addAll(new /*~~>*/String[] { columnName }, columnNames);
 		
-		String sql = "select " + StringUtils.join(allColumnNames, ", ") + " from " + tableName;
+		/*~~>*/String sql = "select " + StringUtils.join(allColumnNames, ", ") + " from " + tableName;
 		if (!StringUtils.isBlank(where)) {
 			sql += " where " + where;
 		}
 		PreparedStatement query = connection.prepareStatement(sql);
 		ResultSet resultSet = query.executeQuery();
 		
-		List<Map<String, String>> results = new ArrayList<>();
+		List<Map</*~~>*/String, /*~~>*/String>> results = new ArrayList<>();
 		while (resultSet.next()) {
-			Map<String, String> columns = new HashMap<>();
+			Map</*~~>*/String, /*~~>*/String> columns = new HashMap<>();
 			results.add(columns);
 			
 			for (int i = 0; i < allColumnNames.length; i++) {
@@ -202,7 +202,7 @@ public class DatabaseUpgradeTestUtil {
 		return results;
 	}
 	
-	public void insertGlobalProperty(String globalProperty, String value) throws SQLException {
+	public void insertGlobalProperty(/*~~>*/String globalProperty, /*~~>*/String value) throws SQLException {
 		PreparedStatement insert = connection
 		        .prepareStatement("insert into global_property (property, property_value, uuid) values (?, ?, ?)");
 		insert.setString(1, globalProperty);
@@ -220,7 +220,7 @@ public class DatabaseUpgradeTestUtil {
 		upgrade("liquibase-update-to-latest-from-1.9.x.xml");
 	}
 	
-	public void upgrade(String filename) throws IOException, SQLException {
+	public void upgrade(/*~~>*/String filename) throws IOException, SQLException {
 		try {
 			Liquibase liquibase = new Liquibase(filename, new ClassLoaderResourceAccessor(getClass().getClassLoader()),
 			        liqubaseConnection);

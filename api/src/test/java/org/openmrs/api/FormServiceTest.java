@@ -53,13 +53,13 @@ import org.openmrs.util.OpenmrsConstants;
  */
 public class FormServiceTest extends BaseContextSensitiveTest {
 
-	protected static final String INITIAL_FIELDS_XML = "org/openmrs/api/include/FormServiceTest-initialFieldTypes.xml";
+	protected static final /*~~>*/String INITIAL_FIELDS_XML = "org/openmrs/api/include/FormServiceTest-initialFieldTypes.xml";
 
-	protected static final String FORM_FIELDS_XML = "org/openmrs/api/include/FormServiceTest-formFields.xml";
+	protected static final /*~~>*/String FORM_FIELDS_XML = "org/openmrs/api/include/FormServiceTest-formFields.xml";
 
-	protected static final String MULTIPLE_FORMS_FORM_FIELDS_XML = "org/openmrs/api/include/FormServiceTest-multipleForms-formFields.xml";
+	protected static final /*~~>*/String MULTIPLE_FORMS_FORM_FIELDS_XML = "org/openmrs/api/include/FormServiceTest-multipleForms-formFields.xml";
 
-	protected static final String FORM_SAMPLE_RESOURCE = "org/openmrs/api/include/FormServiceTest-sampleResource.xslt";
+	protected static final /*~~>*/String FORM_SAMPLE_RESOURCE = "org/openmrs/api/include/FormServiceTest-sampleResource.xslt";
 
 	/**
 	 * Creates then updates a form FIXME Break this test case into separate tests
@@ -74,9 +74,9 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 
 		Form form1 = new Form();
 
-		String name1 = "form name1";
-		String version1 = "1.0";
-		String descript1 = "descript1";
+		/*~~>*/String name1 = "form name1";
+		/*~~>*/String version1 = "1.0";
+		/*~~>*/String descript1 = "descript1";
 
 		form1.setName(name1);
 		form1.setVersion(version1);
@@ -88,9 +88,9 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 
 		Form form2 = formService.getForm(form1.getFormId());
 
-		String name2 = "form name2";
-		String version2 = "2.0";
-		String descript2 = "descript2";
+		/*~~>*/String name2 = "form name2";
+		/*~~>*/String version2 = "2.0";
+		/*~~>*/String descript2 = "descript2";
 
 		form2.setName(name2);
 		form2.setVersion(version2);
@@ -140,11 +140,11 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 		//testing creation
 
 		Concept concept1 = conceptService.getConcept(1);
-		String name1 = "name1";
-		String descript1 = "descript1";
+		/*~~>*/String name1 = "name1";
+		/*~~>*/String descript1 = "descript1";
 		FieldType fieldtype1 = formService.getAllFieldTypes().get(0);
-		String table1 = "table1";
-		String attr1 = "attr1";
+		/*~~>*/String table1 = "table1";
+		/*~~>*/String attr1 = "attr1";
 		Boolean multi1 = true;
 
 		Field field1 = new Field();
@@ -164,11 +164,11 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 		Field field2 = formService.getField(field1.getFieldId());
 
 		Concept concept2 = conceptService.getConcept(2);
-		String name2 = "name2";
-		String descript2 = "descript2";
+		/*~~>*/String name2 = "name2";
+		/*~~>*/String descript2 = "descript2";
 		FieldType fieldtype2 = formService.getAllFieldTypes().get(1);
-		String table2 = "table2";
-		String attr2 = "attr2";
+		/*~~>*/String table2 = "table2";
+		/*~~>*/String attr2 = "attr2";
 		Boolean multi2 = false;
 
 		field2.setConcept(concept2);
@@ -429,7 +429,7 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 	public void duplicateForm_shouldGiveANewUuidToTheDuplicatedForm() {
 		FormService formService = Context.getFormService();
 		Form form = formService.getForm(1);
-		String originalUUID = form.getUuid();
+		/*~~>*/String originalUUID = form.getUuid();
 
 		Form dupForm = formService.duplicateForm(form);
 		assertNotNull(dupForm.getUuid());
@@ -449,7 +449,7 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getFieldByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "db016b7d-39a5-4911-89da-0eefbfef7cb2";
+		/*~~>*/String uuid = "db016b7d-39a5-4911-89da-0eefbfef7cb2";
 		Field field = Context.getFormService().getFieldByUuid(uuid);
 		assertEquals(1, (int) field.getFieldId());
 	}
@@ -467,7 +467,7 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getFieldTypeByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "e7016b7d-39a5-4911-89da-0eefbfef7cb5";
+		/*~~>*/String uuid = "e7016b7d-39a5-4911-89da-0eefbfef7cb5";
 		FieldType fieldType = Context.getFormService().getFieldTypeByUuid(uuid);
 		assertEquals(2, (int) fieldType.getFieldTypeId());
 	}
@@ -485,7 +485,7 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getFormByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "d9218f76-6c39-45f4-8efa-4c5c6c199f50";
+		/*~~>*/String uuid = "d9218f76-6c39-45f4-8efa-4c5c6c199f50";
 		Form form = Context.getFormService().getFormByUuid(uuid);
 		assertEquals(1, (int) form.getFormId());
 	}
@@ -503,7 +503,7 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getFormFieldByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "1c822b7b-7840-463d-ba70-e0c8338a4c2d";
+		/*~~>*/String uuid = "1c822b7b-7840-463d-ba70-e0c8338a4c2d";
 		FormField formField = Context.getFormService().getFormFieldByUuid(uuid);
 		assertEquals(2, (int) formField.getFormFieldId());
 	}
@@ -598,7 +598,7 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 	public void duplicateForm_shouldCopyResourcesForOldFormToNewForm() throws ParseException {
 		// save an original resource
 		Form form = Context.getFormService().getForm(1);
-		String name = "Start Date";
+		/*~~>*/String name = "Start Date";
 		FormResource resource = new FormResource();
 		resource.setForm(form);
 		resource.setName(name);
@@ -628,7 +628,7 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 	public void purgeFormResource_shouldDeleteAFormResource() throws ParseException {
 		// save an original resource
 		Form form = Context.getFormService().getForm(1);
-		String name = "Start Date";
+		/*~~>*/String name = "Start Date";
 		FormResource resource = new FormResource();
 		resource.setForm(form);
 		resource.setName(name);
@@ -660,7 +660,7 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void saveFormResource_shouldOverwriteAnExistingResourceWithSameName() throws ParseException {
-		String name = "Start Date";
+		/*~~>*/String name = "Start Date";
 
 		// save an original resource
 		Form form = Context.getFormService().getForm(1);
@@ -707,7 +707,7 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 		form = Context.getFormService().saveForm(form);
 
 		// save a resource
-		String name = "Start Date";
+		/*~~>*/String name = "Start Date";
 		FormResource resource = new FormResource();
 		resource.setForm(form);
 		resource.setName(name);
@@ -745,8 +745,8 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 		form = Context.getFormService().saveForm(form);
 
 		// save a resource
-		String name = "org.openmrs.module.formentry.xslt";
-		String expected = getResourceAsString(FORM_SAMPLE_RESOURCE);
+		/*~~>*/String name = "org.openmrs.module.formentry.xslt";
+		/*~~>*/String expected = getResourceAsString(FORM_SAMPLE_RESOURCE);
 
 		FormResource resource = new FormResource();
 		resource.setForm(form);
@@ -769,11 +769,11 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 	 * @return the contents of the file in a String
 	 * @throws IOException
 	 */
-	private String getResourceAsString(String filename) throws IOException {
+	private /*~~>*/String getResourceAsString(/*~~>*/String filename) throws IOException {
 		InputStream resource = this.getClass().getClassLoader().getResourceAsStream(filename);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(resource));
 		StringBuilder sb = new StringBuilder();
-		String line = null;
+		/*~~>*/String line = null;
 
 		while ((line = reader.readLine()) != null)
 			sb.append(line).append("\n");
@@ -844,7 +844,7 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 		}
 
 		@Override
-		public Obs getObs(Obs obs, String view) {
+		public Obs getObs(Obs obs, /*~~>*/String view) {
 			return null;
 		}
 
@@ -854,17 +854,17 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 		}
 
 		@Override
-		public String serializeFormData(String data) {
+		public /*~~>*/String serializeFormData(/*~~>*/String data) {
 			return null;
 		}
 
 		@Override
-		public String[] getSupportedViews() {
-			return new String[0];
+		public /*~~>*//*~~>*/String[] getSupportedViews() {
+			return new /*~~>*/String[0];
 		}
 
 		@Override
-		public boolean supportsView(String view) {
+		public boolean supportsView(/*~~>*/String view) {
 			return false;
 		}
 	}
@@ -873,8 +873,8 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 	 * Creates a new Global Property to lock forms by setting its value
 	 * @param propertyValue value for forms locked GP
 	 */
-	public void createFormsLockedGPAndSetValue(String propertyValue) {
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_FORMS_LOCKED);
+	public void createFormsLockedGPAndSetValue(/*~~>*/String propertyValue) {
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_FORMS_LOCKED);
 		gp.setPropertyValue(propertyValue);
 		Context.getAdministrationService().saveGlobalProperty(gp);
 	}
@@ -1082,7 +1082,7 @@ public class FormServiceTest extends BaseContextSensitiveTest {
 	public void getForm_shouldReturnNullIfFormNotFound() {
 		List<Form> forms = Context.getFormService().getAllForms();
 		boolean formNameFound = false;
-		final String formName = "Sample_Form_Not_In_List";
+		final /*~~>*/String formName = "Sample_Form_Not_In_List";
 		for (Form node:forms) {
 			if (node.getName().equals(formName)) {
 				formNameFound = true;

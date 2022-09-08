@@ -24,7 +24,7 @@ public abstract class BaseOpenmrsDatatype<T extends OpenmrsObject> extends Seria
 	 * <strong>Should</strong> return the uuid of the object
 	 */
 	@Override
-	public String serialize(T typedValue) {
+	public /*~~>*/String serialize(T typedValue) {
 		if (typedValue == null) {
 			return null;
 		}

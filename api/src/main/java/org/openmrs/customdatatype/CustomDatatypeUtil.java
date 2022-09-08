@@ -50,7 +50,7 @@ public class CustomDatatypeUtil {
 	 * @param datatypeConfig
 	 * @return a configured datatype with the given classname and configuration
 	 */
-	public static CustomDatatype<?> getDatatype(String datatypeClassname, String datatypeConfig) {
+	public static CustomDatatype<?> getDatatype(/*~~>*/String datatypeClassname, /*~~>*/String datatypeConfig) {
 		try {
 			Class dtClass = Context.loadClass(datatypeClassname);
 			CustomDatatype<?> ret = (CustomDatatype<?>) Context.getDatatypeService().getDatatype(dtClass, datatypeConfig);
@@ -74,7 +74,7 @@ public class CustomDatatypeUtil {
 			return getDatatype(descriptor);
 		}
 		catch (CustomDatatypeException ex) {
-			return getDatatype(OpenmrsConstants.DEFAULT_CUSTOM_DATATYPE, null);
+			return getDatatype(/*~~>*/OpenmrsConstants.DEFAULT_CUSTOM_DATATYPE, null);
 		}
 	}
 	
@@ -93,8 +93,8 @@ public class CustomDatatypeUtil {
 	 * @param handlerConfig
 	 * @return a configured datatype handler with the given classname and configuration
 	 */
-	public static CustomDatatypeHandler getHandler(CustomDatatype<?> dt, String preferredHandlerClassname,
-	        String handlerConfig) {
+	public static CustomDatatypeHandler getHandler(CustomDatatype<?> dt, /*~~>*/String preferredHandlerClassname,
+	        /*~~>*/String handlerConfig) {
 		if (preferredHandlerClassname != null) {
 			try {
 				Class<? extends CustomDatatypeHandler> clazz = (Class<? extends CustomDatatypeHandler>) Context
@@ -122,7 +122,7 @@ public class CustomDatatypeUtil {
 	 * @param simpleConfig
 	 * @return serialized form
 	 */
-	public static String serializeSimpleConfiguration(Map<String, String> simpleConfig) {
+	public static /*~~>*/String serializeSimpleConfiguration(Map</*~~>*/String, /*~~>*/String> simpleConfig) {
 		if (simpleConfig == null || simpleConfig.size() == 0) {
 			return "";
 		}
@@ -144,7 +144,7 @@ public class CustomDatatypeUtil {
 	 * <strong>Should</strong> deserialize a configuration serialized by the corresponding serialize method
 	 */
 	@SuppressWarnings("unchecked")
-	public static Map<String, String> deserializeSimpleConfiguration(String serializedConfig) {
+	public static Map</*~~>*/String, /*~~>*/String> deserializeSimpleConfiguration(/*~~>*/String serializedConfig) {
 		if (StringUtils.isBlank(serializedConfig)) {
 			return Collections.emptyMap();
 		}
@@ -163,14 +163,14 @@ public class CustomDatatypeUtil {
 	 * @param datatypeValues
 	 * @return a map similar to the input parameter, but with typed values converted to their reference equivalents
 	 */
-	public static <T extends AttributeType<?>, U> Map<T, String> getValueReferences(Map<T, U> datatypeValues) {
-		Map<T, String> serializedAttributeValues = null;
+	public static <T extends AttributeType<?>, U> Map<T, /*~~>*/String> getValueReferences(Map<T, U> datatypeValues) {
+		Map<T, /*~~>*/String> serializedAttributeValues = null;
 		if (datatypeValues != null) {
 			serializedAttributeValues = new HashMap<>();
 			for (Map.Entry<T, U> e : datatypeValues.entrySet()) {
 				T vat = e.getKey();
 				CustomDatatype<U> customDatatype = (CustomDatatype<U>) getDatatype(vat);
-				String valueReference;
+				/*~~>*/String valueReference;
 				try {
 					valueReference = customDatatype.getReferenceStringForValue(e.getValue());
 				}
@@ -186,8 +186,8 @@ public class CustomDatatypeUtil {
 	/**
 	 * @return fully-qualified classnames of all registered datatypes
 	 */
-	public static List<String> getDatatypeClassnames() {
-		List<String> ret = new ArrayList<>();
+	public static List</*~~>*/String> getDatatypeClassnames() {
+		List</*~~>*/String> ret = new ArrayList<>();
 		for (Class<?> c : Context.getDatatypeService().getAllDatatypeClasses()) {
 			ret.add(c.getName());
 		}
@@ -197,8 +197,8 @@ public class CustomDatatypeUtil {
 	/**
 	 * @return full-qualified classnames of all registered handlers
 	 */
-	public static List<String> getHandlerClassnames() {
-		List<String> ret = new ArrayList<>();
+	public static List</*~~>*/String> getHandlerClassnames() {
+		List</*~~>*/String> ret = new ArrayList<>();
 		for (Class<?> c : Context.getDatatypeService().getAllHandlerClasses()) {
 			ret.add(c.getName());
 		}
@@ -241,14 +241,14 @@ public class CustomDatatypeUtil {
 				throw new InvalidCustomValueException(value.getClass() + " with type=" + value.getDescriptor()
 				        + " cannot be null");
 			}
-			String existingValueReference = null;
+			/*~~>*/String existingValueReference = null;
 			try {
 				existingValueReference = value.getValueReference();
 			}
 			catch (NotYetPersistedException ex) {
 				// this is expected
 			}
-			String newValueReference = datatype.save(value.getValue(), existingValueReference);
+			/*~~>*/String newValueReference = datatype.save(value.getValue(), existingValueReference);
 			value.setValueReferenceInternal(newValueReference);
 		}
 		

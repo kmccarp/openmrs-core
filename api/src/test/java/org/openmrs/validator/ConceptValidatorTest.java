@@ -142,7 +142,7 @@ public class ConceptValidatorTest extends BaseContextSensitiveTest {
 		
 		Context.setLocale(new Locale("en", "GB"));
 		concept = cd4Count;
-		String duplicateName = concept.getFullySpecifiedName(Context.getLocale()).getName();
+		/*~~>*/String duplicateName = concept.getFullySpecifiedName(Context.getLocale()).getName();
 		ConceptName newName = new ConceptName(duplicateName, Context.getLocale());
 		newName.setDateCreated(Calendar.getInstance().getTime());
 		newName.setCreator(Context.getAuthenticatedUser());
@@ -171,7 +171,7 @@ public class ConceptValidatorTest extends BaseContextSensitiveTest {
 		
 		Context.setLocale(new Locale("en", "GB"));
 		assertTrue(cd4Count.getFullySpecifiedName(getLocale()).isFullySpecifiedName());
-		String duplicateName = cd4Count.getFullySpecifiedName(Context.getLocale()).getName();
+		/*~~>*/String duplicateName = cd4Count.getFullySpecifiedName(Context.getLocale()).getName();
 		Concept anotherConcept = weight;
 		anotherConcept.getFullySpecifiedName(Context.getLocale()).setName(duplicateName);
 		Errors errors = new BindException(anotherConcept, "concept");
@@ -260,7 +260,7 @@ public class ConceptValidatorTest extends BaseContextSensitiveTest {
 		Concept concept = cd4Count;
 		concept.setRetired(true);
 		conceptService.saveConcept(concept);
-		String duplicateName = concept.getFullySpecifiedName(Context.getLocale()).getName();
+		/*~~>*/String duplicateName = concept.getFullySpecifiedName(Context.getLocale()).getName();
 		Concept anotherConcept = weight;
 		anotherConcept.getFullySpecifiedName(Context.getLocale()).setName(duplicateName);
 		Errors errors = new BindException(anotherConcept, "concept");
@@ -276,7 +276,7 @@ public class ConceptValidatorTest extends BaseContextSensitiveTest {
 		Context.setLocale(new Locale("en", "GB"));
 		Concept concept = cd4Count;
 		conceptService.saveConcept(concept);
-		String duplicateName = concept.getFullySpecifiedName(Context.getLocale()).getName();
+		/*~~>*/String duplicateName = concept.getFullySpecifiedName(Context.getLocale()).getName();
 		Concept anotherConcept = weight;
 		anotherConcept.setRetired(true);
 		anotherConcept.getFullySpecifiedName(Context.getLocale()).setName(duplicateName);
@@ -355,7 +355,7 @@ public class ConceptValidatorTest extends BaseContextSensitiveTest {
 		Locale en = new Locale("en", "GB");
 		Concept concept = cd4Count;
 		assertTrue(concept.getFullySpecifiedName(en).isFullySpecifiedName());
-		String duplicateName = concept.getFullySpecifiedName(en).getName();
+		/*~~>*/String duplicateName = concept.getFullySpecifiedName(en).getName();
 		Concept anotherConcept = weight;
 		anotherConcept.getFullySpecifiedName(en).setName(duplicateName);
 		Errors errors = new BindException(anotherConcept, "concept");

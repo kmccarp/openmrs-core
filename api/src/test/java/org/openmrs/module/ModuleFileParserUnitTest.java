@@ -104,7 +104,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 	@Test
 	public void deprecatedParse_shouldFailIfParserWasCreatedWithNewConstructorAndModuleFileIsNull() {
 
-		String messageKey = "Module.error.fileCannotBeNull";
+		/*~~>*/String messageKey = "Module.error.fileCannotBeNull";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		ModuleFileParser moduleFileParser = new ModuleFileParser(messageSourceService);
@@ -135,7 +135,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 	@Test
 	public void parseInputStream_shouldFailFileIfInputStreamClosed() throws IOException {
 
-		String messageKey = "Module.error.cannotCreateFile";
+		/*~~>*/String messageKey = "Module.error.cannotCreateFile";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		Document config = new ModuleConfigXmlBuilder(documentBuilder)
@@ -156,7 +156,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 	@Test
 	public void parse_shouldFailIfModuleFileIsNull() {
 
-		String messageKey = "Module.error.fileCannotBeNull";
+		/*~~>*/String messageKey = "Module.error.fileCannotBeNull";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		expectModuleExceptionWithMessage(() -> parser.parse((File) null), messageKey);
@@ -165,7 +165,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 	@Test
 	public void parse_shouldFailIfModuleFileHasInvalidExtension() {
 
-		String messageKey = "Module.error.invalidFileExtension";
+		/*~~>*/String messageKey = "Module.error.invalidFileExtension";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		expectModuleExceptionWithMessage(() -> parser.parse(new File("unknownmodule.jar")), messageKey);
@@ -174,7 +174,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 	@Test
 	public void parse_shouldFailIfModuleFileCannotBeFound() {
 
-		String messageKey = "Module.error.cannotGetJarFile";
+		/*~~>*/String messageKey = "Module.error.cannotGetJarFile";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		expectModuleExceptionWithMessage(() -> parser.parse(new File("unknownmodule.omod")), messageKey);
@@ -187,7 +187,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 		JarOutputStream jar = new JarOutputStream(new FileOutputStream(file));
 		jar.close();
 
-		String messageKey = "Module.error.noConfigFile";
+		/*~~>*/String messageKey = "Module.error.noConfigFile";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		expectModuleExceptionWithMessage(() -> parser.parse(file), messageKey);
@@ -200,7 +200,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 		JarOutputStream jar = createJarWithConfigXmlEntry(file);
 		jar.close();
 
-		String messageKey = "Module.error.cannotParseConfigFile";
+		/*~~>*/String messageKey = "Module.error.cannotParseConfigFile";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		expectModuleExceptionWithMessage(() -> parser.parse(file), messageKey);
@@ -211,7 +211,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 
 		File file = writeConfigXmlToFile("<?xml version='1.0' encoding='UTF-8'?><module configVersion='1.5'>");
 
-		String messageKey = "Module.error.cannotParseConfigFile";
+		/*~~>*/String messageKey = "Module.error.cannotParseConfigFile";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		expectModuleExceptionWithMessage(() -> parser.parse(file), messageKey);
@@ -225,7 +225,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			.withConfigVersion("1.6")
 			.build();
 
-		String messageKey = "Module.error.nameCannotBeEmpty";
+		/*~~>*/String messageKey = "Module.error.nameCannotBeEmpty";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		expectModuleExceptionWithMessage(() -> parser.parse(writeConfigXmlToFile(config)), messageKey);
@@ -240,7 +240,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			.withModuleName("  ")
 			.build();
 
-		String messageKey = "Module.error.nameCannotBeEmpty";
+		/*~~>*/String messageKey = "Module.error.nameCannotBeEmpty";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		expectModuleExceptionWithMessage(() -> parser.parse(writeConfigXmlToFile(config)), messageKey);
@@ -255,7 +255,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			.withModuleName("report")
 			.build();
 
-		String messageKey = "Module.error.idCannotBeEmpty";
+		/*~~>*/String messageKey = "Module.error.idCannotBeEmpty";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		expectModuleExceptionWithMessage(() -> parser.parse(writeConfigXmlToFile(config)), messageKey);
@@ -271,7 +271,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			.withModuleId("   ")
 			.build();
 
-		String messageKey = "Module.error.idCannotBeEmpty";
+		/*~~>*/String messageKey = "Module.error.idCannotBeEmpty";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		expectModuleExceptionWithMessage(() -> parser.parse(writeConfigXmlToFile(config)), messageKey);
@@ -287,7 +287,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			.withModuleId("reporting")
 			.build();
 
-		String messageKey = "Module.error.packageCannotBeEmpty";
+		/*~~>*/String messageKey = "Module.error.packageCannotBeEmpty";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		expectModuleExceptionWithMessage(() -> parser.parse(writeConfigXmlToFile(config)), messageKey);
@@ -304,7 +304,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			.withPackage("  ")
 			.build();
 
-		String messageKey = "Module.error.packageCannotBeEmpty";
+		/*~~>*/String messageKey = "Module.error.packageCannotBeEmpty";
 		whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(messageKey);
 
 		expectModuleExceptionWithMessage(() -> parser.parse(writeConfigXmlToFile(config)), messageKey);
@@ -350,7 +350,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 	@Test
 	public void parse_shouldParseValidXmlAndIgnoreExternalEntitiesLikeDtd() throws IOException {
 
-		String configVersion = "1.6";
+		/*~~>*/String configVersion = "1.6";
 		Document config = new ModuleConfigXmlBuilder(documentBuilder)
 			.withDoctype(configVersion)
 			.withModuleRoot()
@@ -393,8 +393,8 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 
 		Document config = buildOnValidConfigXml()
 			.withRequireModules(
-				new String[] { "org.openmrs.module.serialization.xstream", "1.0.3" },
-				new String[] { "org.openmrs.module.htmlwidgets", "2.0.4" }
+				new /*~~>*/String[] { "org.openmrs.module.serialization.xstream", "1.0.3" },
+				new /*~~>*/String[] { "org.openmrs.module.htmlwidgets", "2.0.4" }
 			)
 			.build();
 
@@ -411,7 +411,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 
 		Document config = buildOnValidConfigXml()
 			.withRequireModules(
-				new String[] { "org.openmrs.module.htmlwidgets" }
+				new /*~~>*/String[] { "org.openmrs.module.htmlwidgets" }
 			)
 			.build();
 
@@ -427,7 +427,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 
 		Document config = buildOnValidConfigXml()
 			.withRequireModules(
-				new String[] { "org.openmrs.module.htmlwidgets", "" }
+				new /*~~>*/String[] { "org.openmrs.module.htmlwidgets", "" }
 			)
 			.build();
 
@@ -443,9 +443,9 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 
 		Document config = buildOnValidConfigXml()
 			.withRequireModules(
-				new String[] { "org.openmrs.module.serialization.xstream", "1.0.3" },
-				new String[] { "org.openmrs.module.serialization.xstream", "3.1.4" },
-				new String[] { "org.openmrs.module.serialization.xstream", "2.0.3" }
+				new /*~~>*/String[] { "org.openmrs.module.serialization.xstream", "1.0.3" },
+				new /*~~>*/String[] { "org.openmrs.module.serialization.xstream", "3.1.4" },
+				new /*~~>*/String[] { "org.openmrs.module.serialization.xstream", "2.0.3" }
 			)
 			.build();
 
@@ -461,10 +461,10 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 
 		Document config = buildOnValidConfigXml()
 			.withRequireModules(
-				new String[] { "org.openmrs.module.serialization.xstream", "1.0.3" }
+				new /*~~>*/String[] { "org.openmrs.module.serialization.xstream", "1.0.3" }
 			)
 			.withRequireModules(
-				new String[] { "org.openmrs.module.htmlwidgets", "2.0.4" }
+				new /*~~>*/String[] { "org.openmrs.module.htmlwidgets", "2.0.4" }
 			)
 			.build();
 
@@ -551,7 +551,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 	public void parse_shouldIgnoreExtensionWithExtensionIdSeparatorInPoint() throws IOException {
 
 		Document config = buildOnValidConfigXml()
-			.withExtension("org.openmrs.admin.list" + Extension.EXTENSION_ID_SEPARATOR, AccessibleExtension.class.getName())
+			.withExtension("org.openmrs.admin.list" + /*~~>*/Extension.EXTENSION_ID_SEPARATOR, AccessibleExtension.class.getName())
 			.build();
 
 		Module module = parser.parse(writeConfigXmlToFile(config));
@@ -951,7 +951,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 	@Test
 	public void parse_shouldParseConditionalResources() throws IOException {
 
-		HashMap<String, String> modules = new HashMap<>();
+		HashMap</*~~>*/String, /*~~>*/String> modules = new HashMap<>();
 		modules.put("metadatamapping", "1.0");
 		modules.put("reporting", "2.0");
 		Document config = buildOnValidConfigXml("1.2")
@@ -1089,8 +1089,8 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 	@Test
 	public void parse_shouldParseAdvice() throws IOException {
 
-		AdvicePoint a1 = new AdvicePoint("org.openmrs.api.PatientService", String.class);
-		AdvicePoint a2 = new AdvicePoint("org.openmrs.api.PersonService", String.class);
+		AdvicePoint a1 = new AdvicePoint("org.openmrs.api.PatientService", /*~~>*/String.class);
+		AdvicePoint a2 = new AdvicePoint("org.openmrs.api.PersonService", /*~~>*/String.class);
 		Document config = buildOnValidConfigXml()
 			.withAdvice(a1.getPoint(), "String")
 			.withAdvice(a2.getPoint(), "String")
@@ -1165,12 +1165,12 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 		assertThat(module.getAdvicePoints(), is(equalTo(Collections.EMPTY_LIST)));
 	}
 
-	private void expectModuleExceptionWithMessage(Executable executable, String expectedMessage) {
+	private void expectModuleExceptionWithMessage(Executable executable, /*~~>*/String expectedMessage) {
 		ModuleException exception = assertThrows(ModuleException.class, executable);
 		assertThat(exception.getMessage(), startsWith(expectedMessage));
 	}
 
-	private void whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(String messageKey) {
+	private void whenGettingMessageFromMessageSourceServiceWithKeyReturnSameKey(/*~~>*/String messageKey) {
 		when(messageSourceService.getMessage(messageKey)).thenReturn(messageKey);
 	}
 
@@ -1179,7 +1179,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 		return buildOnValidConfigXml("1.6");
 	}
 
-	private ModuleConfigXmlBuilder buildOnValidConfigXml(String version) {
+	private ModuleConfigXmlBuilder buildOnValidConfigXml(/*~~>*/String version) {
 
 		return new ModuleConfigXmlBuilder(documentBuilder)
 			.withModuleRoot()
@@ -1197,7 +1197,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			this.configXml = documentBuilder.newDocument();
 		}
 
-		public ModuleConfigXmlBuilder withDoctype(String configVersion) {
+		public ModuleConfigXmlBuilder withDoctype(/*~~>*/String configVersion) {
 			DOMImplementation domImpl = this.configXml.getImplementation();
 			DocumentType doctype = domImpl.createDocumentType(
 				"module",
@@ -1214,36 +1214,36 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			return this;
 		}
 
-		public ModuleConfigXmlBuilder withConfigVersion(String version) {
+		public ModuleConfigXmlBuilder withConfigVersion(/*~~>*/String version) {
 			configXml.getDocumentElement().setAttribute("configVersion", version);
 			return this;
 		}
 
-		public ModuleConfigXmlBuilder withModuleName(String name) {
+		public ModuleConfigXmlBuilder withModuleName(/*~~>*/String name) {
 			this.withTextNode("name", name);
 			return this;
 		}
 
-		public ModuleConfigXmlBuilder withModuleId(String id) {
+		public ModuleConfigXmlBuilder withModuleId(/*~~>*/String id) {
 			this.withTextNode("id", id);
 			return this;
 		}
 
-		public ModuleConfigXmlBuilder withPackage(String packageName) {
+		public ModuleConfigXmlBuilder withPackage(/*~~>*/String packageName) {
 			this.withTextNode("package", packageName);
 			return this;
 		}
 
-		public ModuleConfigXmlBuilder withTextNode(String tag, String text) {
+		public ModuleConfigXmlBuilder withTextNode(/*~~>*/String tag, /*~~>*/String text) {
 			Element element = configXml.createElement(tag);
 			element.setTextContent(text);
 			configXml.getDocumentElement().appendChild(element);
 			return this;
 		}
 
-		public ModuleConfigXmlBuilder withRequireModules(String[]... modules) {
+		public ModuleConfigXmlBuilder withRequireModules(/*~~>*/String[]... modules) {
 			Element requireModules = configXml.createElement("require_modules");
-			for (String[] module : modules) {
+			for (/*~~>*/String[] module : modules) {
 				Element requireModule = configXml.createElement("require_module");
 				requireModule.setTextContent(module[0]);
 				if (module.length > 1) {
@@ -1255,9 +1255,9 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			return this;
 		}
 
-		public ModuleConfigXmlBuilder withAwareOfModules(String... modules) {
+		public ModuleConfigXmlBuilder withAwareOfModules(/*~~>*/String... modules) {
 			Element awareOfModules = configXml.createElement("aware_of_modules");
-			for (String module : modules) {
+			for (/*~~>*/String module : modules) {
 				Element awareOfModule = configXml.createElement("aware_of_module");
 				awareOfModule.setTextContent(module);
 				awareOfModules.appendChild(awareOfModule);
@@ -1266,8 +1266,8 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			return this;
 		}
 
-		public ModuleConfigXmlBuilder withPrivilege(String name, String description) {
-			Map<String, String> children = new HashMap<>();
+		public ModuleConfigXmlBuilder withPrivilege(/*~~>*/String name, /*~~>*/String description) {
+			Map</*~~>*/String, /*~~>*/String> children = new HashMap<>();
 			if (name != null) {
 				children.put("name", name);
 			}
@@ -1277,8 +1277,8 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			return withElementsAttachedToRoot("privilege", children);
 		}
 
-		public ModuleConfigXmlBuilder withExtension(String point, String className) {
-			Map<String, String> children = new HashMap<>();
+		public ModuleConfigXmlBuilder withExtension(/*~~>*/String point, /*~~>*/String className) {
+			Map</*~~>*/String, /*~~>*/String> children = new HashMap<>();
 			if (point != null) {
 				children.put("point", point);
 			}
@@ -1288,8 +1288,8 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			return withElementsAttachedToRoot("extension", children);
 		}
 
-		public ModuleConfigXmlBuilder withAdvice(String point, String className) {
-			Map<String, String> children = new HashMap<>();
+		public ModuleConfigXmlBuilder withAdvice(/*~~>*/String point, /*~~>*/String className) {
+			Map</*~~>*/String, /*~~>*/String> children = new HashMap<>();
 			if (point != null) {
 				children.put("point", point);
 			}
@@ -1299,9 +1299,9 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			return withElementsAttachedToRoot("advice", children);
 		}
 
-		public ModuleConfigXmlBuilder withGlobalProperty(String property, String defaultValue, String description,
-			String datatypeClassname, String datatypeConfig) {
-			Map<String, String> children = new HashMap<>();
+		public ModuleConfigXmlBuilder withGlobalProperty(/*~~>*/String property, /*~~>*/String defaultValue, /*~~>*/String description,
+			/*~~>*/String datatypeClassname, /*~~>*/String datatypeConfig) {
+			Map</*~~>*/String, /*~~>*/String> children = new HashMap<>();
 			if (property != null) {
 				children.put("property", property);
 			}
@@ -1320,13 +1320,13 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			return withElementsAttachedToRoot("globalProperty", children);
 		}
 
-		public ModuleConfigXmlBuilder withConditionalResource(String path, String openmrsVersion) {
+		public ModuleConfigXmlBuilder withConditionalResource(/*~~>*/String path, /*~~>*/String openmrsVersion) {
 			return withConditionalResource(path, openmrsVersion, null);
 		}
 
-		public ModuleConfigXmlBuilder withConditionalResource(String path, String openmrsVersion,
-			Map<String, String> modules) {
-			Map<String, String> children = new HashMap<>();
+		public ModuleConfigXmlBuilder withConditionalResource(/*~~>*/String path, /*~~>*/String openmrsVersion,
+			Map</*~~>*/String, /*~~>*/String> modules) {
+			Map</*~~>*/String, /*~~>*/String> children = new HashMap<>();
 			if (path != null) {
 				children.put("path", path);
 			}
@@ -1337,7 +1337,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			attachToGroupElement("conditionalResources", conditionalResource);
 			if (modules != null) {
 				Element modulesElement = configXml.createElement("modules");
-				for (Map.Entry<String, String> entries : modules.entrySet()) {
+				for (Map.Entry</*~~>*/String, /*~~>*/String> entries : modules.entrySet()) {
 					Element module = configXml.createElement("module");
 					module.appendChild(createElement("moduleId", entries.getKey()));
 					module.appendChild(createElement("version", entries.getValue()));
@@ -1348,27 +1348,27 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 			return this;
 		}
 
-		public ModuleConfigXmlBuilder withElementsAttachedToRoot(String parentElementName,
-			Map<String, String> childElements) {
+		public ModuleConfigXmlBuilder withElementsAttachedToRoot(/*~~>*/String parentElementName,
+			Map</*~~>*/String, /*~~>*/String> childElements) {
 			configXml.getDocumentElement().appendChild(createElementWithChildren(parentElementName, childElements));
 			return this;
 		}
 
-		private Element createElementWithChildren(String parentElementName, Map<String, String> childElements) {
+		private Element createElementWithChildren(/*~~>*/String parentElementName, Map</*~~>*/String, /*~~>*/String> childElements) {
 			Element parentElement = configXml.createElement(parentElementName);
-			for (Map.Entry<String, String> child : childElements.entrySet()) {
+			for (Map.Entry</*~~>*/String, /*~~>*/String> child : childElements.entrySet()) {
 				parentElement.appendChild(createElement(child.getKey(), child.getValue()));
 			}
 			return parentElement;
 		}
 
-		private Element createElement(String name, String value) {
+		private Element createElement(/*~~>*/String name, /*~~>*/String value) {
 			Element element = configXml.createElement(name);
 			element.setTextContent(value);
 			return element;
 		}
 
-		private void attachToGroupElement(String groupElementName, Element element) {
+		private void attachToGroupElement(/*~~>*/String groupElementName, Element element) {
 			Element parent;
 			NodeList nodes = configXml.getElementsByTagName(groupElementName);
 			if (nodes.getLength() == 0) {
@@ -1399,7 +1399,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 		return jar;
 	}
 
-	private File writeConfigXmlToFile(String config) throws IOException {
+	private File writeConfigXmlToFile(/*~~>*/String config) throws IOException {
 		File file = temporaryFolder.resolve("modulefileparsertest.omod").toFile();
 		JarOutputStream jar = createJarWithConfigXmlEntry(file);
 		jar.write(config.getBytes());
@@ -1418,7 +1418,7 @@ public class ModuleFileParserUnitTest extends BaseContextMockTest {
 		return getString(config).getBytes();
 	}
 
-	private String getString(Document config) {
+	private /*~~>*/String getString(Document config) {
 		DOMImplementationLS impl = (DOMImplementationLS) config.getImplementation();
 		LSSerializer serializer = impl.createLSSerializer();
 		LSOutput out = impl.createLSOutput();

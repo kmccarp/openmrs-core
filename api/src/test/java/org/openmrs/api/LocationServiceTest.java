@@ -41,9 +41,9 @@ import org.openmrs.util.OpenmrsConstants;
  */
 public class LocationServiceTest extends BaseContextSensitiveTest {
 	
-	protected static final String LOC_INITIAL_DATA_XML = "org/openmrs/api/include/LocationServiceTest-initialData.xml";
+	protected static final /*~~>*/String LOC_INITIAL_DATA_XML = "org/openmrs/api/include/LocationServiceTest-initialData.xml";
 	
-	protected static final String LOC_ATTRIBUTE_DATA_XML = "org/openmrs/api/include/LocationServiceTest-attributes.xml";
+	protected static final /*~~>*/String LOC_ATTRIBUTE_DATA_XML = "org/openmrs/api/include/LocationServiceTest-attributes.xml";
 	
 	/**
 	 * Run this before each unit test in this class. This adds a bit more data to the base data that
@@ -107,12 +107,12 @@ public class LocationServiceTest extends BaseContextSensitiveTest {
 		Location location = ls.getLocation(1);
 		
 		// save the current values for comparison later
-		String origName = location.getName();
-		String origDesc = location.getDescription();
+		/*~~>*/String origName = location.getName();
+		/*~~>*/String origDesc = location.getDescription();
 		
 		// add values that are different than the ones in the initialData.xml file
-		String newName = "new name";
-		String newDesc = "new desc";
+		/*~~>*/String newName = "new name";
+		/*~~>*/String newDesc = "new desc";
 		
 		location.setName(newName);
 		location.setDescription(newDesc);
@@ -219,7 +219,7 @@ public class LocationServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void getDefaultLocation_shouldReturnDefaultLocationForTheImplementation() {
 		//set the global property for default location to something other than Unknown Location
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCATION_NAME,
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCATION_NAME,
 		        "Test Parent Location", "Testing default Location");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		assertEquals("Test Parent Location", Context.getLocationService().getDefaultLocation().getName());
@@ -577,12 +577,12 @@ public class LocationServiceTest extends BaseContextSensitiveTest {
 		LocationTag tag = ls.getLocationTag(1);
 		
 		// save the current values for comparison later
-		String origName = tag.getName();
-		String origDesc = tag.getDescription();
+		/*~~>*/String origName = tag.getName();
+		/*~~>*/String origDesc = tag.getDescription();
 		
 		// add values that are different than the ones in the initialData.xml file
-		String newName = "new name";
-		String newDesc = "new desc";
+		/*~~>*/String newName = "new name";
+		/*~~>*/String newDesc = "new desc";
 		
 		tag.setName(newName);
 		tag.setDescription(newDesc);
@@ -801,7 +801,7 @@ public class LocationServiceTest extends BaseContextSensitiveTest {
 		LocationTag tag = ls.getLocationTag(1);
 		assertFalse(tag.getRetired());
 		
-		String reason = "because i can";
+		/*~~>*/String reason = "because i can";
 		LocationTag newTag = ls.retireLocationTag(tag, reason);
 		
 		assertEquals(tag, newTag);
@@ -909,7 +909,7 @@ public class LocationServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getLocationByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "f08ba64b-ea57-4a41-b33c-9dfc59b0c60a";
+		/*~~>*/String uuid = "f08ba64b-ea57-4a41-b33c-9dfc59b0c60a";
 		Location location = Context.getLocationService().getLocationByUuid(uuid);
 		assertEquals(1, (int) location.getLocationId());
 	}
@@ -946,7 +946,7 @@ public class LocationServiceTest extends BaseContextSensitiveTest {
 	public void getDefaultLocation_shouldReturnUnknownLocationIfTheGlobalPropertyIsSomethingElseThatDoesnotExist()
 	{
 		//set the global property to something that has no match in the location table
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCATION_NAME,
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCATION_NAME,
 		        "None existent Location", "Testing");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		assertEquals("Unknown Location", Context.getLocationService().getDefaultLocation().getName());

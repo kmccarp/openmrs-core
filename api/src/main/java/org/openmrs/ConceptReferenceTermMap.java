@@ -139,7 +139,7 @@ public class ConceptReferenceTermMap extends BaseConceptMap {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		if (conceptReferenceTermMapId == null) {
 			return "";
 		}

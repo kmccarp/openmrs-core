@@ -122,7 +122,7 @@ public class ProgramWorkflowServiceImpl extends BaseOpenmrsService implements Pr
 	 * @see org.openmrs.api.ProgramWorkflowService#getProgram(java.lang.String)
 	 */
 	@Transactional(readOnly = true)
-	public Program getProgram(String name) {
+	public Program getProgram(/*~~>*/String name) {
 		return Context.getProgramWorkflowService().getProgramByName(name);
 	}
 	
@@ -131,7 +131,7 @@ public class ProgramWorkflowServiceImpl extends BaseOpenmrsService implements Pr
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Program getProgramByName(String name) throws APIException {
+	public Program getProgramByName(/*~~>*/String name) throws APIException {
 		List<Program> programs = dao.getProgramsByName(name, false);
 		
 		if (programs.isEmpty()) {
@@ -168,7 +168,7 @@ public class ProgramWorkflowServiceImpl extends BaseOpenmrsService implements Pr
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Program> getPrograms(String nameFragment) throws APIException {
+	public List<Program> getPrograms(/*~~>*/String nameFragment) throws APIException {
 		return dao.findPrograms(nameFragment);
 	}
 	
@@ -199,7 +199,7 @@ public class ProgramWorkflowServiceImpl extends BaseOpenmrsService implements Pr
 	 * @see org.openmrs.api.ProgramWorkflowService#retireProgram(org.openmrs.Program, java.lang.String)
 	 */
 	@Override
-	public Program retireProgram(Program program, String reason) throws APIException {
+	public Program retireProgram(Program program, /*~~>*/String reason) throws APIException {
 		//program.setRetired(true); - Note the BaseRetireHandler aspect is already setting the retired flag and reason
 		for (ProgramWorkflow workflow : program.getWorkflows()) {
 			workflow.setRetired(true);
@@ -336,7 +336,7 @@ public class ProgramWorkflowServiceImpl extends BaseOpenmrsService implements Pr
 	 *      java.lang.String)
 	 */
 	@Override
-	public PatientProgram voidPatientProgram(PatientProgram patientProgram, String reason) {
+	public PatientProgram voidPatientProgram(PatientProgram patientProgram, /*~~>*/String reason) {
 		patientProgram.setVoided(true);
 		patientProgram.setVoidReason(reason);
 		return Context.getProgramWorkflowService().savePatientProgram(patientProgram); // The savePatientProgram method handles all of the voiding defaults and cascades
@@ -533,7 +533,7 @@ public class ProgramWorkflowServiceImpl extends BaseOpenmrsService implements Pr
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public ConceptStateConversion getConceptStateConversionByUuid(String uuid) {
+	public ConceptStateConversion getConceptStateConversionByUuid(/*~~>*/String uuid) {
 		return dao.getConceptStateConversionByUuid(uuid);
 	}
 	
@@ -542,7 +542,7 @@ public class ProgramWorkflowServiceImpl extends BaseOpenmrsService implements Pr
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public PatientProgram getPatientProgramByUuid(String uuid) {
+	public PatientProgram getPatientProgramByUuid(/*~~>*/String uuid) {
 		return dao.getPatientProgramByUuid(uuid);
 	}
 	
@@ -551,7 +551,7 @@ public class ProgramWorkflowServiceImpl extends BaseOpenmrsService implements Pr
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Program getProgramByUuid(String uuid) {
+	public Program getProgramByUuid(/*~~>*/String uuid) {
 		return dao.getProgramByUuid(uuid);
 	}
 	
@@ -569,13 +569,13 @@ public class ProgramWorkflowServiceImpl extends BaseOpenmrsService implements Pr
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public ProgramWorkflowState getStateByUuid(String uuid) {
+	public ProgramWorkflowState getStateByUuid(/*~~>*/String uuid) {
 		return dao.getStateByUuid(uuid);
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
-	public PatientState getPatientStateByUuid(String uuid) {
+	public PatientState getPatientStateByUuid(/*~~>*/String uuid) {
 		return dao.getPatientStateByUuid(uuid);
 	}
 	
@@ -593,7 +593,7 @@ public class ProgramWorkflowServiceImpl extends BaseOpenmrsService implements Pr
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public ProgramWorkflow getWorkflowByUuid(String uuid) {
+	public ProgramWorkflow getWorkflowByUuid(/*~~>*/String uuid) {
 		return dao.getWorkflowByUuid(uuid);
 	}
         
@@ -608,7 +608,7 @@ public class ProgramWorkflowServiceImpl extends BaseOpenmrsService implements Pr
         }
         
         @Override
-        public ProgramAttributeType getProgramAttributeTypeByUuid(String uuid) {
+        public ProgramAttributeType getProgramAttributeTypeByUuid(/*~~>*/String uuid) {
             return dao.getProgramAttributeTypeByUuid(uuid);
         }
 
@@ -623,16 +623,16 @@ public class ProgramWorkflowServiceImpl extends BaseOpenmrsService implements Pr
         }
 
         @Override
-        public PatientProgramAttribute getPatientProgramAttributeByUuid(String uuid) {
+        public PatientProgramAttribute getPatientProgramAttributeByUuid(/*~~>*/String uuid) {
             return dao.getPatientProgramAttributeByUuid(uuid);
         }
 
         @Override
-        public Map<Object, Object> getPatientProgramAttributeByAttributeName(List<Integer> patients, String attributeName){
+        public Map<Object, Object> getPatientProgramAttributeByAttributeName(List<Integer> patients, /*~~>*/String attributeName){
             return dao.getPatientProgramAttributeByAttributeName(patients, attributeName);
         }
         @Override
-        public List<PatientProgram> getPatientProgramByAttributeNameAndValue(String attributeName, String attributeValue) {
+        public List<PatientProgram> getPatientProgramByAttributeNameAndValue(/*~~>*/String attributeName, /*~~>*/String attributeValue) {
             return dao.getPatientProgramByAttributeNameAndValue(attributeName, attributeValue);
         }	
 }

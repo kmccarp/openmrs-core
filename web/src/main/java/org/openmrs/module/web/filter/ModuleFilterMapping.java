@@ -35,11 +35,11 @@ public class ModuleFilterMapping implements Serializable {
 	// Properties
 	private Module module;
 	
-	private String filterName;
+	private /*~~>*/String filterName;
 	
-	private List<String> servletNames = new ArrayList<>();
+	private List</*~~>*/String> servletNames = new ArrayList<>();
 	
-	private List<String> urlPatterns = new ArrayList<>();
+	private List</*~~>*/String> urlPatterns = new ArrayList<>();
 	
 	/**
 	 * Default constructor, requires a Module
@@ -67,28 +67,28 @@ public class ModuleFilterMapping implements Serializable {
 	/**
 	 * @return the name of the Filter
 	 */
-	public String getFilterName() {
+	public /*~~>*/String getFilterName() {
 		return filterName;
 	}
 	
 	/**
 	 * @param filterName the name of the Filter
 	 */
-	public void setFilterName(String filterName) {
-		this.filterName = filterName;
+	public void setFilterName(/*~~>*/String filterName) {
+		/*~~>*/this.filterName = filterName;
 	}
 	
 	/**
 	 * @return a List of all Servlet Names mapped to this Filter
 	 */
-	public List<String> getServletNames() {
+	public List</*~~>*/String> getServletNames() {
 		return servletNames;
 	}
 	
 	/**
 	 * @param servletNames a List of all Servlet Names mapped to this filter
 	 */
-	public void setServletNames(List<String> servletNames) {
+	public void setServletNames(List</*~~>*/String> servletNames) {
 		this.servletNames = servletNames;
 	}
 	
@@ -97,21 +97,21 @@ public class ModuleFilterMapping implements Serializable {
 	 * 
 	 * @param servletName - The servlet name to add
 	 */
-	public void addServletName(String servletName) {
+	public void addServletName(/*~~>*/String servletName) {
 		this.servletNames.add(servletName);
 	}
 	
 	/**
 	 * @return - a List of all Url Patterns mapped to this filter
 	 */
-	public List<String> getUrlPatterns() {
+	public List</*~~>*/String> getUrlPatterns() {
 		return urlPatterns;
 	}
 	
 	/**
 	 * @param urlPatterns a List of all Url Patterns mapped to this filter
 	 */
-	public void setUrlPatterns(List<String> urlPatterns) {
+	public void setUrlPatterns(List</*~~>*/String> urlPatterns) {
 		this.urlPatterns = urlPatterns;
 	}
 	
@@ -120,7 +120,7 @@ public class ModuleFilterMapping implements Serializable {
 	 * 
 	 * @param urlPattern - The urlPattern to add
 	 */
-	public void addUrlPattern(String urlPattern) {
+	public void addUrlPattern(/*~~>*/String urlPattern) {
 		this.urlPatterns.add(urlPattern);
 	}
 	
@@ -144,19 +144,19 @@ public class ModuleFilterMapping implements Serializable {
 	 *         requestPath
 	 * <strong>Should</strong> return false if no matches are found for this requestPath
 	 */
-	public static boolean filterMappingPasses(ModuleFilterMapping filterMapping, String requestPath) {
+	public static boolean filterMappingPasses(ModuleFilterMapping filterMapping, /*~~>*/String requestPath) {
 		
 		// Return false if url is null
 		if (requestPath == null) {
 			return false;
 		}
 		
-		for (String patternToCheck : filterMapping.getUrlPatterns()) {
+		for (/*~~>*/String patternToCheck : filterMapping.getUrlPatterns()) {
 			if (urlPatternMatches(patternToCheck, requestPath)) {
 				return true;
 			}
 		}
-		for (String patternToCheck : filterMapping.getServletNames()) {
+		for (/*~~>*/String patternToCheck : filterMapping.getServletNames()) {
 			if (servletNameMatches(patternToCheck, requestPath)) {
 				return true;
 			}
@@ -180,7 +180,7 @@ public class ModuleFilterMapping implements Serializable {
 	 * <strong>Should</strong> return true if the pattern matches by extension
 	 * <strong>Should</strong> return false if no pattern matches
 	 */
-	public static boolean urlPatternMatches(String patternToCheck, String requestPath) {
+	public static boolean urlPatternMatches(/*~~>*/String patternToCheck, /*~~>*/String requestPath) {
 		
 		// Return false if patternToCheck is null
 		if (patternToCheck == null) {
@@ -230,7 +230,7 @@ public class ModuleFilterMapping implements Serializable {
 	 * <strong>Should</strong> return true if the pattern matches the servlet name exactly
 	 * <strong>Should</strong> return false if no pattern matches
 	 */
-	public static boolean servletNameMatches(String patternToCheck, String servletName) {
+	public static boolean servletNameMatches(/*~~>*/String patternToCheck, /*~~>*/String servletName) {
 		
 		// Return false if servletName is null
 		if (servletName == null) {

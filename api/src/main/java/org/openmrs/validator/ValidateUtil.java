@@ -70,17 +70,17 @@ public class ValidateUtil {
 		Context.getAdministrationService().validate(obj, errors);
 		
 		if (errors.hasErrors()) {
-			Set<String> uniqueErrorMessages = new LinkedHashSet<>();
+			Set</*~~>*/String> uniqueErrorMessages = new LinkedHashSet<>();
 			for (Object objerr : errors.getAllErrors()) {
 				ObjectError error = (ObjectError) objerr;
-				String message = Context.getMessageSourceService().getMessage(error.getCode(), error.getArguments(), Context.getLocale());
+				/*~~>*/String message = Context.getMessageSourceService().getMessage(error.getCode(), error.getArguments(), Context.getLocale());
 				if (error instanceof FieldError) {
 					message = ((FieldError) error).getField() + ": " + message;
 				}
 				uniqueErrorMessages.add(message);
 			}
 			
-			String exceptionMessage = "'" + obj + "' failed to validate with reason: ";
+			/*~~>*/String exceptionMessage = "'" + obj + "' failed to validate with reason: ";
 			exceptionMessage += StringUtils.join(uniqueErrorMessages, ", ");
 			throw new ValidationException(exceptionMessage, errors);
 		}
@@ -117,22 +117,22 @@ public class ValidateUtil {
 	 * <strong>Should</strong> fail validation if name field length is too long
 	 * <strong>Should</strong> return immediately if validation is disabled and have no errors
 	 */
-	public static void validateFieldLengths(Errors errors, Class<?> aClass, String... fields) {
+	public static void validateFieldLengths(Errors errors, Class<?> aClass, /*~~>*/String... fields) {
 		if (disableValidation) {
 			return;
 		}
 
 		Assert.notNull(errors, "Errors object must not be null");
-		for (String field : fields) {
+		for (/*~~>*/String field : fields) {
 			Object value = errors.getFieldValue(field);
-			if (value == null || !(value instanceof String)) {
+			if (value == null || !(value instanceof /*~~>*/String)) {
 				continue;
 			}
 			int length = Context.getAdministrationService().getMaximumPropertyLength((Class<? extends OpenmrsObject>) aClass, field);
 			if (length == -1) {
 				return;
 			}
-			if (((String) value).length() > length) {
+			if (((/*~~>*/String) value).length() > length) {
 				errors.rejectValue(field, "error.exceededMaxLengthOfField", new Object[] { length }, null);
 			}
 		}

@@ -29,9 +29,9 @@ public class OrderSearchCriteriaBuilder {
 
 	private Collection<OrderType> orderTypes;
 	
-	private String accessionNumber;
+	private /*~~>*/String accessionNumber;
 	
-	private String orderNumber;
+	private /*~~>*/String orderNumber;
 
 	private Date activatedOnOrBeforeDate;
 
@@ -95,8 +95,8 @@ public class OrderSearchCriteriaBuilder {
 	 * @param accessionNumber the accessionNumber to match on (exact match, case-insensitive)
 	 * @return this builder instance
 	 */
-	public OrderSearchCriteriaBuilder setAccessionNumber(String accessionNumber) {
-		this.accessionNumber = accessionNumber;
+	public OrderSearchCriteriaBuilder setAccessionNumber(/*~~>*/String accessionNumber) {
+		/*~~>*/this.accessionNumber = accessionNumber;
 		return (this);
 	}
 
@@ -104,8 +104,8 @@ public class OrderSearchCriteriaBuilder {
 	 * @param orderNumber the orderNumber to match on (exact match, case-insensitive)
 	 * @return this builder instance
 	 */
-	public OrderSearchCriteriaBuilder setOrderNumber(String orderNumber) {
-		this.orderNumber = orderNumber;
+	public OrderSearchCriteriaBuilder setOrderNumber(/*~~>*/String orderNumber) {
+		/*~~>*/this.orderNumber = orderNumber;
 		return (this);
 	}
 	

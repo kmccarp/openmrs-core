@@ -20,12 +20,12 @@ public interface Credentials {
 	/**
 	 * @return The authentication scheme that should be used with those credentials.
 	 */
-	public String getAuthenticationScheme();
+	public /*~~>*/String getAuthenticationScheme();
 	
 	/**
 	 * A string that identifies the owner of the credentials by a name.
 	 * Typically in the case of a user the client would simply be identified with its username. 
 	 */
-	public String getClientName();
+	public /*~~>*/String getClientName();
 	
 }

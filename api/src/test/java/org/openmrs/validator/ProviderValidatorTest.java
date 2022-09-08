@@ -39,9 +39,9 @@ public class ProviderValidatorTest extends BaseContextSensitiveTest {
 	
 	private ProviderService providerService;
 	
-	private static final String PROVIDER_ATTRIBUTE_TYPES_XML = "org/openmrs/api/include/ProviderServiceTest-providerAttributes.xml";
+	private static final /*~~>*/String PROVIDER_ATTRIBUTE_TYPES_XML = "org/openmrs/api/include/ProviderServiceTest-providerAttributes.xml";
 	
-	private static final String OTHERS_PROVIDERS_XML = "org/openmrs/api/include/ProviderServiceTest-otherProviders.xml";
+	private static final /*~~>*/String OTHERS_PROVIDERS_XML = "org/openmrs/api/include/ProviderServiceTest-otherProviders.xml";
 	
 	@BeforeEach
 	public void setup() {
@@ -183,7 +183,7 @@ public class ProviderValidatorTest extends BaseContextSensitiveTest {
 		assertTrue(errors.hasFieldErrors("activeAttributes"));
 	}
 	
-	private ProviderAttribute makeAttribute(String serializedValue) {
+	private ProviderAttribute makeAttribute(/*~~>*/String serializedValue) {
 		ProviderAttribute attr = new ProviderAttribute();
 		attr.setAttributeType(providerService.getProviderAttributeType(1));
 		attr.setValueReferenceInternal(serializedValue);

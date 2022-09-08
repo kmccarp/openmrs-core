@@ -55,7 +55,7 @@ class MemoryAppenderTest {
 	void memoryAppender_shouldAppendAMessage() {
 		logger.warn("Logging message");
 
-		List<String> logLines = memoryAppender.getLogLines();
+		List</*~~>*/String> logLines = memoryAppender.getLogLines();
 		assertThat(logLines, notNullValue());
 		assertThat(logLines, hasSize(greaterThanOrEqualTo(1)));
 		assertThat(logLines, hasItem(equalTo("Logging message")));
@@ -68,7 +68,7 @@ class MemoryAppenderTest {
 			logger.warn("Logging message");
 		}
 
-		List<String> logLines = memoryAppender.getLogLines();
+		List</*~~>*/String> logLines = memoryAppender.getLogLines();
 		assertThat(logLines, notNullValue());
 		assertThat(logLines, hasSize(greaterThanOrEqualTo(1)));
 		for (int i = logLines.size() - nTimes; i < nTimes; i++) {
@@ -93,7 +93,7 @@ class MemoryAppenderTest {
 			logger.warn("Logging message");
 		}
 		
-		List<String> logLines = memoryAppender.getLogLines();
+		List</*~~>*/String> logLines = memoryAppender.getLogLines();
 		assertThat(logLines, notNullValue());
 		assertThat(logLines.size(), equalTo(4));
 	}

@@ -19,13 +19,13 @@ import java.util.Locale;
  */
 public class PresentationMessage {
 	
-	private String code;
+	private /*~~>*/String code;
 	
 	private Locale locale;
 	
-	private String message;
+	private /*~~>*/String message;
 	
-	private String description;
+	private /*~~>*/String description;
 	
 	/**
 	 * Create a new, fully specified PresentationMessage.
@@ -35,11 +35,11 @@ public class PresentationMessage {
 	 * @param message text of the message
 	 * @param description description of the meaning or intended use of the message
 	 */
-	public PresentationMessage(String code, Locale locale, String message, String description) {
-		this.code = code;
+	public PresentationMessage(/*~~>*/String code, Locale locale, /*~~>*/String message, /*~~>*/String description) {
+		/*~~>*/this.code = code;
 		this.locale = locale;
-		this.message = message;
-		this.description = description;
+		/*~~>*/this.message = message;
+		/*~~>*/this.description = description;
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class PresentationMessage {
 	 * 
 	 * @return the code
 	 */
-	public String getCode() {
+	public /*~~>*/String getCode() {
 		return code;
 	}
 	
@@ -58,8 +58,8 @@ public class PresentationMessage {
 	 * 
 	 * @param code the code to set
 	 */
-	public void setCode(String code) {
-		this.code = code;
+	public void setCode(/*~~>*/String code) {
+		/*~~>*/this.code = code;
 	}
 	
 	/**
@@ -85,15 +85,15 @@ public class PresentationMessage {
 	 * 
 	 * @return the message
 	 */
-	public String getMessage() {
+	public /*~~>*/String getMessage() {
 		return message;
 	}
 	
 	/**
 	 * @param message the message to set
 	 */
-	public void setMessage(String message) {
-		this.message = message;
+	public void setMessage(/*~~>*/String message) {
+		/*~~>*/this.message = message;
 	}
 	
 	/**
@@ -101,15 +101,15 @@ public class PresentationMessage {
 	 * 
 	 * @return the description
 	 */
-	public String getDescription() {
+	public /*~~>*/String getDescription() {
 		return description;
 	}
 	
 	/**
 	 * @param description the description to set
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(/*~~>*/String description) {
+		/*~~>*/this.description = description;
 	}
 	
 }

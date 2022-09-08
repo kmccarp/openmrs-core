@@ -37,8 +37,8 @@ import org.openmrs.test.jupiter.BaseContextMockTest;
  */
 public class ModuleExtensionsTest extends BaseContextMockTest {
 
-	private static final String EXTENSION_POINT_ID_PATIENT_DASHBOARD = "org.openmrs.patientDashboard";
-	private static final String LOGIC_MODULE_PATH = "org/openmrs/module/include/logic-0.2.omod";
+	private static final /*~~>*/String EXTENSION_POINT_ID_PATIENT_DASHBOARD = "org.openmrs.patientDashboard";
+	private static final /*~~>*/String LOGIC_MODULE_PATH = "org/openmrs/module/include/logic-0.2.omod";
 	
 	@Mock
 	MessageSourceService messageSourceService;
@@ -76,7 +76,7 @@ public class ModuleExtensionsTest extends BaseContextMockTest {
 	@Test
 	public void getExtensions_shouldNotExpandIfNoModuleClassloaderIsFound() {
 
-		HashMap<String, String> extensionNames = new HashMap<>();
+		HashMap</*~~>*/String, /*~~>*/String> extensionNames = new HashMap<>();
 		extensionNames.put(EXTENSION_POINT_ID_PATIENT_DASHBOARD, AccessibleExtension.class.getName());
 		module.setExtensionNames(extensionNames);
 		
@@ -105,7 +105,7 @@ public class ModuleExtensionsTest extends BaseContextMockTest {
 	@Test
 	public void getExtensions_shouldNotFailExpandingAClassWhichCannotBeFound() {
 
-		HashMap<String, String> extensionNames = new HashMap<>();
+		HashMap</*~~>*/String, /*~~>*/String> extensionNames = new HashMap<>();
 		extensionNames.put(EXTENSION_POINT_ID_PATIENT_DASHBOARD, "org.openmrs.unknown.Nonexisting.class");
 		module.setExtensionNames(extensionNames);
 		registerModuleClassLoader();
@@ -117,7 +117,7 @@ public class ModuleExtensionsTest extends BaseContextMockTest {
 	public void getExtensions_shouldNotFailExpandingAClassWhichCannotBeInstantiated() {
 
 		// pass in the abstract base class Extension itself which cannot be instantiated
-		HashMap<String, String> extensionNames = new HashMap<>();
+		HashMap</*~~>*/String, /*~~>*/String> extensionNames = new HashMap<>();
 		extensionNames.put(EXTENSION_POINT_ID_PATIENT_DASHBOARD, Extension.class.getName());
 		module.setExtensionNames(extensionNames);
 		registerModuleClassLoader();
@@ -129,7 +129,7 @@ public class ModuleExtensionsTest extends BaseContextMockTest {
 	public void getExtensions_shouldNotFailExpandingAClassWhichCannotAccessed() {
 
 		// pass in the abstract base class Extension itself which cannot be instantiated
-		HashMap<String, String> extensionNames = new HashMap<>();
+		HashMap</*~~>*/String, /*~~>*/String> extensionNames = new HashMap<>();
 		extensionNames.put(EXTENSION_POINT_ID_PATIENT_DASHBOARD, ExtensionCausingIllegalAccessException.class.getName());
 		module.setExtensionNames(extensionNames);
 		registerModuleClassLoader();
@@ -140,7 +140,7 @@ public class ModuleExtensionsTest extends BaseContextMockTest {
 	@Test
 	public void getExtensions_shouldExpandClassNamesIntoClassInstances() {
 
-		HashMap<String, String> extensionNames = new HashMap<>();
+		HashMap</*~~>*/String, /*~~>*/String> extensionNames = new HashMap<>();
 		extensionNames.put(EXTENSION_POINT_ID_PATIENT_DASHBOARD, AccessibleExtension.class.getName());
 		module.setExtensionNames(extensionNames);
 		registerModuleClassLoader();
@@ -156,7 +156,7 @@ public class ModuleExtensionsTest extends BaseContextMockTest {
 	@Test
 	public void getExtensions_shouldNotExpandAgainIfClassNamesMatch() {
 
-		HashMap<String, String> extensionNames = new HashMap<>();
+		HashMap</*~~>*/String, /*~~>*/String> extensionNames = new HashMap<>();
 		extensionNames.put(EXTENSION_POINT_ID_PATIENT_DASHBOARD, AccessibleExtension.class.getName());
 		module.setExtensionNames(extensionNames);
 		registerModuleClassLoader();
@@ -173,7 +173,7 @@ public class ModuleExtensionsTest extends BaseContextMockTest {
 	@Test
 	public void getExtensions_shouldExpandAgainIfExtensionNamesNowHaveADifferentClassOnSameExtensionPoint() {
 
-		HashMap<String, String> extensionNames = new HashMap<>();
+		HashMap</*~~>*/String, /*~~>*/String> extensionNames = new HashMap<>();
 		extensionNames.put(EXTENSION_POINT_ID_PATIENT_DASHBOARD, AccessibleExtension.class.getName());
 		module.setExtensionNames(extensionNames);
 		registerModuleClassLoader();

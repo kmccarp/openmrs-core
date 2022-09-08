@@ -20,7 +20,7 @@ public class HL7InQueue extends HL7QueueItem {
 	
 	private Integer hl7InQueueId;
 	
-	private String errorMessage;
+	private /*~~>*/String errorMessage;
 	
 	private Integer messageState;
 	
@@ -73,7 +73,7 @@ public class HL7InQueue extends HL7QueueItem {
 	 * @return Returns the errorMessage.
 	 * @since 1.5
 	 */
-	public String getErrorMessage() {
+	public /*~~>*/String getErrorMessage() {
 		return errorMessage;
 	}
 	
@@ -81,8 +81,8 @@ public class HL7InQueue extends HL7QueueItem {
 	 * @param errorMessage The errorMessage to set.
 	 * @since 1.5
 	 */
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
+	public void setErrorMessage(/*~~>*/String errorMessage) {
+		/*~~>*/this.errorMessage = errorMessage;
 	}
 	
 	/**

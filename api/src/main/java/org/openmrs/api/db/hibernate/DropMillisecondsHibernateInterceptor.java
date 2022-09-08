@@ -46,12 +46,12 @@ import org.springframework.stereotype.Component;
 public class DropMillisecondsHibernateInterceptor extends EmptyInterceptor {
 
 	@Override
-	public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState, String[] propertyNames, Type[] types) {
+	public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState, /*~~>*/String[] propertyNames, Type[] types) {
 		return removeMillisecondsFromDateFields(currentState);
 	}
 
 	@Override
-	public boolean onSave(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types) {
+	public boolean onSave(Object entity, Serializable id, Object[] state, /*~~>*/String[] propertyNames, Type[] types) {
 		return removeMillisecondsFromDateFields(state);
 	}
 

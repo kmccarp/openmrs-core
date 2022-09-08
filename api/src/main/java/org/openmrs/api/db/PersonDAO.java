@@ -44,14 +44,14 @@ public interface PersonDAO {
 	 * @see org.openmrs.api.PersonService#getSimilarPeople(java.lang.String, java.lang.Integer,
 	 *      java.lang.String)
 	 */
-	public Set<Person> getSimilarPeople(String name, Integer birthyear, String gender) throws DAOException;
+	public Set<Person> getSimilarPeople(/*~~>*/String name, Integer birthyear, /*~~>*/String gender) throws DAOException;
 	
 	/**
 	 * @see org.openmrs.api.PersonService#getPeople(String, Boolean)
 	 */
-	public List<Person> getPeople(String searchPhrase, Boolean dead) throws DAOException;
+	public List<Person> getPeople(/*~~>*/String searchPhrase, Boolean dead) throws DAOException;
 	
-	public List<Person> getPeople(String searchPhrase, Boolean dead, Boolean voided) throws DAOException;
+	public List<Person> getPeople(/*~~>*/String searchPhrase, Boolean dead, Boolean voided) throws DAOException;
 	
 	/**
 	 * @see org.openmrs.api.PersonService#savePersonAttributeType(org.openmrs.PersonAttributeType)
@@ -67,7 +67,7 @@ public interface PersonDAO {
 	 * @see org.openmrs.api.PersonService#getPersonAttributeTypes(java.lang.String,
 	 *      java.lang.String, java.lang.Integer, java.lang.Boolean)
 	 */
-	public List<PersonAttributeType> getPersonAttributeTypes(String exactName, String format, Integer foreignKey,
+	public List<PersonAttributeType> getPersonAttributeTypes(/*~~>*/String exactName, /*~~>*/String format, Integer foreignKey,
 	        Boolean searchable) throws DAOException;
 	
 	/**
@@ -104,7 +104,7 @@ public interface PersonDAO {
 	/**
 	 * @see org.openmrs.api.PersonService#getRelationshipTypes(java.lang.String, java.lang.Boolean)
 	 */
-	public List<RelationshipType> getRelationshipTypes(String relationshipTypeName, Boolean preferred) throws DAOException;
+	public List<RelationshipType> getRelationshipTypes(/*~~>*/String relationshipTypeName, Boolean preferred) throws DAOException;
 	
 	/**
 	 * @see org.openmrs.api.PersonService#savePerson(org.openmrs.Person)
@@ -159,33 +159,33 @@ public interface PersonDAO {
 	 * @param uuid
 	 * @return person or null
 	 */
-	public Person getPersonByUuid(String uuid);
+	public Person getPersonByUuid(/*~~>*/String uuid);
 	
-	public PersonAddress getPersonAddressByUuid(String uuid);
+	public PersonAddress getPersonAddressByUuid(/*~~>*/String uuid);
 	
-	public PersonAttribute getPersonAttributeByUuid(String uuid);
+	public PersonAttribute getPersonAttributeByUuid(/*~~>*/String uuid);
 	
 	public PersonName getPersonName(Integer personNameId);
 	
-	public PersonName getPersonNameByUuid(String uuid);
+	public PersonName getPersonNameByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @param uuid
 	 * @return relationship or null
 	 */
-	public Relationship getRelationshipByUuid(String uuid);
+	public Relationship getRelationshipByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @param uuid
 	 * @return relationship type or null
 	 */
-	public RelationshipType getRelationshipTypeByUuid(String uuid);
+	public RelationshipType getRelationshipTypeByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @param uuid
 	 * @return person attribute type or null
 	 */
-	public PersonAttributeType getPersonAttributeTypeByUuid(String uuid);
+	public PersonAttributeType getPersonAttributeTypeByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Gets the value of name currently saved in the database for the given personAttributeType,
@@ -198,7 +198,7 @@ public interface PersonDAO {
 	 * @return the name currently in the database for this personAttributeType
 	 * <strong>Should</strong> get saved personAttributeType name from database
 	 */
-	public String getSavedPersonAttributeTypeName(PersonAttributeType personAttributeType);
+	public /*~~>*/String getSavedPersonAttributeTypeName(PersonAttributeType personAttributeType);
 
 	/**
 	 * Gets the value of the searchable property currently saved in the database for the given personAttributeType,
@@ -240,7 +240,7 @@ public interface PersonDAO {
 	 * @return the PersonMergeLog object
 	 * @throws DAOException
 	 */
-	public PersonMergeLog getPersonMergeLogByUuid(String uuid) throws DAOException;
+	public PersonMergeLog getPersonMergeLogByUuid(/*~~>*/String uuid) throws DAOException;
 	
 	/**
 	 * Gets all the PersonMergeLog objects in the model

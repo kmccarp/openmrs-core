@@ -15,7 +15,7 @@ package org.openmrs.logic.op;
 public class Not implements LogicalOperator {
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "NOT";
 	}
 	

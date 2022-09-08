@@ -31,7 +31,7 @@ public class FormEditor extends OpenmrsPropertyEditor<Form> {
 	}
 	
 	@Override
-	protected Form getObjectByUuid(String uuid) {
+	protected Form getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getFormService().getFormByUuid(uuid);
 	}
 }

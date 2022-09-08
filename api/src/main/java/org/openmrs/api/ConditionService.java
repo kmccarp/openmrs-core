@@ -31,8 +31,8 @@ public interface ConditionService extends OpenmrsService {
 	 * @throws APIException   
 	 * @return the condition
 	 */
-	@Authorized({ PrivilegeConstants.GET_CONDITIONS })
-	Condition getConditionByUuid(String uuid) throws APIException;
+	@Authorized({ /*~~>*/PrivilegeConstants.GET_CONDITIONS })
+	Condition getConditionByUuid(/*~~>*/String uuid) throws APIException;
 
 	/**
 	 * Gets a patient's active conditions
@@ -41,7 +41,7 @@ public interface ConditionService extends OpenmrsService {
 	 * @throws APIException   
 	 * @return a list of the patient's active conditions
 	 */
-	@Authorized({ PrivilegeConstants.GET_CONDITIONS })
+	@Authorized({ /*~~>*/PrivilegeConstants.GET_CONDITIONS })
 	List<Condition> getActiveConditions(Patient patient) throws APIException;
 
     /**
@@ -52,7 +52,7 @@ public interface ConditionService extends OpenmrsService {
 	 * @return a list of the patient's conditions
 	 * @since 2.2.1
 	 */
-	@Authorized({ PrivilegeConstants.GET_CONDITIONS })
+	@Authorized({ /*~~>*/PrivilegeConstants.GET_CONDITIONS })
 	List<Condition> getAllConditions(Patient patient) throws APIException;
 
 	/**
@@ -72,7 +72,7 @@ public interface ConditionService extends OpenmrsService {
 	 * @return the Condition with the given id, or null if none exists
 	 * @throws APIException
 	 */
-	@Authorized({ PrivilegeConstants.GET_CONDITIONS })
+	@Authorized({ /*~~>*/PrivilegeConstants.GET_CONDITIONS })
 	Condition getCondition(Integer conditionId) throws APIException;
 
 	/**
@@ -81,7 +81,7 @@ public interface ConditionService extends OpenmrsService {
 	 * @param condition - the condition to be saved
 	 * @throws APIException
 	 */
-	@Authorized({ PrivilegeConstants.EDIT_CONDITIONS })
+	@Authorized({ /*~~>*/PrivilegeConstants.EDIT_CONDITIONS })
 	Condition saveCondition(Condition condition) throws APIException;
 
 	/**
@@ -91,8 +91,8 @@ public interface ConditionService extends OpenmrsService {
 	 * @param voidReason the reason for voiding the condition
 	 * @throws APIException if an error occurs while voiding the condition
 	 */
-	@Authorized({ PrivilegeConstants.EDIT_CONDITIONS })
-	Condition voidCondition(Condition condition, String voidReason) throws APIException;
+	@Authorized({ /*~~>*/PrivilegeConstants.EDIT_CONDITIONS })
+	Condition voidCondition(Condition condition, /*~~>*/String voidReason) throws APIException;
 
 	/**
 	 * Revive a previously voided condition
@@ -101,7 +101,7 @@ public interface ConditionService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> unset voided bit on given condition
 	 */
-	@Authorized(PrivilegeConstants.EDIT_CONDITIONS)
+	@Authorized(/*~~>*/PrivilegeConstants.EDIT_CONDITIONS)
 	Condition unvoidCondition(Condition condition) throws APIException;
 
 	/**
@@ -114,6 +114,6 @@ public interface ConditionService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> delete the given condition from the database
 	 */
-	@Authorized(PrivilegeConstants.DELETE_CONDITIONS)
+	@Authorized(/*~~>*/PrivilegeConstants.DELETE_CONDITIONS)
 	void purgeCondition(Condition condition) throws APIException;
 }

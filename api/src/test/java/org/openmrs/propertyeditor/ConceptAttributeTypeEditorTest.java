@@ -18,7 +18,7 @@ public class ConceptAttributeTypeEditorTest extends BasePropertyEditorTest<Conce
 	
 	private static final Integer EXISTING_ID = 1;
 	
-	private static final String DATA = "org/openmrs/api/include/ConceptServiceTest-conceptAttributeType.xml";
+	private static final /*~~>*/String DATA = "org/openmrs/api/include/ConceptServiceTest-conceptAttributeType.xml";
 	
 	@Autowired
 	private ConceptService conceptService;

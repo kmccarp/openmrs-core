@@ -45,7 +45,7 @@ public class MedicationDispenseBuilder {
 		return medicationDispense;
 	}
 	
-	public MedicationDispenseBuilder withUuid(String uuid) {
+	public MedicationDispenseBuilder withUuid(/*~~>*/String uuid) {
 		medicationDispense.setUuid(uuid);
 		return this;
 	}
@@ -134,7 +134,7 @@ public class MedicationDispenseBuilder {
 		return this;
 	}
 	
-	public MedicationDispenseBuilder withFormNamespaceAndPath(String formNamespaceAndPath) {
+	public MedicationDispenseBuilder withFormNamespaceAndPath(/*~~>*/String formNamespaceAndPath) {
 		medicationDispense.setFormNamespaceAndPath(formNamespaceAndPath);
 		return this;
 	}

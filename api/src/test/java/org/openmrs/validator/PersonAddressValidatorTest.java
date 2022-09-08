@@ -29,7 +29,7 @@ import org.springframework.validation.Errors;
  */
 public class PersonAddressValidatorTest extends BaseContextSensitiveTest {
 	
-	protected static final String PERSON_ADDRESS_VALIDATOR_DATASET_PACKAGE_PATH = "org/openmrs/include/personAddressValidatorTestDataset.xml";
+	protected static final /*~~>*/String PERSON_ADDRESS_VALIDATOR_DATASET_PACKAGE_PATH = "org/openmrs/include/personAddressValidatorTestDataset.xml";
 	
 	PersonAddressValidator validator = null;
 	
@@ -192,7 +192,7 @@ public class PersonAddressValidatorTest extends BaseContextSensitiveTest {
 		PersonAddress personAddress = new PersonAddress();
 		personAddress.setStartDate(null);
 		personAddress.setEndDate(null);
-		String longString = "too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text";
+		/*~~>*/String longString = "too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text";
 		personAddress.setAddress1(longString);
 		personAddress.setAddress2(longString);
 		personAddress.setCityVillage(longString);

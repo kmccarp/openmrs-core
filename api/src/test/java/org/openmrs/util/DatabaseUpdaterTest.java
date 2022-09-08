@@ -62,7 +62,7 @@ public class DatabaseUpdaterTest extends BaseContextSensitiveTest {
 	@Test
 	public void shouldRejectNullAsChangelogFilenames() {
 		try {
-			DatabaseUpdater.getUnrunDatabaseChanges((String[]) null);
+			DatabaseUpdater.getUnrunDatabaseChanges((/*~~>*//*~~>*/String[]) null);
 			fail();
 		}
 		catch (RuntimeException re) {
@@ -73,7 +73,7 @@ public class DatabaseUpdaterTest extends BaseContextSensitiveTest {
 	@Test
 	public void shouldRejectEmptyArrayAsChangelogFilenames() {
 		try {
-			DatabaseUpdater.getUnrunDatabaseChanges(new String[0]);
+			DatabaseUpdater.getUnrunDatabaseChanges(new /*~~>*/String[0]);
 			fail();
 		}
 		catch (RuntimeException re) {
@@ -98,11 +98,11 @@ public class DatabaseUpdaterTest extends BaseContextSensitiveTest {
 	
 	private void copyResourcesToApplicationDataDirectory() throws Exception {
 		File appDataDir = OpenmrsUtil.getApplicationDataDirectoryAsFile();
-		String[] files = {"testLiquibase.xml", "sql/testSqlFile.sql"};
-		for (String fileName : files) {
-			String inputResource = "org/openmrs/util/" + fileName;
+		/*~~>*/String[] files = {"testLiquibase.xml", "sql/testSqlFile.sql"};
+		for (/*~~>*/String fileName : files) {
+			/*~~>*/String inputResource = "org/openmrs/util/" + fileName;
 			InputStream in = getClass().getClassLoader().getResourceAsStream(inputResource);
-			String contents = IOUtils.toString(in, "UTF-8");
+			/*~~>*/String contents = IOUtils.toString(in, "UTF-8");
 			File outputFile = new File(appDataDir, fileName);
 			FileUtils.write(outputFile, contents, "UTF-8");
 		}

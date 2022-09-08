@@ -54,7 +54,7 @@ public interface ProviderDAO {
 	 * @return Provider gets the Provider based on uuid
 	 */
 	
-	public Provider getProviderByUuid(String uuid);
+	public Provider getProviderByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @see ProviderService#getProvidersByPerson( Person, boolean )
@@ -69,7 +69,7 @@ public interface ProviderDAO {
 	 * @param includeRetired
 	 * @return List of Providers
 	 */
-	public List<Provider> getProviders(String name, Map<ProviderAttributeType, String> serializedAttributeValues,
+	public List<Provider> getProviders(/*~~>*/String name, Map<ProviderAttributeType, /*~~>*/String> serializedAttributeValues,
 	        Integer start, Integer length, boolean includeRetired);
 	
 	/**
@@ -77,7 +77,7 @@ public interface ProviderDAO {
 	 * @param includeRetired
 	 * @return Count of providers satisfying the given query
 	 */
-	public Long getCountOfProviders(String name, boolean includeRetired);
+	public Long getCountOfProviders(/*~~>*/String name, boolean includeRetired);
 	
 	/**
 	 * @see ProviderService#getAllProviderAttributeTypes(boolean)
@@ -93,7 +93,7 @@ public interface ProviderDAO {
 	/**
 	 * @see ProviderService#getProviderAttributeTypeByUuid(String)
 	 */
-	ProviderAttributeType getProviderAttributeTypeByUuid(String uuid);
+	ProviderAttributeType getProviderAttributeTypeByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @see ProviderService#saveProviderAttributeType(ProviderAttributeType)
@@ -114,7 +114,7 @@ public interface ProviderDAO {
 	/**
 	 * @see ProviderService#getProviderAttributeByUuid(String)
 	 */
-	ProviderAttribute getProviderAttributeByUuid(String uuid);
+	ProviderAttribute getProviderAttributeByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @see ProviderService#isProviderIdentifierUnique(Provider)
@@ -124,5 +124,5 @@ public interface ProviderDAO {
 	/**
 	 * @see ProviderService#getProviderByIdentifier(String)
 	 */
-	public Provider getProviderByIdentifier(String identifier);
+	public Provider getProviderByIdentifier(/*~~>*/String identifier);
 }

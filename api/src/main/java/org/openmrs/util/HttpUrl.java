@@ -22,7 +22,7 @@ public class HttpUrl {
 	
 	private final URL url;
 	
-	public HttpUrl(String url) throws MalformedURLException {
+	public HttpUrl(/*~~>*/String url) throws MalformedURLException {
 		if (url == null) {
 			throw new MalformedURLException("Url cannot be null");
 		} else if (!url.startsWith("http://") && !url.startsWith("https://")) {
@@ -37,7 +37,7 @@ public class HttpUrl {
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return url.toString();
 	}
 }

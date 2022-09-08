@@ -23,7 +23,7 @@ public interface MessageSourceService extends MutableMessageSource {
 	 * @param s message code to retrieve
 	 * @return the translated message
 	 */
-	public String getMessage(String s);
+	public /*~~>*/String getMessage(/*~~>*/String s);
 	
 	/**
 	 * Gets the message source service which is currently providing services.

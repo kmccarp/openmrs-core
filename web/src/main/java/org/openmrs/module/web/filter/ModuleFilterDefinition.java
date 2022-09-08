@@ -48,11 +48,11 @@ public class ModuleFilterDefinition implements Serializable {
 	// Properties
 	private Module module;
 	
-	private String filterName;
+	private /*~~>*/String filterName;
 	
-	private String filterClass;
+	private /*~~>*/String filterClass;
 	
-	private Map<String, String> initParameters = new HashMap<>();
+	private Map</*~~>*/String, /*~~>*/String> initParameters = new HashMap<>();
 	
 	/**
 	 * Default constructor, requires a Module
@@ -80,42 +80,42 @@ public class ModuleFilterDefinition implements Serializable {
 	/**
 	 * @return - the name of the Filter
 	 */
-	public String getFilterName() {
+	public /*~~>*/String getFilterName() {
 		return filterName;
 	}
 	
 	/**
 	 * @param filterName the name of the filter
 	 */
-	public void setFilterName(String filterName) {
-		this.filterName = filterName;
+	public void setFilterName(/*~~>*/String filterName) {
+		/*~~>*/this.filterName = filterName;
 	}
 	
 	/**
 	 * @return - the class name of the filter
 	 */
-	public String getFilterClass() {
+	public /*~~>*/String getFilterClass() {
 		return filterClass;
 	}
 	
 	/**
 	 * @param filterClass the class name of the filter
 	 */
-	public void setFilterClass(String filterClass) {
-		this.filterClass = filterClass;
+	public void setFilterClass(/*~~>*/String filterClass) {
+		/*~~>*/this.filterClass = filterClass;
 	}
 	
 	/**
 	 * @return - A map of parameters to use to initialize the filter
 	 */
-	public Map<String, String> getInitParameters() {
+	public Map</*~~>*/String, /*~~>*/String> getInitParameters() {
 		return initParameters;
 	}
 	
 	/**
 	 * #param - A map of parameters to use to initialize the filter
 	 */
-	public void setInitParameters(Map<String, String> initParameters) {
+	public void setInitParameters(Map</*~~>*/String, /*~~>*/String> initParameters) {
 		this.initParameters = initParameters;
 	}
 	
@@ -125,7 +125,7 @@ public class ModuleFilterDefinition implements Serializable {
 	 * @param parameterName - The name of the parameter
 	 * @param parameterValue - The value of the parameter
 	 */
-	public void addInitParameter(String parameterName, String parameterValue) {
+	public void addInitParameter(/*~~>*/String parameterName, /*~~>*/String parameterValue) {
 		this.initParameters.put(parameterName, parameterValue);
 	}
 	
@@ -174,8 +174,8 @@ public class ModuleFilterDefinition implements Serializable {
 								break;
 							case "init-param":
 								NodeList paramNodes = configNode.getChildNodes();
-								String paramName = "";
-								String paramValue = "";
+								/*~~>*/String paramName = "";
+								/*~~>*/String paramValue = "";
 								for (int k = 0; k < paramNodes.getLength(); k++) {
 									Node paramNode = paramNodes.item(k);
 									if ("param-name".equals(paramNode.getNodeName())) {

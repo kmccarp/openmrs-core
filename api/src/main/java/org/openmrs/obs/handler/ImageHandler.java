@@ -44,11 +44,11 @@ import org.slf4j.LoggerFactory;
 public class ImageHandler extends AbstractHandler implements ComplexObsHandler {
 	
 	/** Views supported by this handler */
-	private static final String[] supportedViews = { ComplexObsHandler.RAW_VIEW };
+	private static final /*~~>*/String[] supportedViews = { /*~~>*/ComplexObsHandler.RAW_VIEW };
 	
 	private static final Logger log = LoggerFactory.getLogger(ImageHandler.class);
 	
-	private Set<String> extensions;
+	private Set</*~~>*/String> extensions;
 	
 	/**
 	 * Constructor initializes formats for alternative file names to protect from unintentionally
@@ -68,11 +68,11 @@ public class ImageHandler extends AbstractHandler implements ComplexObsHandler {
 	 * @see org.openmrs.obs.ComplexObsHandler#getObs(org.openmrs.Obs, java.lang.String)
 	 */
 	@Override
-	public Obs getObs(Obs obs, String view) {
+	public Obs getObs(Obs obs, /*~~>*/String view) {
 		File file = getComplexDataFile(obs);
 		
 		// Raw image
-		if (ComplexObsHandler.RAW_VIEW.equals(view)) {
+		if (/*~~>*/ComplexObsHandler.RAW_VIEW.equals(view)) {
 			BufferedImage img = null;
 			try {
 				img = ImageIO.read(file);
@@ -83,7 +83,7 @@ public class ImageHandler extends AbstractHandler implements ComplexObsHandler {
 			
 			ComplexData complexData = new ComplexData(file.getName(), img);
 			
-			String mimeType = null;
+			/*~~>*/String mimeType = null;
 			
 			// Image MIME type
 			try {
@@ -122,7 +122,7 @@ public class ImageHandler extends AbstractHandler implements ComplexObsHandler {
 	 * @see org.openmrs.obs.ComplexObsHandler#getSupportedViews()
 	 */
 	@Override
-	public String[] getSupportedViews() {
+	public /*~~>*//*~~>*/String[] getSupportedViews() {
 		return supportedViews;
 	}
 	
@@ -166,7 +166,7 @@ public class ImageHandler extends AbstractHandler implements ComplexObsHandler {
 		try {
 			outfile = getOutputFileToWrite(obs);
 			
-			String extension = getExtension(obs.getComplexData().getTitle());
+			/*~~>*/String extension = getExtension(obs.getComplexData().getTitle());
 			
 			// TODO: Check this extension against the registered extensions for validity
 			

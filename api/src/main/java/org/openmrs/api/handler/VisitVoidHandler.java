@@ -32,7 +32,7 @@ import org.openmrs.api.context.Context;
 public class VisitVoidHandler implements VoidHandler<Visit> {
 	
 	@Override
-	public void handle(Visit voidableObject, User voidingUser, Date voidedDate, String voidReason) {
+	public void handle(Visit voidableObject, User voidingUser, Date voidedDate, /*~~>*/String voidReason) {
 		List<Encounter> encountersByVisit = Context.getEncounterService().getEncountersByVisit(voidableObject, false);
 		for (Encounter encounter : encountersByVisit) {
 			encounter.setDateVoided(voidedDate);

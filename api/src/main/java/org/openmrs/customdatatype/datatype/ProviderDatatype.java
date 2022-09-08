@@ -27,7 +27,7 @@ public class ProviderDatatype extends BaseMetadataDatatype<Provider> {
 	 * @override
 	 */
 	@Override
-	public Provider deserialize(String uuid) {
+	public Provider deserialize(/*~~>*/String uuid) {
 		if (StringUtils.isBlank(uuid)) {
 			return null;
 		}

@@ -68,7 +68,7 @@ public class LocationUtility implements GlobalPropertyListener {
 	 * @see org.openmrs.api.GlobalPropertyListener#globalPropertyDeleted(java.lang.String)
 	 */
 	@Override
-	public void globalPropertyDeleted(String propertyName) {
+	public void globalPropertyDeleted(/*~~>*/String propertyName) {
 		// reset the value
 		setDefaultLocation(null);
 	}
@@ -77,8 +77,8 @@ public class LocationUtility implements GlobalPropertyListener {
 	 * @see org.openmrs.api.GlobalPropertyListener#supportsPropertyName(java.lang.String)
 	 */
 	@Override
-	public boolean supportsPropertyName(String propertyName) {
-		return propertyName.equals(OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCATION_NAME);
+	public boolean supportsPropertyName(/*~~>*/String propertyName) {
+		return propertyName.equals(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCATION_NAME);
 	}
 	
 }

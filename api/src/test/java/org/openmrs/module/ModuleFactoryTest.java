@@ -27,24 +27,24 @@ import org.openmrs.test.jupiter.BaseContextSensitiveTest;
 
 public class ModuleFactoryTest extends BaseContextSensitiveTest {
 	
-	protected static final String MODULE1 = "test1";
+	protected static final /*~~>*/String MODULE1 = "test1";
 	
-	protected static final String MODULE1_PATH = "org/openmrs/module/include/test1-1.0-SNAPSHOT.omod";
-	protected static final String MODULE1_UPDATE_PATH = "org/openmrs/module/include/test1-2.0-SNAPSHOT.omod";
+	protected static final /*~~>*/String MODULE1_PATH = "org/openmrs/module/include/test1-1.0-SNAPSHOT.omod";
+	protected static final /*~~>*/String MODULE1_UPDATE_PATH = "org/openmrs/module/include/test1-2.0-SNAPSHOT.omod";
 	
-	protected static final String MODULE2 = "test2";
-	protected static final String MODULE2_PATH = "org/openmrs/module/include/test2-1.0-SNAPSHOT.omod";
+	protected static final /*~~>*/String MODULE2 = "test2";
+	protected static final /*~~>*/String MODULE2_PATH = "org/openmrs/module/include/test2-1.0-SNAPSHOT.omod";
 	
-	protected static final String MODULE3 = "test3";
-	protected static final String MODULE3_PATH = "org/openmrs/module/include/test3-1.0-SNAPSHOT.omod";
+	protected static final /*~~>*/String MODULE3 = "test3";
+	protected static final /*~~>*/String MODULE3_PATH = "org/openmrs/module/include/test3-1.0-SNAPSHOT.omod";
 	
 	@BeforeEach
 	public void before() {
 		ModuleUtil.shutdown();
 		
-		String modulesToLoad = MODULE1_PATH + " ";
+		/*~~>*/String modulesToLoad = MODULE1_PATH + " ";
 		       
-		runtimeProperties.setProperty(ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD, modulesToLoad);
+		runtimeProperties.setProperty(/*~~>*/ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD, modulesToLoad);
 		ModuleUtil.startup(runtimeProperties);
 	}
 	
@@ -132,7 +132,7 @@ public class ModuleFactoryTest extends BaseContextSensitiveTest {
 	@Test
 	public void loadModules_shouldNotCrashWhenFileIsNotFoundOrBroken() {
 		ModuleFactory.unloadModule(ModuleFactory.getModuleById(MODULE1));
-		String moduleLocation = ModuleUtil.class.getClassLoader().getResource(MODULE1_PATH).getPath();
+		/*~~>*/String moduleLocation = ModuleUtil.class.getClassLoader().getResource(MODULE1_PATH).getPath();
 		moduleLocation += "/i/broke/this/path/module.omod";
 		File moduleToLoad = new File(moduleLocation);
 		
@@ -179,8 +179,8 @@ public class ModuleFactoryTest extends BaseContextSensitiveTest {
 		assertFalse(test3.isStarted());
 	}
 	
-	private Module loadModule(String location, String moduleName, boolean replace) {
-		String moduleLocation = ModuleUtil.class.getClassLoader().getResource(location).getPath();
+	private Module loadModule(/*~~>*/String location, /*~~>*/String moduleName, boolean replace) {
+		/*~~>*/String moduleLocation = ModuleUtil.class.getClassLoader().getResource(location).getPath();
 
 		return ModuleFactory.loadModule(new File(moduleLocation), replace);
 	}

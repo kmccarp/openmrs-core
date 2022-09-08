@@ -16,15 +16,15 @@ package org.openmrs.api;
  */
 public class MissingRequiredPropertyException extends APIException {
 	
-	public MissingRequiredPropertyException(String message) {
+	public MissingRequiredPropertyException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public MissingRequiredPropertyException(String message, Throwable cause) {
+	public MissingRequiredPropertyException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	
-	public MissingRequiredPropertyException(String messageKey, Object[] parameters) {
+	public MissingRequiredPropertyException(/*~~>*/String messageKey, Object[] parameters) {
 		super(messageKey, parameters);
 	}
 	
@@ -32,7 +32,7 @@ public class MissingRequiredPropertyException extends APIException {
 	 * @param clazz the class of the object on which the property is required
 	 * @param property the name of the missing required property
 	 */
-	public MissingRequiredPropertyException(Class clazz, String property) {
+	public MissingRequiredPropertyException(Class clazz, /*~~>*/String property) {
 		this(clazz.getName() + "." + property + " is required");
 	}
 }

@@ -32,7 +32,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class HibernateAlertDAOTest extends BaseContextSensitiveTest {
 
-	private static final String DATA_XML = "org/openmrs/api/db/hibernate/include/HibernateAlertDAOTestDataSet.xml";
+	private static final /*~~>*/String DATA_XML = "org/openmrs/api/db/hibernate/include/HibernateAlertDAOTestDataSet.xml";
 
 	@Autowired
 	private HibernateAlertDAO hibernateAlertDAO;

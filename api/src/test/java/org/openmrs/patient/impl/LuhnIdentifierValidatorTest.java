@@ -25,7 +25,7 @@ public class LuhnIdentifierValidatorTest {
 	
 	private LuhnIdentifierValidator validator = new LuhnIdentifierValidator();
 	
-	private String[] allowedIdentifiers = { "a", "123456", "ab32kcdak3", "chaseisreallycoolyay", "1", "moose", "MOOSE",
+	private /*~~>*/String[] allowedIdentifiers = { "a", "123456", "ab32kcdak3", "chaseisreallycoolyay", "1", "moose", "MOOSE",
 	        "MooSE", "adD3Eddf429daD999" };
 	
 	private char[] allowedIdentifiersCheckDigits = { 'D', 'G', 'J', 'H', 'I', 'H', 'H', 'H', 'B' };
@@ -36,7 +36,7 @@ public class LuhnIdentifierValidatorTest {
 	
 	private int[] allowedIdentifiersCheckDigitsInts = { 3, 6, 9, 7, 8, 7, 7, 7, 1 };
 	
-	private String[] invalidIdentifiers = { "", " ", "-", "adsfalasdf-adfasdf", "ABC DEF", "!234*", "++", " ABC", "def " };
+	private /*~~>*/String[] invalidIdentifiers = { "", " ", "-", "adsfalasdf-adfasdf", "ABC DEF", "!234*", "++", " ABC", "def " };
 	
 	/**
 	 * @see LuhnIdentifierValidator#getValidIdentifier(String)
@@ -59,7 +59,7 @@ public class LuhnIdentifierValidatorTest {
 	public void getValidIdentifier_shouldFailWithInvalidIdentifiers() {
 		//Make sure invalid identifiers throw an exception
 
-		for (String invalidIdentifier : invalidIdentifiers) {
+		for (/*~~>*/String invalidIdentifier : invalidIdentifiers) {
 			assertThrows(UnallowedIdentifierException.class, () -> validator.getValidIdentifier(invalidIdentifier));
 		}
 	}
@@ -71,21 +71,21 @@ public class LuhnIdentifierValidatorTest {
 	public void shouldValidate() {
 		//Make sure invalid identifiers throw an exception
 
-		for (String invalidIdentifier1 : invalidIdentifiers) {
+		for (/*~~>*/String invalidIdentifier1 : invalidIdentifiers) {
 			assertThrows(UnallowedIdentifierException.class, () -> validator.isValid(invalidIdentifier1));
 		}
 
-		for (String invalidIdentifier : invalidIdentifiers) {
+		for (/*~~>*/String invalidIdentifier : invalidIdentifiers) {
 			assertThrows(UnallowedIdentifierException.class, () -> validator.isValid(invalidIdentifier + "-H"));
 		}
 
-		for (String allowedIdentifier1 : allowedIdentifiers) {
+		for (/*~~>*/String allowedIdentifier1 : allowedIdentifiers) {
 			assertThrows(UnallowedIdentifierException.class, () -> validator.isValid(allowedIdentifier1 + "-X"));
 			assertThrows(UnallowedIdentifierException.class, () -> validator.isValid(allowedIdentifier1 + "-10"));
 		}
 		
 		//Now test allowed identifiers that just have the wrong check digit.
-		for (String allowedIdentifier : allowedIdentifiers) {
+		for (/*~~>*/String allowedIdentifier : allowedIdentifiers) {
 			assertFalse(validator.isValid(allowedIdentifier + "-" + unusedCheckDigit));
 			assertFalse(validator.isValid(allowedIdentifier + "-" + unusedCheckDigitInt));
 		}

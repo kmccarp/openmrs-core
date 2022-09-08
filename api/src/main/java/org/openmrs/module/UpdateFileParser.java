@@ -33,22 +33,22 @@ public class UpdateFileParser {
 	
 	private static final Logger log = LoggerFactory.getLogger(UpdateFileParser.class);
 	
-	private String content;
+	private /*~~>*/String content;
 	
 	// these properties store the 'best fit' (most recent update that will fit with the current code version)
-	private String moduleId = null;
+	private /*~~>*/String moduleId = null;
 	
-	private String currentVersion = null;
+	private /*~~>*/String currentVersion = null;
 	
-	private String downloadURL = null;
+	private /*~~>*/String downloadURL = null;
 	
 	/**
 	 * Default constructor
 	 *
 	 * @param s String to parse (Contents of update.rdf file)
 	 */
-	public UpdateFileParser(String s) {
-		this.content = s;
+	public UpdateFileParser(/*~~>*/String s) {
+		/*~~>*/this.content = s;
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public class UpdateFileParser {
 			
 			Element rootNode = updateDoc.getDocumentElement();
 			
-			String configVersion = rootNode.getAttribute("configVersion");
+			/*~~>*/String configVersion = rootNode.getAttribute("configVersion");
 			
 			if (!validConfigVersions().contains(configVersion)) {
 				throw new ModuleException("Invalid configVersion: '" + configVersion + "' found In content: " + content);
@@ -91,30 +91,30 @@ public class UpdateFileParser {
 			
 			if ("1.0".equals(configVersion)) {
 				// the only update in the xml file is the 'best fit'
-				this.moduleId = getElement(rootNode, configVersion, "moduleId");
-				this.currentVersion = getElement(rootNode, configVersion, "currentVersion");
-				this.downloadURL = getElement(rootNode, configVersion, "downloadURL");
+				/*~~>*/this.moduleId = getElement(rootNode, configVersion, "moduleId");
+				/*~~>*/this.currentVersion = getElement(rootNode, configVersion, "currentVersion");
+				/*~~>*/this.downloadURL = getElement(rootNode, configVersion, "downloadURL");
 			} else if ("1.1".equals(configVersion)) {
 				
-				this.moduleId = rootNode.getAttribute("moduleId");
+				/*~~>*/this.moduleId = rootNode.getAttribute("moduleId");
 				
 				NodeList nodes = rootNode.getElementsByTagName("update");
 				// default to the lowest version possible
-				this.currentVersion = "";
+				/*~~>*/this.currentVersion = "";
 				
 				// loop over all 'update' tags
 				for (int i = 0; i < nodes.getLength(); i++) {
 					Element currentNode = (Element) nodes.item(i);
-					String currentVersion = getElement(currentNode, configVersion, "currentVersion");
+					/*~~>*/String currentVersion = getElement(currentNode, configVersion, "currentVersion");
 					// if the currently saved version is less than the current tag
-					if (ModuleUtil.compareVersion(this.currentVersion, currentVersion) < 0) {
-						String requireOpenMRSVersion = getElement(currentNode, configVersion, "requireOpenMRSVersion");
+					if (ModuleUtil.compareVersion(/*~~>*/this.currentVersion, currentVersion) < 0) {
+						/*~~>*/String requireOpenMRSVersion = getElement(currentNode, configVersion, "requireOpenMRSVersion");
 						// if the openmrs code version is compatible, this node is a winner
 						if (requireOpenMRSVersion == null
-						        || ModuleUtil.matchRequiredVersions(OpenmrsConstants.OPENMRS_VERSION_SHORT,
+						        || ModuleUtil.matchRequiredVersions(/*~~>*/OpenmrsConstants.OPENMRS_VERSION_SHORT,
 						            requireOpenMRSVersion)) {
-							this.currentVersion = currentVersion;
-							this.downloadURL = getElement(currentNode, configVersion, "downloadURL");
+							/*~~>*/this.currentVersion = currentVersion;
+							/*~~>*/this.downloadURL = getElement(currentNode, configVersion, "downloadURL");
 						}
 					}
 				}
@@ -140,7 +140,7 @@ public class UpdateFileParser {
 	 * @param tag
 	 * @return
 	 */
-	private static String getElement(Element element, String version, String tag) {
+	private static /*~~>*/String getElement(Element element, /*~~>*/String version, /*~~>*/String tag) {
 		if (element.getElementsByTagName(tag).getLength() > 0) {
 			return element.getElementsByTagName(tag).item(0).getTextContent();
 		}
@@ -152,8 +152,8 @@ public class UpdateFileParser {
 	 *
 	 * @return
 	 */
-	private static List<String> validConfigVersions() {
-		List<String> versions = new ArrayList<>();
+	private static List</*~~>*/String> validConfigVersions() {
+		List</*~~>*/String> versions = new ArrayList<>();
 		versions.add("1.0");
 		versions.add("1.1");
 		return versions;
@@ -162,21 +162,21 @@ public class UpdateFileParser {
 	/**
 	 * @return the downloadURL
 	 */
-	public String getDownloadURL() {
+	public /*~~>*/String getDownloadURL() {
 		return downloadURL;
 	}
 	
 	/**
 	 * @return the moduleId
 	 */
-	public String getModuleId() {
+	public /*~~>*/String getModuleId() {
 		return moduleId;
 	}
 	
 	/**
 	 * @return the version
 	 */
-	public String getCurrentVersion() {
+	public /*~~>*/String getCurrentVersion() {
 		return currentVersion;
 	}
 	

@@ -49,7 +49,7 @@ import org.w3c.dom.ls.LSSerializer;
  */
 public class ModuleFileParserTest extends BaseContextSensitiveTest {
 
-	private static final String LOGIC_MODULE_PATH = "org/openmrs/module/include/logic-0.2.omod";
+	private static final /*~~>*/String LOGIC_MODULE_PATH = "org/openmrs/module/include/logic-0.2.omod";
 
 	private static DocumentBuilderFactory documentBuilderFactory;
 
@@ -119,8 +119,8 @@ public class ModuleFileParserTest extends BaseContextSensitiveTest {
 		// which takes care of getting the users current locale and allows us
 		// to mock it using mockito
 
-		String invalidConfigVersion = "0.0.1";
-		String expectedMessage = messageSourceService
+		/*~~>*/String invalidConfigVersion = "0.0.1";
+		/*~~>*/String expectedMessage = messageSourceService
 			.getMessage("Module.error.invalidConfigVersion",
 				new Object[] { invalidConfigVersion, "1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6" }, Context.getLocale());
 
@@ -150,13 +150,13 @@ public class ModuleFileParserTest extends BaseContextSensitiveTest {
 		assertThat(module.getMappingFiles(), hasItems("LogicRuleToken.hbm.xml"));
 	}
 
-	private void expectModuleExceptionWithTranslatedMessage(Executable executable, String s) {
-		String expectedMessage = messageSourceService.getMessage(s);
+	private void expectModuleExceptionWithTranslatedMessage(Executable executable, /*~~>*/String s) {
+		/*~~>*/String expectedMessage = messageSourceService.getMessage(s);
 		expectModuleExceptionWithMessage(executable, expectedMessage);
 	}
 
-	private void expectModuleExceptionWithMessage(Executable executable, String s) {
-		String expectedMessage = messageSourceService.getMessage(s);
+	private void expectModuleExceptionWithMessage(Executable executable, /*~~>*/String s) {
+		/*~~>*/String expectedMessage = messageSourceService.getMessage(s);
 		ModuleException exception = assertThrows(ModuleException.class, executable);
 		assertThat(exception.getMessage(), startsWith(expectedMessage));
 	}

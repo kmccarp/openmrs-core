@@ -39,7 +39,7 @@ public interface CohortDAO {
 	 * @param name
 	 * @return The Cohort with the given name, or null if none exists
 	 */
-	Cohort getCohort(String name);
+	Cohort getCohort(/*~~>*/String name);
 	
 	/**
 	 * Gets all cohorts in the database
@@ -75,7 +75,7 @@ public interface CohortDAO {
 	 * @param nameFragment
 	 * @return List&lt;Cohort&gt; object of matching Cohorts
 	 */
-	List<Cohort> getCohorts(String nameFragment) throws DAOException;
+	List<Cohort> getCohorts(/*~~>*/String nameFragment) throws DAOException;
 	
 	/**
 	 * Removes a cohort from the database
@@ -89,14 +89,14 @@ public interface CohortDAO {
 	 * @param uuid
 	 * @return cohort or null
 	 */
-	Cohort getCohortByUuid(String uuid);
+	Cohort getCohortByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @param uuid
 	 * @return cohort membership or null
 	 * @since 2.1.0
 	 */
-	CohortMembership getCohortMembershipByUuid(String uuid);
+	CohortMembership getCohortMembershipByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @param patientId

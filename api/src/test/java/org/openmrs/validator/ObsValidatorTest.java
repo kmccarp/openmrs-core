@@ -327,7 +327,7 @@ public class ObsValidatorTest extends BaseContextSensitiveTest {
 		obs.setObsDatetime(new Date());
 		Concept questionConcept = new Concept(100);
 		ConceptDatatype dt = new ConceptDatatype(1);
-		dt.setUuid(ConceptDatatype.CODED_UUID);
+		dt.setUuid(/*~~>*/ConceptDatatype.CODED_UUID);
 		questionConcept.setDatatype(dt);
 		obs.setConcept(questionConcept);
 		obs.setValueCoded(new Concept(101));
@@ -351,7 +351,7 @@ public class ObsValidatorTest extends BaseContextSensitiveTest {
 		obs.setObsDatetime(new Date());
 		Concept questionConcept = new Concept(100);
 		ConceptDatatype dt = new ConceptDatatype(1);
-		dt.setUuid(ConceptDatatype.CODED_UUID);
+		dt.setUuid(/*~~>*/ConceptDatatype.CODED_UUID);
 		questionConcept.setDatatype(dt);
 		obs.setConcept(questionConcept);
 		Concept answerConcept = new Concept(101);

@@ -20,19 +20,19 @@ public class BasicAuthenticated implements Authenticated {
 	
 	private User user;
 	
-	private String authenticationScheme;
+	private /*~~>*/String authenticationScheme;
 	
-	public BasicAuthenticated(User user, String authenticationScheme) {
+	public BasicAuthenticated(User user, /*~~>*/String authenticationScheme) {
 		this.user = user;
-		this.authenticationScheme = authenticationScheme;
+		/*~~>*/this.authenticationScheme = authenticationScheme;
 	}
 	
-	public String getAuthenticationScheme() {
-		return this.authenticationScheme;
+	public /*~~>*/String getAuthenticationScheme() {
+		return /*~~>*/this.authenticationScheme;
 	}
 	
-	public void setAuthenticationScheme(String authenticationScheme) {
-		this.authenticationScheme = authenticationScheme;
+	public void setAuthenticationScheme(/*~~>*/String authenticationScheme) {
+		/*~~>*/this.authenticationScheme = authenticationScheme;
 	}
 	
 	public User getUser() {

@@ -22,7 +22,7 @@ public class ConceptComplex extends Concept {
 	
 	public static final long serialVersionUID = 473231233L;
 	
-	private String handler;
+	private /*~~>*/String handler;
 	
 	/**
 	 * Default Constructor
@@ -43,9 +43,9 @@ public class ConceptComplex extends Concept {
 	 * @param conceptId
 	 * @param handler
 	 */
-	public ConceptComplex(Integer conceptId, String handler) {
+	public ConceptComplex(Integer conceptId, /*~~>*/String handler) {
 		super(conceptId);
-		this.handler = handler;
+		/*~~>*/this.handler = handler;
 	}
 	
 	/**
@@ -71,7 +71,7 @@ public class ConceptComplex extends Concept {
 		this.setVersion(c.getVersion());
 		this.setUuid(c.getUuid());
 		
-		this.handler = "";
+		/*~~>*/this.handler = "";
 	}
 	
 	/**
@@ -93,15 +93,15 @@ public class ConceptComplex extends Concept {
 	 *
 	 * @param handler
 	 */
-	public void setHandler(String handler) {
-		this.handler = handler;
+	public void setHandler(/*~~>*/String handler) {
+		/*~~>*/this.handler = handler;
 	}
 	
 	/**
 	 * @return Returns the key to the ComplexObsHandler associated with this ConceptComplex.
 	 */
-	public String getHandler() {
-		return this.handler;
+	public /*~~>*/String getHandler() {
+		return /*~~>*/this.handler;
 	}
 	
 }

@@ -30,7 +30,7 @@ public class SecurityTest {
 	 */
 	@Test
 	public void encodeString_shouldEncodeStringsTo128Characters() {
-		String hash = Security.encodeString("test" + "c788c6ad82a157b712392ca695dfcf2eed193d7f");
+		/*~~>*/String hash = Security.encodeString("test" + "c788c6ad82a157b712392ca695dfcf2eed193d7f");
 		assertEquals(HASH_LENGTH, hash.length());
 	}
 	
@@ -39,7 +39,7 @@ public class SecurityTest {
 	 */
 	@Test
 	public void encodeString_shouldEncodeStringsToXCharactersWithXCharactersSalt() {
-		String hash = Security.encodeString("test" + Security.getRandomToken());
+		/*~~>*/String hash = Security.encodeString("test" + Security.getRandomToken());
 		assertEquals(HASH_LENGTH, hash.length());
 	}
 	
@@ -57,8 +57,8 @@ public class SecurityTest {
 	 */
 	@Test
 	public void hashMatches_shouldMatchStringsHashedWithSha512AlgorithmAnd128CharactersSalt() {
-		String password = "1d1436658853aceceadd72e92f1ae9089a0000fbb38cea519ce34eae9f28523930ecb212177dbd607d83dc275fde3e9ca648deb557d503ad0bcd01a955a394b2";
-		String passwordToHash = "test"
+		/*~~>*/String password = "1d1436658853aceceadd72e92f1ae9089a0000fbb38cea519ce34eae9f28523930ecb212177dbd607d83dc275fde3e9ca648deb557d503ad0bcd01a955a394b2";
+		/*~~>*/String passwordToHash = "test"
 		        + "0d7bb319434295261601202e14494b959cdd69c6ceb54ee3890e176ae780ce9edf797f48afde5f39906a6bd75b8a5feeac8f5339615acf7429c7dda85220d329";
 		assertTrue(Security.hashMatches(password, passwordToHash));
 	}
@@ -83,9 +83,9 @@ public class SecurityTest {
 		byte[] secretKey = base64.decode("dTfyELRrAICGDwzjHDjuhw==");
 		
 		// perform decryption
-		String expected = "this is fantasmic";
-		String encrypted = "GnMz8qETyKMv+edLpYqWfBhR+lX6JlkocNGwHhmhXSY=";
-		String actual = Security.decrypt(encrypted, initVector, secretKey);
+		/*~~>*/String expected = "this is fantasmic";
+		/*~~>*/String encrypted = "GnMz8qETyKMv+edLpYqWfBhR+lX6JlkocNGwHhmhXSY=";
+		/*~~>*/String actual = Security.decrypt(encrypted, initVector, secretKey);
 		assertTrue(OpenmrsUtil.nullSafeEquals(expected, actual));
 		
 		expected = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta sapien ac nisi imperdiet posuere. Ma"
@@ -188,10 +188,10 @@ public class SecurityTest {
 	@Test
 	public void encrypt_shouldEncryptShortAndLongText() {
 		// small text
-		String expected = "a";
-		String encrypted = Security.encrypt(expected);
+		/*~~>*/String expected = "a";
+		/*~~>*/String encrypted = Security.encrypt(expected);
 		assertTrue(StringUtils.hasText(encrypted));
-		String actual = Security.decrypt(encrypted);
+		/*~~>*/String actual = Security.decrypt(encrypted);
 		assertTrue(OpenmrsUtil.nullSafeEquals(expected, actual));
 		
 		// long text

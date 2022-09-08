@@ -23,9 +23,9 @@ public class HL7InError extends HL7QueueItem {
 	
 	private Integer hl7InErrorId;
 	
-	private String error;
+	private /*~~>*/String error;
 	
-	private String errorDetails;
+	private /*~~>*/String errorDetails;
 	
 	/**
 	 * Default constructor
@@ -60,33 +60,33 @@ public class HL7InError extends HL7QueueItem {
 	/**
 	 * @return Returns the error.
 	 */
-	public String getError() {
+	public /*~~>*/String getError() {
 		return error;
 	}
 	
 	/**
 	 * @param error The error to set.
 	 */
-	public void setError(String error) {
-		this.error = error;
+	public void setError(/*~~>*/String error) {
+		/*~~>*/this.error = error;
 	}
 	
 	/**
 	 * @return Returns the errorDetails.
 	 */
-	public String getErrorDetails() {
+	public /*~~>*/String getErrorDetails() {
 		return errorDetails;
 	}
 	
 	/**
 	 * @param errorDetails The errorDetails to set.
 	 */
-	public void setErrorDetails(String errorDetails) {
+	public void setErrorDetails(/*~~>*/String errorDetails) {
 		if (errorDetails != null && errorDetails.length() > MAX_ERROR_DETAILS_LENGTH) {
 			throw new APIException("Hl7inError.error.details.length", new Object[] { errorDetails.length(),
 			        MAX_ERROR_DETAILS_LENGTH });
 		}
-		this.errorDetails = errorDetails;
+		/*~~>*/this.errorDetails = errorDetails;
 	}
 	
 	/**

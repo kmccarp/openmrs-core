@@ -86,7 +86,7 @@ public class HibernatePatientDAOTest extends BaseContextSensitiveTest {
 		hibernatePatientDao.savePatient(new Patient(person2));
 
 		// when
-		List<String> attributes = Arrays.asList("givenName", "middleName", "familyName");
+		List</*~~>*/String> attributes = Arrays.asList("givenName", "middleName", "familyName");
 		Collections.shuffle(attributes); // random order of attributes to make sure this test isn't flaky
 		List<Patient> duplicatePatients = hibernatePatientDao.getDuplicatePatientsByAttributes(attributes);
 
@@ -108,7 +108,7 @@ public class HibernatePatientDAOTest extends BaseContextSensitiveTest {
 		hibernatePatientDao.savePatient(new Patient(person2));
 
 		// when
-		List<String> attributes = Arrays.asList("givenName", "middleName", "familyName");
+		List</*~~>*/String> attributes = Arrays.asList("givenName", "middleName", "familyName");
 		Collections.shuffle(attributes); // random order of attributes to make sure this test isn't flaky
 		List<Patient> duplicatePatients = hibernatePatientDao.getDuplicatePatientsByAttributes(attributes);
 
@@ -154,7 +154,7 @@ public class HibernatePatientDAOTest extends BaseContextSensitiveTest {
 		hibernatePatientDao.savePatient(new Patient(person2));
 
 		// when
-		List<String> attributes = Arrays.asList("gender", "birthdate", "givenName", "middleName", "familyName");
+		List</*~~>*/String> attributes = Arrays.asList("gender", "birthdate", "givenName", "middleName", "familyName");
 		Collections.shuffle(attributes); // random order of attributes to make sure this test isn't flaky
 		List<Patient> duplicatePatients = hibernatePatientDao.getDuplicatePatientsByAttributes(attributes);
 
@@ -180,7 +180,7 @@ public class HibernatePatientDAOTest extends BaseContextSensitiveTest {
 		hibernatePatientDao.savePatient(new Patient(person2));
 
 		// when
-		List<String> attributes = Arrays.asList("gender", "birthdate", "givenName", "middleName", "familyName");
+		List</*~~>*/String> attributes = Arrays.asList("gender", "birthdate", "givenName", "middleName", "familyName");
 		Collections.shuffle(attributes); // random order of attributes to make sure this test isn't flaky
 		List<Patient> duplicatePatients = hibernatePatientDao.getDuplicatePatientsByAttributes(attributes);
 
@@ -210,7 +210,7 @@ public class HibernatePatientDAOTest extends BaseContextSensitiveTest {
 		hibernatePatientDao.savePatient(patient2);
 
 		// when
-		List<String> attributes = Arrays.asList("gender", "identifier", "birthdate", "givenName", "middleName", "familyName");
+		List</*~~>*/String> attributes = Arrays.asList("gender", "identifier", "birthdate", "givenName", "middleName", "familyName");
 		Collections.shuffle(attributes); // random order of attributes to make sure this test isn't flaky
 		List<Patient> duplicatePatients = hibernatePatientDao.getDuplicatePatientsByAttributes(attributes);
 
@@ -245,7 +245,7 @@ public class HibernatePatientDAOTest extends BaseContextSensitiveTest {
 		Context.flushSession();
 
 		// when
-		List<String> attributes = Arrays.asList("gender", "identifier", "birthdate", "givenName", "middleName", "familyName");
+		List</*~~>*/String> attributes = Arrays.asList("gender", "identifier", "birthdate", "givenName", "middleName", "familyName");
 		Collections.shuffle(attributes); // random order of attributes to make sure this test isn't flaky
 		List<Patient> duplicatePatients = hibernatePatientDao.getDuplicatePatientsByAttributes(attributes);
 
@@ -280,7 +280,7 @@ public class HibernatePatientDAOTest extends BaseContextSensitiveTest {
 		Context.flushSession();
 
 		// when
-		List<String> attributes = Arrays.asList("gender", "identifier", "birthdate", "givenName", "middleName", "familyName", "includeVoided");
+		List</*~~>*/String> attributes = Arrays.asList("gender", "identifier", "birthdate", "givenName", "middleName", "familyName", "includeVoided");
 		Collections.shuffle(attributes); // random order of attributes to make sure this test isn't flaky
 		List<Patient> duplicatePatients = hibernatePatientDao.getDuplicatePatientsByAttributes(attributes);
 

@@ -27,7 +27,7 @@ import org.openmrs.test.jupiter.BaseContextSensitiveTest;
 
 public class HibernateProviderDAOTest extends BaseContextSensitiveTest {
 	
-	private static final String PROVIDERS_INITIAL_XML = "org/openmrs/api/include/ProviderServiceTest-initial.xml";
+	private static final /*~~>*/String PROVIDERS_INITIAL_XML = "org/openmrs/api/include/ProviderServiceTest-initial.xml";
 	
 	private HibernatePersonDAO personDao = null;
 	

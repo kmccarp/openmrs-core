@@ -18,15 +18,15 @@ public class InvalidCheckDigitException extends PatientIdentifierException {
 	public InvalidCheckDigitException() {
 	}
 	
-	public InvalidCheckDigitException(String message) {
+	public InvalidCheckDigitException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public InvalidCheckDigitException(String message, PatientIdentifier identifier) {
+	public InvalidCheckDigitException(/*~~>*/String message, PatientIdentifier identifier) {
 		super(message, identifier);
 	}
 	
-	public InvalidCheckDigitException(String message, Throwable cause) {
+	public InvalidCheckDigitException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

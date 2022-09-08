@@ -126,7 +126,7 @@ public class ProgramWorkflow extends BaseChangeableOpenmrsMetadata {
 	 * @return a {@link ProgramWorkflowState} whose {@link Concept} name matches the passed
 	 *         <code>name</code>
 	 */
-	public ProgramWorkflowState getState(String name) {
+	public ProgramWorkflowState getState(/*~~>*/String name) {
 		for (ProgramWorkflowState s : getStates()) {
 			if (s.getConcept().isNamed(name)) {
 				return s;
@@ -143,7 +143,7 @@ public class ProgramWorkflow extends BaseChangeableOpenmrsMetadata {
 	 * @return a {@link ProgramWorkflowState} which has the passed <code>name</code> in any
 	 *         {@link Locale}
 	 */
-	public ProgramWorkflowState getStateByName(String name) {
+	public ProgramWorkflowState getStateByName(/*~~>*/String name) {
 		for (ProgramWorkflowState s : getStates()) {
 			if (s.getConcept().isNamed(name)) {
 				return s;
@@ -179,7 +179,7 @@ public class ProgramWorkflow extends BaseChangeableOpenmrsMetadata {
 	 * <strong>Should</strong> sort names containing numbers intelligently
 	 */
 	public Set<ProgramWorkflowState> getSortedStates() {
-		final Comparator<String> naturalComparator = NaturalStrings.getNaturalComparator();
+		final Comparator</*~~>*/String> naturalComparator = NaturalStrings.getNaturalComparator();
 		
 		Comparator<ProgramWorkflowState> stateComparator = (o1, o2) -> naturalComparator.compare(o1.getConcept().getName().getName(), o2.getConcept().getName().getName());
 		
@@ -230,7 +230,7 @@ public class ProgramWorkflow extends BaseChangeableOpenmrsMetadata {
 	
 	/** @see Object#toString() */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "ProgramWorkflow(id=" + getProgramWorkflowId() + ")";
 	}
 	

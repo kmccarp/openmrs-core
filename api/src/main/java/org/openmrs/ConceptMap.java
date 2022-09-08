@@ -57,7 +57,7 @@ public class ConceptMap extends BaseConceptMap {
 	 * @see org.openmrs.BaseOpenmrsObject#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		if (conceptMapId == null) {
 			return "";
 		}

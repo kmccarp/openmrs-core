@@ -50,7 +50,7 @@ public class ProviderAttributeTypeValidatorTest extends BaseContextSensitiveTest
 		        .setName("too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text");
 		type
 		        .setDatatypeClassname("too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text");
-		type.setDescription(new String(new char[655555]));
+		type.setDescription(new /*~~>*/String(new char[655555]));
 		type
 		        .setPreferredHandlerClassname("too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text");
 		type

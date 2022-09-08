@@ -32,7 +32,7 @@ public class DatabaseUpdateException extends Exception {
 	 * @param message the string message to pass on
 	 * @param cause the error that occurred
 	 */
-	public DatabaseUpdateException(String message, Throwable cause) {
+	public DatabaseUpdateException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	
@@ -41,7 +41,7 @@ public class DatabaseUpdateException extends Exception {
 	 * 
 	 * @param message the string message to pass on to the user
 	 */
-	public DatabaseUpdateException(String message) {
+	public DatabaseUpdateException(/*~~>*/String message) {
 		super(message);
 	}
 	

@@ -30,7 +30,7 @@ import org.openmrs.util.OpenmrsConstants;
  */
 public class AllergiesTest extends BaseContextSensitiveTest {
 	
-	private static final String ALLERGY_OTHER_NONCODED_TEST_DATASET = "org/openmrs/api/include/otherNonCodedConcept.xml";
+	private static final /*~~>*/String ALLERGY_OTHER_NONCODED_TEST_DATASET = "org/openmrs/api/include/otherNonCodedConcept.xml";
 	
 	Allergies allergies;
 	
@@ -40,7 +40,7 @@ public class AllergiesTest extends BaseContextSensitiveTest {
 
 		executeDataSet(ALLERGY_OTHER_NONCODED_TEST_DATASET);
 		Allergen.setOtherNonCodedConceptUuid(Context.getAdministrationService().getGlobalProperty(
-			    OpenmrsConstants.GP_ALLERGEN_OTHER_NON_CODED_UUID));
+			    /*~~>*/OpenmrsConstants.GP_ALLERGEN_OTHER_NON_CODED_UUID));
 	}
 	
 	/**
@@ -52,25 +52,25 @@ public class AllergiesTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void shouldAddAllergyAndSetCorrectStatus(){
-		assertEquals(allergies.getAllergyStatus(), Allergies.UNKNOWN);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.UNKNOWN);
 		Allergy allergy = new Allergy();
 		
 		assertTrue(allergies.add(allergy));
 		assertTrue(allergies.contains(allergy));
-		assertEquals(allergies.getAllergyStatus(), Allergies.SEE_LIST);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.SEE_LIST);
 		
 		allergy = new Allergy();
 		allergies.add(0, allergy);
 		assertEquals(allergies.indexOf(allergy), 0);
 		assertEquals(allergies.get(0), allergy);
 		assertNotEquals(allergies.get(1), allergy);
-		assertEquals(allergies.getAllergyStatus(), Allergies.SEE_LIST);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.SEE_LIST);
 		
 		allergy = new Allergy();
 		allergies.set(0, allergy);
 		assertEquals(allergies.size(), 2);
 		assertEquals(allergies.get(0), allergy);
-		assertEquals(allergies.getAllergyStatus(), Allergies.SEE_LIST);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.SEE_LIST);
 	}
 	
 	/**
@@ -79,14 +79,14 @@ public class AllergiesTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void shouldAddAllergyCollectionAndSetCorrectStatus(){
-		assertEquals(allergies.getAllergyStatus(), Allergies.UNKNOWN);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.UNKNOWN);
 		List<Allergy> allergyList = new ArrayList<>();
 		for (int i = 0; i < 5; i++) {
 			allergyList.add(new Allergy());
 		}
 		
 		assertTrue(allergies.addAll(allergyList));
-		assertEquals(allergies.getAllergyStatus(), Allergies.SEE_LIST);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.SEE_LIST);
 		
 		Allergy allergy = new Allergy();
 		allergyList.clear();
@@ -97,7 +97,7 @@ public class AllergiesTest extends BaseContextSensitiveTest {
 		
 		assertTrue(allergies.addAll(2, allergyList));
 		assertEquals(allergies.get(3), allergy);
-		assertEquals(allergies.getAllergyStatus(), Allergies.SEE_LIST);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.SEE_LIST);
 	}
 	/**
 	 * @see {@link Allergies#remove(Allergy)}
@@ -105,20 +105,20 @@ public class AllergiesTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void shouldRemoveAllergyAndSetCorrectStatus(){
-		assertEquals(allergies.getAllergyStatus(), Allergies.UNKNOWN);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.UNKNOWN);
 		Allergy allergy1 = new Allergy();
 		Allergy allergy2 = new Allergy();
 		allergies.add(allergy1);
 		allergies.add(0, allergy2);
-		assertEquals(allergies.getAllergyStatus(), Allergies.SEE_LIST);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.SEE_LIST);
 		
 		assertFalse(allergies.remove(new Allergy()));
 		assertEquals(allergies.remove(0), allergy2);
 		assertEquals(allergies.size(), 1);
-		assertEquals(allergies.getAllergyStatus(), Allergies.SEE_LIST);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.SEE_LIST);
 		
 		assertTrue(allergies.remove(allergy1));
-		assertEquals(allergies.getAllergyStatus(), Allergies.UNKNOWN);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.UNKNOWN);
 	}
 	
 	/**
@@ -129,11 +129,11 @@ public class AllergiesTest extends BaseContextSensitiveTest {
 		allergies.add(new Allergy());
 		allergies.add(new Allergy());
 		assertEquals(allergies.size(), 2);
-		assertEquals(allergies.getAllergyStatus(), Allergies.SEE_LIST);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.SEE_LIST);
 		
 		allergies.clear();
 		assertEquals(allergies.size(), 0);
-		assertEquals(allergies.getAllergyStatus(), Allergies.UNKNOWN);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.UNKNOWN);
 	}
 	
 	/**
@@ -142,7 +142,7 @@ public class AllergiesTest extends BaseContextSensitiveTest {
 	@Test
 	public void shouldConfirmNoKnownAllergies(){
 		allergies.confirmNoKnownAllergies();
-		assertEquals(allergies.getAllergyStatus(), Allergies.NO_KNOWN_ALLERGIES);
+		assertEquals(allergies.getAllergyStatus(), /*~~>*/Allergies.NO_KNOWN_ALLERGIES);
 	}
 	
 	/**

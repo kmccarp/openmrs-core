@@ -59,7 +59,7 @@ public class TestUtil {
 	 * @param webappName name to use when looking up the runtime properties env var or filename
 	 * @return Properties runtime
 	 */
-	public static Properties getRuntimeProperties(String webappName) {
+	public static Properties getRuntimeProperties(/*~~>*/String webappName) {
 		
 		Properties props = new Properties();
 		
@@ -68,9 +68,9 @@ public class TestUtil {
 			
 			// Look for environment variable
 			// {WEBAPP.NAME}_RUNTIME_PROPERTIES_FILE
-			String env = webappName.toUpperCase() + "_RUNTIME_PROPERTIES_FILE";
+			/*~~>*/String env = webappName.toUpperCase() + "_RUNTIME_PROPERTIES_FILE";
 			
-			String filepath = System.getenv(env);
+			/*~~>*/String filepath = System.getenv(env);
 			
 			if (filepath != null) {
 				try {
@@ -80,7 +80,7 @@ public class TestUtil {
 			}
 			
 			// env is the name of the file to look for in the directories
-			String filename = webappName + "-runtime.properties";
+			/*~~>*/String filename = webappName + "-runtime.properties";
 			
 			if (propertyStream == null) {
 				filepath = OpenmrsUtil.getApplicationDataDirectory() + filename;
@@ -115,7 +115,7 @@ public class TestUtil {
 	 * 
 	 * @param output multi line string to convert
 	 */
-	public static void printAssignableToSingleString(String output) {
+	public static void printAssignableToSingleString(/*~~>*/String output) {
 		output = output.replace("\n", "\\n");
 		output = output.replace("\"", "\\\"");
 		System.out.println(output);
@@ -141,12 +141,12 @@ public class TestUtil {
 	 * 
 	 * @param output multi line string to convert
 	 */
-	public static void printStringBuilderOutput(String output) {
+	public static void printStringBuilderOutput(/*~~>*/String output) {
 		output = output.replace("\"", "\\\"");
-		String[] lines = output.split("\n");
+		/*~~>*/String[] lines = output.split("\n");
 		
 		System.out.println("StringBuilder correctOutput = new StringBuilder();");
-		for (String line : lines) {
+		for (/*~~>*/String line : lines) {
 			System.out.print("correctOutput.append(\"");
 			System.out.print(line);
 			System.out.println("\\n\");");
@@ -164,12 +164,12 @@ public class TestUtil {
 	 * @param tableNames the name(s) of the table(s) to print out
 	 * @throws Exception
 	 */
-	public static void printOutTableContents(Connection sqlConnection, String... tableNames) throws Exception {
-		for (String tableName : tableNames) {
+	public static void printOutTableContents(Connection sqlConnection, /*~~>*/String... tableNames) throws Exception {
+		for (/*~~>*/String tableName : tableNames) {
 			System.out.println("The contents of table: " + tableName);
 			IDatabaseConnection connection = new DatabaseConnection(sqlConnection);
 			DatabaseConfig config = connection.getConfig();
-			config.setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY, new HsqldbDataTypeFactory());
+			config.setProperty(/*~~>*/DatabaseConfig.PROPERTY_DATATYPE_FACTORY, new HsqldbDataTypeFactory());
 			QueryDataSet outputSet = new QueryDataSet(connection);
 			outputSet.addTable(tableName);
 			FlatXmlDataSet.write(outputSet, System.out);
@@ -181,7 +181,7 @@ public class TestUtil {
 	 * @param string the name of the property to save
 	 * @param value the value of the property to save
 	 */
-	public static void saveGlobalProperty(String name, String value) {
+	public static void saveGlobalProperty(/*~~>*/String name, /*~~>*/String value) {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(name);
 		if (gp == null) {
 			gp = new GlobalProperty(name);
@@ -226,7 +226,7 @@ public class TestUtil {
 	 * Test utility method to create date time using standard 'yyyy-MM-dd hh:mm:ss' format
 	 * @param dateTimeString in 'yyyy-MM-dd hh:mm:ss' format
 	 */
-	public static Date createDateTime(String dateTimeString) throws ParseException {
+	public static Date createDateTime(/*~~>*/String dateTimeString) throws ParseException {
 		return DateUtils.parseDate(dateTimeString, "yyyy-MM-dd hh:mm:ss.SSS", "yyyy-MM-dd hh:mm:ss", "yyyy-MM-dd");
 	}
 }

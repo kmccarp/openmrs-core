@@ -37,7 +37,7 @@ public interface ConditionDAO {
 	 * @param uuid the UUID to search for in the database.
 	 * @return the condition associated with the UUID.
 	 */
-	Condition getConditionByUuid(String uuid);
+	Condition getConditionByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Gets all active conditions related to the specified patient.

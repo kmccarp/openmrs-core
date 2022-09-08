@@ -25,19 +25,19 @@ import org.openmrs.util.OpenmrsConstants;
  */
 public class LoggingConfigurationGlobalPropertyListener implements GlobalPropertyListener {
 	
-	private volatile String logLayout = null;
+	private volatile /*~~>*/String logLayout = null;
 	
-	private volatile String logLocation = null;
+	private volatile /*~~>*/String logLocation = null;
 
 	/**
 	 * @see GlobalPropertyListener#supportsPropertyName(String) 
 	 */
 	@Override
-	public boolean supportsPropertyName(String propertyName) {
+	public boolean supportsPropertyName(/*~~>*/String propertyName) {
 		return
-			OpenmrsConstants.GLOBAL_PROPERTY_LOG_LEVEL.equals(propertyName) ||
-			OpenmrsConstants.GP_LOG_LAYOUT.equals(propertyName) ||
-			OpenmrsConstants.GP_LOG_LOCATION.equals(propertyName);
+			/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOG_LEVEL.equals(propertyName) ||
+			/*~~>*/OpenmrsConstants.GP_LOG_LAYOUT.equals(propertyName) ||
+			/*~~>*/OpenmrsConstants.GP_LOG_LOCATION.equals(propertyName);
 	}
 
 	/**
@@ -46,10 +46,10 @@ public class LoggingConfigurationGlobalPropertyListener implements GlobalPropert
 	@Override
 	public void globalPropertyChanged(GlobalProperty newValue) {
 		switch (newValue.getProperty()) {
-			case OpenmrsConstants.GLOBAL_PROPERTY_LOG_LEVEL:
+			case /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOG_LEVEL:
 				OpenmrsLoggingUtil.applyLogLevels();
 				return;
-			case OpenmrsConstants.GP_LOG_LAYOUT:
+			case /*~~>*/OpenmrsConstants.GP_LOG_LAYOUT:
 				if (logLayout != null && logLayout.equals(newValue.getPropertyValue())) {
 					return;
 				}
@@ -57,7 +57,7 @@ public class LoggingConfigurationGlobalPropertyListener implements GlobalPropert
 				logLayout = newValue.getPropertyValue();
 				OpenmrsLoggingUtil.reloadLoggingConfiguration();
 				return;
-			case OpenmrsConstants.GP_LOG_LOCATION:
+			case /*~~>*/OpenmrsConstants.GP_LOG_LOCATION:
 				if (logLocation != null && logLocation.equals(newValue.getPropertyValue())) {
 					return;
 				}
@@ -71,12 +71,12 @@ public class LoggingConfigurationGlobalPropertyListener implements GlobalPropert
 	 * @see GlobalPropertyListener#globalPropertyDeleted(String) 
 	 */
 	@Override
-	public void globalPropertyDeleted(String propertyName) {
+	public void globalPropertyDeleted(/*~~>*/String propertyName) {
 		switch (propertyName) {
-			case OpenmrsConstants.GP_LOG_LAYOUT:
+			case /*~~>*/OpenmrsConstants.GP_LOG_LAYOUT:
 				logLayout = null;
 				break;
-			case OpenmrsConstants.GP_LOG_LOCATION:
+			case /*~~>*/OpenmrsConstants.GP_LOG_LOCATION:
 				logLocation = null;
 		}
 		

@@ -41,7 +41,7 @@ public abstract class ImmutableEntityInterceptor extends EmptyInterceptor {
 	private static final Logger log = LoggerFactory.getLogger(ImmutableEntityInterceptor.class);
 	
 	// This thread local enables storing additional mutable properties to allow for a given thread
-	private final ThreadLocal<String[]> additionalMutableProperties = new ThreadLocal<>();
+	private final ThreadLocal</*~~>*//*~~>*/String[]> additionalMutableProperties = new ThreadLocal<>();
 	
 	/**
 	 * Returns the class handled by the interceptor
@@ -54,7 +54,7 @@ public abstract class ImmutableEntityInterceptor extends EmptyInterceptor {
 	 *
 	 * @return an array of properties
 	 */
-	protected String[] getMutablePropertyNames() {
+	protected /*~~>*//*~~>*/String[] getMutablePropertyNames() {
 		return null;
 	}
 	
@@ -78,12 +78,12 @@ public abstract class ImmutableEntityInterceptor extends EmptyInterceptor {
 	 */
 	@Override
 	public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState,
-	                            String[] propertyNames, Type[] types) {
+	                            /*~~>*/String[] propertyNames, Type[] types) {
 		
 		if (getSupportedType().isAssignableFrom(entity.getClass())) {
-			List<String> changedProperties = null;
+			List</*~~>*/String> changedProperties = null;
 			for (int i = 0; i < propertyNames.length; i++) {
-				String property = propertyNames[i];
+				/*~~>*/String property = propertyNames[i];
 				if (isMutableProperty(property)) {
 					continue;
 				}
@@ -121,11 +121,11 @@ public abstract class ImmutableEntityInterceptor extends EmptyInterceptor {
 	/**
 	 * @return true if the given property is allowed to be mutable
 	 */
-	private boolean isMutableProperty(String property) {
+	private boolean isMutableProperty(/*~~>*/String property) {
 		if (ArrayUtils.contains(getMutablePropertyNames(), property)) {
 			return true;
 		}
-		String[] threadMutable = additionalMutableProperties.get();
+		/*~~>*/String[] threadMutable = additionalMutableProperties.get();
 		if (threadMutable != null && ArrayUtils.contains(threadMutable, property)) {
 			return true;
 		}
@@ -139,7 +139,7 @@ public abstract class ImmutableEntityInterceptor extends EmptyInterceptor {
 	 *  
 	 * @param properties any additional properties that one wishes to make mutable for a given thread
 	 */
-	public void addMutablePropertiesForThread(String... properties) {
+	public void addMutablePropertiesForThread(/*~~>*/String... properties) {
 		additionalMutableProperties.set(properties);
 	}
 

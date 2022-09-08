@@ -18,7 +18,7 @@ import org.springframework.validation.ValidationUtils;
 public class CustomDosingInstructions implements DosingInstructions {
 	
 	@Override
-	public String getDosingInstructionsAsString(Locale locale) {
+	public /*~~>*/String getDosingInstructionsAsString(Locale locale) {
 		return null;
 	}
 	

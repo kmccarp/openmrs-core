@@ -29,7 +29,7 @@ public interface SchedulerService extends OpenmrsService {
 	 * @return the <code>String</code> status of the task with the given identifier
 	 */
 	@Authorized( { "Manage Scheduler" })
-	public String getStatus(Integer id);
+	public /*~~>*/String getStatus(Integer id);
 	
 	/**
 	 * Start all tasks that are scheduled to run on startup.
@@ -111,7 +111,7 @@ public interface SchedulerService extends OpenmrsService {
 	 * @param uuid the unique identifier of the task
 	 */
 	@Authorized({ "Manage Scheduler" })
-	public TaskDefinition getTaskByUuid(String uuid);
+	public TaskDefinition getTaskByUuid(/*~~>*/String uuid);
 
 	/**
 	 * Get the task with the given name.
@@ -119,7 +119,7 @@ public interface SchedulerService extends OpenmrsService {
 	 * @param name name of the task
 	 */
 	@Authorized( { "Manage Scheduler" })
-	public TaskDefinition getTaskByName(String name);
+	public TaskDefinition getTaskByName(/*~~>*/String name);
 	
 	/**
 	 * Delete the task with the given identifier.
@@ -144,7 +144,7 @@ public interface SchedulerService extends OpenmrsService {
 	 * 
 	 * @return SortedMap&lt;String, String&gt;
 	 */
-	public SortedMap<String, String> getSystemVariables();
+	public SortedMap</*~~>*/String, /*~~>*/String> getSystemVariables();
 	
 	/**
 	 * Save the state of the scheduler service to Memento

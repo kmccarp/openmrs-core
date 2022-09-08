@@ -74,8 +74,8 @@ import org.openmrs.test.jupiter.BaseContextSensitiveTest;
 public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	
 	private static GlobalProperty luhnGP = new GlobalProperty(
-	        OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_PATIENT_IDENTIFIER_VALIDATOR,
-	        OpenmrsConstants.LUHN_IDENTIFIER_VALIDATOR);
+	        /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_PATIENT_IDENTIFIER_VALIDATOR,
+	        /*~~>*/OpenmrsConstants.LUHN_IDENTIFIER_VALIDATOR);
 	
 	/**
 	 * @throws Exception
@@ -173,7 +173,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldFailWithDigitOnlyPasswordIfNotAllowed() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_REQUIRES_NON_DIGIT, "true");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_REQUIRES_NON_DIGIT, "true");
 		assertThrows(InvalidCharactersPasswordException.class, () -> OpenmrsUtil.validatePassword("admin", "12345678", "1-8"));
 	}
 	
@@ -182,8 +182,8 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldPassWithDigitOnlyPasswordIfAllowed() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_REQUIRES_NON_DIGIT, "false");
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_REQUIRES_UPPER_AND_LOWER_CASE, "false");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_REQUIRES_NON_DIGIT, "false");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_REQUIRES_UPPER_AND_LOWER_CASE, "false");
 		OpenmrsUtil.validatePassword("admin", "12345678", "1-8");
 	}
 	
@@ -200,7 +200,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldFailWithCharOnlyPasswordIfNotAllowed() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_REQUIRES_DIGIT, "true");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_REQUIRES_DIGIT, "true");
 		assertThrows(InvalidCharactersPasswordException.class, () -> OpenmrsUtil.validatePassword("admin", "testonly", "1-8"));
 	}
 	
@@ -209,8 +209,8 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldPassWithCharOnlyPasswordIfAllowed() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_REQUIRES_DIGIT, "false");
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_REQUIRES_UPPER_AND_LOWER_CASE, "false");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_REQUIRES_DIGIT, "false");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_REQUIRES_UPPER_AND_LOWER_CASE, "false");
 		OpenmrsUtil.validatePassword("admin", "testonly", "1-8");
 	}
 	
@@ -227,7 +227,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldFailWithoutUpperAndLowerCasePasswordIfNotAllowed() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_REQUIRES_UPPER_AND_LOWER_CASE, "true");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_REQUIRES_UPPER_AND_LOWER_CASE, "true");
 		assertThrows(InvalidCharactersPasswordException.class, () -> OpenmrsUtil.validatePassword("admin", "test0nl1", "1-8"));
 	}
 	
@@ -236,7 +236,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldPassWithoutUpperAndLowerCasePasswordIfAllowed() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_REQUIRES_UPPER_AND_LOWER_CASE, "false");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_REQUIRES_UPPER_AND_LOWER_CASE, "false");
 		OpenmrsUtil.validatePassword("admin", "test0nl1", "1-8");
 	}
 	
@@ -253,7 +253,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldFailWithPasswordEqualsToUserNameIfNotAllowed() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_CANNOT_MATCH_USERNAME_OR_SYSTEMID, "true");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_CANNOT_MATCH_USERNAME_OR_SYSTEMID, "true");
 		assertThrows(WeakPasswordException.class, () -> OpenmrsUtil.validatePassword("Admin1234", "Admin1234", "1-8"));
 	}
 	
@@ -262,7 +262,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldPassWithPasswordEqualsToUserNameIfAllowed() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_CANNOT_MATCH_USERNAME_OR_SYSTEMID, "false");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_CANNOT_MATCH_USERNAME_OR_SYSTEMID, "false");
 		OpenmrsUtil.validatePassword("Admin1234", "Admin1234", "1-8");
 	}
 	
@@ -279,7 +279,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldFailWithPasswordEqualsToSystemIdIfNotAllowed() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_CANNOT_MATCH_USERNAME_OR_SYSTEMID, "true");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_CANNOT_MATCH_USERNAME_OR_SYSTEMID, "true");
 		assertThrows(WeakPasswordException.class, () -> OpenmrsUtil.validatePassword("admin", "Admin1234", "Admin1234"));
 	}
 	
@@ -288,7 +288,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldPassWithPasswordEqualsToSystemIdIfAllowed() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_CANNOT_MATCH_USERNAME_OR_SYSTEMID, "false");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_CANNOT_MATCH_USERNAME_OR_SYSTEMID, "false");
 		OpenmrsUtil.validatePassword("admin", "Admin1234", "Admin1234");
 	}
 	
@@ -305,7 +305,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldFailWithShortPasswordIfNotAllowed() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_MINIMUM_LENGTH, "6");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_MINIMUM_LENGTH, "6");
 		assertThrows(ShortPasswordException.class, () ->  OpenmrsUtil.validatePassword("admin", "12345", "1-8"));
 	}
 	
@@ -314,7 +314,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldPassWithShortPasswordIfAllowed() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_MINIMUM_LENGTH, "0");
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_MINIMUM_LENGTH, "0");
 		OpenmrsUtil.validatePassword("admin", "H4t", "1-8");
 	}
 	
@@ -323,7 +323,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldFailWithPasswordNotMatchingConfiguredRegex() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_CUSTOM_REGEX,
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_CUSTOM_REGEX,
 		    "[A-Z][a-z][0-9][0-9][a-z][A-Z][a-z][a-z][a-z][a-z]");
 		assertThrows(InvalidCharactersPasswordException.class, () ->  OpenmrsUtil.validatePassword("admin", "he11oWorld", "1-8"));
 	}
@@ -333,7 +333,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validatePassword_shouldPassWithPasswordMatchingConfiguredRegex() {
-		TestUtil.saveGlobalProperty(OpenmrsConstants.GP_PASSWORD_CUSTOM_REGEX,
+		TestUtil.saveGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_CUSTOM_REGEX,
 		    "[A-Z][a-z][0-9][0-9][a-z][A-Z][a-z][a-z][a-z][a-z]");
 		OpenmrsUtil.validatePassword("admin", "He11oWorld", "1-8");
 	}
@@ -544,7 +544,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void shortenedStackTrace_shouldRemoveSpringframeworkAndReflectionRelatedLines() {
-		String test = "ca.uhn.hl7v2.HL7Exception: Error while processing HL7 message: ORU_R01\n"
+		/*~~>*/String test = "ca.uhn.hl7v2.HL7Exception: Error while processing HL7 message: ORU_R01\n"
 		        + "\tat org.openmrs.hl7.impl.HL7ServiceImpl.processHL7Message(HL7ServiceImpl.java:752)\n"
 		        + "\tat sun.reflect.GeneratedMethodAccessor262.invoke(Unknown Source)\n"
 		        + "\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n"
@@ -631,7 +631,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 		        + "\tat org.openmrs.hl7.handler.ORUR01Handler.getPatientByIdentifier(ORUR01Handler.java:998)\n"
 		        + "\tat org.openmrs.hl7.handler.ORUR01Handler.processORU_R01(ORUR01Handler.java:184)\n"
 		        + "\tat org.openmrs.hl7.handler.ORUR01Handler.processMessage(ORUR01Handler.java:124) ... 103 more";
-		String expected = "ca.uhn.hl7v2.HL7Exception: Error while processing HL7 message: ORU_R01\n"
+		/*~~>*/String expected = "ca.uhn.hl7v2.HL7Exception: Error while processing HL7 message: ORU_R01\n"
 		        + "\tat org.openmrs.hl7.impl.HL7ServiceImpl.processHL7Message(HL7ServiceImpl.java:752)\n"
 		        + "\tat [ignored] ...\n"
 		        + "\tat $Proxy106.processHL7Message(Unknown Source)\n"
@@ -696,8 +696,8 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	@Test
 	public void storeProperties_shouldEscapeSlashes() throws IOException {
 		Charset utf8 = StandardCharsets.UTF_8;
-		String expectedProperty = "blacklistRegex";
-		String expectedValue = "[^\\p{InBasicLatin}\\p{InLatin1Supplement}]";
+		/*~~>*/String expectedProperty = "blacklistRegex";
+		/*~~>*/String expectedValue = "[^\\p{InBasicLatin}\\p{InLatin1Supplement}]";
 		Properties properties = new Properties();
 		properties.setProperty(expectedProperty, expectedValue);
 
@@ -721,7 +721,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void copyFile_shouldNotCopyTheOutputstreamWhenOutputstreamIsNull() throws IOException {
-		String exampleInputStreamString = "ExampleInputStream";
+		/*~~>*/String exampleInputStreamString = "ExampleInputStream";
 		ByteArrayInputStream input = new ByteArrayInputStream(exampleInputStreamString.getBytes());
 
 		OutputStream output = null;
@@ -756,7 +756,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	@Test
 	public void copyFile_shouldCopyInputstreamToOutputstreamAndCloseTheOutputstream() throws IOException {
 
-		String exampleInputStreamString = "ExampleInputStream";
+		/*~~>*/String exampleInputStreamString = "ExampleInputStream";
 		ByteArrayInputStream expectedByteArrayInputStream = new ByteArrayInputStream(exampleInputStreamString.getBytes());
 
 		ByteArrayOutputStream output = spy(new ByteArrayOutputStream());
@@ -774,10 +774,10 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void applyLogLevels_shouldUpdateLogLevels() {
-		Logger logger = LogManager.getLogger(OpenmrsConstants.LOG_CLASS_DEFAULT + ".test");
+		Logger logger = LogManager.getLogger(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT + ".test");
 		Level previousLevel = logger.getLevel();
-		Context.getAdministrationService().setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_LOG_LEVEL,
-			OpenmrsConstants.LOG_CLASS_DEFAULT + ".test:" + OpenmrsConstants.LOG_LEVEL_DEBUG);
+		Context.getAdministrationService().setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOG_LEVEL,
+			/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT + ".test:" + /*~~>*/OpenmrsConstants.LOG_LEVEL_DEBUG);
 
 		OpenmrsUtil.applyLogLevels();
 
@@ -788,7 +788,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 		finally {
 			// undo the logging level
 			LoggerContext context = ((org.apache.logging.log4j.core.Logger) logger).getContext();
-			LoggerConfig config = context.getConfiguration().getLoggerConfig(OpenmrsConstants.LOG_CLASS_DEFAULT + ".test");
+			LoggerConfig config = context.getConfiguration().getLoggerConfig(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT + ".test");
 			config.setLevel(previousLevel);
 			context.updateLoggers();
 		}
@@ -799,10 +799,10 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void applyLogLevels_shouldUpdateDefaultLoggerIfNoneSpecified() {
-		Logger logger = LogManager.getLogger(OpenmrsConstants.LOG_CLASS_DEFAULT);
+		Logger logger = LogManager.getLogger(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 		Level previousLevel = logger.getLevel();
 		Context.getAdministrationService()
-			.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_LOG_LEVEL, OpenmrsConstants.LOG_LEVEL_DEBUG);
+			.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOG_LEVEL, /*~~>*/OpenmrsConstants.LOG_LEVEL_DEBUG);
 
 		OpenmrsUtil.applyLogLevels();
 
@@ -813,7 +813,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 		finally {
 			// undo the logging level
 			LoggerContext context = ((org.apache.logging.log4j.core.Logger) logger).getContext();
-			LoggerConfig config = context.getConfiguration().getLoggerConfig(OpenmrsConstants.LOG_CLASS_DEFAULT);
+			LoggerConfig config = context.getConfiguration().getLoggerConfig(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 			config.setLevel(previousLevel);
 			context.updateLoggers();
 		}
@@ -824,10 +824,10 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void applyLogLevels_shouldApplyTraceLevel() {
-		Logger logger = LogManager.getLogger(OpenmrsConstants.LOG_CLASS_DEFAULT);
+		Logger logger = LogManager.getLogger(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 		Level previousLevel = logger.getLevel();
 
-		OpenmrsUtil.applyLogLevel(OpenmrsConstants.LOG_CLASS_DEFAULT, OpenmrsConstants.LOG_LEVEL_TRACE);
+		OpenmrsUtil.applyLogLevel(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT, /*~~>*/OpenmrsConstants.LOG_LEVEL_TRACE);
 
 		try {
 			assertEquals(Level.TRACE, logger.getLevel());
@@ -835,7 +835,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 		finally {
 			// undo the logging level
 			LoggerContext context = ((org.apache.logging.log4j.core.Logger) logger).getContext();
-			LoggerConfig config = context.getConfiguration().getLoggerConfig(OpenmrsConstants.LOG_CLASS_DEFAULT);
+			LoggerConfig config = context.getConfiguration().getLoggerConfig(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 			config.setLevel(previousLevel);
 			context.updateLoggers();
 		}
@@ -846,10 +846,10 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void applyLogLevels_shouldApplyDebugLevel() {
-		Logger logger = LogManager.getLogger(OpenmrsConstants.LOG_CLASS_DEFAULT);
+		Logger logger = LogManager.getLogger(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 		Level previousLevel = logger.getLevel();
 
-		OpenmrsUtil.applyLogLevel(OpenmrsConstants.LOG_CLASS_DEFAULT, OpenmrsConstants.LOG_LEVEL_DEBUG);
+		OpenmrsUtil.applyLogLevel(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT, /*~~>*/OpenmrsConstants.LOG_LEVEL_DEBUG);
 
 		try {
 			assertEquals(Level.DEBUG, logger.getLevel());
@@ -857,7 +857,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 		finally {
 			// undo the logging level
 			LoggerContext context = ((org.apache.logging.log4j.core.Logger) logger).getContext();
-			LoggerConfig config = context.getConfiguration().getLoggerConfig(OpenmrsConstants.LOG_CLASS_DEFAULT);
+			LoggerConfig config = context.getConfiguration().getLoggerConfig(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 			config.setLevel(previousLevel);
 			context.updateLoggers();
 		}
@@ -868,10 +868,10 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void applyLogLevels_shouldApplyInfoLevel() {
-		Logger logger = LogManager.getLogger(OpenmrsConstants.LOG_CLASS_DEFAULT);
+		Logger logger = LogManager.getLogger(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 		Level previousLevel = logger.getLevel();
 
-		OpenmrsUtil.applyLogLevel(OpenmrsConstants.LOG_CLASS_DEFAULT, OpenmrsConstants.LOG_LEVEL_INFO);
+		OpenmrsUtil.applyLogLevel(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT, /*~~>*/OpenmrsConstants.LOG_LEVEL_INFO);
 
 		try {
 			assertEquals(Level.INFO, logger.getLevel());
@@ -879,7 +879,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 		finally {
 			// undo the logging level
 			LoggerContext context = ((org.apache.logging.log4j.core.Logger) logger).getContext();
-			LoggerConfig config = context.getConfiguration().getLoggerConfig(OpenmrsConstants.LOG_CLASS_DEFAULT);
+			LoggerConfig config = context.getConfiguration().getLoggerConfig(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 			config.setLevel(previousLevel);
 			context.updateLoggers();
 		}
@@ -890,10 +890,10 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void applyLogLevels_shouldApplyWarnLevel() {
-		Logger logger = LogManager.getLogger(OpenmrsConstants.LOG_CLASS_DEFAULT);
+		Logger logger = LogManager.getLogger(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 		Level previousLevel = logger.getLevel();
 
-		OpenmrsUtil.applyLogLevel(OpenmrsConstants.LOG_CLASS_DEFAULT, OpenmrsConstants.LOG_LEVEL_WARN);
+		OpenmrsUtil.applyLogLevel(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT, /*~~>*/OpenmrsConstants.LOG_LEVEL_WARN);
 
 		try {
 			assertEquals(Level.WARN, logger.getLevel());
@@ -901,7 +901,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 		finally {
 			// undo the logging level
 			LoggerContext context = ((org.apache.logging.log4j.core.Logger) logger).getContext();
-			LoggerConfig config = context.getConfiguration().getLoggerConfig(OpenmrsConstants.LOG_CLASS_DEFAULT);
+			LoggerConfig config = context.getConfiguration().getLoggerConfig(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 			config.setLevel(previousLevel);
 			context.updateLoggers();
 		}
@@ -912,10 +912,10 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void applyLogLevels_shouldApplyErrorLevel() {
-		Logger logger = LogManager.getLogger(OpenmrsConstants.LOG_CLASS_DEFAULT);
+		Logger logger = LogManager.getLogger(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 		Level previousLevel = logger.getLevel();
 
-		OpenmrsUtil.applyLogLevel(OpenmrsConstants.LOG_CLASS_DEFAULT, OpenmrsConstants.LOG_LEVEL_ERROR);
+		OpenmrsUtil.applyLogLevel(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT, /*~~>*/OpenmrsConstants.LOG_LEVEL_ERROR);
 
 		try {
 			assertEquals(Level.ERROR, logger.getLevel());
@@ -923,7 +923,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 		finally {
 			// undo the logging level
 			LoggerContext context = ((org.apache.logging.log4j.core.Logger) logger).getContext();
-			LoggerConfig config = context.getConfiguration().getLoggerConfig(OpenmrsConstants.LOG_CLASS_DEFAULT);
+			LoggerConfig config = context.getConfiguration().getLoggerConfig(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 			config.setLevel(previousLevel);
 			context.updateLoggers();
 		}
@@ -934,10 +934,10 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void applyLogLevels_shouldApplyFatalLevel() {
-		Logger logger = LogManager.getLogger(OpenmrsConstants.LOG_CLASS_DEFAULT);
+		Logger logger = LogManager.getLogger(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 		Level previousLevel = logger.getLevel();
 
-		OpenmrsUtil.applyLogLevel(OpenmrsConstants.LOG_CLASS_DEFAULT, OpenmrsConstants.LOG_LEVEL_FATAL);
+		OpenmrsUtil.applyLogLevel(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT, /*~~>*/OpenmrsConstants.LOG_LEVEL_FATAL);
 
 		try {
 			assertEquals(Level.FATAL, logger.getLevel());
@@ -945,7 +945,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 		finally {
 			// undo the logging level
 			LoggerContext context = ((org.apache.logging.log4j.core.Logger) logger).getContext();
-			LoggerConfig config = context.getConfiguration().getLoggerConfig(OpenmrsConstants.LOG_CLASS_DEFAULT);
+			LoggerConfig config = context.getConfiguration().getLoggerConfig(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 			config.setLevel(previousLevel);
 			context.updateLoggers();
 		}
@@ -956,10 +956,10 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void applyLogLevels_shouldDefaultToDefaultLoggerName() {
-		Logger logger = LogManager.getLogger(OpenmrsConstants.LOG_CLASS_DEFAULT);
+		Logger logger = LogManager.getLogger(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 		Level previousLevel = logger.getLevel();
 
-		OpenmrsUtil.applyLogLevel("", OpenmrsConstants.LOG_LEVEL_DEBUG);
+		OpenmrsUtil.applyLogLevel("", /*~~>*/OpenmrsConstants.LOG_LEVEL_DEBUG);
 
 		try {
 			assertEquals(Level.DEBUG, logger.getLevel());
@@ -967,7 +967,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 		finally {
 			// undo the logging level
 			LoggerContext context = ((org.apache.logging.log4j.core.Logger) logger).getContext();
-			LoggerConfig config = context.getConfiguration().getLoggerConfig(OpenmrsConstants.LOG_CLASS_DEFAULT);
+			LoggerConfig config = context.getConfiguration().getLoggerConfig(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 			config.setLevel(previousLevel);
 			context.updateLoggers();
 		}
@@ -997,7 +997,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 		logger.addAppender(memoryAppender);
 		
 		try {
-			OpenmrsUtil.applyLogLevel(OpenmrsConstants.LOG_CLASS_DEFAULT, "INVALID STRING");
+			OpenmrsUtil.applyLogLevel(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT, "INVALID STRING");
 			
 			assertNotNull(memoryAppender.getLogLines());
 			assertTrue(memoryAppender.getLogLines().size() > 0);
@@ -1014,7 +1014,7 @@ public class OpenmrsUtilTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void conceptListHelper_shouldNotReturnDuplicateConcepts() {
-		String descriptor = "name:YES | name:NO | name:YES";
+		/*~~>*/String descriptor = "name:YES | name:NO | name:YES";
 		List<Concept> ret = OpenmrsUtil.conceptListHelper(descriptor);
 		assertEquals(2, ret.size());
 		descriptor = "set:30 | set:29";

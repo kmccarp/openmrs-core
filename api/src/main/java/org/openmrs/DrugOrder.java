@@ -39,13 +39,13 @@ public class DrugOrder extends Order {
 
 	private Drug drug;
 
-	private String asNeededCondition;
+	private /*~~>*/String asNeededCondition;
 
 	private Class<? extends DosingInstructions> dosingType = SimpleDosingInstructions.class;
 
 	private Integer numRefills;
 
-	private String dosingInstructions;
+	private /*~~>*/String dosingInstructions;
 
 	private Integer duration;
 
@@ -53,11 +53,11 @@ public class DrugOrder extends Order {
 
 	private Concept route;
 
-	private String brandName;
+	private /*~~>*/String brandName;
 
 	private Boolean dispenseAsWritten = Boolean.FALSE;
 
-	private String drugNonCoded;
+	private /*~~>*/String drugNonCoded;
 
 	// Constructors
 
@@ -225,7 +225,7 @@ public class DrugOrder extends Order {
 	 * @return the asNeededCondition
 	 * @since 1.10
 	 */
-	public String getAsNeededCondition() {
+	public /*~~>*/String getAsNeededCondition() {
 		return asNeededCondition;
 	}
 
@@ -233,8 +233,8 @@ public class DrugOrder extends Order {
 	 * @param asNeededCondition the asNeededCondition to set
 	 * @since 1.10
 	 */
-	public void setAsNeededCondition(String asNeededCondition) {
-		this.asNeededCondition = asNeededCondition;
+	public void setAsNeededCondition(/*~~>*/String asNeededCondition) {
+		/*~~>*/this.asNeededCondition = asNeededCondition;
 	}
 
 	/**
@@ -323,8 +323,8 @@ public class DrugOrder extends Order {
 	 * @param dosingInstructions to set
 	 * @since 1.10
 	 */
-	public void setDosingInstructions(String dosingInstructions) {
-		this.dosingInstructions = dosingInstructions;
+	public void setDosingInstructions(/*~~>*/String dosingInstructions) {
+		/*~~>*/this.dosingInstructions = dosingInstructions;
 	}
 
 	/**
@@ -332,8 +332,8 @@ public class DrugOrder extends Order {
 	 *
 	 * @since 1.10
 	 */
-	public String getDosingInstructions() {
-		return this.dosingInstructions;
+	public /*~~>*/String getDosingInstructions() {
+		return /*~~>*/this.dosingInstructions;
 	}
 
 	/**
@@ -380,7 +380,7 @@ public class DrugOrder extends Order {
 	 * @return brandName
 	 * @since 1.10
 	 */
-	public String getBrandName() {
+	public /*~~>*/String getBrandName() {
 		return brandName;
 	}
 
@@ -390,8 +390,8 @@ public class DrugOrder extends Order {
 	 * @since 1.10
 	 * @param brandName the brandName to set to
 	 */
-	public void setBrandName(String brandName) {
-		this.brandName = brandName;
+	public void setBrandName(/*~~>*/String brandName) {
+		/*~~>*/this.brandName = brandName;
 	}
 
 	/**
@@ -483,8 +483,8 @@ public class DrugOrder extends Order {
 	}
 
 	@Override
-	public String toString() {
-		String prefix = DISCONTINUE == getAction() ? "DC " : "";
+	public /*~~>*/String toString() {
+		/*~~>*/String prefix = DISCONTINUE == getAction() ? "DC " : "";
 		return prefix + "DrugOrder(" + getDose() + getDoseUnits() + " of "
 		        + (isNonCodedDrug() ? getDrugNonCoded() : (getDrug() != null ? getDrug().getName() : "[no drug]")) + " from " + getDateActivated() + " to "
 		        + (isDiscontinuedRightNow() ? getDateStopped() : getAutoExpireDate()) + ")";
@@ -535,7 +535,7 @@ public class DrugOrder extends Order {
 	 * @since 1.12
 	 * @return drugNonCoded
 	 */
-	public String getDrugNonCoded() {
+	public /*~~>*/String getDrugNonCoded() {
 		return drugNonCoded;
 	}
 
@@ -543,8 +543,8 @@ public class DrugOrder extends Order {
 	 * @since 1.12
 	 * sets drugNonCoded
 	 */
-	public void setDrugNonCoded(String drugNonCoded) {
-		this.drugNonCoded = StringUtils.isNotBlank(drugNonCoded) ? drugNonCoded.trim() : drugNonCoded;
+	public void setDrugNonCoded(/*~~>*/String drugNonCoded) {
+		/*~~>*/this.drugNonCoded = StringUtils.isNotBlank(drugNonCoded) ? drugNonCoded.trim() : drugNonCoded;
 	}
 
 	/**
@@ -552,6 +552,6 @@ public class DrugOrder extends Order {
 	 * return true if a drug is non coded
 	 */
 	public boolean isNonCodedDrug() {
-		return StringUtils.isNotBlank(this.drugNonCoded);
+		return StringUtils.isNotBlank(/*~~>*/this.drugNonCoded);
 	}
 }

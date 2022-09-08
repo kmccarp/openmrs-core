@@ -59,7 +59,7 @@ import org.slf4j.LoggerFactory;
 public class HL7ServiceTest extends BaseContextSensitiveTest {
 	
 	private static final Logger log = LoggerFactory.getLogger(HL7ServiceTest.class);
-	protected static final String XML_FILENAME = "org/openmrs/api/include/UserServiceTest.xml";
+	protected static final /*~~>*/String XML_FILENAME = "org/openmrs/api/include/UserServiceTest.xml";
 	
 	/**
 	 * @see HL7Service#saveHL7InQueue(HL7InQueue)
@@ -86,14 +86,14 @@ public class HL7ServiceTest extends BaseContextSensitiveTest {
 	public void processHL7InQueue_shouldCreateHL7InArchiveAfterSuccessfulParsing() throws HL7Exception, IOException {
 		executeDataSet("org/openmrs/hl7/include/ORUTest-initialData.xml");
 		
-		File tempDir = new File(System.getProperty("java.io.tmpdir"), HL7Constants.HL7_ARCHIVE_DIRECTORY_NAME);
+		File tempDir = new File(System.getProperty("java.io.tmpdir"), /*~~>*/HL7Constants.HL7_ARCHIVE_DIRECTORY_NAME);
 		
 		if (tempDir.exists() && tempDir.isDirectory())
 			assertTrue(deleteDirectory(tempDir));
 		
 		//set a global property for the archives directory as a temporary folder
 		GlobalProperty gp = new GlobalProperty();
-		gp.setProperty(OpenmrsConstants.GLOBAL_PROPERTY_HL7_ARCHIVE_DIRECTORY);
+		gp.setProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_HL7_ARCHIVE_DIRECTORY);
 		gp.setPropertyValue(tempDir.getAbsolutePath());
 		gp.setDescription("temp test dir");
 		Context.getAdministrationService().saveGlobalProperty(gp);
@@ -194,7 +194,7 @@ public class HL7ServiceTest extends BaseContextSensitiveTest {
 	public void processHL7Message_shouldParseMessageTypeSuppliedByModule() throws Exception {
 		Properties props = super.getRuntimeProperties();
 		
-		props.setProperty(ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD,
+		props.setProperty(/*~~>*/ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD,
 		    "org/openmrs/hl7/include/examplehl7handlers-0.1.omod");
 		// the above module provides a handler for messages of type "ADR" with trigger "A19"
 		
@@ -204,7 +204,7 @@ public class HL7ServiceTest extends BaseContextSensitiveTest {
 		// calls the setHL7Handlers method so we're doing it manually here
 		Class<Application> c = (Class<Application>) Context.loadClass("org.openmrs.module.examplehl7handlers.ADRHandler");
 		Application classInstance = c.newInstance();
-		HashMap<String, Application> map = new HashMap<>();
+		HashMap</*~~>*/String, Application> map = new HashMap<>();
 		map.put("ADR_A19", classInstance);
 		HL7ServiceImpl.getInstance().setHL7Handlers(map);
 		
@@ -245,7 +245,7 @@ public class HL7ServiceTest extends BaseContextSensitiveTest {
 		
 		Properties props = super.getRuntimeProperties();
 		
-		props.setProperty(ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD,
+		props.setProperty(/*~~>*/ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD,
 		    "org/openmrs/hl7/include/examplehl7handlers-0.1.omod");
 		// the above module provides a handler for messages of type "ADR" with trigger "A19"
 		
@@ -256,7 +256,7 @@ public class HL7ServiceTest extends BaseContextSensitiveTest {
 		Class<Application> c = (Class<Application>) Context
 		        .loadClass("org.openmrs.module.examplehl7handlers.AlternateORUR01Handler");
 		Application classInstance = c.newInstance();
-		HashMap<String, Application> map = new HashMap<>();
+		HashMap</*~~>*/String, Application> map = new HashMap<>();
 		map.put("ORU_R01", classInstance);
 		HL7ServiceImpl.getInstance().setHL7Handlers(map);
 		
@@ -524,7 +524,7 @@ public class HL7ServiceTest extends BaseContextSensitiveTest {
 		ORU_R01 oru = (ORU_R01) message;
 		List<NK1> nk1List = new ORUR01Handler().getNK1List(oru);
 		CX[] identifiers = nk1List.get(0).getNextOfKinAssociatedPartySIdentifiers();
-		String result = hl7service.getUuidFromIdentifiers(identifiers);
+		/*~~>*/String result = hl7service.getUuidFromIdentifiers(identifiers);
 		assertEquals("2178037d-f86b-4f12-8d8b-be3ebc220022", result);
 		result = null;
 		
@@ -581,7 +581,7 @@ public class HL7ServiceTest extends BaseContextSensitiveTest {
 		ORU_R01 oru = (ORU_R01) message;
 		List<NK1> nk1List = new ORUR01Handler().getNK1List(oru);
 		CX[] identifiers = nk1List.get(0).getNextOfKinAssociatedPartySIdentifiers();
-		String result = hl7service.getUuidFromIdentifiers(identifiers);
+		/*~~>*/String result = hl7service.getUuidFromIdentifiers(identifiers);
 		assertNull(result, "should have returned null");
 	}
 	
@@ -604,7 +604,7 @@ public class HL7ServiceTest extends BaseContextSensitiveTest {
 		ORU_R01 oru = (ORU_R01) message;
 		List<NK1> nk1List = new ORUR01Handler().getNK1List(oru);
 		CX[] identifiers = nk1List.get(0).getNextOfKinAssociatedPartySIdentifiers();
-		String result = hl7service.getUuidFromIdentifiers(identifiers);
+		/*~~>*/String result = hl7service.getUuidFromIdentifiers(identifiers);
 		assertEquals("2178037d-f86b-4f12-8d8b-be3ebc220022", result);
 	}
 	

@@ -95,7 +95,7 @@ public class PersonAttributeTest extends BaseContextSensitiveTest {
 		pa.setAttributeType(type);
 		pa.setValue("lalapalooza");
 		
-		String value = (String) pa.getHydratedObject();
+		/*~~>*/String value = (/*~~>*/String) pa.getHydratedObject();
 		assertEquals("lalapalooza", value);
 	}
 	

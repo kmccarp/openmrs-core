@@ -26,7 +26,7 @@ public class HibernateLocationDAOTest extends BaseContextSensitiveTest {
 	@Autowired
 	private HibernateLocationDAO dao;
 	
-	private static final String LOC_INITIAL_DATA_XML = "org/openmrs/api/include/LocationServiceTest-initialData.xml";
+	private static final /*~~>*/String LOC_INITIAL_DATA_XML = "org/openmrs/api/include/LocationServiceTest-initialData.xml";
 	
 	@BeforeEach
 	public void runBeforeEachTest() {

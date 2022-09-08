@@ -47,7 +47,7 @@ public interface AlertService extends OpenmrsService {
 	 * <strong>Should</strong> save alerts by role
 	 * <strong>Should</strong> assign uuid to alert
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ALERTS)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ALERTS)
 	public Alert saveAlert(Alert alert) throws APIException;
 	
 	/**
@@ -65,7 +65,7 @@ public interface AlertService extends OpenmrsService {
 	 * @param alert the Alert to purge/delete
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ALERTS)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ALERTS)
 	public void purgeAlert(Alert alert) throws APIException;
 	
 	/**
@@ -128,6 +128,6 @@ public interface AlertService extends OpenmrsService {
 	 * <strong>Should</strong> add an alert with message text if cause is null
 	 * <strong>Should</strong> add an alert to the database
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ALERTS)
-	public void notifySuperUsers(String messageCode, Exception cause, Object... messageArguments);
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ALERTS)
+	public void notifySuperUsers(/*~~>*/String messageCode, Exception cause, Object... messageArguments);
 }

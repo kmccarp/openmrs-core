@@ -195,7 +195,7 @@ public class ORUR01Handler implements Application {
 		
 		// Obtain message control id (unique ID for message from sending
 		// application)
-		String messageControlId = msh.getMessageControlID().getValue();
+		/*~~>*/String messageControlId = msh.getMessageControlID().getValue();
 		log.debug("Found HL7 message in inbound queue with control id = {}", messageControlId);
 		// create the encounter
 		Patient patient = getPatient(pid);
@@ -226,15 +226,15 @@ public class ORUR01Handler implements Application {
 		// create obs_groups for them
 		List<Integer> ignoredConceptIds = new ArrayList<>();
 		
-		String obrConceptId = Context.getAdministrationService().getGlobalProperty(
-		    OpenmrsConstants.GLOBAL_PROPERTY_MEDICAL_RECORD_OBSERVATIONS, "1238");
+		/*~~>*/String obrConceptId = Context.getAdministrationService().getGlobalProperty(
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_MEDICAL_RECORD_OBSERVATIONS, "1238");
 		if (StringUtils.hasLength(obrConceptId)) {
 			ignoredConceptIds.add(Integer.valueOf(obrConceptId));
 		}
 		
 		// we also ignore all PROBLEM_LIST that are OBRs
-		String obrProblemListConceptId = Context.getAdministrationService().getGlobalProperty(
-		    OpenmrsConstants.GLOBAL_PROPERTY_PROBLEM_LIST, "1284");
+		/*~~>*/String obrProblemListConceptId = Context.getAdministrationService().getGlobalProperty(
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PROBLEM_LIST, "1284");
 		if (StringUtils.hasLength(obrProblemListConceptId)) {
 			ignoredConceptIds.add(Integer.valueOf(obrProblemListConceptId));
 		}
@@ -332,7 +332,7 @@ public class ORUR01Handler implements Application {
 				}
 				catch (ProposingConceptException proposingException) {
 					Concept questionConcept = proposingException.getConcept();
-					String value = proposingException.getValueName();
+					/*~~>*/String value = proposingException.getValueName();
 					//if the sender never specified any text for the proposed concept
 					if (!StringUtils.isEmpty(value)) {
 						conceptProposals.add(createConceptProposal(encounter, questionConcept, value));
@@ -391,14 +391,14 @@ public class ORUR01Handler implements Application {
 	 */
 	protected void processNK1(Patient patient, NK1 nk1) throws HL7Exception {
 		// guarantee we are working with our custom coding system
-		String relCodingSystem = nk1.getRelationship().getNameOfCodingSystem().getValue();
-		if (!relCodingSystem.equals(HL7Constants.HL7_LOCAL_RELATIONSHIP)) {
+		/*~~>*/String relCodingSystem = nk1.getRelationship().getNameOfCodingSystem().getValue();
+		if (!relCodingSystem.equals(/*~~>*/HL7Constants.HL7_LOCAL_RELATIONSHIP)) {
 			throw new HL7Exception(Context.getMessageSourceService().getMessage("ORUR01.error.relationshipCoding",
 			    new Object[] { relCodingSystem }, null));
 		}
 		
 		// get the relationship type identifier
-		String relIdentifier = nk1.getRelationship().getIdentifier().getValue();
+		/*~~>*/String relIdentifier = nk1.getRelationship().getIdentifier().getValue();
 		
 		// validate the format of the relationship identifier
 		if (!Pattern.matches("[0-9]+[AB]", relIdentifier)) {
@@ -563,7 +563,7 @@ public class ORUR01Handler implements Application {
 			encounter.setEncounterDatetime(encounterDate);
 			if (unknownRole == null) {
 				unknownRole = Context.getEncounterService()
-				        .getEncounterRoleByUuid(EncounterRole.UNKNOWN_ENCOUNTER_ROLE_UUID);
+				        .getEncounterRoleByUuid(/*~~>*/EncounterRole.UNKNOWN_ENCOUNTER_ROLE_UUID);
 			}
 			encounter.setProvider(unknownRole, provider);
 			encounter.setPatient(patient);
@@ -591,7 +591,7 @@ public class ORUR01Handler implements Application {
 	 * <strong>Should</strong> add multiple comments for an observation as one comment
 	 * <strong>Should</strong> add comments to an observation group
 	 */
-	private Obs parseObs(Encounter encounter, OBX obx, OBR obr, String uid) throws HL7Exception, ProposingConceptException {
+	private Obs parseObs(Encounter encounter, OBX obx, OBR obr, /*~~>*/String uid) throws HL7Exception, ProposingConceptException {
 		if (log.isDebugEnabled()) {
 			log.debug("parsing observation: " + obx);
 		}
@@ -602,7 +602,7 @@ public class ORUR01Handler implements Application {
 			return null;
 		}
 		
-		String hl7Datatype = values[0].getName();
+		/*~~>*/String hl7Datatype = values[0].getName();
 		if (log.isDebugEnabled()) {
 			log.debug("  datatype = " + hl7Datatype);
 		}
@@ -651,7 +651,7 @@ public class ORUR01Handler implements Application {
 		
 		Type obx5 = values[0].getData();
 		if ("NM".equals(hl7Datatype)) {
-			String value = ((NM) obx5).getValue();
+			/*~~>*/String value = ((NM) obx5).getValue();
 			if (value == null || value.length() == 0) {
 				log.warn("Not creating null valued obs for concept " + concept);
 				return null;
@@ -705,9 +705,9 @@ public class ORUR01Handler implements Application {
 		} else if ("CWE".equals(hl7Datatype)) {
 			log.debug("  CWE observation");
 			CWE value = (CWE) obx5;
-			String valueIdentifier = value.getIdentifier().getValue();
+			/*~~>*/String valueIdentifier = value.getIdentifier().getValue();
 			log.debug("    value id = " + valueIdentifier);
-			String valueName = value.getText().getValue();
+			/*~~>*/String valueName = value.getText().getValue();
 			log.debug("    value name = " + valueName);
 			if (isConceptProposal(valueIdentifier)) {
 				if (log.isDebugEnabled()) {
@@ -719,7 +719,7 @@ public class ORUR01Handler implements Application {
 				try {
 					Concept valueConcept = getConcept(value, uid);
 					obs.setValueCoded(valueConcept);
-					if (HL7Constants.HL7_LOCAL_DRUG.equals(value.getNameOfAlternateCodingSystem().getValue())) {
+					if (/*~~>*/HL7Constants.HL7_LOCAL_DRUG.equals(value.getNameOfAlternateCodingSystem().getValue())) {
 						Drug valueDrug = new Drug();
 						valueDrug.setDrugId(Integer.valueOf(value.getAlternateIdentifier().getValue()));
 						obs.setValueDrug(valueDrug);
@@ -744,8 +744,8 @@ public class ORUR01Handler implements Application {
 			}
 		} else if ("CE".equals(hl7Datatype)) {
 			CE value = (CE) obx5;
-			String valueIdentifier = value.getIdentifier().getValue();
-			String valueName = value.getText().getValue();
+			/*~~>*/String valueIdentifier = value.getIdentifier().getValue();
+			/*~~>*/String valueName = value.getText().getValue();
 			if (isConceptProposal(valueIdentifier)) {
 				throw new ProposingConceptException(concept, valueName);
 			} else {
@@ -804,7 +804,7 @@ public class ORUR01Handler implements Application {
 			//doesn't fail since it needs to check if it is a concept numeric
 			Concept c = Context.getConceptService().getConcept(obs.getConcept().getConceptId());
 			obs.setConcept(c);
-			String title = null;
+			/*~~>*/String title = null;
 			if (obs.getValueCodedName() != null) {
 				title = obs.getValueCodedName().getName();
 			}
@@ -857,8 +857,8 @@ public class ORUR01Handler implements Application {
 	 * @return
 	 */
 	private ConceptName getConceptName(ST altIdentifier, ID altCodingSystem) throws HL7Exception {
-		if (altIdentifier != null && HL7Constants.HL7_LOCAL_CONCEPT_NAME.equals(altCodingSystem.getValue())) {
-			String hl7ConceptNameId = altIdentifier.getValue();
+		if (altIdentifier != null && /*~~>*/HL7Constants.HL7_LOCAL_CONCEPT_NAME.equals(altCodingSystem.getValue())) {
+			/*~~>*/String hl7ConceptNameId = altIdentifier.getValue();
 			return getConceptName(hl7ConceptNameId);
 		}
 		
@@ -874,7 +874,7 @@ public class ORUR01Handler implements Application {
 	 * @return ConceptName from the database
 	 * @throws HL7Exception
 	 */
-	private ConceptName getConceptName(String hl7ConceptNameId) throws HL7Exception {
+	private ConceptName getConceptName(/*~~>*/String hl7ConceptNameId) throws HL7Exception {
 		ConceptName specifiedConceptName = null;
 		if (hl7ConceptNameId != null) {
 			// get the exact concept name specified by the id
@@ -892,8 +892,8 @@ public class ORUR01Handler implements Application {
 		
 	}
 	
-	private boolean isConceptProposal(String identifier) {
-		return OpenmrsUtil.nullSafeEquals(identifier, OpenmrsConstants.PROPOSED_CONCEPT_IDENTIFIER);
+	private boolean isConceptProposal(/*~~>*/String identifier) {
+		return OpenmrsUtil.nullSafeEquals(identifier, /*~~>*/OpenmrsConstants.PROPOSED_CONCEPT_IDENTIFIER);
 	}
 	
 	private Date getDate(int year, int month, int day, int hour, int minute, int second) {
@@ -911,10 +911,10 @@ public class ORUR01Handler implements Application {
 	 * @return new Concept object
 	 * @throws HL7Exception if parsing errors occur
 	 */
-	private Concept getConcept(CE codedElement, String uid) throws HL7Exception {
-		String hl7ConceptId = codedElement.getIdentifier().getValue();
+	private Concept getConcept(CE codedElement, /*~~>*/String uid) throws HL7Exception {
+		/*~~>*/String hl7ConceptId = codedElement.getIdentifier().getValue();
 		
-		String codingSystem = codedElement.getNameOfCodingSystem().getValue();
+		/*~~>*/String codingSystem = codedElement.getNameOfCodingSystem().getValue();
 		return getConcept(hl7ConceptId, codingSystem, uid);
 	}
 	
@@ -926,10 +926,10 @@ public class ORUR01Handler implements Application {
 	 * @return new Concept object
 	 * @throws HL7Exception if parsing errors occur
 	 */
-	private Concept getConcept(CWE codedElement, String uid) throws HL7Exception {
-		String hl7ConceptId = codedElement.getIdentifier().getValue();
+	private Concept getConcept(CWE codedElement, /*~~>*/String uid) throws HL7Exception {
+		/*~~>*/String hl7ConceptId = codedElement.getIdentifier().getValue();
 		
-		String codingSystem = codedElement.getNameOfCodingSystem().getValue();
+		/*~~>*/String codingSystem = codedElement.getNameOfCodingSystem().getValue();
 		return getConcept(hl7ConceptId, codingSystem, uid);
 	}
 	
@@ -947,8 +947,8 @@ public class ORUR01Handler implements Application {
 	 * <strong>Should</strong> return a Concept if given local coding system
 	 * <strong>Should</strong> return a mapped Concept if given a valid mapping
 	 */
-	protected Concept getConcept(String hl7ConceptId, String codingSystem, String uid) throws HL7Exception {
-		if (codingSystem == null || HL7Constants.HL7_LOCAL_CONCEPT.equals(codingSystem)) {
+	protected Concept getConcept(/*~~>*/String hl7ConceptId, /*~~>*/String codingSystem, /*~~>*/String uid) throws HL7Exception {
+		if (codingSystem == null || /*~~>*/HL7Constants.HL7_LOCAL_CONCEPT.equals(codingSystem)) {
 			// the concept is local
 			try {
 				Integer conceptId = Integer.valueOf(hl7ConceptId);
@@ -1023,14 +1023,14 @@ public class ORUR01Handler implements Application {
 	private Provider getProvider(PV1 pv1) throws HL7Exception {
 		XCN hl7Provider = pv1.getAttendingDoctor(0);
 		Provider provider = null;
-		String id = hl7Provider.getIDNumber().getValue();
-		String assignAuth = hl7Provider.getAssigningAuthority().getUniversalID().getValue();
-		String type = hl7Provider.getAssigningAuthority().getUniversalIDType().getValue();
-		String errorMessage;
+		/*~~>*/String id = hl7Provider.getIDNumber().getValue();
+		/*~~>*/String assignAuth = hl7Provider.getAssigningAuthority().getUniversalID().getValue();
+		/*~~>*/String type = hl7Provider.getAssigningAuthority().getUniversalIDType().getValue();
+		/*~~>*/String errorMessage;
 		if (StringUtils.hasText(id)) {
-			String specificErrorMsg = "";
+			/*~~>*/String specificErrorMsg = "";
 			if (OpenmrsUtil.nullSafeEquals("L", type)) {
-				if (HL7Constants.PROVIDER_ASSIGNING_AUTH_PROV_ID.equalsIgnoreCase(assignAuth)) {
+				if (/*~~>*/HL7Constants.PROVIDER_ASSIGNING_AUTH_PROV_ID.equalsIgnoreCase(assignAuth)) {
 					try {
 						provider = Context.getProviderService().getProvider(Integer.valueOf(id));
 					}
@@ -1038,10 +1038,10 @@ public class ORUR01Handler implements Application {
 						// ignore
 					}
 					specificErrorMsg = "with provider Id";
-				} else if (HL7Constants.PROVIDER_ASSIGNING_AUTH_IDENTIFIER.equalsIgnoreCase(assignAuth)) {
+				} else if (/*~~>*/HL7Constants.PROVIDER_ASSIGNING_AUTH_IDENTIFIER.equalsIgnoreCase(assignAuth)) {
 					provider = Context.getProviderService().getProviderByIdentifier(id);
 					specificErrorMsg = "with provider identifier";
-				} else if (HL7Constants.PROVIDER_ASSIGNING_AUTH_PROV_UUID.equalsIgnoreCase(assignAuth)) {
+				} else if (/*~~>*/HL7Constants.PROVIDER_ASSIGNING_AUTH_PROV_UUID.equalsIgnoreCase(assignAuth)) {
 					provider = Context.getProviderService().getProviderByUuid(id);
 					specificErrorMsg = "with provider uuid";
 				}
@@ -1116,15 +1116,15 @@ public class ORUR01Handler implements Application {
 	 * @throws HL7Exception
 	 */
 	public Form getForm(MSH msh) throws HL7Exception {
-		String uuid = null;
-		String id = null;
+		/*~~>*/String uuid = null;
+		/*~~>*/String id = null;
 
 		for (EI identifier : msh.getMessageProfileIdentifier()) {
 			if (identifier != null && identifier.getNamespaceID() != null) {
-				String identifierType = identifier.getNamespaceID().getValue();
-				if (OpenmrsUtil.nullSafeEquals(identifierType, HL7Constants.HL7_FORM_UUID)) {
+				/*~~>*/String identifierType = identifier.getNamespaceID().getValue();
+				if (OpenmrsUtil.nullSafeEquals(identifierType, /*~~>*/HL7Constants.HL7_FORM_UUID)) {
 					uuid = identifier.getEntityIdentifier().getValue();
-				} else if (OpenmrsUtil.nullSafeEquals(identifierType, HL7Constants.HL7_FORM_ID)) {
+				} else if (OpenmrsUtil.nullSafeEquals(identifierType, /*~~>*/HL7Constants.HL7_FORM_ID)) {
 					id = identifier.getEntityIdentifier().getValue();
 				} else {
 					log.warn("Form identifier type of " + identifierType + " unknown to ORU R01 processor.");
@@ -1181,7 +1181,7 @@ public class ORUR01Handler implements Application {
 	//TODO: Debug (and use) methods in HL7Util instead
 	private Date tsToDate(TS ts) throws HL7Exception {
 		// need to handle timezone
-		String dtm = ts.getTime().getValue();
+		/*~~>*/String dtm = ts.getTime().getValue();
 		int year = Integer.parseInt(dtm.substring(0, 4));
 		int month = (dtm.length() >= 6 ? Integer.parseInt(dtm.substring(4, 6)) - 1 : 0);
 		int day = (dtm.length() >= 8 ? Integer.parseInt(dtm.substring(6, 8)) : 1);
@@ -1202,14 +1202,14 @@ public class ORUR01Handler implements Application {
 	 * @param originalText
 	 * @return
 	 */
-	private ConceptProposal createConceptProposal(Encounter encounter, Concept concept, String originalText) {
+	private ConceptProposal createConceptProposal(Encounter encounter, Concept concept, /*~~>*/String originalText) {
 		// value is a proposed concept, create a ConceptProposal
 		// instead of an Obs for this observation
 		// TODO: at this point if componentSeparator (^) is in text,
 		// we'll only use the text before that delimiter!
 		ConceptProposal conceptProposal = new ConceptProposal();
 		conceptProposal.setOriginalText(originalText);
-		conceptProposal.setState(OpenmrsConstants.CONCEPT_PROPOSAL_UNMAPPED);
+		conceptProposal.setState(/*~~>*/OpenmrsConstants.CONCEPT_PROPOSAL_UNMAPPED);
 		conceptProposal.setEncounter(encounter);
 		conceptProposal.setObsConcept(concept);
 		return conceptProposal;
@@ -1230,7 +1230,7 @@ public class ORUR01Handler implements Application {
 		if (hl7DischargeToLocation == null) {
 			return;
 		}
-		String dischargeToLocation = hl7DischargeToLocation.getValue();
+		/*~~>*/String dischargeToLocation = hl7DischargeToLocation.getValue();
 		log.debug("dischargeToLocation = " + dischargeToLocation);
 		if (dischargeToLocation != null && dischargeToLocation.length() > 0) {
 			if (log.isDebugEnabled()) {

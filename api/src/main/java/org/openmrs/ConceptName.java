@@ -51,7 +51,7 @@ public class ConceptName extends BaseOpenmrsObject implements Auditable, Voidabl
 	private Concept concept;
 	
 	@Field
-	private String name;
+	private /*~~>*/String name;
 	
 	@Field(analyze = Analyze.NO)
 	@FieldBridge(impl = LocaleFieldBridge.class)
@@ -69,7 +69,7 @@ public class ConceptName extends BaseOpenmrsObject implements Auditable, Voidabl
 	
 	private Date dateVoided;
 	
-	private String voidReason;
+	private /*~~>*/String voidReason;
 	
 	private Collection<ConceptNameTag> tags;
 	
@@ -98,7 +98,7 @@ public class ConceptName extends BaseOpenmrsObject implements Auditable, Voidabl
 		this.conceptNameId = conceptNameId;
 	}
 	
-	public ConceptName(String name, Locale locale) {
+	public ConceptName(/*~~>*/String name, Locale locale) {
 		setName(name);
 		setLocale(locale);
 	}
@@ -125,16 +125,16 @@ public class ConceptName extends BaseOpenmrsObject implements Auditable, Voidabl
 		this.concept = concept;
 	}
 	
-	public String getName() {
+	public /*~~>*/String getName() {
 		return name;
 	}
 	
-	public void setName(String name) {
-		if (name != null && StringUtils.isBlank(name) && StringUtils.isNotBlank(this.name)
+	public void setName(/*~~>*/String name) {
+		if (name != null && StringUtils.isBlank(name) && StringUtils.isNotBlank(/*~~>*/this.name)
 		        && this.getConceptNameType().equals(ConceptNameType.SHORT)) {
 			this.setVoided(true);
 		} else {
-			this.name = name;
+			/*~~>*/this.name = name;
 		}
 	}
 	
@@ -258,7 +258,7 @@ public class ConceptName extends BaseOpenmrsObject implements Auditable, Voidabl
 	 * @return the reason this ConceptName was voided
 	 */
 	@Override
-	public String getVoidReason() {
+	public /*~~>*/String getVoidReason() {
 		return voidReason;
 	}
 	
@@ -268,8 +268,8 @@ public class ConceptName extends BaseOpenmrsObject implements Auditable, Voidabl
 	 * @param voidReason the reason this ConceptName was voided
 	 */
 	@Override
-	public void setVoidReason(String voidReason) {
-		this.voidReason = voidReason;
+	public void setVoidReason(/*~~>*/String voidReason) {
+		/*~~>*/this.voidReason = voidReason;
 	}
 	
 	/**
@@ -344,7 +344,7 @@ public class ConceptName extends BaseOpenmrsObject implements Auditable, Voidabl
 	 * @see Concept#setShortName(ConceptName)
 	 * @param tag human-readable text string for the tag
 	 */
-	public void addTag(String tag) {
+	public void addTag(/*~~>*/String tag) {
 		addTag(tag, "");
 	}
 	
@@ -358,7 +358,7 @@ public class ConceptName extends BaseOpenmrsObject implements Auditable, Voidabl
 	 * @param tag human-readable text string for the tag
 	 * @param description description of the tag's purpose
 	 */
-	public void addTag(String tag, String description) {
+	public void addTag(/*~~>*/String tag, /*~~>*/String description) {
 		ConceptNameTag nameTag = new ConceptNameTag(tag, description);
 		addTag(nameTag);
 	}
@@ -421,7 +421,7 @@ public class ConceptName extends BaseOpenmrsObject implements Auditable, Voidabl
 	 * @param tagToFind the string of the tag for which to check
 	 * @return true if the tags include the specified tag, false otherwise
 	 */
-	public Boolean hasTag(String tagToFind) {
+	public Boolean hasTag(/*~~>*/String tagToFind) {
 		boolean foundTag = false;
 		if (tags != null) {
 			for (ConceptNameTag nameTag : getTags()) {
@@ -443,7 +443,7 @@ public class ConceptName extends BaseOpenmrsObject implements Auditable, Voidabl
 	 * @return true if the name is preferred in a locale with a matching language code, otherwise
 	 *         false
 	 */
-	public Boolean isPreferredInLanguage(String language) {
+	public Boolean isPreferredInLanguage(/*~~>*/String language) {
 		return !StringUtils.isBlank(language) && this.locale != null && isPreferred()
 				&& this.locale.getLanguage().equals(language);
 
@@ -458,7 +458,7 @@ public class ConceptName extends BaseOpenmrsObject implements Auditable, Voidabl
 	 * @return true if the name is preferred in a locale with a matching country code, otherwise
 	 *         false
 	 */
-	public Boolean isPreferredInCountry(String country) {
+	public Boolean isPreferredInCountry(/*~~>*/String country) {
 		return !StringUtils.isBlank(country) && this.locale != null && isPreferred()
 				&& this.locale.getCountry().equals(country);
 
@@ -549,12 +549,12 @@ public class ConceptName extends BaseOpenmrsObject implements Auditable, Voidabl
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
-		if (this.name == null) {
+	public /*~~>*/String toString() {
+		if (/*~~>*/this.name == null) {
 			return "ConceptNameId: " + this.conceptNameId;
 		}
 		
-		return this.name;
+		return /*~~>*/this.name;
 	}
 	
 	/**

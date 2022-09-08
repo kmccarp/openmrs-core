@@ -22,7 +22,7 @@ import org.openmrs.test.jupiter.BaseContextSensitiveTest;
  */
 public class MessageServiceTest extends BaseContextSensitiveTest {
 	
-	private static final String NO_SMTP_SERVER_ERROR = "Could not connect to SMTP host:";
+	private static final /*~~>*/String NO_SMTP_SERVER_ERROR = "Could not connect to SMTP host:";
 	
 	MessageService ms = null;
 	
@@ -45,13 +45,13 @@ public class MessageServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void createMessage_shouldCreateMessage() throws MessageException {
-		String recipients = "foo@bar.com,marco@polo.com";
-		String sender = "me@mydomain.com";
-		String subject = "foo";
-		String message = "content";
-		String attachment = "inga";
-		String attachmentContentType = "text/plain";
-		String attachmentFileName = "inga.txt";
+		/*~~>*/String recipients = "foo@bar.com,marco@polo.com";
+		/*~~>*/String sender = "me@mydomain.com";
+		/*~~>*/String subject = "foo";
+		/*~~>*/String message = "content";
+		/*~~>*/String attachment = "inga";
+		/*~~>*/String attachmentContentType = "text/plain";
+		/*~~>*/String attachmentFileName = "inga.txt";
 		
 		Message msg1 = ms.createMessage(recipients, sender, subject, message);
 		Message msg2 = ms.createMessage(subject, message);

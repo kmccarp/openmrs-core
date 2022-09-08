@@ -32,7 +32,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class UserValidatorTest extends BaseContextSensitiveTest {
 	
-	private static final String STRING_WITH_LENGTH_GREATER_THAN_50 = "too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text";
+	private static final /*~~>*/String STRING_WITH_LENGTH_GREATER_THAN_50 = "too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text";
 
 	@Autowired
 	private UserValidator validator;
@@ -69,7 +69,7 @@ public class UserValidatorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void isUserNameValid_shouldValidateUsernameWithExactlyMaxSizeName() {
-		String username = "12345678901234567890123456789012345678901234567890";
+		/*~~>*/String username = "12345678901234567890123456789012345678901234567890";
 		assertEquals(50, username.length());
 		
 		assertTrue(validator.isUserNameValid(username));
@@ -96,7 +96,7 @@ public class UserValidatorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void isUserNameValid_shouldNotValidateUsernameWithMoreThanMaximumSize() {
-		String username = "12345678901234567890123456789012345678901AAAAABBBAABABABABA";
+		/*~~>*/String username = "12345678901234567890123456789012345678901AAAAABBBAABABABABA";
 		assertTrue(username.length() > 50);
 		assertFalse(validator.isUserNameValid(username));
 	}
@@ -106,7 +106,7 @@ public class UserValidatorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validate_shouldFailValidationIfRetiredAndRetireReasonIsNull() {
-		String retireReason = null;
+		/*~~>*/String retireReason = null;
 		invokeValidateAndAssertHasErrorRetireReason(retireReason);
 	}
 
@@ -115,7 +115,7 @@ public class UserValidatorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validate_shouldFailValidationIfRetiredAndRetireReasonIsEmpty() {
-		String retireReason = "";
+		/*~~>*/String retireReason = "";
 		invokeValidateAndAssertHasErrorRetireReason(retireReason);
 	}
 	
@@ -124,11 +124,11 @@ public class UserValidatorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validate_shouldFailValidationIfRetiredAndRetireReasonIsWhitespace() {
-		String retireReason = "   ";
+		/*~~>*/String retireReason = "   ";
 		invokeValidateAndAssertHasErrorRetireReason(retireReason);
 	}
 	
-	private void invokeValidateAndAssertHasErrorRetireReason(String invalidRetireReason) {
+	private void invokeValidateAndAssertHasErrorRetireReason(/*~~>*/String invalidRetireReason) {
 		User user = new User();
 		user.setUsername("test");
 		user.setRetireReason(invalidRetireReason);
@@ -187,9 +187,9 @@ public class UserValidatorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void isUserNameAsEmailValid_shouldReturnFalseIfEmailInvalid() {
-		String[] invalids = new String[] { "mkyong", "mkyong123@.com", "my@kong", "my.kong", 
+		/*~~>*/String[] invalids = new /*~~>*/String[] { "mkyong", "mkyong123@.com", "my@kong", "my.kong", 
 				"my.@kong", "@kong.my" };
-		for (String email : invalids) {
+		for (/*~~>*/String email : invalids) {
 			assertFalse(validator.isUserNameAsEmailValid(email));
 		}
 	}
@@ -199,10 +199,10 @@ public class UserValidatorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void isUserNameAsEmailValid_shouldReturnTrueIfEmailValid() {
-		String[] valids = new String[] { "mkyong@yahoo.com", "mkyong-100@yahoo.com", "mkyong.100@yahoo.com",
+		/*~~>*/String[] valids = new /*~~>*/String[] { "mkyong@yahoo.com", "mkyong-100@yahoo.com", "mkyong.100@yahoo.com",
 		        "mkyong111@mkyong.com", "mkyong-100@mkyong.net", "mkyong.100@mkyong.com.au", "mkyong@1.com",
 		        "mkyong@gmail.com.com", "mk@t-yong.de" };
-		for (String email : valids) {
+		for (/*~~>*/String email : valids) {
 			assertTrue(validator.isUserNameAsEmailValid(email));
 		}
 	}
@@ -216,7 +216,7 @@ public class UserValidatorTest extends BaseContextSensitiveTest {
 		user.setUsername("test@example.com");
 		
 		AdministrationService as = Context.getAdministrationService();
-		as.saveGlobalProperty(new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_USER_REQUIRE_EMAIL_AS_USERNAME, "true"));
+		as.saveGlobalProperty(new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_USER_REQUIRE_EMAIL_AS_USERNAME, "true"));
 		
 		Errors errors = new BindException(user, "user");
 		validator.validate(user, errors);
@@ -233,7 +233,7 @@ public class UserValidatorTest extends BaseContextSensitiveTest {
 		user.setUsername("test@example.com");
 		
 		AdministrationService as = Context.getAdministrationService();
-		as.saveGlobalProperty(new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_USER_REQUIRE_EMAIL_AS_USERNAME, "false"));
+		as.saveGlobalProperty(new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_USER_REQUIRE_EMAIL_AS_USERNAME, "false"));
 		
 		Errors errors = new BindException(user, "user");
 		validator.validate(user, errors);

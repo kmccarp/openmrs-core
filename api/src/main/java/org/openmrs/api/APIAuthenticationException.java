@@ -32,7 +32,7 @@ public class APIAuthenticationException extends APIException {
 	 * 
 	 * @param message String describing where/why the authentication failed
 	 */
-	public APIAuthenticationException(String message) {
+	public APIAuthenticationException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -43,7 +43,7 @@ public class APIAuthenticationException extends APIException {
 	 * @param message String describing where/why the authentication failed
 	 * @param cause error further up the stream that caused this authentication failure
 	 */
-	public APIAuthenticationException(String message, Throwable cause) {
+	public APIAuthenticationException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

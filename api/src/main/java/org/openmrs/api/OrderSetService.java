@@ -43,7 +43,7 @@ public interface OrderSetService extends OpenmrsService {
 	 * @return the OrderSet that was saved
 	 * @throws APIException
 	 */
-	@Authorized( { PrivilegeConstants.MANAGE_ORDER_SETS })
+	@Authorized( { /*~~>*/PrivilegeConstants.MANAGE_ORDER_SETS })
 	OrderSet saveOrderSet(OrderSet orderSet) throws APIException;
 	
 	/**
@@ -53,7 +53,7 @@ public interface OrderSetService extends OpenmrsService {
 	 * @return list of OrderSets matching the parameters
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_SETS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_SETS)
 	List<OrderSet> getOrderSets(boolean includeRetired) throws APIException;
 	
 	/**
@@ -63,7 +63,7 @@ public interface OrderSetService extends OpenmrsService {
 	 * @return OrderSet
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_SETS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_SETS)
 	OrderSet getOrderSet(Integer orderSetId) throws APIException;
 	
 	/**
@@ -73,8 +73,8 @@ public interface OrderSetService extends OpenmrsService {
 	 * @return an orderSet
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_SETS)
-	OrderSet getOrderSetByUuid(String orderSetUuid) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_SETS)
+	OrderSet getOrderSetByUuid(/*~~>*/String orderSetUuid) throws APIException;
 	
 	/**
 	 * Retires and OrderSet, with matched OrderSet
@@ -84,8 +84,8 @@ public interface OrderSetService extends OpenmrsService {
 	 * @return an orderSet
 	 * @throws APIException
 	 */
-	@Authorized( { PrivilegeConstants.MANAGE_ORDER_SETS })
-	OrderSet retireOrderSet(OrderSet orderSet, String retireReason) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.MANAGE_ORDER_SETS })
+	OrderSet retireOrderSet(OrderSet orderSet, /*~~>*/String retireReason) throws APIException;
 	
 	/**
 	 * UnRetires and OrderSet, with matched OrderSet
@@ -94,7 +94,7 @@ public interface OrderSetService extends OpenmrsService {
 	 * @return an orderSet
 	 * @throws APIException
 	 */
-	@Authorized( { PrivilegeConstants.MANAGE_ORDER_SETS })
+	@Authorized( { /*~~>*/PrivilegeConstants.MANAGE_ORDER_SETS })
 	OrderSet unretireOrderSet(OrderSet orderSet) throws APIException;
 	
 
@@ -106,8 +106,8 @@ public interface OrderSetService extends OpenmrsService {
 	 * <strong>Should</strong> find object given valid uuid
 	 * <strong>Should</strong> return null if no object found with given uuid
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_SETS)
-	OrderSetMember getOrderSetMemberByUuid(String uuid);
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_SETS)
+	OrderSetMember getOrderSetMemberByUuid(/*~~>*/String uuid);
 
 	/**
 	 * Get order set attribute by uuid 
@@ -118,8 +118,8 @@ public interface OrderSetService extends OpenmrsService {
 	 * @should get the order set attribute with the given uuid
 	 * @should return null if no order set attribute has the given uuid
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_SETS)
-	OrderSetAttribute getOrderSetAttributeByUuid(String uuid);
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_SETS)
+	OrderSetAttribute getOrderSetAttributeByUuid(/*~~>*/String uuid);
 
 	/**
 	 * Get all order set attribute types 
@@ -128,7 +128,7 @@ public interface OrderSetService extends OpenmrsService {
 	 * @since 2.4.0
 	 * @should return all orderSet attribute types including retired ones
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_SET_ATTRIBUTE_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_SET_ATTRIBUTE_TYPES)
 	List<OrderSetAttributeType> getAllOrderSetAttributeTypes();
 
 	/**
@@ -140,7 +140,7 @@ public interface OrderSetService extends OpenmrsService {
 	 * @should return the orderSet attribute type with the given id
 	 * @should return null if no orderSet attribute type exists with the given id
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_SET_ATTRIBUTE_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_SET_ATTRIBUTE_TYPES)
 	OrderSetAttributeType getOrderSetAttributeType(Integer id);
 
 	/**
@@ -152,8 +152,8 @@ public interface OrderSetService extends OpenmrsService {
 	 * @should return the orderSet attribute type with the given uuid
 	 * @should return null if no orderSet attribute type exists with the given uuid
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_SET_ATTRIBUTE_TYPES)
-	OrderSetAttributeType getOrderSetAttributeTypeByUuid(String uuid);
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_SET_ATTRIBUTE_TYPES)
+	OrderSetAttributeType getOrderSetAttributeTypeByUuid(/*~~>*/String uuid);
 
 	/**
 	 * Creates or updates the given order set attribute type 
@@ -164,7 +164,7 @@ public interface OrderSetService extends OpenmrsService {
 	 * @should create a new orderSet attribute type
 	 * @should edit an existing orderSet attribute type
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ORDER_SET_ATTRIBUTE_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ORDER_SET_ATTRIBUTE_TYPES)
 	OrderSetAttributeType saveOrderSetAttributeType(OrderSetAttributeType orderSetAttributeType);
 
 	/**
@@ -175,8 +175,8 @@ public interface OrderSetService extends OpenmrsService {
 	 * @since 2.4.0
 	 * @should retire a orderSet attribute type
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ORDER_SET_ATTRIBUTE_TYPES)
-	OrderSetAttributeType retireOrderSetAttributeType(OrderSetAttributeType orderSetAttributeType, String reason);
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ORDER_SET_ATTRIBUTE_TYPES)
+	OrderSetAttributeType retireOrderSetAttributeType(OrderSetAttributeType orderSetAttributeType, /*~~>*/String reason);
 
 	/**
 	 * Restores an order set attribute type that was previous retired 
@@ -186,7 +186,7 @@ public interface OrderSetService extends OpenmrsService {
 	 * @since 2.4.0
 	 * @should unretire a retired orderSet attribute type
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ORDER_SET_ATTRIBUTE_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ORDER_SET_ATTRIBUTE_TYPES)
 	OrderSetAttributeType unretireOrderSetAttributeType(OrderSetAttributeType orderSetAttributeType);
 
 	/**
@@ -196,7 +196,7 @@ public interface OrderSetService extends OpenmrsService {
 	 * @since 2.4.0
 	 * @should completely remove an order set attribute type
 	 */
-	@Authorized(PrivilegeConstants.PURGE_ORDER_SET_ATTRIBUTE_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.PURGE_ORDER_SET_ATTRIBUTE_TYPES)
 	void purgeOrderSetAttributeType(OrderSetAttributeType orderSetAttributeType);
 
 	/**
@@ -209,7 +209,7 @@ public interface OrderSetService extends OpenmrsService {
 	 * @should return null if no orderSet attribute type exists with the specified
 	 *         name
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_SET_ATTRIBUTE_TYPES)
-	OrderSetAttributeType getOrderSetAttributeTypeByName(String orderSetAttributeTypeName);
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_SET_ATTRIBUTE_TYPES)
+	OrderSetAttributeType getOrderSetAttributeTypeByName(/*~~>*/String orderSetAttributeTypeName);
 
 }

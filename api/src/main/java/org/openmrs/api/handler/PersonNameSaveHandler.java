@@ -28,7 +28,7 @@ public class PersonNameSaveHandler implements SaveHandler<PersonName> {
 	 *      java.util.Date, java.lang.String)
 	 */
 	@Override
-	public void handle(PersonName personName, User creator, Date dateCreated, String other) {
+	public void handle(PersonName personName, User creator, Date dateCreated, /*~~>*/String other) {
 		if (personName.getGivenName() != null) {
 			personName.setGivenName(personName.getGivenName().trim());
 		}

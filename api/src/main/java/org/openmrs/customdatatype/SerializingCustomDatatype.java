@@ -21,13 +21,13 @@ public abstract class SerializingCustomDatatype<T> implements CustomDatatype<T> 
 	 * @param typedValue (has already had validate called)
 	 * @return a String representation of typedValue
 	 */
-	public abstract String serialize(T typedValue);
+	public abstract /*~~>*/String serialize(T typedValue);
 	
 	/**
 	 * @param serializedValue
 	 * @return the reconstructed typed version of serializedValue
 	 */
-	public abstract T deserialize(String serializedValue);
+	public abstract T deserialize(/*~~>*/String serializedValue);
 	
 	/**
 	 * Most implementations should override this method to return plain-text summary of the typed value, as defined
@@ -48,7 +48,7 @@ public abstract class SerializingCustomDatatype<T> implements CustomDatatype<T> 
 	 * @see org.openmrs.customdatatype.CustomDatatype#setConfiguration(java.lang.String)
 	 */
 	@Override
-	public void setConfiguration(String config) {
+	public void setConfiguration(/*~~>*/String config) {
 		// not used
 	}
 	
@@ -70,7 +70,7 @@ public abstract class SerializingCustomDatatype<T> implements CustomDatatype<T> 
 	 * @see org.openmrs.customdatatype.CustomDatatype#fromReferenceString(java.lang.String)
 	 */
 	@Override
-	public T fromReferenceString(String persistedValue) throws InvalidCustomValueException {
+	public T fromReferenceString(/*~~>*/String persistedValue) throws InvalidCustomValueException {
 		return deserialize(persistedValue);
 	}
 	
@@ -78,7 +78,7 @@ public abstract class SerializingCustomDatatype<T> implements CustomDatatype<T> 
 	 * @see org.openmrs.customdatatype.CustomDatatype#save(java.lang.Object, java.lang.String)
 	 */
 	@Override
-	public String save(T typedValue, String existingValueReference) throws InvalidCustomValueException {
+	public /*~~>*/String save(T typedValue, /*~~>*/String existingValueReference) throws InvalidCustomValueException {
 		validate(typedValue);
 		return serialize(typedValue);
 	}
@@ -87,7 +87,7 @@ public abstract class SerializingCustomDatatype<T> implements CustomDatatype<T> 
 	 * @see org.openmrs.customdatatype.CustomDatatype#getReferenceStringForValue(java.lang.Object)
 	 */
 	@Override
-	public String getReferenceStringForValue(T typedValue) throws UnsupportedOperationException {
+	public /*~~>*/String getReferenceStringForValue(T typedValue) throws UnsupportedOperationException {
 		return serialize(typedValue);
 	}
 	
@@ -97,7 +97,7 @@ public abstract class SerializingCustomDatatype<T> implements CustomDatatype<T> 
 	 * @see org.openmrs.customdatatype.CustomDatatype#getTextSummary(java.lang.String)
 	 */
 	@Override
-	public CustomDatatype.Summary getTextSummary(String referenceString) {
+	public CustomDatatype.Summary getTextSummary(/*~~>*/String referenceString) {
 		if (referenceString == null) {
 			return new CustomDatatype.Summary("", true);
 		} else {

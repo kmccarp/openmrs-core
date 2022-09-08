@@ -33,7 +33,7 @@ public class APIException extends RuntimeException {
 	 * 
 	 * @param message helpful message string for the end user
 	 */
-	public APIException(String message) {
+	public APIException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -44,7 +44,7 @@ public class APIException extends RuntimeException {
 	 * @param message helpful message string for the end user
 	 * @param cause the parent exception cause that this APIException is wrapping around
 	 */
-	public APIException(String message, Throwable cause) {
+	public APIException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	
@@ -65,7 +65,7 @@ public class APIException extends RuntimeException {
 	 * @param messageKey message code to retrieve
 	 * @param parameters message parameters
 	 */
-	public APIException(String messageKey, Object[] parameters) {
+	public APIException(/*~~>*/String messageKey, Object[] parameters) {
 		super(Context.getMessageSourceService().getMessage(messageKey, parameters, Context.getLocale()));
 	}
 	
@@ -77,7 +77,7 @@ public class APIException extends RuntimeException {
 	 * @param parameters message parameters
 	 * @param cause the parent exception cause that this APIException is wrapping around   
 	 */
-	public APIException(String messageKey, Object[] parameters, Throwable cause) {
+	public APIException(/*~~>*/String messageKey, Object[] parameters, Throwable cause) {
 		super(Context.getMessageSourceService().getMessage(messageKey, parameters, Context.getLocale()), cause);
 	}
 }

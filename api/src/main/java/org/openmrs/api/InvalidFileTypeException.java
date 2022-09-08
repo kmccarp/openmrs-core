@@ -32,7 +32,7 @@ public class InvalidFileTypeException extends APIException {
 	 * 
 	 * @param message helpful message string 
 	 */
-	public InvalidFileTypeException(String message) {
+	public InvalidFileTypeException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -43,7 +43,7 @@ public class InvalidFileTypeException extends APIException {
 	 * @param message helpful message string for the end user
 	 * @param cause the parent exception cause that this exception is wrapping around
 	 */
-	public InvalidFileTypeException(String message, Throwable cause) {
+	public InvalidFileTypeException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 }

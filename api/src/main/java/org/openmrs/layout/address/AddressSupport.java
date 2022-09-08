@@ -54,11 +54,11 @@ public class AddressSupport extends LayoutSupport<AddressTemplate> implements Gl
 		if (!initialized) {
 			Context.getAdministrationService().addGlobalPropertyListener(singleton);
 			
-			String layoutTemplateXml = Context.getAdministrationService().getGlobalProperty(
-			    OpenmrsConstants.GLOBAL_PROPERTY_ADDRESS_TEMPLATE);
+			/*~~>*/String layoutTemplateXml = Context.getAdministrationService().getGlobalProperty(
+			    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ADDRESS_TEMPLATE);
 			setAddressTemplate(layoutTemplateXml);
 			
-			List<String> specialTokens = new ArrayList<>();
+			List</*~~>*/String> specialTokens = new ArrayList<>();
 			specialTokens.add("address1");
 			specialTokens.add("address2");
 			specialTokens.add("address3");
@@ -84,7 +84,7 @@ public class AddressSupport extends LayoutSupport<AddressTemplate> implements Gl
 	 * @return Returns the defaultLayoutFormat
 	 */
 	@Override
-	public String getDefaultLayoutFormat() {
+	public /*~~>*/String getDefaultLayoutFormat() {
 		return defaultLayoutFormat;
 	}
 	
@@ -104,8 +104,8 @@ public class AddressSupport extends LayoutSupport<AddressTemplate> implements Gl
 	public List<AddressTemplate> getAddressTemplate() {
 		if (layoutTemplates == null) {
 			try {
-				String xml = Context.getAdministrationService().getGlobalProperty(
-				    OpenmrsConstants.GLOBAL_PROPERTY_ADDRESS_TEMPLATE);
+				/*~~>*/String xml = Context.getAdministrationService().getGlobalProperty(
+				    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ADDRESS_TEMPLATE);
 				setAddressTemplate(xml);
 			}
 			catch (Exception ex) {
@@ -119,8 +119,8 @@ public class AddressSupport extends LayoutSupport<AddressTemplate> implements Gl
 	 * @see org.openmrs.api.GlobalPropertyListener#supportsPropertyName(String)
 	 */
 	@Override
-	public boolean supportsPropertyName(String propertyName) {
-		return OpenmrsConstants.GLOBAL_PROPERTY_ADDRESS_TEMPLATE.equals(propertyName);
+	public boolean supportsPropertyName(/*~~>*/String propertyName) {
+		return /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ADDRESS_TEMPLATE.equals(propertyName);
 	}
 	
 	/**
@@ -128,7 +128,7 @@ public class AddressSupport extends LayoutSupport<AddressTemplate> implements Gl
 	 */
 	@Override
 	public void globalPropertyChanged(GlobalProperty newValue) {
-		if (!OpenmrsConstants.GLOBAL_PROPERTY_ADDRESS_TEMPLATE.equals(newValue.getProperty())) {
+		if (!/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ADDRESS_TEMPLATE.equals(newValue.getProperty())) {
 			return;
 		}
 		try {
@@ -140,7 +140,7 @@ public class AddressSupport extends LayoutSupport<AddressTemplate> implements Gl
 		}
 	}
 	
-	private void setAddressTemplate(String xml) {
+	private void setAddressTemplate(/*~~>*/String xml) {
 		AddressTemplate addressTemplate;
 		try {
 			
@@ -161,8 +161,8 @@ public class AddressSupport extends LayoutSupport<AddressTemplate> implements Gl
 	 * @see org.openmrs.api.GlobalPropertyListener#globalPropertyDeleted(String)
 	 */
 	@Override
-	public void globalPropertyDeleted(String propertyName) {
-		if (!OpenmrsConstants.GLOBAL_PROPERTY_ADDRESS_TEMPLATE.equals(propertyName)) {
+	public void globalPropertyDeleted(/*~~>*/String propertyName) {
+		if (!/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ADDRESS_TEMPLATE.equals(propertyName)) {
 			return;
 		}
 		setAddressTemplate(new ArrayList<>());

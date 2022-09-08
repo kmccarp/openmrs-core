@@ -22,11 +22,11 @@ public class InvalidActivationKeyException extends APIException {
 		
 	}
 	
-	public InvalidActivationKeyException(String message) {
+	public InvalidActivationKeyException(/*~~>*/String message) {
 		super(Context.getMessageSourceService().getMessage(message));
 	}
 	
-	public InvalidActivationKeyException(String message, Throwable cause) {
+	public InvalidActivationKeyException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

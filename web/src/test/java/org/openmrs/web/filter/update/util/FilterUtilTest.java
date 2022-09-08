@@ -37,7 +37,7 @@ public class FilterUtilTest extends BaseWebContextSensitiveTest {
 	@Disabled
 	public void storeLocale_shouldRestoreLocale() {
 		FilterUtil.storeLocale("it");
-		assertEquals("it", FilterUtil.restoreLocale(FilterUtil.ADMIN_USERNAME));
+		assertEquals("it", FilterUtil.restoreLocale(/*~~>*/FilterUtil.ADMIN_USERNAME));
 	}
 	
 }

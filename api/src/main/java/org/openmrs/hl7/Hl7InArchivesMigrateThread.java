@@ -31,7 +31,7 @@ public class Hl7InArchivesMigrateThread extends Thread {
 	 * Map holds data about the progress of the transfer process, that is numberTransferred and
 	 * numberOfFailedTransfers
 	 */
-	private static Map<String, Integer> progressStatusMap;
+	private static Map</*~~>*/String, Integer> progressStatusMap;
 	
 	/**
 	 * number of days to keep when migrating
@@ -64,7 +64,7 @@ public class Hl7InArchivesMigrateThread extends Thread {
 		NONE
 	}
 	
-	public static void setProgressStatusMap(Map<String, Integer> progressStatusMap) {
+	public static void setProgressStatusMap(Map</*~~>*/String, Integer> progressStatusMap) {
 		Hl7InArchivesMigrateThread.progressStatusMap = progressStatusMap;
 	}
 	
@@ -74,8 +74,8 @@ public class Hl7InArchivesMigrateThread extends Thread {
 	public Hl7InArchivesMigrateThread() {
 		this.userContext = Context.getUserContext();
 		setProgressStatusMap(new HashMap<>());
-		progressStatusMap.put(HL7Constants.NUMBER_TRANSFERRED_KEY, 0);
-		progressStatusMap.put(HL7Constants.NUMBER_OF_FAILED_TRANSFERS_KEY, 0);
+		progressStatusMap.put(/*~~>*/HL7Constants.NUMBER_TRANSFERRED_KEY, 0);
+		progressStatusMap.put(/*~~>*/HL7Constants.NUMBER_OF_FAILED_TRANSFERS_KEY, 0);
 	}
 	
 	/**
@@ -177,7 +177,7 @@ public class Hl7InArchivesMigrateThread extends Thread {
 		if (progressStatusMap == null) {
 			return 0;
 		}
-		return progressStatusMap.get(HL7Constants.NUMBER_TRANSFERRED_KEY);
+		return progressStatusMap.get(/*~~>*/HL7Constants.NUMBER_TRANSFERRED_KEY);
 	}
 	
 	/**
@@ -190,7 +190,7 @@ public class Hl7InArchivesMigrateThread extends Thread {
 		if (progressStatusMap == null) {
 			return 0;
 		}
-		return progressStatusMap.get(HL7Constants.NUMBER_OF_FAILED_TRANSFERS_KEY);
+		return progressStatusMap.get(/*~~>*/HL7Constants.NUMBER_OF_FAILED_TRANSFERS_KEY);
 	}
 	
 	/**

@@ -41,7 +41,7 @@ public class PersonSaveHandler implements SaveHandler<Person> {
 	 *      java.util.Date, java.lang.String)
 	 */
 	@Override
-	public void handle(Person person, User creator, Date dateCreated, String other) {
+	public void handle(Person person, User creator, Date dateCreated, /*~~>*/String other) {
 		
 		// address collection
 		if (person.getAddresses() != null && !person.getAddresses().isEmpty()) {

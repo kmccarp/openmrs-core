@@ -68,7 +68,7 @@ public class PersonAddressValidator implements Validator {
 		PersonAddress personAddress = (PersonAddress) object;
 		
 		//resolve a shorter name to display along with the error message
-		String addressString;
+		/*~~>*/String addressString;
 		if (StringUtils.isNotBlank(personAddress.getAddress1())) {
 			addressString = personAddress.getAddress1();
 		} else if (StringUtils.isNotBlank(personAddress.getAddress2())) {
@@ -90,8 +90,8 @@ public class PersonAddressValidator implements Validator {
 			        + "'" }, "The End Date for address '" + addressString + "' shouldn't be earlier than the Start Date");
 		}
 		
-		String xml = Context.getLocationService().getAddressTemplate();
-		List<String> requiredElements;
+		/*~~>*/String xml = Context.getLocationService().getAddressTemplate();
+		List</*~~>*/String> requiredElements;
 		
 		try {
 			AddressTemplate addressTemplate = Context.getSerializationService().getDefaultSerializer().deserialize(xml,
@@ -104,10 +104,10 @@ public class PersonAddressValidator implements Validator {
 		}
 		
 		if (requiredElements != null) {
-			for (String fieldName : requiredElements) {
+			for (/*~~>*/String fieldName : requiredElements) {
 				try {
 					Object value = PropertyUtils.getProperty(personAddress, fieldName);
-					if (StringUtils.isBlank((String) value)) {
+					if (StringUtils.isBlank((/*~~>*/String) value)) {
 						//required field not found
 						errors.reject(Context.getMessageSourceService().getMessage(
 						    "AddressTemplate.error.requiredAddressFieldIsBlank", new Object[] { fieldName },

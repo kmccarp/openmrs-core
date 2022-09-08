@@ -34,7 +34,7 @@ public class ExistingVisitAssignmentHandler extends BaseEncounterVisitHandler {
 	 * @see org.openmrs.api.handler.EncounterVisitHandler#getDisplayName(java.util.Locale)
 	 */
 	@Override
-	public String getDisplayName(Locale locale) {
+	public /*~~>*/String getDisplayName(Locale locale) {
 		return Context.getMessageSourceService().getMessage("visit.assignmentHandler.assignToExistingVisitOnly", null,
 		    locale);
 	}

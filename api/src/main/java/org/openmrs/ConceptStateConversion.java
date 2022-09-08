@@ -47,7 +47,7 @@ public class ConceptStateConversion extends BaseOpenmrsObject {
 	
 	/** @see Object#toString() */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "ConceptStateConversion: Concept[" + concept + "] results in State [" + programWorkflowState
 		        + "] for workflow [" + programWorkflow + "]";
 	}

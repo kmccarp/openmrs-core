@@ -54,8 +54,8 @@ public class ModifyColumnGeneratorTest {
 		ModifyColumnStatement statement = new ModifyColumnStatement("some_schema", "some_table", config);
 		Sql[] sql = generator.generateSql(statement, new MySQLDatabase(), null);
 		
-		String actual = sql[0].toSql();
-		String expected = "ALTER TABLE some_schema.some_table MODIFY column_name INT NOT NULL PRIMARY KEY";
+		/*~~>*/String actual = sql[0].toSql();
+		/*~~>*/String expected = "ALTER TABLE some_schema.some_table MODIFY column_name INT NOT NULL PRIMARY KEY";
 		
 		assertEquals(expected, actual);
 	}
@@ -207,8 +207,8 @@ public class ModifyColumnGeneratorTest {
 		ModifyColumnStatement statement = new ModifyColumnStatement(null, null);
 		ValidationErrors errors = generator.validate(statement, new MySQLDatabase(), null);
 		
-		String actual = errors.toString();
-		String expected = "tableName is required; No columns defined";
+		/*~~>*/String actual = errors.toString();
+		/*~~>*/String expected = "tableName is required; No columns defined";
 		
 		assertEquals(expected, actual);
 	}
@@ -221,7 +221,7 @@ public class ModifyColumnGeneratorTest {
 		shouldRejectAddingAPrimaryKeyColumn(new SQLiteDatabase(), "Adding primary key columns is not supported on sqlite");
 	}
 	
-	private void shouldRejectAddingAPrimaryKeyColumn(Database database, String expected) {
+	private void shouldRejectAddingAPrimaryKeyColumn(Database database, /*~~>*/String expected) {
 		ModifyColumnGenerator generator = new ModifyColumnGenerator();
 		
 		ColumnConfig config = new ColumnConfig(new Column("column_name"));
@@ -230,7 +230,7 @@ public class ModifyColumnGeneratorTest {
 		ModifyColumnStatement statement = new ModifyColumnStatement("some_schema", "some_table", config);
 		ValidationErrors errors = generator.validate(statement, database, null);
 		
-		String actual = errors.toString();
+		/*~~>*/String actual = errors.toString();
 		
 		assertEquals(expected, actual);
 	}

@@ -42,7 +42,7 @@ public class HttpClientTest {
 	
 	@Test
 	public void post_shouldPostUrlParametersAndGetResponse() throws IOException {
-		Map<String, String> parameters = new TreeMap<>();
+		Map</*~~>*/String, /*~~>*/String> parameters = new TreeMap<>();
 		parameters.put("one", "one");
 		parameters.put("two", "two");
 		
@@ -50,12 +50,12 @@ public class HttpClientTest {
 		when(connection.getOutputStream()).thenReturn(stream);
 		when(connection.getInputStream()).thenReturn(new ByteArrayInputStream("response".getBytes()));
 		
-		String response = client.post(parameters);
+		/*~~>*/String response = client.post(parameters);
 		
 		verify(connection).setDoOutput(true);
 		verify(connection).setDoInput(true);
 		verify(connection).setRequestMethod("POST");
-		verify(connection).setRequestProperty("Content-Length", String.valueOf(16));
+		verify(connection).setRequestProperty("Content-Length", /*~~>*/String.valueOf(16));
 		verify(connection).setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 		
 		assertThat(stream.toString(), is("&one=one&two=two"));

@@ -66,7 +66,7 @@ import org.openmrs.util.OpenmrsConstants;
  */
 public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	
-	protected static final String ORU_INITIAL_DATA_XML = "org/openmrs/hl7/include/ORUTest-initialData.xml";
+	protected static final /*~~>*/String ORU_INITIAL_DATA_XML = "org/openmrs/hl7/include/ORUTest-initialData.xml";
 	
 	// hl7 parser to be used throughout
 	protected static GenericParser parser = new GenericParser();
@@ -95,7 +95,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	public void processMessage_shouldCreateEncounterAndObsFromHl7Message() throws Exception {
 		ObsService obsService = Context.getObsService();
 		
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^||John3^Doe^||\r"
 		        + "PV1||O|1^Unknown Location||||1^Super User (1-8)|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r"
@@ -142,7 +142,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	public void processMessage_shouldCreateObsGroupForOBRs() throws Exception {
 		ObsService obsService = Context.getObsService();
 		
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226103553||ORU^R01|OD9PWqcD9g0NKn81rvSD|P|2.5|1||||||||66^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226103553||ORU^R01|OD9PWqcD9g0NKn81rvSD|P|2.5|1||||||||66^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^||John^Doe^||\r"
 		        + "PV1||O|1^Unknown Location||||1^Super User (1-8)|||||||||||||||||||||||||||||||||||||20080205|||||||V\r"
 		        + "ORC|RE||||||||20080226103428|1^Super User\r"
@@ -229,7 +229,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		// to append to
 		assertNotNull(Context.getEncounterService().getEncounter(3));
 		
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080902151831||ORU^R01|yow3LEP6bycnLfoPyI31|P|2.5|1||||||||3^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080902151831||ORU^R01|yow3LEP6bycnLfoPyI31|P|2.5|1||||||||3^AMRS.ELD.FORMID\r"
 		        + "PID|||7^^^^||Indakasi^Testarius^Ambote||\r"
 		        + "PV1||O|1||||1^Super User (1-8)||||||||||||3|||||||||||||||||||||||||20080831|||||||V\r"
 		        + "ORC|RE||||||||20080902150000|1^Super User\r"
@@ -261,7 +261,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		// remember initial occurrence of proposal's text in the model
 		int initialOccurrences = Context.getConceptService().getConceptProposals("PELVIC MASS").size();
 		
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080924022306||ORU^R01|Z185fTD0YozQ5kvQZD7i|P|2.5|1||||||||3^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080924022306||ORU^R01|Z185fTD0YozQ5kvQZD7i|P|2.5|1||||||||3^AMRS.ELD.FORMID\r"
 		        + "PID|||7^^^^||Joe^S^Mith||\r"
 		        + "PV1||O|1^Unknown Module 2||||1^Joe (1-1)|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080219085345|1^Joe\r"
@@ -288,7 +288,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		// remember initial occurrence of proposal's text in the model
 		int initialOccurrences = Context.getConceptService().getConceptProposals("ASDFASDFASDF").size();
 		
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20081006115934||ORU^R01|a1NZBpKqu54QyrWBEUKf|P|2.5|1||||||||3^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20081006115934||ORU^R01|a1NZBpKqu54QyrWBEUKf|P|2.5|1||||||||3^AMRS.ELD.FORMID\r"
 		        + "PID|||7^^^^~asdf^^^^||Joe^ ^Smith||\r"
 		        + "PV1||O|1^Bishop Muge||||1^asdf asdf (5-9)|||||||||||||||||||||||||||||||||||||20081003|||||||V\r"
 		        + "ORC|RE||||||||20081006115645|1^Super User\r"
@@ -315,7 +315,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		ConceptService conceptService = Context.getConceptService();
 		EncounterService encService = Context.getEncounterService();
 		
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080630094800||ORU^R01|kgWdFt0SVwwClOfJm3pe|P|2.5|1||||||||15^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080630094800||ORU^R01|kgWdFt0SVwwClOfJm3pe|P|2.5|1||||||||15^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^~d3811480^^^^||John3^Doe^||\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20080208|||||||V\r"
 		        + "ORC|RE||||||||20080208000000|1^Super User\r"
@@ -353,7 +353,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		// sanity check to make sure this obs doesn't exist already
 		assertEquals(0, obsService.getObservationsByPersonAndConcept(patient, concept).size());
 		
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^||Beren^John^Bondo||\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20090714|||||||V\r"
 		        + "ORC|RE||||||||20090728165937|1^Super User\r"
@@ -401,7 +401,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void processMessage_shouldFailOnEmptyConceptAnswers() throws Exception {
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080630094800||ORU^R01|kgWdFt0SVwwClOfJm3pe|P|2.5|1||||||||15^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080630094800||ORU^R01|kgWdFt0SVwwClOfJm3pe|P|2.5|1||||||||15^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^~d3811480^^^^||John3^Doe^||\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20080208|||||||V\r"
 		        + "ORC|RE||||||||20080208000000|1^Super User\r"
@@ -416,7 +416,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void processMessage_shouldFailOnEmptyConceptProposals() throws Exception {
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080630094800||ORU^R01|kgWdFt0SVwwClOfJm3pe|P|2.5|1||||||||15^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080630094800||ORU^R01|kgWdFt0SVwwClOfJm3pe|P|2.5|1||||||||15^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^~d3811480^^^^||John3^Doe^||\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20080208|||||||V\r"
 		        + "ORC|RE||||||||20080208000000|1^Super User\r"
@@ -440,7 +440,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		
 		// process a message with a single NK1 segment
 		// defines relative as patient's Parent
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^||Beren^John^Bondo||\r"
 		        + "NK1|1|Jones^Jane^Lee^^RN|3A^Parent^99REL||||||||||||F|19751016|||||||||||||||||2^^^L^PI\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20090714|||||||V\r"
@@ -470,7 +470,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		// process a message with an invalid coding system
 		Patient patient = new Patient(3); // the patient that is the focus of
 		// this hl7 message
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^||Beren^John^Bondo||\r"
 		        + "NK1|1|Jones^Jane^Lee^^RN|3A^Parent^ACKFOO||||||||||||F|19751016|||||||||||||||||2^^^L^PI\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20090714|||||||V\r"
@@ -495,7 +495,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		// process a message with an invalid relationship identifier format
 		Patient patient = new Patient(3); // the patient that is the focus of
 		// this hl7 message
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^||Beren^John^Bondo||\r"
 		        + "NK1|1|Jones^Jane^Lee^^RN|3C^Parent^99REL||||||||||||F|19751016|||||||||||||||||2^^^L^PI\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20090714|||||||V\r"
@@ -520,7 +520,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		// process a message with a non-existent relationship type
 		Patient patient = new Patient(3); // the patient that is the focus of
 		// this hl7 message
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^||Beren^John^Bondo||\r"
 		        + "NK1|1|Jones^Jane^Lee^^RN|3952A^Fifth Cousin Twice Removed^99REL||||||||||||F|19751016|||||||||||||||||2^^^L^PI\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20090714|||||||V\r"
@@ -560,7 +560,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		
 		// process a message with a single NK1 segment
 		// defines relative as patient's Parent
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^||Beren^John^Bondo||\r"
 		        + "NK1|1|Jones^Jane^Lee^^RN|3A^Parent^99REL||||||||||||F|19751016|||||||||||||||||2^^^L^PI\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20090714|||||||V\r"
@@ -605,7 +605,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		
 		// process a new message with multiple NK1 segments
 		// this one defines patientB as patientA's Sibling and Patient
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170333||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170333||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^||Beren^John^Bondo||\r"
 		        + "NK1|1|Jones^Jane^Lee^^RN|2A^Sibling^99REL||||||||||||F|19751016|||||||||||||||||2^^^L^PI\r"
 		        + "NK1|2|Jones^Jane^Lee^^RN|1B^Patient^99REL||||||||||||F|19751016|||||||||||||||||2^^^L^PI\r"
@@ -642,7 +642,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		Patient patient = new Patient(3); // the patient that is the focus of
 		// this hl7 message
 		
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^||Beren^John^Bondo||\r"
 		        + "NK1|1|Jones^Jane^Lee^^RN|3A^Parent^99REL||||||||||||F|19751016|||||||||||||||||2178037d-f86b-4f12-8d8b-be3ebc220029^^^UUID^v4\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20090714|||||||V\r"
@@ -672,13 +672,13 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void processMessage_shouldFailIfQuestionDatatypeIsCodedAndABooleanIsNotAValidAnswer() throws Exception {
-		GlobalProperty trueConceptGlobalProperty = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_TRUE_CONCEPT, "7",
+		GlobalProperty trueConceptGlobalProperty = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_TRUE_CONCEPT, "7",
 		        "Concept id of the concept defining the TRUE boolean concept");
-		GlobalProperty falseConceptGlobalProperty = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_FALSE_CONCEPT, "8",
+		GlobalProperty falseConceptGlobalProperty = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_FALSE_CONCEPT, "8",
 		        "Concept id of the concept defining the TRUE boolean concept");
 		Context.getAdministrationService().saveGlobalProperty(trueConceptGlobalProperty);
 		Context.getAdministrationService().saveGlobalProperty(falseConceptGlobalProperty);
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||7^^^^||Collet^Test^Chebaskwony||\r"
 		        + "PV1||O|1^Unknown Location||||1^Super User (1-8)|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r"
@@ -694,7 +694,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void processMessage_shouldFailIfQuestionDatatypeIsNeitherBooleanNorNumericNorCoded() throws Exception {
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||7^^^^||Collet^Test^Chebaskwony||\r"
 		        + "PV1||O|1^Unknown Location||||1^Super User (1-8)|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r"
@@ -710,15 +710,15 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void processMessage_shouldSetValueAsBooleanForObsIfTheAnswerIs0Or1AndQuestionDatatypeIsBoolean() throws Exception {
-		GlobalProperty trueConceptGlobalProperty = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_TRUE_CONCEPT, "7",
+		GlobalProperty trueConceptGlobalProperty = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_TRUE_CONCEPT, "7",
 		        "Concept id of the concept defining the TRUE boolean concept");
-		GlobalProperty falseConceptGlobalProperty = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_FALSE_CONCEPT, "8",
+		GlobalProperty falseConceptGlobalProperty = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_FALSE_CONCEPT, "8",
 		        "Concept id of the concept defining the TRUE boolean concept");
 		Context.getAdministrationService().saveGlobalProperty(trueConceptGlobalProperty);
 		Context.getAdministrationService().saveGlobalProperty(falseConceptGlobalProperty);
 		ObsService os = Context.getObsService();
 		assertNull(os.getObs(17));
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||7^^^^||Collet^Test^Chebaskwony||\r"
 		        + "PV1||O|1^Unknown Location||||1^Super User (1-8)|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r"
@@ -747,7 +747,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	public void processMessage_shouldSetValue_CodedMatchingABooleanConceptForObsIfTheAnswerIs0Or1AndQuestionDatatypeIsCoded()
 	        throws Exception {
 		ObsService os = Context.getObsService();
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||7^^^^||Collet^Test^Chebaskwony||\r"
 		        + "PV1||O|1^Unknown Location||||1^Super User (1-8)|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r"
@@ -775,7 +775,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	@Test
 	public void processMessage_shouldSetValue_NumericForObsIfQuestionDatatypeIsNumeric() throws Exception {
 		ObsService os = Context.getObsService();
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||7^^^^||Collet^Test^Chebaskwony||\r"
 		        + "PV1||O|1^Unknown Location||||1^Super User (1-8)|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r"
@@ -804,7 +804,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	public void processMessage_shouldSetValue_NumericForObsIfQuestionDatatypeIsNumericAndTheAnswerIsEither0Or1()
 	        throws Exception {
 		ObsService os = Context.getObsService();
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||7^^^^||Collet^Test^Chebaskwony||\r"
 		        + "PV1||O|1^Unknown Location||||1^Super User (1-8)|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r"
@@ -832,7 +832,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	@Test
 	public void parseObs_shouldAddCommentsToAnObservationFromNTESegments() throws Exception {
 		ObsService os = Context.getObsService();
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||7^^^^||Collet^Test^Chebaskwony||\r"
 		        + "PV1||O|1^Unknown Location||||1^Super User (1-8)|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r"
@@ -860,7 +860,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	@Test
 	public void parseObs_shouldAddMultipleCommentsForAnObservationAsOneComment() throws Exception {
 		ObsService os = Context.getObsService();
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||7^^^^||Collet^Test^Chebaskwony||\r"
 		        + "PV1||O|1^Unknown Location||||1^Super User (1-8)|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r"
@@ -894,7 +894,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	@Test
 	public void parseObs_shouldAddCommentsToAnObservationGroup() throws Exception {
 		ObsService os = Context.getObsService();
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||7^^^^||Collet^Test^Chebaskwony||\r"
 		        + "PV1||O|1^Unknown Location||||1^Super User (1-8)|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r"
@@ -925,12 +925,12 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		Patient patient = new Patient(patientId);
 		List<Encounter> encForPatient1 = Context.getEncounterService().getEncountersByPatient(patient);
 		
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||"
 		        + patientId
 		        + "^^^^||Hornblower^Horatio^Test||\r"
 		        + "PV1||O|1^Unknown Location||||8a760^name^^^^^^^&"
-		        + HL7Constants.PROVIDER_ASSIGNING_AUTH_IDENTIFIER
+		        + /*~~>*/HL7Constants.PROVIDER_ASSIGNING_AUTH_IDENTIFIER
 		        + "&L|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r" + "OBR|1|||1238^MEDICAL RECORD OBSERVATIONS^99DCT";
 		Message hl7message = parser.parse(hl7string);
@@ -942,7 +942,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		assertThat(encForPatient2, hasSize(1));
 		
 		Provider newProvider = encForPatient2.get(0).getProvidersByRole(
-		    Context.getEncounterService().getEncounterRoleByUuid(EncounterRole.UNKNOWN_ENCOUNTER_ROLE_UUID)).iterator()
+		    Context.getEncounterService().getEncounterRoleByUuid(/*~~>*/EncounterRole.UNKNOWN_ENCOUNTER_ROLE_UUID)).iterator()
 		        .next();
 		assertEquals("a2c3868a-6b90-11e0-93c3-18a905e044dc", newProvider.getUuid());
 	}
@@ -956,7 +956,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		Patient patient = new Patient(patientId);
 		List<Encounter> encForPatient1 = Context.getEncounterService().getEncountersByPatient(patient);
 		
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||"
 		        + patientId
 		        + "^^^^||Hornblower^Horatio^Test||\r"
@@ -972,7 +972,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		assertThat(encForPatient2, hasSize(1));
 		
 		Provider newProvider = encForPatient2.get(0).getProvidersByRole(
-		    Context.getEncounterService().getEncounterRoleByUuid(EncounterRole.UNKNOWN_ENCOUNTER_ROLE_UUID)).iterator()
+		    Context.getEncounterService().getEncounterRoleByUuid(/*~~>*/EncounterRole.UNKNOWN_ENCOUNTER_ROLE_UUID)).iterator()
 		        .next();
 		assertEquals("c2299800-cca9-11e0-9572-0800200c9a66", newProvider.getUuid());
 	}
@@ -987,12 +987,12 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		Patient patient = new Patient(patientId);
 		List<Encounter> encForPatient1 = Context.getEncounterService().getEncountersByPatient(patient);
 		
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||"
 		        + patientId
 		        + "^^^^||Hornblower^Horatio^Test||\r"
 		        + "PV1||O|1^Unknown Location||||8^name^^^^^^^&"
-		        + HL7Constants.PROVIDER_ASSIGNING_AUTH_PROV_ID
+		        + /*~~>*/HL7Constants.PROVIDER_ASSIGNING_AUTH_PROV_ID
 		        + "&L|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r" + "OBR|1|||1238^MEDICAL RECORD OBSERVATIONS^99DCT";
 		Message hl7message = parser.parse(hl7string);
@@ -1004,7 +1004,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		assertThat(encForPatient2, hasSize(1));
 		
 		Provider newProvider = encForPatient2.get(0).getProvidersByRole(
-		    Context.getEncounterService().getEncounterRoleByUuid(EncounterRole.UNKNOWN_ENCOUNTER_ROLE_UUID)).iterator()
+		    Context.getEncounterService().getEncounterRoleByUuid(/*~~>*/EncounterRole.UNKNOWN_ENCOUNTER_ROLE_UUID)).iterator()
 		        .next();
 		assertEquals("1f9e8336-6b95-11e0-93c3-18a905e044dc", newProvider.getUuid());
 	}
@@ -1021,12 +1021,12 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		ProviderService ps = Context.getProviderService();
 		Provider provider = ps.getProviderByIdentifier("8a760");
 		
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||"
 		        + patientId
 		        + "^^^^||Hornblower^Horatio^Test||\r"
 		        + "PV1||O|1^Unknown Location||||ba4781f4-6b94-11e0-93c3-18a905e044dc^name^^^^^^^&"
-		        + HL7Constants.PROVIDER_ASSIGNING_AUTH_PROV_UUID
+		        + /*~~>*/HL7Constants.PROVIDER_ASSIGNING_AUTH_PROV_UUID
 		        + "&L|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r" + "OBR|1|||1238^MEDICAL RECORD OBSERVATIONS^99DCT";
 		Message hl7message = parser.parse(hl7string);
@@ -1038,7 +1038,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		assertThat(encForPatient2, hasSize(1));
 		
 		Provider newProvider = encForPatient2.get(0).getProvidersByRole(
-		    Context.getEncounterService().getEncounterRoleByUuid(EncounterRole.UNKNOWN_ENCOUNTER_ROLE_UUID)).iterator()
+		    Context.getEncounterService().getEncounterRoleByUuid(/*~~>*/EncounterRole.UNKNOWN_ENCOUNTER_ROLE_UUID)).iterator()
 		        .next();
 		assertEquals(4, newProvider.getId().intValue());
 	}
@@ -1049,12 +1049,12 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	@Test
 	public void processMessage_shouldFailIfTheProviderNameTypeCodeIsNotSpecifiedAndIsNotAPersonId() throws Exception {
 		int patientId = 2;
-		String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||"
 		        + patientId
 		        + "^^^^||Hornblower^Horatio^Test||\r"
 		        + "PV1||O|1^Unknown Location||||Test^Super User (1-8)^^^^^^^&"
-		        + HL7Constants.PROVIDER_ASSIGNING_AUTH_IDENTIFIER
+		        + /*~~>*/HL7Constants.PROVIDER_ASSIGNING_AUTH_IDENTIFIER
 		        + "&^|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 		        + "ORC|RE||||||||20080226102537|1^Super User\r" + "OBR|1|||1238^MEDICAL RECORD OBSERVATIONS^99DCT";
 		Message hl7message = parser.parse(hl7string);
@@ -1072,7 +1072,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		Integer originalEncounters = encounters.size();
 		
 		// process message
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||d9218f76-6c39-45f4-8efa-4c5c6c199f50^AMRS.ELD.FORMUUID\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||d9218f76-6c39-45f4-8efa-4c5c6c199f50^AMRS.ELD.FORMUUID\r"
 		        + "PID|||3^^^^||Beren^John^Bondo||\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20090714|||||||V\r"
 		        + "ORC|RE||||||||20090728165937|1^Super User\r"
@@ -1105,7 +1105,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		Integer originalEncounters = encounters.size();
 		
 		// process message
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID~c156e1a8-6731-4ebd-89ff-d0d1c45eb004^AMRS.ELD.FORMUUID\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||4^AMRS.ELD.FORMID~c156e1a8-6731-4ebd-89ff-d0d1c45eb004^AMRS.ELD.FORMUUID\r"
 		        + "PID|||3^^^^||Beren^John^Bondo||\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20090714|||||||V\r"
 		        + "ORC|RE||||||||20090728165937|1^Super User\r"
@@ -1138,7 +1138,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		Integer originalEncounters = encounters.size();
 		
 		// process message
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||1^AMRS.ELD.FORMID~oicu812^AMRS.ELD.FORMUUID^^\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||1^AMRS.ELD.FORMID~oicu812^AMRS.ELD.FORMUUID^^\r"
 		        + "PID|||3^^^^||Beren^John^Bondo||\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20090714|||||||V\r"
 		        + "ORC|RE||||||||20090728165937|1^Super User\r"
@@ -1167,11 +1167,11 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	@Test
 	public void processMessage_shouldSetComplexDataForObsWithComplexConcepts() throws Exception {
 		ObsHandler handler = new ObsHandler();
-		final String handlerName = "NeigborHandler";
-		final String data = "{\"firstname\":\"Horatio\"}";
+		final /*~~>*/String handlerName = "NeigborHandler";
+		final /*~~>*/String data = "{\"firstname\":\"Horatio\"}";
 		Context.getObsService().registerHandler(handlerName, handler);
 		try {
-			String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+			/*~~>*/String hl7string = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20080226102656||ORU^R01|JqnfhKKtouEz8kzTk6Zo|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 			        + "PID|||3^^^^||John3^Doe^||\r"
 			        + "PV1||O|1^Unknown Location||||1^Super User (1-8)|||||||||||||||||||||||||||||||||||||20080212|||||||V\r"
 			        + "ORC|RE||||||||20080226102537|1^Super User\r"
@@ -1204,7 +1204,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		}
 		
 		@Override
-		public Obs getObs(Obs obs, String view) {
+		public Obs getObs(Obs obs, /*~~>*/String view) {
 			return null;
 		}
 		
@@ -1217,15 +1217,15 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 		 * @see org.openmrs.obs.ComplexObsHandler#getSupportedViews()
 		 */
 		@Override
-		public String[] getSupportedViews() {
-			return new String[0];
+		public /*~~>*//*~~>*/String[] getSupportedViews() {
+			return new /*~~>*/String[0];
 		}
 		
 		/**
 		 * @see org.openmrs.obs.ComplexObsHandler#supportsView(java.lang.String)
 		 */
 		@Override
-		public boolean supportsView(String view) {
+		public boolean supportsView(/*~~>*/String view) {
 			return false;
 		}
 	}
@@ -1237,7 +1237,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getForm_shouldPassIfReturnValueIsNullWhenUuidAndIdIsNull() throws Exception {
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||\r"
 		        + "PID|||3^^^^||Beren^John^Bondo||\r"
 		        + "NK1|1|Jones^Jane^Lee^^RN|3A^Parent^99REL||||||||||||F|19751016|||||||||||||||||2^^^L^PI\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20090714|||||||V\r"
@@ -1260,7 +1260,7 @@ public class ORUR01HandlerTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getForm_shouldPassIfReturnValueIsNotNullWhenUuidOrIdIsNotNull() throws Exception {
-		String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
+		/*~~>*/String hl7String = "MSH|^~\\&|FORMENTRY|AMRS.ELD|HL7LISTENER|AMRS.ELD|20090728170332||ORU^R01|gu99yBh4loLX2mh9cHaV|P|2.5|1||||||||16^AMRS.ELD.FORMID\r"
 		        + "PID|||3^^^^||Beren^John^Bondo||\r"
 		        + "NK1|1|Jones^Jane^Lee^^RN|3A^Parent^99REL||||||||||||F|19751016|||||||||||||||||2^^^L^PI\r"
 		        + "PV1||O|1^Unknown||||1^Super User (admin)|||||||||||||||||||||||||||||||||||||20090714|||||||V\r"

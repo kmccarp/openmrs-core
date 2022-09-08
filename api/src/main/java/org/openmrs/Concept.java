@@ -74,7 +74,7 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	public static final long serialVersionUID = 57332L;
 	
 	private static final Logger log = LoggerFactory.getLogger(Concept.class);
-	private static final String CONCEPT_NAME_LOCALE_NULL = "Concept.name.locale.null";
+	private static final /*~~>*/String CONCEPT_NAME_LOCALE_NULL = "Concept.name.locale.null";
 	
 	// Fields
 	@DocumentId
@@ -87,7 +87,7 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	
 	private Date dateRetired;
 	
-	private String retireReason;
+	private /*~~>*/String retireReason;
 	
 	@IndexedEmbedded(includeEmbeddedObjectId = true)
 	private ConceptDatatype datatype;
@@ -97,7 +97,7 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	
 	private Boolean set = false;
 	
-	private String version;
+	private /*~~>*/String version;
 	
 	private User creator;
 	
@@ -505,7 +505,7 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	 * <strong>Should</strong> return true if locale is null but name exists
 	 * <strong>Should</strong> return false if locale is null but name does not exist
 	 */
-	public boolean hasName(String name, Locale locale) {
+	public boolean hasName(/*~~>*/String name, Locale locale) {
 		if (name == null) {
 			return false;
 		}
@@ -737,8 +737,8 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	 * @return Collection of ConceptNames with the given locale language or country
 	 */
 	private Collection<ConceptName> getPartiallyCompatibleNames(Locale locale) {
-		String language = locale.getLanguage();
-		String country = locale.getCountry();
+		/*~~>*/String language = locale.getLanguage();
+		/*~~>*/String country = locale.getCountry();
 		
 		return getNames().stream()
 				.filter(n -> language.equals(n.getLocale().getLanguage()) || 
@@ -934,7 +934,7 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	 * @param name A name
 	 * @return whether this concept has the given name in any locale
 	 */
-	public boolean isNamed(String name) {
+	public boolean isNamed(/*~~>*/String name) {
 		return getNames().stream().anyMatch(cn -> name.equals(cn.getName()));
 	}
 	
@@ -1165,7 +1165,7 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	 * @return the retireReason
 	 */
 	@Override
-	public String getRetireReason() {
+	public /*~~>*/String getRetireReason() {
 		return retireReason;
 	}
 	
@@ -1173,8 +1173,8 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	 * @param retireReason the retireReason to set
 	 */
 	@Override
-	public void setRetireReason(String retireReason) {
-		this.retireReason = retireReason;
+	public void setRetireReason(/*~~>*/String retireReason) {
+		/*~~>*/this.retireReason = retireReason;
 	}
 	
 	/**
@@ -1296,15 +1296,15 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	/**
 	 * @return Returns the version.
 	 */
-	public String getVersion() {
+	public /*~~>*/String getVersion() {
 		return version;
 	}
 	
 	/**
 	 * @param version The version to set.
 	 */
-	public void setVersion(String version) {
-		this.version = version;
+	public void setVersion(/*~~>*/String version) {
+		/*~~>*/this.version = version;
 	}
 	
 	/**
@@ -1393,7 +1393,7 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "Concept #" + conceptId;
 	}
 	
@@ -1402,7 +1402,7 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	 */
 	@Override
 	@Deprecated
-	public List<Concept> findPossibleValues(String searchText) {
+	public List<Concept> findPossibleValues(/*~~>*/String searchText) {
 		List<Concept> concepts = new ArrayList<>();
 		try {
 			
@@ -1436,7 +1436,7 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	 * @see org.openmrs.Attributable#hydrate(java.lang.String)
 	 */
 	@Override
-	public Concept hydrate(String s) {
+	public Concept hydrate(/*~~>*/String s) {
 		try {
 			return Context.getConceptService().getConcept(Integer.valueOf(s));
 		}
@@ -1452,7 +1452,7 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	 * @see org.openmrs.Attributable#serialize()
 	 */
 	@Override
-	public String serialize() {
+	public /*~~>*/String serialize() {
 		if (this.getConceptId() == null) {
 			return "";
 		}
@@ -1464,7 +1464,7 @@ public class Concept extends BaseOpenmrsObject implements Auditable, Retireable,
 	 * @see org.openmrs.Attributable#getDisplayString()
 	 */
 	@Override
-	public String getDisplayString() {
+	public /*~~>*/String getDisplayString() {
 		if (getName() == null) {
 			return toString();
 		} else {

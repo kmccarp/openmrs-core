@@ -40,17 +40,17 @@ public class SimpleXStreamSerializerTest {
 		OpenmrsSerializer serializer = new SimpleXStreamSerializer();
 		
 		Foo foo = new Foo("test", 1);
-		List<String> list = new ArrayList<>();
+		List</*~~>*/String> list = new ArrayList<>();
 		list.add("foo");
 		list.add("bar");
-		Map<Integer, String> map = new HashMap<>();
+		Map<Integer, /*~~>*/String> map = new HashMap<>();
 		map.put(1, "foo");
 		map.put(2, "fooBar");
 		map.put(3, "bar");
 		foo.setAttributeList(list);
 		foo.setAttributeMap(map);
 		
-		String serializedFoo = serializer.serialize(foo);
+		/*~~>*/String serializedFoo = serializer.serialize(foo);
 		
 		assertTrue(StringUtils.deleteWhitespace(serializedFoo).equals(
 		    StringUtils.deleteWhitespace("<org.openmrs.serialization.Foo>\n" + "  <attributeString>test</attributeString>\n"
@@ -69,7 +69,7 @@ public class SimpleXStreamSerializerTest {
 	 */
 	@Test
 	public void deserialize_shouldDeserializeStringToClassInstance() throws SerializationException {
-		String serializedFoo = "<org.openmrs.serialization.Foo>\n" + "  <attributeString>Testing</attributeString>\n"
+		/*~~>*/String serializedFoo = "<org.openmrs.serialization.Foo>\n" + "  <attributeString>Testing</attributeString>\n"
 		        + "  <attributeInt>4</attributeInt>\n" + "  <attributeList>\n" + "    <string>fooBar</string>\n"
 		        + "    <string>bar</string>\n" + "  </attributeList>\n" + "  <attributeMap>\n" + "    <entry>\n"
 		        + "      <int>10</int>\n" + "      <string>foo</string>\n" + "    </entry>\n" + "    <entry>\n"
@@ -84,12 +84,12 @@ public class SimpleXStreamSerializerTest {
 		assertTrue(foo.getAttributeString().equals("Testing"));
 		assertEquals(4, foo.getAttributeInt());
 
-		List<String> newList = foo.getAttributeList();
+		List</*~~>*/String> newList = foo.getAttributeList();
 		assertThat(newList, hasSize(2));
 		assertTrue(newList.get(0).equals("fooBar"));
 		assertTrue(newList.get(1).equals("bar"));
 
-		Map<Integer, String> newMap = foo.getAttributeMap();
+		Map<Integer, /*~~>*/String> newMap = foo.getAttributeMap();
 		assertEquals(3, newMap.size());
 		assertTrue(newMap.get(10).equals("foo"));
 		assertTrue(newMap.get(20).equals("fooBar"));
@@ -103,7 +103,7 @@ public class SimpleXStreamSerializerTest {
 	 */
 	@Test
 	public void deserialize_shouldNotDeserializeProxies() throws SerializationException {
-		String serialized = "<dynamic-proxy>" + "<interface>org.openmrs.OpenmrsObject</interface>"
+		/*~~>*/String serialized = "<dynamic-proxy>" + "<interface>org.openmrs.OpenmrsObject</interface>"
 		        + "<handler class=\"java.beans.EventHandler\">" + "<target class=\"java.lang.ProcessBuilder\">"
 		        + "<command>" + "<string>someApp</string>" + "</command></target>" + "<action>start</action>" + "</handler>"
 		        + "</dynamic-proxy>";
@@ -117,7 +117,7 @@ public class SimpleXStreamSerializerTest {
 	 */
 	@Test
 	public void deserialize_shouldIgnoreEntities() throws SerializationException {
-		String xml = "<!DOCTYPE ZSL [<!ENTITY xxe1 \"some attribute value\" >]>" + "<org.openmrs.serialization.Foo>"
+		/*~~>*/String xml = "<!DOCTYPE ZSL [<!ENTITY xxe1 \"some attribute value\" >]>" + "<org.openmrs.serialization.Foo>"
 		        + "<attributeString>&xxe1;</attributeString>" + "</org.openmrs.serialization.Foo>";
 		
 		assertThrows(SerializationException.class, () -> new SimpleXStreamSerializer().deserialize(xml, Foo.class));

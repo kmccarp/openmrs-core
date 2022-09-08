@@ -27,7 +27,7 @@ public class LocationDatatype extends BaseMetadataDatatype<Location> {
 	 * @override
 	 */
 	@Override
-	public Location deserialize(String uuid) {
+	public Location deserialize(/*~~>*/String uuid) {
 		if (StringUtils.isBlank(uuid)) {
 			return null;
 		}

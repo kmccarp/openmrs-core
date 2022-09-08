@@ -36,7 +36,7 @@ public class MySQLBooleanTypeTest {
 		MySQLBooleanType dataType = new MySQLBooleanType();
 		DatabaseDataType actual = dataType.toDatabaseDataType(new MySQLDatabase());
 		
-		String expected = "TINYINT(1)";
+		/*~~>*/String expected = "TINYINT(1)";
 		assertEquals(expected, actual.getType());
 	}
 	

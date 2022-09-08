@@ -41,7 +41,7 @@ public class MigrateConceptReferenceTermChangeSet implements CustomTaskChange {
 	
 	private static final Logger log = LoggerFactory.getLogger(MigrateConceptReferenceTermChangeSet.class);
 	
-	public static final String DEFAULT_CONCEPT_MAP_TYPE = "NARROWER-THAN";
+	public static final /*~~>*/String DEFAULT_CONCEPT_MAP_TYPE = "NARROWER-THAN";
 	
 	/**
 	 * @see liquibase.change.custom.CustomTaskChange#execute(liquibase.database.Database)
@@ -63,7 +63,7 @@ public class MigrateConceptReferenceTermChangeSet implements CustomTaskChange {
 			connection.setAutoCommit(false);
 			
 			//Prepare a list of types and their ids.
-			Map<String, Integer> typesToIds = new HashMap<>();
+			Map</*~~>*/String, Integer> typesToIds = new HashMap<>();
 			
 			selectTypes = connection.prepareStatement("select * from concept_map_type");
 			selectTypes.execute();
@@ -93,8 +93,8 @@ public class MigrateConceptReferenceTermChangeSet implements CustomTaskChange {
 			        + " concept_map_type_id = ? where concept_map_id = ?");
 			
 			int prevSource = -1;
-			String prevSourceCode = null;
-			String prevComment = null;
+			/*~~>*/String prevSourceCode = null;
+			/*~~>*/String prevComment = null;
 			int prevInsertedTerm = -1;
 			
 			//In addition to source and source_code we order by UUID to always insert the same term if run on different systems.
@@ -107,11 +107,11 @@ public class MigrateConceptReferenceTermChangeSet implements CustomTaskChange {
 			while (selectMapResult.next()) {
 				final int conceptMapId = selectMapResult.getInt("concept_map_id");
 				final int source = selectMapResult.getInt("source");
-				final String sourceCode = selectMapResult.getString("source_code");
-				final String comment = selectMapResult.getString("comment");
+				final /*~~>*/String sourceCode = selectMapResult.getString("source_code");
+				final /*~~>*/String comment = selectMapResult.getString("comment");
 				final int creator = selectMapResult.getInt("creator");
 				final Date dateCreated = selectMapResult.getDate("date_created");
-				final String uuid = selectMapResult.getString("uuid");
+				final /*~~>*/String uuid = selectMapResult.getString("uuid");
 				
 				final Integer mapTypeId = determineMapTypeId(comment, typesToIds);
 				final int updatedMapTypeId = (mapTypeId == null) ? typesToIds.get(DEFAULT_CONCEPT_MAP_TYPE) : mapTypeId;
@@ -222,7 +222,7 @@ public class MigrateConceptReferenceTermChangeSet implements CustomTaskChange {
 	 * @param typesToIds 
 	 * @return map type id or null if not recognized
 	 */
-	protected Integer determineMapTypeId(String comment, Map<String, Integer> typesToIds) {
+	protected Integer determineMapTypeId(/*~~>*/String comment, Map</*~~>*/String, Integer> typesToIds) {
 		Integer mapTypeId = null;
 		
 		if (!StringUtils.isBlank(comment)) {
@@ -245,7 +245,7 @@ public class MigrateConceptReferenceTermChangeSet implements CustomTaskChange {
 	 * @see liquibase.change.custom.CustomChange#getConfirmationMessage()
 	 */
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished migrating concept reference terms";
 	}
 	

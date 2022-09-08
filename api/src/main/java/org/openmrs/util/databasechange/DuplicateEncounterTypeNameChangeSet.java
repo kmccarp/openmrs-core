@@ -46,7 +46,7 @@ public class DuplicateEncounterTypeNameChangeSet implements CustomTaskChange {
 	private static final Logger log = LoggerFactory.getLogger(DuplicateEncounterTypeNameChangeSet.class);
 	
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Completed updating duplicate EncounterType names";
 	}
 	
@@ -72,7 +72,7 @@ public class DuplicateEncounterTypeNameChangeSet implements CustomTaskChange {
 	@Override
 	public void execute(Database database) throws CustomChangeException {
 		JdbcConnection connection = (JdbcConnection) database.getConnection();
-		Map<String, HashSet<Integer>> duplicates = new HashMap<>();
+		Map</*~~>*/String, HashSet<Integer>> duplicates = new HashMap<>();
 		Statement stmt = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
@@ -89,7 +89,7 @@ public class DuplicateEncounterTypeNameChangeSet implements CustomTaskChange {
 			        .executeQuery("SELECT * FROM encounter_type INNER JOIN (SELECT name FROM encounter_type GROUP BY name HAVING count(name) > 1) dup ON encounter_type.name = dup.name");
 			
 			Integer id;
-			String name;
+			/*~~>*/String name;
 			
 			while (rs.next()) {
 				id = rs.getInt("encounter_type_id");
@@ -113,14 +113,14 @@ public class DuplicateEncounterTypeNameChangeSet implements CustomTaskChange {
 
 				int duplicateNameId = 1;
 				for (int i = 1; i < ids.size(); i++) {
-					String newName = pairs.getKey() + "_" + duplicateNameId;
+					/*~~>*/String newName = pairs.getKey() + "_" + duplicateNameId;
 
 					List<List<Object>> duplicateResult;
 					boolean duplicateName;
 					Connection con = DatabaseUpdater.getConnection();
 
 					do {
-						String sqlValidatorString = "select * from encounter_type where name = '" + newName + "'";
+						/*~~>*/String sqlValidatorString = "select * from encounter_type where name = '" + newName + "'";
 						duplicateResult = DatabaseUtil.executeSQL(con, sqlValidatorString, true);
 
 						if (!duplicateResult.isEmpty()) {

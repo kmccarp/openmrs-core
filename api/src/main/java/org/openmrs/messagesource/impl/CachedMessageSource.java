@@ -87,7 +87,7 @@ public class CachedMessageSource extends AbstractMessageSource implements Mutabl
 	 * <strong>Should</strong> match get message with presentation message
 	 */
 	@Override
-	public PresentationMessage getPresentation(String key, Locale forLocale) {
+	public PresentationMessage getPresentation(/*~~>*/String key, Locale forLocale) {
 		PresentationMessage foundPM = null;
 		PresentationMessageMap codeMessageMap = localizedMap.get(forLocale);
 		if ((codeMessageMap != null) && codeMessageMap.containsKey(key)) {
@@ -114,7 +114,7 @@ public class CachedMessageSource extends AbstractMessageSource implements Mutabl
 	 *      java.util.Locale)
 	 */
 	@Override
-	protected MessageFormat resolveCode(String code, Locale locale) {
+	protected MessageFormat resolveCode(/*~~>*/String code, Locale locale) {
 		MessageFormat resolvedMessageFormatForCode = null;
 		
 		PresentationMessage pmForCode = getPresentation(code, locale);

@@ -46,11 +46,11 @@ import org.openmrs.util.OpenmrsConstants;
  */
 public class ProviderServiceTest extends BaseContextSensitiveTest {
 	
-	private static final String PROVIDERS_INITIAL_XML = "org/openmrs/api/include/ProviderServiceTest-initial.xml";
+	private static final /*~~>*/String PROVIDERS_INITIAL_XML = "org/openmrs/api/include/ProviderServiceTest-initial.xml";
 	
-	private static final String PROVIDER_ATTRIBUTE_TYPES_XML = "org/openmrs/api/include/ProviderServiceTest-providerAttributes.xml";
+	private static final /*~~>*/String PROVIDER_ATTRIBUTE_TYPES_XML = "org/openmrs/api/include/ProviderServiceTest-providerAttributes.xml";
 	
-	private static final String OTHERS_PROVIDERS_XML = "org/openmrs/api/include/ProviderServiceTest-otherProviders.xml";
+	private static final /*~~>*/String OTHERS_PROVIDERS_XML = "org/openmrs/api/include/ProviderServiceTest-otherProviders.xml";
 	
 	private ProviderService service;
 	
@@ -420,7 +420,7 @@ public class ProviderServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getProviderByIdentifier_shouldGetAProviderMatchingTheSpecifiedIdentifierIgnoringCase() {
-		String identifier = "8a760";
+		/*~~>*/String identifier = "8a760";
 		Provider provider = service.getProviderByIdentifier(identifier);
 		assertEquals("a2c3868a-6b90-11e0-93c3-18a905e044dc", provider.getUuid());
 		//ensures that the case sensitive test stays valid just in case 
@@ -433,7 +433,7 @@ public class ProviderServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getProviders_shouldFindProviderByIdentifier() {
-		String identifier = "8a760";
+		/*~~>*/String identifier = "8a760";
 		List<Provider> providers = service.getProviders(identifier, null, null, null, true);
 		Provider provider = service.getProviderByIdentifier(identifier);
 		
@@ -505,12 +505,12 @@ public class ProviderServiceTest extends BaseContextSensitiveTest {
 		
 		provider.setIdentifier("Test Unknown Provider");
 		provider = service.saveProvider(provider);
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GP_UNKNOWN_PROVIDER_UUID, provider.getUuid(), null);
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GP_UNKNOWN_PROVIDER_UUID, provider.getUuid(), null);
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		assertEquals(provider, service.getUnknownProvider());
 	}
 	
-	private Person newPerson(String name) {
+	private Person newPerson(/*~~>*/String name) {
 		Person person = new Person();
 		Set<PersonName> personNames = new TreeSet<>();
 		PersonName personName = new PersonName();

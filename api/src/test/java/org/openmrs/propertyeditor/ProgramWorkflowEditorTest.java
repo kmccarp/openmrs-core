@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ProgramWorkflowEditorTest extends BasePropertyEditorTest<ProgramWorkflow, ProgramWorkflowEditor> {
 	
-	private static final String EXISTING_UUID = "84f0effa-dd73-46cb-b931-7cd6be6c5f81";
+	private static final /*~~>*/String EXISTING_UUID = "84f0effa-dd73-46cb-b931-7cd6be6c5f81";
 	
 	@Autowired
 	ProgramWorkflowService programWorkflowService;

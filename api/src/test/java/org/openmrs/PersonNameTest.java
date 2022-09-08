@@ -31,18 +31,18 @@ public class PersonNameTest {
 	public void newInstance_shouldCopyEveryPropertyOfGivenPersonName() {
 		Integer personNameId = 333;
 		boolean preferred = true;
-		String prefix = "prefix";
+		/*~~>*/String prefix = "prefix";
 		Person person = new Person(1);
-		String givenName = "given";
-		String middleName = "middle";
-		String familyNamePrefix = "familyNamePrefix";
-		String familyName = "familyName";
-		String familyName2 = "familyName2";
-		String familyNameSuffix = "familyNameSuffix";
-		String degree = "degree";
+		/*~~>*/String givenName = "given";
+		/*~~>*/String middleName = "middle";
+		/*~~>*/String familyNamePrefix = "familyNamePrefix";
+		/*~~>*/String familyName = "familyName";
+		/*~~>*/String familyName2 = "familyName2";
+		/*~~>*/String familyNameSuffix = "familyNameSuffix";
+		/*~~>*/String degree = "degree";
 		boolean voided = true;
 		User voidedBy = new User(1);
-		String voidReason = "voidReason";
+		/*~~>*/String voidReason = "voidReason";
 		
 		PersonName pn = new PersonName(personNameId);
 		pn.setPreferred(preferred);
@@ -218,7 +218,7 @@ public class PersonNameTest {
 	public void getFamilyName_shouldReturnObscuredNameIfObscure_patientsIsSetToTrue() {
 		OpenmrsConstants.OBSCURE_PATIENTS = true;
 		
-		OpenmrsConstants.OBSCURE_PATIENTS_FAMILY_NAME = "family name";
+		/*~~>*/OpenmrsConstants.OBSCURE_PATIENTS_FAMILY_NAME = "family name";
 		assertEquals("family name", new PersonName().getFamilyName());
 		
 		OpenmrsConstants.OBSCURE_PATIENTS = false; // cleanup 
@@ -273,7 +273,7 @@ public class PersonNameTest {
 	public void getGivenName_shouldReturnObscuredNameIfObscure_patientsIsSetToTrue() {
 		OpenmrsConstants.OBSCURE_PATIENTS = true;
 		
-		OpenmrsConstants.OBSCURE_PATIENTS_GIVEN_NAME = "given name";
+		/*~~>*/OpenmrsConstants.OBSCURE_PATIENTS_GIVEN_NAME = "given name";
 		assertEquals("given name", new PersonName().getGivenName());
 		
 		OpenmrsConstants.OBSCURE_PATIENTS = false; // cleanup 
@@ -286,7 +286,7 @@ public class PersonNameTest {
 	public void getMiddleName_shouldReturnObscuredNameIfObscure_patientsIsSetToTrue() {
 		OpenmrsConstants.OBSCURE_PATIENTS = true;
 		
-		OpenmrsConstants.OBSCURE_PATIENTS_MIDDLE_NAME = "middle name";
+		/*~~>*/OpenmrsConstants.OBSCURE_PATIENTS_MIDDLE_NAME = "middle name";
 		assertEquals("middle name", new PersonName().getMiddleName());
 		
 		OpenmrsConstants.OBSCURE_PATIENTS = false; // cleanup 
@@ -324,7 +324,7 @@ public class PersonNameTest {
 	@Test
 	public void getFullName_shouldNotReturnLongIfPersonNameFormatIsShort() {
 		PersonName pn = new PersonName();
-		PersonName.setFormat(OpenmrsConstants.PERSON_NAME_FORMAT_LONG);
+		PersonName.setFormat(/*~~>*/OpenmrsConstants.PERSON_NAME_FORMAT_LONG);
 		pn.setPrefix("Sr.");
 		pn.setGivenName("Taylor");
 		pn.setMiddleName("Bob");
@@ -333,14 +333,14 @@ public class PersonNameTest {
 		pn.setFamilyName2("Jones");
 		pn.setFamilyNameSuffix("jr.");
 		pn.setDegree("3");
-		PersonName.setFormat(OpenmrsConstants.PERSON_NAME_FORMAT_SHORT);
+		PersonName.setFormat(/*~~>*/OpenmrsConstants.PERSON_NAME_FORMAT_SHORT);
 		assertEquals(pn.getFullName(), "Sr. Taylor Bob Mark");
 	}
 	
 	@Test
 	public void getFullName_shouldNotReturnShortIfPersonNameFormatIsLong() {
 		PersonName pn = new PersonName();
-		PersonName.setFormat(OpenmrsConstants.PERSON_NAME_FORMAT_LONG);
+		PersonName.setFormat(/*~~>*/OpenmrsConstants.PERSON_NAME_FORMAT_LONG);
 		pn.setPrefix("Sr.");
 		pn.setGivenName("Taylor");
 		pn.setMiddleName("Bob");
@@ -355,7 +355,7 @@ public class PersonNameTest {
 	@Test
 	public void getFullName_shouldReturnShortIfPersonNameFormatIsNull() {
 		PersonName pn = new PersonName();
-		PersonName.setFormat(OpenmrsConstants.PERSON_NAME_FORMAT_LONG);
+		PersonName.setFormat(/*~~>*/OpenmrsConstants.PERSON_NAME_FORMAT_LONG);
 		pn.setPrefix("Sr.");
 		pn.setGivenName("Taylor");
 		pn.setMiddleName("Bob");

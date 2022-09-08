@@ -750,7 +750,7 @@ public class PersonTest extends BaseContextSensitiveTest {
 		assertEquals(0, person.getAttributes(1).size());
 	}
 
-	private Person personHelper(boolean isVoid, int attributeType1, int attributeType2, int attributeType3, String attributeName1, String attributeName2, String attributeName3, String attributeValue1, String attributeValue2, String attributeValue3) {
+	private Person personHelper(boolean isVoid, int attributeType1, int attributeType2, int attributeType3, /*~~>*/String attributeName1, /*~~>*/String attributeName2, /*~~>*/String attributeName3, /*~~>*/String attributeValue1, /*~~>*/String attributeValue2, /*~~>*/String attributeValue3) {
 		Person person = new Person();
 
 	 	PersonAttributeType type1 = new PersonAttributeType(attributeType1);

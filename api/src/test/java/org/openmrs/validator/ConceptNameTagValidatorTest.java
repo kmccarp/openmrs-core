@@ -75,7 +75,7 @@ public class ConceptNameTagValidatorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validate_shouldFailIfTheConceptNameTagIsADuplicate() {
-		String objectName = "duplicate concept name tag";
+		/*~~>*/String objectName = "duplicate concept name tag";
 		
 		ConceptNameTag existing = Context.getConceptService().getConceptNameTag(1);
 		
@@ -123,7 +123,7 @@ public class ConceptNameTagValidatorTest extends BaseContextSensitiveTest {
 	
 	@Test
 	public void validate_shouldNotFailIfTheConceptNameTagIsTheSame() {
-		String objectName = "duplicate concept name tag";
+		/*~~>*/String objectName = "duplicate concept name tag";
 
 		ConceptNameTag cnt = Context.getConceptService().getConceptNameTag(1);
 

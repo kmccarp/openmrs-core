@@ -31,7 +31,7 @@ public class AuthorizationAdvice implements MethodBeforeAdvice {
 	 * Logger for this class and subclasses
 	 */
 	private static final Logger log = LoggerFactory.getLogger(AuthorizationAdvice.class);
-        private static final String USER_IS_NOT_AUTHORIZED_TO_ACCESS = "User {} is not authorized to access {}";
+        private static final /*~~>*/String USER_IS_NOT_AUTHORIZED_TO_ACCESS = "User {} is not authorized to access {}";
 	
 	/**
 	 * Allows us to check whether a user is authorized to access a particular method.
@@ -56,14 +56,14 @@ public class AuthorizationAdvice implements MethodBeforeAdvice {
 		}
 		
 		AuthorizedAnnotationAttributes attributes = new AuthorizedAnnotationAttributes();
-		Collection<String> privileges = attributes.getAttributes(method);
+		Collection</*~~>*/String> privileges = attributes.getAttributes(method);
 		boolean requireAll = attributes.getRequireAll(method);
 		
 		// Only execute if the "secure" method has authorization attributes
 		// Iterate through required privileges and return only if the user has
 		// one of them
 		if (!privileges.isEmpty()) {
-			for (String privilege : privileges) {
+			for (/*~~>*/String privilege : privileges) {
 				
 				// skip null privileges
 				if (privilege == null || privilege.isEmpty()) {
@@ -106,7 +106,7 @@ public class AuthorizationAdvice implements MethodBeforeAdvice {
 	 * @param method acting method
 	 * @param attrs Collection of String privilege names that the user must have
 	 */
-	private void throwUnauthorized(User user, Method method, Collection<String> attrs) {
+	private void throwUnauthorized(User user, Method method, Collection</*~~>*/String> attrs) {
 		log.debug(USER_IS_NOT_AUTHORIZED_TO_ACCESS, user, method.getName());
 		throw new APIAuthenticationException(Context.getMessageSourceService().getMessage("error.privilegesRequired",
 		    new Object[] { StringUtils.join(attrs, ",") }, null));
@@ -119,7 +119,7 @@ public class AuthorizationAdvice implements MethodBeforeAdvice {
 	 * @param method acting method
 	 * @param attrs privilege names that the user must have
 	 */
-	private void throwUnauthorized(User user, Method method, String attr) {
+	private void throwUnauthorized(User user, Method method, /*~~>*/String attr) {
 		log.debug(USER_IS_NOT_AUTHORIZED_TO_ACCESS, user, method.getName());
 		throw new APIAuthenticationException(Context.getMessageSourceService().getMessage("error.privilegesRequired",
 		    new Object[] { attr }, null));

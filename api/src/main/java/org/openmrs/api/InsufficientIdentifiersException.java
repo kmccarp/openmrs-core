@@ -16,11 +16,11 @@ public class InsufficientIdentifiersException extends PatientIdentifierException
 	public InsufficientIdentifiersException() {
 	}
 	
-	public InsufficientIdentifiersException(String message) {
+	public InsufficientIdentifiersException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public InsufficientIdentifiersException(String message, Throwable cause) {
+	public InsufficientIdentifiersException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

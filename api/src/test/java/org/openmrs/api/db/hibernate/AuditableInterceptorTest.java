@@ -62,7 +62,7 @@ public class AuditableInterceptorTest extends BaseContextSensitiveTest {
 		// sanity check
 		assertTrue(u instanceof Auditable);
 		
-		String[] propertyNames = new String[] { "changedBy", "dateChanged" };
+		/*~~>*/String[] propertyNames = new /*~~>*/String[] { "changedBy", "dateChanged" };
 		Object[] currentState = new Object[] { "", null };
 		Object[] previousState = new Object[] { "", null };
 		
@@ -83,7 +83,7 @@ public class AuditableInterceptorTest extends BaseContextSensitiveTest {
 		// sanity check
 		assertTrue(u instanceof Auditable);
 		
-		String[] propertyNames = new String[] { "changedBy", "dateChanged" };
+		/*~~>*/String[] propertyNames = new /*~~>*/String[] { "changedBy", "dateChanged" };
 		Object[] currentState = new Object[] { "", null };
 		Object[] previousState = new Object[] { "", null };
 		
@@ -98,7 +98,7 @@ public class AuditableInterceptorTest extends BaseContextSensitiveTest {
 		
 		Person person = new Person();
 		
-		String[] propertyNames = new String[] { "personChangedBy" };
+		/*~~>*/String[] propertyNames = new /*~~>*/String[] { "personChangedBy" };
 		Object[] currentState = new Object[] { null };
 		
 		interceptor.onFlushDirty(person, null, currentState, null, propertyNames, null);
@@ -111,7 +111,7 @@ public class AuditableInterceptorTest extends BaseContextSensitiveTest {
 		
 		Person person = new Person();
 		
-		String[] propertyNames = new String[] { "personDateChanged" };
+		/*~~>*/String[] propertyNames = new /*~~>*/String[] { "personDateChanged" };
 		
 		Object[] currentState = new Object[] { null };
 		
@@ -131,7 +131,7 @@ public class AuditableInterceptorTest extends BaseContextSensitiveTest {
 		// sanity check
 		assertTrue(u instanceof Auditable);
 		
-		String[] propertyNames = new String[] { "changedBy", "dateChanged" };
+		/*~~>*/String[] propertyNames = new /*~~>*/String[] { "changedBy", "dateChanged" };
 		Object[] currentState = new Object[] { "", null };
 		
 		interceptor.onFlushDirty(u, null, currentState, null, propertyNames, null);
@@ -199,7 +199,7 @@ public class AuditableInterceptorTest extends BaseContextSensitiveTest {
 		
 		User u = new User();
 		
-		String[] propertyNames = new String[] { "creator", "dateCreated" };
+		/*~~>*/String[] propertyNames = new /*~~>*/String[] { "creator", "dateCreated" };
 		Object[] currentState = new Object[] { 0, null };
 		
 		boolean result = interceptor.onSave(u, 0, currentState, propertyNames, null);
@@ -215,7 +215,7 @@ public class AuditableInterceptorTest extends BaseContextSensitiveTest {
 		
 		User u = new User();
 		
-		String[] propertyNames = new String[] { "creator", "dateCreated" };
+		/*~~>*/String[] propertyNames = new /*~~>*/String[] { "creator", "dateCreated" };
 		Object[] currentState = new Object[] { null, new Date() };
 		
 		boolean result = interceptor.onSave(u, 0, currentState, propertyNames, null);
@@ -231,7 +231,7 @@ public class AuditableInterceptorTest extends BaseContextSensitiveTest {
 		
 		User u = new User();
 		
-		String[] propertyNames = new String[] { "creator", "dateCreated" };
+		/*~~>*/String[] propertyNames = new /*~~>*/String[] { "creator", "dateCreated" };
 		Object[] currentState = new Object[] { 0, new Date() };
 		
 		boolean result = interceptor.onSave(u, 0, currentState, propertyNames, null);

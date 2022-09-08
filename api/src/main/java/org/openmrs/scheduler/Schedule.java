@@ -26,12 +26,12 @@ public class Schedule {
 	/**
 	 * Name of the schedule
 	 */
-	private String name;
+	private /*~~>*/String name;
 	
 	/**
 	 * Description of the schedule
 	 */
-	private String description;
+	private /*~~>*/String description;
 	
 	/**
 	 * Date and time to start the task
@@ -51,12 +51,12 @@ public class Schedule {
 	/**
 	 * The date format pattern used to set the start date when start date is passed in as a string
 	 */
-	private String dateFormat;
+	private /*~~>*/String dateFormat;
 	
 	/**
 	 * Default TODO Move to constants or properties
 	 */
-	public static final String DEFAULT_DATE_FORMAT = "MM-dd-yyyy hh:mm:ss";
+	public static final /*~~>*/String DEFAULT_DATE_FORMAT = "MM-dd-yyyy hh:mm:ss";
 	
 	/**
 	 * Date formatter used to format a date specified by a string
@@ -109,9 +109,9 @@ public class Schedule {
 	 * @param repeatInterval interval time in seconds to wait between executing task (&lt;= 0 indicates
 	 *            that it should only be run once)
 	 */
-	public Schedule(String name, String description, Date startTime, long repeatInterval) {
-		this.name = name;
-		this.description = description;
+	public Schedule(/*~~>*/String name, /*~~>*/String description, Date startTime, long repeatInterval) {
+		/*~~>*/this.name = name;
+		/*~~>*/this.description = description;
 		this.startTime = startTime;
 		this.repeatInterval = repeatInterval;
 		this.dateFormatter = new SimpleDateFormat(DEFAULT_DATE_FORMAT);
@@ -140,8 +140,8 @@ public class Schedule {
 	 * 
 	 * @return the name of the schedule
 	 */
-	public String getName() {
-		return this.name;
+	public /*~~>*/String getName() {
+		return /*~~>*/this.name;
 	}
 	
 	/**
@@ -149,8 +149,8 @@ public class Schedule {
 	 * 
 	 * @param name the name of the schedule
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setName(/*~~>*/String name) {
+		/*~~>*/this.name = name;
 	}
 	
 	/**
@@ -158,8 +158,8 @@ public class Schedule {
 	 * 
 	 * @return the description of the schedule
 	 */
-	public String getDescription() {
-		return this.description;
+	public /*~~>*/String getDescription() {
+		return /*~~>*/this.description;
 	}
 	
 	/**
@@ -167,8 +167,8 @@ public class Schedule {
 	 * 
 	 * @param description the description of the schedule
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(/*~~>*/String description) {
+		/*~~>*/this.description = description;
 	}
 	
 	/**
@@ -211,15 +211,15 @@ public class Schedule {
 	/**
 	 * Get the date format used to set the start time.
 	 */
-	public String getDateFormat() {
-		return this.dateFormat;
+	public /*~~>*/String getDateFormat() {
+		return /*~~>*/this.dateFormat;
 	}
 	
 	/**
 	 * Sets the date format used to set the start time.
 	 */
-	public void setDateFormat(String dateFormat) {
-		this.dateFormat = dateFormat;
+	public void setDateFormat(/*~~>*/String dateFormat) {
+		/*~~>*/this.dateFormat = dateFormat;
 		this.dateFormatter = new SimpleDateFormat(dateFormat);
 	}
 	

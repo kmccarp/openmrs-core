@@ -38,7 +38,7 @@ public interface DiagnosisService extends OpenmrsService {
 	 * @param diagnosis - the diagnosis to be saved
 	 * @return the diagnosis
 	 */
-	@Authorized({ PrivilegeConstants.EDIT_DIAGNOSES })
+	@Authorized({ /*~~>*/PrivilegeConstants.EDIT_DIAGNOSES })
 	Diagnosis save(Diagnosis diagnosis);
 
 	/**
@@ -48,8 +48,8 @@ public interface DiagnosisService extends OpenmrsService {
 	 * @param voidReason - the reason for voiding the diagnosis
 	 * @return the diagnosis that was voided
 	 */
-	@Authorized({ PrivilegeConstants.EDIT_DIAGNOSES })
-	Diagnosis voidDiagnosis(Diagnosis diagnosis, String voidReason);
+	@Authorized({ /*~~>*/PrivilegeConstants.EDIT_DIAGNOSES })
+	Diagnosis voidDiagnosis(Diagnosis diagnosis, /*~~>*/String voidReason);
 
 	/**
 	 * Gets a diagnosis based on the uuid
@@ -57,8 +57,8 @@ public interface DiagnosisService extends OpenmrsService {
 	 * @param uuid - uuid of the diagnosis to be returned
 	 * @return diagnosis matching the given uuid
 	 */
-	@Authorized({ PrivilegeConstants.GET_DIAGNOSES })
-	Diagnosis getDiagnosisByUuid(String uuid);
+	@Authorized({ /*~~>*/PrivilegeConstants.GET_DIAGNOSES })
+	Diagnosis getDiagnosisByUuid(/*~~>*/String uuid);
 
 	/**
 	 * Gets diagnoses since date, sorted in reverse chronological order
@@ -67,7 +67,7 @@ public interface DiagnosisService extends OpenmrsService {
 	 * @param fromDate the date used to filter diagnosis which happened from this date and later
 	 * @return the list of diagnoses for the given patient and starting from the given date
 	 */
-	@Authorized({ PrivilegeConstants.GET_DIAGNOSES })
+	@Authorized({ /*~~>*/PrivilegeConstants.GET_DIAGNOSES })
 	List<Diagnosis> getDiagnoses(Patient patient, Date fromDate);
 
 	/**
@@ -80,7 +80,7 @@ public interface DiagnosisService extends OpenmrsService {
 	 * 
 	 * @since 2.5.0
 	 */
-	@Authorized({ PrivilegeConstants.GET_DIAGNOSES })
+	@Authorized({ /*~~>*/PrivilegeConstants.GET_DIAGNOSES })
 	List<Diagnosis> getDiagnosesByEncounter(Encounter encounter, boolean primaryOnly, boolean confirmedOnly);
 	
 	/**
@@ -93,7 +93,7 @@ public interface DiagnosisService extends OpenmrsService {
 	 * 
 	 * @since 2.5.0
 	 */
-	@Authorized({ PrivilegeConstants.GET_DIAGNOSES })
+	@Authorized({ /*~~>*/PrivilegeConstants.GET_DIAGNOSES })
 	List<Diagnosis> getDiagnosesByVisit(Visit visit, boolean primaryOnly, boolean confirmedOnly);
 
 
@@ -124,7 +124,7 @@ public interface DiagnosisService extends OpenmrsService {
 	 * @param diagnosisId - id of the diagnosis to be returned
 	 * @return diagnosis matching the given id
 	 */
-	@Authorized({ PrivilegeConstants.GET_DIAGNOSES })
+	@Authorized({ /*~~>*/PrivilegeConstants.GET_DIAGNOSES })
 	Diagnosis getDiagnosis(Integer diagnosisId);
 
 	/**
@@ -135,7 +135,7 @@ public interface DiagnosisService extends OpenmrsService {
 	 * <strong>Should</strong> unset voided bit on given diagnosis
 	 * @return the unvoided diagnosis
 	 */
-	@Authorized(PrivilegeConstants.EDIT_DIAGNOSES)
+	@Authorized(/*~~>*/PrivilegeConstants.EDIT_DIAGNOSES)
 	Diagnosis unvoidDiagnosis(Diagnosis diagnosis) throws APIException;
 
 	/**
@@ -149,7 +149,7 @@ public interface DiagnosisService extends OpenmrsService {
 	 * @see #purgeDiagnosis(Diagnosis) 
 	 * <strong>Should</strong> delete the given diagnosis from th e database
 	 */
-	@Authorized(PrivilegeConstants.DELETE_DIAGNOSES)
+	@Authorized(/*~~>*/PrivilegeConstants.DELETE_DIAGNOSES)
 	void purgeDiagnosis(Diagnosis diagnosis) throws APIException;
 
 	/**
@@ -159,7 +159,7 @@ public interface DiagnosisService extends OpenmrsService {
 	 * @since 2.5.0
 	 * <strong>Should</strong> return all diagnosis attribute types including retired ones.
 	 */
-	@Authorized(PrivilegeConstants.GET_DIAGNOSES_ATTRIBUTE_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_DIAGNOSES_ATTRIBUTE_TYPES)
 	List<DiagnosisAttributeType> getAllDiagnosisAttributeTypes() throws APIException;
 
 	/**
@@ -171,7 +171,7 @@ public interface DiagnosisService extends OpenmrsService {
 	 * <strong>Should</strong> return the diagnosis attribute type with the given id
 	 * <strong>Should</strong> return null if no diagnosis attribute type exists with the given id
 	 */
-	@Authorized(PrivilegeConstants.GET_DIAGNOSES_ATTRIBUTE_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_DIAGNOSES_ATTRIBUTE_TYPES)
 	DiagnosisAttributeType getDiagnosisAttributeTypeById(Integer id) throws APIException;
 
 	/**
@@ -183,8 +183,8 @@ public interface DiagnosisService extends OpenmrsService {
 	 * <strong>Should</strong> return the diagnosis attribute type with the given uuid
 	 * <strong>Should</strong> return null if no diagnosis attribute type exists with the given uuid
 	 */
-	@Authorized(PrivilegeConstants.GET_DIAGNOSES_ATTRIBUTE_TYPES)
-	DiagnosisAttributeType getDiagnosisAttributeTypeByUuid(String uuid) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_DIAGNOSES_ATTRIBUTE_TYPES)
+	DiagnosisAttributeType getDiagnosisAttributeTypeByUuid(/*~~>*/String uuid) throws APIException;
 
 	/**
 	 * Creates or updates the given diagnosis attribute type in the database
@@ -195,7 +195,7 @@ public interface DiagnosisService extends OpenmrsService {
 	 * <strong>Should</strong> create a new diagnosis attribute type
 	 * <strong>Should</strong> edit an existing diagnosis attribute type
 	 */
-	@Authorized(PrivilegeConstants.EDIT_DIAGNOSES)
+	@Authorized(/*~~>*/PrivilegeConstants.EDIT_DIAGNOSES)
 	DiagnosisAttributeType saveDiagnosisAttributeType(DiagnosisAttributeType diagnosisAttributeType) throws APIException;
 
 	/**
@@ -207,8 +207,8 @@ public interface DiagnosisService extends OpenmrsService {
 	 * @since 2.5.0
 	 * <strong>Should</strong> retire a diagnosis attribute type
 	 */
-	@Authorized(PrivilegeConstants.EDIT_DIAGNOSES)
-	DiagnosisAttributeType retireDiagnosisAttributeType(DiagnosisAttributeType diagnosisAttributeType, String reason) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.EDIT_DIAGNOSES)
+	DiagnosisAttributeType retireDiagnosisAttributeType(DiagnosisAttributeType diagnosisAttributeType, /*~~>*/String reason) throws APIException;
 
 	/**
 	 * Restores a diagnosis attribute type that was previously retired
@@ -218,7 +218,7 @@ public interface DiagnosisService extends OpenmrsService {
 	 * @since 2.5.0
 	 * <strong>Should</strong> unretire a retired diagnosis attribute type
 	 */
-	@Authorized(PrivilegeConstants.EDIT_DIAGNOSES)
+	@Authorized(/*~~>*/PrivilegeConstants.EDIT_DIAGNOSES)
 	DiagnosisAttributeType unretireDiagnosisAttributeType(DiagnosisAttributeType diagnosisAttributeType) throws APIException;
 
 	/**
@@ -228,7 +228,7 @@ public interface DiagnosisService extends OpenmrsService {
 	 * @since 2.5.0
 	 * <strong>Should</strong> completely remove a diagnosis attribute type
 	 */
-	@Authorized(PrivilegeConstants.DELETE_DIAGNOSES)
+	@Authorized(/*~~>*/PrivilegeConstants.DELETE_DIAGNOSES)
 	void purgeDiagnosisAttributeType(DiagnosisAttributeType diagnosisAttributeType) throws APIException;
 
 	/**
@@ -240,6 +240,6 @@ public interface DiagnosisService extends OpenmrsService {
 	 * <strong>Should</strong> get the diagnosis attribute with the given uuid
 	 * <strong>Should</strong> return null if no diagnosis attribute has the given uuid
 	 */
-	@Authorized(PrivilegeConstants.GET_DIAGNOSES)
-	DiagnosisAttribute getDiagnosisAttributeByUuid(String uuid) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_DIAGNOSES)
+	DiagnosisAttribute getDiagnosisAttributeByUuid(/*~~>*/String uuid) throws APIException;
 }

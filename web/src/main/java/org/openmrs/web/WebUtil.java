@@ -37,7 +37,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String escapeHTML(String s) {
+	public static /*~~>*/String escapeHTML(/*~~>*/String s) {
 		return Encode.forHtml(s);
 	}
 
@@ -47,7 +47,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForCDATA(String s) {
+	public static /*~~>*/String encodeForCDATA(/*~~>*/String s) {
 		return Encode.forCDATA(s);
 	}
 
@@ -57,7 +57,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForCssString(String s) {
+	public static /*~~>*/String encodeForCssString(/*~~>*/String s) {
 		return Encode.forCssString(s);
 	}
 
@@ -67,7 +67,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForCssUrl(String s) {
+	public static /*~~>*/String encodeForCssUrl(/*~~>*/String s) {
 		return Encode.forCssUrl(s);
 	}
 
@@ -77,7 +77,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForHtmlAttribute(String s) {
+	public static /*~~>*/String encodeForHtmlAttribute(/*~~>*/String s) {
 		return Encode.forHtmlAttribute(s);
 	}
 
@@ -87,7 +87,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForHtmlContent(String s) {
+	public static /*~~>*/String encodeForHtmlContent(/*~~>*/String s) {
 		return Encode.forHtmlContent(s);
 	}
 
@@ -97,7 +97,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForHtmlUnquotedAttribute(String s) {
+	public static /*~~>*/String encodeForHtmlUnquotedAttribute(/*~~>*/String s) {
 		return Encode.forHtmlUnquotedAttribute(s);
 	}
 
@@ -107,7 +107,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForJava(String s) {
+	public static /*~~>*/String encodeForJava(/*~~>*/String s) {
 		return Encode.forJava(s);
 	}
 
@@ -117,7 +117,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForJavaScript(String s) {
+	public static /*~~>*/String encodeForJavaScript(/*~~>*/String s) {
 		return Encode.forJavaScript(s);
 	}
 
@@ -127,7 +127,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForJavaScriptAttribute(String s) {
+	public static /*~~>*/String encodeForJavaScriptAttribute(/*~~>*/String s) {
 		return Encode.forJavaScriptAttribute(s);
 	}
 
@@ -137,7 +137,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForJavaScriptBlock(String s) {
+	public static /*~~>*/String encodeForJavaScriptBlock(/*~~>*/String s) {
 		return Encode.forJavaScriptBlock(s);
 	}
 
@@ -147,7 +147,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForJavaScriptSource(String s) {
+	public static /*~~>*/String encodeForJavaScriptSource(/*~~>*/String s) {
 		return Encode.forJavaScriptSource(s);
 	}
 
@@ -157,7 +157,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForUri(String s) {
+	public static /*~~>*/String encodeForUri(/*~~>*/String s) {
 		return Encode.forUri(s);
 	}
 
@@ -167,7 +167,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForUriComponent(String s) {
+	public static /*~~>*/String encodeForUriComponent(/*~~>*/String s) {
 		return Encode.forUriComponent(s);
 	}
 
@@ -177,7 +177,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForXml(String s) {
+	public static /*~~>*/String encodeForXml(/*~~>*/String s) {
 		return Encode.forXml(s);
 	}
 
@@ -187,7 +187,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForXmlAttribute(String s) {
+	public static /*~~>*/String encodeForXmlAttribute(/*~~>*/String s) {
 		return Encode.forXmlAttribute(s);
 	}
 
@@ -197,7 +197,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForXmlComment(String s) {
+	public static /*~~>*/String encodeForXmlComment(/*~~>*/String s) {
 		return Encode.forXmlComment(s);
 	}
 
@@ -207,12 +207,12 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param s
 	 * @return Encoded String
 	 */
-	public static String encodeForXmlContent(String s) {
+	public static /*~~>*/String encodeForXmlContent(/*~~>*/String s) {
 		return Encode.forXmlContent(s);
 	}
 
-	public static String escapeQuotes(String s) {
-		String tmpS = s;
+	public static /*~~>*/String escapeQuotes(/*~~>*/String s) {
+		/*~~>*/String tmpS = s;
 		if (tmpS == null) {
 			return "";
 		}
@@ -222,8 +222,8 @@ public class WebUtil implements GlobalPropertyListener {
 		return tmpS;
 	}
 	
-	public static String escapeNewlines(String s) {
-		String tmpS = s;
+	public static /*~~>*/String escapeNewlines(/*~~>*/String s) {
+		/*~~>*/String tmpS = s;
 		if (tmpS == null) {
 			return "";
 		}
@@ -233,8 +233,8 @@ public class WebUtil implements GlobalPropertyListener {
 		return tmpS;
 	}
 	
-	public static String escapeQuotesAndNewlines(String s) {
-		String tmpS = s;
+	public static /*~~>*/String escapeQuotesAndNewlines(/*~~>*/String s) {
+		/*~~>*/String tmpS = s;
 		if (tmpS == null) {
 			return "";
 		}
@@ -253,11 +253,11 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @param filename
 	 * @return filename stripped down
 	 */
-	public static String stripFilename(String filename) {
+	public static /*~~>*/String stripFilename(/*~~>*/String filename) {
 		log.debug("Stripping filename from: {}", filename);
 		
 		// for unix based filesystems
-		String tmpFilename = filename;
+		/*~~>*/String tmpFilename = filename;
 		int index = tmpFilename.lastIndexOf("/");
 		if (index != -1) {
 			tmpFilename = tmpFilename.substring(index + 1);
@@ -289,7 +289,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * <strong>Should</strong> not fail with whitespace only
 	 * <strong>Should</strong> not fail with "_" character only
 	 */
-	public static Locale normalizeLocale(String localeString) {
+	public static Locale normalizeLocale(/*~~>*/String localeString) {
 		if (localeString == null) {
 			return null;
 		}
@@ -330,7 +330,7 @@ public class WebUtil implements GlobalPropertyListener {
 	 * <strong>Should</strong> skip over invalid locales
 	 * <strong>Should</strong> not fail with empty string
 	 */
-	public static String sanitizeLocales(String localesString) {
+	public static /*~~>*/String sanitizeLocales(/*~~>*/String localesString) {
 		// quick npe check
 		if (localesString == null) {
 			return null;
@@ -340,7 +340,7 @@ public class WebUtil implements GlobalPropertyListener {
 		
 		boolean first = true;
 		
-		for (String locale : Arrays.asList(localesString.split(","))) {
+		for (/*~~>*/String locale : Arrays.asList(localesString.split(","))) {
 			Locale loc = normalizeLocale(locale);
 			if (loc != null) {
 				if (!first) {
@@ -365,38 +365,38 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @return return WebConstants.WEBAPP_NAME or empty string if WebConstants.WEBAPP_NAME is null
 	 * <strong>Should</strong> return empty string if WebConstants.WEBAPP_NAME is null
 	 */
-	public static String getContextPath() {
-		return StringUtils.isEmpty(WebConstants.WEBAPP_NAME) ? "" : "/" + WebConstants.WEBAPP_NAME;
+	public static /*~~>*/String getContextPath() {
+		return StringUtils.isEmpty(/*~~>*/WebConstants.WEBAPP_NAME) ? "" : "/" + /*~~>*/WebConstants.WEBAPP_NAME;
 	}
 	
-	public static String formatDate(Date date) {
+	public static /*~~>*/String formatDate(Date date) {
 		return formatDate(date, Context.getLocale(), FORMAT_TYPE.DATE);
 	}
 	
-	public static String formatDate(Date date, Locale locale, FORMAT_TYPE type) {
+	public static /*~~>*/String formatDate(Date date, Locale locale, FORMAT_TYPE type) {
 		log.debug("Formatting date: " + date + " with locale " + locale);
 		
 		DateFormat dateFormat = null;
 		
 		if (type == FORMAT_TYPE.TIMESTAMP) {
-			String dateTimeFormat = Context.getAdministrationService().getGlobalPropertyValue(
-			    OpenmrsConstants.GP_SEARCH_DATE_DISPLAY_FORMAT, null);
+			/*~~>*/String dateTimeFormat = Context.getAdministrationService().getGlobalPropertyValue(
+			    /*~~>*/OpenmrsConstants.GP_SEARCH_DATE_DISPLAY_FORMAT, null);
 			if (StringUtils.isEmpty(dateTimeFormat)) {
 				dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 			} else {
 				dateFormat = new OpenmrsDateFormat(new SimpleDateFormat(dateTimeFormat), locale);
 			}
 		} else if (type == FORMAT_TYPE.TIME) {
-			String timeFormat = Context.getAdministrationService().getGlobalPropertyValue(
-			    OpenmrsConstants.GP_SEARCH_DATE_DISPLAY_FORMAT, null);
+			/*~~>*/String timeFormat = Context.getAdministrationService().getGlobalPropertyValue(
+			    /*~~>*/OpenmrsConstants.GP_SEARCH_DATE_DISPLAY_FORMAT, null);
 			if (StringUtils.isEmpty(timeFormat)) {
 				dateFormat = DateFormat.getTimeInstance(DateFormat.MEDIUM, locale);
 			} else {
 				dateFormat = new OpenmrsDateFormat(new SimpleDateFormat(timeFormat), locale);
 			}
 		} else if (type == FORMAT_TYPE.DATE) {
-			String formatValue = Context.getAdministrationService().getGlobalPropertyValue(
-			    OpenmrsConstants.GP_SEARCH_DATE_DISPLAY_FORMAT, "");
+			/*~~>*/String formatValue = Context.getAdministrationService().getGlobalPropertyValue(
+			    /*~~>*/OpenmrsConstants.GP_SEARCH_DATE_DISPLAY_FORMAT, "");
 			if (StringUtils.isEmpty(formatValue)) {
 				dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, locale);
 			} else {
@@ -410,8 +410,8 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @see org.openmrs.api.GlobalPropertyListener#supportsPropertyName(java.lang.String)
 	 */
 	@Override
-	public boolean supportsPropertyName(String propertyName) {
-		return OpenmrsConstants.GP_SEARCH_DATE_DISPLAY_FORMAT.equals(propertyName);
+	public boolean supportsPropertyName(/*~~>*/String propertyName) {
+		return /*~~>*/OpenmrsConstants.GP_SEARCH_DATE_DISPLAY_FORMAT.equals(propertyName);
 	}
 	
 	/**
@@ -425,6 +425,6 @@ public class WebUtil implements GlobalPropertyListener {
 	 * @see org.openmrs.api.GlobalPropertyListener#globalPropertyDeleted(java.lang.String)
 	 */
 	@Override
-	public void globalPropertyDeleted(String propertyName) {
+	public void globalPropertyDeleted(/*~~>*/String propertyName) {
 	}
 }

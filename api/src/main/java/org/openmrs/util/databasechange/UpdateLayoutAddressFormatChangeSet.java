@@ -47,7 +47,7 @@ public class UpdateLayoutAddressFormatChangeSet implements CustomTaskChange {
 			ResultSet rs = stmt
 			        .executeQuery("SELECT property_value FROM global_property WHERE property = 'layout.address.format'");
 			if (rs.next()) {
-				String value = rs.getString("property_value");
+				/*~~>*/String value = rs.getString("property_value");
 				value = value.replace("org.openmrs.layout.web.", "org.openmrs.layout.");
 				
 				pStmt = connection
@@ -85,7 +85,7 @@ public class UpdateLayoutAddressFormatChangeSet implements CustomTaskChange {
 	 * @see liquibase.change.custom.CustomChange#getConfirmationMessage()
 	 */
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished updating global property";
 	}
 	

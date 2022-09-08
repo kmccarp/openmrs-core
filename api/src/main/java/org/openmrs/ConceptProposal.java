@@ -36,13 +36,13 @@ public class ConceptProposal extends BaseOpenmrsObject {
 	
 	private Concept mappedConcept;
 	
-	private String originalText;
+	private /*~~>*/String originalText;
 	
-	private String finalText;
+	private /*~~>*/String finalText;
 	
-	private String state;
+	private /*~~>*/String state;
 	
-	private String comments;
+	private /*~~>*/String comments;
 	
 	private User creator;
 	
@@ -136,57 +136,57 @@ public class ConceptProposal extends BaseOpenmrsObject {
 	/**
 	 * @return Returns the originalText.
 	 */
-	public String getOriginalText() {
+	public /*~~>*/String getOriginalText() {
 		return originalText;
 	}
 	
 	/**
 	 * @param originalText The originalText to set.
 	 */
-	public void setOriginalText(String originalText) {
-		this.originalText = originalText;
+	public void setOriginalText(/*~~>*/String originalText) {
+		/*~~>*/this.originalText = originalText;
 	}
 	
 	/**
 	 * @return Returns the final text.
 	 */
-	public String getFinalText() {
+	public /*~~>*/String getFinalText() {
 		return finalText;
 	}
 	
 	/**
 	 * @param t The final text to set.
 	 */
-	public void setFinalText(String t) {
-		this.finalText = t;
+	public void setFinalText(/*~~>*/String t) {
+		/*~~>*/this.finalText = t;
 	}
 	
 	/**
 	 * @return Returns the comments.
 	 */
-	public String getComments() {
+	public /*~~>*/String getComments() {
 		return comments;
 	}
 	
 	/**
 	 * @param comments The comments to set.
 	 */
-	public void setComments(String comments) {
-		this.comments = comments;
+	public void setComments(/*~~>*/String comments) {
+		/*~~>*/this.comments = comments;
 	}
 	
 	/**
 	 * @return Returns the state.
 	 */
-	public String getState() {
+	public /*~~>*/String getState() {
 		return state;
 	}
 	
 	/**
 	 * @param state The state to set.
 	 */
-	public void setState(String state) {
-		this.state = state;
+	public void setState(/*~~>*/String state) {
+		/*~~>*/this.state = state;
 	}
 	
 	/**
@@ -204,7 +204,7 @@ public class ConceptProposal extends BaseOpenmrsObject {
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		if (conceptProposalId == null) {
 			return "";
 		}
@@ -258,7 +258,7 @@ public class ConceptProposal extends BaseOpenmrsObject {
 	 * Context.getConceptService().saveConceptProposal(/thisObject/) after calling this method
 	 */
 	public void rejectConceptProposal() {
-		setState(OpenmrsConstants.CONCEPT_PROPOSAL_REJECT);
+		setState(/*~~>*/OpenmrsConstants.CONCEPT_PROPOSAL_REJECT);
 		setFinalText("");
 	}
 	

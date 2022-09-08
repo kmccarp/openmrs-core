@@ -23,7 +23,7 @@ package org.openmrs.logic.op;
 public class After implements ComparisonOperator {
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "AFTER";
 	}
 	

@@ -23,7 +23,7 @@ public class InvalidCustomValueException extends APIException {
 	/**
 	 * @param message
 	 */
-	public InvalidCustomValueException(String message) {
+	public InvalidCustomValueException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -31,7 +31,7 @@ public class InvalidCustomValueException extends APIException {
 	 * @param message
 	 * @param cause
 	 */
-	public InvalidCustomValueException(String message, Throwable cause) {
+	public InvalidCustomValueException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

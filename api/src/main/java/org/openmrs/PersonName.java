@@ -56,45 +56,45 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 	private Boolean preferred = false;
 
 	@Fields({
-			@Field(name = "givenNameExact", analyzer = @Analyzer(definition = LuceneAnalyzers.EXACT_ANALYZER), boost = @Boost(8f)),
-			@Field(name = "givenNameStart", analyzer = @Analyzer(definition = LuceneAnalyzers.START_ANALYZER), boost = @Boost(4f)),
-			@Field(name = "givenNameAnywhere", analyzer = @Analyzer(definition = LuceneAnalyzers.ANYWHERE_ANALYZER), boost = @Boost(2f)),
-			@Field(name = "givenNameSoundex", analyzer =  @Analyzer(definition = LuceneAnalyzers.SOUNDEX_ANALYZER), boost = @Boost(1f))
+			@Field(name = "givenNameExact", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.EXACT_ANALYZER), boost = @Boost(8f)),
+			@Field(name = "givenNameStart", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.START_ANALYZER), boost = @Boost(4f)),
+			@Field(name = "givenNameAnywhere", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.ANYWHERE_ANALYZER), boost = @Boost(2f)),
+			@Field(name = "givenNameSoundex", analyzer =  @Analyzer(definition = /*~~>*/LuceneAnalyzers.SOUNDEX_ANALYZER), boost = @Boost(1f))
 	})
-	private String givenName;
-	private String prefix;
+	private /*~~>*/String givenName;
+	private /*~~>*/String prefix;
 
 	@Fields({
-			@Field(name = "middleNameExact", analyzer = @Analyzer(definition = LuceneAnalyzers.EXACT_ANALYZER), boost = @Boost(4f)),
-			@Field(name = "middleNameStart", analyzer = @Analyzer(definition = LuceneAnalyzers.START_ANALYZER), boost = @Boost(2f)),
-			@Field(name = "middleNameAnywhere", analyzer = @Analyzer(definition = LuceneAnalyzers.ANYWHERE_ANALYZER)),
-			@Field(name = "middleNameSoundex", analyzer =  @Analyzer(definition = LuceneAnalyzers.SOUNDEX_ANALYZER), boost = @Boost(1f))
+			@Field(name = "middleNameExact", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.EXACT_ANALYZER), boost = @Boost(4f)),
+			@Field(name = "middleNameStart", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.START_ANALYZER), boost = @Boost(2f)),
+			@Field(name = "middleNameAnywhere", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.ANYWHERE_ANALYZER)),
+			@Field(name = "middleNameSoundex", analyzer =  @Analyzer(definition = /*~~>*/LuceneAnalyzers.SOUNDEX_ANALYZER), boost = @Boost(1f))
 	})
-	private String middleName;
+	private /*~~>*/String middleName;
 	
-	private String familyNamePrefix;
+	private /*~~>*/String familyNamePrefix;
 
 	@Fields({
-			@Field(name = "familyNameExact", analyzer = @Analyzer(definition = LuceneAnalyzers.EXACT_ANALYZER), boost = @Boost(8f)),
-			@Field(name = "familyNameStart", analyzer = @Analyzer(definition = LuceneAnalyzers.START_ANALYZER), boost = @Boost(4f)),
-			@Field(name = "familyNameAnywhere", analyzer = @Analyzer(definition = LuceneAnalyzers.ANYWHERE_ANALYZER), boost = @Boost(2f)),
-			@Field(name = "familyNameSoundex", analyzer =  @Analyzer(definition = LuceneAnalyzers.SOUNDEX_ANALYZER), boost = @Boost(1f))
+			@Field(name = "familyNameExact", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.EXACT_ANALYZER), boost = @Boost(8f)),
+			@Field(name = "familyNameStart", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.START_ANALYZER), boost = @Boost(4f)),
+			@Field(name = "familyNameAnywhere", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.ANYWHERE_ANALYZER), boost = @Boost(2f)),
+			@Field(name = "familyNameSoundex", analyzer =  @Analyzer(definition = /*~~>*/LuceneAnalyzers.SOUNDEX_ANALYZER), boost = @Boost(1f))
 	})
-	private String familyName;
+	private /*~~>*/String familyName;
 
 	@Fields({
-			@Field(name = "familyName2Exact", analyzer = @Analyzer(definition = LuceneAnalyzers.EXACT_ANALYZER), boost = @Boost(4f)),
-			@Field(name = "familyName2Start", analyzer = @Analyzer(definition = LuceneAnalyzers.START_ANALYZER), boost = @Boost(2f)),
-			@Field(name = "familyName2Anywhere", analyzer = @Analyzer(definition = LuceneAnalyzers.ANYWHERE_ANALYZER)),
-			@Field(name = "familyName2Soundex", analyzer =  @Analyzer(definition = LuceneAnalyzers.SOUNDEX_ANALYZER), boost = @Boost(1f))
+			@Field(name = "familyName2Exact", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.EXACT_ANALYZER), boost = @Boost(4f)),
+			@Field(name = "familyName2Start", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.START_ANALYZER), boost = @Boost(2f)),
+			@Field(name = "familyName2Anywhere", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.ANYWHERE_ANALYZER)),
+			@Field(name = "familyName2Soundex", analyzer =  @Analyzer(definition = /*~~>*/LuceneAnalyzers.SOUNDEX_ANALYZER), boost = @Boost(1f))
 	})
-	private String familyName2;
+	private /*~~>*/String familyName2;
 	
-	private String familyNameSuffix;
+	private /*~~>*/String familyNameSuffix;
 	
-	private String degree;
+	private /*~~>*/String degree;
 	
-	private static String format = OpenmrsConstants.PERSON_NAME_FORMAT_SHORT;
+	private static /*~~>*/String format = /*~~>*/OpenmrsConstants.PERSON_NAME_FORMAT_SHORT;
 	
 	// Constructors
 	
@@ -114,10 +114,10 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 	 * @param middleName String this person's middle name
 	 * @param familyName String this person's last name
 	 */
-	public PersonName(String givenName, String middleName, String familyName) {
-		this.givenName = givenName;
-		this.middleName = middleName;
-		this.familyName = familyName;
+	public PersonName(/*~~>*/String givenName, /*~~>*/String middleName, /*~~>*/String familyName) {
+		/*~~>*/this.givenName = givenName;
+		/*~~>*/this.middleName = middleName;
+		/*~~>*/this.familyName = familyName;
 	}
 	
 	/**
@@ -153,31 +153,31 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 		}
 		PersonName newName = new PersonName(pn.getPersonNameId());
 		if (pn.getGivenName() != null) {
-			newName.setGivenName(String.valueOf(pn.getGivenName()));
+			newName.setGivenName(/*~~>*/String.valueOf(pn.getGivenName()));
 		}
 		if (pn.getMiddleName() != null) {
-			newName.setMiddleName(String.valueOf(pn.getMiddleName()));
+			newName.setMiddleName(/*~~>*/String.valueOf(pn.getMiddleName()));
 		}
 		if (pn.getFamilyName() != null) {
-			newName.setFamilyName(String.valueOf(pn.getFamilyName()));
+			newName.setFamilyName(/*~~>*/String.valueOf(pn.getFamilyName()));
 		}
 		if (pn.getFamilyName2() != null) {
-			newName.setFamilyName2(String.valueOf(pn.getFamilyName2()));
+			newName.setFamilyName2(/*~~>*/String.valueOf(pn.getFamilyName2()));
 		}
 		if (pn.getFamilyNamePrefix() != null) {
-			newName.setFamilyNamePrefix(String.valueOf(pn.getFamilyNamePrefix()));
+			newName.setFamilyNamePrefix(/*~~>*/String.valueOf(pn.getFamilyNamePrefix()));
 		}
 		if (pn.getFamilyNameSuffix() != null) {
-			newName.setFamilyNameSuffix(String.valueOf(pn.getFamilyNameSuffix()));
+			newName.setFamilyNameSuffix(/*~~>*/String.valueOf(pn.getFamilyNameSuffix()));
 		}
 		if (pn.getPrefix() != null) {
-			newName.setPrefix(String.valueOf(pn.getPrefix()));
+			newName.setPrefix(/*~~>*/String.valueOf(pn.getPrefix()));
 		}
 		if (pn.getDegree() != null) {
-			newName.setDegree(String.valueOf(pn.getDegree()));
+			newName.setDegree(/*~~>*/String.valueOf(pn.getDegree()));
 		}
 		if (pn.getVoidReason() != null) {
-			newName.setVoidReason(String.valueOf(pn.getVoidReason()));
+			newName.setVoidReason(/*~~>*/String.valueOf(pn.getVoidReason()));
 		}
 		
 		if (pn.getDateChanged() != null) {
@@ -208,24 +208,24 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 	/**
 	 * @return Returns the degree.
 	 */
-	public String getDegree() {
+	public /*~~>*/String getDegree() {
 		return degree;
 	}
 	
 	/**
 	 * @param degree The degree to set.
 	 */
-	public void setDegree(String degree) {
-		this.degree = degree;
+	public void setDegree(/*~~>*/String degree) {
+		/*~~>*/this.degree = degree;
 	}
 	
 	/**
 	 * @return Returns the familyName.
 	 * <strong>Should</strong> return obscured name if obscure_patients is set to true
 	 */
-	public String getFamilyName() {
+	public /*~~>*/String getFamilyName() {
 		if (OpenmrsConstants.OBSCURE_PATIENTS) {
-			return OpenmrsConstants.OBSCURE_PATIENTS_FAMILY_NAME;
+			return /*~~>*/OpenmrsConstants.OBSCURE_PATIENTS_FAMILY_NAME;
 		}
 		return familyName;
 	}
@@ -233,15 +233,15 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 	/**
 	 * @param familyName The familyName to set.
 	 */
-	public void setFamilyName(String familyName) {
-		this.familyName = familyName;
+	public void setFamilyName(/*~~>*/String familyName) {
+		/*~~>*/this.familyName = familyName;
 	}
 	
 	/**
 	 * @return Returns the familyName2.
 	 * <strong>Should</strong> return null if obscure_patients is set to true
 	 */
-	public String getFamilyName2() {
+	public /*~~>*/String getFamilyName2() {
 		if (OpenmrsConstants.OBSCURE_PATIENTS) {
 			return null;
 		}
@@ -251,15 +251,15 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 	/**
 	 * @param familyName2 The familyName2 to set.
 	 */
-	public void setFamilyName2(String familyName2) {
-		this.familyName2 = familyName2;
+	public void setFamilyName2(/*~~>*/String familyName2) {
+		/*~~>*/this.familyName2 = familyName2;
 	}
 	
 	/**
 	 * @return Returns the familyNamePrefix.
 	 * <strong>Should</strong> return null if obscure_patients is set to true
 	 */
-	public String getFamilyNamePrefix() {
+	public /*~~>*/String getFamilyNamePrefix() {
 		if (OpenmrsConstants.OBSCURE_PATIENTS) {
 			return null;
 		}
@@ -269,15 +269,15 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 	/**
 	 * @param familyNamePrefix The familyNamePrefix to set.
 	 */
-	public void setFamilyNamePrefix(String familyNamePrefix) {
-		this.familyNamePrefix = familyNamePrefix;
+	public void setFamilyNamePrefix(/*~~>*/String familyNamePrefix) {
+		/*~~>*/this.familyNamePrefix = familyNamePrefix;
 	}
 	
 	/**
 	 * @return Returns the familyNameSuffix.
 	 * <strong>Should</strong> return null if obscure_patients is set to true
 	 */
-	public String getFamilyNameSuffix() {
+	public /*~~>*/String getFamilyNameSuffix() {
 		if (OpenmrsConstants.OBSCURE_PATIENTS) {
 			return null;
 		}
@@ -287,17 +287,17 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 	/**
 	 * @param familyNameSuffix The familyNameSuffix to set.
 	 */
-	public void setFamilyNameSuffix(String familyNameSuffix) {
-		this.familyNameSuffix = familyNameSuffix;
+	public void setFamilyNameSuffix(/*~~>*/String familyNameSuffix) {
+		/*~~>*/this.familyNameSuffix = familyNameSuffix;
 	}
 	
 	/**
 	 * @return Returns the givenName.
 	 * <strong>Should</strong> return obscured name if obscure_patients is set to true
 	 */
-	public String getGivenName() {
+	public /*~~>*/String getGivenName() {
 		if (OpenmrsConstants.OBSCURE_PATIENTS) {
-			return OpenmrsConstants.OBSCURE_PATIENTS_GIVEN_NAME;
+			return /*~~>*/OpenmrsConstants.OBSCURE_PATIENTS_GIVEN_NAME;
 		}
 		return givenName;
 	}
@@ -305,17 +305,17 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 	/**
 	 * @param givenName The givenName to set.
 	 */
-	public void setGivenName(String givenName) {
-		this.givenName = givenName;
+	public void setGivenName(/*~~>*/String givenName) {
+		/*~~>*/this.givenName = givenName;
 	}
 	
 	/**
 	 * @return Returns the middleName.
 	 * <strong>Should</strong> return obscured name if obscure_patients is set to true
 	 */
-	public String getMiddleName() {
+	public /*~~>*/String getMiddleName() {
 		if (OpenmrsConstants.OBSCURE_PATIENTS) {
-			return OpenmrsConstants.OBSCURE_PATIENTS_MIDDLE_NAME;
+			return /*~~>*/OpenmrsConstants.OBSCURE_PATIENTS_MIDDLE_NAME;
 		}
 		return middleName;
 	}
@@ -323,8 +323,8 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 	/**
 	 * @param middleName The middleName to set.
 	 */
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
+	public void setMiddleName(/*~~>*/String middleName) {
+		/*~~>*/this.middleName = middleName;
 	}
 	
 	/**
@@ -384,7 +384,7 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 	 * @return Returns the prefix.
 	 * <strong>Should</strong> return null if obscure_patients is set to true
 	 */
-	public String getPrefix() {
+	public /*~~>*/String getPrefix() {
 		if (OpenmrsConstants.OBSCURE_PATIENTS) {
 			return null;
 		}
@@ -394,8 +394,8 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 	/**
 	 * @param prefix The prefix to set.
 	 */
-	public void setPrefix(String prefix) {
-		this.prefix = prefix;
+	public void setPrefix(/*~~>*/String prefix) {
+		/*~~>*/this.prefix = prefix;
 	}
 	
 	/**
@@ -406,7 +406,7 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 	 * @return all of the parts of this {@link PersonName} joined with spaces
 	 * <strong>Should</strong> not put spaces around an empty middle name
 	 */
-	public String getFullName() {
+	public /*~~>*/String getFullName() {
 		NameTemplate nameTemplate = null;
 		try {
 			nameTemplate = NameSupport.getInstance().getDefaultLayoutTemplate();
@@ -419,7 +419,7 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 			return nameTemplate.format(this);
 		}
 
-		List<String> temp = new ArrayList<>();
+		List</*~~>*/String> temp = new ArrayList<>();
 		if (StringUtils.hasText(getPrefix())) {
 			temp.add(getPrefix());
 		}
@@ -429,7 +429,7 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 		if (StringUtils.hasText(getMiddleName())) {
 			temp.add(getMiddleName());
 		}
-		if (OpenmrsConstants.PERSON_NAME_FORMAT_LONG.equals(PersonName.getFormat())) {
+		if (/*~~>*/OpenmrsConstants.PERSON_NAME_FORMAT_LONG.equals(PersonName.getFormat())) {
 			
 			if (StringUtils.hasText(getFamilyNamePrefix())) {
 				temp.add(getFamilyNamePrefix());
@@ -453,7 +453,7 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 			}
 		}
 		
-		String nameString = StringUtils.collectionToDelimitedString(temp, " ");
+		/*~~>*/String nameString = StringUtils.collectionToDelimitedString(temp, " ");
 		
 		return nameString.trim();
 	}
@@ -462,7 +462,7 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		//This should not be changed due to extensive usage in UI.
 		return getFullName();
 	}
@@ -505,16 +505,16 @@ public class PersonName extends BaseChangeableOpenmrsData implements java.io.Ser
 		
 	}
 	
-	public static void setFormat(String format) {
+	public static void setFormat(/*~~>*/String format) {
 		if (StringUtils.isEmpty(format)) {
-			PersonName.format = OpenmrsConstants.PERSON_NAME_FORMAT_SHORT;
+			/*~~>*/PersonName.format = /*~~>*/OpenmrsConstants.PERSON_NAME_FORMAT_SHORT;
 		} else {
-			PersonName.format = format;
+			/*~~>*/PersonName.format = format;
 		}
 	}
 	
-	public static String getFormat() {
-		return PersonName.format;
+	public static /*~~>*/String getFormat() {
+		return /*~~>*/PersonName.format;
 	}
 	
 	/**

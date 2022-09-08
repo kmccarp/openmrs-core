@@ -88,7 +88,7 @@ public class UpdateCohortMemberIdsChangeset implements CustomTaskChange {
 	 * @see liquibase.change.custom.CustomChange#getConfirmationMessage()
 	 */
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished updating cohort member ids";
 	}
 	

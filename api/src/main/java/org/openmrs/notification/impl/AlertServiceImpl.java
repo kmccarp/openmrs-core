@@ -167,10 +167,10 @@ public class AlertServiceImpl extends BaseOpenmrsService implements Serializable
 	 * @see org.openmrs.notification.AlertService#notifySuperUsers(String, Exception, Object...)
 	 */
 	@Override
-	public void notifySuperUsers(String messageCode, Exception cause, Object... messageArguments) {
+	public void notifySuperUsers(/*~~>*/String messageCode, Exception cause, Object... messageArguments) {
 		
 		// Generate an internationalized error message with the beginning of the stack trace from cause added onto the end
-		String message = Context.getMessageSourceService().getMessage(messageCode, messageArguments, Context.getLocale());
+		/*~~>*/String message = Context.getMessageSourceService().getMessage(messageCode, messageArguments, Context.getLocale());
 		
 		if (cause != null) {
 			StringBuilder stackTrace = new StringBuilder();
@@ -191,7 +191,7 @@ public class AlertServiceImpl extends BaseOpenmrsService implements Serializable
 		}
 		
 		//Send an alert to all administrators
-		Alert alert = new Alert(message, Context.getUserService().getUsersByRole(new Role(RoleConstants.SUPERUSER)));
+		Alert alert = new Alert(message, Context.getUserService().getUsersByRole(new Role(/*~~>*/RoleConstants.SUPERUSER)));
 		
 		// Set the alert so that if any administrator 'reads' it it will be marked as read for everyone who received it
 		alert.setSatisfiedByAny(true);

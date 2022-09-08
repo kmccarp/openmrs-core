@@ -32,7 +32,7 @@ public class PatientIdentifierTypeLockedException extends APIException {
 	 * Convenience constructor to give the user a message other than normal default one
 	 * @param message the reason to show to the user as to why we cannot manipulate of a patient identifier type
 	 */
-	public PatientIdentifierTypeLockedException(String message) {
+	public PatientIdentifierTypeLockedException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -43,7 +43,7 @@ public class PatientIdentifierTypeLockedException extends APIException {
 	 * @param message the reason to show to the user as to why we cannot manipulate of a person attribute type
 	 * @param cause the parent exception
 	 */
-	public PatientIdentifierTypeLockedException(String message, Throwable cause) {
+	public PatientIdentifierTypeLockedException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

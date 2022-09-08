@@ -80,9 +80,9 @@ public class HibernatePersonDAO implements PersonDAO {
 	 * @param gender of the person to search for 
 	 * @return the set of Persons that match the search criteria 
 	 */
-	private Set<Person> executeSoundexOnePersonNameQuery(String name, Integer birthyear, boolean includeVoided , String gender) {
+	private Set<Person> executeSoundexOnePersonNameQuery(/*~~>*/String name, Integer birthyear, boolean includeVoided , /*~~>*/String gender) {
 		PersonLuceneQuery personLuceneQuery = new PersonLuceneQuery(sessionFactory);
-		String query = LuceneQuery.escapeQuery(name);
+		/*~~>*/String query = LuceneQuery.escapeQuery(name);
 		int maxResults = HibernatePersonDAO.getMaximumSearchResults();
 		LinkedHashSet<Person> people = new LinkedHashSet<>();
 		
@@ -105,7 +105,7 @@ public class HibernatePersonDAO implements PersonDAO {
 	 * @param gender of the person to search for 
 	 * @return the set of Persons that match the search criteria 
 	 */
-	private Set<Person> executeSoundexThreePersonNamesQuery(String name1, String name2, String name3, Integer birthyear, boolean includeVoided , String gender) {
+	private Set<Person> executeSoundexThreePersonNamesQuery(/*~~>*/String name1, /*~~>*/String name2, /*~~>*/String name3, Integer birthyear, boolean includeVoided , /*~~>*/String gender) {
 		PersonLuceneQuery personLuceneQuery = new PersonLuceneQuery(sessionFactory);
 		int maxResults = HibernatePersonDAO.getMaximumSearchResults();
 		LinkedHashSet<Person> people = new LinkedHashSet<>();
@@ -127,7 +127,7 @@ public class HibernatePersonDAO implements PersonDAO {
 	 * @param gender of the person to search for 
 	 * @return the set of Persons that match the search criteria
 	 */
-	private Set<Person> executeSoundexTwoPersonNamesQuery(String searchName1, String searchName2, Integer birthyear, boolean includeVoided , String gender) {
+	private Set<Person> executeSoundexTwoPersonNamesQuery(/*~~>*/String searchName1, /*~~>*/String searchName2, Integer birthyear, boolean includeVoided , /*~~>*/String gender) {
 		PersonLuceneQuery personLuceneQuery = new PersonLuceneQuery(sessionFactory);
 		int maxResults = HibernatePersonDAO.getMaximumSearchResults();
 		LinkedHashSet<Person> people = new LinkedHashSet<>();
@@ -148,7 +148,7 @@ public class HibernatePersonDAO implements PersonDAO {
 	 * @param gender of the person to search for 
 	 * @return the set of Persons that match the search criteria
 	 */
-	private Set<Person> executeSoundexNPersonNamesQuery(String[] searchNames, Integer birthyear, boolean includeVoided , String gender) {
+	private Set<Person> executeSoundexNPersonNamesQuery(/*~~>*/String[] searchNames, Integer birthyear, boolean includeVoided , /*~~>*/String gender) {
 		PersonLuceneQuery personLuceneQuery = new PersonLuceneQuery(sessionFactory);
 		int maxResults = HibernatePersonDAO.getMaximumSearchResults();
 		LinkedHashSet<Person> people = new LinkedHashSet<>();
@@ -167,14 +167,14 @@ public class HibernatePersonDAO implements PersonDAO {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public Set<Person> getSimilarPeople(String name, Integer birthyear, String gender) throws DAOException {
+	public Set<Person> getSimilarPeople(/*~~>*/String name, Integer birthyear, /*~~>*/String gender) throws DAOException {
 		if (birthyear == null) {
 			birthyear = 0;
 		}
 
 		name = name.replaceAll("  ", " ");
 		name = name.replace(", ", " ");
-		String[] names = name.split(" ");
+		/*~~>*/String[] names = name.split(" ");
 		
 		if (names.length == 1) {
 			return  executeSoundexOnePersonNameQuery(name, birthyear, false, gender);
@@ -230,7 +230,7 @@ public class HibernatePersonDAO implements PersonDAO {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Person> getPeople(String searchString, Boolean dead, Boolean voided) {
+	public List<Person> getPeople(/*~~>*/String searchString, Boolean dead, Boolean voided) {
 		if (searchString == null) {
 			return new ArrayList<>();
 		}
@@ -253,7 +253,7 @@ public class HibernatePersonDAO implements PersonDAO {
 			return criteria.list();
 		}
 
-		String query = LuceneQuery.escapeQuery(searchString);
+		/*~~>*/String query = LuceneQuery.escapeQuery(searchString);
 
 		PersonLuceneQuery personLuceneQuery = new PersonLuceneQuery(sessionFactory);
 
@@ -274,7 +274,7 @@ public class HibernatePersonDAO implements PersonDAO {
 	}
 	
 	@Override
-	public List<Person> getPeople(String searchString, Boolean dead) {
+	public List<Person> getPeople(/*~~>*/String searchString, Boolean dead) {
 		return getPeople(searchString, dead, null);
 	}
 	
@@ -286,11 +286,11 @@ public class HibernatePersonDAO implements PersonDAO {
 	public static Integer getMaximumSearchResults() {
 		try {
 			return Integer.valueOf(Context.getAdministrationService().getGlobalProperty(
-			    OpenmrsConstants.GLOBAL_PROPERTY_PERSON_SEARCH_MAX_RESULTS,
-			    String.valueOf(OpenmrsConstants.GLOBAL_PROPERTY_PERSON_SEARCH_MAX_RESULTS_DEFAULT_VALUE)));
+			    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PERSON_SEARCH_MAX_RESULTS,
+			    /*~~>*/String.valueOf(OpenmrsConstants.GLOBAL_PROPERTY_PERSON_SEARCH_MAX_RESULTS_DEFAULT_VALUE)));
 		}
 		catch (Exception e) {
-			log.warn("Unable to convert the global property " + OpenmrsConstants.GLOBAL_PROPERTY_PERSON_SEARCH_MAX_RESULTS
+			log.warn("Unable to convert the global property " + /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PERSON_SEARCH_MAX_RESULTS
 			        + "to a valid integer. Returning the default "
 			        + OpenmrsConstants.GLOBAL_PROPERTY_PERSON_SEARCH_MAX_RESULTS_DEFAULT_VALUE);
 		}
@@ -369,7 +369,7 @@ public class HibernatePersonDAO implements PersonDAO {
 	@Override
 	// TODO - PersonServiceTest fails here
 	@SuppressWarnings("unchecked")
-	public List<PersonAttributeType> getPersonAttributeTypes(String exactName, String format, Integer foreignKey,
+	public List<PersonAttributeType> getPersonAttributeTypes(/*~~>*/String exactName, /*~~>*/String format, Integer foreignKey,
 	        Boolean searchable) throws DAOException {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(PersonAttributeType.class, "r");
 		
@@ -504,7 +504,7 @@ public class HibernatePersonDAO implements PersonDAO {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<RelationshipType> getRelationshipTypes(String relationshipTypeName, Boolean preferred) throws DAOException {
+	public List<RelationshipType> getRelationshipTypes(/*~~>*/String relationshipTypeName, Boolean preferred) throws DAOException {
 		
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(RelationshipType.class);
 		criteria.add(Restrictions.sqlRestriction("CONCAT(a_Is_To_B, CONCAT('/', b_Is_To_A)) like (?)", relationshipTypeName,
@@ -618,7 +618,7 @@ public class HibernatePersonDAO implements PersonDAO {
 	 * @see org.openmrs.api.db.PersonDAO#getPersonAttributeTypeByUuid(java.lang.String)
 	 */
 	@Override
-	public PersonAttributeType getPersonAttributeTypeByUuid(String uuid) {
+	public PersonAttributeType getPersonAttributeTypeByUuid(/*~~>*/String uuid) {
 		return (PersonAttributeType) sessionFactory.getCurrentSession().createQuery(
 		    "from PersonAttributeType pat where pat.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
@@ -627,11 +627,11 @@ public class HibernatePersonDAO implements PersonDAO {
 	 * @see org.openmrs.api.db.PersonDAO#getSavedPersonAttributeTypeName(org.openmrs.PersonAttributeType)
 	 */
 	@Override
-	public String getSavedPersonAttributeTypeName(PersonAttributeType personAttributeType) {
+	public /*~~>*/String getSavedPersonAttributeTypeName(PersonAttributeType personAttributeType) {
 		SQLQuery sql = sessionFactory.getCurrentSession().createSQLQuery(
 		    "select name from person_attribute_type where person_attribute_type_id = :personAttributeTypeId");
 		sql.setInteger("personAttributeTypeId", personAttributeType.getId());
-		return (String) sql.uniqueResult();
+		return (/*~~>*/String) sql.uniqueResult();
 	}
 
 	@Override
@@ -646,13 +646,13 @@ public class HibernatePersonDAO implements PersonDAO {
 	 * @see org.openmrs.api.db.PersonDAO#getPersonByUuid(java.lang.String)
 	 */
 	@Override
-	public Person getPersonByUuid(String uuid) {
+	public Person getPersonByUuid(/*~~>*/String uuid) {
 		return (Person) sessionFactory.getCurrentSession().createQuery("from Person p where p.uuid = :uuid").setString(
 		    "uuid", uuid).uniqueResult();
 	}
 	
 	@Override
-	public PersonAddress getPersonAddressByUuid(String uuid) {
+	public PersonAddress getPersonAddressByUuid(/*~~>*/String uuid) {
 		return (PersonAddress) sessionFactory.getCurrentSession().createQuery("from PersonAddress p where p.uuid = :uuid")
 		        .setString("uuid", uuid).uniqueResult();
 	}
@@ -678,7 +678,7 @@ public class HibernatePersonDAO implements PersonDAO {
 	 * @see org.openmrs.api.db.PersonDAO#getPersonMergeLogByUuid(String)
 	 */
 	@Override
-	public PersonMergeLog getPersonMergeLogByUuid(String uuid) throws DAOException {
+	public PersonMergeLog getPersonMergeLogByUuid(/*~~>*/String uuid) throws DAOException {
 		return (PersonMergeLog) sessionFactory.getCurrentSession().createQuery("from PersonMergeLog p where p.uuid = :uuid")
 		        .setString("uuid", uuid).uniqueResult();
 	}
@@ -712,7 +712,7 @@ public class HibernatePersonDAO implements PersonDAO {
 	}
 	
 	@Override
-	public PersonAttribute getPersonAttributeByUuid(String uuid) {
+	public PersonAttribute getPersonAttributeByUuid(/*~~>*/String uuid) {
 		return (PersonAttribute) sessionFactory.getCurrentSession().createQuery(
 		    "from PersonAttribute p where p.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
@@ -729,7 +729,7 @@ public class HibernatePersonDAO implements PersonDAO {
 	 * @see org.openmrs.api.db.PersonDAO#getPersonNameByUuid(String)
 	 */
 	@Override
-	public PersonName getPersonNameByUuid(String uuid) {
+	public PersonName getPersonNameByUuid(/*~~>*/String uuid) {
 		return (PersonName) sessionFactory.getCurrentSession().createQuery("from PersonName p where p.uuid = :uuid")
 		        .setString("uuid", uuid).uniqueResult();
 	}
@@ -738,7 +738,7 @@ public class HibernatePersonDAO implements PersonDAO {
 	 * @see org.openmrs.api.db.PersonDAO#getRelationshipByUuid(java.lang.String)
 	 */
 	@Override
-	public Relationship getRelationshipByUuid(String uuid) {
+	public Relationship getRelationshipByUuid(/*~~>*/String uuid) {
 		return (Relationship) sessionFactory.getCurrentSession().createQuery("from Relationship r where r.uuid = :uuid")
 		        .setString("uuid", uuid).uniqueResult();
 	}
@@ -747,7 +747,7 @@ public class HibernatePersonDAO implements PersonDAO {
 	 * @see org.openmrs.api.db.PersonDAO#getRelationshipTypeByUuid(java.lang.String)
 	 */
 	@Override
-	public RelationshipType getRelationshipTypeByUuid(String uuid) {
+	public RelationshipType getRelationshipTypeByUuid(/*~~>*/String uuid) {
 		return (RelationshipType) sessionFactory.getCurrentSession().createQuery(
 		    "from RelationshipType rt where rt.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}

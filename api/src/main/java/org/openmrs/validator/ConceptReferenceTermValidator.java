@@ -73,7 +73,7 @@ public class ConceptReferenceTermValidator implements Validator {
 		
 		ConceptReferenceTerm conceptReferenceTerm = (ConceptReferenceTerm) obj;
 		
-		String code = conceptReferenceTerm.getCode();
+		/*~~>*/String code = conceptReferenceTerm.getCode();
 		boolean hasBlankFields = false;
 		if (!StringUtils.hasText(code)) {
 			errors.rejectValue("code", "ConceptReferenceTerm.error.codeRequired",
@@ -102,7 +102,7 @@ public class ConceptReferenceTermValidator implements Validator {
 		//validate the concept reference term maps
 		if (CollectionUtils.isNotEmpty(conceptReferenceTerm.getConceptReferenceTermMaps())) {
 			int index = 0;
-			Set<String> mappedTermUuids = null;
+			Set</*~~>*/String> mappedTermUuids = null;
 			for (ConceptReferenceTermMap map : conceptReferenceTerm.getConceptReferenceTermMaps()) {
 				if (map == null) {
 					throw new APIException("ConceptReferenceTerm.add.null", (Object[]) null);

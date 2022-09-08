@@ -50,8 +50,8 @@ public class PatientSearchCriteriaTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getQueryParts_shouldProcessSimpleSpaceAsSeparator() {
-		String[] actual = patientSearchCriteria.getQueryParts("Anton Bert Charles");
-		String[] expected = { "Anton", "Bert", "Charles" };
+		/*~~>*/String[] actual = patientSearchCriteria.getQueryParts("Anton Bert Charles");
+		/*~~>*/String[] expected = { "Anton", "Bert", "Charles" };
 		
 		assertArrayEquals(expected, actual);
 	}
@@ -61,8 +61,8 @@ public class PatientSearchCriteriaTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getQueryParts_shouldProcessCommaAsSeparator() {
-		String[] actual = patientSearchCriteria.getQueryParts("Anton,Bert,Charles");
-		String[] expected = { "Anton", "Bert", "Charles" };
+		/*~~>*/String[] actual = patientSearchCriteria.getQueryParts("Anton,Bert,Charles");
+		/*~~>*/String[] expected = { "Anton", "Bert", "Charles" };
 		
 		assertArrayEquals(expected, actual);
 	}
@@ -72,8 +72,8 @@ public class PatientSearchCriteriaTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getQueryParts_shouldProcessMixedSeparators() {
-		String[] actual = patientSearchCriteria.getQueryParts("Anton,Bert, Charles Dorian  Ernie");
-		String[] expected = { "Anton", "Bert", "Charles", "Dorian", "Ernie" };
+		/*~~>*/String[] actual = patientSearchCriteria.getQueryParts("Anton,Bert, Charles Dorian  Ernie");
+		/*~~>*/String[] expected = { "Anton", "Bert", "Charles", "Dorian", "Ernie" };
 		
 		assertArrayEquals(expected, actual);
 	}
@@ -83,8 +83,8 @@ public class PatientSearchCriteriaTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getQueryParts_shouldNotReturnEmptyNameParts() {
-		String[] actual = patientSearchCriteria.getQueryParts(" Anton  Bert   Charles ");
-		String[] expected = { "Anton", "Bert", "Charles" };
+		/*~~>*/String[] actual = patientSearchCriteria.getQueryParts(" Anton  Bert   Charles ");
+		/*~~>*/String[] expected = { "Anton", "Bert", "Charles" };
 		
 		assertArrayEquals(expected, actual);
 	}
@@ -118,7 +118,7 @@ public class PatientSearchCriteriaTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getMatchMode_shouldReturnStartAsDefaultMatchMode() {
-		globalPropertiesTestHelper.purgeGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE);
+		globalPropertiesTestHelper.purgeGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE);
 		assertEquals(MatchMode.START, patientSearchCriteria.getMatchMode());
 	}
 	
@@ -127,17 +127,17 @@ public class PatientSearchCriteriaTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getMatchMode_shouldReturnStartAsConfiguredMatchMode() {
-		String oldPropertyValue = globalPropertiesTestHelper.setGlobalProperty(
-		    OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE,
-		    OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_START);
+		/*~~>*/String oldPropertyValue = globalPropertiesTestHelper.setGlobalProperty(
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE,
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_START);
 		
 		assertEquals(MatchMode.START, patientSearchCriteria.getMatchMode());
 		
 		if (oldPropertyValue != null) {
-			globalPropertiesTestHelper.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE,
+			globalPropertiesTestHelper.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE,
 			    oldPropertyValue);
 		} else {
-			globalPropertiesTestHelper.purgeGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE);
+			globalPropertiesTestHelper.purgeGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE);
 		}
 	}
 	
@@ -146,17 +146,17 @@ public class PatientSearchCriteriaTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getMatchMode_shouldReturnAnywhereAsConfiguredMatchMode() {
-		String oldPropertyValue = globalPropertiesTestHelper.setGlobalProperty(
-		    OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE,
-		    OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_ANYWHERE);
+		/*~~>*/String oldPropertyValue = globalPropertiesTestHelper.setGlobalProperty(
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE,
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_ANYWHERE);
 		
 		assertEquals(MatchMode.ANYWHERE, patientSearchCriteria.getMatchMode());
 		
 		if (oldPropertyValue != null) {
-			globalPropertiesTestHelper.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE,
+			globalPropertiesTestHelper.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE,
 			    oldPropertyValue);
 		} else {
-			globalPropertiesTestHelper.purgeGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE);
+			globalPropertiesTestHelper.purgeGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_SEARCH_MATCH_MODE);
 		}
 	}
 	

@@ -43,7 +43,7 @@ public interface TemplateDAO {
 	 * @return message template with given name
 	 * @throws DAOException
 	 */
-	public List<Template> getTemplatesByName(String name) throws DAOException;
+	public List<Template> getTemplatesByName(/*~~>*/String name) throws DAOException;
 	
 	/**
 	 * Create new template.

@@ -30,69 +30,69 @@ public class PersonMergeLogData {
 	/**
 	 * List of UUIDs of visits moved from non-preferred to preferred
 	 */
-	private List<String> movedVisits;
+	private List</*~~>*/String> movedVisits;
 	
 	/**
 	 * List of UUIDs of encounters moved from non-preferred to preferred
 	 */
-	private List<String> movedEncounters;
+	private List</*~~>*/String> movedEncounters;
 	
 	/**
 	 * List of UUIDs of patient programs copied from non-preferred to preferred
 	 */
-	private List<String> createdPrograms;
+	private List</*~~>*/String> createdPrograms;
 	
 	/**
 	 * List of UUIDs of voided relationships
 	 */
-	private List<String> voidedRelationships;
+	private List</*~~>*/String> voidedRelationships;
 	
 	/**
 	 * List of UUIDs of created relationships
 	 */
-	private List<String> createdRelationships;
+	private List</*~~>*/String> createdRelationships;
 	
 	/**
 	 * List of UUIDs of observations not contained within any encounter moved from non-preferred to
 	 * preferred
 	 */
-	private List<String> movedIndependentObservations;
+	private List</*~~>*/String> movedIndependentObservations;
 	
 	/**
 	 * List of UUIDs of orders copied from non-preferred to preferred
 	 */
-	private List<String> createdOrders;
+	private List</*~~>*/String> createdOrders;
 	
 	/**
 	 * List of UUIDs of identifiers copied from non-preferred to preferred
 	 */
-	private List<String> createdIdentifiers;
+	private List</*~~>*/String> createdIdentifiers;
 	
 	/**
 	 * List of UUIDs of addresses copied from non-preferred to preferred
 	 */
-	private List<String> createdAddresses;
+	private List</*~~>*/String> createdAddresses;
 	
 	/**
 	 * List of UUIDs of names copied from non-preferred to preferred
 	 */
-	private List<String> createdNames;
+	private List</*~~>*/String> createdNames;
 	
 	/**
 	 * List of UUIDs of attributes copied from non-preferred to preferred
 	 */
-	private List<String> createdAttributes;
+	private List</*~~>*/String> createdAttributes;
 	
 	/**
 	 * List of UUIDs of users moved to be associated from non-preferred to be associated to
 	 * preferred
 	 */
-	private List<String> movedUsers;
+	private List</*~~>*/String> movedUsers;
 	
 	/**
 	 * Value of gender of preferred person as it was before the merge occurred
 	 */
-	private String priorGender;
+	private /*~~>*/String priorGender;
 	
 	/**
 	 * Value of Date of Birth of preferred person as it was before the merge occurred
@@ -119,146 +119,146 @@ public class PersonMergeLogData {
 	/**
 	 * Value of cause of death of preferred person as it was before the merge occurred
 	 */
-	private String priorCauseOfDeath;
+	private /*~~>*/String priorCauseOfDeath;
 	
-	public List<String> getMovedVisits() {
+	public List</*~~>*/String> getMovedVisits() {
 		return movedVisits;
 	}
 	
-	public List<String> getMovedEncounters() {
+	public List</*~~>*/String> getMovedEncounters() {
 		return movedEncounters;
 	}
 	
-	public void addMovedVisit(String uuid) {
+	public void addMovedVisit(/*~~>*/String uuid) {
 		if (movedVisits == null) {
 			movedVisits = new ArrayList<>();
 		}
 		movedVisits.add(uuid);
 	}
 	
-	public void addMovedEncounter(String uuid) {
+	public void addMovedEncounter(/*~~>*/String uuid) {
 		if (movedEncounters == null) {
 			movedEncounters = new ArrayList<>();
 		}
 		movedEncounters.add(uuid);
 	}
 	
-	public List<String> getCreatedPrograms() {
+	public List</*~~>*/String> getCreatedPrograms() {
 		return createdPrograms;
 	}
 	
-	public void addCreatedProgram(String uuid) {
+	public void addCreatedProgram(/*~~>*/String uuid) {
 		if (createdPrograms == null) {
 			createdPrograms = new ArrayList<>();
 		}
 		createdPrograms.add(uuid);
 	}
 	
-	public List<String> getVoidedRelationships() {
+	public List</*~~>*/String> getVoidedRelationships() {
 		return voidedRelationships;
 	}
 	
-	public void addVoidedRelationship(String uuid) {
+	public void addVoidedRelationship(/*~~>*/String uuid) {
 		if (voidedRelationships == null) {
 			voidedRelationships = new ArrayList<>();
 		}
 		voidedRelationships.add(uuid);
 	}
 	
-	public List<String> getCreatedRelationships() {
+	public List</*~~>*/String> getCreatedRelationships() {
 		return createdRelationships;
 	}
 	
-	public void addCreatedRelationship(String uuid) {
+	public void addCreatedRelationship(/*~~>*/String uuid) {
 		if (createdRelationships == null) {
 			createdRelationships = new ArrayList<>();
 		}
 		createdRelationships.add(uuid);
 	}
 	
-	public List<String> getMovedIndependentObservations() {
+	public List</*~~>*/String> getMovedIndependentObservations() {
 		return movedIndependentObservations;
 	}
 	
-	public void addMovedIndependentObservation(String uuid) {
+	public void addMovedIndependentObservation(/*~~>*/String uuid) {
 		if (movedIndependentObservations == null) {
 			movedIndependentObservations = new ArrayList<>();
 		}
 		movedIndependentObservations.add(uuid);
 	}
 	
-	public List<String> getCreatedOrders() {
+	public List</*~~>*/String> getCreatedOrders() {
 		return createdOrders;
 	}
 	
-	public void addCreatedOrder(String uuid) {
+	public void addCreatedOrder(/*~~>*/String uuid) {
 		if (createdOrders == null) {
 			createdOrders = new ArrayList<>();
 		}
 		createdOrders.add(uuid);
 	}
 	
-	public List<String> getCreatedIdentifiers() {
+	public List</*~~>*/String> getCreatedIdentifiers() {
 		return createdIdentifiers;
 	}
 	
-	public void addCreatedIdentifier(String uuid) {
+	public void addCreatedIdentifier(/*~~>*/String uuid) {
 		if (createdIdentifiers == null) {
 			createdIdentifiers = new ArrayList<>();
 		}
 		createdIdentifiers.add(uuid);
 	}
 	
-	public List<String> getCreatedAddresses() {
+	public List</*~~>*/String> getCreatedAddresses() {
 		return createdAddresses;
 	}
 	
-	public void addCreatedAddress(String uuid) {
+	public void addCreatedAddress(/*~~>*/String uuid) {
 		if (createdAddresses == null) {
 			createdAddresses = new ArrayList<>();
 		}
 		createdAddresses.add(uuid);
 	}
 	
-	public List<String> getCreatedNames() {
+	public List</*~~>*/String> getCreatedNames() {
 		return createdNames;
 	}
 	
-	public void addCreatedName(String uuid) {
+	public void addCreatedName(/*~~>*/String uuid) {
 		if (createdNames == null) {
 			createdNames = new ArrayList<>();
 		}
 		createdNames.add(uuid);
 	}
 	
-	public List<String> getCreatedAttributes() {
+	public List</*~~>*/String> getCreatedAttributes() {
 		return createdAttributes;
 	}
 	
-	public void addCreatedAttribute(String uuid) {
+	public void addCreatedAttribute(/*~~>*/String uuid) {
 		if (createdAttributes == null) {
 			createdAttributes = new ArrayList<>();
 		}
 		createdAttributes.add(uuid);
 	}
 	
-	public List<String> getMovedUsers() {
+	public List</*~~>*/String> getMovedUsers() {
 		return movedUsers;
 	}
 	
-	public void addMovedUser(String uuid) {
+	public void addMovedUser(/*~~>*/String uuid) {
 		if (movedUsers == null) {
 			movedUsers = new ArrayList<>();
 		}
 		movedUsers.add(uuid);
 	}
 	
-	public String getPriorGender() {
+	public /*~~>*/String getPriorGender() {
 		return priorGender;
 	}
 	
-	public void setPriorGender(String priorGender) {
-		this.priorGender = priorGender;
+	public void setPriorGender(/*~~>*/String priorGender) {
+		/*~~>*/this.priorGender = priorGender;
 	}
 	
 	public Date getPriorDateOfBirth() {
@@ -293,12 +293,12 @@ public class PersonMergeLogData {
 		this.priorDateOfDeathEstimated = priorDateOfDeathEstimated;
 	}
 	
-	public String getPriorCauseOfDeath() {
+	public /*~~>*/String getPriorCauseOfDeath() {
 		return priorCauseOfDeath;
 	}
 	
-	public void setPriorCauseOfDeath(String uuid) {
-		this.priorCauseOfDeath = uuid;
+	public void setPriorCauseOfDeath(/*~~>*/String uuid) {
+		/*~~>*/this.priorCauseOfDeath = uuid;
 	}
 	
 	/**
@@ -307,7 +307,7 @@ public class PersonMergeLogData {
 	 * @return hash value
 	 */
 	public int computeHashValue() {
-		String str = "";
+		/*~~>*/String str = "";
 		if (getCreatedAddresses() != null) {
 			str += getCreatedAddresses().toString();
 		}

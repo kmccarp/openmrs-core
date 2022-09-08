@@ -19,9 +19,9 @@ import org.openmrs.test.jupiter.BaseContextSensitiveTest;
  */
 public class DrugTest extends BaseContextSensitiveTest {
 	
-	private final static String UUID_1 = "333cd82c-7d3d-11e3-8633-13f177b345d8";
+	private final static /*~~>*/String UUID_1 = "333cd82c-7d3d-11e3-8633-13f177b345d8";
 	
-	private final static String UUID_2 = "4eef1530-7d3d-11e3-ac6d-e388e198a21e";
+	private final static /*~~>*/String UUID_2 = "4eef1530-7d3d-11e3-ac6d-e388e198a21e";
 	
 	/**
 	 * @see Drug#addDrugReferenceMap(DrugReferenceMap)

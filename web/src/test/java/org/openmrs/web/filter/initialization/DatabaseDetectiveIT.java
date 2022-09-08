@@ -19,9 +19,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class DatabaseDetectiveIT extends H2DatabaseIT {
 	
-	private static final String LIQUIBASE_SCHEMA_ONLY_1_9_X = "org/openmrs/liquibase/snapshots/schema-only/liquibase-schema-only-1.9.x.xml";
+	private static final /*~~>*/String LIQUIBASE_SCHEMA_ONLY_1_9_X = "org/openmrs/liquibase/snapshots/schema-only/liquibase-schema-only-1.9.x.xml";
 
-	private static final String LIQUIBASE_CHANGE_LOG_TABLES = "org/openmrs/liquibase/liquibase-changelog-tables.xml";
+	private static final /*~~>*/String LIQUIBASE_CHANGE_LOG_TABLES = "org/openmrs/liquibase/liquibase-changelog-tables.xml";
 
 	private DatabaseDetective databaseDetective;
 	

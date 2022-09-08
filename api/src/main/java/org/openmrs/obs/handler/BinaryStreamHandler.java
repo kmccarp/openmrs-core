@@ -34,7 +34,7 @@ import org.springframework.util.Assert;
 public class BinaryStreamHandler extends AbstractHandler implements ComplexObsHandler {
 	
 	/** Views supported by this handler */
-	private static final String[] supportedViews = { ComplexObsHandler.RAW_VIEW, };
+	private static final /*~~>*/String[] supportedViews = { /*~~>*/ComplexObsHandler.RAW_VIEW, };
 	
 	private static final Logger log = LoggerFactory.getLogger(BinaryStreamHandler.class);
 	
@@ -56,16 +56,16 @@ public class BinaryStreamHandler extends AbstractHandler implements ComplexObsHa
 	 * @see ComplexObsHandler#getObs(Obs, String)
 	 */
 	@Override
-	public Obs getObs(Obs obs, String view) {
+	public Obs getObs(Obs obs, /*~~>*/String view) {
 		ComplexData complexData = null;
 		File file = null;
 		
 		// Raw stream
-		if (ComplexObsHandler.RAW_VIEW.equals(view)) {
+		if (/*~~>*/ComplexObsHandler.RAW_VIEW.equals(view)) {
 			try {
 				file = getComplexDataFile(obs);
-				String[] names = obs.getValueComplex().split("\\|");
-				String originalFilename = names[0];
+				/*~~>*/String[] names = obs.getValueComplex().split("\\|");
+				/*~~>*/String originalFilename = names[0];
 				originalFilename = originalFilename.replace(",", "").replace(" ", "");
 				
 				if (file.exists()) {
@@ -87,7 +87,7 @@ public class BinaryStreamHandler extends AbstractHandler implements ComplexObsHa
 		Assert.notNull(complexData, "Complex data must not be null");
 		
 		// Get the Mime Type and set it
-		String mimeType = OpenmrsUtil.getFileMimeType(file);
+		/*~~>*/String mimeType = OpenmrsUtil.getFileMimeType(file);
 		complexData.setMimeType(mimeType);
 		
 		obs.setComplexData(complexData);
@@ -99,7 +99,7 @@ public class BinaryStreamHandler extends AbstractHandler implements ComplexObsHa
 	 * @see org.openmrs.obs.ComplexObsHandler#getSupportedViews()
 	 */
 	@Override
-	public String[] getSupportedViews() {
+	public /*~~>*//*~~>*/String[] getSupportedViews() {
 		return supportedViews;
 	}
 	
@@ -110,7 +110,7 @@ public class BinaryStreamHandler extends AbstractHandler implements ComplexObsHa
 	public Obs saveObs(Obs obs) throws APIException {
 		try {
 			// Write the File to the File System
-			String fileName = obs.getComplexData().getTitle();
+			/*~~>*/String fileName = obs.getComplexData().getTitle();
 			InputStream in = (InputStream) obs.getComplexData().getData();
 			File outfile = getOutputFileToWrite(obs);
 			OutputStream out = new FileOutputStream(outfile, false);

@@ -56,8 +56,8 @@ public class LocalizationTool extends ResourceTool {
 	 *      java.lang.Object)
 	 */
 	@Override
-	protected ResourceBundle getBundle(String baseName, Object loc) {
-		Locale locale = (loc == null) ? getLocale() : LocaleUtility.fromSpecification(String.valueOf(loc));
+	protected ResourceBundle getBundle(/*~~>*/String baseName, Object loc) {
+		Locale locale = (loc == null) ? getLocale() : LocaleUtility.fromSpecification(/*~~>*/String.valueOf(loc));
 		if (baseName == null || locale == null) {
 			return null;
 		}
@@ -75,7 +75,7 @@ public class LocalizationTool extends ResourceTool {
 	 *      java.lang.Object)
 	 */
 	@Override
-	public Object get(Object code, String[] resourceNamePrefixes, Object locale) {
+	public Object get(Object code, /*~~>*/String[] resourceNamePrefixes, Object locale) {
 		Object msg = super.get(code, resourceNamePrefixes, locale);
 		//if code's translation is blank, use the english equivalent
 		if (msg == null || StringUtils.isBlank(msg.toString())) {

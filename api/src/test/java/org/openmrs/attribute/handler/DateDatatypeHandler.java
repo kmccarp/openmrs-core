@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 public class DateDatatypeHandler implements CustomDatatypeHandler<DateDatatype, Date> {
 	
 	@Override
-	public void setHandlerConfiguration(String handlerConfig) {
+	public void setHandlerConfiguration(/*~~>*/String handlerConfig) {
 		
 	}
 }

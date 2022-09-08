@@ -53,7 +53,7 @@ public final class NaturalStrings {
 	 *         </p>
 	 * @see #getNaturalComparator(java.text.Collator)
 	 */
-	public static Comparator<String> getNaturalComparator() {
+	public static Comparator</*~~>*/String> getNaturalComparator() {
 		Collator collator = Collator.getInstance();
 		return getNaturalComparator(collator);
 	}
@@ -70,7 +70,7 @@ public final class NaturalStrings {
 	 *         </p>
 	 * @see #getNaturalComparator()
 	 */
-	public static Comparator<String> getNaturalComparator(final Collator collator) {
+	public static Comparator</*~~>*/String> getNaturalComparator(final Collator collator) {
 		if (collator == null) {
 			// it's important to explicitly handle this here - else the bug will manifest anytime later in possibly
 			// unrelated code that tries to use the comparator
@@ -92,7 +92,7 @@ public final class NaturalStrings {
 	 * @see #getNaturalComparator()
 	 * @see #getNaturalComparator(java.text.Collator)
 	 */
-	public static Comparator<String> getNaturalComparatorAscii() {
+	public static Comparator</*~~>*/String> getNaturalComparatorAscii() {
 		return NaturalStrings::compareNaturalAscii;
 	}
 	
@@ -109,7 +109,7 @@ public final class NaturalStrings {
 	 * @see #getNaturalComparator()
 	 * @see #getNaturalComparator(java.text.Collator)
 	 */
-	public static Comparator<String> getNaturalComparatorIgnoreCaseAscii() {
+	public static Comparator</*~~>*/String> getNaturalComparatorIgnoreCaseAscii() {
 		return NaturalStrings::compareNaturalIgnoreCaseAscii;
 	}
 	
@@ -134,7 +134,7 @@ public final class NaturalStrings {
 	 *         <code>s</code> lexicographically precedes <code>t</code> and a value larger than zero
 	 *         iff <code>s</code> lexicographically follows <code>t</code>
 	 */
-	public static int compareNatural(String s, String t) {
+	public static int compareNatural(/*~~>*/String s, /*~~>*/String t) {
 		return compareNatural(s, t, false, Collator.getInstance());
 	}
 	
@@ -150,7 +150,7 @@ public final class NaturalStrings {
 	 *         <code>s</code> lexicographically precedes <code>t</code> and a value larger than zero
 	 *         iff <code>s</code> lexicographically follows <code>t</code>
 	 */
-	public static int compareNatural(Collator collator, String s, String t) {
+	public static int compareNatural(Collator collator, /*~~>*/String s, /*~~>*/String t) {
 		return compareNatural(s, t, true, collator);
 	}
 	
@@ -167,7 +167,7 @@ public final class NaturalStrings {
 	 *         <code>s</code> lexicographically precedes <code>t</code> and a value larger than zero
 	 *         iff <code>s</code> lexicographically follows <code>t</code>
 	 */
-	public static int compareNaturalAscii(String s, String t) {
+	public static int compareNaturalAscii(/*~~>*/String s, /*~~>*/String t) {
 		return compareNatural(s, t, true, null);
 	}
 	
@@ -184,7 +184,7 @@ public final class NaturalStrings {
 	 *         <code>s</code> lexicographically precedes <code>t</code> and a value larger than zero
 	 *         iff <code>s</code> lexicographically follows <code>t</code>
 	 */
-	public static int compareNaturalIgnoreCaseAscii(String s, String t) {
+	public static int compareNaturalIgnoreCaseAscii(/*~~>*/String s, /*~~>*/String t) {
 		return compareNatural(s, t, false, null);
 	}
 	
@@ -199,7 +199,7 @@ public final class NaturalStrings {
 	 *         <code>s</code> lexicographically precedes <code>t</code> and a value larger than zero
 	 *         iff <code>s</code> lexicographically follows <code>t</code>
 	 */
-	private static int compareNatural(String s, String t, boolean caseSensitive, Collator collator) {
+	private static int compareNatural(/*~~>*/String s, /*~~>*/String t, boolean caseSensitive, Collator collator) {
 		int sIndex = 0;
 		int tIndex = 0;
 		
@@ -315,8 +315,8 @@ public final class NaturalStrings {
 						++tIndex;
 					} while (tIndex < tLength && !Character.isDigit(t.charAt(tIndex)));
 					
-					String as = s.substring(aw, sIndex);
-					String bs = t.substring(bw, tIndex);
+					/*~~>*/String as = s.substring(aw, sIndex);
+					/*~~>*/String bs = t.substring(bw, tIndex);
 					int subwordResult = collator.compare(as, bs);
 					if (subwordResult != 0) {
 						return subwordResult;

@@ -34,7 +34,7 @@ public class FormsLockedException extends APIException {
 	 * 
 	 * @param message the reason to show to the user as to why we cannot save or delete the form
 	 */
-	public FormsLockedException(String message) {
+	public FormsLockedException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -45,7 +45,7 @@ public class FormsLockedException extends APIException {
 	 * @param message the reason to show to the user as to why we cannot save or delete the form
 	 * @param cause the parent exception
 	 */
-	public FormsLockedException(String message, Throwable cause) {
+	public FormsLockedException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

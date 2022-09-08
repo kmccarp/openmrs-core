@@ -36,7 +36,7 @@ public class CustomResourceLoader {
 	private static final Logger log = LoggerFactory.getLogger(CustomResourceLoader.class);
 	
 	/** */
-	public static final String PREFIX = "messages";
+	public static final /*~~>*/String PREFIX = "messages";
 	
 	/** the map that contains resource bundles for each locale */
 	private Map<Locale, ResourceBundle> resources;
@@ -89,15 +89,15 @@ public class CustomResourceLoader {
 	 * @param filename the name to parse
 	 * @return Locale derived from the given string
 	 */
-	private Locale parseLocaleFrom(String filename, String basename) {
+	private Locale parseLocaleFrom(/*~~>*/String filename, /*~~>*/String basename) {
 		Locale result;
-		String tempFilename = filename;
+		/*~~>*/String tempFilename = filename;
 		
 		if (filename.startsWith(basename)) {
 			tempFilename = filename.substring(basename.length());
 		}
 		
-		String localespec = tempFilename.substring(0, tempFilename.indexOf('.'));
+		/*~~>*/String localespec = tempFilename.substring(0, tempFilename.indexOf('.'));
 		
 		if ("".equals(localespec)) {
 			result = Locale.ENGLISH;

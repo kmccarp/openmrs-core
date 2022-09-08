@@ -20,11 +20,11 @@ public class UserTest {
 	
 	private User user;
 	
-	private final String MATERNITY_NURSE_UPPERCASE = "Maternity Nurse";
+	private final /*~~>*/String MATERNITY_NURSE_UPPERCASE = "Maternity Nurse";
 	
-	private final String MATERNITY_NURSE_LOWERCASE = "maternity nurse";
+	private final /*~~>*/String MATERNITY_NURSE_LOWERCASE = "maternity nurse";
 	
-	private final String ROLE_WHICH_DOES_NOT_EXIT = "Role Which Does Not Exist";
+	private final /*~~>*/String ROLE_WHICH_DOES_NOT_EXIT = "Role Which Does Not Exist";
 	
 	@BeforeEach
 	public void setUp() {
@@ -44,19 +44,19 @@ public class UserTest {
 	
 	@Test
 	public void hasRole_shouldHaveAnyRoleWhenSuperUser() {
-		user.addRole(new Role(RoleConstants.SUPERUSER));
+		user.addRole(new Role(/*~~>*/RoleConstants.SUPERUSER));
 		assertTrue(user.hasRole("Not A Role"));
 	}
 	
 	@Test
 	public void hasRole_shouldNotHaveAnyRoleWhenSuperWhenIgnoreSuperUserFlagIsTrue() {
-		user.addRole(new Role(RoleConstants.SUPERUSER));
+		user.addRole(new Role(/*~~>*/RoleConstants.SUPERUSER));
 		assertFalse(user.hasRole("Not A Role", true));
 	}
 	
 	@Test
 	public void isSuperUser_shouldBeSuperUser() {
-		user.addRole(new Role(RoleConstants.SUPERUSER));
+		user.addRole(new Role(/*~~>*/RoleConstants.SUPERUSER));
 		assertTrue(user.isSuperUser());
 	}
 	

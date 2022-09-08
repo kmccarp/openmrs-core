@@ -37,7 +37,7 @@ public class ProviderEditor extends PropertyEditorSupport {
 	 * <strong>Should</strong> set using uuid
 	 */
 	@Override
-	public void setAsText(String text) throws IllegalArgumentException {
+	public void setAsText(/*~~>*/String text) throws IllegalArgumentException {
 		ProviderService ps = Context.getProviderService();
 		if (StringUtils.hasText(text)) {
 			try {
@@ -57,7 +57,7 @@ public class ProviderEditor extends PropertyEditorSupport {
 	}
 	
 	@Override
-	public String getAsText() {
+	public /*~~>*/String getAsText() {
 		Provider p = (Provider) getValue();
 		if (p == null) {
 			return "";

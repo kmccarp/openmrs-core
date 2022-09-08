@@ -30,7 +30,7 @@ public interface Rule {
 	 * @return result of the rule for the given patient with given criteria applied
 	 * @throws LogicException TODO
 	 */
-	public Result eval(LogicContext context, Integer patientId, Map<String, Object> parameters) throws LogicException;
+	public Result eval(LogicContext context, Integer patientId, Map</*~~>*/String, Object> parameters) throws LogicException;
 	
 	/**
 	 * Returns the list of arguments.
@@ -46,7 +46,7 @@ public interface Rule {
 	 */
 	// TODO: it would be better to be able to query for dependency on both rules
 	// and/or data source keys
-	public String[] getDependencies();
+	public /*~~>*//*~~>*/String[] getDependencies();
 	
 	/**
 	 * Gets the time (in seconds) during which the Rule's results are considered to be valid. This

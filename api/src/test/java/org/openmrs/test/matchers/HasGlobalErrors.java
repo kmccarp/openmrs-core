@@ -33,14 +33,14 @@ import org.springframework.validation.Errors;
  */
 public final class HasGlobalErrors extends TypeSafeMatcher<Errors> {
 	
-	private final String code;
+	private final /*~~>*/String code;
 	
 	private HasGlobalErrors() {
 		this(null);
 	}
 	
-	private HasGlobalErrors(String code) {
-		this.code = code;
+	private HasGlobalErrors(/*~~>*/String code) {
+		/*~~>*/this.code = code;
 	}
 	
 	@Override
@@ -71,7 +71,7 @@ public final class HasGlobalErrors extends TypeSafeMatcher<Errors> {
 	/**
 	 * Creates a matcher to assert global errors of a specific code.
 	 */
-	public static HasGlobalErrors hasGlobalErrors(String code) {
+	public static HasGlobalErrors hasGlobalErrors(/*~~>*/String code) {
 		return new HasGlobalErrors(code);
 	}
 }

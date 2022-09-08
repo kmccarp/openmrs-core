@@ -31,7 +31,7 @@ public class DrugEditor extends OpenmrsPropertyEditor<Drug> {
 	}
 	
 	@Override
-	protected Drug getObjectByUuid(String uuid) {
+	protected Drug getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getConceptService().getDrugByUuid(uuid);
 	}
 }

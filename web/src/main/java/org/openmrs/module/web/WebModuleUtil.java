@@ -89,12 +89,12 @@ public class WebModuleUtil {
 	private static final Lock FILTERS_LOCK = new ReentrantLock();
 	
 	// caches all modules' mapped servlets
-	private static final Map<String, HttpServlet> MODULE_SERVLETS = new HashMap<>();
+	private static final Map</*~~>*/String, HttpServlet> MODULE_SERVLETS = new HashMap<>();
 	
 	// caches all modules filters and filter-mappings
 	private static final Map<Module, Collection<Filter>> MODULE_FILTERS = new HashMap<>();
 	
-	private static final Map<String, Filter> MODULE_FILTERS_BY_NAME = new HashMap<>();
+	private static final Map</*~~>*/String, Filter> MODULE_FILTERS_BY_NAME = new HashMap<>();
 	
 	private static final Deque<ModuleFilterMapping> MODULE_FILTER_MAPPINGS = new LinkedList<>();
 	
@@ -126,13 +126,13 @@ public class WebModuleUtil {
 		// problem.
 		if (ModuleFactory.isModuleStarted(mod) && !mod.hasStartupError()) {
 			
-			String realPath = getRealPath(servletContext);
+			/*~~>*/String realPath = getRealPath(servletContext);
 			
 			if (realPath == null) {
 				realPath = System.getProperty("user.dir");
 			}
 			
-			File webInf = new File(realPath + "/WEB-INF".replace("/", File.separator));
+			File webInf = new File(realPath + "/WEB-INF".replace("/", /*~~>*/File.separator));
 			if (!webInf.exists()) {
 				webInf.mkdir();
 			}
@@ -153,11 +153,11 @@ public class WebModuleUtil {
 				
 				while (entries.hasMoreElements()) {
 					JarEntry entry = entries.nextElement();
-					String name = entry.getName();
+					/*~~>*/String name = entry.getName();
 					log.debug("Entry name: " + name);
 					if (name.startsWith("web/module/")) {
 						// trim out the starting path of "web/module/"
-						String filepath = name.substring(11);
+						/*~~>*/String filepath = name.substring(11);
 						
 						StringBuilder absPath = new StringBuilder(realPath + "/WEB-INF");
 						
@@ -177,7 +177,7 @@ public class WebModuleUtil {
 						log.debug("Moving file from: {} to {}", name, absPath);
 						
 						// get the output file
-						File outFile = new File(absPath.toString().replace("/", File.separator));
+						File outFile = new File(absPath.toString().replace("/", /*~~>*/File.separator));
 						if (entry.isDirectory()) {
 							if (!outFile.exists()) {
 								outFile.mkdirs();
@@ -197,7 +197,7 @@ public class WebModuleUtil {
 					} else if ("moduleApplicationContext.xml".equals(name) || "webModuleApplicationContext.xml".equals(name)) {
 						moduleNeedsContextRefresh = true;
 					} else if (name.equals(mod.getModuleId() + "Context.xml")) {
-						String msg = "DEPRECATED: '" + name
+						/*~~>*/String msg = "DEPRECATED: '" + name
 						        + "' should be named 'moduleApplicationContext.xml' now. Please update/upgrade. ";
 						throw new ModuleException(msg, mod.getModuleId());
 					}
@@ -241,7 +241,7 @@ public class WebModuleUtil {
 				if (root.getElementsByTagName("dwr").getLength() > 0) {
 					
 					// get the dwr-module.xml file that we're appending our code to
-					File f = new File(realPath + "/WEB-INF/dwr-modules.xml".replace("/", File.separator));
+					File f = new File(realPath + "/WEB-INF/dwr-modules.xml".replace("/", /*~~>*/File.separator));
 					
 					// testing if file exists
 					if (!f.exists()) {
@@ -289,8 +289,8 @@ public class WebModuleUtil {
 			
 			// mark to delete the entire module web directory on exit
 			// this will usually only be used when an improper shutdown has occurred.
-			String folderPath = realPath + "/WEB-INF/view/module/" + mod.getModuleIdAsPath();
-			File outFile = new File(folderPath.replace("/", File.separator));
+			/*~~>*/String folderPath = realPath + "/WEB-INF/view/module/" + mod.getModuleIdAsPath();
+			File outFile = new File(folderPath.replace("/", /*~~>*/File.separator));
 			outFile.deleteOnExit();
 			
 			// additional checks on module needing a context refresh
@@ -313,7 +313,7 @@ public class WebModuleUtil {
 					log.debug("Done Refreshing WAC");
 				}
 				catch (Exception e) {
-					String msg = "Unable to refresh the WebApplicationContext";
+					/*~~>*/String msg = "Unable to refresh the WebApplicationContext";
 					mod.setStartupErrorMessage(msg, e);
 					
 					if (log.isWarnEnabled()) {
@@ -348,7 +348,7 @@ public class WebModuleUtil {
 				// find and cache the module's servlets
 				//(only if the module started successfully previously)
 				log.debug("Loading servlets and filters for module {}", mod);
-				servletContext.setAttribute(OpenmrsJspServlet.OPENMRS_TLD_SCAN_NEEDED, true);
+				servletContext.setAttribute(/*~~>*/OpenmrsJspServlet.OPENMRS_TLD_SCAN_NEEDED, true);
 				loadServlets(mod, servletContext);
 				loadFilters(mod, servletContext);
 			}
@@ -374,10 +374,10 @@ public class WebModuleUtil {
 			return;
 		}
 		
-		String modulePackageName = mod.getPackageName();
+		/*~~>*/String modulePackageName = mod.getPackageName();
 		for (TaskDefinition task : schedulerService.getRegisteredTasks()) {
 			
-			String taskClass = task.getTaskClass();
+			/*~~>*/String taskClass = task.getTaskClass();
 			if (isModulePackageNameInTaskClass(modulePackageName, taskClass)) {
 				try {
 					schedulerService.shutdownTask(task);
@@ -399,7 +399,7 @@ public class WebModuleUtil {
 	 * <strong>Should</strong> properly match subpackages
 	 * <strong>Should</strong> return false for empty package names
 	 */
-	public static boolean isModulePackageNameInTaskClass(String modulePackageName, String taskClass) {
+	public static boolean isModulePackageNameInTaskClass(/*~~>*/String modulePackageName, /*~~>*/String taskClass) {
 		return modulePackageName.length() <= taskClass.length()
 		        && taskClass.matches(Pattern.quote(modulePackageName) + "(\\..*)+");
 	}
@@ -412,16 +412,16 @@ public class WebModuleUtil {
 	private static void notifySuperUsersAboutModuleFailure(Module mod) {
 		try {
 			// Add the privileges necessary for notifySuperUsers
-			Context.addProxyPrivilege(PrivilegeConstants.MANAGE_ALERTS);
-			Context.addProxyPrivilege(PrivilegeConstants.GET_USERS);
+			Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.MANAGE_ALERTS);
+			Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.GET_USERS);
 			
 			// Send an alert to all administrators
 			Context.getAlertService().notifySuperUsers("Module.startupError.notification.message", null, mod.getName());
 		}
 		finally {
 			// Remove added privileges
-			Context.removeProxyPrivilege(PrivilegeConstants.GET_USERS);
-			Context.removeProxyPrivilege(PrivilegeConstants.MANAGE_ALERTS);
+			Context.removeProxyPrivilege(/*~~>*/PrivilegeConstants.GET_USERS);
+			Context.removeProxyPrivilege(/*~~>*/PrivilegeConstants.MANAGE_ALERTS);
 		}
 	}
 	
@@ -439,7 +439,7 @@ public class WebModuleUtil {
 		for (int i = 0; i < servletTags.getLength(); i++) {
 			Node node = servletTags.item(i);
 			NodeList childNodes = node.getChildNodes();
-			String name = "", className = "";
+			/*~~>*/String name = "", className = "";
 			for (int j = 0; j < childNodes.getLength(); j++) {
 				Node childNode = childNodes.item(j);
 				if ("servlet-name".equals(childNode.getNodeName())) {
@@ -490,7 +490,7 @@ public class WebModuleUtil {
 			// don't allow modules to overwrite servlets of other modules.
 			HttpServlet otherServletUsingSameName = MODULE_SERVLETS.get(name);
 			if (otherServletUsingSameName != null) {
-				String otherServletName = otherServletUsingSameName.getClass().getName();
+				/*~~>*/String otherServletName = otherServletUsingSameName.getClass().getName();
 				throw new ModuleException("A servlet mapping with name " + name + " is already in use and pointing at: "
 				        + otherServletName + " from another installed module and this module is trying"
 				        + " to use that same name.  Either the module attempting to be installed (" + mod
@@ -521,7 +521,7 @@ public class WebModuleUtil {
 		for (int i = 0; i < servletTags.getLength(); i++) {
 			Node node = servletTags.item(i);
 			NodeList childNodes = node.getChildNodes();
-			String name;
+			/*~~>*/String name;
 			for (int j = 0; j < childNodes.getLength(); j++) {
 				Node childNode = childNodes.item(j);
 				if ("servlet-name".equals(childNode.getNodeName()) && childNode.getTextContent() != null) {
@@ -560,9 +560,9 @@ public class WebModuleUtil {
 	public static void loadFilters(Module module, ServletContext servletContext) {
 		
 		// Load Filters
-		Map<String, Filter> filters = new LinkedHashMap<>();
+		Map</*~~>*/String, Filter> filters = new LinkedHashMap<>();
 		
-		Map<String, Filter> existingFilters;
+		Map</*~~>*/String, Filter> existingFilters;
 		FILTERS_LOCK.lock();
 		try {
 			existingFilters = new HashMap<>(MODULE_FILTERS_BY_NAME);
@@ -571,8 +571,8 @@ public class WebModuleUtil {
 		}
 		
 		for (ModuleFilterDefinition def : ModuleFilterDefinition.retrieveFilterDefinitions(module)) {
-			String name = def.getFilterName();
-			String className = def.getFilterClass();
+			/*~~>*/String name = def.getFilterName();
+			/*~~>*/String className = def.getFilterClass();
 			
 			if (existingFilters.containsKey(name)) {
 				throw new ModuleException("A filter with the name " + name + " is already in use and pointing at: "
@@ -705,7 +705,7 @@ public class WebModuleUtil {
 		List<Filter> filters = new ArrayList<>();
 		if (request != null) {
 			HttpServletRequest httpRequest = (HttpServletRequest) request;
-			String requestPath = httpRequest.getRequestURI();
+			/*~~>*/String requestPath = httpRequest.getRequestURI();
 			
 			if (requestPath != null) {
 				if (requestPath.startsWith(httpRequest.getContextPath())) {
@@ -732,7 +732,7 @@ public class WebModuleUtil {
 	 * @param realPath
 	 * @return
 	 */
-	private static Document getDWRModuleXML(InputStream inputStream, String realPath) {
+	private static Document getDWRModuleXML(InputStream inputStream, /*~~>*/String realPath) {
 		Document dwrmodulexml;
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -756,11 +756,11 @@ public class WebModuleUtil {
 	 */
 	public static void shutdownModules(ServletContext servletContext) {
 		
-		String realPath = getRealPath(servletContext);
+		/*~~>*/String realPath = getRealPath(servletContext);
 		
 		// clear the module messages
-		String messagesPath = realPath + "/WEB-INF/";
-		File folder = new File(messagesPath.replace("/", File.separator));
+		/*~~>*/String messagesPath = realPath + "/WEB-INF/";
+		File folder = new File(messagesPath.replace("/", /*~~>*/File.separator));
 		
 		File[] files = folder.listFiles();
 		if (folder.exists() && files != null) {
@@ -798,8 +798,8 @@ public class WebModuleUtil {
 	 */
 	public static void stopModule(Module mod, ServletContext servletContext, boolean skipRefresh) {
 		
-		String moduleId = mod.getModuleId();
-		String modulePackage = mod.getPackageName();
+		/*~~>*/String moduleId = mod.getModuleId();
+		/*~~>*/String modulePackage = mod.getPackageName();
 		
 		// stop all dependent modules
 		for (Module dependentModule : ModuleFactory.getStartedModules()) {
@@ -808,11 +808,11 @@ public class WebModuleUtil {
 			}
 		}
 		
-		String realPath = getRealPath(servletContext);
+		/*~~>*/String realPath = getRealPath(servletContext);
 		
 		// delete the web files from the webapp
-		String absPath = realPath + "/WEB-INF/view/module/" + moduleId;
-		File moduleWebFolder = new File(absPath.replace("/", File.separator));
+		/*~~>*/String absPath = realPath + "/WEB-INF/view/module/" + moduleId;
+		File moduleWebFolder = new File(absPath.replace("/", /*~~>*/File.separator));
 		if (moduleWebFolder.exists()) {
 			try {
 				OpenmrsUtil.deleteDirectory(moduleWebFolder);
@@ -842,7 +842,7 @@ public class WebModuleUtil {
 			if (root.getElementsByTagName("dwr").getLength() > 0) {
 				
 				// get the dwr-module.xml file that we're appending our code to
-				File f = new File(realPath + "/WEB-INF/dwr-modules.xml".replace("/", File.separator));
+				File f = new File(realPath + "/WEB-INF/dwr-modules.xml".replace("/", /*~~>*/File.separator));
 				
 				// testing if file exists
 				if (!f.exists()) {
@@ -967,7 +967,7 @@ public class WebModuleUtil {
 	 * @param servletName the name of the servlet out of the path
 	 * @return the current servlet or null if none defined
 	 */
-	public static HttpServlet getServlet(String servletName) {
+	public static HttpServlet getServlet(/*~~>*/String servletName) {
 		return MODULE_SERVLETS.get(servletName);
 	}
 	
@@ -981,17 +981,17 @@ public class WebModuleUtil {
 	 * <strong>Should</strong> return null if the dispatcher servlet is not yet set
 	 * <strong>Should</strong> return the correct module folder if real path has a trailing slash
 	 */
-	public static String getModuleWebFolder(String moduleId) {
+	public static /*~~>*/String getModuleWebFolder(/*~~>*/String moduleId) {
 		if (dispatcherServlet == null) {
 			throw new ModuleException("Dispatcher servlet must be present in the web environment");
 		}
 		
-		String moduleFolder = "WEB-INF/view/module/";
-		String realPath = dispatcherServlet.getServletContext().getRealPath("");
-		String moduleWebFolder;
+		/*~~>*/String moduleFolder = "WEB-INF/view/module/";
+		/*~~>*/String realPath = dispatcherServlet.getServletContext().getRealPath("");
+		/*~~>*/String moduleWebFolder;
 		
 		//RealPath may contain '/' on Windows when running tests with the mocked servlet context
-		if (realPath.endsWith(File.separator) || realPath.endsWith("/")) {
+		if (realPath.endsWith(/*~~>*/File.separator) || realPath.endsWith("/")) {
 			moduleWebFolder = realPath + moduleFolder;
 		} else {
 			moduleWebFolder = realPath + "/" + moduleFolder;
@@ -999,10 +999,10 @@ public class WebModuleUtil {
 		
 		moduleWebFolder += moduleId;
 		
-		return moduleWebFolder.replace("/", File.separator);
+		return moduleWebFolder.replace("/", /*~~>*/File.separator);
 	}
 	
-	public static void createDwrModulesXml(String realPath) {
+	public static void createDwrModulesXml(/*~~>*/String realPath) {
 		
 		try {
 			
@@ -1019,7 +1019,7 @@ public class WebModuleUtil {
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
 			StreamResult result = new StreamResult(new File(realPath
-			        + "/WEB-INF/dwr-modules.xml".replace("/", File.separator)));
+			        + "/WEB-INF/dwr-modules.xml".replace("/", /*~~>*/File.separator)));
 			
 			transformer.transform(source, result);
 			
@@ -1032,7 +1032,7 @@ public class WebModuleUtil {
 		}
 	}
 	
-	public static String getRealPath(ServletContext servletContext) {
+	public static /*~~>*/String getRealPath(ServletContext servletContext) {
 		return servletContext.getRealPath("");
 	}
 	

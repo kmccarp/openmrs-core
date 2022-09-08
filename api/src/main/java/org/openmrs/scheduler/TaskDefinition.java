@@ -28,7 +28,7 @@ public class TaskDefinition extends BaseChangeableOpenmrsMetadata {
 	private Integer id;
 	
 	// This class must implement the schedulable interface or it will fail to start
-	private String taskClass;
+	private /*~~>*/String taskClass;
 	
 	private Task taskInstance = null;
 	
@@ -44,12 +44,12 @@ public class TaskDefinition extends BaseChangeableOpenmrsMetadata {
 	
 	private Boolean startOnStartup;
 	
-	private String startTimePattern;
+	private /*~~>*/String startTimePattern;
 	
 	private Boolean started;
 	
 	// Relationships
-	private Map<String, String> properties;
+	private Map</*~~>*/String, /*~~>*/String> properties;
 	
 	/**
 	 * Default no-arg public constructor
@@ -64,13 +64,13 @@ public class TaskDefinition extends BaseChangeableOpenmrsMetadata {
 	/**
 	 * Public constructor
 	 */
-	public TaskDefinition(Integer id, String name, String description, String taskClass) {
+	public TaskDefinition(Integer id, /*~~>*/String name, /*~~>*/String description, /*~~>*/String taskClass) {
 		this();
 		log.debug("Creating taskconfig: " + id);
 		this.id = id;
 		setName(name);
 		setDescription(description);
-		this.taskClass = taskClass;
+		/*~~>*/this.taskClass = taskClass;
 	}
 	
 	/**
@@ -98,7 +98,7 @@ public class TaskDefinition extends BaseChangeableOpenmrsMetadata {
 	 * 
 	 * @return the data map
 	 */
-	public Map<String, String> getProperties() {
+	public Map</*~~>*/String, /*~~>*/String> getProperties() {
 		return this.properties;
 	}
 	
@@ -108,7 +108,7 @@ public class TaskDefinition extends BaseChangeableOpenmrsMetadata {
 	 * 
 	 * @param properties <code>Map&lt;String, String&gt;</code> of the properties to set
 	 */
-	public void setProperties(Map<String, String> properties) {
+	public void setProperties(Map</*~~>*/String, /*~~>*/String> properties) {
 		this.properties = properties;
 	}
 	
@@ -117,8 +117,8 @@ public class TaskDefinition extends BaseChangeableOpenmrsMetadata {
 	 * 
 	 * @return the schedulable object
 	 */
-	public String getTaskClass() {
-		return this.taskClass;
+	public /*~~>*/String getTaskClass() {
+		return /*~~>*/this.taskClass;
 	}
 	
 	/**
@@ -126,8 +126,8 @@ public class TaskDefinition extends BaseChangeableOpenmrsMetadata {
 	 * 
 	 * @param taskClass <code>String</code> taskClass of a schedulable object
 	 */
-	public void setTaskClass(String taskClass) {
-		this.taskClass = taskClass;
+	public void setTaskClass(/*~~>*/String taskClass) {
+		/*~~>*/this.taskClass = taskClass;
 	}
 	
 	/**
@@ -188,15 +188,15 @@ public class TaskDefinition extends BaseChangeableOpenmrsMetadata {
 	/**
 	 * Get the date format used to set the start time.
 	 */
-	public String getStartTimePattern() {
-		return this.startTimePattern;
+	public /*~~>*/String getStartTimePattern() {
+		return /*~~>*/this.startTimePattern;
 	}
 	
 	/**
 	 * Sets the date format used to set the start time.
 	 */
-	public void setStartTimePattern(String pattern) {
-		this.startTimePattern = pattern;
+	public void setStartTimePattern(/*~~>*/String pattern) {
+		/*~~>*/this.startTimePattern = pattern;
 	}
 	
 	/**
@@ -233,7 +233,7 @@ public class TaskDefinition extends BaseChangeableOpenmrsMetadata {
 	 * @param key the <code>String</code> key of the property to get
 	 * @return the <code>String</code> value for the given key
 	 */
-	public String getProperty(String key) {
+	public /*~~>*/String getProperty(/*~~>*/String key) {
 		return this.properties.get(key);
 	}
 	
@@ -243,7 +243,7 @@ public class TaskDefinition extends BaseChangeableOpenmrsMetadata {
 	 * @param key the <code>String</code> key of the property to set
 	 * @param value the <code>String</code> value of the property to set
 	 */
-	public void setProperty(String key, String value) {
+	public void setProperty(/*~~>*/String key, /*~~>*/String value) {
 		this.properties.put(key, value);
 	}
 	
@@ -272,7 +272,7 @@ public class TaskDefinition extends BaseChangeableOpenmrsMetadata {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "[TaskDefinition " + " id=" + getId() + " name=" + getName() + " class=" + getTaskClass() + " startTime="
 		        + getStartTime() + " repeatInterval=" + this.getRepeatInterval() + " secondsUntilNext="
 		        + this.getSecondsUntilNextExecutionTime() + "]";

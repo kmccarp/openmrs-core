@@ -57,7 +57,7 @@ public abstract class BaseOpenmrsData extends BaseOpenmrsObject implements Openm
 	private User voidedBy;
 	
 	@Column(name = "void_reason", length = 255)
-	private String voidReason;
+	private /*~~>*/String voidReason;
 	
 	//***** Constructors *****
 	
@@ -204,7 +204,7 @@ public abstract class BaseOpenmrsData extends BaseOpenmrsObject implements Openm
 	 * @see org.openmrs.Voidable#getVoidReason()
 	 */
 	@Override
-	public String getVoidReason() {
+	public /*~~>*/String getVoidReason() {
 		return voidReason;
 	}
 	
@@ -212,8 +212,8 @@ public abstract class BaseOpenmrsData extends BaseOpenmrsObject implements Openm
 	 * @see org.openmrs.Voidable#setVoidReason(java.lang.String)
 	 */
 	@Override
-	public void setVoidReason(String voidReason) {
-		this.voidReason = voidReason;
+	public void setVoidReason(/*~~>*/String voidReason) {
+		/*~~>*/this.voidReason = voidReason;
 	}
 	
 }

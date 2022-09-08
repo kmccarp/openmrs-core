@@ -31,11 +31,11 @@ public class Field extends BaseChangeableOpenmrsMetadata {
 	
 	private Concept concept;
 	
-	private String tableName;
+	private /*~~>*/String tableName;
 	
-	private String attributeName;
+	private /*~~>*/String attributeName;
 	
-	private String defaultValue;
+	private /*~~>*/String defaultValue;
 	
 	private Boolean selectMultiple = false;
 	
@@ -99,43 +99,43 @@ public class Field extends BaseChangeableOpenmrsMetadata {
 	/**
 	 * @return Returns the tableName.
 	 */
-	public String getTableName() {
+	public /*~~>*/String getTableName() {
 		return tableName;
 	}
 	
 	/**
 	 * @param tableName The tableName to set.
 	 */
-	public void setTableName(String tableName) {
-		this.tableName = tableName;
+	public void setTableName(/*~~>*/String tableName) {
+		/*~~>*/this.tableName = tableName;
 	}
 	
 	/**
 	 * @return Returns the attributeName.
 	 */
-	public String getAttributeName() {
+	public /*~~>*/String getAttributeName() {
 		return attributeName;
 	}
 	
 	/**
 	 * @param attributeName The attributeName to set.
 	 */
-	public void setAttributeName(String attributeName) {
-		this.attributeName = attributeName;
+	public void setAttributeName(/*~~>*/String attributeName) {
+		/*~~>*/this.attributeName = attributeName;
 	}
 	
 	/**
 	 * @return Returns the default value.
 	 */
-	public String getDefaultValue() {
+	public /*~~>*/String getDefaultValue() {
 		return defaultValue;
 	}
 	
 	/**
 	 * @param defaultValue The defaultValue to set.
 	 */
-	public void setDefaultValue(String defaultValue) {
-		this.defaultValue = defaultValue;
+	public void setDefaultValue(/*~~>*/String defaultValue) {
+		/*~~>*/this.defaultValue = defaultValue;
 	}
 	
 	/**

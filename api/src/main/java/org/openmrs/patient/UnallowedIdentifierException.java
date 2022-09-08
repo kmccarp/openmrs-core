@@ -27,11 +27,11 @@ public class UnallowedIdentifierException extends APIException {
 	public UnallowedIdentifierException() {
 	}
 	
-	public UnallowedIdentifierException(String message) {
+	public UnallowedIdentifierException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public UnallowedIdentifierException(String message, Throwable cause) {
+	public UnallowedIdentifierException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

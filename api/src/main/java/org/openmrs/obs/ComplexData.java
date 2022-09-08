@@ -27,9 +27,9 @@ public class ComplexData implements java.io.Serializable {
 	
 	private Object data;
 	
-	private String title;
+	private /*~~>*/String title;
 	
-	private String mimeType;
+	private /*~~>*/String mimeType;
 	
 	private Long length;
 	
@@ -39,7 +39,7 @@ public class ComplexData implements java.io.Serializable {
 	 * @param title Name or brief description of ComplexData.
 	 * @param data The complex data for an Obs
 	 */
-	public ComplexData(String title, Object data) {
+	public ComplexData(/*~~>*/String title, Object data) {
 		setTitle(title);
 		setData(data);
 	}
@@ -49,8 +49,8 @@ public class ComplexData implements java.io.Serializable {
 	 * 
 	 * @param title
 	 */
-	private void setTitle(String title) {
-		this.title = title;
+	private void setTitle(/*~~>*/String title) {
+		/*~~>*/this.title = title;
 	}
 	
 	/**
@@ -58,8 +58,8 @@ public class ComplexData implements java.io.Serializable {
 	 * 
 	 * @return the title as a <code>String</code>
 	 */
-	public String getTitle() {
-		return this.title;
+	public /*~~>*/String getTitle() {
+		return /*~~>*/this.title;
 	}
 	
 	/**
@@ -87,8 +87,8 @@ public class ComplexData implements java.io.Serializable {
 	 * @param mimeType
 	 * @since 1.12
 	 */
-	public void setMimeType(String mimeType) {
-		this.mimeType = mimeType;
+	public void setMimeType(/*~~>*/String mimeType) {
+		/*~~>*/this.mimeType = mimeType;
 	}
 	
 	/**
@@ -97,8 +97,8 @@ public class ComplexData implements java.io.Serializable {
 	 * @return data MIME type
 	 * @since 1.12
 	 */
-	public String getMimeType() {
-		return this.mimeType;
+	public /*~~>*/String getMimeType() {
+		return /*~~>*/this.mimeType;
 	}
 	
 	/**

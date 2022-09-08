@@ -35,11 +35,11 @@ import org.springframework.validation.MapBindingResult;
  */
 public class PersonNameValidatorTest extends BaseContextSensitiveTest {
 	
-	private static String STRING_OF_50 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+	private static /*~~>*/String STRING_OF_50 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 	
-	private static String STRING_OF_51 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+	private static /*~~>*/String STRING_OF_51 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 	
-	private static String STRING_OF_256 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+	private static /*~~>*/String STRING_OF_256 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 	
 	private PersonNameValidator validator;
 	
@@ -56,7 +56,7 @@ public class PersonNameValidatorTest extends BaseContextSensitiveTest {
 		errors = new BindException(personName, "personName");
 		
 		Context.getAdministrationService().saveGlobalProperty(
-		    new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_NAME_REGEX, "^[a-zA-Z \\-]+$"));
+		    new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_NAME_REGEX, "^[a-zA-Z \\-]+$"));
 	}
 	
 	/**
@@ -627,7 +627,7 @@ public class PersonNameValidatorTest extends BaseContextSensitiveTest {
 	public void validate_shouldSkipRegexValidationIfValidationStringIsNull() {
 		
 		Context.getAdministrationService().saveGlobalProperty(
-		    new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_NAME_REGEX, null));
+		    new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_NAME_REGEX, null));
 		personName.setFamilyName("asd123");
 		
 		validator.validatePersonName(personName, errors, false, true);
@@ -642,7 +642,7 @@ public class PersonNameValidatorTest extends BaseContextSensitiveTest {
 	public void validate_shouldSkipRegexValidationIfValidationStringIsEmpty() {
 		
 		Context.getAdministrationService().saveGlobalProperty(
-		    new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_NAME_REGEX, ""));
+		    new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_NAME_REGEX, ""));
 		personName.setGivenName("123asd");
 		
 		validator.validatePersonName(personName, errors, false, true);
@@ -732,7 +732,7 @@ public class PersonNameValidatorTest extends BaseContextSensitiveTest {
 	public void validatePersonName_shouldReportErrorsWithNonStandardPrefixWhenCalledInHistoricWay() {
 		
 		PersonName personName = new PersonName("", "reb", "feb");
-		MapBindingResult errors = new MapBindingResult(new HashMap<String, Object>(), "personName");
+		MapBindingResult errors = new MapBindingResult(new HashMap</*~~>*/String, Object>(), "personName");
 		
 		validator.validatePersonName(personName, errors, true, false);
 		
@@ -746,7 +746,7 @@ public class PersonNameValidatorTest extends BaseContextSensitiveTest {
 	public void validate_shouldReportErrorsOnCorrectFieldNames() {
 		
 		PersonName personName = new PersonName("", "reb", "feb");
-		MapBindingResult errors = new MapBindingResult(new HashMap<String, Object>(), "personName");
+		MapBindingResult errors = new MapBindingResult(new HashMap</*~~>*/String, Object>(), "personName");
 		
 		validator.validate(personName, errors);
 		

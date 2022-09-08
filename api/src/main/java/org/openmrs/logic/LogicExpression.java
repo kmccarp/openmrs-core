@@ -37,7 +37,7 @@ public interface LogicExpression extends Operand {
 	 * @return the root token of the LogicExpression
 	 * @see LogicCriteria#getRootToken()
 	 */
-	public String getRootToken();
+	public /*~~>*/String getRootToken();
 	
 	/**
 	 * Get the right operand of the LogicExpression. Both LogicExpressionBinary and

@@ -28,20 +28,20 @@ public abstract class Extension {
 	private static final Logger log = LoggerFactory.getLogger(Extension.class);
 	
 	// point which this extension is extending
-	private String pointId;
+	private /*~~>*/String pointId;
 	
 	// id of the module implementing this point
-	private String moduleId;
+	private /*~~>*/String moduleId;
 	
 	// parameters given at the extension point
-	private Map<String, String> parameterMap;
+	private Map</*~~>*/String, /*~~>*/String> parameterMap;
 	
 	/**
 	 * String separating the pointId and media type in an extension id
 	 *
 	 * @see #toExtensionId(String, MEDIA_TYPE)
 	 */
-	public static final String EXTENSION_ID_SEPARATOR = "|";
+	public static final /*~~>*/String EXTENSION_ID_SEPARATOR = "|";
 	
 	/**
 	 * All media types allowed by the module extension system. If an extension specifies 'html' as
@@ -63,7 +63,7 @@ public abstract class Extension {
 	 *
 	 * @param parameterMap
 	 */
-	public void initialize(Map<String, String> parameterMap) {
+	public void initialize(Map</*~~>*/String, /*~~>*/String> parameterMap) {
 		log.debug("Initializing extension for point: " + pointId);
 		this.setPointId(pointId);
 		this.setParameterMap(parameterMap);
@@ -74,7 +74,7 @@ public abstract class Extension {
 	 *
 	 * @return the <code>String</code> Point Id
 	 */
-	public String getPointId() {
+	public /*~~>*/String getPointId() {
 		return pointId;
 	}
 	
@@ -83,8 +83,8 @@ public abstract class Extension {
 	 *
 	 * @param pointId
 	 */
-	public void setPointId(String pointId) {
-		this.pointId = pointId;
+	public void setPointId(/*~~>*/String pointId) {
+		/*~~>*/this.pointId = pointId;
 	}
 	
 	/**
@@ -92,7 +92,7 @@ public abstract class Extension {
 	 *
 	 * @return key-value parameter map
 	 */
-	public Map<String, String> getParameterMap() {
+	public Map</*~~>*/String, /*~~>*/String> getParameterMap() {
 		return parameterMap;
 	}
 	
@@ -102,7 +102,7 @@ public abstract class Extension {
 	 *
 	 * @param parameterMap key-value parameter map
 	 */
-	public void setParameterMap(Map<String, String> parameterMap) {
+	public void setParameterMap(Map</*~~>*/String, /*~~>*/String> parameterMap) {
 		this.parameterMap = parameterMap;
 	}
 	
@@ -119,7 +119,7 @@ public abstract class Extension {
 	 *
 	 * @return the <code>String</code> Extension Id
 	 */
-	public String getExtensionId() {
+	public /*~~>*/String getExtensionId() {
 		return toExtensionId(getPointId(), getMediaType());
 	}
 	
@@ -129,7 +129,7 @@ public abstract class Extension {
 	 *
 	 * @return override content
 	 */
-	public String getOverrideContent(String bodyContent) {
+	public /*~~>*/String getOverrideContent(/*~~>*/String bodyContent) {
 		return null;
 	}
 	
@@ -138,7 +138,7 @@ public abstract class Extension {
 	 *
 	 * @return the <code>String</code> Module Id
 	 */
-	public final String getModuleId() {
+	public final /*~~>*/String getModuleId() {
 		return moduleId;
 	}
 	
@@ -147,8 +147,8 @@ public abstract class Extension {
 	 *
 	 * @param moduleId
 	 */
-	public final void setModuleId(String moduleId) {
-		this.moduleId = moduleId;
+	public final void setModuleId(/*~~>*/String moduleId) {
+		/*~~>*/this.moduleId = moduleId;
 	}
 	
 	/**
@@ -168,7 +168,7 @@ public abstract class Extension {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public final String toString() {
+	public final /*~~>*/String toString() {
 		return "Extension: " + this.getExtensionId();
 	}
 	
@@ -180,9 +180,9 @@ public abstract class Extension {
 	 * @param mediaType
 	 * @return string extension id
 	 */
-	public static final String toExtensionId(String pointId, MEDIA_TYPE mediaType) {
+	public static final /*~~>*/String toExtensionId(/*~~>*/String pointId, MEDIA_TYPE mediaType) {
 		if (mediaType != null) {
-			return pointId + Extension.EXTENSION_ID_SEPARATOR + mediaType;
+			return pointId + /*~~>*/Extension.EXTENSION_ID_SEPARATOR + mediaType;
 		} else {
 			return pointId;
 		}

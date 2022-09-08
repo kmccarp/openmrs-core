@@ -21,21 +21,21 @@ public interface CustomValueDescriptor {
 	 * @return the datatype used to store this custom value
 	 * @see CustomDatatype
 	 */
-	String getDatatypeClassname();
+	/*~~>*/String getDatatypeClassname();
 	
 	/**
 	 * May be null.
 	 * @return the configuration to be passed to the datatype. For example if the datatype is RegexValidatedString the datatypeConfig would be the regular expression
 	 * @see CustomDatatype#setConfiguration(String)
 	 */
-	String getDatatypeConfig();
+	/*~~>*/String getDatatypeConfig();
 	
 	/**
 	 * May be null.
 	 * @return the fully-qualified classname of the preferred {@link CustomDatatypeHandler} chosen by the
 	 * system administrator for this attribute type.
 	 */
-	String getPreferredHandlerClassname();
+	/*~~>*/String getPreferredHandlerClassname();
 	
 	/**
 	 * May be null.
@@ -43,6 +43,6 @@ public interface CustomValueDescriptor {
 	 * datatype is "regex-validated-string", the handlerConfig would be the regular expression.
 	 * @see CustomDatatypeHandler#setHandlerConfiguration(String)
 	 */
-	String getHandlerConfig();
+	/*~~>*/String getHandlerConfig();
 	
 }

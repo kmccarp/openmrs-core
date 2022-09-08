@@ -33,13 +33,13 @@ public class H2DatabaseIT implements LiquibaseProvider {
 	
 	private static final Logger log = LoggerFactory.getLogger(H2DatabaseIT.class);
 	
-	public static final String CONNECTION_URL = "jdbc:h2:mem:openmrs;DB_CLOSE_DELAY=-1";
+	public static final /*~~>*/String CONNECTION_URL = "jdbc:h2:mem:openmrs;DB_CLOSE_DELAY=-1";
 	
-	private static final String CONTEXT = "some context";
+	private static final /*~~>*/String CONTEXT = "some context";
 	
-	protected static final String USER_NAME = "another_user";
+	protected static final /*~~>*/String USER_NAME = "another_user";
 	
-	protected static final String PASSWORD = "another_password";
+	protected static final /*~~>*/String PASSWORD = "another_password";
 	
 	@BeforeEach
 	public void setup() throws SQLException, ClassNotFoundException {
@@ -51,7 +51,7 @@ public class H2DatabaseIT implements LiquibaseProvider {
 		this.dropAllDatabaseObjects();
 	}
 	
-	public Liquibase getLiquibase(String filename) throws LiquibaseException, SQLException {
+	public Liquibase getLiquibase(/*~~>*/String filename) throws LiquibaseException, SQLException {
 		Database liquibaseConnection = DatabaseFactory.getInstance()
 		        .findCorrectDatabaseImplementation(new JdbcConnection(getConnection()));
 		
@@ -62,11 +62,11 @@ public class H2DatabaseIT implements LiquibaseProvider {
 	}
 	
 	protected void initializeDatabase() throws SQLException, ClassNotFoundException {
-		String driver = "org.h2.Driver";
+		/*~~>*/String driver = "org.h2.Driver";
 		Class.forName(driver);
 	}
 	
-	protected void updateDatabase(String filename) throws Exception {
+	protected void updateDatabase(/*~~>*/String filename) throws Exception {
 		Liquibase liquibase = getLiquibase(filename);
 		liquibase.update(new Contexts(CONTEXT));
 		liquibase.getDatabase().getConnection().commit();
@@ -77,7 +77,7 @@ public class H2DatabaseIT implements LiquibaseProvider {
 		Statement statement = null;
 		try {
 			statement = connection.createStatement();
-			String query = "DROP ALL OBJECTS";
+			/*~~>*/String query = "DROP ALL OBJECTS";
 			statement.execute(query);
 		}
 		catch (JdbcSQLNonTransientException e) {
@@ -88,10 +88,10 @@ public class H2DatabaseIT implements LiquibaseProvider {
 		}
 	}
 
-	protected void updateDatabase( List<String> filenames) throws Exception {
+	protected void updateDatabase( List</*~~>*/String> filenames) throws Exception {
 		log.info("liquibase files used for creating and updating the OpenMRS database are: " + filenames);
 
-		for (String filename : filenames) {
+		for (/*~~>*/String filename : filenames) {
 			log.info("updating database with '{}'", filename);
 			this.updateDatabase(filename);
 		}

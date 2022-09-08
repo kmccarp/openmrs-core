@@ -89,7 +89,7 @@ public class HibernateSchedulerDAO implements SchedulerDAO {
 	 * @throws DAOException
 	 */
 	@Override
-	public TaskDefinition getTaskByName(String name) throws DAOException {
+	public TaskDefinition getTaskByName(/*~~>*/String name) throws DAOException {
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(TaskDefinition.class).add(
 		    Restrictions.eq("name", name));
 		
@@ -171,7 +171,7 @@ public class HibernateSchedulerDAO implements SchedulerDAO {
 	 * @see org.openmrs.scheduler.db.SchedulerDAO#getTaskByUuid(java.lang.String)
 	 */
 	@Override
-	public TaskDefinition getTaskByUuid(String uuid) throws DAOException {
+	public TaskDefinition getTaskByUuid(/*~~>*/String uuid) throws DAOException {
 		return (TaskDefinition) sessionFactory.getCurrentSession()
 				.createQuery("from TaskDefinition o where o.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}

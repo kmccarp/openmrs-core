@@ -20,7 +20,7 @@ public class LogicException extends RuntimeException {
 		super();
 	}
 	
-	public LogicException(String message) {
+	public LogicException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -28,7 +28,7 @@ public class LogicException extends RuntimeException {
 		super(cause);
 	}
 	
-	public LogicException(String message, Throwable cause) {
+	public LogicException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

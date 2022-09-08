@@ -57,7 +57,7 @@ public class UserContext implements Serializable {
 	/**
 	 * User's permission proxies
 	 */
-	private List<String> proxies = new ArrayList<>();
+	private List</*~~>*/String> proxies = new ArrayList<>();
 	
 	/**
 	 * User's locale
@@ -154,7 +154,7 @@ public class UserContext implements Serializable {
 	 * @return The new user that this context has been set to. (null means no change was made)
 	 * @throws ContextAuthenticationException
 	 */
-	public User becomeUser(String systemId) throws ContextAuthenticationException {
+	public User becomeUser(/*~~>*/String systemId) throws ContextAuthenticationException {
 		if (!Context.getAuthenticatedUser().isSuperUser()) {
 			throw new APIAuthenticationException("You must be a superuser to assume another user's identity");
 		}
@@ -228,7 +228,7 @@ public class UserContext implements Serializable {
 	 *
 	 * @param privilege to give to users
 	 */
-	public void addProxyPrivilege(String privilege) {
+	public void addProxyPrivilege(/*~~>*/String privilege) {
 		log.debug("Adding proxy privilege: {}", privilege);
 		
 		proxies.add(privilege);
@@ -239,7 +239,7 @@ public class UserContext implements Serializable {
 	 *
 	 * @param privilege Privilege to remove in string form
 	 */
-	public void removeProxyPrivilege(String privilege) {
+	public void removeProxyPrivilege(/*~~>*/String privilege) {
 		log.debug("Removing proxy privilege: {}", privilege);
 		proxies.remove(privilege);
 	}
@@ -313,7 +313,7 @@ public class UserContext implements Serializable {
 	 * <strong>Should</strong> not authorize if proxied user does not have specified privilege
 	 * <strong>Should</strong> not authorize if anonymous user does not have specified privilege
 	 */
-	public boolean hasPrivilege(String privilege) {
+	public boolean hasPrivilege(/*~~>*/String privilege) {
 		
 		// if a user has logged in, check their privileges
 		if (isAuthenticated()
@@ -328,7 +328,7 @@ public class UserContext implements Serializable {
 		log.debug("Checking '{}' against proxies: {}", privilege, proxies);
 		
 		// check proxied privileges
-		for (String s : proxies) {
+		for (/*~~>*/String s : proxies) {
 			if (s.equals(privilege)) {
 				notifyPrivilegeListeners(getAuthenticatedUser(), privilege, true);
 				return true;
@@ -356,9 +356,9 @@ public class UserContext implements Serializable {
 			return anonymousRole;
 		}
 		
-		anonymousRole = Context.getUserService().getRole(RoleConstants.ANONYMOUS);
+		anonymousRole = Context.getUserService().getRole(/*~~>*/RoleConstants.ANONYMOUS);
 		if (anonymousRole == null) {
-			throw new RuntimeException("Database out of sync with code: " + RoleConstants.ANONYMOUS + " role does not exist");
+			throw new RuntimeException("Database out of sync with code: " + /*~~>*/RoleConstants.ANONYMOUS + " role does not exist");
 		}
 		
 		return anonymousRole;
@@ -376,9 +376,9 @@ public class UserContext implements Serializable {
 			return authenticatedRole;
 		}
 		
-		authenticatedRole = Context.getUserService().getRole(RoleConstants.AUTHENTICATED);
+		authenticatedRole = Context.getUserService().getRole(/*~~>*/RoleConstants.AUTHENTICATED);
 		if (authenticatedRole == null) {
-			throw new RuntimeException("Database out of sync with code: " + RoleConstants.AUTHENTICATED
+			throw new RuntimeException("Database out of sync with code: " + /*~~>*/RoleConstants.AUTHENTICATED
 			        + " role does not exist");
 		}
 		
@@ -428,7 +428,7 @@ public class UserContext implements Serializable {
 	 */
 	private void setUserLocation() {
 		if (this.user != null) {
-			String locationId = this.user.getUserProperty(OpenmrsConstants.USER_PROPERTY_DEFAULT_LOCATION);
+			/*~~>*/String locationId = this.user.getUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_DEFAULT_LOCATION);
 			if (StringUtils.isNotBlank(locationId)) {
 				//only go ahead if it has actually changed OR if wasn't set before
 				if (this.locationId == null || this.locationId != Integer.parseInt(locationId)) {
@@ -465,7 +465,7 @@ public class UserContext implements Serializable {
 	 *            if it is a proxy privilege
      * @since 1.8.4, 1.9.1, 1.10
      */
-	private void notifyPrivilegeListeners(User user, String privilege, boolean hasPrivilege) {
+	private void notifyPrivilegeListeners(User user, /*~~>*/String privilege, boolean hasPrivilege) {
 	    for (PrivilegeListener privilegeListener : Context.getRegisteredComponents(PrivilegeListener.class)) {
 		    try {
 			    privilegeListener.privilegeChecked(user, privilege, hasPrivilege);

@@ -59,16 +59,16 @@ public class OpenmrsClassLoader extends URLClassLoader {
 	private static boolean libCacheFolderInitialized = false;
 	
 	// placeholder to hold mementos to restore
-	private static Map<String, OpenmrsMemento> mementos = new WeakHashMap<>();
+	private static Map</*~~>*/String, OpenmrsMemento> mementos = new WeakHashMap<>();
 	
 	/**
 	 * Holds all classes that has been requested from this class loader. We use weak references so that
 	 * module classes can be garbage collected when modules are unloaded.
 	 */
-	private Map<String, WeakReference<Class<?>>> cachedClasses = new ConcurrentHashMap<>();
+	private Map</*~~>*/String, WeakReference<Class<?>>> cachedClasses = new ConcurrentHashMap<>();
 	
 	// suffix of the OpenMRS required library cache folder
-	private static final String LIBCACHESUFFIX = ".openmrs-lib-cache";
+	private static final /*~~>*/String LIBCACHESUFFIX = ".openmrs-lib-cache";
 	
 	/**
 	 * Creates the instance for the OpenmrsClassLoader
@@ -139,7 +139,7 @@ public class OpenmrsClassLoader extends URLClassLoader {
 	 * <strong>Should</strong> load class if two module class loaders have same packages
 	 */
 	@Override
-	public synchronized Class<?> loadClass(String name, final boolean resolve) throws ClassNotFoundException {
+	public synchronized Class<?> loadClass(/*~~>*/String name, final boolean resolve) throws ClassNotFoundException {
 		// Check if the class has already been requested from this class loader
 		Class<?> c = getCachedClass(name);
 		if (c == null) {
@@ -150,7 +150,7 @@ public class OpenmrsClassLoader extends URLClassLoader {
 			// different versions of the same libraries that may already be used
 			// by core or the web container. An example is the chartsearch module
 			// which uses different versions of lucene and solr from core
-			String packageName = StringUtils.substringBeforeLast(name, ".");
+			/*~~>*/String packageName = StringUtils.substringBeforeLast(name, ".");
 			Set<ModuleClassLoader> moduleClassLoaders = ModuleFactory.getModuleClassLoadersForPackage(packageName);
 			for (ModuleClassLoader moduleClassLoader : moduleClassLoaders) {
 				try {
@@ -177,7 +177,7 @@ public class OpenmrsClassLoader extends URLClassLoader {
 		return c;
 	}
 	
-	private Class<?> getCachedClass(String name) {
+	private Class<?> getCachedClass(/*~~>*/String name) {
 		WeakReference<Class<?>> ref = cachedClasses.get(name);
 		if (ref != null) {
 			Class<?> loadedClass = ref.get();
@@ -199,7 +199,7 @@ public class OpenmrsClassLoader extends URLClassLoader {
 		return null;
 	}
 	
-	private void cacheClass(String name, Class<?> clazz) {
+	private void cacheClass(/*~~>*/String name, Class<?> clazz) {
 		cachedClasses.put(name, new WeakReference<>(clazz));
 	}
 	
@@ -207,7 +207,7 @@ public class OpenmrsClassLoader extends URLClassLoader {
 	 * @see java.net.URLClassLoader#findResource(java.lang.String)
 	 */
 	@Override
-	public URL findResource(final String name) {
+	public URL findResource(final /*~~>*/String name) {
 		log.trace("finding resource: {}", name);
 		
 		URL result;
@@ -233,7 +233,7 @@ public class OpenmrsClassLoader extends URLClassLoader {
 	 * @see java.net.URLClassLoader#findResources(java.lang.String)
 	 */
 	@Override
-	public Enumeration<URL> findResources(final String name) throws IOException {
+	public Enumeration<URL> findResources(final /*~~>*/String name) throws IOException {
 		Set<URI> results = new HashSet<>();
 		for (ModuleClassLoader classLoader : ModuleFactory.getModuleClassLoaders()) {
 			Enumeration<URL> urls = classLoader.findResources(name);
@@ -278,7 +278,7 @@ public class OpenmrsClassLoader extends URLClassLoader {
 	 * @see java.lang.ClassLoader#getResourceAsStream(java.lang.String)
 	 */
 	@Override
-	public InputStream getResourceAsStream(String file) {
+	public InputStream getResourceAsStream(/*~~>*/String file) {
 		for (ModuleClassLoader classLoader : ModuleFactory.getModuleClassLoaders()) {
 			InputStream result = classLoader.getResourceAsStream(file);
 			if (result != null) {
@@ -295,7 +295,7 @@ public class OpenmrsClassLoader extends URLClassLoader {
 	 * @see java.lang.ClassLoader#getResources(java.lang.String)
 	 */
 	@Override
-	public Enumeration<URL> getResources(String packageName) throws IOException {
+	public Enumeration<URL> getResources(/*~~>*/String packageName) throws IOException {
 		Set<URI> results = new HashSet<>();
 		for (ModuleClassLoader classLoader : ModuleFactory.getModuleClassLoaders()) {
 			Enumeration<URL> urls = classLoader.getResources(packageName);
@@ -334,7 +334,7 @@ public class OpenmrsClassLoader extends URLClassLoader {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "Openmrs" + super.toString();
 	}
 	
@@ -415,7 +415,7 @@ public class OpenmrsClassLoader extends URLClassLoader {
 	}
 	
 	// List all threads and recursively list all subgroup
-	private static List<Thread> listThreads(ThreadGroup group, String indent) {
+	private static List<Thread> listThreads(ThreadGroup group, /*~~>*/String indent) {
 		List<Thread> threadToReturn = new ArrayList<>();
 		
 		log.error(indent + "Group[" + group.getName() + ":" + group.getClass() + "]");
@@ -625,7 +625,7 @@ public class OpenmrsClassLoader extends URLClassLoader {
 	 */
 	public static void saveState() {
 		try {
-			String key = SchedulerService.class.getName();
+			/*~~>*/String key = SchedulerService.class.getName();
 			if (!Context.isRefreshingContext()) {
 				mementos.put(key, Context.getSchedulerService().saveToMemento());
 			}
@@ -643,7 +643,7 @@ public class OpenmrsClassLoader extends URLClassLoader {
 	 */
 	public static void restoreState() {
 		try {
-			String key = SchedulerService.class.getName();
+			/*~~>*/String key = SchedulerService.class.getName();
 			Context.getSchedulerService().restoreFromMemento(mementos.get(key));
 		}
 		catch (APIException e) {
@@ -726,7 +726,7 @@ public class OpenmrsClassLoader extends URLClassLoader {
 	 * @return the URL at the expanded location
 	 */
 	public static URL expandURL(URL result, File folder) {
-		String extForm = result.toExternalForm();
+		/*~~>*/String extForm = result.toExternalForm();
 		// trim out "jar:file:/ and ascii spaces"
 		if (OpenmrsConstants.UNIX_BASED_OPERATING_SYSTEM) {
 			extForm = extForm.replaceFirst("jar:file:", "").replaceAll("%20", " ");
@@ -737,8 +737,8 @@ public class OpenmrsClassLoader extends URLClassLoader {
 		log.debug("url external form: {}", extForm);
 		
 		int i = extForm.indexOf("!");
-		String jarPath = extForm.substring(0, i);
-		String filePath = extForm.substring(i + 2); // skip over both the '!' and the '/'
+		/*~~>*/String jarPath = extForm.substring(0, i);
+		/*~~>*/String filePath = extForm.substring(i + 2); // skip over both the '!' and the '/'
 		
 		log.debug("jarPath: {}", jarPath);
 		log.debug("filePath: {}", filePath);

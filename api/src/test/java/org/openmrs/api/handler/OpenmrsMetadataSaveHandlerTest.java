@@ -28,7 +28,7 @@ public class OpenmrsMetadataSaveHandlerTest {
 	 */
 	@Test
 	public void handle_shouldTrimWhitespaceFromName() {
-		String NAME = "the location name";
+		/*~~>*/String NAME = "the location name";
 		OpenmrsMetadataSaveHandler handler = new OpenmrsMetadataSaveHandler();
 		Location loc = new Location();
 		loc.setName(" " + NAME + " ");
@@ -41,7 +41,7 @@ public class OpenmrsMetadataSaveHandlerTest {
 	 */
 	@Test
 	public void handle_shouldTrimWhitespaceFromDescription() {
-		String DESC = "the location desc";
+		/*~~>*/String DESC = "the location desc";
 		OpenmrsMetadataSaveHandler handler = new OpenmrsMetadataSaveHandler();
 		Location loc = new Location();
 		loc.setName("a name");

@@ -43,7 +43,7 @@ public class ExistingOrNewVisitAssignmentHandler extends ExistingVisitAssignment
 	 * @see org.openmrs.api.handler.ExistingVisitAssignmentHandler#getDisplayName(java.util.Locale)
 	 */
 	@Override
-	public String getDisplayName(Locale locale) {
+	public /*~~>*/String getDisplayName(Locale locale) {
 		return Context.getMessageSourceService().getMessage("visit.assignmentHandler.assignToExistingVisitOrNew", null,
 		    locale);
 	}
@@ -103,24 +103,24 @@ public class ExistingOrNewVisitAssignmentHandler extends ExistingVisitAssignment
 	 */
 	private static VisitType loadVisitType(EncounterType encounterType) throws APIException {
 		
-		String value = Context.getAdministrationService().getGlobalPropertyValue(
-		    OpenmrsConstants.GP_ENCOUNTER_TYPE_TO_VISIT_TYPE_MAPPING, "");
+		/*~~>*/String value = Context.getAdministrationService().getGlobalPropertyValue(
+		    /*~~>*/OpenmrsConstants.GP_ENCOUNTER_TYPE_TO_VISIT_TYPE_MAPPING, "");
 		
 		// Value should be in this format "3:4, 5:2, 1:2, 2:2" for encounterTypeId:visitTypeId
 		// or encounterTypeUuid:visitTypeUuid o a mixture of uuids and id
 		if (!StringUtils.isBlank(value)) {
 			
 			VisitService visitService = Context.getVisitService();
-			String targetEncounterTypeId = encounterType.getId().toString();
+			/*~~>*/String targetEncounterTypeId = encounterType.getId().toString();
 			
-			String[] mappings = value.split(",");
-			for (String mapping : mappings) {
+			/*~~>*/String[] mappings = value.split(",");
+			for (/*~~>*/String mapping : mappings) {
 				int index = mapping.indexOf(':');
 				if (index > 0) {
-					String encounterTypeIdOrUuid = mapping.substring(0, index).trim();
+					/*~~>*/String encounterTypeIdOrUuid = mapping.substring(0, index).trim();
 					if (targetEncounterTypeId.equals(encounterTypeIdOrUuid)
 					        || encounterType.getUuid().equals(encounterTypeIdOrUuid)) {
-						String visitTypeIdOrUuid = mapping.substring(index + 1).trim();
+						/*~~>*/String visitTypeIdOrUuid = mapping.substring(index + 1).trim();
 						VisitType visitType;
 						if (StringUtils.isNumeric(visitTypeIdOrUuid)) {
 							visitType = visitService.getVisitType(Integer.parseInt(visitTypeIdOrUuid));
@@ -142,8 +142,8 @@ public class ExistingOrNewVisitAssignmentHandler extends ExistingVisitAssignment
 	}
 	
 	@Override
-	public boolean supportsPropertyName(String propertyName) {
-		return OpenmrsConstants.GP_ENCOUNTER_TYPE_TO_VISIT_TYPE_MAPPING.equals(propertyName);
+	public boolean supportsPropertyName(/*~~>*/String propertyName) {
+		return /*~~>*/OpenmrsConstants.GP_ENCOUNTER_TYPE_TO_VISIT_TYPE_MAPPING.equals(propertyName);
 	}
 	
 	@Override
@@ -152,7 +152,7 @@ public class ExistingOrNewVisitAssignmentHandler extends ExistingVisitAssignment
 	}
 	
 	@Override
-	public void globalPropertyDeleted(String propertyName) {
+	public void globalPropertyDeleted(/*~~>*/String propertyName) {
 		setEncounterVisitMapping(new HashMap<>());
 	}
 	

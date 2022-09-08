@@ -31,7 +31,7 @@ public class DateOrDatetimeEditor extends PropertyEditorSupport {
 	 * <strong>Should</strong> fail on partial date and time
 	 */
 	@Override
-	public void setAsText(String asString) throws IllegalArgumentException {
+	public void setAsText(/*~~>*/String asString) throws IllegalArgumentException {
 		if (StringUtils.isEmpty(asString)) {
 			setValue(null);
 			return;
@@ -58,7 +58,7 @@ public class DateOrDatetimeEditor extends PropertyEditorSupport {
 	 * <strong>Should</strong> print date and time with time
 	 */
 	@Override
-	public String getAsText() {
+	public /*~~>*/String getAsText() {
 		Date date = (Date) getValue();
 		if (date == null) {
 			return "";

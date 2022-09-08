@@ -33,7 +33,7 @@ public class Alert extends BaseOpenmrsObject implements Auditable, Serializable 
 	
 	private Integer alertId;
 	
-	private String text;
+	private /*~~>*/String text;
 	
 	private Boolean satisfiedByAny = Boolean.FALSE;
 	
@@ -70,7 +70,7 @@ public class Alert extends BaseOpenmrsObject implements Auditable, Serializable 
 	 * @param text String to display for the alert
 	 * @param users Recipients of this alert
 	 */
-	public Alert(String text, Collection<User> users) {
+	public Alert(/*~~>*/String text, Collection<User> users) {
 		setText(text);
 		for (User user : users) {
 			addRecipient(user);
@@ -83,7 +83,7 @@ public class Alert extends BaseOpenmrsObject implements Auditable, Serializable 
 	 * @param text String to display for the alert
 	 * @param user Recipient of the alert
 	 */
-	public Alert(String text, User user) {
+	public Alert(/*~~>*/String text, User user) {
 		setText(text);
 		addRecipient(user);
 	}
@@ -151,15 +151,15 @@ public class Alert extends BaseOpenmrsObject implements Auditable, Serializable 
 	/**
 	 * @return Returns the text.
 	 */
-	public String getText() {
+	public /*~~>*/String getText() {
 		return text;
 	}
 	
 	/**
 	 * @param text The text to set.
 	 */
-	public void setText(String text) {
-		this.text = text;
+	public void setText(/*~~>*/String text) {
+		/*~~>*/this.text = text;
 	}
 	
 	/**
@@ -328,7 +328,7 @@ public class Alert extends BaseOpenmrsObject implements Auditable, Serializable 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "Alert: #" + alertId;
 	}
 	

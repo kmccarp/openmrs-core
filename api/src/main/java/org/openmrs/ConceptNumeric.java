@@ -39,7 +39,7 @@ public class ConceptNumeric extends Concept {
 	
 	private Double lowNormal;
 	
-	private String units;
+	private /*~~>*/String units;
 	
 	private Boolean allowDecimal = false;
 	
@@ -123,7 +123,7 @@ public class ConceptNumeric extends Concept {
 		this.lowAbsolute = null;
 		this.lowCritical = null;
 		this.lowNormal = null;
-		this.units = "";
+		/*~~>*/this.units = "";
 		this.allowDecimal = false;
 	}
 	
@@ -177,12 +177,12 @@ public class ConceptNumeric extends Concept {
 		this.lowNormal = lowNormal;
 	}
 	
-	public String getUnits() {
-		return this.units;
+	public /*~~>*/String getUnits() {
+		return /*~~>*/this.units;
 	}
 	
-	public void setUnits(String units) {
-		this.units = units;
+	public void setUnits(/*~~>*/String units) {
+		/*~~>*/this.units = units;
 	}
 
 	/**

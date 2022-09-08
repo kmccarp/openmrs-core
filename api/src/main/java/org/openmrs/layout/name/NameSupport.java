@@ -35,8 +35,8 @@ public class NameSupport extends LayoutSupport<NameTemplate> {
 	}
 	
 	@Override
-	public String getDefaultLayoutFormat() {
-		String ret = Context.getAdministrationService().getGlobalProperty("layout.name.format");
+	public /*~~>*/String getDefaultLayoutFormat() {
+		/*~~>*/String ret = Context.getAdministrationService().getGlobalProperty("layout.name.format");
 		return (ret != null && ret.length() > 0) ? ret : defaultLayoutFormat;
 	}
 }

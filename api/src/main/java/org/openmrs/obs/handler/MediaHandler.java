@@ -35,7 +35,7 @@ import org.slf4j.LoggerFactory;
 public class MediaHandler extends AbstractHandler implements ComplexObsHandler {
 	
 	/** Views supported by this handler */
-	private static final String[] supportedViews = { ComplexObsHandler.RAW_VIEW, };
+	private static final /*~~>*/String[] supportedViews = { /*~~>*/ComplexObsHandler.RAW_VIEW, };
 	
 	private static final Logger log = LoggerFactory.getLogger(MediaHandler.class);
 	
@@ -49,21 +49,21 @@ public class MediaHandler extends AbstractHandler implements ComplexObsHandler {
 	 * @see org.openmrs.obs.ComplexObsHandler#getObs(org.openmrs.Obs, java.lang.String)
 	 */
 	@Override
-	public Obs getObs(Obs obs, String view) {
+	public Obs getObs(Obs obs, /*~~>*/String view) {
 		File file = getComplexDataFile(obs);
 		
 		// Raw media
-		if (ComplexObsHandler.RAW_VIEW.equals(view)) {
+		if (/*~~>*/ComplexObsHandler.RAW_VIEW.equals(view)) {
 			try {
-				String[] names = obs.getValueComplex().split("\\|");
-				String originalFilename = names[0];
+				/*~~>*/String[] names = obs.getValueComplex().split("\\|");
+				/*~~>*/String originalFilename = names[0];
 				originalFilename = originalFilename.replace(",", "").replace(" ", "");
 				
 				FileInputStream mediaStream = new FileInputStream(file);
 				ComplexData complexData = new ComplexData(originalFilename, mediaStream);
 				
 				// Get the Mime Type and set it
-				String mimeType = OpenmrsUtil.getFileMimeType(file);
+				/*~~>*/String mimeType = OpenmrsUtil.getFileMimeType(file);
 				complexData.setMimeType(mimeType);
 				
 				complexData.setLength(file.length());
@@ -87,7 +87,7 @@ public class MediaHandler extends AbstractHandler implements ComplexObsHandler {
 	 * @see org.openmrs.obs.ComplexObsHandler#getSupportedViews()
 	 */
 	@Override
-	public String[] getSupportedViews() {
+	public /*~~>*//*~~>*/String[] getSupportedViews() {
 		return supportedViews;
 	}
 	
@@ -99,7 +99,7 @@ public class MediaHandler extends AbstractHandler implements ComplexObsHandler {
 		
 		try {
 			// Write the File to the File System
-			String fileName = obs.getComplexData().getTitle();
+			/*~~>*/String fileName = obs.getComplexData().getTitle();
 			File outfile = getOutputFileToWrite(obs);
 			OutputStream out = new FileOutputStream(outfile, false);
 			FileInputStream mediaStream = (FileInputStream) obs.getComplexData().getData();

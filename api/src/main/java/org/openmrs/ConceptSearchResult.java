@@ -26,7 +26,7 @@ public class ConceptSearchResult {
 	private ConceptName conceptName;
 	
 	// the word in the search string that was matched against the conceptNameHit
-	private String word;
+	private /*~~>*/String word;
 	
 	private Double transientWeight = 0.0;
 	
@@ -41,10 +41,10 @@ public class ConceptSearchResult {
 	 * @param concept the concept that is being matched to
 	 * @param conceptName the specific name that will be matched
 	 */
-	public ConceptSearchResult(String word, Concept concept, ConceptName conceptName) {
+	public ConceptSearchResult(/*~~>*/String word, Concept concept, ConceptName conceptName) {
 		this.concept = concept;
 		this.conceptName = conceptName;
-		this.word = word;
+		/*~~>*/this.word = word;
 	}
 	
 	/**
@@ -55,10 +55,10 @@ public class ConceptSearchResult {
 	 * @param conceptName the specific name that will be matched
 	 * @param transientWeight the weight for this conceptSearchResult
 	 */
-	public ConceptSearchResult(String word, Concept concept, ConceptName conceptName, Double transientWeight) {
+	public ConceptSearchResult(/*~~>*/String word, Concept concept, ConceptName conceptName, Double transientWeight) {
 		this.concept = concept;
 		this.conceptName = conceptName;
-		this.word = word;
+		/*~~>*/this.word = word;
 		if (transientWeight != null) {
 			this.transientWeight = transientWeight;
 		}
@@ -95,15 +95,15 @@ public class ConceptSearchResult {
 	/**
 	 * @return the word
 	 */
-	public String getWord() {
+	public /*~~>*/String getWord() {
 		return word;
 	}
 	
 	/**
 	 * @param word the word to set
 	 */
-	public void setWord(String word) {
-		this.word = word;
+	public void setWord(/*~~>*/String word) {
+		/*~~>*/this.word = word;
 	}
 	
 	/**

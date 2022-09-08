@@ -42,7 +42,7 @@ public class FormUtil {
 	private FormUtil() {
 	}
 	
-	private static final String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ssZ";
+	private static final /*~~>*/String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ssZ";
 
 	/**
 	 * Converts a string into a valid XML token (tag name)
@@ -50,7 +50,7 @@ public class FormUtil {
 	 * @param s string to convert into XML token
 	 * @return valid XML token based on s
 	 */
-	public static String getXmlToken(String s) {
+	public static /*~~>*/String getXmlToken(/*~~>*/String s) {
 		// Converts a string into a valid XML token (tag name)
 		// No spaces, start with a letter or underscore, not 'xml*'
 		
@@ -60,15 +60,15 @@ public class FormUtil {
 		}
 		
 		// xml tokens must start with a letter
-		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_";
+		/*~~>*/String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_";
 		
 		// after the leading letter, xml tokens may have
 		// digits, period, or hyphen
-		String nameChars = letters + "0123456789.-";
+		/*~~>*/String nameChars = letters + "0123456789.-";
 		
 		// special characters that should be replaced with valid text
 		// all other invalid characters will be removed
-		Map<String, String> swapChars = new HashMap<>();
+		Map</*~~>*/String, /*~~>*/String> swapChars = new HashMap<>();
 		swapChars.put("!", "bang");
 		swapChars.put("#", "pound");
 		swapChars.put("\\*", "star");
@@ -85,12 +85,12 @@ public class FormUtil {
 		s = s.replaceAll("^\\s+", "").replaceAll("\\s+$", "").replaceAll("\\s+", "_").toLowerCase();
 		
 		// swap characters
-		Set<Entry<String, String>> swaps = swapChars.entrySet();
-		for (Entry<String, String> entry : swaps) {
+		Set<Entry</*~~>*/String, /*~~>*/String>> swaps = swapChars.entrySet();
+		for (Entry</*~~>*/String, /*~~>*/String> entry : swaps) {
 			if (entry.getValue() != null) {
 				s = s.replaceAll(entry.getKey(), "_" + entry.getValue() + "_");
 			} else {
-				s = s.replaceAll(String.valueOf(entry.getKey()), "");
+				s = s.replaceAll(/*~~>*/String.valueOf(entry.getKey()), "");
 			}
 		}
 		
@@ -106,7 +106,7 @@ public class FormUtil {
 		}
 		
 		// remove extraneous underscores before returning token
-		String tokenStr = token.toString();
+		/*~~>*/String tokenStr = token.toString();
 		tokenStr = tokenStr.replaceAll("_+", "_");
 		tokenStr = tokenStr.replaceAll("_+$", "");
 		
@@ -128,14 +128,14 @@ public class FormUtil {
 	 * @return unique XML tag name from given string (guaranteed not to duplicate any tag names
 	 *         already within <code>tagList</code>)
 	 */
-	public static String getNewTag(String s, ArrayList<String> tagList) {
-		String token = getXmlToken(s);
+	public static /*~~>*/String getNewTag(/*~~>*/String s, ArrayList</*~~>*/String> tagList) {
+		/*~~>*/String token = getXmlToken(s);
 		if (tagList.contains(token)) {
 			int i = 1;
 			while (tagList.contains(token + "_" + i)) {
 				i++;
 			}
-			String tagName = token + "_" + i;
+			/*~~>*/String tagName = token + "_" + i;
 			tagList.add(tagName);
 			return tagName;
 		} else {
@@ -179,15 +179,15 @@ public class FormUtil {
 		return formStructure;
 	}
 	
-	public static String dateToString() {
+	public static /*~~>*/String dateToString() {
 		return dateToString(new Date());
 	}
 	
 	
 	
-	public static String dateToString(Date date) {
+	public static /*~~>*/String dateToString(Date date) {
 		DateFormat dateFormatter = new SimpleDateFormat(DATE_TIME_FORMAT);
-		String dateString = dateFormatter.format(new Date());
+		/*~~>*/String dateString = dateFormatter.format(new Date());
 		// ISO 8601 requires a colon in time zone offset (Java doesn't
 		// include the colon, so we need to insert it
 		return dateString.substring(0, 22) + ":" + dateString.substring(22);
@@ -199,7 +199,7 @@ public class FormUtil {
 	 * @param form Form to get the uri for
 	 * @return String representing this form
 	 */
-	public static String getFormUriWithoutExtension(Form form) {
+	public static /*~~>*/String getFormUriWithoutExtension(Form form) {
 		return form.getFormId() + "-" + form.getVersion() + "-" + form.getBuild();
 	}
 	
@@ -210,7 +210,7 @@ public class FormUtil {
 	 * @param locale Locale to use for the concept name
 	 * @return String representation of the given concept
 	 */
-	public static String conceptToString(Concept concept, Locale locale) {
+	public static /*~~>*/String conceptToString(Concept concept, Locale locale) {
 		ConceptName localizedName = concept.getName(locale, false);
 		return conceptToString(concept, localizedName);
 	}
@@ -222,8 +222,8 @@ public class FormUtil {
 	 * @param localizedName specific localized concept-name
 	 * @return String representation of the given concept
 	 */
-	public static String conceptToString(Concept concept, ConceptName localizedName) {
-		return concept.getConceptId() + "^" + localizedName.getName() + "^" + HL7Constants.HL7_LOCAL_CONCEPT; // + "^"
+	public static /*~~>*/String conceptToString(Concept concept, ConceptName localizedName) {
+		return concept.getConceptId() + "^" + localizedName.getName() + "^" + /*~~>*/HL7Constants.HL7_LOCAL_CONCEPT; // + "^"
 	}
 	
 	/**
@@ -232,7 +232,7 @@ public class FormUtil {
 	 * @param drug Drug to convert to a string
 	 * @return String representation of the given drug
 	 */
-	public static String drugToString(Drug drug) {
-		return drug.getDrugId() + "^" + drug.getName() + "^" + HL7Constants.HL7_LOCAL_DRUG;
+	public static /*~~>*/String drugToString(Drug drug) {
+		return drug.getDrugId() + "^" + drug.getName() + "^" + /*~~>*/HL7Constants.HL7_LOCAL_DRUG;
 	}
 }

@@ -38,14 +38,14 @@ import org.openmrs.util.OpenmrsUtil;
  * <p/>
  * Care should be taken in exposing information through this class to ensure that no
  */
-@Plugin(name = OpenmrsPropertyLookup.NAME, category = StrLookup.CATEGORY)
+@Plugin(name = /*~~>*/OpenmrsPropertyLookup.NAME, category = /*~~>*/StrLookup.CATEGORY)
 @SuppressWarnings("unused")
 public class OpenmrsPropertyLookup extends AbstractLookup {
 	
-	public static final String NAME = "openmrs";
+	public static final /*~~>*/String NAME = "openmrs";
 	
 	@Override
-	public String lookup(LogEvent event, String key) {
+	public /*~~>*/String lookup(LogEvent event, /*~~>*/String key) {
 		AdministrationService adminService = null;
 		
 		try {
@@ -57,27 +57,27 @@ public class OpenmrsPropertyLookup extends AbstractLookup {
 		
 		switch (key) {
 			case "applicationDirectory":
-				final String applicationDirectory = OpenmrsUtil.getApplicationDataDirectory();
+				final /*~~>*/String applicationDirectory = OpenmrsUtil.getApplicationDataDirectory();
 				return applicationDirectory == null || applicationDirectory.isEmpty() ? null : applicationDirectory;
 			case "logLocation":
-				final String logLocation = getGlobalProperty(adminService, OpenmrsConstants.GP_LOG_LOCATION);
+				final /*~~>*/String logLocation = getGlobalProperty(adminService, /*~~>*/OpenmrsConstants.GP_LOG_LOCATION);
 				return logLocation == null ?
 					null :
 						logLocation.endsWith("/") ?
 							logLocation.substring(0, logLocation.length() - 1) : logLocation;
 			case "logLayout":
-				return getGlobalProperty(adminService, OpenmrsConstants.GP_LOG_LAYOUT);
+				return getGlobalProperty(adminService, /*~~>*/OpenmrsConstants.GP_LOG_LAYOUT);
 			default:
 				throw new IllegalArgumentException(key);
 		}
 	}
 	
-	private String getGlobalProperty(AdministrationService adminService, String globalPropertyName) {
+	private /*~~>*/String getGlobalProperty(AdministrationService adminService, /*~~>*/String globalPropertyName) {
 		if (adminService == null) {
 			return null;
 		}
 		
-		String value = adminService.getGlobalProperty(globalPropertyName);
+		/*~~>*/String value = adminService.getGlobalProperty(globalPropertyName);
 		if (value == null) {
 			return null;
 		} else {

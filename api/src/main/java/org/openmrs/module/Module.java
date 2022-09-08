@@ -35,53 +35,53 @@ public final class Module {
 	
 	private static final Logger log = LoggerFactory.getLogger(Module.class);
 	
-	private String name;
+	private /*~~>*/String name;
 	
-	private String moduleId;
+	private /*~~>*/String moduleId;
 	
-	private String packageName;
+	private /*~~>*/String packageName;
 	
-	private String description;
+	private /*~~>*/String description;
 	
-	private String author;
+	private /*~~>*/String author;
 	
-	private String version;
+	private /*~~>*/String version;
 	
-	private String updateURL; // should be a URL to an update.rdf file
+	private /*~~>*/String updateURL; // should be a URL to an update.rdf file
 	
-	private String updateVersion = null; // version obtained from the remote update.rdf file
+	private /*~~>*/String updateVersion = null; // version obtained from the remote update.rdf file
 	
-	private String downloadURL = null; // will only be populated when the remote file is newer than the current module
+	private /*~~>*/String downloadURL = null; // will only be populated when the remote file is newer than the current module
 	
 	private ModuleActivator moduleActivator;
 	
-	private String activatorName;
+	private /*~~>*/String activatorName;
 	
-	private String requireOpenmrsVersion;
+	private /*~~>*/String requireOpenmrsVersion;
 	
-	private String requireDatabaseVersion;
+	private /*~~>*/String requireDatabaseVersion;
 	
-	private Map<String, String> requiredModulesMap;
+	private Map</*~~>*/String, /*~~>*/String> requiredModulesMap;
 	
-	private Map<String, String> awareOfModulesMap;
+	private Map</*~~>*/String, /*~~>*/String> awareOfModulesMap;
 	
-	private Map<String, String> startBeforeModulesMap;
+	private Map</*~~>*/String, /*~~>*/String> startBeforeModulesMap;
 	
 	private List<AdvicePoint> advicePoints = new ArrayList<>();
 	
-	private Map<String, String> extensionNames = new IdentityHashMap<>();
+	private Map</*~~>*/String, /*~~>*/String> extensionNames = new IdentityHashMap<>();
 	
 	private List<Extension> extensions = new ArrayList<>();
 	
-	private Map<String, Properties> messages = new HashMap<>();
+	private Map</*~~>*/String, Properties> messages = new HashMap<>();
 	
 	private List<Privilege> privileges = new ArrayList<>();
 	
 	private List<GlobalProperty> globalProperties = new ArrayList<>();
 	
-	private List<String> mappingFiles = new ArrayList<>();
+	private List</*~~>*/String> mappingFiles = new ArrayList<>();
 	
-	private Set<String> packagesWithMappedClasses = new HashSet<>();
+	private Set</*~~>*/String> packagesWithMappedClasses = new HashSet<>();
 	
 	private Document config = null;
 	
@@ -95,15 +95,15 @@ public final class Module {
 	// it if necessary
 	private File file = null;
 	
-	private String startupErrorMessage = null;
+	private /*~~>*/String startupErrorMessage = null;
 	
 	/**
 	 * Simple constructor
 	 *
 	 * @param name
 	 */
-	public Module(String name) {
-		this.name = name;
+	public Module(/*~~>*/String name) {
+		/*~~>*/this.name = name;
 	}
 	
 	/**
@@ -116,13 +116,13 @@ public final class Module {
 	 * @param description
 	 * @param version
 	 */
-	public Module(String name, String moduleId, String packageName, String author, String description, String version) {
-		this.name = name;
-		this.moduleId = moduleId;
-		this.packageName = packageName;
-		this.author = author;
-		this.description = description;
-		this.version = version;
+	public Module(/*~~>*/String name, /*~~>*/String moduleId, /*~~>*/String packageName, /*~~>*/String author, /*~~>*/String description, /*~~>*/String version) {
+		/*~~>*/this.name = name;
+		/*~~>*/this.moduleId = moduleId;
+		/*~~>*/this.packageName = packageName;
+		/*~~>*/this.author = author;
+		/*~~>*/this.description = description;
+		/*~~>*/this.version = version;
 		log.debug("Creating module " + name);
 	}
 	
@@ -183,71 +183,71 @@ public final class Module {
 	/**
 	 * @return the activatorName
 	 */
-	public String getActivatorName() {
+	public /*~~>*/String getActivatorName() {
 		return activatorName;
 	}
 	
 	/**
 	 * @param activatorName the activatorName to set
 	 */
-	public void setActivatorName(String activatorName) {
-		this.activatorName = activatorName;
+	public void setActivatorName(/*~~>*/String activatorName) {
+		/*~~>*/this.activatorName = activatorName;
 	}
 	
 	/**
 	 * @return the author
 	 */
-	public String getAuthor() {
+	public /*~~>*/String getAuthor() {
 		return author;
 	}
 	
 	/**
 	 * @param author the author to set
 	 */
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthor(/*~~>*/String author) {
+		/*~~>*/this.author = author;
 	}
 	
 	/**
 	 * @return the description
 	 */
-	public String getDescription() {
+	public /*~~>*/String getDescription() {
 		return description;
 	}
 	
 	/**
 	 * @param description the description to set
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(/*~~>*/String description) {
+		/*~~>*/this.description = description;
 	}
 	
 	/**
 	 * @return the name
 	 */
-	public String getName() {
+	public /*~~>*/String getName() {
 		return name;
 	}
 	
 	/**
 	 * @param name the name to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setName(/*~~>*/String name) {
+		/*~~>*/this.name = name;
 	}
 	
 	/**
 	 * @return the requireDatabaseVersion
 	 */
-	public String getRequireDatabaseVersion() {
+	public /*~~>*/String getRequireDatabaseVersion() {
 		return requireDatabaseVersion;
 	}
 	
 	/**
 	 * @param requireDatabaseVersion the requireDatabaseVersion to set
 	 */
-	public void setRequireDatabaseVersion(String requireDatabaseVersion) {
-		this.requireDatabaseVersion = requireDatabaseVersion;
+	public void setRequireDatabaseVersion(/*~~>*/String requireDatabaseVersion) {
+		/*~~>*/this.requireDatabaseVersion = requireDatabaseVersion;
 	}
 	
 	/**
@@ -256,7 +256,7 @@ public final class Module {
 	 *
 	 * @return the list of requiredModules
 	 */
-	public List<String> getRequiredModules() {
+	public List</*~~>*/String> getRequiredModules() {
 		return requiredModulesMap == null ? null : new ArrayList<>(requiredModulesMap.keySet());
 	}
 	
@@ -268,7 +268,7 @@ public final class Module {
 	 * <strong>Should</strong> return null if no required modules exist
 	 * <strong>Should</strong> return null if no required module by given name exists
 	 */
-	public String getRequiredModuleVersion(String moduleName) {
+	public /*~~>*/String getRequiredModuleVersion(/*~~>*/String moduleName) {
 		return requiredModulesMap == null ? null : requiredModulesMap.get(moduleName);
 	}
 	
@@ -278,12 +278,12 @@ public final class Module {
 	 * @param requiredModules the requiredModules to set for this module
 	 * <strong>Should</strong> set modules when there is a null required modules map
 	 */
-	public void setRequiredModules(List<String> requiredModules) {
+	public void setRequiredModules(List</*~~>*/String> requiredModules) {
 		if (requiredModulesMap == null) {
 			requiredModulesMap = new HashMap<>();
 		}
 		
-		for (String module : requiredModules) {
+		for (/*~~>*/String module : requiredModules) {
 			requiredModulesMap.put(module, null);
 		}
 	}
@@ -293,7 +293,7 @@ public final class Module {
 	 * @param version version requiredModule
 	 * <strong>Should</strong> add module to required modules map
 	 */
-	public void addRequiredModule(String requiredModule, String version) {
+	public void addRequiredModule(/*~~>*/String requiredModule, /*~~>*/String version) {
 		if (requiredModulesMap != null) {
 			requiredModulesMap.put(requiredModule, version);
 		}
@@ -304,7 +304,7 @@ public final class Module {
 	 *            to set
 	 * @since 1.5
 	 */
-	public void setRequiredModulesMap(Map<String, String> requiredModulesMap) {
+	public void setRequiredModulesMap(Map</*~~>*/String, /*~~>*/String> requiredModulesMap) {
 		this.requiredModulesMap = requiredModulesMap;
 	}
 	
@@ -315,7 +315,7 @@ public final class Module {
 	 *
 	 * @return a map from required module to the version that is required
 	 */
-	public Map<String, String> getRequiredModulesMap() {
+	public Map</*~~>*/String, /*~~>*/String> getRequiredModulesMap() {
 		return requiredModulesMap;
 	}
 	
@@ -323,7 +323,7 @@ public final class Module {
 	 * Sets modules that must start after this module
 	 * @param startBeforeModulesMap the startedBefore modules to set
 	 */
-	public void setStartBeforeModulesMap(Map<String, String> startBeforeModulesMap) {
+	public void setStartBeforeModulesMap(Map</*~~>*/String, /*~~>*/String> startBeforeModulesMap) {
 		this.startBeforeModulesMap = startBeforeModulesMap;
 	}
 	
@@ -331,7 +331,7 @@ public final class Module {
 	 * Gets modules which should start after this
 	 * @return map where key is module name and value is module version
 	 */
-	public Map<String, String> getStartBeforeModulesMap() {
+	public Map</*~~>*/String, /*~~>*/String> getStartBeforeModulesMap() {
 		return this.startBeforeModulesMap;
 	}
 	
@@ -340,7 +340,7 @@ public final class Module {
 	 * @since 1.11
 	 * @return list of module names or null
 	 */
-	public List<String> getStartBeforeModules() {
+	public List</*~~>*/String> getStartBeforeModules() {
 		return this.startBeforeModulesMap == null ? null : new ArrayList<>(this.startBeforeModulesMap.keySet());
 	}
 	
@@ -351,7 +351,7 @@ public final class Module {
 	 *            <code>awareOfModulesMap</code>s to set
 	 * @since 1.9
 	 */
-	public void setAwareOfModulesMap(Map<String, String> awareOfModulesMap) {
+	public void setAwareOfModulesMap(Map</*~~>*/String, /*~~>*/String> awareOfModulesMap) {
 		this.awareOfModulesMap = awareOfModulesMap;
 	}
 	
@@ -362,117 +362,117 @@ public final class Module {
 	 * @since 1.9
 	 * @return the list of awareOfModules
 	 */
-	public List<String> getAwareOfModules() {
+	public List</*~~>*/String> getAwareOfModules() {
 		return awareOfModulesMap == null ? null : new ArrayList<>(awareOfModulesMap.keySet());
 	}
 	
-	public String getAwareOfModuleVersion(String awareOfModule) {
+	public /*~~>*/String getAwareOfModuleVersion(/*~~>*/String awareOfModule) {
 		return awareOfModulesMap == null ? null : awareOfModulesMap.get(awareOfModule);
 	}
 	
 	/**
 	 * @return the requireOpenmrsVersion
 	 */
-	public String getRequireOpenmrsVersion() {
+	public /*~~>*/String getRequireOpenmrsVersion() {
 		return requireOpenmrsVersion;
 	}
 	
 	/**
 	 * @param requireOpenmrsVersion the requireOpenmrsVersion to set
 	 */
-	public void setRequireOpenmrsVersion(String requireOpenmrsVersion) {
-		this.requireOpenmrsVersion = requireOpenmrsVersion;
+	public void setRequireOpenmrsVersion(/*~~>*/String requireOpenmrsVersion) {
+		/*~~>*/this.requireOpenmrsVersion = requireOpenmrsVersion;
 	}
 	
 	/**
 	 * @return the module id
 	 */
-	public String getModuleId() {
+	public /*~~>*/String getModuleId() {
 		return moduleId;
 	}
 	
 	/**
 	 * @return the module id, with all . replaced with /
 	 */
-	public String getModuleIdAsPath() {
+	public /*~~>*/String getModuleIdAsPath() {
 		return moduleId == null ? null : moduleId.replace('.', '/');
 	}
 	
 	/**
 	 * @param moduleId the module id to set
 	 */
-	public void setModuleId(String moduleId) {
-		this.moduleId = moduleId;
+	public void setModuleId(/*~~>*/String moduleId) {
+		/*~~>*/this.moduleId = moduleId;
 	}
 	
 	/**
 	 * @return the packageName
 	 */
-	public String getPackageName() {
+	public /*~~>*/String getPackageName() {
 		return packageName;
 	}
 	
 	/**
 	 * @param packageName the packageName to set
 	 */
-	public void setPackageName(String packageName) {
-		this.packageName = packageName;
+	public void setPackageName(/*~~>*/String packageName) {
+		/*~~>*/this.packageName = packageName;
 	}
 	
 	/**
 	 * @return the version
 	 */
-	public String getVersion() {
+	public /*~~>*/String getVersion() {
 		return version;
 	}
 	
 	/**
 	 * @param version the version to set
 	 */
-	public void setVersion(String version) {
-		this.version = version;
+	public void setVersion(/*~~>*/String version) {
+		/*~~>*/this.version = version;
 	}
 	
 	/**
 	 * @return the updateURL
 	 */
-	public String getUpdateURL() {
+	public /*~~>*/String getUpdateURL() {
 		return updateURL;
 	}
 	
 	/**
 	 * @param updateURL the updateURL to set
 	 */
-	public void setUpdateURL(String updateURL) {
-		this.updateURL = updateURL;
+	public void setUpdateURL(/*~~>*/String updateURL) {
+		/*~~>*/this.updateURL = updateURL;
 	}
 	
 	/**
 	 * @return the downloadURL
 	 */
-	public String getDownloadURL() {
+	public /*~~>*/String getDownloadURL() {
 		return downloadURL;
 	}
 	
 	/**
 	 * @param downloadURL the downloadURL to set
 	 */
-	public void setDownloadURL(String downloadURL) {
-		this.downloadURL = downloadURL;
+	public void setDownloadURL(/*~~>*/String downloadURL) {
+		/*~~>*/this.downloadURL = downloadURL;
 	}
 	
 	/**
 	 * @return the updateVersion
 	 */
-	public String getUpdateVersion() {
+	public /*~~>*/String getUpdateVersion() {
 		return updateVersion;
 	}
 	
 	/**
 	 * @param updateVersion the updateVersion to set
 	 */
-	public void setUpdateVersion(String updateVersion) {
-		this.updateVersion = updateVersion;
+	public void setUpdateVersion(/*~~>*/String updateVersion) {
+		/*~~>*/this.updateVersion = updateVersion;
 	}
 	
 	/**
@@ -519,9 +519,9 @@ public final class Module {
 	 * @param map from pointid to classname of an extension
 	 * @see ModuleFileParser
 	 */
-	public void setExtensionNames(Map<String, String> map) {
+	public void setExtensionNames(Map</*~~>*/String, /*~~>*/String> map) {
 		if (log.isDebugEnabled()) {
-			for (Map.Entry<String, String> entry : extensionNames.entrySet()) {
+			for (Map.Entry</*~~>*/String, /*~~>*/String> entry : extensionNames.entrySet()) {
 				log.debug("Setting extension names: {} : {}", entry.getKey(), entry.getValue());
 			}
 		}
@@ -557,9 +557,9 @@ public final class Module {
 		}
 		
 		extensions.clear();
-		for (Map.Entry<String, String> entry : extensionNames.entrySet()) {
-			String point = entry.getKey();
-			String className = entry.getValue();
+		for (Map.Entry</*~~>*/String, /*~~>*/String> entry : extensionNames.entrySet()) {
+			/*~~>*/String point = entry.getKey();
+			/*~~>*/String className = entry.getValue();
 			log.debug(getModuleId() + ": Expanding extension name (point|class): {}|{}", point, className);
 			try {
 				Class<?> cls = moduleClsLoader.loadClass(className);
@@ -606,7 +606,7 @@ public final class Module {
 	 * @deprecated as of 2.0 because messages are automatically loaded from the classpath
 	 */
 	@Deprecated
-	public Map<String, Properties> getMessages() {
+	public Map</*~~>*/String, Properties> getMessages() {
 		return messages;
 	}
 	
@@ -617,7 +617,7 @@ public final class Module {
 	 * @deprecated as of 2.0 because messages are automatically loaded from the classpath
 	 */
 	@Deprecated
-	public void setMessages(Map<String, Properties> messages) {
+	public void setMessages(Map</*~~>*/String, Properties> messages) {
 		this.messages = messages;
 	}
 	
@@ -653,11 +653,11 @@ public final class Module {
 		this.sqldiff = sqldiff;
 	}
 	
-	public List<String> getMappingFiles() {
+	public List</*~~>*/String> getMappingFiles() {
 		return mappingFiles;
 	}
 	
-	public void setMappingFiles(List<String> mappingFiles) {
+	public void setMappingFiles(List</*~~>*/String> mappingFiles) {
 		this.mappingFiles = mappingFiles;
 	}
 	
@@ -666,7 +666,7 @@ public final class Module {
 	 * @return the set of packages to scan
 	 * @since 1.9.2, 1.10
 	 */
-	public Set<String> getPackagesWithMappedClasses() {
+	public Set</*~~>*/String> getPackagesWithMappedClasses() {
 		return packagesWithMappedClasses;
 	}
 	
@@ -675,7 +675,7 @@ public final class Module {
 	 * @see #getPackagesWithMappedClasses()
 	 * @since 1.9.2, 1.10
 	 */
-	public void setPackagesWithMappedClasses(Set<String> packagesToScan) {
+	public void setPackagesWithMappedClasses(Set</*~~>*/String> packagesToScan) {
 		this.packagesWithMappedClasses = packagesToScan;
 	}
 	
@@ -713,12 +713,12 @@ public final class Module {
 	 * @param e string to set as startup error message
 	 * <strong>Should</strong> throw exception when message is null
 	 */
-	public void setStartupErrorMessage(String e) {
+	public void setStartupErrorMessage(/*~~>*/String e) {
 		if (e == null) {
 			throw new ModuleException("Startup error message cannot be null", this.getModuleId());
 		}
 		
-		this.startupErrorMessage = e;
+		/*~~>*/this.startupErrorMessage = e;
 	}
 	
 	/**
@@ -733,7 +733,7 @@ public final class Module {
 	 * <strong>Should</strong> set StartupErrorMessage when exceptionMessage is null
 	 * <strong>Should</strong> append throwable's message to exceptionMessage
 	 */
-	public void setStartupErrorMessage(String exceptionMessage, Throwable t) {
+	public void setStartupErrorMessage(/*~~>*/String exceptionMessage, Throwable t) {
 		if (t == null) {
 			throw new ModuleException("Startup error value cannot be null", this.getModuleId());
 		}
@@ -749,23 +749,23 @@ public final class Module {
 		sb.append(t.getMessage());
 		sb.append("\n");
 		
-		this.startupErrorMessage = sb.toString();
+		/*~~>*/this.startupErrorMessage = sb.toString();
 	}
 	
-	public String getStartupErrorMessage() {
+	public /*~~>*/String getStartupErrorMessage() {
 		return startupErrorMessage;
 	}
 	
 	public Boolean hasStartupError() {
-		return (this.startupErrorMessage != null);
+		return (/*~~>*/this.startupErrorMessage != null);
 	}
 	
 	public void clearStartupError() {
-		this.startupErrorMessage = null;
+		/*~~>*/this.startupErrorMessage = null;
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		if (moduleId == null) {
 			return super.toString();
 		}

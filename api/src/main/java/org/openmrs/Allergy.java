@@ -58,7 +58,7 @@ public class Allergy extends BaseFormRecordableOpenmrsData {
 	private Concept severity;
 	
 	@Column(name = "comments", length = 1024)
-	private String comments;
+	private /*~~>*/String comments;
 	
 
 	@OneToMany(mappedBy = "allergy", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -82,11 +82,11 @@ public class Allergy extends BaseFormRecordableOpenmrsData {
 	 * @param comments the comment to set
 	 * @param reactions the reactions to set
 	 */
-	public Allergy(Patient patient, Allergen allergen, Concept severity, String comments, List<AllergyReaction> reactions) {
+	public Allergy(Patient patient, Allergen allergen, Concept severity, /*~~>*/String comments, List<AllergyReaction> reactions) {
 		this.patient = patient;
 		this.allergen = allergen;
 		this.severity = severity;
-		this.comments = comments;
+		/*~~>*/this.comments = comments;
 		
 		//we do not allow to be in a state where reactions is null
 		if (reactions != null) {
@@ -157,7 +157,7 @@ public class Allergy extends BaseFormRecordableOpenmrsData {
 	 * set the allergyType of the Allergy. Here the allergy type will be chosen from the enum values in the {@link AllergenType}, according to the given String type. 
 	 * @param type the allergyType to set   
 	 */
-	public void setAllergenType(String type) {
+	public void setAllergenType(/*~~>*/String type) {
 		this.allergen.setAllergenType(StringUtils.isBlank(type) ? null : AllergenType.valueOf(type));
 	}
 	
@@ -193,7 +193,7 @@ public class Allergy extends BaseFormRecordableOpenmrsData {
 	 * @deprecated as of 2.3.0, replaced by {@link #getComments()}
 	 */
 	@Deprecated
-	public String getComment() {
+	public /*~~>*/String getComment() {
 		return getComments();
 	}
 	
@@ -202,7 +202,7 @@ public class Allergy extends BaseFormRecordableOpenmrsData {
 	 * @deprecated as of 2.3.0, replaced by {@link #setComments(String)}
 	 */
 	@Deprecated
-	public void setComment(String comment) {
+	public void setComment(/*~~>*/String comment) {
 		setComments(comment);
 	}
 	
@@ -210,7 +210,7 @@ public class Allergy extends BaseFormRecordableOpenmrsData {
 	 * @return Returns the comments
 	 * @since 2.3.0
 	 */
-	public String getComments() {
+	public /*~~>*/String getComments() {
 		return comments;
 	}
 	
@@ -218,8 +218,8 @@ public class Allergy extends BaseFormRecordableOpenmrsData {
 	 * @param comments the comments to set
 	 * @since 2.3.0
 	 */
-	public void setComments(String comments) {
-		this.comments = comments;
+	public void setComments(/*~~>*/String comments) {
+		/*~~>*/this.comments = comments;
 	}
 	/**
 	 * @return Returns the reactions
@@ -396,7 +396,7 @@ public class Allergy extends BaseFormRecordableOpenmrsData {
     /**
 	 * @return Returns the reactionNonCoded
 	 */
-	public String getReactionNonCoded() {
+	public /*~~>*/String getReactionNonCoded() {
 		for (AllergyReaction reaction : reactions) {
 			if (StringUtils.isNotBlank(reaction.getReactionNonCoded())) {
 				return reaction.getReactionNonCoded();

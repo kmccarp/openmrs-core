@@ -74,7 +74,7 @@ public class ModifyColumnGenerator extends AbstractSqlGenerator<ModifyColumnStat
 	public Sql[] generateSql(ModifyColumnStatement statement, Database database, SqlGeneratorChain sqlGeneratorChain) {
 		List<Sql> sql = new ArrayList<>();
 		for (ColumnConfig column : statement.getColumns()) {
-			String alterTable =
+			/*~~>*/String alterTable =
 				"ALTER TABLE " + database.escapeTableName(null, statement.getSchemaName(), statement.getTableName());
 
 			// add "MODIFY"
@@ -134,7 +134,7 @@ public class ModifyColumnGenerator extends AbstractSqlGenerator<ModifyColumnStat
 	/**
 	 * @return either "MODIFY" or "ALTER COLUMN" depending on the current db
 	 */
-	String getModifyString(Database database) {
+	/*~~>*/String getModifyString(Database database) {
 		if (database instanceof HsqlDatabase
 			|| database instanceof H2Database
 			|| database instanceof DerbyDatabase
@@ -156,7 +156,7 @@ public class ModifyColumnGenerator extends AbstractSqlGenerator<ModifyColumnStat
 	 * @return the string that comes before the column type
 	 * definition (like 'set data type' for derby or an open parentheses for Oracle)
 	 */
-	String getPreDataTypeString(Database database) {
+	/*~~>*/String getPreDataTypeString(Database database) {
 		if (database instanceof DerbyDatabase
 			|| database instanceof DB2Database) {
 			return " SET DATA TYPE ";
@@ -176,7 +176,7 @@ public class ModifyColumnGenerator extends AbstractSqlGenerator<ModifyColumnStat
 	/**
 	 * @return the string that comes after the column type definition (like a close parentheses for Oracle)
 	 */
-	String getPostDataTypeString(Database database) {
+	/*~~>*/String getPostDataTypeString(Database database) {
 		if (database instanceof OracleDatabase) {
 			return " )";
 		} else {
@@ -184,9 +184,9 @@ public class ModifyColumnGenerator extends AbstractSqlGenerator<ModifyColumnStat
 		}
 	}
 
-	String getDefaultClause(ColumnConfig column, Database database) {
-		String clause = "";
-		String defaultValue = column.getDefaultValue();
+	/*~~>*/String getDefaultClause(ColumnConfig column, Database database) {
+		/*~~>*/String clause = "";
+		/*~~>*/String defaultValue = column.getDefaultValue();
 		if (defaultValue != null && database instanceof MySQLDatabase) {
 			clause += " DEFAULT " + DataTypeFactory.getInstance().fromObject(defaultValue, database)
 				.objectToSql(defaultValue, database);

@@ -33,7 +33,7 @@ public class ConceptNameInUseException extends APIException {
 	 * @param message the String to show to the user as to why the conceptName's name can't be
 	 *            changed
 	 */
-	public ConceptNameInUseException(String message) {
+	public ConceptNameInUseException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -45,7 +45,7 @@ public class ConceptNameInUseException extends APIException {
 	 *            changed
 	 * @param cause the parent exception
 	 */
-	public ConceptNameInUseException(String message, Throwable cause) {
+	public ConceptNameInUseException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

@@ -19,11 +19,11 @@ import org.openmrs.util.DatabaseUtil;
 
 public class DatabaseDetective {
 	
-	private static final String CONNECTION_URL = "connection.url";
+	private static final /*~~>*/String CONNECTION_URL = "connection.url";
 	
-	private static final String CONNECTION_USERNAME = "connection.username";
+	private static final /*~~>*/String CONNECTION_USERNAME = "connection.username";
 	
-	private static final String CONNECTION_PASSWORD = "connection.password";
+	private static final /*~~>*/String CONNECTION_PASSWORD = "connection.password";
 	
 	/**
 	 * Check whether openmrs database is empty. Having just one non-liquibase table in the given
@@ -47,13 +47,13 @@ public class DatabaseDetective {
 			
 			DatabaseMetaData dbMetaData = connection.getMetaData();
 			
-			String[] types = { "TABLE" };
+			/*~~>*/String[] types = { "TABLE" };
 			
 			//get all tables
 			ResultSet tbls = dbMetaData.getTables(null, null, null, types);
 			
 			while (tbls.next()) {
-				String tableName = tbls.getString("TABLE_NAME");
+				/*~~>*/String tableName = tbls.getString("TABLE_NAME");
 				//if any table exist besides "liquibasechangelog" or "liquibasechangeloglock", return false
 				if (!("liquibasechangelog".equals(tableName.toLowerCase()))
 				        && !("liquibasechangeloglock".equals(tableName.toLowerCase()))) {

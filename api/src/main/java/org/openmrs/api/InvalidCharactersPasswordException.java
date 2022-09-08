@@ -26,7 +26,7 @@ public class InvalidCharactersPasswordException extends PasswordException {
 		super("error.password.weak");
 	}
 	
-	public InvalidCharactersPasswordException(String message) {
+	public InvalidCharactersPasswordException(/*~~>*/String message) {
 		super(message);
 	}
 }

@@ -16,19 +16,19 @@ public class AdvicePoint {
 	
 	private static final Logger log = LoggerFactory.getLogger(AdvicePoint.class);
 	
-	private String point;
+	private /*~~>*/String point;
 	
 	private Object classInstance;
 	
 	private Module module;
 	
-	private String className;
+	private /*~~>*/String className;
 	
 	public AdvicePoint() {
 	}
 	
-	public AdvicePoint(String point, Class<?> clazz) {
-		this.point = point;
+	public AdvicePoint(/*~~>*/String point, Class<?> clazz) {
+		/*~~>*/this.point = point;
 		try {
 			this.classInstance = clazz.newInstance();
 		}
@@ -37,13 +37,13 @@ public class AdvicePoint {
 		}
 	}
 	
-	public AdvicePoint(Module mod, String point, String className) {
-		this.point = point;
+	public AdvicePoint(Module mod, /*~~>*/String point, /*~~>*/String className) {
+		/*~~>*/this.point = point;
 		this.module = mod;
-		this.className = className;
+		/*~~>*/this.className = className;
 	}
 	
-	public String getPoint() {
+	public /*~~>*/String getPoint() {
 		return point;
 	}
 	
@@ -70,7 +70,7 @@ public class AdvicePoint {
 	/**
 	 * @return the className
 	 */
-	public String getClassName() {
+	public /*~~>*/String getClassName() {
 		return className;
 	}
 	

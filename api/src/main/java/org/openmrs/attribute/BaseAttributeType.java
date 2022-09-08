@@ -30,16 +30,16 @@ public abstract class BaseAttributeType<OwningType extends Customizable<?>> exte
 	private Integer maxOccurs = null;
 	
 	@Column(name = "datatype", length = 255)
-	private String datatypeClassname;
+	private /*~~>*/String datatypeClassname;
 	
 	@Column(name = "datatype_config", length = 65535)
-	private String datatypeConfig;
+	private /*~~>*/String datatypeConfig;
 	
 	@Column(name = "preferred_handler", length = 255)
-	private String preferredHandlerClassname;
+	private /*~~>*/String preferredHandlerClassname;
 	
 	@Column(name = "handler_config", length = 65535)
-	private String handlerConfig;
+	private /*~~>*/String handlerConfig;
 	
 	/**
 	 * @see org.openmrs.customdatatype.RepeatingCustomValueDescriptor#getMinOccurs()
@@ -61,7 +61,7 @@ public abstract class BaseAttributeType<OwningType extends Customizable<?>> exte
 	 * @see org.openmrs.customdatatype.CustomValueDescriptor#getDatatypeClassname()
 	 */
 	@Override
-	public String getDatatypeClassname() {
+	public /*~~>*/String getDatatypeClassname() {
 		return datatypeClassname;
 	}
 	
@@ -69,7 +69,7 @@ public abstract class BaseAttributeType<OwningType extends Customizable<?>> exte
 	 * @see org.openmrs.customdatatype.CustomValueDescriptor#getDatatypeConfig()
 	 */
 	@Override
-	public String getDatatypeConfig() {
+	public /*~~>*/String getDatatypeConfig() {
 		return datatypeConfig;
 	}
 	
@@ -77,7 +77,7 @@ public abstract class BaseAttributeType<OwningType extends Customizable<?>> exte
 	 * @see org.openmrs.customdatatype.CustomValueDescriptor#getPreferredHandlerClassname()
 	 */
 	@Override
-	public String getPreferredHandlerClassname() {
+	public /*~~>*/String getPreferredHandlerClassname() {
 		return preferredHandlerClassname;
 	}
 	
@@ -85,7 +85,7 @@ public abstract class BaseAttributeType<OwningType extends Customizable<?>> exte
 	 * @see org.openmrs.customdatatype.CustomValueDescriptor#getHandlerConfig()
 	 */
 	@Override
-	public String getHandlerConfig() {
+	public /*~~>*/String getHandlerConfig() {
 		return handlerConfig;
 	}
 	
@@ -106,29 +106,29 @@ public abstract class BaseAttributeType<OwningType extends Customizable<?>> exte
 	/**
 	 * @param datatypeClassname the datatypeClassname to set
 	 */
-	public void setDatatypeClassname(String datatypeClassname) {
-		this.datatypeClassname = datatypeClassname;
+	public void setDatatypeClassname(/*~~>*/String datatypeClassname) {
+		/*~~>*/this.datatypeClassname = datatypeClassname;
 	}
 	
 	/**
 	 * @param datatypeConfig the datatypeConfig to set
 	 */
-	public void setDatatypeConfig(String datatypeConfig) {
-		this.datatypeConfig = datatypeConfig;
+	public void setDatatypeConfig(/*~~>*/String datatypeConfig) {
+		/*~~>*/this.datatypeConfig = datatypeConfig;
 	}
 	
 	/**
 	 * @param preferredHandlerClassname the preferredHandlerClassname to set
 	 */
-	public void setPreferredHandlerClassname(String preferredHandlerClassname) {
-		this.preferredHandlerClassname = preferredHandlerClassname;
+	public void setPreferredHandlerClassname(/*~~>*/String preferredHandlerClassname) {
+		/*~~>*/this.preferredHandlerClassname = preferredHandlerClassname;
 	}
 	
 	/**
 	 * @param handlerConfig the handlerConfig to set
 	 */
-	public void setHandlerConfig(String handlerConfig) {
-		this.handlerConfig = handlerConfig;
+	public void setHandlerConfig(/*~~>*/String handlerConfig) {
+		/*~~>*/this.handlerConfig = handlerConfig;
 	}
 	
 }

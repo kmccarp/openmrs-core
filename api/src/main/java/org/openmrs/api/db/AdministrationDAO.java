@@ -27,29 +27,29 @@ public interface AdministrationDAO {
 	/**
 	 * @see org.openmrs.api.AdministrationService#getGlobalProperty(String)
 	 */
-	public String getGlobalProperty(String propertyName) throws DAOException;
+	public /*~~>*/String getGlobalProperty(/*~~>*/String propertyName) throws DAOException;
 	
 	/**
 	 * @see org.openmrs.api.AdministrationService#getGlobalPropertyObject(java.lang.String)
 	 */
-	public GlobalProperty getGlobalPropertyObject(String propertyName);
+	public GlobalProperty getGlobalPropertyObject(/*~~>*/String propertyName);
 	
 	/**
 	 * @see org.openmrs.api.AdministrationService#getAllGlobalProperties()
 	 */
 	public List<GlobalProperty> getAllGlobalProperties() throws DAOException;
 	
-	public GlobalProperty getGlobalPropertyByUuid(String uuid) throws DAOException;
+	public GlobalProperty getGlobalPropertyByUuid(/*~~>*/String uuid) throws DAOException;
 	
 	/**
 	 * @see org.openmrs.api.AdministrationService#getGlobalPropertiesByPrefix(java.lang.String)
 	 */
-	public List<GlobalProperty> getGlobalPropertiesByPrefix(String prefix);
+	public List<GlobalProperty> getGlobalPropertiesByPrefix(/*~~>*/String prefix);
 	
 	/**
 	 * @see org.openmrs.api.AdministrationService#getGlobalPropertiesBySuffix(java.lang.String)
 	 */
-	public List<GlobalProperty> getGlobalPropertiesBySuffix(String suffix);
+	public List<GlobalProperty> getGlobalPropertiesBySuffix(/*~~>*/String suffix);
 	
 	/**
 	 * @see org.openmrs.api.AdministrationService#purgeGlobalProperty(org.openmrs.GlobalProperty)
@@ -64,12 +64,12 @@ public interface AdministrationDAO {
 	/**
 	 * @see org.openmrs.api.db.AdministrationDAO#executeSQL(java.lang.String, boolean)
 	 */
-	public List<List<Object>> executeSQL(String sql, boolean selectOnly) throws DAOException;
+	public List<List<Object>> executeSQL(/*~~>*/String sql, boolean selectOnly) throws DAOException;
 	
 	/**
 	 * @see org.openmrs.api.AdministrationService#getMaximumPropertyLength(Class, String)
 	 */
-	public int getMaximumPropertyLength(Class<? extends OpenmrsObject> aClass, String fieldName);
+	public int getMaximumPropertyLength(Class<? extends OpenmrsObject> aClass, /*~~>*/String fieldName);
 	
 	/**
 	 * @see org.openmrs.api.AdministrationService#validate(Object, Errors)

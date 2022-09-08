@@ -25,7 +25,7 @@ public interface GlobalPropertyListener {
 	 * @return whether this listener wants its action methods to be notified of properties with the
 	 *         given name
 	 */
-	public boolean supportsPropertyName(String propertyName);
+	public boolean supportsPropertyName(/*~~>*/String propertyName);
 	
 	/**
 	 * Called after a global property is created or updated
@@ -39,6 +39,6 @@ public interface GlobalPropertyListener {
 	 * 
 	 * @param propertyName the name of the property that was just deleted
 	 */
-	public void globalPropertyDeleted(String propertyName);
+	public void globalPropertyDeleted(/*~~>*/String propertyName);
 	
 }

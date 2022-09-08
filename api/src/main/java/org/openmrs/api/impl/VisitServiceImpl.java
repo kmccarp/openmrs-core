@@ -91,7 +91,7 @@ public class VisitServiceImpl extends BaseOpenmrsService implements VisitService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public VisitType getVisitTypeByUuid(String uuid) {
+	public VisitType getVisitTypeByUuid(/*~~>*/String uuid) {
 		return getVisitDAO().getVisitTypeByUuid(uuid);
 	}
 	
@@ -100,7 +100,7 @@ public class VisitServiceImpl extends BaseOpenmrsService implements VisitService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<VisitType> getVisitTypes(String fuzzySearchPhrase) {
+	public List<VisitType> getVisitTypes(/*~~>*/String fuzzySearchPhrase) {
 		return getVisitDAO().getVisitTypes(fuzzySearchPhrase);
 	}
 	
@@ -117,7 +117,7 @@ public class VisitServiceImpl extends BaseOpenmrsService implements VisitService
 	 * @see org.openmrs.api.VisitService#retireVisitType(org.openmrs.VisitType, java.lang.String)
 	 */
 	@Override
-	public VisitType retireVisitType(VisitType visitType, String reason) {
+	public VisitType retireVisitType(VisitType visitType, /*~~>*/String reason) {
 		return Context.getVisitService().saveVisitType(visitType);
 	}
 	
@@ -160,7 +160,7 @@ public class VisitServiceImpl extends BaseOpenmrsService implements VisitService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Visit getVisitByUuid(String uuid) throws APIException {
+	public Visit getVisitByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getVisitByUuid(uuid);
 	}
 	
@@ -170,9 +170,9 @@ public class VisitServiceImpl extends BaseOpenmrsService implements VisitService
 	@Override
 	public Visit saveVisit(Visit visit) throws APIException {
 		if (visit.getVisitId() == null) {
-			Context.requirePrivilege(PrivilegeConstants.ADD_VISITS);
+			Context.requirePrivilege(/*~~>*/PrivilegeConstants.ADD_VISITS);
 		} else {
-			Context.requirePrivilege(PrivilegeConstants.EDIT_VISITS);
+			Context.requirePrivilege(/*~~>*/PrivilegeConstants.EDIT_VISITS);
 		}
 		
 		CustomDatatypeUtil.saveAttributesIfNecessary(visit);
@@ -197,7 +197,7 @@ public class VisitServiceImpl extends BaseOpenmrsService implements VisitService
 	 * @see org.openmrs.api.VisitService#voidVisit(org.openmrs.Visit, java.lang.String)
 	 */
 	@Override
-	public Visit voidVisit(Visit visit, String reason) throws APIException {
+	public Visit voidVisit(Visit visit, /*~~>*/String reason) throws APIException {
 		return dao.saveVisit(visit);
 	}
 	
@@ -233,7 +233,7 @@ public class VisitServiceImpl extends BaseOpenmrsService implements VisitService
 	        Date minEndDatetime, Date maxEndDatetime, Map<VisitAttributeType, Object> attributeValues,
 	        boolean includeInactive, boolean includeVoided) throws APIException {
 		
-		Map<VisitAttributeType, String> serializedAttributeValues = CustomDatatypeUtil.getValueReferences(attributeValues);
+		Map<VisitAttributeType, /*~~>*/String> serializedAttributeValues = CustomDatatypeUtil.getValueReferences(attributeValues);
 		return dao.getVisits(visitTypes, patients, locations, indications, minStartDatetime, maxStartDatetime,
 		    minEndDatetime, maxEndDatetime, serializedAttributeValues, includeInactive, includeVoided);
 	}
@@ -300,7 +300,7 @@ public class VisitServiceImpl extends BaseOpenmrsService implements VisitService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public VisitAttributeType getVisitAttributeTypeByUuid(String uuid) {
+	public VisitAttributeType getVisitAttributeTypeByUuid(/*~~>*/String uuid) {
 		return dao.getVisitAttributeTypeByUuid(uuid);
 	}
 	
@@ -317,7 +317,7 @@ public class VisitServiceImpl extends BaseOpenmrsService implements VisitService
 	 *      java.lang.String)
 	 */
 	@Override
-	public VisitAttributeType retireVisitAttributeType(VisitAttributeType visitAttributeType, String reason) {
+	public VisitAttributeType retireVisitAttributeType(VisitAttributeType visitAttributeType, /*~~>*/String reason) {
 		return dao.saveVisitAttributeType(visitAttributeType);
 	}
 	
@@ -342,7 +342,7 @@ public class VisitServiceImpl extends BaseOpenmrsService implements VisitService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public VisitAttribute getVisitAttributeByUuid(String uuid) {
+	public VisitAttribute getVisitAttributeByUuid(/*~~>*/String uuid) {
 		return dao.getVisitAttributeByUuid(uuid);
 	}
 	
@@ -380,25 +380,25 @@ public class VisitServiceImpl extends BaseOpenmrsService implements VisitService
 	}
 	
 	private List<VisitType> getVisitTypesToStop() {
-		String gpValue = Context.getAdministrationService().getGlobalProperty(OpenmrsConstants.GP_VISIT_TYPES_TO_AUTO_CLOSE);
+		/*~~>*/String gpValue = Context.getAdministrationService().getGlobalProperty(/*~~>*/OpenmrsConstants.GP_VISIT_TYPES_TO_AUTO_CLOSE);
 		if (StringUtils.isBlank(gpValue)) {
 			return Collections.emptyList();
 		} else {
-			String[] visitTypeNames = getVisitTypeNamesFromGlobalPropertyValue(gpValue);
+			/*~~>*/String[] visitTypeNames = getVisitTypeNamesFromGlobalPropertyValue(gpValue);
 			return getVisitTypesFromVisitTypeNames(visitTypeNames);
 		}
 	}
 	
-	private String[] getVisitTypeNamesFromGlobalPropertyValue(String commaSeparatedNames) {
-		String[] result = StringUtils.split(commaSeparatedNames.trim(), ",");
+	private /*~~>*//*~~>*/String[] getVisitTypeNamesFromGlobalPropertyValue(/*~~>*/String commaSeparatedNames) {
+		/*~~>*/String[] result = StringUtils.split(commaSeparatedNames.trim(), ",");
 		for (int i = 0; i < result.length; i++) {
-			String currName = result[i];
+			/*~~>*/String currName = result[i];
 			result[i] = currName.trim().toLowerCase();
 		}
 		return result;
 	}
 	
-	private List<VisitType> getVisitTypesFromVisitTypeNames(String[] visitTypeNames) {
+	private List<VisitType> getVisitTypesFromVisitTypeNames(/*~~>*/String[] visitTypeNames) {
 		List<VisitType> result = new ArrayList<>();
 		for (VisitType visitType : Context.getVisitService().getAllVisitTypes()) {
 			if (ArrayUtils.contains(visitTypeNames, visitType.getName().toLowerCase())) {

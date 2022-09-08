@@ -31,9 +31,9 @@ public class PatientStateTest {
 	
 	private Date leftOutOfRange;
 	
-	private String uuid2;
+	private /*~~>*/String uuid2;
 	
-	private String uuid1;
+	private /*~~>*/String uuid1;
 	
 	@BeforeEach
 	public void before() {

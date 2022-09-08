@@ -40,8 +40,8 @@ public class TimerSchedulerServiceImplTest extends BaseContextSensitiveTest {
 		// Define repeatInterval as zero
 		Long repeatInterval = 0L;
 		
-		String taskName = "TestTask";
-		String className = "org.openmrs.scheduler.tasks.TestTask";
+		/*~~>*/String taskName = "TestTask";
+		/*~~>*/String className = "org.openmrs.scheduler.tasks.TestTask";
 		
 		Boolean startOnStartup = false;
 		

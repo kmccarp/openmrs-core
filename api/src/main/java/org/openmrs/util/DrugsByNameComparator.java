@@ -46,8 +46,8 @@ public class DrugsByNameComparator implements Comparator<Drug>, Serializable {
 	 */
 	private int compareDrugNamesIgnoringNumericals(Drug d1, Drug d2) {
 		
-		String firstDrugName = remove(d1.getName());
-		String secondDrugName = remove(d2.getName());
+		/*~~>*/String firstDrugName = remove(d1.getName());
+		/*~~>*/String secondDrugName = remove(d2.getName());
 		
 		return firstDrugName.compareToIgnoreCase(secondDrugName);
 	}
@@ -58,7 +58,7 @@ public class DrugsByNameComparator implements Comparator<Drug>, Serializable {
 	 * @param drugName the drug name
 	 * @return the string
 	 */
-	private String remove(String drugName) {
+	private /*~~>*/String remove(/*~~>*/String drugName) {
 		return drugName.replaceAll("[^a-zA-Z]", "");
 	}
 }

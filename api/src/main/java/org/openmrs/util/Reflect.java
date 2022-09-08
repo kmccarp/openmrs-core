@@ -84,7 +84,7 @@ public class Reflect {
 	 * @param annotation
 	 * @return true if the given annotation is present
 	 */
-	public static boolean isAnnotationPresent(Class<?> fieldClass, String fieldName, Class<? extends Annotation> annotation) {
+	public static boolean isAnnotationPresent(Class<?> fieldClass, /*~~>*/String fieldName, Class<? extends Annotation> annotation) {
 		ClassFields<?> classFields = ClassDataCacher.getInstance().getClassFields(fieldClass);
 		try {
 			return classFields.getFieldAnnotation(annotation, fieldName) != null;

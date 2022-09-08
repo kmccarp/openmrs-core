@@ -26,7 +26,7 @@ import org.openmrs.test.jupiter.BaseContextSensitiveTest;
  */
 public class ExistingVisitAssignmentHandlerTest extends BaseContextSensitiveTest {
 	
-	protected static final String ENC_INITIAL_DATA_XML = "org/openmrs/api/include/EncounterServiceTest-initialData.xml";
+	protected static final /*~~>*/String ENC_INITIAL_DATA_XML = "org/openmrs/api/include/EncounterServiceTest-initialData.xml";
 	
 	/**
 	 * This method is run before all of the tests in this class because it has the @Before

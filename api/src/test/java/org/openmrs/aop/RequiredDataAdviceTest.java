@@ -179,15 +179,15 @@ public class RequiredDataAdviceTest extends BaseContextMockTest {
 		
 		private Set<Locale> locales;
 		
-		private List<Map<String, String>> nestedGenericProperty;
+		private List<Map</*~~>*/String, /*~~>*/String>> nestedGenericProperty;
 		
 		private Integer id;
 		
-		public List<Map<String, String>> getNestedGenericProperty() {
+		public List<Map</*~~>*/String, /*~~>*/String>> getNestedGenericProperty() {
 			return nestedGenericProperty;
 		}
 		
-		public void setNestedGenericProperty(List<Map<String, String>> nestedGenericProperty) {
+		public void setNestedGenericProperty(List<Map</*~~>*/String, /*~~>*/String>> nestedGenericProperty) {
 			this.nestedGenericProperty = nestedGenericProperty;
 		}
 		
@@ -216,7 +216,7 @@ public class RequiredDataAdviceTest extends BaseContextMockTest {
 	@Test
 	public void isOpenmrsObjectCollection_shouldReturnFalseIfFieldIsCollectionOfOtherObjects() throws Exception {
 		assertFalse(RequiredDataAdvice.isOpenmrsObjectCollection(ClassWithOtherFields.class.getDeclaredField("locales")));
-		List<String> list = new LinkedList<>();
+		List</*~~>*/String> list = new LinkedList<>();
 		list.add("Test");
 		assertFalse(RequiredDataAdvice.isOpenmrsObjectCollection(list));
 		
@@ -500,7 +500,7 @@ public class RequiredDataAdviceTest extends BaseContextMockTest {
 	@Test
 	public void before_shouldCallHandlerOnSaveWithOpenmrsObjectArgument() throws Throwable {
 		
-		Map<String, SaveHandler> saveHandlers = new HashMap<>();
+		Map</*~~>*/String, SaveHandler> saveHandlers = new HashMap<>();
 		saveHandlers.put("saveHandler", saveHandler);
 		when(applicationContext.getBeansOfType(SaveHandler.class)).thenReturn(saveHandlers);
 		
@@ -524,7 +524,7 @@ public class RequiredDataAdviceTest extends BaseContextMockTest {
 	@Test
 	public void before_shouldCallHandlerOnSaveMethodNameWithCollectionArgument() throws Throwable {
 		
-		Map<String, SaveHandler> saveHandlers = new HashMap<>();
+		Map</*~~>*/String, SaveHandler> saveHandlers = new HashMap<>();
 		saveHandlers.put("saveHandler", saveHandler);
 		when(applicationContext.getBeansOfType(SaveHandler.class)).thenReturn(saveHandlers);
 		
@@ -549,7 +549,7 @@ public class RequiredDataAdviceTest extends BaseContextMockTest {
 	@Test
 	public void before_shouldCallHandlerOnVoidMethodNameMatchingDomainObject() throws Throwable {
 		
-		Map<String, VoidHandler> voidHandlers = new HashMap<>();
+		Map</*~~>*/String, VoidHandler> voidHandlers = new HashMap<>();
 		voidHandlers.put("voidHandler", voidHandler);
 		when(applicationContext.getBeansOfType(VoidHandler.class)).thenReturn(voidHandlers);
 		
@@ -563,7 +563,7 @@ public class RequiredDataAdviceTest extends BaseContextMockTest {
 	@Test
 	public void before_shouldCallHandlerOnVoidMethodWhenDomainObjectIsAssignableFromMethodNameObject() throws Throwable {
 		
-		Map<String, VoidHandler> voidHandlers = new HashMap<>();
+		Map</*~~>*/String, VoidHandler> voidHandlers = new HashMap<>();
 		voidHandlers.put("voidHandler", voidHandler);
 		when(applicationContext.getBeansOfType(VoidHandler.class)).thenReturn(voidHandlers);
 		
@@ -588,7 +588,7 @@ public class RequiredDataAdviceTest extends BaseContextMockTest {
 	@Test
 	public void before_shouldNotCallHandlersAnnotatedAsDisabled() throws Throwable {
 		
-		Map<String, VoidHandler> voidHandlers = new HashMap<>();
+		Map</*~~>*/String, VoidHandler> voidHandlers = new HashMap<>();
 		voidHandlers.put("voidHandler", voidHandler);
 		when(applicationContext.getBeansOfType(VoidHandler.class)).thenReturn(voidHandlers);
 		
@@ -614,7 +614,7 @@ public class RequiredDataAdviceTest extends BaseContextMockTest {
 	@Test
 	public void before_shouldCallHandlersNotAnnotatedAsDisabled() throws Throwable {
 		
-		Map<String, VoidHandler> voidHandlers = new HashMap<>();
+		Map</*~~>*/String, VoidHandler> voidHandlers = new HashMap<>();
 		voidHandlers.put("voidHandler", voidHandler);
 		when(applicationContext.getBeansOfType(VoidHandler.class)).thenReturn(voidHandlers);
 		
@@ -659,7 +659,7 @@ public class RequiredDataAdviceTest extends BaseContextMockTest {
 		public void saveSomeOpenmrsData(SomeOpenmrsData oo) {
 		}
 		
-		public void saveSomeOpenmrsData(SomeOpenmrsData oo, String reason) {
+		public void saveSomeOpenmrsData(SomeOpenmrsData oo, /*~~>*/String reason) {
 		}
 		
 		public void saveSomeOpenmrsDatas(List<SomeOpenmrsData> list) {

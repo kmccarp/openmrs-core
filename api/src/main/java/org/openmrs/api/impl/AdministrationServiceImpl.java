@@ -100,7 +100,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 * a module is loaded or removed the variable is destroyed (along with the administration
 	 * service) and recreated the next time it is called
 	 */
-	protected SortedMap<String, String> systemVariables = null;
+	protected SortedMap</*~~>*/String, /*~~>*/String> systemVariables = null;
 	
 	/**
 	 * Set of locales which can be used to present messages in the user interface. Created lazily as
@@ -113,7 +113,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public SortedMap<String, String> getSystemVariables() throws APIException {
+	public SortedMap</*~~>*/String, /*~~>*/String> getSystemVariables() throws APIException {
 		if (systemVariables == null) {
 			systemVariables = new TreeMap<>();
 			
@@ -125,16 +125,16 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 				systemVariables.put("OPENMRS_HOSTNAME", "Unknown host: " + e.getMessage());
 			}
 			
-			systemVariables.put("OPENMRS_VERSION", String.valueOf(OpenmrsConstants.OPENMRS_VERSION));
-			systemVariables.put("DATABASE_NAME", OpenmrsConstants.DATABASE_NAME);
-			systemVariables.put("DATABASE_BUSINESS_NAME", OpenmrsConstants.DATABASE_BUSINESS_NAME);
-			systemVariables.put("OBSCURE_PATIENTS", String.valueOf(OpenmrsConstants.OBSCURE_PATIENTS));
-			systemVariables.put("OBSCURE_PATIENTS_FAMILY_NAME", OpenmrsConstants.OBSCURE_PATIENTS_FAMILY_NAME);
-			systemVariables.put("OBSCURE_PATIENTS_GIVEN_NAME", OpenmrsConstants.OBSCURE_PATIENTS_GIVEN_NAME);
-			systemVariables.put("OBSCURE_PATIENTS_MIDDLE_NAME", OpenmrsConstants.OBSCURE_PATIENTS_MIDDLE_NAME);
+			systemVariables.put("OPENMRS_VERSION", /*~~>*/String.valueOf(/*~~>*/OpenmrsConstants.OPENMRS_VERSION));
+			systemVariables.put("DATABASE_NAME", /*~~>*/OpenmrsConstants.DATABASE_NAME);
+			systemVariables.put("DATABASE_BUSINESS_NAME", /*~~>*/OpenmrsConstants.DATABASE_BUSINESS_NAME);
+			systemVariables.put("OBSCURE_PATIENTS", /*~~>*/String.valueOf(OpenmrsConstants.OBSCURE_PATIENTS));
+			systemVariables.put("OBSCURE_PATIENTS_FAMILY_NAME", /*~~>*/OpenmrsConstants.OBSCURE_PATIENTS_FAMILY_NAME);
+			systemVariables.put("OBSCURE_PATIENTS_GIVEN_NAME", /*~~>*/OpenmrsConstants.OBSCURE_PATIENTS_GIVEN_NAME);
+			systemVariables.put("OBSCURE_PATIENTS_MIDDLE_NAME", /*~~>*/OpenmrsConstants.OBSCURE_PATIENTS_MIDDLE_NAME);
 			systemVariables.put("MODULE_REPOSITORY_PATH", ModuleUtil.getModuleRepository().getAbsolutePath());
-			systemVariables.put("OPERATING_SYSTEM_KEY", String.valueOf(OpenmrsConstants.OPERATING_SYSTEM_KEY));
-			systemVariables.put("OPERATING_SYSTEM", String.valueOf(OpenmrsConstants.OPERATING_SYSTEM));
+			systemVariables.put("OPERATING_SYSTEM_KEY", /*~~>*/String.valueOf(/*~~>*/OpenmrsConstants.OPERATING_SYSTEM_KEY));
+			systemVariables.put("OPERATING_SYSTEM", /*~~>*/String.valueOf(/*~~>*/OpenmrsConstants.OPERATING_SYSTEM));
 		}
 		
 		return systemVariables;
@@ -145,7 +145,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public String getGlobalProperty(String propertyName) throws APIException {
+	public /*~~>*/String getGlobalProperty(/*~~>*/String propertyName) throws APIException {
 		// This method should not have any authorization check
 		if (propertyName == null) {
 			return null;
@@ -160,8 +160,8 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public String getGlobalProperty(String propertyName, String defaultValue) throws APIException {
-		String s = Context.getAdministrationService().getGlobalProperty(propertyName);
+	public /*~~>*/String getGlobalProperty(/*~~>*/String propertyName, /*~~>*/String defaultValue) throws APIException {
+		/*~~>*/String s = Context.getAdministrationService().getGlobalProperty(propertyName);
 		if (s == null) {
 			return defaultValue;
 		}
@@ -173,7 +173,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public GlobalProperty getGlobalPropertyObject(String propertyName) {
+	public GlobalProperty getGlobalPropertyObject(/*~~>*/String propertyName) {
 		return dao.getGlobalPropertyObject(propertyName);
 	}
 	
@@ -182,7 +182,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 *      java.lang.String)
 	 */
 	@Override
-	public void setGlobalProperty(String propertyName, String propertyValue) throws APIException {
+	public void setGlobalProperty(/*~~>*/String propertyName, /*~~>*/String propertyValue) throws APIException {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(propertyName);
 		if (gp == null) {
 			gp = new GlobalProperty();
@@ -197,7 +197,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 *      java.lang.String)
 	 */
 	@Override
-	public void updateGlobalProperty(String propertyName, String propertyValue) throws IllegalStateException {
+	public void updateGlobalProperty(/*~~>*/String propertyName, /*~~>*/String propertyValue) throws IllegalStateException {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(propertyName);
 		if (gp == null) {
 			throw new IllegalStateException("Global property with the given propertyName does not exist" + propertyName);
@@ -220,7 +220,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<GlobalProperty> getGlobalPropertiesByPrefix(String prefix) {
+	public List<GlobalProperty> getGlobalPropertiesByPrefix(/*~~>*/String prefix) {
 		return dao.getGlobalPropertiesByPrefix(prefix);
 	}
 	
@@ -229,7 +229,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<GlobalProperty> getGlobalPropertiesBySuffix(String suffix) {
+	public List<GlobalProperty> getGlobalPropertiesBySuffix(/*~~>*/String suffix) {
 		return dao.getGlobalPropertiesBySuffix(suffix);
 	}
 	
@@ -268,11 +268,11 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	public GlobalProperty saveGlobalProperty(GlobalProperty gp) throws APIException {
 		// only try to save it if the global property has a key
 		if (gp.getProperty() != null && gp.getProperty().length() > 0) {
-			if (gp.getProperty().equals(OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST)) {
+			if (gp.getProperty().equals(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST)) {
 				if (gp.getPropertyValue() != null) {
 					List<Locale> localeList = new ArrayList<>();
 					
-					for (String localeString : gp.getPropertyValue().split(",")) {
+					for (/*~~>*/String localeString : gp.getPropertyValue().split(",")) {
 						localeList.add(LocaleUtility.fromSpecification(localeString.trim()));
 					}
 					if (!localeList.contains(LocaleUtility.getDefaultLocale())) {
@@ -282,13 +282,13 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 						    new Object[] { LocaleUtility.getDefaultLocale() }, null));
 					}
 				}
-			} else if (gp.getProperty().equals(OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE)
+			} else if (gp.getProperty().equals(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE)
 						&& gp.getPropertyValue() != null) {
 			
 					List<Locale> localeList = getAllowedLocales();
 					
 					if (!localeList.contains(LocaleUtility.fromSpecification(gp.getPropertyValue().trim()))) {
-						String value = gp.getPropertyValue();
+						/*~~>*/String value = gp.getPropertyValue();
 						gp.setPropertyValue(LocaleUtility.getDefaultLocale().toString());
 						throw new APIException((Context.getMessageSourceService().getMessage(
 						    "general.locale.defaultNotInAllowedLocalesList", new Object[] { value }, null)));
@@ -308,7 +308,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 * @see org.openmrs.api.AdministrationService#executeSQL(java.lang.String, boolean)
 	 */
 	@Override
-	public List<List<Object>> executeSQL(String sql, boolean selectOnly) throws APIException {
+	public List<List<Object>> executeSQL(/*~~>*/String sql, boolean selectOnly) throws APIException {
 		if (sql == null || "".equals(sql.trim())) {
 			return null;
 		}
@@ -350,7 +350,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 * 
 	 * @param propertyName
 	 */
-	private void notifyGlobalPropertyDelete(String propertyName) {
+	private void notifyGlobalPropertyDelete(/*~~>*/String propertyName) {
 		for (GlobalPropertyListener listener : eventListeners.getGlobalPropertyListeners()) {
 			if (listener.supportsPropertyName(propertyName)) {
 				listener.globalPropertyDeleted(propertyName);
@@ -364,8 +364,8 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	@Override
 	@Transactional(readOnly = true)
 	public ImplementationId getImplementationId() throws APIException {
-		String property = Context.getAdministrationService().getGlobalProperty(
-		    OpenmrsConstants.GLOBAL_PROPERTY_IMPLEMENTATION_ID);
+		/*~~>*/String property = Context.getAdministrationService().getGlobalProperty(
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_IMPLEMENTATION_ID);
 		
 		// fail early if no gp has been defined yet
 		if (property == null) {
@@ -393,7 +393,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 		}
 		
 		// check the validity of this implementation id with the server
-		String description = implementationId.getDescription();
+		/*~~>*/String description = implementationId.getDescription();
 		try {
 			// check that source id is valid
 			description = checkImplementationIdValidity(implementationId.getImplementationId(), description,
@@ -428,9 +428,9 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 			}
 			
 			// serialize and save the ImplementationId to the global properties table
-			String value = Context.getSerializationService().getDefaultSerializer().serialize(implementationId);
+			/*~~>*/String value = Context.getSerializationService().getDefaultSerializer().serialize(implementationId);
 			Context.getAdministrationService().saveGlobalProperty(
-			    new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_IMPLEMENTATION_ID, value));
+			    new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_IMPLEMENTATION_ID, value));
 		}
 		catch (APIException e) {
 			throw e;
@@ -457,7 +457,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 * @throws APIException
 	 * @throws UnsupportedEncodingException
 	 */
-	private String checkImplementationIdValidity(String implementationId, String description, String passphrase)
+	private /*~~>*/String checkImplementationIdValidity(/*~~>*/String implementationId, /*~~>*/String description, /*~~>*/String passphrase)
 	        throws APIException {
 		
 		if (StringUtils.isEmpty(implementationId)) {
@@ -471,17 +471,17 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 		}
 		
 		// set up the data map to post to the openmrs server
-		Map<String, String> data = new HashMap<>();
+		Map</*~~>*/String, /*~~>*/String> data = new HashMap<>();
 		data.put("implementationId", implementationId);
 		data.put("description", description);
 		data.put("passphrase", passphrase);
 		
-		String response = implementationIdHttpClient.post(data);
+		/*~~>*/String response = implementationIdHttpClient.post(data);
 		response = response.trim();
 		
 		if ("".equals(response)) {
-			String ms = Context.getMessageSourceService().getMessage("ImplementationId.connectionError",
-			    new String[] { implementationId }, Context.getLocale());
+			/*~~>*/String ms = Context.getMessageSourceService().getMessage("ImplementationId.connectionError",
+			    new /*~~>*/String[] { implementationId }, Context.getLocale());
 			throw new APIException(ms);
 		}
 		
@@ -492,8 +492,8 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 			return response.trim();
 		}
 		
-		String ms = Context.getMessageSourceService().getMessage("ImplementationId.invalidIdorPassphrase",
-		    new String[] { description }, Context.getLocale());
+		/*~~>*/String ms = Context.getMessageSourceService().getMessage("ImplementationId.invalidIdorPassphrase",
+		    new /*~~>*/String[] { description }, Context.getLocale());
 		throw new APIException(ms);
 	}
 	
@@ -514,9 +514,9 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 		// update the GlobalLocaleList.allowedLocales by faking a global property change
 		if (allowedLocales == null) {
 			// use a default language of "english" if they have cleared this GP for some reason
-			String currentPropertyValue = Context.getAdministrationService().getGlobalProperty(
-			    OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST, LocaleUtility.getDefaultLocale().toString());
-			GlobalProperty allowedLocalesProperty = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST,
+			/*~~>*/String currentPropertyValue = Context.getAdministrationService().getGlobalProperty(
+			    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST, LocaleUtility.getDefaultLocale().toString());
+			GlobalProperty allowedLocalesProperty = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST,
 			        currentPropertyValue);
 			globalLocaleList.globalPropertyChanged(allowedLocalesProperty);
 			allowedLocales = globalLocaleList.getAllowedLocales();
@@ -593,7 +593,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 */
 	@Override
 	public void globalPropertyChanged(GlobalProperty newValue) {
-		if (newValue.getProperty().equals(OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST)) {
+		if (newValue.getProperty().equals(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST)) {
 			// reset the calculated locale values
 			presentationLocales = null;
 		}
@@ -603,7 +603,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 * @see org.openmrs.api.GlobalPropertyListener#globalPropertyDeleted(java.lang.String)
 	 */
 	@Override
-	public void globalPropertyDeleted(String propertyName) {
+	public void globalPropertyDeleted(/*~~>*/String propertyName) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -612,8 +612,8 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 * @see org.openmrs.api.GlobalPropertyListener#supportsPropertyName(java.lang.String)
 	 */
 	@Override
-	public boolean supportsPropertyName(String propertyName) {
-		return propertyName.equals(OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST);
+	public boolean supportsPropertyName(/*~~>*/String propertyName) {
+		return propertyName.equals(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST);
 	}
 	
 	/**
@@ -621,7 +621,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public GlobalProperty getGlobalPropertyByUuid(String uuid) {
+	public GlobalProperty getGlobalPropertyByUuid(/*~~>*/String uuid) {
 		return dao.getGlobalPropertyByUuid(uuid);
 	}
 	
@@ -631,18 +631,18 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public <T> T getGlobalPropertyValue(String propertyName, T defaultValue) throws APIException {
+	public <T> T getGlobalPropertyValue(/*~~>*/String propertyName, T defaultValue) throws APIException {
 		if (defaultValue == null) {
 			throw new IllegalArgumentException("The defaultValue argument cannot be null");
 		}
 		
-		String propVal = Context.getAdministrationService().getGlobalProperty(propertyName);
+		/*~~>*/String propVal = Context.getAdministrationService().getGlobalProperty(propertyName);
 		if (StringUtils.isEmpty(propVal)) {
 			return defaultValue;
 		}
 		
 		try {
-			return (T) defaultValue.getClass().getDeclaredConstructor(String.class).newInstance(propVal);
+			return (T) defaultValue.getClass().getDeclaredConstructor(/*~~>*/String.class).newInstance(propVal);
 		}
 		catch (InstantiationException e) {
 			throw new APIException("is.not.able.instantiated", new Object[] { defaultValue.getClass().getName(), propVal },
@@ -662,10 +662,10 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Map<String, Map<String, String>> getSystemInformation() throws APIException {
-		Map<String, Map<String, String>> systemInfoMap = new LinkedHashMap<>();
+	public Map</*~~>*/String, Map</*~~>*/String, /*~~>*/String>> getSystemInformation() throws APIException {
+		Map</*~~>*/String, Map</*~~>*/String, /*~~>*/String>> systemInfoMap = new LinkedHashMap<>();
 		
-		systemInfoMap.put("SystemInfo.title.openmrsInformation", new LinkedHashMap<String, String>() {
+		systemInfoMap.put("SystemInfo.title.openmrsInformation", new LinkedHashMap</*~~>*/String, /*~~>*/String>() {
 			
 			private static final long serialVersionUID = 1L;
 			
@@ -674,7 +674,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 				        .getInstance().getTime()));
 				put("SystemInfo.OpenMRSInstallation.systemTime", new SimpleDateFormat("HH:mm:ss").format(Calendar
 				        .getInstance().getTime()));
-				put("SystemInfo.OpenMRSInstallation.openmrsVersion", OpenmrsConstants.OPENMRS_VERSION);
+				put("SystemInfo.OpenMRSInstallation.openmrsVersion", /*~~>*/OpenmrsConstants.OPENMRS_VERSION);
 				try {
 					put("SystemInfo.hostname", InetAddress.getLocalHost().getCanonicalHostName());
 				}
@@ -684,7 +684,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 			}
 		});
 		
-		systemInfoMap.put("SystemInfo.title.javaRuntimeEnvironmentInformation", new LinkedHashMap<String, String>() {
+		systemInfoMap.put("SystemInfo.title.javaRuntimeEnvironmentInformation", new LinkedHashMap</*~~>*/String, /*~~>*/String>() {
 			
 			Properties properties = System.getProperties();
 			
@@ -709,7 +709,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 			}
 		});
 		
-		systemInfoMap.put("SystemInfo.title.memoryInformation", new LinkedHashMap<String, String>() {
+		systemInfoMap.put("SystemInfo.title.memoryInformation", new LinkedHashMap</*~~>*/String, /*~~>*/String>() {
 			
 			private static final long serialVersionUID = 1L;
 			
@@ -723,14 +723,14 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 			}
 		});
 		
-		systemInfoMap.put("SystemInfo.title.dataBaseInformation", new LinkedHashMap<String, String>() {
+		systemInfoMap.put("SystemInfo.title.dataBaseInformation", new LinkedHashMap</*~~>*/String, /*~~>*/String>() {
 			
 			Properties properties = Context.getRuntimeProperties();
 			
 			private static final long serialVersionUID = 1L;
 			
 			{
-				put("SystemInfo.Database.name", OpenmrsConstants.DATABASE_NAME);
+				put("SystemInfo.Database.name", /*~~>*/OpenmrsConstants.DATABASE_NAME);
 				put("SystemInfo.Database.connectionURL", properties.getProperty("connection.url"));
 				put("SystemInfo.Database.userName", properties.getProperty("connection.username"));
 				put("SystemInfo.Database.driver", properties.getProperty("hibernate.connection.driver_class"));
@@ -739,7 +739,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 			}
 		});
 		
-		systemInfoMap.put("SystemInfo.title.moduleInformation", new LinkedHashMap<String, String>() {
+		systemInfoMap.put("SystemInfo.title.moduleInformation", new LinkedHashMap</*~~>*/String, /*~~>*/String>() {
 			
 			private static final long serialVersionUID = 1L;
 			
@@ -747,7 +747,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 				put("SystemInfo.Module.repositoryPath", ModuleUtil.getModuleRepository().getAbsolutePath());
 				Collection<Module> loadedModules = ModuleFactory.getLoadedModules();
 				for (Module module : loadedModules) {
-					String moduleInfo = module.getVersion() + " "
+					/*~~>*/String moduleInfo = module.getVersion() + " "
 					        + (module.isStarted() ? "" : Context.getMessageSourceService().getMessage("Module.notStarted"));
 					put(module.getName(), moduleInfo);
 				}
@@ -761,9 +761,9 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 * @param bytes to be converted into mega bytes
 	 * @return memory in mega bytes
 	 */
-	private String convertToMegaBytes(long bytes) {
+	private /*~~>*/String convertToMegaBytes(long bytes) {
 		final int ONE_KILO_BYTE = 1024;
-		return String.valueOf(bytes / ONE_KILO_BYTE / ONE_KILO_BYTE) + " MB";
+		return /*~~>*/String.valueOf(bytes / ONE_KILO_BYTE / ONE_KILO_BYTE) + " MB";
 	}
 	
 	/**
@@ -781,7 +781,7 @@ public class AdministrationServiceImpl extends BaseOpenmrsService implements Adm
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public int getMaximumPropertyLength(Class<? extends OpenmrsObject> aClass, String fieldName) {
+	public int getMaximumPropertyLength(Class<? extends OpenmrsObject> aClass, /*~~>*/String fieldName) {
 		return dao.getMaximumPropertyLength(aClass, fieldName);
 	}
 	

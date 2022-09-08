@@ -25,7 +25,7 @@ public interface CustomDatatype<T> {
 	 * 
 	 * @param config
 	 */
-	void setConfiguration(String config);
+	void setConfiguration(/*~~>*/String config);
 	
 	/**
 	 * The OpenMRS service layer calls this method when a custom value of this datatype is saved (created or edited). Implementations
@@ -42,7 +42,7 @@ public interface CustomDatatype<T> {
 	 * @return a valueReference that may be used in the future to retrieve typedValue
 	 * @throws InvalidCustomValueException
 	 */
-	String save(T typedValue, String existingValueReference) throws InvalidCustomValueException;
+	/*~~>*/String save(T typedValue, /*~~>*/String existingValueReference) throws InvalidCustomValueException;
 	
 	/**
 	 * Gets the reference string that would be persisted for the given typed value. (This allows efficient searching for exact attribute
@@ -52,7 +52,7 @@ public interface CustomDatatype<T> {
 	 * @return reference string
 	 * @throws UnsupportedOperationException  if it is not feasible to calculate this efficiently (e.g. you'd need to go to remote storage)
 	 */
-	String getReferenceStringForValue(T typedValue) throws UnsupportedOperationException;
+	/*~~>*/String getReferenceStringForValue(T typedValue) throws UnsupportedOperationException;
 	
 	/**
 	 * Converts a reference string to its typed value. This may be expensive, especially if the datatype needs
@@ -63,7 +63,7 @@ public interface CustomDatatype<T> {
 	 * @throws InvalidCustomValueException if the persisted value is illegal (perhaps because datatype configuration
 	 * was changed since this value was persisted)
 	 */
-	T fromReferenceString(String referenceString) throws InvalidCustomValueException;
+	T fromReferenceString(/*~~>*/String referenceString) throws InvalidCustomValueException;
 	
 	/**
 	 * Converts a reference string to a short (generally &lt; 100 characters) plain-text representation of its value. The return
@@ -74,7 +74,7 @@ public interface CustomDatatype<T> {
 	 * @param referenceString
 	 * @return a summary representation of the given value
 	 */
-	Summary getTextSummary(String referenceString);
+	Summary getTextSummary(/*~~>*/String referenceString);
 	
 	/**
 	 * Validates the given value to see if it is a legal value for the given handler. (For example the RegexValidatedText
@@ -89,7 +89,7 @@ public interface CustomDatatype<T> {
 	 */
 	public class Summary {
 		
-		private String summary;
+		private /*~~>*/String summary;
 		
 		private boolean complete;
 		
@@ -97,23 +97,23 @@ public interface CustomDatatype<T> {
 		 * @param summary
 		 * @param complete
 		 */
-		public Summary(String summary, boolean complete) {
-			this.summary = summary;
+		public Summary(/*~~>*/String summary, boolean complete) {
+			/*~~>*/this.summary = summary;
 			this.complete = complete;
 		}
 		
 		/**
 		 * @return the short representation of a custom value
 		 */
-		public String getSummary() {
+		public /*~~>*/String getSummary() {
 			return summary;
 		}
 		
 		/**
 		 * @param summary the summary to set
 		 */
-		public void setSummary(String summary) {
-			this.summary = summary;
+		public void setSummary(/*~~>*/String summary) {
+			/*~~>*/this.summary = summary;
 		}
 		
 		/**
@@ -135,7 +135,7 @@ public interface CustomDatatype<T> {
 		 * @see java.lang.Object#toString()
 		 */
 		@Override
-		public String toString() {
+		public /*~~>*/String toString() {
 			return summary;
 		}
 	}

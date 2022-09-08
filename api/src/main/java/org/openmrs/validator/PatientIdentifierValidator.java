@@ -91,7 +91,7 @@ public class PatientIdentifierValidator implements Validator {
 			// Check that location is included if it is required (default behavior is to require it)
 			LocationBehavior lb = pi.getIdentifierType().getLocationBehavior();
 			if (pi.getLocation() == null && (lb == null || lb == LocationBehavior.REQUIRED)) {
-				String identifierString = (pi.getIdentifier() != null) ? pi.getIdentifier() : "";
+				/*~~>*/String identifierString = (pi.getIdentifier() != null) ? pi.getIdentifier() : "";
 				throw new PatientIdentifierException(Context.getMessageSourceService().getMessage(
 				    "PatientIdentifier.location.null", new Object[] { identifierString }, Context.getLocale()));
 			}
@@ -118,7 +118,7 @@ public class PatientIdentifierValidator implements Validator {
 	 * @see #checkIdentifierAgainstFormat(String, String, String)
 	 * @see #checkIdentifierAgainstValidator(String, IdentifierValidator)
 	 */
-	public static void validateIdentifier(String identifier, PatientIdentifierType pit) throws PatientIdentifierException {
+	public static void validateIdentifier(/*~~>*/String identifier, PatientIdentifierType pit) throws PatientIdentifierException {
 		
 		log.debug("Checking identifier: " + identifier + " for type: " + pit);
 		
@@ -155,7 +155,7 @@ public class PatientIdentifierValidator implements Validator {
 	 * <strong>Should</strong> include format in error message if no formatDescription is specified
 	 * <strong>Should</strong> include formatDescription in error message if specified
 	 */
-	public static void checkIdentifierAgainstFormat(String identifier, String format, String formatDescription)
+	public static void checkIdentifierAgainstFormat(/*~~>*/String identifier, /*~~>*/String format, /*~~>*/String formatDescription)
 	        throws PatientIdentifierException {
 		
 		log.debug("Checking identifier: " + identifier + " against format: " + format);
@@ -189,7 +189,7 @@ public class PatientIdentifierValidator implements Validator {
 	 * <strong>Should</strong> pass validation if identifier is valid
 	 * <strong>Should</strong> pass validation if validator is null
 	 */
-	public static void checkIdentifierAgainstValidator(String identifier, IdentifierValidator validator)
+	public static void checkIdentifierAgainstValidator(/*~~>*/String identifier, IdentifierValidator validator)
 	        throws PatientIdentifierException {
 		
 		log.debug("Checking identifier: " + identifier + " against validator: " + validator);
@@ -218,7 +218,7 @@ public class PatientIdentifierValidator implements Validator {
 		
 	}
 	
-	private static String getMessage(String messageKey, String... arguments) {
+	private static /*~~>*/String getMessage(/*~~>*/String messageKey, /*~~>*/String... arguments) {
 		return Context.getMessageSourceService().getMessage(messageKey, arguments, Context.getLocale());
 	}
 }

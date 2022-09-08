@@ -44,7 +44,7 @@ public class MessageSourceServiceImpl implements MessageSourceService {
 	 * @see org.openmrs.messagesource.MessageSourceService#getMessage(java.lang.String)
 	 */
 	@Override
-	public String getMessage(String s) {
+	public /*~~>*/String getMessage(/*~~>*/String s) {
 		return Context.getMessageSourceService().getMessage(s, null, Context.getLocale());
 	}
 	
@@ -97,7 +97,7 @@ public class MessageSourceServiceImpl implements MessageSourceService {
 	 *      java.util.Locale)
 	 */
 	@Override
-	public String getMessage(MessageSourceResolvable resolvable, Locale locale) {
+	public /*~~>*/String getMessage(MessageSourceResolvable resolvable, Locale locale) {
 		if((resolvable.getCodes()[0]).equals((activeMessageSource.getMessage(resolvable, locale)))){
 			return (resolvable.getCodes()[(resolvable.getCodes().length) - 1]);
 		}
@@ -111,9 +111,9 @@ public class MessageSourceServiceImpl implements MessageSourceService {
 	 *      java.lang.Object[], java.util.Locale)
 	 */
 	@Override
-	public String getMessage(String code, Object[] args, Locale locale) throws NoSuchMessageException {
+	public /*~~>*/String getMessage(/*~~>*/String code, Object[] args, Locale locale) throws NoSuchMessageException {
 		if (StringUtils.isBlank(code)) {
-			return StringUtils.EMPTY;
+			return /*~~>*/StringUtils.EMPTY;
 		}
 		
 		return activeMessageSource.getMessage(code, args, code, locale);
@@ -124,9 +124,9 @@ public class MessageSourceServiceImpl implements MessageSourceService {
 	 *      java.lang.Object[], java.lang.String, java.util.Locale)
 	 */
 	@Override
-	public String getMessage(String code, Object[] args, String defaultMessage, Locale locale) {
+	public /*~~>*/String getMessage(/*~~>*/String code, Object[] args, /*~~>*/String defaultMessage, Locale locale) {
 		if (StringUtils.isBlank(code) && StringUtils.isBlank(defaultMessage)) {
-			return StringUtils.EMPTY;
+			return /*~~>*/StringUtils.EMPTY;
 		}
 		
 		return activeMessageSource.getMessage(code, args, defaultMessage, locale);
@@ -179,7 +179,7 @@ public class MessageSourceServiceImpl implements MessageSourceService {
 	 *      java.util.Locale)
 	 */
 	@Override
-	public PresentationMessage getPresentation(String key, Locale forLocale) {
+	public PresentationMessage getPresentation(/*~~>*/String key, Locale forLocale) {
 		return activeMessageSource.getPresentation(key, forLocale);
 	}
 	

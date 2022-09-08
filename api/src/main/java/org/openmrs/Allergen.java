@@ -33,9 +33,9 @@ public class Allergen {
 	private Concept codedAllergen;
 	
 	@Column(name = "non_coded_allergen")
-	private String nonCodedAllergen;
+	private /*~~>*/String nonCodedAllergen;
 	
-	private static String OTHER_NON_CODED_CONCEPT_UUID;
+	private static /*~~>*/String OTHER_NON_CODED_CONCEPT_UUID;
 	
 	/**
 	 * Default constructor
@@ -48,10 +48,10 @@ public class Allergen {
 	 * @param codedAllergen the codedAllergen to set
 	 * @param nonCodedAllergen the nonCodedAllergen to set
 	 */
-	public Allergen(AllergenType allergenType, Concept codedAllergen, String nonCodedAllergen) {
+	public Allergen(AllergenType allergenType, Concept codedAllergen, /*~~>*/String nonCodedAllergen) {
 		this.allergenType = allergenType;
 		this.codedAllergen = codedAllergen;
-		this.nonCodedAllergen = nonCodedAllergen;
+		/*~~>*/this.nonCodedAllergen = nonCodedAllergen;
 	}
 	
 	/**
@@ -82,7 +82,7 @@ public class Allergen {
 	 * @param otherNonCodedConceptUuid
 	 * @since 2.0
 	 */
-    public static void setOtherNonCodedConceptUuid(String otherNonCodedConceptUuid) {
+    public static void setOtherNonCodedConceptUuid(/*~~>*/String otherNonCodedConceptUuid) {
 		OTHER_NON_CODED_CONCEPT_UUID = otherNonCodedConceptUuid;
     }
     
@@ -92,7 +92,7 @@ public class Allergen {
 	 * @return other non coded concept uuid constant
 	 * @since 2.0
 	 */
-	public static String getOtherNonCodedConceptUuid() {
+	public static /*~~>*/String getOtherNonCodedConceptUuid() {
 		return OTHER_NON_CODED_CONCEPT_UUID;
 	}
 
@@ -109,15 +109,15 @@ public class Allergen {
     /**
      * @return the nonCodedAllergen
      */
-    public String getNonCodedAllergen() {
+    public /*~~>*/String getNonCodedAllergen() {
     	return nonCodedAllergen;
     }
 
     /**
      * @param nonCodedAllergen the nonCodedAllergen to set
      */
-    public void setNonCodedAllergen(String nonCodedAllergen) {
-		this.nonCodedAllergen = nonCodedAllergen;
+    public void setNonCodedAllergen(/*~~>*/String nonCodedAllergen) {
+		/*~~>*/this.nonCodedAllergen = nonCodedAllergen;
 		if (StringUtils.isNotBlank(nonCodedAllergen) && codedAllergen != null
 				&& !codedAllergen.getUuid().equals(getOtherNonCodedConceptUuid())) {
 			codedAllergen = null;	
@@ -129,7 +129,7 @@ public class Allergen {
 	}
 
 	@Override
-    public String toString() {
+    public /*~~>*/String toString() {
 	    if (StringUtils.isNotBlank(nonCodedAllergen)) {
 	    	return nonCodedAllergen;
 	    }

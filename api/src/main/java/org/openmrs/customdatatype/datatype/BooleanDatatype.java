@@ -24,7 +24,7 @@ public class BooleanDatatype extends SerializingCustomDatatype<Boolean> {
 	 * @see org.openmrs.customdatatype.SerializingCustomDatatype#serialize(java.lang.Object)
 	 */
 	@Override
-	public String serialize(Boolean typedValue) {
+	public /*~~>*/String serialize(Boolean typedValue) {
 		if (typedValue == null) {
 			return null;
 		}
@@ -35,7 +35,7 @@ public class BooleanDatatype extends SerializingCustomDatatype<Boolean> {
 	 * @see org.openmrs.customdatatype.SerializingCustomDatatype#deserialize(java.lang.String)
 	 */
 	@Override
-	public Boolean deserialize(String serializedValue) {
+	public Boolean deserialize(/*~~>*/String serializedValue) {
 		if (StringUtils.isEmpty(serializedValue)) {
 			return null;
 		}

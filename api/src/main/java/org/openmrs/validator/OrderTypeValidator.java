@@ -61,7 +61,7 @@ public class OrderTypeValidator implements Validator {
 			throw new IllegalArgumentException("The parameter obj should not be null and must be of type" + OrderType.class);
 		} else {
 			OrderType orderType = (OrderType) obj;
-			String name = orderType.getName();
+			/*~~>*/String name = orderType.getName();
 			if (!StringUtils.hasText(name)) {
 				errors.rejectValue("name", "error.name");
 				return;

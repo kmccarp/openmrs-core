@@ -39,9 +39,9 @@ public class CreateConceptDictionaryDataSet extends BaseContextSensitiveTest {
 		IDatabaseConnection connection = new DatabaseConnection(getConnection());
 		DatabaseConfig config = connection.getConfig();
 		
-		config.setProperty(DatabaseConfig.PROPERTY_RESULTSET_TABLE_FACTORY, new ForwardOnlyResultSetTableFactory());
+		config.setProperty(/*~~>*/DatabaseConfig.PROPERTY_RESULTSET_TABLE_FACTORY, new ForwardOnlyResultSetTableFactory());
 		
-		String[] tableNames = new String[] { "concept_class", "concept_datatype", "concept_map_type",
+		/*~~>*/String[] tableNames = new /*~~>*/String[] { "concept_class", "concept_datatype", "concept_map_type",
 		        "concept_reference_source", "concept", "concept_numeric", "concept_description", "concept_name",
 		        "concept_reference_term", "concept_reference_map", "concept_reference_term_map", "concept_set",
 		        "concept_complex", "concept_answer", "concept_stop_word" };

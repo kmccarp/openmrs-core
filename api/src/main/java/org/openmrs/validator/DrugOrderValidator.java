@@ -114,7 +114,7 @@ public class DrugOrderValidator extends OrderValidator implements Validator {
 	private void validateForRequireDrug(Errors errors, DrugOrder order) {
 		//Reject if global property is set to specify a formulation for drug order
 		boolean requireDrug = Context.getAdministrationService().getGlobalPropertyValue(
-				OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, false);
+				/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, false);
 		OrderService orderService = Context.getOrderService();
 
 
@@ -141,7 +141,7 @@ public class DrugOrderValidator extends OrderValidator implements Validator {
 		if (order.getAction() != Order.Action.DISCONTINUE && order.getCareSetting() != null
 		        && order.getCareSetting().getCareSettingType().equals(CareSetting.CareSettingType.OUTPATIENT)) {
 			boolean requireQuantity = Context.getAdministrationService().getGlobalPropertyValue(
-				OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_OUTPATIENT_QUANTITY, true);
+				/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_OUTPATIENT_QUANTITY, true);
 			if (requireQuantity) {
 				ValidationUtils.rejectIfEmpty(errors, "quantity", "DrugOrder.error.quantityIsNullForOutPatient");
 				ValidationUtils.rejectIfEmpty(errors, "numRefills", "DrugOrder.error.numRefillsIsNullForOutPatient");

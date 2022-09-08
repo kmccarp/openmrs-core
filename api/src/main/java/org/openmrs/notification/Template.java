@@ -23,30 +23,30 @@ public class Template extends BaseOpenmrsObject {
 	// Persisted
 	private Integer id;
 	
-	private String name;
+	private /*~~>*/String name;
 	
-	private String template;
+	private /*~~>*/String template;
 	
 	private Integer ordinal;
 	
-	private String sender;
+	private /*~~>*/String sender;
 	
-	private String recipients;
+	private /*~~>*/String recipients;
 	
-	private String subject;
+	private /*~~>*/String subject;
 	
 	// Not persisted
 	private Map data;
 	
-	private String content;
+	private /*~~>*/String content;
 	
 	public Template() {
 	}
 	
-	public Template(int id, String name, String template) {
+	public Template(int id, /*~~>*/String name, /*~~>*/String template) {
 		this.id = id;
-		this.name = name;
-		this.template = template;
+		/*~~>*/this.name = name;
+		/*~~>*/this.template = template;
 	}
 	
 	@Override
@@ -59,44 +59,44 @@ public class Template extends BaseOpenmrsObject {
 		return id;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setName(/*~~>*/String name) {
+		/*~~>*/this.name = name;
 	}
 	
-	public String getName() {
+	public /*~~>*/String getName() {
 		return name;
 	}
 	
-	public void setTemplate(String template) {
-		this.template = template;
+	public void setTemplate(/*~~>*/String template) {
+		/*~~>*/this.template = template;
 	}
 	
-	public String getTemplate() {
+	public /*~~>*/String getTemplate() {
 		return template;
 	}
 	
-	public void setRecipients(String recipients) {
-		this.recipients = recipients;
+	public void setRecipients(/*~~>*/String recipients) {
+		/*~~>*/this.recipients = recipients;
 	}
 	
-	public String getRecipients() {
-		return this.recipients;
+	public /*~~>*/String getRecipients() {
+		return /*~~>*/this.recipients;
 	}
 	
-	public void setSender(String sender) {
-		this.sender = sender;
+	public void setSender(/*~~>*/String sender) {
+		/*~~>*/this.sender = sender;
 	}
 	
-	public String getSender() {
-		return this.sender;
+	public /*~~>*/String getSender() {
+		return /*~~>*/this.sender;
 	}
 	
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setSubject(/*~~>*/String subject) {
+		/*~~>*/this.subject = subject;
 	}
 	
-	public String getSubject() {
-		return this.subject;
+	public /*~~>*/String getSubject() {
+		return /*~~>*/this.subject;
 	}
 	
 	public void setOrdinal(Integer ordinal) {
@@ -115,12 +115,12 @@ public class Template extends BaseOpenmrsObject {
 		return this.data;
 	}
 	
-	public String getContent() {
-		return this.content;
+	public /*~~>*/String getContent() {
+		return /*~~>*/this.content;
 	}
 	
-	public void setContent(String content) {
-		this.content = content;
+	public void setContent(/*~~>*/String content) {
+		/*~~>*/this.content = content;
 	}
 	
 }

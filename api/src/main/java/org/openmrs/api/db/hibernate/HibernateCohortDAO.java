@@ -33,7 +33,7 @@ import org.openmrs.api.db.DAOException;
  */
 public class HibernateCohortDAO implements CohortDAO {
 	
-	private static final String VOIDED = "voided";
+	private static final /*~~>*/String VOIDED = "voided";
 	private SessionFactory sessionFactory;
 	
 	/**
@@ -83,7 +83,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	 * @see org.openmrs.api.db.CohortDAO#getCohortByUuid(java.lang.String)
 	 */
 	@Override
-	public Cohort getCohortByUuid(String uuid) {
+	public Cohort getCohortByUuid(/*~~>*/String uuid) {
 		return (Cohort) sessionFactory.getCurrentSession().createQuery("from Cohort c where c.uuid = :uuid").setString(
 			"uuid", uuid).uniqueResult();
 	}
@@ -92,7 +92,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	 * @see org.openmrs.api.db.CohortDAO#getCohortMembershipByUuid(java.lang.String)
 	 */
 	@Override
-	public CohortMembership getCohortMembershipByUuid(String uuid) {
+	public CohortMembership getCohortMembershipByUuid(/*~~>*/String uuid) {
 		return (CohortMembership) sessionFactory.getCurrentSession()
 				.createQuery("from CohortMembership m where m.uuid = :uuid")
 				.setString("uuid", uuid).uniqueResult();
@@ -112,7 +112,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Cohort> getCohorts(String nameFragment) throws DAOException {
+	public List<Cohort> getCohorts(/*~~>*/String nameFragment) throws DAOException {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Cohort.class);
 		criteria.add(Restrictions.ilike("name", nameFragment, MatchMode.ANYWHERE));
 		criteria.addOrder(Order.asc("name"));
@@ -140,7 +140,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	 * @see org.openmrs.api.db.CohortDAO#getCohort(java.lang.String)
 	 */
 	@Override
-	public Cohort getCohort(String name) {
+	public Cohort getCohort(/*~~>*/String name) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Cohort.class);
 		
 		criteria.add(Restrictions.eq("name", name));

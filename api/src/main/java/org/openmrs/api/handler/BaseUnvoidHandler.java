@@ -48,7 +48,7 @@ public class BaseUnvoidHandler implements UnvoidHandler<Voidable> {
 	 * <strong>Should</strong> not act on objects with a different dateVoided
 	 */
 	@Override
-	public void handle(Voidable voidableObject, User voidingUser, Date origParentVoidedDate, String unused) {
+	public void handle(Voidable voidableObject, User voidingUser, Date origParentVoidedDate, /*~~>*/String unused) {
 		
 		// only operate on voided objects
 		if (voidableObject.getVoided()

@@ -20,13 +20,13 @@ public class ImplementationId implements java.io.Serializable {
 	
 	// Fields
 	
-	private String name;
+	private /*~~>*/String name;
 	
-	private String description;
+	private /*~~>*/String description;
 	
-	private String implementationId;
+	private /*~~>*/String implementationId;
 	
-	private String passphrase;
+	private /*~~>*/String passphrase;
 	
 	/**
 	 * @see java.lang.Object#equals(java.lang.Object)
@@ -63,7 +63,7 @@ public class ImplementationId implements java.io.Serializable {
 	 *
 	 * @return Returns the description.
 	 */
-	public String getDescription() {
+	public /*~~>*/String getDescription() {
 		return description;
 	}
 	
@@ -73,8 +73,8 @@ public class ImplementationId implements java.io.Serializable {
 	 *
 	 * @param description The description to set.
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(/*~~>*/String description) {
+		/*~~>*/this.description = description;
 	}
 	
 	/**
@@ -87,7 +87,7 @@ public class ImplementationId implements java.io.Serializable {
 	 *
 	 * @return the implementationId
 	 */
-	public String getImplementationId() {
+	public /*~~>*/String getImplementationId() {
 		return implementationId;
 	}
 	
@@ -101,8 +101,8 @@ public class ImplementationId implements java.io.Serializable {
 	 *
 	 * @param implementationId the implementationId to set
 	 */
-	public void setImplementationId(String implementationId) {
-		this.implementationId = implementationId;
+	public void setImplementationId(/*~~>*/String implementationId) {
+		/*~~>*/this.implementationId = implementationId;
 	}
 	
 	/**
@@ -113,7 +113,7 @@ public class ImplementationId implements java.io.Serializable {
 	 *
 	 * @return the passphrase
 	 */
-	public String getPassphrase() {
+	public /*~~>*/String getPassphrase() {
 		return passphrase;
 	}
 	
@@ -125,8 +125,8 @@ public class ImplementationId implements java.io.Serializable {
 	 *
 	 * @param passphrase the passphrase to set
 	 */
-	public void setPassphrase(String passphrase) {
-		this.passphrase = passphrase;
+	public void setPassphrase(/*~~>*/String passphrase) {
+		/*~~>*/this.passphrase = passphrase;
 	}
 	
 	/**
@@ -134,7 +134,7 @@ public class ImplementationId implements java.io.Serializable {
 	 *
 	 * @return Returns the name.
 	 */
-	public String getName() {
+	public /*~~>*/String getName() {
 		return name;
 	}
 	
@@ -143,12 +143,12 @@ public class ImplementationId implements java.io.Serializable {
 	 *
 	 * @param name The concept source name to set.
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setName(/*~~>*/String name) {
+		/*~~>*/this.name = name;
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "Impl Id: " + getImplementationId() + " name: " + getName() + " desc: " + getDescription();
 	}
 }

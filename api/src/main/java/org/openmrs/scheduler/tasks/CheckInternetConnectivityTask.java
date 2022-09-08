@@ -39,14 +39,14 @@ public class CheckInternetConnectivityTask extends AbstractTask {
 	public void execute() {
 		
 		// TODO url should be provided as a property to taskconfig
-		String url = "http://www.google.com:80/index.html";
+		/*~~>*/String url = "http://www.google.com:80/index.html";
 		try {
 			URLConnection connection = new URL(url).openConnection();
 			connection.connect();
 		}
 		catch (IOException ioe) {
 			try {
-				String text = "At " + new Date() + " there was an error reported connecting to the internet address " + url
+				/*~~>*/String text = "At " + new Date() + " there was an error reported connecting to the internet address " + url
 				        + ": " + ioe;
 				// TODO role should be provided as a property to taskconfig
 				Role role = Context.getUserService().getRole("System Developer");

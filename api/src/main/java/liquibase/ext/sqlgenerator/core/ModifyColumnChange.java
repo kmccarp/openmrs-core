@@ -34,39 +34,39 @@ public class ModifyColumnChange extends AbstractChange implements ChangeWithColu
 	
 	private static final Logger log = LoggerFactory.getLogger(ModifyColumnChange.class);
 	
-	private String catalogName;
+	private /*~~>*/String catalogName;
 	
-	private String schemaName;
+	private /*~~>*/String schemaName;
 	
-	private String tableName;
+	private /*~~>*/String tableName;
 	
 	private List<ColumnConfig> columns = new ArrayList<>();
 	
 	@DatabaseChangeProperty(mustEqualExisting = "column.relation.catalog", since = "3.0")
-	public String getCatalogName() {
+	public /*~~>*/String getCatalogName() {
 		return catalogName;
 	}
 	
-	public void setCatalogName(String catalogName) {
-		this.catalogName = catalogName;
+	public void setCatalogName(/*~~>*/String catalogName) {
+		/*~~>*/this.catalogName = catalogName;
 	}
 	
 	@DatabaseChangeProperty(mustEqualExisting = "column.relation.schema")
-	public String getSchemaName() {
+	public /*~~>*/String getSchemaName() {
 		return schemaName;
 	}
 	
-	public void setSchemaName(String schemaName) {
-		this.schemaName = StringUtil.trimToNull(schemaName);
+	public void setSchemaName(/*~~>*/String schemaName) {
+		/*~~>*/this.schemaName = StringUtil.trimToNull(schemaName);
 	}
 	
 	@DatabaseChangeProperty(mustEqualExisting = "column.relation", description = "Name of the table to modify the column in")
-	public String getTableName() {
+	public /*~~>*/String getTableName() {
 		return tableName;
 	}
 	
-	public void setTableName(String tableName) {
-		this.tableName = tableName;
+	public void setTableName(/*~~>*/String tableName) {
+		/*~~>*/this.tableName = tableName;
 	}
 	
 	@DatabaseChangeProperty(mustEqualExisting = "column", description = "Column constraint and foreign key information. Setting the \"defaultValue\" attribute will specify a default value for the column.")
@@ -96,8 +96,8 @@ public class ModifyColumnChange extends AbstractChange implements ChangeWithColu
 		return new SqlStatement[] { statement };
 	}
 	
-	public String getConfirmationMessage() {
-		List<String> names = new ArrayList<>(columns.size());
+	public /*~~>*/String getConfirmationMessage() {
+		List</*~~>*/String> names = new ArrayList<>(columns.size());
 		for (ColumnConfig col : columns) {
 			names.add(col.getName() + "(" + col.getType() + ")");
 		}

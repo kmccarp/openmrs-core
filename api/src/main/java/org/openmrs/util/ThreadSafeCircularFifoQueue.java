@@ -363,7 +363,7 @@ public class ThreadSafeCircularFifoQueue<E> extends AbstractQueue<E> implements 
 		}
 	}
 
-	public String toString() {
+	public /*~~>*/String toString() {
 		final ReentrantLock lock = this.lock;
 		lock.lock();
 		try {

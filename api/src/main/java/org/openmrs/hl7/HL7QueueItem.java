@@ -25,9 +25,9 @@ public abstract class HL7QueueItem extends BaseOpenmrsObject {
 	
 	private HL7Source hl7Source;
 	
-	private String hl7SourceKey;
+	private /*~~>*/String hl7SourceKey;
 	
-	private String hl7Data;
+	private /*~~>*/String hl7Data;
 	
 	private Date dateCreated;
 	
@@ -48,15 +48,15 @@ public abstract class HL7QueueItem extends BaseOpenmrsObject {
 	/**
 	 * @return Returns the hl7Data.
 	 */
-	public String getHL7Data() {
+	public /*~~>*/String getHL7Data() {
 		return hl7Data;
 	}
 	
 	/**
 	 * @param hl7Data The hl7Data to set.
 	 */
-	public void setHL7Data(String hl7Data) {
-		this.hl7Data = hl7Data;
+	public void setHL7Data(/*~~>*/String hl7Data) {
+		/*~~>*/this.hl7Data = hl7Data;
 	}
 	
 	/**
@@ -76,15 +76,15 @@ public abstract class HL7QueueItem extends BaseOpenmrsObject {
 	/**
 	 * @return Returns the hl7SourceKey.
 	 */
-	public String getHL7SourceKey() {
+	public /*~~>*/String getHL7SourceKey() {
 		return hl7SourceKey;
 	}
 	
 	/**
 	 * @param hl7SourceKey The hl7SourceKey to set.
 	 */
-	public void setHL7SourceKey(String hl7SourceKey) {
-		this.hl7SourceKey = hl7SourceKey;
+	public void setHL7SourceKey(/*~~>*/String hl7SourceKey) {
+		/*~~>*/this.hl7SourceKey = hl7SourceKey;
 	}
 	
 }

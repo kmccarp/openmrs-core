@@ -30,7 +30,7 @@ public class LogicTransform {
 	
 	private Integer numResults = null;
 	
-	private String sortColumn = null;
+	private /*~~>*/String sortColumn = null;
 	
 	public LogicTransform(Operator transformOperator, Integer numResults) {
 		this.transformOperator = transformOperator;
@@ -51,7 +51,7 @@ public class LogicTransform {
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		StringBuilder result = new StringBuilder();
 		
 		if (transformOperator != null) {
@@ -76,7 +76,7 @@ public class LogicTransform {
 		return numResults;
 	}
 	
-	public String getSortColumn() {
+	public /*~~>*/String getSortColumn() {
 		return sortColumn;
 	}
 	
@@ -90,8 +90,8 @@ public class LogicTransform {
 		this.numResults = numResults;
 	}
 	
-	public void setSortColumn(String sortColumn) {
-		this.sortColumn = sortColumn;
+	public void setSortColumn(/*~~>*/String sortColumn) {
+		/*~~>*/this.sortColumn = sortColumn;
 	}
 	
 	@Override

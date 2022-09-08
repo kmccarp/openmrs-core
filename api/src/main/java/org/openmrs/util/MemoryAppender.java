@@ -41,7 +41,7 @@ public class MemoryAppender extends org.openmrs.logging.MemoryAppender {
 		this.implementation = implementation;
 	}
 	
-	protected MemoryAppender(String name, Filter filter,
+	protected MemoryAppender(/*~~>*/String name, Filter filter,
 		StringLayout layout, boolean ignoreExceptions,
 		Property[] properties, int bufferSize) {
 		super(name, filter, layout, ignoreExceptions, properties, bufferSize);
@@ -68,7 +68,7 @@ public class MemoryAppender extends org.openmrs.logging.MemoryAppender {
 	}
 	
 	@Override
-	public List<String> getLogLines() {
+	public List</*~~>*/String> getLogLines() {
 		if (implementation != null) {
 			return implementation.getLogLines();
 		} else {
@@ -86,7 +86,7 @@ public class MemoryAppender extends org.openmrs.logging.MemoryAppender {
 	}
 	
 	@Override
-	public void error(String msg) {
+	public void error(/*~~>*/String msg) {
 		if (implementation != null) {
 			implementation.error(msg);
 		} else {
@@ -95,7 +95,7 @@ public class MemoryAppender extends org.openmrs.logging.MemoryAppender {
 	}
 	
 	@Override
-	public void error(String msg, LogEvent event, Throwable t) {
+	public void error(/*~~>*/String msg, LogEvent event, Throwable t) {
 		if (implementation != null) {
 			implementation.error(msg, event, t);
 		} else {
@@ -104,7 +104,7 @@ public class MemoryAppender extends org.openmrs.logging.MemoryAppender {
 	}
 	
 	@Override
-	public void error(String msg, Throwable t) {
+	public void error(/*~~>*/String msg, Throwable t) {
 		if (implementation != null) {
 			implementation.error(msg, t);
 		} else {
@@ -131,7 +131,7 @@ public class MemoryAppender extends org.openmrs.logging.MemoryAppender {
 	}
 	
 	@Override
-	public String getName() {
+	public /*~~>*/String getName() {
 		if (implementation != null) {
 			return implementation.getName();
 		} else {
@@ -158,7 +158,7 @@ public class MemoryAppender extends org.openmrs.logging.MemoryAppender {
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		if (implementation != null) {
 			return implementation.toString();
 		} else {

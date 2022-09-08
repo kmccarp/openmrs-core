@@ -59,12 +59,12 @@ public class PersonAttribute extends BaseChangeableOpenmrsData implements java.i
 	private PersonAttributeType attributeType;
 
 	@Fields({
-			@Field(name = "valuePhrase", analyzer = @Analyzer(definition = LuceneAnalyzers.PHRASE_ANALYZER), boost = @Boost(8f)),
-			@Field(name = "valueExact", analyzer = @Analyzer(definition = LuceneAnalyzers.EXACT_ANALYZER), boost = @Boost(4f)),
-			@Field(name = "valueStart", analyzer = @Analyzer(definition = LuceneAnalyzers.START_ANALYZER), boost = @Boost(2f)),
-			@Field(name = "valueAnywhere", analyzer = @Analyzer(definition = LuceneAnalyzers.ANYWHERE_ANALYZER))
+			@Field(name = "valuePhrase", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.PHRASE_ANALYZER), boost = @Boost(8f)),
+			@Field(name = "valueExact", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.EXACT_ANALYZER), boost = @Boost(4f)),
+			@Field(name = "valueStart", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.START_ANALYZER), boost = @Boost(2f)),
+			@Field(name = "valueAnywhere", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.ANYWHERE_ANALYZER))
 	})
-	private String value;
+	private /*~~>*/String value;
 	
 	/** default constructor */
 	public PersonAttribute() {
@@ -80,9 +80,9 @@ public class PersonAttribute extends BaseChangeableOpenmrsData implements java.i
 	 * @param type PersonAttributeType
 	 * @param value String
 	 */
-	public PersonAttribute(PersonAttributeType type, String value) {
+	public PersonAttribute(PersonAttributeType type, /*~~>*/String value) {
 		this.attributeType = type;
-		this.value = value;
+		/*~~>*/this.value = value;
 	}
 	
 	/**
@@ -131,12 +131,12 @@ public class PersonAttribute extends BaseChangeableOpenmrsData implements java.i
 		boolean returnValue = true;
 		
 		// these are the methods to compare.
-		String[] methods = { "getAttributeType", "getValue", "getVoided" };
+		/*~~>*/String[] methods = { "getAttributeType", "getValue", "getVoided" };
 		
 		Class attributeClass = this.getClass();
 		
 		// loop over all of the selected methods and compare this and other
-		for (String methodAttribute : methods) {
+		for (/*~~>*/String methodAttribute : methods) {
 			try {
 				Method method = attributeClass.getMethod(methodAttribute);
 				
@@ -193,15 +193,15 @@ public class PersonAttribute extends BaseChangeableOpenmrsData implements java.i
 	/**
 	 * @return the value
 	 */
-	public String getValue() {
+	public /*~~>*/String getValue() {
 		return value;
 	}
 	
 	/**
 	 * @param value the value to set
 	 */
-	public void setValue(String value) {
-		this.value = value;
+	public void setValue(/*~~>*/String value) {
+		/*~~>*/this.value = value;
 	}
 	
 	/**
@@ -209,7 +209,7 @@ public class PersonAttribute extends BaseChangeableOpenmrsData implements java.i
 	 * <strong>Should</strong> return toString of hydrated value
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		Object o = getHydratedObject();
 		if (o instanceof Attributable) {
 			return ((Attributable) o).getDisplayString();
@@ -217,7 +217,7 @@ public class PersonAttribute extends BaseChangeableOpenmrsData implements java.i
 			return o.toString();
 		}
 		
-		return this.value;
+		return /*~~>*/this.value;
 	}
 	
 	/**
@@ -261,7 +261,7 @@ public class PersonAttribute extends BaseChangeableOpenmrsData implements java.i
 			catch (InstantiationException e) {
 				// try to hydrate the object with the String constructor
 				log.trace("Unable to call no-arg constructor for class: " + c.getName());
-				return c.getConstructor(String.class).newInstance(getValue());
+				return c.getConstructor(/*~~>*/String.class).newInstance(getValue());
 			}
 		}
 		catch (Exception e) {
@@ -284,7 +284,7 @@ public class PersonAttribute extends BaseChangeableOpenmrsData implements java.i
 	 * @param reason
 	 * <strong>Should</strong> set voided bit to true
 	 */
-	public void voidAttribute(String reason) {
+	public void voidAttribute(/*~~>*/String reason) {
 		setVoided(true);
 		setVoidedBy(Context.getAuthenticatedUser());
 		setVoidReason(reason);

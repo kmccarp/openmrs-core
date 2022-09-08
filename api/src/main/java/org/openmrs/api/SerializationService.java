@@ -52,7 +52,7 @@ public interface SerializationService extends OpenmrsService {
 	 * <strong>Should</strong> Serialize And Deserialize Correctly
 	 * <strong>Should</strong> Serialize And Deserialize Hibernate Objects Correctly
 	 */
-	public String serialize(Object o, Class<? extends OpenmrsSerializer> clazz) throws SerializationException;
+	public /*~~>*/String serialize(Object o, Class<? extends OpenmrsSerializer> clazz) throws SerializationException;
 	
 	/**
 	 * Deserialize the given string into a full object using the given {@link OpenmrsSerializer}
@@ -66,7 +66,7 @@ public interface SerializationService extends OpenmrsService {
 	 */
 	@Logging(ignoredArgumentIndexes = { 0 })
     @Authorized
-	public <T> T deserialize(String serializedObject, Class<? extends T> objectClass,
+	public <T> T deserialize(/*~~>*/String serializedObject, Class<? extends T> objectClass,
 	        Class<? extends OpenmrsSerializer> serializerClass) throws SerializationException;
 	
 	/**

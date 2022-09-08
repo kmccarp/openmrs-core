@@ -36,7 +36,7 @@ public class EncounterTypeLockedException extends APIException {
 	 * 
 	 * @param message the String to show to the user as to why the encounter types are locked
 	 */
-	public EncounterTypeLockedException(String message) {
+	public EncounterTypeLockedException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -47,7 +47,7 @@ public class EncounterTypeLockedException extends APIException {
 	 * @param message the String to show to the user as to why the encounter types are locked
 	 * @param cause the parent exception
 	 */
-	public EncounterTypeLockedException(String message, Throwable cause) {
+	public EncounterTypeLockedException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

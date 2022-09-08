@@ -122,9 +122,9 @@ public abstract class BaseContextSensitiveTest {
 	/**
 	 * Only the classpath/package path and filename of the initial dataset
 	 */
-	protected static final String INITIAL_XML_DATASET_PACKAGE_PATH = "org/openmrs/include/initialInMemoryTestDataSet.xml";
+	protected static final /*~~>*/String INITIAL_XML_DATASET_PACKAGE_PATH = "org/openmrs/include/initialInMemoryTestDataSet.xml";
 	
-	protected static final String EXAMPLE_XML_DATASET_PACKAGE_PATH = "org/openmrs/include/standardTestDataset.xml";
+	protected static final /*~~>*/String EXAMPLE_XML_DATASET_PACKAGE_PATH = "org/openmrs/include/standardTestDataset.xml";
 	
 	/**
 	 * cached runtime properties
@@ -229,17 +229,17 @@ public abstract class BaseContextSensitiveTest {
 	 * @param modules
 	 * @since 1.11.3, 1.10.2, 1.9.9
 	 */
-	public void assumeOpenmrsProfile(String openmrsPlatformVersion, String... modules) {
+	public void assumeOpenmrsProfile(/*~~>*/String openmrsPlatformVersion, /*~~>*/String... modules) {
 		OpenmrsProfileExcludeFilter filter = new OpenmrsProfileExcludeFilter();
-		Map<String, Object> profile = new HashMap<>();
+		Map</*~~>*/String, Object> profile = new HashMap<>();
 		profile.put("openmrsPlatformVersion", openmrsPlatformVersion);
 		if (modules != null) {
 			profile.put("modules", modules);
 		} else {
-			profile.put("modules", new String[0]);
+			profile.put("modules", new /*~~>*/String[0]);
 		}
-		String errorMessage = "Ignored. Expected profile: {openmrsPlatformVersion=" + openmrsPlatformVersion + ", modules=["
-		        + StringUtils.join((String[]) profile.get("modules"), ", ") + "]}";
+		/*~~>*/String errorMessage = "Ignored. Expected profile: {openmrsPlatformVersion=" + openmrsPlatformVersion + ", modules=["
+		        + StringUtils.join((/*~~>*//*~~>*/String[]) profile.get("modules"), ", ") + "]}";
 		assumeTrue(filter.matchOpenmrsProfileAttributes(profile), errorMessage);
 	}
 	
@@ -250,8 +250,8 @@ public abstract class BaseContextSensitiveTest {
 	 * @param modules additional list of modules in the format moduleId:version
 	 * @since 1.11.3, 1.10.2, 1.9.9
 	 */
-	public void assumeOpenmrsModules(String module, String... modules) {
-		String[] allModules = ArrayUtils.addAll(modules, module);
+	public void assumeOpenmrsModules(/*~~>*/String module, /*~~>*/String... modules) {
+		/*~~>*/String[] allModules = ArrayUtils.addAll(modules, module);
 		assumeOpenmrsProfile(null, allModules);
 	}
 	
@@ -261,7 +261,7 @@ public abstract class BaseContextSensitiveTest {
 	 * @param openmrsPlatformVersion
 	 * @since 1.11.3, 1.10.2, 1.9.9
 	 */
-	public void assumeOpenmrsPlatformVersion(String openmrsPlatformVersion) {
+	public void assumeOpenmrsPlatformVersion(/*~~>*/String openmrsPlatformVersion) {
 		assumeOpenmrsProfile(openmrsPlatformVersion);
 	}
 	
@@ -283,7 +283,7 @@ public abstract class BaseContextSensitiveTest {
 	 * 
 	 * @return String webapp name to assume when looking up the runtime properties
 	 */
-	public String getWebappName() {
+	public /*~~>*/String getWebappName() {
 		return "openmrs";
 	}
 	
@@ -303,12 +303,12 @@ public abstract class BaseContextSensitiveTest {
 		// connection properties here to override what is in the runtime
 		// properties
 		if (useInMemoryDatabase()) {
-			runtimeProperties.setProperty(Environment.DIALECT, H2Dialect.class.getName());
-			String url = "jdbc:h2:mem:openmrs;DB_CLOSE_DELAY=30;LOCK_TIMEOUT=10000";
-			runtimeProperties.setProperty(Environment.URL, url);
-			runtimeProperties.setProperty(Environment.DRIVER, "org.h2.Driver");
-			runtimeProperties.setProperty(Environment.USER, "sa");
-			runtimeProperties.setProperty(Environment.PASS, "");
+			runtimeProperties.setProperty(/*~~>*/Environment.DIALECT, H2Dialect.class.getName());
+			/*~~>*/String url = "jdbc:h2:mem:openmrs;DB_CLOSE_DELAY=30;LOCK_TIMEOUT=10000";
+			runtimeProperties.setProperty(/*~~>*/Environment.URL, url);
+			runtimeProperties.setProperty(/*~~>*/Environment.DRIVER, "org.h2.Driver");
+			runtimeProperties.setProperty(/*~~>*/Environment.USER, "sa");
+			runtimeProperties.setProperty(/*~~>*/Environment.PASS, "");
 			
 			// these properties need to be set in case the user has this exact
 			// phrasing in their runtime file.
@@ -317,18 +317,18 @@ public abstract class BaseContextSensitiveTest {
 			runtimeProperties.setProperty("connection.url", url);
 			
 			// automatically create the tables defined in the hbm files
-			runtimeProperties.setProperty(Environment.HBM2DDL_AUTO, "create-drop");
+			runtimeProperties.setProperty(/*~~>*/Environment.HBM2DDL_AUTO, "create-drop");
 		}
 		else {
-			String url = System.getProperty("databaseUrl");
-			String username = System.getProperty("databaseUsername");
-			String password = System.getProperty("databasePassword");
+			/*~~>*/String url = System.getProperty("databaseUrl");
+			/*~~>*/String username = System.getProperty("databaseUsername");
+			/*~~>*/String password = System.getProperty("databasePassword");
 			
-			runtimeProperties.setProperty(Environment.URL, url);
-			runtimeProperties.setProperty(Environment.DRIVER, System.getProperty("databaseDriver"));
-			runtimeProperties.setProperty(Environment.USER, username);
-			runtimeProperties.setProperty(Environment.PASS, password);
-			runtimeProperties.setProperty(Environment.DIALECT, System.getProperty("databaseDialect"));
+			runtimeProperties.setProperty(/*~~>*/Environment.URL, url);
+			runtimeProperties.setProperty(/*~~>*/Environment.DRIVER, System.getProperty("databaseDriver"));
+			runtimeProperties.setProperty(/*~~>*/Environment.USER, username);
+			runtimeProperties.setProperty(/*~~>*/Environment.PASS, password);
+			runtimeProperties.setProperty(/*~~>*/Environment.DIALECT, System.getProperty("databaseDialect"));
 			
 			// these properties need to be set in case the user has this exact
 			// phrasing in their runtime file.
@@ -338,11 +338,11 @@ public abstract class BaseContextSensitiveTest {
 			
 			//for the first time, automatically create the tables defined in the hbm files
 			//after that, just update, if there are any changes. This is for performance reasons.
-			runtimeProperties.setProperty(Environment.HBM2DDL_AUTO, "update");
+			runtimeProperties.setProperty(/*~~>*/Environment.HBM2DDL_AUTO, "update");
 		}
 		
 		// we don't want to try to load core modules in tests
-		runtimeProperties.setProperty(ModuleConstants.IGNORE_CORE_MODULES_PROPERTY, "true");
+		runtimeProperties.setProperty(/*~~>*/ModuleConstants.IGNORE_CORE_MODULES_PROPERTY, "true");
 		
 		try {
 			File tempappdir = File.createTempFile("appdir-for-unit-tests-", "");
@@ -350,7 +350,7 @@ public abstract class BaseContextSensitiveTest {
 			tempappdir.mkdir(); // turn it into a directory
 			tempappdir.deleteOnExit(); // clean up when we're done with tests
 			
-			runtimeProperties.setProperty(OpenmrsConstants.APPLICATION_DATA_DIRECTORY_RUNTIME_PROPERTY, tempappdir
+			runtimeProperties.setProperty(/*~~>*/OpenmrsConstants.APPLICATION_DATA_DIRECTORY_RUNTIME_PROPERTY, tempappdir
 			        .getAbsolutePath());
 			OpenmrsUtil.setApplicationDataDirectory(tempappdir.getAbsolutePath());
 		}
@@ -400,15 +400,15 @@ public abstract class BaseContextSensitiveTest {
 		Integer attempts = 0;
 		
 		// TODO: how to make this a locale specific message for the user to see?
-		String message = null;
+		/*~~>*/String message = null;
 		
 		// only need to authenticate once per session
 		while (!Context.isAuthenticated() && attempts < 3) {
 			
 			// look in the runtime properties for a defined username and
 			// password first
-			String junitusername = null;
-			String junitpassword = null;
+			/*~~>*/String junitusername = null;
+			/*~~>*/String junitpassword = null;
 			
 			try {
 				Properties props = this.getRuntimeProperties();
@@ -419,7 +419,7 @@ public abstract class BaseContextSensitiveTest {
 				// if anything happens just default to asking the user
 			}
 			
-			String[] credentials = null;
+			/*~~>*/String[] credentials = null;
 			
 			// ask the user for creds if no junit username/pass defined
 			// in the runtime properties or if that username/pass failed already
@@ -429,7 +429,7 @@ public abstract class BaseContextSensitiveTest {
 				if (credentials == null)
 					return;
 			} else
-				credentials = new String[] { junitusername, junitpassword };
+				credentials = new /*~~>*/String[] { junitusername, junitpassword };
 			
 			// try to authenticate to the Context with either the runtime
 			// defined credentials or the user supplied credentials from the
@@ -457,7 +457,7 @@ public abstract class BaseContextSensitiveTest {
 	 * @return Two-member String array containing username and password, respectively, or
 	 *         <code>null</code> if user aborts dialog
 	 */
-	public static synchronized String[] askForUsernameAndPassword(String message) {
+	public static synchronized /*~~>*//*~~>*/String[] askForUsernameAndPassword(/*~~>*/String message) {
 		
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -535,8 +535,8 @@ public abstract class BaseContextSensitiveTest {
 		
 		// response of 2 is the cancel button, response of -1 is the little red
 		// X in the top right
-		return (response == 2 || response == -1 ? null : new String[] { usernameField.getText(),
-		        String.valueOf(passwordField.getPassword()) });
+		return (response == 2 || response == -1 ? null : new /*~~>*/String[] { usernameField.getText(),
+		        /*~~>*/String.valueOf(passwordField.getPassword()) });
 	}
 	
 	/**
@@ -591,8 +591,8 @@ public abstract class BaseContextSensitiveTest {
 		 * Hbm2ddl used in tests creates primary key columns, which are not auto incremented if
 		 * NativeIfNotAssignedIdentityGenerator is used. We need to alter those columns in tests.
 		 */
-		List<String> tables = Collections.singletonList("concept");
-		for (String table : tables) {
+		List</*~~>*/String> tables = Collections.singletonList("concept");
+		for (/*~~>*/String table : tables) {
 			getConnection().prepareStatement("ALTER TABLE " + table + " ALTER COLUMN " + table + "_id INT AUTO_INCREMENT")
 					.execute();
 		}
@@ -605,11 +605,11 @@ public abstract class BaseContextSensitiveTest {
 	 * @param tableName the table that contains the column
 	 * @throws SQLException
 	 */
-	protected void dropNotNullConstraint(String tableName, String columnName) throws SQLException {
+	protected void dropNotNullConstraint(/*~~>*/String tableName, /*~~>*/String columnName) throws SQLException {
 		if (!useInMemoryDatabase()) {
 			throw new RuntimeException("Altering column nullability is not supported for a non in-memory database");
 		}
-		final String sql = "ALTER TABLE " + tableName + " ALTER COLUMN " + columnName + " SET NULL";
+		final /*~~>*/String sql = "ALTER TABLE " + tableName + " ALTER COLUMN " + columnName + " SET NULL";
 		DatabaseUtil.executeSQL(getConnection(), sql, false);
 	}
 
@@ -620,7 +620,7 @@ public abstract class BaseContextSensitiveTest {
 	 * @throws SQLException
 	 */
 	protected void turnOnDBConstraints(Connection connection) throws SQLException {
-		String constraintsOnSql;
+		/*~~>*/String constraintsOnSql;
 		if (useInMemoryDatabase()) {
 			constraintsOnSql = "SET REFERENTIAL_INTEGRITY TRUE";
 		} else {
@@ -632,7 +632,7 @@ public abstract class BaseContextSensitiveTest {
 	}
 	
 	protected void turnOffDBConstraints(Connection connection) throws SQLException {
-		String constraintsOffSql;
+		/*~~>*/String constraintsOffSql;
 		if (useInMemoryDatabase()) {
 			constraintsOffSql = "SET REFERENTIAL_INTEGRITY FALSE";
 		} else {
@@ -647,7 +647,7 @@ public abstract class BaseContextSensitiveTest {
 	 * Used by {@link #executeDataSet(String)} to cache the parsed xml files. This speeds up
 	 * subsequent runs of the dataset
 	 */
-	private static Map<String, IDataSet> cachedDatasets = new HashMap<>();
+	private static Map</*~~>*/String, IDataSet> cachedDatasets = new HashMap<>();
 	
 	/**
 	 * Runs the flat xml data file at the classpath location specified by
@@ -659,7 +659,7 @@ public abstract class BaseContextSensitiveTest {
 	 * @see #getConnection()
 	 * @see #executeDataSet(IDataSet)
 	 */
-	public void executeDataSet(String datasetFilename) {
+	public void executeDataSet(/*~~>*/String datasetFilename) {
 		
 		// try to get the given filename from the cache
 		IDataSet xmlDataSetToRun = cachedDatasets.get(datasetFilename);
@@ -714,7 +714,7 @@ public abstract class BaseContextSensitiveTest {
 	 * @throws Exception
 	 * @since 1.10
 	 */
-	public void executeLargeDataSet(String datasetFilename) throws Exception {
+	public void executeLargeDataSet(/*~~>*/String datasetFilename) throws Exception {
 		InputStream inputStream = null;
 		try {
 			final File file = new File(datasetFilename);
@@ -756,7 +756,7 @@ public abstract class BaseContextSensitiveTest {
 	 * @see #getConnection()
 	 * @see #executeDataSet(IDataSet)
 	 */
-	public void executeXmlDataSet(String datasetFilename) throws Exception {
+	public void executeXmlDataSet(/*~~>*/String datasetFilename) throws Exception {
 		
 		// try to get the given filename from the cache
 		IDataSet xmlDataSetToRun = cachedDatasets.get(datasetFilename);
@@ -822,7 +822,7 @@ public abstract class BaseContextSensitiveTest {
 		if (useInMemoryDatabase()) {
 			//Setup the db connection to use H2 config.
 			DatabaseConfig config = dbUnitConn.getConfig();
-			config.setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY, new H2DataTypeFactory());
+			config.setProperty(/*~~>*/DatabaseConfig.PROPERTY_DATATYPE_FACTORY, new H2DataTypeFactory());
 		}
 		
 		return dbUnitConn;
@@ -845,13 +845,13 @@ public abstract class BaseContextSensitiveTest {
 			
 			IDatabaseConnection dbUnitConn = setupDatabaseConnection(connection);
 			
-			String databaseName = System.getProperty("databaseName");
+			/*~~>*/String databaseName = System.getProperty("databaseName");
 			
 			// find all the tables for this connection
 			ResultSet resultSet = connection.getMetaData().getTables(databaseName, "PUBLIC", "%", null);
 			DefaultDataSet dataset = new DefaultDataSet();
 			while (resultSet.next()) {
-				String tableName = resultSet.getString(3);
+				/*~~>*/String tableName = resultSet.getString(3);
 				dataset.addTable(new DefaultTable(tableName));
 			}
 			

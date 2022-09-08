@@ -248,7 +248,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	public void saveConcept_shouldTrimWhitespacesInConceptName() {
 		//Given
 		Concept concept = new Concept();
-		String nameWithSpaces = "  jwm  ";
+		/*~~>*/String nameWithSpaces = "  jwm  ";
 		concept.addName(new ConceptName(nameWithSpaces, new Locale("en", "US")));
 		concept.addDescription(new ConceptDescription("some description", null));
 		concept.setDatatype(new ConceptDatatype(1));
@@ -367,7 +367,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void retireConcept_shouldRetireTheGivenConcept() {
-		String retireReason = "dummy reason";
+		/*~~>*/String retireReason = "dummy reason";
 		Concept concept = conceptService.getConcept(3);
 		assertFalse(concept.getRetired());
 		conceptService.retireConcept(concept, retireReason);
@@ -421,8 +421,8 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getDrugs_shouldReturnListOfMatchingDrugs() {
-		String drugName = "ASPIRIN";
-		String drugUuid = "05ec820a-d297-44e3-be6e-698531d9dd3f";
+		/*~~>*/String drugName = "ASPIRIN";
+		/*~~>*/String drugUuid = "05ec820a-d297-44e3-be6e-698531d9dd3f";
 		Concept concept = conceptService.getConceptByUuid(drugUuid);
 		List<Drug> drugs = conceptService.getDrugs(drugName, concept, true, true, true, 0, 100);
 		assertTrue(drugs.contains(conceptService.getDrug(drugName)));
@@ -433,8 +433,8 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getDrug_shouldReturnTheMatchingDrugObject() {
-		String drugName = "ASPIRIN";
-		String drugUuid = "05ec820a-d297-44e3-be6e-698531d9dd3f";
+		/*~~>*/String drugName = "ASPIRIN";
+		/*~~>*/String drugUuid = "05ec820a-d297-44e3-be6e-698531d9dd3f";
 		Drug drug = conceptService.getDrugByUuid(drugUuid);
 		assertEquals(drug, conceptService.getDrug(drugName));
 	}
@@ -453,7 +453,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void retireDrug_shouldRetireTheGivenDrug() {
-		String uuidOfDrugToCheck = "05ec820a-d297-44e3-be6e-698531d9dd3f";
+		/*~~>*/String uuidOfDrugToCheck = "05ec820a-d297-44e3-be6e-698531d9dd3f";
 		Drug drug = conceptService.getDrugByUuid(uuidOfDrugToCheck);
 		conceptService.retireDrug(drug, "some dummy reason");
 		assertTrue(drug.getRetired());
@@ -464,7 +464,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void unretireDrug_shouldMarkDrugAsNotRetired() {
-		String uuidOfDrugToCheck = "7e2323fa-0fa0-461f-9b59-6765997d849e";
+		/*~~>*/String uuidOfDrugToCheck = "7e2323fa-0fa0-461f-9b59-6765997d849e";
 		Drug drug = conceptService.getDrugByUuid(uuidOfDrugToCheck);
 		conceptService.unretireDrug(drug);
 		assertFalse(drug.getRetired());
@@ -475,7 +475,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void unretireDrug_shouldNotChangeAttributesOfDrugThatIsAlreadyNotRetired() {
-		String uuidOfDrugToCheck = "3cfcf118-931c-46f7-8ff6-7b876f0d4202";
+		/*~~>*/String uuidOfDrugToCheck = "3cfcf118-931c-46f7-8ff6-7b876f0d4202";
 		Drug drug = conceptService.getDrugByUuid(uuidOfDrugToCheck);
 		assertFalse(drug.getRetired());
 		conceptService.unretireDrug(drug);
@@ -543,7 +543,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	@Test
 	public void getAllConceptDatatypes_shouldGiveAListOfAllConceptDataypes() {
 		int resultSize = 12;
-		String uuid = "8d4a4488-c2cc-11de-8d13-0010c6dffd0f";
+		/*~~>*/String uuid = "8d4a4488-c2cc-11de-8d13-0010c6dffd0f";
 		List<ConceptDatatype> conceptDatatypes = conceptService.getAllConceptDatatypes();
 		assertEquals(resultSize, conceptDatatypes.size());
 		assertTrue(conceptDatatypes.contains(conceptService.getConceptDatatypeByUuid(uuid)));
@@ -555,7 +555,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	@Test
 	public void getAllConceptDatatypes_shouldReturnAllConceptDataypesIncludingRetiredOnesWhenGivenTrue() {
 		int resultSize = 12;
-		String uuid = "8d4a4488-c2cc-11de-8d13-0010c6dffd0f";
+		/*~~>*/String uuid = "8d4a4488-c2cc-11de-8d13-0010c6dffd0f";
 		List<ConceptDatatype> conceptDatatypes = conceptService.getAllConceptDatatypes(true);
 		assertEquals(resultSize, conceptDatatypes.size());
 		assertTrue(conceptDatatypes.contains(conceptService.getConceptDatatypeByUuid(uuid)));
@@ -567,7 +567,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	@Test
 	public void getAllConceptDatatypes_shouldReturnAllConceptDataypesExcludingRetiredOnesWhenGivenFalse() {
 		int resultSize = 12;
-		String uuid = "8d4a4488-c2cc-11de-8d13-0010c6dffd0f";
+		/*~~>*/String uuid = "8d4a4488-c2cc-11de-8d13-0010c6dffd0f";
 		List<ConceptDatatype> conceptDatatypes = conceptService.getAllConceptDatatypes(false);
 		assertEquals(resultSize, conceptDatatypes.size());
 		assertTrue(conceptDatatypes.contains(conceptService.getConceptDatatypeByUuid(uuid)));
@@ -589,7 +589,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getSetsContainingConcept_shouldGiveAnEmptyListIfNoMatchingConceptSetIsFound() {
-		String uuid = "0cbe2ed3-cd5f-4f46-9459-26127c9265ab";
+		/*~~>*/String uuid = "0cbe2ed3-cd5f-4f46-9459-26127c9265ab";
 		Concept concept = conceptService.getConceptByUuid(uuid);
 		List<ConceptSet> conceptSets = conceptService.getSetsContainingConcept(concept);
 		assertEquals(conceptSets, Collections.emptyList());
@@ -610,7 +610,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	@Test
 	public void getConcepts_shouldGiveAListOfConceptSearchResultForTheMatchingConcepts() {
 		Locale locale = new Locale("en", "GB");
-		String phrase = "CD4 COUNT";
+		/*~~>*/String phrase = "CD4 COUNT";
 		List<ConceptSearchResult> res = conceptService.getConcepts(phrase, locale, true);
 		assertEquals(res.get(0).getConceptName().getName(), phrase);
 	}
@@ -803,7 +803,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	@Test
 	public void findConceptAnswers_shouldReturnAListOfAllMatchingConceptSearchResults() {
 		Locale locale = new Locale("en", "GB");
-		String phrase = "CD4 COUNT";
+		/*~~>*/String phrase = "CD4 COUNT";
 		int conceptId = 5497;
 		List<ConceptSearchResult> concepts = conceptService.findConceptAnswers(phrase, locale,
 		    conceptService.getConcept(conceptId));
@@ -837,7 +837,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getCountOfDrugs_shouldReturnTheTotalNumberOfMatchingNumbers() {
-		String phrase = "Triomune-30";
+		/*~~>*/String phrase = "Triomune-30";
 		int conceptId = 792;
 		assertEquals(new Integer(1),
 		    conceptService.getCountOfDrugs(phrase, conceptService.getConcept(conceptId), true, true, true));
@@ -848,7 +848,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void saveConceptProposal_shouldReturnSavedConceptProposalObject() {
-		final String ORIGINAL_TEXT = "OriginalText";
+		final /*~~>*/String ORIGINAL_TEXT = "OriginalText";
 		ConceptProposal conceptProposal = new ConceptProposal();
 		conceptProposal.setOriginalText(ORIGINAL_TEXT);
 		List<ConceptProposal> existingConceptProposals = conceptService.getConceptProposals(ORIGINAL_TEXT);
@@ -866,7 +866,7 @@ public class ConceptServiceImplTest extends BaseContextSensitiveTest {
 		ConceptProposal conceptProposal = new ConceptProposal();
 		conceptProposal.setOriginalText("OriginalText");
 		ConceptProposal savedConceptProposal = conceptService.saveConceptProposal(conceptProposal);
-		final String ANOTHER_ORIGINAL_TEXT = "AnotherOriginalText";
+		final /*~~>*/String ANOTHER_ORIGINAL_TEXT = "AnotherOriginalText";
 		savedConceptProposal.setOriginalText(ANOTHER_ORIGINAL_TEXT);
 		ConceptProposal updatedConceptProposal = conceptService.saveConceptProposal(savedConceptProposal);
 		assertEquals(ANOTHER_ORIGINAL_TEXT, updatedConceptProposal.getOriginalText());

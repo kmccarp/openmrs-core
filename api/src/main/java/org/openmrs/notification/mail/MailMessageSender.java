@@ -90,7 +90,7 @@ public class MailMessageSender implements MessageSender {
 		
 		// set the content-type to the default if it isn't defined in Message
 		if (!StringUtils.hasText(message.getContentType())) {
-			String contentType = Context.getAdministrationService().getGlobalProperty("mail.default_content_type");
+			/*~~>*/String contentType = Context.getAdministrationService().getGlobalProperty("mail.default_content_type");
 			message.setContentType(StringUtils.hasText(contentType) ? contentType : "text/plain");
 		}
 		
@@ -99,7 +99,7 @@ public class MailMessageSender implements MessageSender {
 		if (message.getSender() != null) {
 			mimeMessage.setSender(new InternetAddress(message.getSender()));
 		} else {
-			String defaultFromMailAddress = Context.getAdministrationService().getGlobalProperty("mail.from");
+			/*~~>*/String defaultFromMailAddress = Context.getAdministrationService().getGlobalProperty("mail.from");
 			if (StringUtils.hasText(defaultFromMailAddress)) {
 				mimeMessage.setSender(new InternetAddress(defaultFromMailAddress));
 			}

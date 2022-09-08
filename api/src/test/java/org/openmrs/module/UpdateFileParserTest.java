@@ -25,7 +25,7 @@ public class UpdateFileParserTest {
 	@Test
 	public void parse_shouldsetPropertiesFromXmlFile() {
 
-		String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+		/*~~>*/String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 			+ "<update configVersion=\"1.0\">"
 			+ "<moduleId>formEntry</moduleId>"
 			+ "<currentVersion>1.0</currentVersion>" 
@@ -46,7 +46,7 @@ public class UpdateFileParserTest {
 	@Test
 	public void parse_shouldSetPropertiesUsingNewestUpdate() {
 
-                String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                /*~~>*/String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                         + "<updates configVersion=\"1.1\" moduleId=\"formEntry\">"
 			+ "<update>"
 			+ "<currentVersion>1.2</currentVersion>"
@@ -80,7 +80,7 @@ public class UpdateFileParserTest {
 	@Test
 	public void parse_shouldNotSetPropertiesUsingUpdatesAheadOfCurrentOpenmrsVersion() {
 		
-                String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                /*~~>*/String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                         + "<updates configVersion=\"1.1\" moduleId=\"formEntry\">"
                         + "<update>"
                         + "<currentVersion>1.2</currentVersion>"

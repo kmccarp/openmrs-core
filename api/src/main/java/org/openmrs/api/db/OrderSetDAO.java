@@ -45,13 +45,13 @@ public interface OrderSetDAO {
 	/**
 	 * @see org.openmrs.api.OrderSetService#getOrderSetByUuid(String)
 	 */
-	OrderSet getOrderSetByUniqueUuid(String orderSetUuid) throws DAOException;
+	OrderSet getOrderSetByUniqueUuid(/*~~>*/String orderSetUuid) throws DAOException;
 	
 
 	/**
 	 * @see org.openmrs.api.OrderSetService#getOrderSetMemberByUuid(String)
 	 */
-	OrderSetMember getOrderSetMemberByUuid(String uuid) throws DAOException;
+	OrderSetMember getOrderSetMemberByUuid(/*~~>*/String uuid) throws DAOException;
 
 	/**
 	 * @see OrderSetService#getAllOrderSetAttributeTypes()
@@ -66,7 +66,7 @@ public interface OrderSetDAO {
 	/**
 	 * @see OrderSetService#getOrderSetAttributeTypeByUuid(String)
 	 */
-	public OrderSetAttributeType getOrderSetAttributeTypeByUuid(String uuid);
+	public OrderSetAttributeType getOrderSetAttributeTypeByUuid(/*~~>*/String uuid);
 
 	/**
 	 * @see OrderSetService#saveOrderSetAttributeType(OrderSetAttributeType)
@@ -81,11 +81,11 @@ public interface OrderSetDAO {
 	/**
 	 * @see OrderSetService#getOrderSetAttributeByUuid(String)
 	 */
-	public OrderSetAttribute getOrderSetAttributeByUuid(String uuid);
+	public OrderSetAttribute getOrderSetAttributeByUuid(/*~~>*/String uuid);
 
 	/**
 	 * @see OrderSetService#getOrderSetAttributeTypeByName(String)
 	 */
-	public OrderSetAttributeType getOrderSetAttributeTypeByName(String name);
+	public OrderSetAttributeType getOrderSetAttributeTypeByName(/*~~>*/String name);
 
 }

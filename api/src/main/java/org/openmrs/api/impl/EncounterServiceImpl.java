@@ -78,7 +78,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Encounter> getEncountersByPatient(String query, boolean includeVoided) throws APIException {
+	public List<Encounter> getEncountersByPatient(/*~~>*/String query, boolean includeVoided) throws APIException {
 		if (query == null) {
 			throw new IllegalArgumentException("The 'query' parameter is required and cannot be null");
 		}
@@ -176,7 +176,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 		}
 		
 		// save the Obs
-		String changeMessage = Context.getMessageSourceService().getMessage("Obs.void.reason.default");
+		/*~~>*/String changeMessage = Context.getMessageSourceService().getMessage("Obs.void.reason.default");
 		ObsService os = Context.getObsService();
 		List<Obs> obsToRemove = new ArrayList<>();
 		List<Obs> obsToAdd = new ArrayList<>();
@@ -249,9 +249,9 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 		boolean isNewEncounter = false;
 		if (encounter.getEncounterId() == null) {
 			isNewEncounter = true;
-			Context.requirePrivilege(PrivilegeConstants.ADD_ENCOUNTERS);
+			Context.requirePrivilege(/*~~>*/PrivilegeConstants.ADD_ENCOUNTERS);
 		} else {
-			Context.requirePrivilege(PrivilegeConstants.EDIT_ENCOUNTERS);
+			Context.requirePrivilege(/*~~>*/PrivilegeConstants.EDIT_ENCOUNTERS);
 		}
 		return isNewEncounter;
 	}
@@ -326,7 +326,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Encounter> getEncountersByPatient(String query) throws APIException {
+	public List<Encounter> getEncountersByPatient(/*~~>*/String query) throws APIException {
 		
 		return Context.getEncounterService().filterEncountersByViewPermissions(getEncountersByPatient(query, false), null);
 	}
@@ -349,7 +349,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Encounter> getEncountersByPatientIdentifier(String identifier) throws APIException {
+	public List<Encounter> getEncountersByPatientIdentifier(/*~~>*/String identifier) throws APIException {
 		if (identifier == null) {
 			throw new IllegalArgumentException("The 'identifier' parameter is required and cannot be null");
 		}
@@ -397,7 +397,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 * @see org.openmrs.api.EncounterService#voidEncounter(org.openmrs.Encounter, java.lang.String)
 	 */
 	@Override
-	public Encounter voidEncounter(Encounter encounter, String reason) {
+	public Encounter voidEncounter(Encounter encounter, /*~~>*/String reason) {
 		
 		// if authenticated user is not supposed to edit encounter of certain type
 		if (!canEditEncounter(encounter, null)) {
@@ -447,7 +447,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 			        .getEditPrivilege() });
 		}
 		
-		String voidReason = encounter.getVoidReason();
+		/*~~>*/String voidReason = encounter.getVoidReason();
 		if (voidReason == null) {
 			voidReason = "";
 		}
@@ -543,7 +543,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public EncounterType getEncounterType(String name) throws APIException {
+	public EncounterType getEncounterType(/*~~>*/String name) throws APIException {
 		return dao.getEncounterType(name);
 	}
 	
@@ -570,7 +570,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<EncounterType> findEncounterTypes(String name) throws APIException {
+	public List<EncounterType> findEncounterTypes(/*~~>*/String name) throws APIException {
 		return dao.findEncounterTypes(name);
 	}
 	
@@ -578,7 +578,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 * @see org.openmrs.api.EncounterService#retireEncounterType(EncounterType, String)
 	 */
 	@Override
-	public EncounterType retireEncounterType(EncounterType encounterType, String reason) throws APIException {
+	public EncounterType retireEncounterType(EncounterType encounterType, /*~~>*/String reason) throws APIException {
 		if (reason == null) {
 			throw new IllegalArgumentException("The 'reason' for retiring is required");
 		}
@@ -618,7 +618,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Encounter getEncounterByUuid(String uuid) throws APIException {
+	public Encounter getEncounterByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getEncounterByUuid(uuid);
 	}
 	
@@ -627,7 +627,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public EncounterType getEncounterTypeByUuid(String uuid) throws APIException {
+	public EncounterType getEncounterTypeByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getEncounterTypeByUuid(uuid);
 	}
 	
@@ -646,7 +646,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Encounter> getEncounters(String query, Integer start, Integer length, boolean includeVoided)
+	public List<Encounter> getEncounters(/*~~>*/String query, Integer start, Integer length, boolean includeVoided)
 	    throws APIException {
 		return Context.getEncounterService().filterEncountersByViewPermissions(
 		    dao.getEncounters(query, null, start, length, includeVoided), null);
@@ -658,7 +658,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Encounter> getEncounters(String query, Integer patientId, Integer start, Integer length,
+	public List<Encounter> getEncounters(/*~~>*/String query, Integer patientId, Integer start, Integer length,
 	                                     boolean includeVoided) throws APIException {
 		return Context.getEncounterService().filterEncountersByViewPermissions(
 		    dao.getEncounters(query, patientId, start, length, includeVoided), null);
@@ -669,7 +669,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Integer getCountOfEncounters(String query, boolean includeVoided) {
+	public Integer getCountOfEncounters(/*~~>*/String query, boolean includeVoided) {
 		return OpenmrsUtil.convertToInteger(dao.getCountOfEncounters(query, null, includeVoided));
 	}
 	
@@ -697,8 +697,8 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	@Transactional(readOnly = true)
 	public EncounterVisitHandler getActiveEncounterVisitHandler() throws APIException {
 		
-		String handlerGlobalValue = Context.getAdministrationService().getGlobalProperty(
-		    OpenmrsConstants.GP_VISIT_ASSIGNMENT_HANDLER, null);
+		/*~~>*/String handlerGlobalValue = Context.getAdministrationService().getGlobalProperty(
+		    /*~~>*/OpenmrsConstants.GP_VISIT_ASSIGNMENT_HANDLER, null);
 		
 		if (StringUtils.isBlank(handlerGlobalValue)) {
 			return null;
@@ -707,10 +707,10 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 		EncounterVisitHandler handler;
 		
 		// convention = [NamePrefix:beanName] or [className]
-		String namePrefix = OpenmrsConstants.REGISTERED_COMPONENT_NAME_PREFIX;
+		/*~~>*/String namePrefix = /*~~>*/OpenmrsConstants.REGISTERED_COMPONENT_NAME_PREFIX;
 		
 		if (handlerGlobalValue.startsWith(namePrefix)) {
-			String beanName = handlerGlobalValue.substring(namePrefix.length());
+			/*~~>*/String beanName = handlerGlobalValue.substring(namePrefix.length());
 			
 			handler = Context.getRegisteredComponent(beanName, EncounterVisitHandler.class);
 		} else {
@@ -773,7 +773,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public EncounterRole getEncounterRoleByUuid(String uuid) throws APIException {
+	public EncounterRole getEncounterRoleByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getEncounterRoleByUuid(uuid);
 	}
 	
@@ -781,7 +781,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 * @see org.openmrs.api.EncounterService#getEncounterRoleByName(String)
 	 */
 	@Override
-	public EncounterRole getEncounterRoleByName(String name) {
+	public EncounterRole getEncounterRoleByName(/*~~>*/String name) {
 		return dao.getEncounterRoleByName(name);
 	}
 	
@@ -789,7 +789,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 * @see org.openmrs.api.EncounterService#retireEncounterRole(org.openmrs.EncounterRole, String)
 	 */
 	@Override
-	public EncounterRole retireEncounterRole(EncounterRole encounterRole, String reason) throws APIException {
+	public EncounterRole retireEncounterRole(EncounterRole encounterRole, /*~~>*/String reason) throws APIException {
 		if (reason == null) {
 			throw new IllegalArgumentException("The 'reason' for retiring is required");
 		}
@@ -820,7 +820,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Encounter> getEncountersByVisitsAndPatient(Patient patient, boolean includeVoided, String query,
+	public List<Encounter> getEncountersByVisitsAndPatient(Patient patient, boolean includeVoided, /*~~>*/String query,
 	                                                       Integer start, Integer length) throws APIException {
 		return Context.getEncounterService().filterEncountersByViewPermissions(
 		    dao.getEncountersByVisitsAndPatient(patient, includeVoided, query, start, length), null);
@@ -832,7 +832,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Integer getEncountersByVisitsAndPatientCount(Patient patient, boolean includeVoided, String query)
+	public Integer getEncountersByVisitsAndPatientCount(Patient patient, boolean includeVoided, /*~~>*/String query)
 	    throws APIException {
 		return dao.getEncountersByVisitsAndPatientCount(patient, includeVoided, query);
 	}
@@ -961,8 +961,8 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	@Override
 	@Transactional(readOnly = true)
 	public void checkIfEncounterTypesAreLocked() {
-		String locked = Context.getAdministrationService().getGlobalProperty(
-		    OpenmrsConstants.GLOBAL_PROPERTY_ENCOUNTER_TYPES_LOCKED, "false");
+		/*~~>*/String locked = Context.getAdministrationService().getGlobalProperty(
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ENCOUNTER_TYPES_LOCKED, "false");
 		if (Boolean.valueOf(locked)) {
 			throw new EncounterTypeLockedException();
 		}
@@ -973,7 +973,7 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	 */
 	
 	@Override
-	public List<EncounterRole> getEncounterRolesByName(String name) {
+	public List<EncounterRole> getEncounterRolesByName(/*~~>*/String name) {
 		return dao.getEncounterRolesByName(name);
 	}
 	

@@ -34,8 +34,8 @@ public class MigrateDrugOrderFrequencyToCodedOrderFrequencyChangeset implements 
 		JdbcConnection connection = (JdbcConnection) database.getConnection();
 		
 		try {
-			Set<String> uniqueFrequencies = DatabaseUtil.getUniqueNonNullColumnValues("frequency_text", "drug_order",
-			    String.class, connection.getUnderlyingConnection());
+			Set</*~~>*/String> uniqueFrequencies = DatabaseUtil.getUniqueNonNullColumnValues("frequency_text", "drug_order",
+			    /*~~>*/String.class, connection.getUnderlyingConnection());
 			migrateFrequenciesToCodedValue(connection, uniqueFrequencies);
 		}
 		catch (Exception e) {
@@ -43,7 +43,7 @@ public class MigrateDrugOrderFrequencyToCodedOrderFrequencyChangeset implements 
 		}
 	}
 	
-	private void migrateFrequenciesToCodedValue(JdbcConnection connection, Set<String> uniqueFrequencies)
+	private void migrateFrequenciesToCodedValue(JdbcConnection connection, Set</*~~>*/String> uniqueFrequencies)
 	        throws CustomChangeException, SQLException, DatabaseException {
 		PreparedStatement updateDrugOrderStatement = null;
 		Boolean autoCommit = null;
@@ -58,7 +58,7 @@ public class MigrateDrugOrderFrequencyToCodedOrderFrequencyChangeset implements 
 			updateDrugOrderStatement.executeUpdate();
 			updateDrugOrderStatement.clearParameters();
 			
-			for (String frequency : uniqueFrequencies) {
+			for (/*~~>*/String frequency : uniqueFrequencies) {
 				if (StringUtils.isBlank(frequency)) {
 					updateDrugOrderStatement.setNull(1, Types.INTEGER);
 				} else {
@@ -99,7 +99,7 @@ public class MigrateDrugOrderFrequencyToCodedOrderFrequencyChangeset implements 
 	}
 	
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished migrating drug order frequencies to coded order frequencies";
 	}
 	

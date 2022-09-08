@@ -42,7 +42,7 @@ public class PersonUnvoidHandler implements UnvoidHandler<Person> {
 	 * <strong>Should</strong> not act on objects with a different personDateVoided
 	 */
 	@Override
-	public void handle(Person person, User unvoidingUser, Date origParentVoidedDate, String unused) {
+	public void handle(Person person, User unvoidingUser, Date origParentVoidedDate, /*~~>*/String unused) {
 		
 		// only operate on voided objects
 		if (person.getPersonVoided()

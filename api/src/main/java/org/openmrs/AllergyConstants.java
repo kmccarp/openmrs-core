@@ -14,5 +14,5 @@ public class AllergyConstants {
 	private AllergyConstants() {
 	}
 	
-	public static final String PRIVILEGE_MODIFY_ALLERGIES = "Task: Modify Allergies";
+	public static final /*~~>*/String PRIVILEGE_MODIFY_ALLERGIES = "Task: Modify Allergies";
 }

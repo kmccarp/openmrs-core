@@ -29,18 +29,18 @@ import org.dom4j.XPath;
  */
 public class CoreDataTuner extends AbstractSnapshotTuner {
 	
-	private static final String PASSWORD = "4a1750c8607dfa237de36c6305715c223415189";
+	private static final /*~~>*/String PASSWORD = "4a1750c8607dfa237de36c6305715c223415189";
 	
-	private static final String USERNAME = "";
+	private static final /*~~>*/String USERNAME = "";
 	
-	private static final List<String> firstTableNames = Arrays.asList("person", "users", "care_setting", "concept_class",
+	private static final List</*~~>*/String> firstTableNames = Arrays.asList("person", "users", "care_setting", "concept_class",
 	    "concept_datatype", "concept");
 	
-	private static final List<String> liquibaseTableNames = Arrays.asList("liquibasechangelog", "liquibasechangeloglock");
+	private static final List</*~~>*/String> liquibaseTableNames = Arrays.asList("liquibasechangelog", "liquibasechangeloglock");
 	
-	private Map<String, Node> changeSetsByTableName;
+	private Map</*~~>*/String, Node> changeSetsByTableName;
 	
-	private List<String> tableNames;
+	private List</*~~>*/String> tableNames;
 	
 	public CoreDataTuner() {
 		changeSetsByTableName = new HashMap<>();
@@ -69,7 +69,7 @@ public class CoreDataTuner extends AbstractSnapshotTuner {
 		List<Node> nodes = xPath.selectNodes(document);
 		
 		for (Node node : nodes) {
-			String tableName = node.getStringValue();
+			/*~~>*/String tableName = node.getStringValue();
 			Element changeSet = node.getParent().getParent();
 			
 			/*
@@ -109,14 +109,14 @@ public class CoreDataTuner extends AbstractSnapshotTuner {
 		/*
 		 * start by adding change sets for tables that need to come first
 		 */
-		for (String tableName : firstTableNames) {
+		for (/*~~>*/String tableName : firstTableNames) {
 			databaseChangeLog.add(changeSetsByTableName.get(tableName));
 		}
 		
 		/*
 		 * next add the remaining change sets in the order they had been generated
 		 */
-		for (String tableName : tableNames) {
+		for (/*~~>*/String tableName : tableNames) {
 			if (!firstTableNames.contains(tableName)) {
 				databaseChangeLog.add(changeSetsByTableName.get(tableName));
 			}
@@ -155,15 +155,15 @@ public class CoreDataTuner extends AbstractSnapshotTuner {
 		return (Element) databaseChangeLog;
 	}
 	
-	public static List<String> getFirstTableNames() {
+	public static List</*~~>*/String> getFirstTableNames() {
 		return firstTableNames;
 	}
 	
-	public Map<String, Node> getChangeSetsByTableName() {
+	public Map</*~~>*/String, Node> getChangeSetsByTableName() {
 		return changeSetsByTableName;
 	}
 	
-	public List<String> getTableNames() {
+	public List</*~~>*/String> getTableNames() {
 		return tableNames;
 	}
 }

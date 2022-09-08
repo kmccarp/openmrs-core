@@ -73,7 +73,7 @@ public class OpenmrsTestsTest {
 				// make sure every "test" method (determined by having 
 				// the @Test annotation) starts with "testShould"
 				if (method.getAnnotation(Test.class) != null || method.getAnnotation(org.junit.Test.class) != null) {
-					String methodName = method.getName();
+					/*~~>*/String methodName = method.getName();
 					
 					boolean passes = methodName.startsWith("should") || methodName.contains("_should");
 					assertTrue(passes, currentClass.getName() + "#" + methodName + " is supposed to either 1) start with 'should' or 2) contain '_should' but it doesn't");
@@ -94,7 +94,7 @@ public class OpenmrsTestsTest {
 		// loop over all methods in all test classes
 		for (Class<?> currentClass : getTestClasses()) {
 			for (Method method : currentClass.getMethods()) {
-				String methodName = method.getName();
+				/*~~>*/String methodName = method.getName();
 				
 				// make sure every should___ method has an @Test annotation
 				if (methodName.startsWith("should") || methodName.contains("_should")) {
@@ -174,7 +174,7 @@ public class OpenmrsTestsTest {
 	 * 
 	 * @return list of TestCase classes in org.openmrs.test
 	 */
-	private List<Class<?>> getClasses(String classNameRegex) {
+	private List<Class<?>> getClasses(/*~~>*/String classNameRegex) {
 		if (testClasses != null)
 			return testClasses;
 		
@@ -219,10 +219,10 @@ public class OpenmrsTestsTest {
 			// if the user only wants classes ending in Test or they want all of them
 			if (pattern.matcher(currentFile.getName()).matches()) {
 				// strip off the extension
-				String className = currentFile.getAbsolutePath().replace(".class", "");
+				/*~~>*/String className = currentFile.getAbsolutePath().replace(".class", "");
 				
 				// switch to dot separation
-				className = className.replace(File.separator, ".");
+				className = className.replace(/*~~>*/File.separator, ".");
 				
 				// strip out the beginning (/home/ben/workspace...) up to org.openmrs.
 				className = className.substring(className.lastIndexOf("org.openmrs."));

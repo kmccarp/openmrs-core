@@ -39,6 +39,6 @@ public interface SerializableComplexObsHandler extends ComplexObsHandler {
 	 * @param data the data to serialize
 	 * @return the serialized form data
 	 */
-	public String serializeFormData(String data);
+	public /*~~>*/String serializeFormData(/*~~>*/String data);
 	
 }

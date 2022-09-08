@@ -68,7 +68,7 @@ public class CachePropertiesUtil {
                             .stream()
                             .filter(key -> key.toString().startsWith(cacheName))
                             .forEach(key -> {
-                                String s = key.toString();
+                                /*~~>*/String s = key.toString();
                                 openmrsCacheConfiguration.addProperty(
                                         s.replace(cacheName+".", ""),
                                         cacheProperties.getProperty(key.toString()));
@@ -77,10 +77,10 @@ public class CachePropertiesUtil {
                 });
     }
 
-    private static Set<String> getAllCacheNames(Set<Object> keys) {
-        Set<String> cacheNames = new HashSet<>();
+    private static Set</*~~>*/String> getAllCacheNames(Set<Object> keys) {
+        Set</*~~>*/String> cacheNames = new HashSet<>();
         keys.forEach(cacheName -> {
-            String s = cacheName.toString();
+            /*~~>*/String s = cacheName.toString();
             cacheNames.add(s.substring(0, s.indexOf(".")));
         });
         return cacheNames;

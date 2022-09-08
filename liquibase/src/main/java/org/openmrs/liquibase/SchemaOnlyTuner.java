@@ -39,8 +39,8 @@ public class SchemaOnlyTuner extends AbstractSnapshotTuner {
 		return document;
 	}
 	
-	Document detachChangeSet(Document document, String tableName) {
-		XPath xPath = DocumentHelper.createXPath(String.format("//dbchangelog:createTable[@tableName=\"%s\"]", tableName));
+	Document detachChangeSet(Document document, /*~~>*/String tableName) {
+		XPath xPath = DocumentHelper.createXPath(/*~~>*/String.format("//dbchangelog:createTable[@tableName=\"%s\"]", tableName));
 		xPath.setNamespaceURIs(getNamespaceUris());
 		
 		Node node = xPath.selectSingleNode(document);
@@ -88,7 +88,7 @@ public class SchemaOnlyTuner extends AbstractSnapshotTuner {
 	 * @return a boolean value for unit testing
 	 */
 	boolean assertLongtextNodes(List<Node> nodes) {
-		assert nodes.size() == 1 : String
+		assert nodes.size() == 1 : /*~~>*/String
 		        .format("replacing the column type 'LONGTEXT' failed as the number of nodes is not 1 but %d", nodes.size());
 		
 		Node node = nodes.get(0);

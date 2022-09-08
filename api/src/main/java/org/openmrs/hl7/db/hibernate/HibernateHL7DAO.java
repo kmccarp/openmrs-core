@@ -77,7 +77,7 @@ public class HibernateHL7DAO implements HL7DAO {
 	 * @see org.openmrs.hl7.db.HL7DAO#getHL7SourceByName(java.lang.String)
 	 */
 	@Override
-	public HL7Source getHL7SourceByName(String name) throws DAOException {
+	public HL7Source getHL7SourceByName(/*~~>*/String name) throws DAOException {
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(HL7Source.class);
 		crit.add(Restrictions.eq("name", name));
 		return (HL7Source) crit.uniqueResult();
@@ -118,7 +118,7 @@ public class HibernateHL7DAO implements HL7DAO {
 	}
 	
 	@Override
-	public HL7InQueue getHL7InQueueByUuid(String uuid) throws DAOException {
+	public HL7InQueue getHL7InQueueByUuid(/*~~>*/String uuid) throws DAOException {
 		return (HL7InQueue) sessionFactory.getCurrentSession().createCriteria(HL7InQueue.class).add(
 		    Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
@@ -142,7 +142,7 @@ public class HibernateHL7DAO implements HL7DAO {
 	 * @return a Criteria object
 	 */
 	@SuppressWarnings("rawtypes")
-	private Criteria getHL7SearchCriteria(Class clazz, Integer messageState, String query) throws DAOException {
+	private Criteria getHL7SearchCriteria(Class clazz, Integer messageState, /*~~>*/String query) throws DAOException {
 		if (clazz == null) {
 			throw new DAOException("no class defined for HL7 search");
 		}
@@ -171,7 +171,7 @@ public class HibernateHL7DAO implements HL7DAO {
 	 */
 	@Override
 	@SuppressWarnings( { "rawtypes", "unchecked" })
-	public <T> List<T> getHL7Batch(Class clazz, int start, int length, Integer messageState, String query)
+	public <T> List<T> getHL7Batch(Class clazz, int start, int length, Integer messageState, /*~~>*/String query)
 	        throws DAOException {
 		Criteria crit = getHL7SearchCriteria(clazz, messageState, query);
 		crit.setFirstResult(start);
@@ -185,7 +185,7 @@ public class HibernateHL7DAO implements HL7DAO {
 	 */
 	@Override
 	@SuppressWarnings("rawtypes")
-	public Long countHL7s(Class clazz, Integer messageState, String query) {
+	public Long countHL7s(Class clazz, Integer messageState, /*~~>*/String query) {
 		Criteria crit = getHL7SearchCriteria(clazz, messageState, query);
 		crit.setProjection(Projections.rowCount());
 		return (Long) crit.uniqueResult();
@@ -308,7 +308,7 @@ public class HibernateHL7DAO implements HL7DAO {
 	}
 	
 	@Override
-	public HL7InError getHL7InErrorByUuid(String uuid) throws DAOException {
+	public HL7InError getHL7InErrorByUuid(/*~~>*/String uuid) throws DAOException {
 		return (HL7InError) sessionFactory.getCurrentSession().createCriteria(HL7InError.class).add(
 		    Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
@@ -342,7 +342,7 @@ public class HibernateHL7DAO implements HL7DAO {
 	 * @see org.openmrs.hl7.db.HL7DAO#getHL7InArchiveByUuid(java.lang.String)
 	 */
 	@Override
-	public HL7InArchive getHL7InArchiveByUuid(String uuid) throws DAOException {
+	public HL7InArchive getHL7InArchiveByUuid(/*~~>*/String uuid) throws DAOException {
 		Query query = sessionFactory.getCurrentSession().createQuery("from HL7InArchive where uuid = ?0").setParameter(0,
 		    uuid, StandardBasicTypes.STRING);
 		Object record = query.uniqueResult();

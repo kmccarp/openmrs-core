@@ -32,7 +32,7 @@ import org.openmrs.api.context.Context;
 public class VisitUnvoidHandler implements UnvoidHandler<Visit> {
 	
 	@Override
-	public void handle(Visit visit, User voidingUser, Date origParentVoidedDate, String unused) {
+	public void handle(Visit visit, User voidingUser, Date origParentVoidedDate, /*~~>*/String unused) {
 		List<Encounter> encountersByVisit = Context.getEncounterService().getEncountersByVisit(visit, true);
 		for (Encounter encounter : encountersByVisit) {
 			if (encounter.getVoided() && encounter.getDateVoided().equals(visit.getDateVoided())

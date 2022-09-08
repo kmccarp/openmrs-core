@@ -42,9 +42,9 @@ public class OrderSetServiceTest extends BaseContextSensitiveTest {
 	
 	protected ConceptService conceptService;
 	
-	protected static final String ORDER_SET = "org/openmrs/api/include/OrderSetServiceTest-general.xml";
+	protected static final /*~~>*/String ORDER_SET = "org/openmrs/api/include/OrderSetServiceTest-general.xml";
 	
-	protected static final String ORDER_SET_ATTRIBUTES = "org/openmrs/api/include/OrderSetServiceTest-attributes.xml";
+	protected static final /*~~>*/String ORDER_SET_ATTRIBUTES = "org/openmrs/api/include/OrderSetServiceTest-attributes.xml";
 	
 	
 	/**
@@ -305,7 +305,7 @@ public class OrderSetServiceTest extends BaseContextSensitiveTest {
 
 	@Test
 	public void shouldFetchOrderSetMemberByUuid() {
-		String orderSetUuid = "2d3fb1d0-ae06-22e3-a5e2-0140211c2002";
+		/*~~>*/String orderSetUuid = "2d3fb1d0-ae06-22e3-a5e2-0140211c2002";
 		executeDataSet(ORDER_SET);
 
 		OrderSetMember orderSetMember = orderSetService.getOrderSetMemberByUuid(orderSetUuid);

@@ -39,7 +39,7 @@ public class ValidationException extends APIException {
 	 * 
 	 * @param message helpful message string for the end user
 	 */
-	public ValidationException(String message) {
+	public ValidationException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -50,7 +50,7 @@ public class ValidationException extends APIException {
 	 * @param message helpful message string for the end user
 	 * @param cause the parent exception cause that this ValidationException is wrapping around
 	 */
-	public ValidationException(String message, Throwable cause) {
+	public ValidationException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	
@@ -80,7 +80,7 @@ public class ValidationException extends APIException {
 	 * @param errors
 	 * @since 1.11
 	 */
-	public ValidationException(String message, Errors errors) {
+	public ValidationException(/*~~>*/String message, Errors errors) {
 		super(message);
 		this.errors = errors;
 	}

@@ -33,13 +33,13 @@ public class FilterUtil {
 	
 	private static final Logger log = LoggerFactory.getLogger(FilterUtil.class);
 	
-	private static final String DATABASE_CLOSING_ERROR = "Error while closing the database";
+	private static final /*~~>*/String DATABASE_CLOSING_ERROR = "Error while closing the database";
 	
-	public static final String LOCALE_ATTRIBUTE = "locale";
+	public static final /*~~>*/String LOCALE_ATTRIBUTE = "locale";
 	
-	public static final String REMEMBER_ATTRIBUTE = "remember";
+	public static final /*~~>*/String REMEMBER_ATTRIBUTE = "remember";
 	
-	public static final String ADMIN_USERNAME = "admin";
+	public static final /*~~>*/String ADMIN_USERNAME = "admin";
 	
 	/**
 	 * Tries to retrieve location parameter. First this method makes an attempt to load locale
@@ -51,8 +51,8 @@ public class FilterUtil {
 	 *            restored
 	 * @return string with stored location parameter or default OpenMRS locale property's value
 	 */
-	public static String restoreLocale(String username) {
-		String currentLocale = null;
+	public static /*~~>*/String restoreLocale(/*~~>*/String username) {
+		/*~~>*/String currentLocale = null;
 		if (StringUtils.isNotBlank(username)) {
 			PreparedStatement statement = null;
 			Connection connection = null;
@@ -64,10 +64,10 @@ public class FilterUtil {
 				Integer userId = getUserIdByName(username, connection);
 				
 				if (userId != null) {
-					String select = "select property_value from user_property where user_id = ? and property = ?";
+					/*~~>*/String select = "select property_value from user_property where user_id = ? and property = ?";
 					statement = connection.prepareStatement(select);
 					statement.setInt(1, userId);
-					statement.setString(2, OpenmrsConstants.USER_PROPERTY_DEFAULT_LOCALE);
+					statement.setString(2, /*~~>*/OpenmrsConstants.USER_PROPERTY_DEFAULT_LOCALE);
 					if (statement.execute()) {
 						results = statement.getResultSet();
 						if (results.next()) {
@@ -115,7 +115,7 @@ public class FilterUtil {
 		}
 		// if locale is still null we just simply using default locale value (i.e. en_GB)
 		if (currentLocale == null) {
-			currentLocale = OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE_DEFAULT_VALUE;
+			currentLocale = /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE_DEFAULT_VALUE;
 		}
 		
 		return currentLocale;
@@ -128,17 +128,17 @@ public class FilterUtil {
 	 * @param connection (optional) the jdbc connection to be used for extracting default locale
 	 * @return the string that contains system default locale or null
 	 */
-	public static String readSystemDefaultLocale(Connection connection) {
-		String systemDefaultLocale = null;
+	public static /*~~>*/String readSystemDefaultLocale(Connection connection) {
+		/*~~>*/String systemDefaultLocale = null;
 		boolean needToCloseConection = false;
 		try {
 			if (connection == null) {
 				connection = DatabaseUpdater.getConnection();
 				needToCloseConection = true;
 			}
-			String select = "select property_value from global_property where property = ?";
+			/*~~>*/String select = "select property_value from global_property where property = ?";
 			PreparedStatement statement = connection.prepareStatement(select);
-			statement.setString(1, OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE);
+			statement.setString(1, /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE);
 			if (statement.execute()) {
 				ResultSet results = statement.getResultSet();
 				if (results.next()) {
@@ -168,7 +168,7 @@ public class FilterUtil {
 	 * @param locale the selected by user language
 	 * @return true if locale was stored successfully
 	 */
-	public static boolean storeLocale(String locale) {
+	public static boolean storeLocale(/*~~>*/String locale) {
 		if (StringUtils.isNotBlank(locale)) {
 			
 			Connection connection = null;
@@ -181,7 +181,7 @@ public class FilterUtil {
 				
 				// first we are saving locale as administrative user's property
 				if (userId != null) {
-					String insert = "insert into user_property (user_id, property, property_value) values (?, 'defaultLocale', ?)";
+					/*~~>*/String insert = "insert into user_property (user_id, property, property_value) values (?, 'defaultLocale', ?)";
 					PreparedStatement statement = null;
 					try {
 						statement = connection.prepareStatement(insert);
@@ -205,12 +205,12 @@ public class FilterUtil {
 				}
 				
 				// and the second step is to save locale as system default locale global property
-				String update = "update global_property set property_value = ? where property = ? ";
+				/*~~>*/String update = "update global_property set property_value = ? where property = ? ";
 				PreparedStatement statement = null;
 				try {
 					statement = connection.prepareStatement(update);
 					statement.setString(1, locale);
-					statement.setString(2, OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE);
+					statement.setString(2, /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE);
 					if (statement.executeUpdate() != 1) {
 						log.warn("Unable to set system default locale property.");
 					}
@@ -254,9 +254,9 @@ public class FilterUtil {
 	 * @return not null id of given user in case of success or null otherwise
 	 * @throws SQLException
 	 */
-	public static Integer getUserIdByName(String userNameOrSystemId, Connection connection) throws SQLException {
+	public static Integer getUserIdByName(/*~~>*/String userNameOrSystemId, Connection connection) throws SQLException {
 		
-		String select = "select user_id from users where system_id = ? or username = ?";
+		/*~~>*/String select = "select user_id from users where system_id = ? or username = ?";
 		PreparedStatement statement = connection.prepareStatement(select);
 		statement.setString(1, userNameOrSystemId);
 		statement.setString(2, userNameOrSystemId);
@@ -278,8 +278,8 @@ public class FilterUtil {
 	 * @param globalPropertyName the name of the global property
 	 * @return the global property value
 	 */
-	public static String getGlobalPropertyValue(String globalPropertyName) {
-		String propertyValue = null;
+	public static /*~~>*/String getGlobalPropertyValue(/*~~>*/String globalPropertyName) {
+		/*~~>*/String propertyValue = null;
 		Connection connection = null;
 		
 		try {

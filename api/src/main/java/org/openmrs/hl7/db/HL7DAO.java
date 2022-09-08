@@ -41,7 +41,7 @@ public interface HL7DAO {
 	/**
 	 * @see org.openmrs.hl7.HL7Service#getHL7SourceByName(String)
 	 */
-	public HL7Source getHL7SourceByName(String name) throws DAOException;
+	public HL7Source getHL7SourceByName(/*~~>*/String name) throws DAOException;
 	
 	/**
 	 * @see org.openmrs.hl7.HL7Service#getAllHL7Sources()
@@ -68,7 +68,7 @@ public interface HL7DAO {
 	/**
 	 * @see HL7Service#getHL7InQueueByUuid(String)
 	 */
-	public HL7InQueue getHL7InQueueByUuid(String uuid) throws DAOException;
+	public HL7InQueue getHL7InQueueByUuid(/*~~>*/String uuid) throws DAOException;
 	
 	/**
 	 * @see org.openmrs.hl7.HL7Service#getAllHL7InQueues()
@@ -96,7 +96,7 @@ public interface HL7DAO {
 	 * @return list of hl7s
 	 */
 	@SuppressWarnings("rawtypes")
-	public <T> List<T> getHL7Batch(Class clazz, int start, int length, Integer messageState, String query);
+	public <T> List<T> getHL7Batch(Class clazz, int start, int length, Integer messageState, /*~~>*/String query);
 	
 	/**
 	 * Returns the amount of HL7 items in the database
@@ -107,7 +107,7 @@ public interface HL7DAO {
 	 * @return count of HL7 items
 	 */
 	@SuppressWarnings("rawtypes")
-	public Long countHL7s(Class clazz, Integer messageState, String query);
+	public Long countHL7s(Class clazz, Integer messageState, /*~~>*/String query);
 	
 	/* HL7InArchive */
 
@@ -124,7 +124,7 @@ public interface HL7DAO {
 	/**
 	 * @see org.openmrs.hl7.HL7Service#getHL7InArchiveByUuid(String)
 	 */
-	public HL7InArchive getHL7InArchiveByUuid(String uuid) throws DAOException;
+	public HL7InArchive getHL7InArchiveByUuid(/*~~>*/String uuid) throws DAOException;
 	
 	/**
 	 * @see org.openmrs.hl7.HL7Service#getHL7InArchiveByState(Integer state)
@@ -174,7 +174,7 @@ public interface HL7DAO {
 	/**
 	 * @see HL7Service#getHL7InErrorByUuid(String)
 	 */
-	public HL7InError getHL7InErrorByUuid(String uuid) throws DAOException;
+	public HL7InError getHL7InErrorByUuid(/*~~>*/String uuid) throws DAOException;
 	
 	/**
 	 * @see org.openmrs.hl7.HL7Service#getAllHL7InErrors()

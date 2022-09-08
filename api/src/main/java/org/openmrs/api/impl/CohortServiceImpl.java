@@ -53,9 +53,9 @@ public class CohortServiceImpl extends BaseOpenmrsService implements CohortServi
 	@Override
 	public Cohort saveCohort(Cohort cohort) throws APIException {
 		if (cohort.getCohortId() == null) {
-			Context.requirePrivilege(PrivilegeConstants.ADD_COHORTS);
+			Context.requirePrivilege(/*~~>*/PrivilegeConstants.ADD_COHORTS);
 		} else {
-			Context.requirePrivilege(PrivilegeConstants.EDIT_COHORTS);
+			Context.requirePrivilege(/*~~>*/PrivilegeConstants.EDIT_COHORTS);
 		}
 		if (cohort.getName() == null) {
 			throw new APIException("Cohort.save.nameRequired", (Object[]) null);
@@ -83,7 +83,7 @@ public class CohortServiceImpl extends BaseOpenmrsService implements CohortServi
 	 * @see org.openmrs.api.CohortService#voidCohort(org.openmrs.Cohort, java.lang.String)
 	 */
 	@Override
-	public Cohort voidCohort(Cohort cohort, String reason) {
+	public Cohort voidCohort(Cohort cohort, /*~~>*/String reason) {
 		// other setters done by the save handlers
 		return Context.getCohortService().saveCohort(cohort);
 	}
@@ -93,7 +93,7 @@ public class CohortServiceImpl extends BaseOpenmrsService implements CohortServi
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Cohort getCohortByUuid(String uuid) {
+	public Cohort getCohortByUuid(/*~~>*/String uuid) {
 		return dao.getCohortByUuid(uuid);
 	}
 	
@@ -102,7 +102,7 @@ public class CohortServiceImpl extends BaseOpenmrsService implements CohortServi
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public CohortMembership getCohortMembershipByUuid(String uuid) {
+	public CohortMembership getCohortMembershipByUuid(/*~~>*/String uuid) {
 		return dao.getCohortMembershipByUuid(uuid);
 	}
 	
@@ -154,7 +154,7 @@ public class CohortServiceImpl extends BaseOpenmrsService implements CohortServi
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Cohort> getCohorts(String nameFragment) throws APIException {
+	public List<Cohort> getCohorts(/*~~>*/String nameFragment) throws APIException {
 		return dao.getCohorts(nameFragment);
 	}
 	
@@ -181,7 +181,7 @@ public class CohortServiceImpl extends BaseOpenmrsService implements CohortServi
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Cohort getCohortByName(String name) throws APIException {
+	public Cohort getCohortByName(/*~~>*/String name) throws APIException {
 		return dao.getCohort(name);
 	}
 	
@@ -190,7 +190,7 @@ public class CohortServiceImpl extends BaseOpenmrsService implements CohortServi
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Cohort getCohort(String name) throws APIException {
+	public Cohort getCohort(/*~~>*/String name) throws APIException {
 		return getCohortByName(name);
 	}
 	
@@ -218,7 +218,7 @@ public class CohortServiceImpl extends BaseOpenmrsService implements CohortServi
 	 * @see CohortService#voidCohortMembership(CohortMembership, String)
 	 */
 	@Override
-	public CohortMembership voidCohortMembership(CohortMembership cohortMembership, String reason) {
+	public CohortMembership voidCohortMembership(CohortMembership cohortMembership, /*~~>*/String reason) {
 		Context.getCohortService().saveCohort(cohortMembership.getCohort());
 		return cohortMembership;
 	}

@@ -25,7 +25,7 @@ public abstract class ModuleMustStartException extends RuntimeException {
 	
 	private static final long serialVersionUID = -527601349350158268L;
 	
-	public ModuleMustStartException(String msg) {
+	public ModuleMustStartException(/*~~>*/String msg) {
 		super(msg);
 	}
 }

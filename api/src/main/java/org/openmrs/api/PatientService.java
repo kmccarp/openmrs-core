@@ -67,7 +67,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> not set the preferred name address and identifier if they already exist
 	 * <strong>Should</strong> not set a voided name or address or identifier as preferred
 	 */
-	@Authorized( { PrivilegeConstants.ADD_PATIENTS, PrivilegeConstants.EDIT_PATIENTS })
+	@Authorized( { /*~~>*/PrivilegeConstants.ADD_PATIENTS, /*~~>*/PrivilegeConstants.EDIT_PATIENTS })
 	public Patient savePatient(Patient patient) throws APIException;
 	
 	/**
@@ -80,7 +80,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> fetch patient with given patient id
 	 * <strong>Should</strong> return null when patient with given patient id does not exist
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
 	public Patient getPatient(Integer patientId) throws APIException;
 	
 	/**
@@ -91,7 +91,7 @@ public interface PatientService extends OpenmrsService {
 	 * @return a new unsaved patient or null if person or patient is not found
 	 * @throws APIException
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
 	Patient getPatientOrPromotePerson(Integer patientOrPersonId) throws APIException;
 	
 	/**
@@ -103,8 +103,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> fetch patient with given uuid
 	 * <strong>Should</strong> return null if patient not found with given uuid
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
-	public Patient getPatientByUuid(String uuid) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
+	public Patient getPatientByUuid(/*~~>*/String uuid) throws APIException;
 	
 	/**
 	 * Get patient identifier by universally unique identifier.
@@ -115,8 +115,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> fetch patient identifier with given uuid
 	 * <strong>Should</strong> return null if patient identifier not found with given uuid
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENT_IDENTIFIERS })
-	public PatientIdentifier getPatientIdentifierByUuid(String uuid) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENT_IDENTIFIERS })
+	public PatientIdentifier getPatientIdentifierByUuid(/*~~>*/String uuid) throws APIException;
 	
 	/**
 	 * Returns all non voided patients in the system
@@ -126,7 +126,7 @@ public interface PatientService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> fetch all non voided patients
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
 	public List<Patient> getAllPatients() throws APIException;
 	
 	/**
@@ -138,7 +138,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> fetch voided patients when given include voided is true
 	 * <strong>Should</strong> fetch non voided patients when given include voided is false
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
 	public List<Patient> getAllPatients(boolean includeVoided) throws APIException;
 		
 	/**
@@ -173,8 +173,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> support pattern using last digit as check digit
 	 * <strong>Should</strong> return empty list if name and identifier is empty
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
-	public List<Patient> getPatients(String name, String identifier, List<PatientIdentifierType> identifierTypes,
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
+	public List<Patient> getPatients(/*~~>*/String name, /*~~>*/String identifier, List<PatientIdentifierType> identifierTypes,
 	        boolean matchIdentifierExactly) throws APIException;
 	
 	/**
@@ -191,8 +191,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> void person
 	 * <strong>Should</strong> retire users
 	 */
-	@Authorized( { PrivilegeConstants.DELETE_PATIENTS })
-	public Patient voidPatient(Patient patient, String reason) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.DELETE_PATIENTS })
+	public Patient voidPatient(Patient patient, /*~~>*/String reason) throws APIException;
 	
 	/**
 	 * Unvoid patient record. Unvoids Person as well.
@@ -204,7 +204,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> unvoid person
 	 * <strong>Should</strong> not unretire users
 	 */
-	@Authorized( { PrivilegeConstants.DELETE_PATIENTS })
+	@Authorized( { /*~~>*/PrivilegeConstants.DELETE_PATIENTS })
 	public Patient unvoidPatient(Patient patient) throws APIException;
 		
 	/**
@@ -216,7 +216,7 @@ public interface PatientService extends OpenmrsService {
 	 * @see #voidPatient(org.openmrs.Patient,java.lang.String)
 	 * <strong>Should</strong> delete patient from database
 	 */
-	@Authorized( { PrivilegeConstants.PURGE_PATIENTS })
+	@Authorized( { /*~~>*/PrivilegeConstants.PURGE_PATIENTS })
 	public void purgePatient(Patient patient) throws APIException;
 		
 	/**
@@ -241,8 +241,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> fetch non preferred patient identifiers when given is preferred equals false
 	 * <strong>Should</strong> fetch preferred and non preferred patient identifiers when given is preferred is null
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENT_IDENTIFIERS })
-	public List<PatientIdentifier> getPatientIdentifiers(String identifier,
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENT_IDENTIFIERS })
+	public List<PatientIdentifier> getPatientIdentifiers(/*~~>*/String identifier,
 	        List<PatientIdentifierType> patientIdentifierTypes, List<Location> locations, List<Patient> patients,
 	        Boolean isPreferred) throws APIException;
 		
@@ -257,7 +257,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> throw error when trying to save a patient identifier type while patient identifier
 	 *         types are locked
 	 */
-	@Authorized( { PrivilegeConstants.MANAGE_IDENTIFIER_TYPES })
+	@Authorized( { /*~~>*/PrivilegeConstants.MANAGE_IDENTIFIER_TYPES })
 	public PatientIdentifierType savePatientIdentifierType(PatientIdentifierType patientIdentifierType) throws APIException;
 		
 	/**
@@ -270,7 +270,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> fetch all non retired patient identifier types
 	 * <strong>Should</strong> order as default comparator
 	 */
-	@Authorized( { PrivilegeConstants.GET_IDENTIFIER_TYPES })
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_IDENTIFIER_TYPES })
 	public List<PatientIdentifierType> getAllPatientIdentifierTypes() throws APIException;
 	
 	/**
@@ -285,7 +285,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> fetch patient identifier types excluding retired when include retired is false
 	 * <strong>Should</strong> order as default comparator
 	 */
-	@Authorized( { PrivilegeConstants.GET_IDENTIFIER_TYPES })
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_IDENTIFIER_TYPES })
 	public List<PatientIdentifierType> getAllPatientIdentifierTypes(boolean includeRetired) throws APIException;
 	
 	/**
@@ -311,8 +311,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> fetch any patient identifier types when given has check digit is null
 	 * <strong>Should</strong> order as default comparator
 	 */
-	@Authorized( { PrivilegeConstants.GET_IDENTIFIER_TYPES })
-	public List<PatientIdentifierType> getPatientIdentifierTypes(String name, String format, Boolean required,
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_IDENTIFIER_TYPES })
+	public List<PatientIdentifierType> getPatientIdentifierTypes(/*~~>*/String name, /*~~>*/String format, Boolean required,
 	        Boolean hasCheckDigit) throws APIException;
 	
 	/**
@@ -324,7 +324,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> fetch patient identifier with given patient identifier type id
 	 * <strong>Should</strong> return null when patient identifier identifier does not exist
 	 */
-	@Authorized( { PrivilegeConstants.GET_IDENTIFIER_TYPES })
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_IDENTIFIER_TYPES })
 	public PatientIdentifierType getPatientIdentifierType(Integer patientIdentifierTypeId) throws APIException;
 	
 	/**
@@ -336,8 +336,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> fetch patient identifier type with given uuid
 	 * <strong>Should</strong> return null when patient identifier type with given uuid does not exist
 	 */
-	@Authorized( { PrivilegeConstants.GET_IDENTIFIER_TYPES })
-	public PatientIdentifierType getPatientIdentifierTypeByUuid(String uuid) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_IDENTIFIER_TYPES })
+	public PatientIdentifierType getPatientIdentifierTypeByUuid(/*~~>*/String uuid) throws APIException;
 		
 	/**
 	 * Get patientIdentifierType by exact name
@@ -349,8 +349,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> not return patient identifier type that partially matches given name
 	 * <strong>Should</strong> return null when patient identifier type with given name does not exist
 	 */
-	@Authorized( { PrivilegeConstants.GET_IDENTIFIER_TYPES })
-	public PatientIdentifierType getPatientIdentifierTypeByName(String name) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_IDENTIFIER_TYPES })
+	public PatientIdentifierType getPatientIdentifierTypeByName(/*~~>*/String name) throws APIException;
 	
 	/**
 	 * Retire a type of patient identifier
@@ -364,8 +364,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> throw error when trying to retire a patient identifier type while patient identifier
 	 *         types are locked
 	 */
-	@Authorized( { PrivilegeConstants.MANAGE_IDENTIFIER_TYPES })
-	public PatientIdentifierType retirePatientIdentifierType(PatientIdentifierType patientIdentifierType, String reason)
+	@Authorized( { /*~~>*/PrivilegeConstants.MANAGE_IDENTIFIER_TYPES })
+	public PatientIdentifierType retirePatientIdentifierType(PatientIdentifierType patientIdentifierType, /*~~>*/String reason)
 	        throws APIException;
 	
 	/**
@@ -379,7 +379,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> throw error when trying to unretire a patient identifier type while patient
 	 *         identifier types are locked
 	 */
-	@Authorized( { PrivilegeConstants.MANAGE_IDENTIFIER_TYPES })
+	@Authorized( { /*~~>*/PrivilegeConstants.MANAGE_IDENTIFIER_TYPES })
 	public PatientIdentifierType unretirePatientIdentifierType(PatientIdentifierType patientIdentifierType)
 	        throws APIException;
 	
@@ -393,7 +393,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> throw error when trying to delete a patient identifier type while patient identifier
 	 *         types are locked
 	 */
-	@Authorized( { PrivilegeConstants.PURGE_IDENTIFIER_TYPES })
+	@Authorized( { /*~~>*/PrivilegeConstants.PURGE_IDENTIFIER_TYPES })
 	public void purgePatientIdentifierType(PatientIdentifierType patientIdentifierType) throws APIException;
 		
 	/**
@@ -412,7 +412,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> throw error when patient does not have one or more required identifiers
 	 * <strong>Should</strong> require one non voided patient identifier
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENT_IDENTIFIERS })
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENT_IDENTIFIERS })
 	public void checkPatientIdentifiers(Patient patient) throws PatientIdentifierException;
 		
 	/**
@@ -429,8 +429,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> not fail when minimum search characters is null
 	 * <strong>Should</strong> not fail when minimum search characters is invalid integer
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
-	public List<Patient> getPatients(String query) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
+	public List<Patient> getPatients(/*~~>*/String query) throws APIException;
 	
 	/**
 	 * Generic search on patients based on the given string and returns a specific number of them
@@ -446,8 +446,8 @@ public interface PatientService extends OpenmrsService {
 	 * @since 1.8
 	 * <strong>Should</strong> find a patients with a matching identifier with no digits
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
-	public List<Patient> getPatients(String query, Integer start, Integer length) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
+	public List<Patient> getPatients(/*~~>*/String query, Integer start, Integer length) throws APIException;
 	
 	/**
 	 * @param query the string to search on
@@ -458,8 +458,8 @@ public interface PatientService extends OpenmrsService {
 	 * @throws APIException
 	 * @since 1.11
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
-	public List<Patient> getPatients(String query, boolean includeVoided, Integer start, Integer length) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
+	public List<Patient> getPatients(/*~~>*/String query, boolean includeVoided, Integer start, Integer length) throws APIException;
 		
 	/**
 	 * This method tries to find a patient in the database given the attributes on the given
@@ -473,7 +473,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> not fetch patient matching any other patient information
 	 * <strong>Should</strong> return null when no patient matches given patient to match
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
 	public Patient getPatientByExample(Patient patientToMatch) throws APIException;
 		
 	/**
@@ -488,8 +488,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> fetch patients that exactly match on all given attributes
 	 * <strong>Should</strong> not return patients that exactly match on some but not all given attributes
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
-	public List<Patient> getDuplicatePatientsByAttributes(List<String> attributes) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
+	public List<Patient> getDuplicatePatientsByAttributes(List</*~~>*/String> attributes) throws APIException;
 	
 	/**
 	 * Convenience method to join two patients' information into one record.
@@ -551,7 +551,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> not copy over duplicate patient identifiers
 	 * <strong>Should</strong> fail if not preferred patient has unvoided orders
 	 */
-	@Authorized( { PrivilegeConstants.EDIT_PATIENTS })
+	@Authorized( { /*~~>*/PrivilegeConstants.EDIT_PATIENTS })
 	public void mergePatients(Patient preferred, Patient notPreferred) throws APIException, SerializationException;
 	
 	/**
@@ -578,8 +578,8 @@ public interface PatientService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> throw API exception if patient is null 
 	 */
-	@Authorized( { PrivilegeConstants.EDIT_PATIENTS })
-	public void processDeath(Patient patient, Date dateDied, Concept causeOfDeath, String otherReason) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.EDIT_PATIENTS })
+	public void processDeath(Patient patient, Date dateDied, Concept causeOfDeath, /*~~>*/String otherReason) throws APIException;
 	
 	/**
 	 * Convenience method that saves the Obs that indicates when and why the patient died (including
@@ -600,8 +600,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> set death attributes as long as patient is not already dead
 	 * <strong>Should</strong> be tested more thoroughly
 	 */
-	@Authorized(value = { PrivilegeConstants.GET_PATIENTS, PrivilegeConstants.EDIT_OBS }, requireAll = true)
-	public void saveCauseOfDeathObs(Patient patient, Date dateDied, Concept causeOfDeath, String otherReason)
+	@Authorized(value = { /*~~>*/PrivilegeConstants.GET_PATIENTS, /*~~>*/PrivilegeConstants.EDIT_OBS }, requireAll = true)
+	public void saveCauseOfDeathObs(Patient patient, Date dateDied, Concept causeOfDeath, /*~~>*/String otherReason)
 	        throws APIException;
 	
 	/**
@@ -616,7 +616,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> return patient identifier validator given class name
 	 * <strong>Should</strong> treat empty strings like a null entry
 	 */
-	public IdentifierValidator getIdentifierValidator(String pivClassName);
+	public IdentifierValidator getIdentifierValidator(/*~~>*/String pivClassName);
 	
 	/**
 	 * @return the default IdentifierValidator
@@ -651,7 +651,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> return true if in use and id type uniqueness is set to unique
 	 * <strong>Should</strong> return true if in use and id type uniqueness is null
 	 */
-	@Authorized(PrivilegeConstants.GET_PATIENTS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_PATIENTS)
 	public boolean isIdentifierInUseByAnotherPatient(PatientIdentifier patientIdentifier);
 	
 	/**
@@ -662,7 +662,7 @@ public interface PatientService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> return the patientIdentifier with the given id
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENT_IDENTIFIERS })
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENT_IDENTIFIERS })
 	public PatientIdentifier getPatientIdentifier(Integer patientIdentifierId) throws APIException;
 	
 	/**
@@ -677,8 +677,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> throw an APIException if the reason is an empty string
 	 * <strong>Should</strong> throw an APIException if the reason is a white space character
 	 */
-	@Authorized( { PrivilegeConstants.DELETE_PATIENT_IDENTIFIERS })
-	public PatientIdentifier voidPatientIdentifier(PatientIdentifier patientIdentifier, String reason) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.DELETE_PATIENT_IDENTIFIERS })
+	public PatientIdentifier voidPatientIdentifier(PatientIdentifier patientIdentifier, /*~~>*/String reason) throws APIException;
 	
 	/**
 	 * Saved the given <code>patientIndentifier</code> to the database
@@ -693,7 +693,7 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> throw an APIException if the patientIdentifier string is a white space
 	 * <strong>Should</strong> throw an APIException if the patientIdentifier string is an empty string
 	 */
-	@Authorized( { PrivilegeConstants.ADD_PATIENT_IDENTIFIERS, PrivilegeConstants.EDIT_PATIENT_IDENTIFIERS })
+	@Authorized( { /*~~>*/PrivilegeConstants.ADD_PATIENT_IDENTIFIERS, /*~~>*/PrivilegeConstants.EDIT_PATIENT_IDENTIFIERS })
 	public PatientIdentifier savePatientIdentifier(PatientIdentifier patientIdentifier) throws APIException;
 	
 	/**
@@ -703,7 +703,7 @@ public interface PatientService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> delete patient identifier from database
 	 */
-	@Authorized( { PrivilegeConstants.PURGE_PATIENT_IDENTIFIERS })
+	@Authorized( { /*~~>*/PrivilegeConstants.PURGE_PATIENT_IDENTIFIERS })
 	public void purgePatientIdentifier(PatientIdentifier patientIdentifier) throws APIException;
 	
 	/**
@@ -745,7 +745,7 @@ public interface PatientService extends OpenmrsService {
 	 * @return the allergy
 	 * @throws APIException
 	 */
-	@Authorized( { PrivilegeConstants.GET_ALLERGIES })
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_ALLERGIES })
 	public Allergy getAllergy(Integer allergyListId) throws APIException;
 	
 	/**
@@ -758,8 +758,8 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> return null if no object found with given uuid
 	 * @throws APIException
 	 */
-	@Authorized( { PrivilegeConstants.GET_ALLERGIES })
-	public Allergy getAllergyByUuid(String uuid) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_ALLERGIES })
+	public Allergy getAllergyByUuid(/*~~>*/String uuid) throws APIException;
 	
 	/**
 	 * Creates an AllergyListItem to the Patient's Allergy Active List. Sets the start date to now,
@@ -769,7 +769,7 @@ public interface PatientService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> save the allergy
 	 */
-	@Authorized( { PrivilegeConstants.ADD_ALLERGIES, PrivilegeConstants.EDIT_ALLERGIES })
+	@Authorized( { /*~~>*/PrivilegeConstants.ADD_ALLERGIES, /*~~>*/PrivilegeConstants.EDIT_ALLERGIES })
 	public void saveAllergy(Allergy allergy) throws APIException;
 	
 	/**
@@ -781,8 +781,8 @@ public interface PatientService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> set the end date for the allergy
 	 */
-	@Authorized( { PrivilegeConstants.EDIT_ALLERGIES })
-	public void removeAllergy(Allergy allergy, String reason) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.EDIT_ALLERGIES })
+	public void removeAllergy(Allergy allergy, /*~~>*/String reason) throws APIException;
 	
 	/**
 	 * Used only in cases where the Allergy was entered by error
@@ -791,8 +791,8 @@ public interface PatientService extends OpenmrsService {
 	 * @param reason
 	 * @throws APIException
 	 */
-	@Authorized( { PrivilegeConstants.DELETE_ALLERGIES })
-	public void voidAllergy(Allergy allergy, String reason) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.DELETE_ALLERGIES })
+	public void voidAllergy(Allergy allergy, /*~~>*/String reason) throws APIException;
 	
 	/**
 	 * Return the number of unvoided patients with names or patient identifiers or searchable person
@@ -804,16 +804,16 @@ public interface PatientService extends OpenmrsService {
 	 * <strong>Should</strong> return the right count when a patient has multiple matching person names
 	 * <strong>Should</strong> return the right count of patients with a matching identifier with no digits
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
-	public Integer getCountOfPatients(String query);
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
+	public Integer getCountOfPatients(/*~~>*/String query);
 	
 	/**
 	 * @param query the string to search on
 	 * @param includeVoided true/false whether or not to included voided patients
 	 * @return the number of patients matching the given search phrase
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
-	public Integer getCountOfPatients(String query, boolean includeVoided);
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
+	public Integer getCountOfPatients(/*~~>*/String query, boolean includeVoided);
 	
 	/**
 	 * Get a limited size of patients from a given start index based on given criteria The
@@ -834,8 +834,8 @@ public interface PatientService extends OpenmrsService {
 	 * @throws APIException
 	 * @since 1.8
 	 */
-	@Authorized( { PrivilegeConstants.GET_PATIENTS })
-	public List<Patient> getPatients(String name, String identifier, List<PatientIdentifierType> identifierTypes,
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_PATIENTS })
+	public List<Patient> getPatients(/*~~>*/String name, /*~~>*/String identifier, List<PatientIdentifierType> identifierTypes,
 	        boolean matchIdentifierExactly, Integer start, Integer length) throws APIException;
 	
 	/**
@@ -852,6 +852,6 @@ public interface PatientService extends OpenmrsService {
 	 * @return PatientIdentifiers matching the patient program
 	 * @since 2.3.6
 	 */
-	@Authorized({PrivilegeConstants.GET_PATIENT_IDENTIFIERS})
+	@Authorized({/*~~>*/PrivilegeConstants.GET_PATIENT_IDENTIFIERS})
 	public List<PatientIdentifier> getPatientIdentifiersByPatientProgram(PatientProgram patientProgram);
 }

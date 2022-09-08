@@ -56,7 +56,7 @@ public class OpenmrsObjectSaveHandler implements SaveHandler<OpenmrsObject> {
 	 * <strong>Should</strong> trim empty strings for AllowEmptyStrings annotation
 	 */
 	@Override
-	public void handle(OpenmrsObject openmrsObject, User creator, Date dateCreated, String reason) {
+	public void handle(OpenmrsObject openmrsObject, User creator, Date dateCreated, /*~~>*/String reason) {
 		if (openmrsObject.getUuid() == null) {
 			openmrsObject.setUuid(UUID.randomUUID().toString());
 		}
@@ -85,7 +85,7 @@ public class OpenmrsObjectSaveHandler implements SaveHandler<OpenmrsObject> {
 			
 			//We are dealing with only strings
             //TODO We shouldn't be doing this for all immutable types and fields
-			if (openmrsObject instanceof Obs ||!property.getPropertyType().equals(String.class)) {
+			if (openmrsObject instanceof Obs ||!property.getPropertyType().equals(/*~~>*/String.class)) {
 				continue;
 			}
 			
@@ -97,7 +97,7 @@ public class OpenmrsObjectSaveHandler implements SaveHandler<OpenmrsObject> {
 				
 				Object valueBeforeTrim = value;
 				if (property.getWriteMethod().getAnnotation(AllowLeadingOrTrailingWhitespace.class) == null) {
-					value = ((String) value).trim();
+					value = ((/*~~>*/String) value).trim();
 					
 					//If we have actually trimmed any space, set the trimmed value.
 					if (!valueBeforeTrim.equals(value)) {

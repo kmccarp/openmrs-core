@@ -142,7 +142,7 @@ public class DoubleRange implements Comparable<DoubleRange> {
 	 * <strong>Should</strong> print empty string if low and high are infinite
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		StringBuilder ret = new StringBuilder();
 		if (low != null && low != Double.NEGATIVE_INFINITY) {
 			ret.append(">");

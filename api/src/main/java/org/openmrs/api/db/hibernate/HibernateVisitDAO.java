@@ -84,7 +84,7 @@ public class HibernateVisitDAO implements VisitDAO {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public VisitType getVisitTypeByUuid(String uuid) {
+	public VisitType getVisitTypeByUuid(/*~~>*/String uuid) {
 		return (VisitType) sessionFactory.getCurrentSession().createQuery("from VisitType vt where vt.uuid = :uuid")
 		        .setString("uuid", uuid).uniqueResult();
 	}
@@ -95,7 +95,7 @@ public class HibernateVisitDAO implements VisitDAO {
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
-	public List<VisitType> getVisitTypes(String fuzzySearchPhrase) {
+	public List<VisitType> getVisitTypes(/*~~>*/String fuzzySearchPhrase) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(VisitType.class);
 		criteria.add(Restrictions.ilike("name", fuzzySearchPhrase, MatchMode.ANYWHERE));
 		criteria.addOrder(Order.asc("name"));
@@ -135,7 +135,7 @@ public class HibernateVisitDAO implements VisitDAO {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Visit getVisitByUuid(String uuid) throws DAOException {
+	public Visit getVisitByUuid(/*~~>*/String uuid) throws DAOException {
 		return (Visit) getCurrentSession().createQuery("from Visit v where v.uuid = :uuid").setString("uuid", uuid)
 		        .uniqueResult();
 	}
@@ -169,7 +169,7 @@ public class HibernateVisitDAO implements VisitDAO {
 	@Transactional(readOnly = true)
 	public List<Visit> getVisits(Collection<VisitType> visitTypes, Collection<Patient> patients,
 	        Collection<Location> locations, Collection<Concept> indications, Date minStartDatetime, Date maxStartDatetime,
-	        Date minEndDatetime, Date maxEndDatetime, final Map<VisitAttributeType, String> serializedAttributeValues,
+	        Date minEndDatetime, Date maxEndDatetime, final Map<VisitAttributeType, /*~~>*/String> serializedAttributeValues,
 	        boolean includeInactive, boolean includeVoided) throws DAOException {
 		
 		Criteria criteria = getCurrentSession().createCriteria(Visit.class);
@@ -249,7 +249,7 @@ public class HibernateVisitDAO implements VisitDAO {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public VisitAttributeType getVisitAttributeTypeByUuid(String uuid) {
+	public VisitAttributeType getVisitAttributeTypeByUuid(/*~~>*/String uuid) {
 		return (VisitAttributeType) getCurrentSession().createCriteria(VisitAttributeType.class).add(
 		    Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
@@ -278,7 +278,7 @@ public class HibernateVisitDAO implements VisitDAO {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public VisitAttribute getVisitAttributeByUuid(String uuid) {
+	public VisitAttribute getVisitAttributeByUuid(/*~~>*/String uuid) {
 		return (VisitAttribute) getCurrentSession().createCriteria(VisitAttribute.class).add(Restrictions.eq("uuid", uuid))
 		        .uniqueResult();
 	}

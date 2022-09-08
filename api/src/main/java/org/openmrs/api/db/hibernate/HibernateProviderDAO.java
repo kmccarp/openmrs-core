@@ -90,7 +90,7 @@ public class HibernateProviderDAO implements ProviderDAO {
 	 * @see org.openmrs.api.db.ProviderDAO#getProviderByUuid(java.lang.String)
 	 */
 	@Override
-	public Provider getProviderByUuid(String uuid) {
+	public Provider getProviderByUuid(/*~~>*/String uuid) {
 		return getByUuid(uuid, Provider.class);
 	}
 	
@@ -126,7 +126,7 @@ public class HibernateProviderDAO implements ProviderDAO {
 	 */
 	
 	@Override
-	public ProviderAttribute getProviderAttributeByUuid(String uuid) {
+	public ProviderAttribute getProviderAttributeByUuid(/*~~>*/String uuid) {
 		return getByUuid(uuid, ProviderAttribute.class);
 	}
 	
@@ -134,7 +134,7 @@ public class HibernateProviderDAO implements ProviderDAO {
 	 * @see org.openmrs.api.db.ProviderDAO#getProviders(String, Map, Integer, Integer, boolean)
 	 */
 	@Override
-	public List<Provider> getProviders(String name, Map<ProviderAttributeType, String> serializedAttributeValues,
+	public List<Provider> getProviders(/*~~>*/String name, Map<ProviderAttributeType, /*~~>*/String> serializedAttributeValues,
 	        Integer start, Integer length, boolean includeRetired) {
 		Criteria criteria = prepareProviderCriteria(name, includeRetired);
 		if (start != null) {
@@ -158,8 +158,8 @@ public class HibernateProviderDAO implements ProviderDAO {
 	}
 	
 	private MatchMode getMatchMode() {
-		String matchMode = Context.getAdministrationService().getGlobalProperty(
-		    OpenmrsConstants.GLOBAL_PROPERTY_PROVIDER_SEARCH_MATCH_MODE);
+		/*~~>*/String matchMode = Context.getAdministrationService().getGlobalProperty(
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PROVIDER_SEARCH_MATCH_MODE);
 		
 		if (MatchMode.START.toString().equalsIgnoreCase(matchMode)) {
 			return MatchMode.START;
@@ -180,7 +180,7 @@ public class HibernateProviderDAO implements ProviderDAO {
 	 * @param includeRetired
 	 * @return Criteria represents the hibernate criteria to search
 	 */
-	private Criteria prepareProviderCriteria(String name, boolean includeRetired) {
+	private Criteria prepareProviderCriteria(/*~~>*/String name, boolean includeRetired) {
 		if (StringUtils.isBlank(name)) {
 			name = "%";
 		}
@@ -203,8 +203,8 @@ public class HibernateProviderDAO implements ProviderDAO {
 		Conjunction and = Restrictions.conjunction();
 		or.add(and);
 		
-		String[] splitNames = name.split(" ");
-		for (String splitName : splitNames) {
+		/*~~>*/String[] splitNames = name.split(" ");
+		for (/*~~>*/String splitName : splitNames) {
 			and.add(getNameSearchExpression(splitName));
 		}
 		
@@ -219,7 +219,7 @@ public class HibernateProviderDAO implements ProviderDAO {
 	 * @param name
 	 * @return Junction
 	 */
-	private Junction getNameSearchExpression(String name) {
+	private Junction getNameSearchExpression(/*~~>*/String name) {
 		MatchMode mode = MatchMode.ANYWHERE;
 		
 		Conjunction and = Restrictions.conjunction();
@@ -240,7 +240,7 @@ public class HibernateProviderDAO implements ProviderDAO {
 	 * @see org.openmrs.api.db.ProviderDAO#getCountOfProviders(String, boolean)
 	 */
 	@Override
-	public Long getCountOfProviders(String name, boolean includeRetired) {
+	public Long getCountOfProviders(/*~~>*/String name, boolean includeRetired) {
 	  Criteria criteria = prepareProviderCriteria(name, includeRetired);
 	  return (long) criteria.list().size();
 	}
@@ -265,7 +265,7 @@ public class HibernateProviderDAO implements ProviderDAO {
 		return criteria.list();
 	}
 	
-	private <T> T getByUuid(String uuid, Class<T> clazz) {
+	private <T> T getByUuid(/*~~>*/String uuid, Class<T> clazz) {
 		Criteria criteria = getSession().createCriteria(clazz);
 		criteria.add(Restrictions.eq("uuid", uuid));
 		return (T) criteria.uniqueResult();
@@ -283,7 +283,7 @@ public class HibernateProviderDAO implements ProviderDAO {
 	 * @see org.openmrs.api.db.ProviderDAO#getProviderAttributeTypeByUuid(java.lang.String)
 	 */
 	@Override
-	public ProviderAttributeType getProviderAttributeTypeByUuid(String uuid) {
+	public ProviderAttributeType getProviderAttributeTypeByUuid(/*~~>*/String uuid) {
 		return getByUuid(uuid, ProviderAttributeType.class);
 	}
 	
@@ -324,7 +324,7 @@ public class HibernateProviderDAO implements ProviderDAO {
 	 * @see org.openmrs.api.db.ProviderDAO#getProviderByIdentifier(java.lang.String)
 	 */
 	@Override
-	public Provider getProviderByIdentifier(String identifier) {
+	public Provider getProviderByIdentifier(/*~~>*/String identifier) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Provider.class);
 		criteria.add(Restrictions.ilike("identifier", identifier, MatchMode.EXACT));
 		return (Provider) criteria.uniqueResult();

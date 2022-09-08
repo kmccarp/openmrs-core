@@ -18,15 +18,15 @@ public class IdentifierNotUniqueException extends PatientIdentifierException {
 	public IdentifierNotUniqueException() {
 	}
 	
-	public IdentifierNotUniqueException(String message) {
+	public IdentifierNotUniqueException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public IdentifierNotUniqueException(String message, PatientIdentifier identifier) {
+	public IdentifierNotUniqueException(/*~~>*/String message, PatientIdentifier identifier) {
 		super(message, identifier);
 	}
 	
-	public IdentifierNotUniqueException(String message, Throwable cause) {
+	public IdentifierNotUniqueException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

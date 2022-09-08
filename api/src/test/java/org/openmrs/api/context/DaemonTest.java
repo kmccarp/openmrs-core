@@ -90,7 +90,7 @@ public class DaemonTest extends BaseContextSensitiveTest {
 		
 		// verif
 		assertNotNull(createdUser.getId());
-		Set<String> roleNames = createdUser.getRoles().stream().map(r -> r.getName()).collect(Collectors.toSet());
+		Set</*~~>*/String> roleNames = createdUser.getRoles().stream().map(r -> r.getName()).collect(Collectors.toSet());
 		assertTrue(roleNames.contains("Provider"));
 		assertFalse(roleNames.contains("Foobar Role")); // a bogus role name has just no impact on the created user
 	}
@@ -224,7 +224,7 @@ public class DaemonTest extends BaseContextSensitiveTest {
 	@Test
 	public void isDaemonUser_shouldReturnTrueForADaemonUser() {
 		User user = new User();
-		user.setUuid(Daemon.DAEMON_USER_UUID);
+		user.setUuid(/*~~>*/Daemon.DAEMON_USER_UUID);
 		assertTrue(Daemon.isDaemonUser(user));
 	}
 	

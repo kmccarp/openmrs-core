@@ -57,10 +57,10 @@ public class StartModuleExecutionListener extends AbstractTestExecutionListener 
 	
 	// stores the last class that restarted the module system because we only 
 	// want it restarted once per class, not once per method
-	private static String lastClassRun = "";
+	private static /*~~>*/String lastClassRun = "";
 	
 	// storing the bean definitions that have been manually removed from the context
-	private Map<String, BeanDefinition> filteredDefinitions = new HashMap<>();
+	private Map</*~~>*/String, BeanDefinition> filteredDefinitions = new HashMap<>();
 	
 	/**
 	 * called before @BeforeTransaction methods
@@ -84,10 +84,10 @@ public class StartModuleExecutionListener extends AbstractTestExecutionListener 
 				ModuleUtil.shutdown();
 				
 				// load the omods that the dev defined for this class
-				String modulesToLoad = StringUtils.join(startModuleAnnotation.value(), " ");
+				/*~~>*/String modulesToLoad = StringUtils.join(startModuleAnnotation.value(), " ");
 				
 				Properties props = BaseContextSensitiveTest.runtimeProperties;
-				props.setProperty(ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD, modulesToLoad);
+				props.setProperty(/*~~>*/ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD, modulesToLoad);
 				try {
 					ModuleUtil.startup(props);
 				}
@@ -128,8 +128,8 @@ public class StartModuleExecutionListener extends AbstractTestExecutionListener 
 		// first looking at a context loading the bean definitions "now"
 		GenericApplicationContext ctx = new GenericApplicationContext();
 		(new XmlBeanDefinitionReader(ctx)).loadBeanDefinitions("classpath:applicationContext-service.xml");
-		Set<String> filteredBeanNames = new HashSet<>();
-		for (String beanName : ctx.getBeanDefinitionNames()) {
+		Set</*~~>*/String> filteredBeanNames = new HashSet<>();
+		for (/*~~>*/String beanName : ctx.getBeanDefinitionNames()) {
 			if (beanName.startsWith("openmrsProfile")) {
 				filteredBeanNames.add(beanName);
 			}
@@ -137,14 +137,14 @@ public class StartModuleExecutionListener extends AbstractTestExecutionListener 
 		ctx.close();
 		
 		// then looking at the context as it loaded the bean definitions before the module(s) were started
-		Set<String> originalBeanNames = new HashSet<>();
-		for (String beanName : ((GenericApplicationContext) context).getBeanDefinitionNames()) {
+		Set</*~~>*/String> originalBeanNames = new HashSet<>();
+		for (/*~~>*/String beanName : ((GenericApplicationContext) context).getBeanDefinitionNames()) {
 			if (beanName.startsWith("openmrsProfile")) {
 				originalBeanNames.add(beanName);
 			}
 		}
 		// removing the bean definitions that have been filtered out by starting the module(s)
-		for (String beanName : originalBeanNames) {
+		for (/*~~>*/String beanName : originalBeanNames) {
 			if (!filteredBeanNames.contains(beanName)) {
 				filteredDefinitions.put(beanName, ((GenericApplicationContext) context).getBeanDefinition(beanName));
 				((GenericApplicationContext) context).removeBeanDefinition(beanName);
@@ -162,7 +162,7 @@ public class StartModuleExecutionListener extends AbstractTestExecutionListener 
 			}
 			
 			// re-registering the bean definitions that we may have removed
-			for (String beanName : filteredDefinitions.keySet()) {
+			for (/*~~>*/String beanName : filteredDefinitions.keySet()) {
 				((GenericApplicationContext) testContext.getApplicationContext())
 					.registerBeanDefinition(beanName, filteredDefinitions.get(beanName));
 			}

@@ -192,7 +192,7 @@ public class MedicationDispense extends BaseFormRecordableOpenmrsData {
 	 * Relates to drugOrder.dosingInstructions
 	 */
 	@Column(name = "dosing_instructions", length=65535)
-	private String dosingInstructions;
+	private /*~~>*/String dosingInstructions;
 
 	/**
 	 * FHIR:whenPrepared
@@ -399,12 +399,12 @@ public class MedicationDispense extends BaseFormRecordableOpenmrsData {
 		this.asNeeded = asNeeded;
 	}
 
-	public String getDosingInstructions() {
+	public /*~~>*/String getDosingInstructions() {
 		return dosingInstructions;
 	}
 
-	public void setDosingInstructions(String dosingInstructions) {
-		this.dosingInstructions = dosingInstructions;
+	public void setDosingInstructions(/*~~>*/String dosingInstructions) {
+		/*~~>*/this.dosingInstructions = dosingInstructions;
 	}
 
 	public Date getDatePrepared() {

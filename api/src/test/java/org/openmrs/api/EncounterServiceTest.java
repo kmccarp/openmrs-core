@@ -89,15 +89,15 @@ import org.openmrs.util.PrivilegeConstants;
  */
 public class EncounterServiceTest extends BaseContextSensitiveTest {
 	
-	protected static final String ENC_INITIAL_DATA_XML = "org/openmrs/api/include/EncounterServiceTest-initialData.xml";
+	protected static final /*~~>*/String ENC_INITIAL_DATA_XML = "org/openmrs/api/include/EncounterServiceTest-initialData.xml";
 	
-	protected static final String UNIQUE_ENC_WITH_PAGING_XML = "org/openmrs/api/include/EncounterServiceTest-pagingWithUniqueEncounters.xml";
+	protected static final /*~~>*/String UNIQUE_ENC_WITH_PAGING_XML = "org/openmrs/api/include/EncounterServiceTest-pagingWithUniqueEncounters.xml";
 	
-	protected static final String TRANSFER_ENC_DATA_XML = "org/openmrs/api/include/EncounterServiceTest-transferEncounter.xml";
+	protected static final /*~~>*/String TRANSFER_ENC_DATA_XML = "org/openmrs/api/include/EncounterServiceTest-transferEncounter.xml";
 
-	protected static final String ENC_OBS_HIERARCHY_DATA_XML = "org/openmrs/api/include/EncounterServiceTest-saveObsHierarchyTests.xml";
+	protected static final /*~~>*/String ENC_OBS_HIERARCHY_DATA_XML = "org/openmrs/api/include/EncounterServiceTest-saveObsHierarchyTests.xml";
 
-	protected static final String ORDER_SET = "org/openmrs/api/include/OrderSetServiceTest-general.xml";
+	protected static final /*~~>*/String ORDER_SET = "org/openmrs/api/include/OrderSetServiceTest-general.xml";
 
 
 	/**
@@ -505,7 +505,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		Encounter encounter = es.getEncounter(6);
 		es.saveEncounter(encounter);
 		
-		String sql = "SELECT voided FROM orders WHERE order_id=7";
+		/*~~>*/String sql = "SELECT voided FROM orders WHERE order_id=7";
 		Boolean voided = (Boolean) Context.getAdministrationService().executeSQL(sql, true).get(0).get(0);
 		assertFalse(voided);
 	}
@@ -1416,7 +1416,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		EncounterService encounterService = Context.getEncounterService();
 		
 		// we should not get an error here...but silently return nothing
-		EncounterType type = encounterService.getEncounterType((String) null);
+		EncounterType type = encounterService.getEncounterType((/*~~>*/String) null);
 		assertNull(type);
 	}
 	
@@ -1657,7 +1657,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getEncounterByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "6519d653-393b-4118-9c83-a3715b82d4ac";
+		/*~~>*/String uuid = "6519d653-393b-4118-9c83-a3715b82d4ac";
 		Encounter encounter = Context.getEncounterService().getEncounterByUuid(uuid);
 		assertEquals(3, (int) encounter.getEncounterId());
 	}
@@ -1675,7 +1675,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getEncounterTypeByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "02c533ab-b74b-4ee4-b6e5-ffb6d09a0ac8";
+		/*~~>*/String uuid = "02c533ab-b74b-4ee4-b6e5-ffb6d09a0ac8";
 		EncounterType encounterType = Context.getEncounterService().getEncounterTypeByUuid(uuid);
 		assertEquals(6, (int) encounterType.getEncounterTypeId());
 	}
@@ -1891,7 +1891,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 	public void getEncounterRoleByName_shouldFindEncounterRoleByName() {
 		EncounterService encounterService = Context.getEncounterService();
 		EncounterRole encounterRole = new EncounterRole();
-		String name = "surgeon role";
+		/*~~>*/String name = "surgeon role";
 		encounterRole.setDescription("The surgeon");
 		encounterRole.setName(name);
 		encounterRole = encounterService.saveEncounterRole(encounterRole);
@@ -2144,7 +2144,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		assertNull(encounter.getVisit());
 		
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(
-		    OpenmrsConstants.GP_VISIT_ASSIGNMENT_HANDLER);
+		    /*~~>*/OpenmrsConstants.GP_VISIT_ASSIGNMENT_HANDLER);
 		gp.setPropertyValue("org.openmrs.api.handler.NoVisitAssignmentHandler");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		
@@ -2165,7 +2165,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		assertNull(encounter.getVisit());
 		
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(
-		    OpenmrsConstants.GP_VISIT_ASSIGNMENT_HANDLER);
+		    /*~~>*/OpenmrsConstants.GP_VISIT_ASSIGNMENT_HANDLER);
 		gp.setPropertyValue("org.openmrs.api.handler.ExistingVisitAssignmentHandler");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		
@@ -2192,7 +2192,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		assertNull(encounter.getVisit());
 		
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(
-		    OpenmrsConstants.GP_VISIT_ASSIGNMENT_HANDLER);
+		    /*~~>*/OpenmrsConstants.GP_VISIT_ASSIGNMENT_HANDLER);
 		gp.setPropertyValue("org.openmrs.api.handler.ExistingOrNewVisitAssignmentHandler");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		
@@ -2333,12 +2333,12 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 			Context.logout();
 		}
 		Context.authenticate("test_user", "test");
-		Context.addProxyPrivilege(PrivilegeConstants.GET_ENCOUNTERS);
+		Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.GET_ENCOUNTERS);
 		
 		patientEncounters = encounterService.getEncountersByPatientId(3);
 		int actualSize = patientEncounters.size();
 		
-		Context.removeProxyPrivilege(PrivilegeConstants.GET_ENCOUNTERS);
+		Context.removeProxyPrivilege(/*~~>*/PrivilegeConstants.GET_ENCOUNTERS);
 		Context.logout();
 		
 		assertEquals(actualSize, expectedSize);
@@ -2572,7 +2572,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		Context.becomeUser(user.getSystemId());
 		
 		// have to add privilege in order to be able to call getEncounter(Integer) method
-		Context.addProxyPrivilege(PrivilegeConstants.GET_ENCOUNTERS);
+		Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.GET_ENCOUNTERS);
 		
 		assertThrows(APIException.class, () -> Context.getEncounterService().getEncounter(encounter.getId()));
 	}
@@ -2597,7 +2597,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		Context.becomeUser(user.getSystemId());
 		
 		// have to add privilege in order to be able to call getEncounter(Integer) method
-		Context.addProxyPrivilege(PrivilegeConstants.GET_ENCOUNTERS);
+		Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.GET_ENCOUNTERS);
 		
 		assertNotNull(Context.getEncounterService().getEncounter(encounter.getId()));
 	}
@@ -2618,7 +2618,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		Context.becomeUser(user.getSystemId());
 		
 		// have to add privilege in order to be able to call saveEncounter(Encounter) method
-		Context.addProxyPrivilege(PrivilegeConstants.EDIT_ENCOUNTERS);
+		Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.EDIT_ENCOUNTERS);
 		
 		assertThrows(APIException.class, () -> Context.getEncounterService().saveEncounter(encounter));
 	}
@@ -2639,7 +2639,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		Context.becomeUser(user.getSystemId());
 		
 		// have to add privilege in order to be able to call voidEncounter(Encounter,String) method
-		Context.addProxyPrivilege(PrivilegeConstants.EDIT_ENCOUNTERS);
+		Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.EDIT_ENCOUNTERS);
 		
 		assertThrows(APIException.class, () -> Context.getEncounterService().voidEncounter(encounter, "test"));
 	}
@@ -2660,7 +2660,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		Context.becomeUser(user.getSystemId());
 		
 		// have to add privilege in order to be able to call unvoidEncounter(Encounter) method
-		Context.addProxyPrivilege(PrivilegeConstants.EDIT_ENCOUNTERS);
+		Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.EDIT_ENCOUNTERS);
 		
 		assertThrows(APIException.class, () -> Context.getEncounterService().unvoidEncounter(encounter));
 	}
@@ -2681,7 +2681,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		Context.becomeUser(user.getSystemId());
 		
 		// have to add privilege in order to be able to call purgeEncounter(Encounter) method
-		Context.addProxyPrivilege(PrivilegeConstants.PURGE_ENCOUNTERS);
+		Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.PURGE_ENCOUNTERS);
 		
 		assertThrows(APIException.class, () -> Context.getEncounterService().purgeEncounter(encounter));
 	}
@@ -2703,7 +2703,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		Context.becomeUser(user.getSystemId());
 		
 		// have to add privilege in order to be able to call purgeEncounter(Encounter,Boolean) method
-		Context.addProxyPrivilege(PrivilegeConstants.PURGE_ENCOUNTERS);
+		Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.PURGE_ENCOUNTERS);
 		
 		assertThrows(APIException.class, () -> Context.getEncounterService().purgeEncounter(encounter, Boolean.TRUE));
 	}
@@ -2711,9 +2711,9 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void getActiveEncounterVisitHandler_shouldThrowIfBeanWithGivenTypeAndNameNotFound() {
 		
-		String incorrectBeanName = OpenmrsConstants.REGISTERED_COMPONENT_NAME_PREFIX + "invalidName";
+		/*~~>*/String incorrectBeanName = /*~~>*/OpenmrsConstants.REGISTERED_COMPONENT_NAME_PREFIX + "invalidName";
 		
-		GlobalProperty visitHandlerProperty = new GlobalProperty(OpenmrsConstants.GP_VISIT_ASSIGNMENT_HANDLER,
+		GlobalProperty visitHandlerProperty = new GlobalProperty(/*~~>*/OpenmrsConstants.GP_VISIT_ASSIGNMENT_HANDLER,
 		        incorrectBeanName);
 		
 		Context.getAdministrationService().saveGlobalProperty(visitHandlerProperty);
@@ -2724,9 +2724,9 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void getActiveEncounterVisitHandler_shouldReturnBeanHaveBeenRegisteredWithGivenName() {
 		
-		String correctBeanName = OpenmrsConstants.REGISTERED_COMPONENT_NAME_PREFIX + "existingOrNewVisitAssignmentHandler";
+		/*~~>*/String correctBeanName = /*~~>*/OpenmrsConstants.REGISTERED_COMPONENT_NAME_PREFIX + "existingOrNewVisitAssignmentHandler";
 		
-		GlobalProperty visitHandlerProperty = new GlobalProperty(OpenmrsConstants.GP_VISIT_ASSIGNMENT_HANDLER,
+		GlobalProperty visitHandlerProperty = new GlobalProperty(/*~~>*/OpenmrsConstants.GP_VISIT_ASSIGNMENT_HANDLER,
 		        correctBeanName);
 		
 		Context.getAdministrationService().saveGlobalProperty(visitHandlerProperty);
@@ -2863,7 +2863,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void saveEncounterType_shouldThrowErrorWhenTryingToSaveEncounterTypeWhenEncounterTypesAreLocked()
 	{
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_ENCOUNTER_TYPES_LOCKED);
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ENCOUNTER_TYPES_LOCKED);
 		gp.setPropertyValue("true");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		
@@ -2881,7 +2881,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void retireEncounterType_shouldThrowErrorWhenTryingToRetireEncounterTypeWhenEncounterTypesAreLocked()
 	{
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_ENCOUNTER_TYPES_LOCKED);
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ENCOUNTER_TYPES_LOCKED);
 		gp.setPropertyValue("true");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		
@@ -2901,7 +2901,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		EncounterService encounterService = Context.getEncounterService();
 		EncounterType encounterType = Context.getEncounterService().getEncounterType(2);
 		
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_ENCOUNTER_TYPES_LOCKED);
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ENCOUNTER_TYPES_LOCKED);
 		gp.setPropertyValue("true");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		
@@ -2919,7 +2919,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		
 		assertNotNull(encounterType);
 		
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_ENCOUNTER_TYPES_LOCKED);
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ENCOUNTER_TYPES_LOCKED);
 		gp.setPropertyValue("true");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		
@@ -2929,7 +2929,7 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void getEncounterRolesByName_shouldFindEncounterRolesByName() {
 		EncounterService encounterService = Context.getEncounterService();
-		String name = "surgeon";
+		/*~~>*/String name = "surgeon";
 		
 		List<EncounterRole> encounterRoles = encounterService.getEncounterRolesByName(name);
 		
@@ -3004,13 +3004,13 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		assertTrue(visit.getVoided());
 	}
 	
-	private EncounterSearchCriteria encounterSearchForVoidedWithDateChanged(String dateChanged) throws ParseException {
+	private EncounterSearchCriteria encounterSearchForVoidedWithDateChanged(/*~~>*/String dateChanged) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return new EncounterSearchCriteriaBuilder().setIncludeVoided(true).setDateChanged(sdf.parse(dateChanged))
 		        .createEncounterSearchCriteria();
 	}
 	
-	private Person newPerson(String name) {
+	private Person newPerson(/*~~>*/String name) {
 		Person person = new Person();
 		Set<PersonName> personNames = new TreeSet<>();
 		PersonName personName = new PersonName();
@@ -3150,8 +3150,8 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		allergy.setAllergen(allergen);
 		allergy.setPatient(encounter.getPatient());
 		
-		final String NAMESPACE = "namespace";
-		final String FORMFIELD_PATH = "formFieldPath";
+		final /*~~>*/String NAMESPACE = "namespace";
+		final /*~~>*/String FORMFIELD_PATH = "formFieldPath";
 		allergy.setFormField(NAMESPACE, FORMFIELD_PATH);
 		
 		encounter.addAllergy(allergy);

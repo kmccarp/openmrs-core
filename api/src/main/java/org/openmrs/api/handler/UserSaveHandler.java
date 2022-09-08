@@ -36,7 +36,7 @@ public class UserSaveHandler implements SaveHandler<User> {
 	 *      java.util.Date, java.lang.String)
 	 */
 	@Override
-	public void handle(User user, User creator, Date dateCreated, String other) {
+	public void handle(User user, User creator, Date dateCreated, /*~~>*/String other) {
 		// if the user doesn't have a system id, generate one
 		if (StringUtils.isEmpty(user.getSystemId())) {
 			user.setSystemId(Context.getUserService().generateSystemId());

@@ -69,7 +69,7 @@ public class ProviderServiceImpl extends BaseOpenmrsService implements ProviderS
 	 * @see org.openmrs.api.ProviderService#retireProvider(org.openmrs.Provider, java.lang.String)
 	 */
 	@Override
-	public void retireProvider(Provider provider, String reason) {
+	public void retireProvider(Provider provider, /*~~>*/String reason) {
 		dao.saveProvider(provider);
 	}
 	
@@ -112,7 +112,7 @@ public class ProviderServiceImpl extends BaseOpenmrsService implements ProviderS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Provider getProviderByUuid(String uuid) {
+	public Provider getProviderByUuid(/*~~>*/String uuid) {
 		return dao.getProviderByUuid(uuid);
 	}
 	
@@ -142,7 +142,7 @@ public class ProviderServiceImpl extends BaseOpenmrsService implements ProviderS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Integer getCountOfProviders(String query) {
+	public Integer getCountOfProviders(/*~~>*/String query) {
 		return Context.getProviderService().getCountOfProviders(query, false);
 	}
 	
@@ -150,7 +150,7 @@ public class ProviderServiceImpl extends BaseOpenmrsService implements ProviderS
 	 * @see org.openmrs.api.ProviderService#getCountOfProviders(java.lang.String, boolean)
 	 */
 	@Override
-	public Integer getCountOfProviders(String query, boolean includeRetired) {
+	public Integer getCountOfProviders(/*~~>*/String query, boolean includeRetired) {
 		return OpenmrsUtil.convertToInteger(dao.getCountOfProviders(query, includeRetired));
 	}
 	
@@ -160,9 +160,9 @@ public class ProviderServiceImpl extends BaseOpenmrsService implements ProviderS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Provider> getProviders(String query, Integer start, Integer length,
+	public List<Provider> getProviders(/*~~>*/String query, Integer start, Integer length,
 	        Map<ProviderAttributeType, Object> attributeValues, boolean includeRetired) {
-		Map<ProviderAttributeType, String> serializedAttributeValues = CustomDatatypeUtil
+		Map<ProviderAttributeType, /*~~>*/String> serializedAttributeValues = CustomDatatypeUtil
 		        .getValueReferences(attributeValues);
 		return dao.getProviders(query, serializedAttributeValues, start, length, includeRetired);
 	}
@@ -172,7 +172,7 @@ public class ProviderServiceImpl extends BaseOpenmrsService implements ProviderS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Provider> getProviders(String query, Integer start, Integer length,
+	public List<Provider> getProviders(/*~~>*/String query, Integer start, Integer length,
 	        Map<ProviderAttributeType, Object> attributeValues) {
 		return Context.getProviderService().getProviders(query, start, length, attributeValues, true);
 	}
@@ -209,7 +209,7 @@ public class ProviderServiceImpl extends BaseOpenmrsService implements ProviderS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public ProviderAttributeType getProviderAttributeTypeByUuid(String uuid) {
+	public ProviderAttributeType getProviderAttributeTypeByUuid(/*~~>*/String uuid) {
 		return dao.getProviderAttributeTypeByUuid(uuid);
 	}
 	
@@ -229,7 +229,7 @@ public class ProviderServiceImpl extends BaseOpenmrsService implements ProviderS
 	
 	@Override
 	@Transactional(readOnly = true)
-	public ProviderAttribute getProviderAttributeByUuid(String uuid) {
+	public ProviderAttribute getProviderAttributeByUuid(/*~~>*/String uuid) {
 		return dao.getProviderAttributeByUuid(uuid);
 	}
 	
@@ -246,7 +246,7 @@ public class ProviderServiceImpl extends BaseOpenmrsService implements ProviderS
 	 *      java.lang.String)
 	 */
 	@Override
-	public ProviderAttributeType retireProviderAttributeType(ProviderAttributeType providerAttributeType, String reason) {
+	public ProviderAttributeType retireProviderAttributeType(ProviderAttributeType providerAttributeType, /*~~>*/String reason) {
 		return Context.getProviderService().saveProviderAttributeType(providerAttributeType);
 	}
 	
@@ -280,7 +280,7 @@ public class ProviderServiceImpl extends BaseOpenmrsService implements ProviderS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Provider getProviderByIdentifier(String identifier) {
+	public Provider getProviderByIdentifier(/*~~>*/String identifier) {
 		return dao.getProviderByIdentifier(identifier);
 	}
 	
@@ -291,6 +291,6 @@ public class ProviderServiceImpl extends BaseOpenmrsService implements ProviderS
 	@Transactional(readOnly = true)
 	public Provider getUnknownProvider() {
 		return getProviderByUuid(Context.getAdministrationService().getGlobalProperty(
-		    OpenmrsConstants.GP_UNKNOWN_PROVIDER_UUID));
+		    /*~~>*/OpenmrsConstants.GP_UNKNOWN_PROVIDER_UUID));
 	}
 }

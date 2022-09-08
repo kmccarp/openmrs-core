@@ -41,19 +41,19 @@ import org.openmrs.util.ThreadSafeCircularFifoQueue;
  * Note that this class is implemented as a single-buffer-per-appender-name meaning that each appender name can only support
  * a single configuration (the most recent applied)
  */
-@Plugin(name = "Memory", category = Core.CATEGORY_NAME, elementType = Appender.ELEMENT_TYPE)
+@Plugin(name = "Memory", category = /*~~>*/Core.CATEGORY_NAME, elementType = /*~~>*/Appender.ELEMENT_TYPE)
 public class MemoryAppender extends AbstractAppender {
 
 	// we store the MemoryAppenders by name, using SoftReferences to allow them to be garbage collected
 	// as an implementation detail, we expect this class to only have a single instance, so our map
 	// is only allocated an initial capacity of 1
-	private static final Map<String, SoftReference<MemoryAppender>> APPENDERS = new HashMap<>(1);
+	private static final Map</*~~>*/String, SoftReference<MemoryAppender>> APPENDERS = new HashMap<>(1);
 
 	private ThreadSafeCircularFifoQueue<LogEvent> buffer;
 
 	private int bufferSize;
 
-	protected MemoryAppender(String name, Filter filter,
+	protected MemoryAppender(/*~~>*/String name, Filter filter,
 		StringLayout layout, boolean ignoreExceptions,
 		Property[] properties, int bufferSize) {
 		super(name, filter, layout, ignoreExceptions, properties);
@@ -69,7 +69,7 @@ public class MemoryAppender extends AbstractAppender {
 	@PluginFactory
 	@SuppressWarnings("unused")
 	protected static MemoryAppender createAppender(
-		@PluginAttribute("name") final String name,
+		@PluginAttribute("name") final /*~~>*/String name,
 		@PluginAttribute("bufferSize") final int bufferSize,
 		@PluginAttribute(value = "ignoreExceptions", defaultBoolean = true) final boolean ignoreExceptions,
 		@PluginElement("Filter") final Filter filter,
@@ -105,7 +105,7 @@ public class MemoryAppender extends AbstractAppender {
 		return bufferSize;
 	}
 	
-	public List<String> getLogLines() {
+	public List</*~~>*/String> getLogLines() {
 		if (buffer == null) {
 			return new ArrayList<>(0);
 		}
@@ -127,7 +127,7 @@ public class MemoryAppender extends AbstractAppender {
 		
 		public MemoryAppenderBuilder() {
 			super();
-			setName(OpenmrsConstants.MEMORY_APPENDER_NAME);
+			setName(/*~~>*/OpenmrsConstants.MEMORY_APPENDER_NAME);
 		}
 		
 		public MemoryAppenderBuilder setBufferSize(int bufferSize) {

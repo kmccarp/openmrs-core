@@ -61,7 +61,7 @@ public class OpenmrsFilter extends OncePerRequestFilter {
 		HttpSession httpSession = httpRequest.getSession();
 		
 		// used by htmlInclude tag
-		httpRequest.setAttribute(WebConstants.INIT_REQ_UNIQUE_ID, String.valueOf(System.currentTimeMillis()));
+		httpRequest.setAttribute(/*~~>*/WebConstants.INIT_REQ_UNIQUE_ID, /*~~>*/String.valueOf(System.currentTimeMillis()));
 		
 		log.debug("requestURI {}", httpRequest.getRequestURI());
 		log.debug("requestURL {}", httpRequest.getRequestURL());
@@ -70,7 +70,7 @@ public class OpenmrsFilter extends OncePerRequestFilter {
 		// User context is created if it doesn't already exist and added to the session
 		// note: this usercontext storage logic is copied to webinf/view/uncaughtexception.jsp to 
 		// 		 prevent stack traces being shown to non-authenticated users
-		UserContext userContext = (UserContext) httpSession.getAttribute(WebConstants.OPENMRS_USER_CONTEXT_HTTPSESSION_ATTR);
+		UserContext userContext = (UserContext) httpSession.getAttribute(/*~~>*/WebConstants.OPENMRS_USER_CONTEXT_HTTPSESSION_ATTR);
 		
 		// default the session username attribute to anonymous
 		httpSession.setAttribute("username", "-anonymous user-");
@@ -79,7 +79,7 @@ public class OpenmrsFilter extends OncePerRequestFilter {
 		// and set it onto the session
 		if (userContext == null) {
 			userContext = new UserContext(Context.getAuthenticationScheme());
-			httpSession.setAttribute(WebConstants.OPENMRS_USER_CONTEXT_HTTPSESSION_ATTR, userContext);
+			httpSession.setAttribute(/*~~>*/WebConstants.OPENMRS_USER_CONTEXT_HTTPSESSION_ATTR, userContext);
 			
 			log.debug("Just set user context {} as attribute on session", userContext);
 		} else {

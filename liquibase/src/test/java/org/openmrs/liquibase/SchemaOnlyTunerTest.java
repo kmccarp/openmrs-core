@@ -36,18 +36,18 @@ import org.mockito.Mockito;
 
 public class SchemaOnlyTunerTest {
 	
-	private static final String LIQUIBASE_SCHEMA_ONLY_SNAPSHOT_XML = Paths
+	private static final /*~~>*/String LIQUIBASE_SCHEMA_ONLY_SNAPSHOT_XML = Paths
 	        .get("org", "openmrs", "liquibase", "snapshots", "schema-only", "liquibase-schema-only-SNAPSHOT.xml").toString();
 	
-	private static final String LIQUIBASE_SCHEMA_ONLY_UPDATED_SNAPSHOT_XML = Paths
+	private static final /*~~>*/String LIQUIBASE_SCHEMA_ONLY_UPDATED_SNAPSHOT_XML = Paths
 	        .get("org", "openmrs", "liquibase", "snapshots", "schema-only", "liquibase-schema-only-UPDATED-SNAPSHOT.xml")
 	        .toString();
 	
-	private static String PATH_TO_TEST_RESOURCES = Paths.get("src", "test", "resources").toString();
+	private static /*~~>*/String PATH_TO_TEST_RESOURCES = Paths.get("src", "test", "resources").toString();
 	
 	private Document document;
 	
-	private Map<String, String> namespaceUris;
+	private Map</*~~>*/String, /*~~>*/String> namespaceUris;
 	
 	private SchemaOnlyTuner schemaOnlyTuner;
 	
@@ -61,8 +61,8 @@ public class SchemaOnlyTunerTest {
 	@Test
 	public void shouldCreateUpdatedChangeLogFile(@TempDir Path tempDir) throws DocumentException, IOException {
 		// given
-		String sourcePath = PATH_TO_TEST_RESOURCES + File.separator + LIQUIBASE_SCHEMA_ONLY_SNAPSHOT_XML;
-		String targetPath = tempDir.resolve("liquibase-schema-only-UPDATED-SNAPSHOT.xml").toString();
+		/*~~>*/String sourcePath = PATH_TO_TEST_RESOURCES + /*~~>*/File.separator + LIQUIBASE_SCHEMA_ONLY_SNAPSHOT_XML;
+		/*~~>*/String targetPath = tempDir.resolve("liquibase-schema-only-UPDATED-SNAPSHOT.xml").toString();
 		
 		// when
 		schemaOnlyTuner.createUpdatedChangeLogFile(sourcePath, targetPath);

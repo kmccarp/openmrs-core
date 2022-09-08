@@ -79,7 +79,7 @@ public class OpenmrsClassScanner {
 		}
 		
 		Set<Class<?>> types = new HashSet<>();
-		String pattern = "classpath*:org/openmrs/**/*.class";
+		/*~~>*/String pattern = "classpath*:org/openmrs/**/*.class";
 		
 		try {
 			Resource[] resources = resourceResolver.getResources(pattern);
@@ -88,7 +88,7 @@ public class OpenmrsClassScanner {
 				try {
 					MetadataReader metadataReader = metadataReaderFactory.getMetadataReader(resource);
 					if (typeFilter.match(metadataReader, metadataReaderFactory)) {
-						String classname = metadataReader.getClassMetadata().getClassName();
+						/*~~>*/String classname = metadataReader.getClassMetadata().getClassName();
 						try {
 							Class<?> metadata = OpenmrsClassLoader.getInstance().loadClass(classname);
 							types.add(metadata);

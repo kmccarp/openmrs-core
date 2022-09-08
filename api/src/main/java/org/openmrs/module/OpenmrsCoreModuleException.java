@@ -27,21 +27,21 @@ public class OpenmrsCoreModuleException extends ModuleMustStartException {
 	
 	public static final long serialVersionUID = 1L;
 	
-	private Map<String, String> modules;
+	private Map</*~~>*/String, /*~~>*/String> modules;
 	
 	/**
 	 * This constructor is used when a user tries to stop a core module.
 	 * 
 	 * @param moduleId the module id that is trying to be stopped
 	 */
-	public OpenmrsCoreModuleException(String moduleId) {
+	public OpenmrsCoreModuleException(/*~~>*/String moduleId) {
 		super("The " + moduleId + " module is set as 'core' by OpenMRS and so cannot be stopped or unloaded.");
 	}
 	
 	/**
 	 * @param modules map from module id to version that is core and didn't start
 	 */
-	public OpenmrsCoreModuleException(Map<String, String> modules) {
+	public OpenmrsCoreModuleException(Map</*~~>*/String, /*~~>*/String> modules) {
 		super(createMessage(modules));
 		
 		// set the moduleIds property for use by the StartupErrorFilter
@@ -55,10 +55,10 @@ public class OpenmrsCoreModuleException extends ModuleMustStartException {
 	 * @param modules map from module id to the version that is required
 	 * @return the string to display to the user
 	 */
-	private static String createMessage(Map<String, String> modules) {
+	private static /*~~>*/String createMessage(Map</*~~>*/String, /*~~>*/String> modules) {
 		StringBuilder msg = new StringBuilder(
 		        "The following modules are marked as 'core' by OpenMRS but were unable to start: ");
-		for (Map.Entry<String, String> entry : modules.entrySet()) {
+		for (Map.Entry</*~~>*/String, /*~~>*/String> entry : modules.entrySet()) {
 			msg.append(entry.getKey());
 			msg.append(" v");
 			msg.append(entry.getValue());
@@ -73,7 +73,7 @@ public class OpenmrsCoreModuleException extends ModuleMustStartException {
 	 * 
 	 * @return the module ids that caused this exception
 	 */
-	public Map<String, String> getModules() {
+	public Map</*~~>*/String, /*~~>*/String> getModules() {
 		return modules;
 	}
 }

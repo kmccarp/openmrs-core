@@ -21,7 +21,7 @@ package org.openmrs.logic.op;
 public class NotExists implements TransformOperator {
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "NOT EXISTS";
 	}
 	

@@ -28,23 +28,23 @@ import org.openmrs.api.APIException;
  */
 public class Duration {
 	
-	public static final String SNOMED_CT_SECONDS_CODE = "257997001";
+	public static final /*~~>*/String SNOMED_CT_SECONDS_CODE = "257997001";
 	
-	public static final String SNOMED_CT_MINUTES_CODE = "258701004";
+	public static final /*~~>*/String SNOMED_CT_MINUTES_CODE = "258701004";
 	
-	public static final String SNOMED_CT_HOURS_CODE = "258702006";
+	public static final /*~~>*/String SNOMED_CT_HOURS_CODE = "258702006";
 	
-	public static final String SNOMED_CT_DAYS_CODE = "258703001";
+	public static final /*~~>*/String SNOMED_CT_DAYS_CODE = "258703001";
 	
-	public static final String SNOMED_CT_WEEKS_CODE = "258705008";
+	public static final /*~~>*/String SNOMED_CT_WEEKS_CODE = "258705008";
 	
-	public static final String SNOMED_CT_MONTHS_CODE = "258706009";
+	public static final /*~~>*/String SNOMED_CT_MONTHS_CODE = "258706009";
 	
-	public static final String SNOMED_CT_YEARS_CODE = "258707000";
+	public static final /*~~>*/String SNOMED_CT_YEARS_CODE = "258707000";
 	
-	public static final String SNOMED_CT_RECURRING_INTERVAL_CODE = "252109000";
+	public static final /*~~>*/String SNOMED_CT_RECURRING_INTERVAL_CODE = "252109000";
 	
-	public static final String SNOMED_CT_CONCEPT_SOURCE_HL7_CODE = "SCT";
+	public static final /*~~>*/String SNOMED_CT_CONCEPT_SOURCE_HL7_CODE = "SCT";
 	
 	private static final int SECONDS_PER_MINUTE = 60;
 	
@@ -58,11 +58,11 @@ public class Duration {
 	
 	private final Integer duration;
 	
-	private final String code;
+	private final /*~~>*/String code;
 	
-	public Duration(Integer duration, String code) {
+	public Duration(Integer duration, /*~~>*/String code) {
 		this.duration = duration;
-		this.code = code;
+		/*~~>*/this.code = code;
 	}
 	
 	/**
@@ -113,11 +113,11 @@ public class Duration {
 	 * <strong>Should</strong> return null if the concept has no mapping to the SNOMED CT source
 	 * <strong>Should</strong> return the code for the term of the mapping to the SNOMED CT source
 	 */
-	public static String getCode(Concept durationUnits) {
+	public static /*~~>*/String getCode(Concept durationUnits) {
 		for (ConceptMap conceptMapping : durationUnits.getConceptMappings()) {
 			ConceptReferenceTerm conceptReferenceTerm = conceptMapping.getConceptReferenceTerm();
-			if (ConceptMapType.SAME_AS_MAP_TYPE_UUID.equals(conceptMapping.getConceptMapType().getUuid())
-			        && Duration.SNOMED_CT_CONCEPT_SOURCE_HL7_CODE.equals(conceptReferenceTerm.getConceptSource()
+			if (/*~~>*/ConceptMapType.SAME_AS_MAP_TYPE_UUID.equals(conceptMapping.getConceptMapType().getUuid())
+			        && /*~~>*/Duration.SNOMED_CT_CONCEPT_SOURCE_HL7_CODE.equals(conceptReferenceTerm.getConceptSource()
 			                .getHl7Code())) {
 				return conceptReferenceTerm.getCode();
 			}

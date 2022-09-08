@@ -54,7 +54,7 @@ public class HibernateTemplateDAO implements TemplateDAO {
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Template> getTemplatesByName(String name) {
+	public List<Template> getTemplatesByName(/*~~>*/String name) {
 		log.info("Get template " + name);
 		return sessionFactory.getCurrentSession().createQuery("from Template as template where template.name = ?")
 		        .setString(0, name).list();

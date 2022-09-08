@@ -50,12 +50,12 @@ public class CohortValidator implements Validator {
 					Patient p = Context.getPatientService().getPatient(member.getPatientId());
 					int dateCompare = OpenmrsUtil.compareWithNullAsLatest(member.getStartDate(), member.getEndDate());
 					if (p != null && p.getVoided() && !member.getVoided()) {
-						String message = "Patient " + p.getPatientId()
+						/*~~>*/String message = "Patient " + p.getPatientId()
 								+ " is voided, cannot add voided members to a cohort";
 						errors.rejectValue("memberships", "Cohort.patientAndMemberShouldBeVoided", message);
 					}
 					if (dateCompare == 1) {
-						String message = "Start date is null or end date is before start date";
+						/*~~>*/String message = "Start date is null or end date is before start date";
 						errors.rejectValue("memberships", "Cohort.startDateShouldNotBeNullOrBeforeEndDate", message);
 					}
 				}

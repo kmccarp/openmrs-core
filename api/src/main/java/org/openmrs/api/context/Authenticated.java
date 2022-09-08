@@ -22,7 +22,7 @@ public interface Authenticated {
 	/**
 	 * @return A string describing or identifying the authentication scheme that was used.
 	 */
-	public String getAuthenticationScheme();
+	public /*~~>*/String getAuthenticationScheme();
 	
 	/**
 	 * @return The authenticated OpenMRS {@link User}.

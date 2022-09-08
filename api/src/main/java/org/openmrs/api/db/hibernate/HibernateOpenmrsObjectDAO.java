@@ -44,7 +44,7 @@ public class HibernateOpenmrsObjectDAO<T extends BaseOpenmrsObject> implements O
 	 * @see org.openmrs.api.db.OpenmrsObjectDAO#getByUuid(java.lang.String)
 	 */
 	@Override
-	public T getByUuid(String uuid) {
+	public T getByUuid(/*~~>*/String uuid) {
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(mappedClass);
 		return (T) crit.add(Restrictions.eq("uuid", uuid)).uniqueResult();
 	}

@@ -52,40 +52,40 @@ public class GenerateUuid implements CustomTaskChange {
 	 * The "tableNames" parameter defined in the liquibase xml changeSet element that is calling this
 	 * class (whitespace separated).
 	 */
-	private String tableNames = null;
+	private /*~~>*/String tableNames = null;
 	
 	/**
 	 * The "columnName" parameter defined in the liquibase xml changeSet element that is calling this
 	 * class
 	 */
-	private String columnName = "uuid";
+	private /*~~>*/String columnName = "uuid";
 	
 	/**
 	 * Key-value pairs of table name ids that don't follow the convention. The key is what the
 	 * convention would be and the value is what it actually is: <br>
 	 * e.g. "field_answer_id=field_id|role_id=role|privilege_id=privilege"
 	 */
-	private String idExceptions = "";
+	private /*~~>*/String idExceptions = "";
 	
 	/**
 	 * Set by the {@link #setUp()} method from the value of the {@link #idExceptions} parameter
 	 */
-	private Map<String, String> idExceptionsMap = null;
+	private Map</*~~>*/String, /*~~>*/String> idExceptionsMap = null;
 	
 	/**
 	 * Set by the {@link #setUp()} method from the value of the {@link #tableNames} parameter
 	 */
-	private String[] tableNamesArray = null;
+	private /*~~>*/String[] tableNamesArray = null;
 	
 	/**
 	 * The sql statement to select out the ids. Generated in the {@link #setUp()} method.
 	 */
-	private String genericIdSql;
+	private /*~~>*/String genericIdSql;
 	
 	/**
 	 * The sql statement to update the rows with the uuids. Generated in the {@link #setUp()} method.
 	 */
-	private String genericUpdateSql;
+	private /*~~>*/String genericUpdateSql;
 	
 	/**
 	 * Adds UUIDs to all rows for the specified tables. It generates UUIDs using Java and updates one
@@ -103,9 +103,9 @@ public class GenerateUuid implements CustomTaskChange {
 			connection.setAutoCommit(false);
 			
 			if ("mysql".equals(database.getShortName()) || "mariadb".equals(database.getShortName())) {
-				String updateSql = "update %s set " + columnName + " = uuid() where " + columnName + " is null";
-				for (String tablename : tableNamesArray) {
-					String rawSql = String.format(updateSql, tablename);
+				/*~~>*/String updateSql = "update %s set " + columnName + " = uuid() where " + columnName + " is null";
+				for (/*~~>*/String tablename : tableNamesArray) {
+					/*~~>*/String rawSql = /*~~>*/String.format(updateSql, tablename);
 					
 					Statement statement = null;
 					try {
@@ -132,16 +132,16 @@ public class GenerateUuid implements CustomTaskChange {
 			} else {
 				int transactionBatchSize = 0;
 				// loop over all tables
-				for (String tableName : tableNamesArray) {
+				for (/*~~>*/String tableName : tableNamesArray) {
 					try {
 						Statement idStatement = null;
 						PreparedStatement updateStatement = null;
 						try {
-							String idSql = genericIdSql.replaceAll("tablename", tableName);
-							String updateSql = genericUpdateSql.replaceAll("tablename", tableName);
+							/*~~>*/String idSql = genericIdSql.replaceAll("tablename", tableName);
+							/*~~>*/String updateSql = genericUpdateSql.replaceAll("tablename", tableName);
 							
 							// hacky way to deal with tables that don't follow the tableNam_id convention
-							for (Map.Entry<String, String> idException : idExceptionsMap.entrySet()) {
+							for (Map.Entry</*~~>*/String, /*~~>*/String> idException : idExceptionsMap.entrySet()) {
 								idSql = idSql.replaceFirst(idException.getKey(), idException.getValue());
 								updateSql = updateSql.replaceFirst(idException.getKey(), idException.getValue());
 							}
@@ -211,7 +211,7 @@ public class GenerateUuid implements CustomTaskChange {
 	 * @see liquibase.change.custom.CustomChange#getConfirmationMessage()
 	 */
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished adding uuids to all rows in all tables";
 	}
 	
@@ -258,8 +258,8 @@ public class GenerateUuid implements CustomTaskChange {
 	 *
 	 * @param tableNames the tableNames to set
 	 */
-	public void setTableNames(String tableNames) {
-		this.tableNames = tableNames;
+	public void setTableNames(/*~~>*/String tableNames) {
+		/*~~>*/this.tableNames = tableNames;
 	}
 	
 	/**
@@ -267,8 +267,8 @@ public class GenerateUuid implements CustomTaskChange {
 	 *
 	 * @param columnName the columnName to set
 	 */
-	public void setColumnName(String columnName) {
-		this.columnName = columnName;
+	public void setColumnName(/*~~>*/String columnName) {
+		/*~~>*/this.columnName = columnName;
 	}
 	
 	/**
@@ -276,8 +276,8 @@ public class GenerateUuid implements CustomTaskChange {
 	 *
 	 * @param idExceptions
 	 */
-	public void setIdExceptions(String idExceptions) {
-		this.idExceptions = idExceptions;
+	public void setIdExceptions(/*~~>*/String idExceptions) {
+		/*~~>*/this.idExceptions = idExceptions;
 	}
 	
 }

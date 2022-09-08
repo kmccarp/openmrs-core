@@ -79,7 +79,7 @@ public interface SerializedObjectDAO {
 	 * @throws DAOException
 	 * <strong>Should</strong> return the saved serialized object
 	 */
-	public SerializedObject getSerializedObjectByUuid(String uuid) throws DAOException;
+	public SerializedObject getSerializedObjectByUuid(/*~~>*/String uuid) throws DAOException;
 	
 	/**
 	 * Retrieves the saved object of the passed type from the database by it's uuid
@@ -90,7 +90,7 @@ public interface SerializedObjectDAO {
 	 * @throws DAOException
 	 * <strong>Should</strong> return the saved object
 	 */
-	public <T extends OpenmrsObject> T getObjectByUuid(Class<T> type, String uuid) throws DAOException;
+	public <T extends OpenmrsObject> T getObjectByUuid(Class<T> type, /*~~>*/String uuid) throws DAOException;
 	
 	/**
 	 * Saves an object to the database in serialized form
@@ -165,7 +165,7 @@ public interface SerializedObjectDAO {
 	 * <strong>Should</strong> return all saved objects with the given type and exact name
 	 * <strong>Should</strong> return all saved objects with the given type and partial name
 	 */
-	public List<SerializedObject> getAllSerializedObjectsByName(Class<?> type, String name, boolean exactMatchOnly)
+	public List<SerializedObject> getAllSerializedObjectsByName(Class<?> type, /*~~>*/String name, boolean exactMatchOnly)
 	        throws DAOException;
 	
 	/**
@@ -180,7 +180,7 @@ public interface SerializedObjectDAO {
 	 * <strong>Should</strong> return all saved objects with the given type and exact name
 	 * <strong>Should</strong> return all saved objects with the given type and partial name
 	 */
-	public <T extends OpenmrsMetadata> List<T> getAllObjectsByName(Class<T> type, String name, boolean exactMatchOnly)
+	public <T extends OpenmrsMetadata> List<T> getAllObjectsByName(Class<T> type, /*~~>*/String name, boolean exactMatchOnly)
 	        throws DAOException;
 	
 	/**

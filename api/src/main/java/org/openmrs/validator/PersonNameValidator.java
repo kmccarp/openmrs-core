@@ -133,8 +133,8 @@ public class PersonNameValidator implements Validator {
 		}
 
 		// Make sure the entered name value is sensible 
-		String namePattern = Context.getAdministrationService().getGlobalProperty(
-		    OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_NAME_REGEX);
+		/*~~>*/String namePattern = Context.getAdministrationService().getGlobalProperty(
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PATIENT_NAME_REGEX);
 		if (StringUtils.isNotBlank(namePattern)) {
 			if (StringUtils.isNotBlank(personName.getGivenName()) && !personName.getGivenName().matches(namePattern)) {
 				errors.rejectValue(getFieldKey("givenName", arrayInd, testInd), "GivenName.invalid");
@@ -158,7 +158,7 @@ public class PersonNameValidator implements Validator {
 	 * @param arrayInd indicates whether or not a names[0] array needs to be prepended to field
 	 * @return formated
 	 */
-	private String getFieldKey(String field, boolean arrayInd, boolean testInd) {
+	private /*~~>*/String getFieldKey(/*~~>*/String field, boolean arrayInd, boolean testInd) {
 		return testInd ? field : arrayInd ? "names[0]." + field : "name." + field;
 	}
 	

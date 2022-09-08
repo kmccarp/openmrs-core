@@ -34,7 +34,7 @@ import org.springframework.validation.Errors;
  */
 public class CohortValidatorTest extends BaseContextSensitiveTest {
 	
-	private static final String nullOrIncompatibleObjErrorMessage = "The parameter obj should not be null and must be of type"
+	private static final /*~~>*/String nullOrIncompatibleObjErrorMessage = "The parameter obj should not be null and must be of type"
 	        + Cohort.class;
 	
 	
@@ -46,7 +46,7 @@ public class CohortValidatorTest extends BaseContextSensitiveTest {
 	
 	private CohortMembership cohortMembership;
 
-	protected static final String COHORT_XML = "org/openmrs/api/include/CohortServiceTest-cohort.xml";
+	protected static final /*~~>*/String COHORT_XML = "org/openmrs/api/include/CohortServiceTest-cohort.xml";
 
 	private Errors errors;
 	
@@ -88,7 +88,7 @@ public class CohortValidatorTest extends BaseContextSensitiveTest {
 		validator.validate(cohort, errors);
 		
 		assertTrue(errors.hasFieldErrors("memberships"));
-		String eMessage = "Patient " + patient.getPatientId() + " is voided, cannot add voided members to a cohort";
+		/*~~>*/String eMessage = "Patient " + patient.getPatientId() + " is voided, cannot add voided members to a cohort";
 		assertEquals(eMessage, errors.getFieldError("memberships").getDefaultMessage());
 	}
 

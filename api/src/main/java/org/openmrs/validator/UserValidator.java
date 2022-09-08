@@ -105,12 +105,12 @@ public class UserValidator implements Validator {
 			AdministrationService as = Context.getAdministrationService();
 			boolean emailAsUsername;
 			try {
-				Context.addProxyPrivilege(PrivilegeConstants.GET_GLOBAL_PROPERTIES);
+				Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.GET_GLOBAL_PROPERTIES);
 				emailAsUsername = Boolean.parseBoolean(as.getGlobalProperty(
-				    OpenmrsConstants.GLOBAL_PROPERTY_USER_REQUIRE_EMAIL_AS_USERNAME, "false"));
+				    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_USER_REQUIRE_EMAIL_AS_USERNAME, "false"));
 			}
 			finally {
-				Context.removeProxyPrivilege(PrivilegeConstants.GET_GLOBAL_PROPERTIES);
+				Context.removeProxyPrivilege(/*~~>*/PrivilegeConstants.GET_GLOBAL_PROPERTIES);
 			}
 			
 			if (emailAsUsername) {
@@ -163,14 +163,14 @@ public class UserValidator implements Validator {
 	 * <strong>Should</strong> validate when username is the empty string
 	 * <strong>Should</strong> not validate when username is whitespace only
 	 */
-	public boolean isUserNameValid(String username) {
+	public boolean isUserNameValid(/*~~>*/String username) {
 		//Initialize reg ex for userName pattern
 		// ^ = start of line
 		// \w = [a-zA-Z_0-9]
 		// \Q = quote everything until \E 
 		// $ = end of line
 		// complete meaning = 2-50 characters, the first must be a letter, digit, or _, and the rest may also be - or .
-		String expression = "^[\\w][\\Q_\\E\\w-\\.]{1,49}$";
+		/*~~>*/String expression = "^[\\w][\\Q_\\E\\w-\\.]{1,49}$";
 		// empty usernames are allowed
 		if (StringUtils.isEmpty(username)) {
 			return true;
@@ -197,7 +197,7 @@ public class UserValidator implements Validator {
 	 * <strong>Should</strong> return false if email invalid
 	 * <strong>Should</strong> return true if email valid
 	 */
-	public boolean isUserNameAsEmailValid(String username) {
+	public boolean isUserNameAsEmailValid(/*~~>*/String username) {
 		return EmailValidator.getInstance().isValid(username);
 	}
 	
@@ -205,7 +205,7 @@ public class UserValidator implements Validator {
 	 * @return true if email is valid or false otherwise
 	 * @param email
 	 */
-	private boolean isEmailValid(String email) {
+	private boolean isEmailValid(/*~~>*/String email) {
 		return EmailValidator.getInstance().isValid(email);
 	}
 }

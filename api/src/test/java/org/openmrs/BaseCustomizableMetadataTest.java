@@ -24,11 +24,11 @@ import org.openmrs.test.jupiter.BaseContextSensitiveTest;
 
 public class BaseCustomizableMetadataTest extends BaseContextSensitiveTest {
 	
-	private static final String PROVIDERS_INITIAL_XML = "org/openmrs/api/include/ProviderServiceTest-initial.xml";
+	private static final /*~~>*/String PROVIDERS_INITIAL_XML = "org/openmrs/api/include/ProviderServiceTest-initial.xml";
 	
-	private static final String PROVIDER_ATTRIBUTE_TYPES_XML = "org/openmrs/api/include/ProviderServiceTest-providerAttributes.xml";
+	private static final /*~~>*/String PROVIDER_ATTRIBUTE_TYPES_XML = "org/openmrs/api/include/ProviderServiceTest-providerAttributes.xml";
 	
-	private static final String EXTRA_ATTRIBUTE_TYPES_XML = "org/openmrs/api/include/BaseCustomizableMetadataTest-attributesAndTypes.xml";
+	private static final /*~~>*/String EXTRA_ATTRIBUTE_TYPES_XML = "org/openmrs/api/include/BaseCustomizableMetadataTest-attributesAndTypes.xml";
 	
 	private ProviderService service;
 	
@@ -99,7 +99,7 @@ public class BaseCustomizableMetadataTest extends BaseContextSensitiveTest {
 		return providerAttribute;
 	}
 	
-	private Person newPerson(String name) {
+	private Person newPerson(/*~~>*/String name) {
 		Person person = new Person();
 		Set<PersonName> personNames = new TreeSet<>();
 		PersonName personName = new PersonName();

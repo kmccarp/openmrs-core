@@ -54,7 +54,7 @@ public final class OpenmrsLoggingUtil {
 	@Logging(ignore = true)
 	public static MemoryAppender getMemoryAppender() {
 		MemoryAppender memoryAppender = ((LoggerContext) LogManager.getContext(true)).getConfiguration()
-			.getAppender(OpenmrsConstants.MEMORY_APPENDER_NAME);
+			.getAppender(/*~~>*/OpenmrsConstants.MEMORY_APPENDER_NAME);
 		
 		if (memoryAppender != null && !memoryAppender.isStarted()) {
 			memoryAppender.start();
@@ -72,11 +72,11 @@ public final class OpenmrsLoggingUtil {
 	 *
 	 * @return the path to the OpenMRS log file
 	 * */
-	public static String getOpenmrsLogLocation() {
+	public static /*~~>*/String getOpenmrsLogLocation() {
 		Appender fileAppender = ((LoggerContext) LogManager.getRootLogger()).getConfiguration()
-			.getAppender(OpenmrsConstants.LOG_OPENMRS_FILE_APPENDER);
+			.getAppender(/*~~>*/OpenmrsConstants.LOG_OPENMRS_FILE_APPENDER);
 		
-		String fileName = null;
+		/*~~>*/String fileName = null;
 		if (fileAppender instanceof AbstractOutputStreamAppender) {
 			if (fileAppender instanceof RollingFileAppender) {
 				fileName = ((RollingFileAppender) fileAppender).getFileName();
@@ -105,16 +105,16 @@ public final class OpenmrsLoggingUtil {
 	 */
 	@Logging(ignore = true)
 	public static void applyLogLevels() {
-		String logLevel = Context.getAdministrationService()
-			.getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_LOG_LEVEL, "");
+		/*~~>*/String logLevel = Context.getAdministrationService()
+			.getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOG_LEVEL, "");
 		
 		synchronized (OpenmrsLoggingUtil.class) {
-			for (String level : logLevel.split(",")) {
-				String[] classAndLevel = level.split(":");
+			for (/*~~>*/String level : logLevel.split(",")) {
+				/*~~>*/String[] classAndLevel = level.split(":");
 				if (classAndLevel.length == 0) {
 					break;
 				} else if (classAndLevel.length == 1) {
-					applyLogLevelInternal(OpenmrsConstants.LOG_CLASS_DEFAULT, classAndLevel[0].trim());
+					applyLogLevelInternal(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT, classAndLevel[0].trim());
 				} else {
 					applyLogLevelInternal(classAndLevel[0].trim(), classAndLevel[1].trim());
 				}
@@ -132,7 +132,7 @@ public final class OpenmrsLoggingUtil {
 	 *                 {@link OpenmrsConstants#LOG_CLASS_DEFAULT} . Should be something like org.openmrs.___
 	 * @param logLevel one of <tt>OpenmrsConstants.LOG_LEVEL_*</tt> constants
 	 */
-	public static void applyLogLevel(String logClass, String logLevel) {
+	public static void applyLogLevel(/*~~>*/String logClass, /*~~>*/String logLevel) {
 		if (StringUtils.isNotBlank(logLevel)) {
 			synchronized (OpenmrsLoggingUtil.class) {
 				applyLogLevelInternal(logClass, logLevel);
@@ -151,11 +151,11 @@ public final class OpenmrsLoggingUtil {
 	 *                 *            OpenmrsConstants.LOG_CLASS_DEFAULT . Should be something like org.openmrs.___
 	 * @param logLevel one of OpenmrsConstants.LOG_LEVEL_* constants
 	 */
-	private static void applyLogLevelInternal(String logClass, String logLevel) {
+	private static void applyLogLevelInternal(/*~~>*/String logClass, /*~~>*/String logLevel) {
 		if (StringUtils.isNotBlank(logLevel)) {
 			// the default log class is org.openmrs.api
 			if (StringUtils.isEmpty(logClass)) {
-				logClass = OpenmrsConstants.LOG_CLASS_DEFAULT;
+				logClass = /*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT;
 			}
 			
 			// DO NOT USE LogManager#getContext() here as this will reset the logger context
@@ -164,22 +164,22 @@ public final class OpenmrsLoggingUtil {
 			
 			logLevel = logLevel.toLowerCase();
 			switch (logLevel) {
-				case OpenmrsConstants.LOG_LEVEL_TRACE:
+				case /*~~>*/OpenmrsConstants.LOG_LEVEL_TRACE:
 					configuration.setLevel(Level.TRACE);
 					break;
-				case OpenmrsConstants.LOG_LEVEL_DEBUG:
+				case /*~~>*/OpenmrsConstants.LOG_LEVEL_DEBUG:
 					configuration.setLevel(Level.DEBUG);
 					break;
-				case OpenmrsConstants.LOG_LEVEL_INFO:
+				case /*~~>*/OpenmrsConstants.LOG_LEVEL_INFO:
 					configuration.setLevel(Level.INFO);
 					break;
-				case OpenmrsConstants.LOG_LEVEL_WARN:
+				case /*~~>*/OpenmrsConstants.LOG_LEVEL_WARN:
 					configuration.setLevel(Level.WARN);
 					break;
-				case OpenmrsConstants.LOG_LEVEL_ERROR:
+				case /*~~>*/OpenmrsConstants.LOG_LEVEL_ERROR:
 					configuration.setLevel(Level.ERROR);
 					break;
-				case OpenmrsConstants.LOG_LEVEL_FATAL:
+				case /*~~>*/OpenmrsConstants.LOG_LEVEL_FATAL:
 					configuration.setLevel(Level.FATAL);
 					break;
 				default:

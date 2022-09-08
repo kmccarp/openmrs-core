@@ -32,7 +32,7 @@ public class CodedOrFreeText {
 	@ManyToOne
 	ConceptName specificName;
 	
-	String nonCoded;
+	/*~~>*/String nonCoded;
 	
 	public CodedOrFreeText() {
 	}
@@ -44,10 +44,10 @@ public class CodedOrFreeText {
 	 * @param specificName the specific name of the coded concept to set
 	 * @param nonCoded the manually written string name of the concept to set
 	 */
-	public CodedOrFreeText(Concept coded, ConceptName specificName, String nonCoded) {
+	public CodedOrFreeText(Concept coded, ConceptName specificName, /*~~>*/String nonCoded) {
 		this.coded = coded;
 		this.specificName = specificName;
-		this.nonCoded = nonCoded;
+		/*~~>*/this.nonCoded = nonCoded;
 	}
 	
 	/**
@@ -91,7 +91,7 @@ public class CodedOrFreeText {
 	 *
 	 * @return manually written string name of the concept.
 	 */
-	public String getNonCoded() {
+	public /*~~>*/String getNonCoded() {
 		return nonCoded;
 	}
 	
@@ -100,7 +100,7 @@ public class CodedOrFreeText {
 	 *
 	 * @param nonCoded the manually written string name of the concept to set.
 	 */
-	public void setNonCoded(String nonCoded) {
-		this.nonCoded = nonCoded;
+	public void setNonCoded(/*~~>*/String nonCoded) {
+		/*~~>*/this.nonCoded = nonCoded;
 	}
 }

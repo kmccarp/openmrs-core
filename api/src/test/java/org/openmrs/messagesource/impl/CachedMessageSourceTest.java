@@ -53,7 +53,7 @@ public class CachedMessageSourceTest {
 		        "a uuid needs to be unique");
 		cachedMessages.addPresentation(message);
 		
-		String valueAsString = cachedMessages.getMessage(message.getCode(), null, message.getLocale());
+		/*~~>*/String valueAsString = cachedMessages.getMessage(message.getCode(), null, message.getLocale());
 		PresentationMessage valueAsPM = cachedMessages.getPresentation(message.getCode(), message.getLocale());
 		
 		assertEquals(valueAsString, valueAsPM.getMessage());

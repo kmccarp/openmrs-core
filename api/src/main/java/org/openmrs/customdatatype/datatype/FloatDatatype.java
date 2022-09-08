@@ -24,7 +24,7 @@ public class FloatDatatype extends SerializingCustomDatatype<Float> {
 	 * @see SerializingCustomDatatype#serialize(Object)
 	 */
 	@Override
-	public String serialize(Float typedValue) {
+	public /*~~>*/String serialize(Float typedValue) {
 		if (typedValue == null) {
 			return null;
 		}
@@ -35,7 +35,7 @@ public class FloatDatatype extends SerializingCustomDatatype<Float> {
 	 * @see SerializingCustomDatatype#deserialize(String)
 	 */
 	@Override
-	public Float deserialize(String serializedValue) {
+	public Float deserialize(/*~~>*/String serializedValue) {
 		if (StringUtils.isEmpty(serializedValue)) {
 			return null;
 		}

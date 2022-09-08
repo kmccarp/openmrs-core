@@ -52,7 +52,7 @@ public class VisitAttributeTypeValidatorTest extends BaseContextSensitiveTest {
 		visitAttributeType.setDatatypeConfig("[a-z]+");
 		visitAttributeType
 		        .setDatatypeClassname("too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text");
-		visitAttributeType.setDescription(new String(new char[66000]));
+		visitAttributeType.setDescription(new /*~~>*/String(new char[66000]));
 		visitAttributeType
 		        .setPreferredHandlerClassname("too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text");
 		visitAttributeType

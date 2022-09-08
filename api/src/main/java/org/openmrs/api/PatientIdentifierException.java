@@ -20,16 +20,16 @@ public class PatientIdentifierException extends APIException {
 	public PatientIdentifierException() {
 	}
 	
-	public PatientIdentifierException(String message) {
+	public PatientIdentifierException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public PatientIdentifierException(String message, PatientIdentifier identifier) {
+	public PatientIdentifierException(/*~~>*/String message, PatientIdentifier identifier) {
 		super(message);
 		this.setPatientIdentifier(identifier);
 	}
 	
-	public PatientIdentifierException(String message, Throwable cause) {
+	public PatientIdentifierException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

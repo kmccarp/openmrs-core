@@ -120,7 +120,7 @@ public class PatientState extends BaseFormRecordableOpenmrsData implements java.
 	
 	/** @see Object#toString() */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "id=" + getPatientStateId() + ", patientProgram=" + getPatientProgram() + ", state=" + getState()
 		        + ", startDate=" + getStartDate() + ", endDate=" + getEndDate() + ", encounter=" + getEncounter() + ", dateCreated=" + getDateCreated()
 		        + ", dateChanged=" + getDateChanged();

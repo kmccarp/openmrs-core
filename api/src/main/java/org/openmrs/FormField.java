@@ -38,7 +38,7 @@ public class FormField extends BaseChangeableOpenmrsMetadata implements java.io.
 	
 	protected Integer fieldNumber;
 	
-	protected String fieldPart;
+	protected /*~~>*/String fieldPart;
 	
 	protected Integer pageNumber;
 	
@@ -136,15 +136,15 @@ public class FormField extends BaseChangeableOpenmrsMetadata implements java.io.
 	/**
 	 * @return Returns the fieldPart.
 	 */
-	public String getFieldPart() {
+	public /*~~>*/String getFieldPart() {
 		return fieldPart;
 	}
 	
 	/**
 	 * @param fieldPart The fieldPart to set.
 	 */
-	public void setFieldPart(String fieldPart) {
-		this.fieldPart = fieldPart;
+	public void setFieldPart(/*~~>*/String fieldPart) {
+		/*~~>*/this.fieldPart = fieldPart;
 	}
 	
 	/**
@@ -232,7 +232,7 @@ public class FormField extends BaseChangeableOpenmrsMetadata implements java.io.
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		if (formFieldId == null) {
 			return "null";
 		}

@@ -34,15 +34,15 @@ public class SimpleDosingInstructions extends BaseDosingInstructions {
 	
 	private Boolean asNeeded;
 	
-	private String asNeededCondition;
+	private /*~~>*/String asNeededCondition;
 	
-	private String administrationInstructions;
+	private /*~~>*/String administrationInstructions;
 	
 	/**
 	 * @see DosingInstructions#getDosingInstructionsAsString(java.util.Locale)
 	 */
 	@Override
-	public String getDosingInstructionsAsString(Locale locale) {
+	public /*~~>*/String getDosingInstructionsAsString(Locale locale) {
 		StringBuilder dosingInstructions = new StringBuilder();
 		dosingInstructions.append(this.dose);
 		dosingInstructions.append(" ");
@@ -60,14 +60,14 @@ public class SimpleDosingInstructions extends BaseDosingInstructions {
 		if (this.asNeeded) {
 			dosingInstructions.append(" ");
 			dosingInstructions.append("PRN");
-			if (this.asNeededCondition != null) {
+			if (/*~~>*/this.asNeededCondition != null) {
 				dosingInstructions.append(" ");
-				dosingInstructions.append(this.asNeededCondition);
+				dosingInstructions.append(/*~~>*/this.asNeededCondition);
 			}
 		}
-		if (this.administrationInstructions != null) {
+		if (/*~~>*/this.administrationInstructions != null) {
 			dosingInstructions.append(" ");
-			dosingInstructions.append(this.administrationInstructions);
+			dosingInstructions.append(/*~~>*/this.administrationInstructions);
 		}
 		return dosingInstructions.toString();
 	}
@@ -85,8 +85,8 @@ public class SimpleDosingInstructions extends BaseDosingInstructions {
 		order.setDuration(this.duration);
 		order.setDurationUnits(this.durationUnits);
 		order.setAsNeeded(this.asNeeded);
-		order.setAsNeededCondition(this.asNeededCondition);
-		order.setDosingInstructions(this.administrationInstructions);
+		order.setAsNeededCondition(/*~~>*/this.asNeededCondition);
+		order.setDosingInstructions(/*~~>*/this.administrationInstructions);
 	}
 	
 	/**
@@ -185,19 +185,19 @@ public class SimpleDosingInstructions extends BaseDosingInstructions {
 		this.asNeeded = asNeeded;
 	}
 	
-	public String getAsNeededCondition() {
+	public /*~~>*/String getAsNeededCondition() {
 		return asNeededCondition;
 	}
 	
-	public void setAsNeededCondition(String asNeededCondition) {
-		this.asNeededCondition = asNeededCondition;
+	public void setAsNeededCondition(/*~~>*/String asNeededCondition) {
+		/*~~>*/this.asNeededCondition = asNeededCondition;
 	}
 	
-	public String getAdministrationInstructions() {
+	public /*~~>*/String getAdministrationInstructions() {
 		return administrationInstructions;
 	}
 	
-	public void setAdministrationInstructions(String administrationInstructions) {
-		this.administrationInstructions = administrationInstructions;
+	public void setAdministrationInstructions(/*~~>*/String administrationInstructions) {
+		/*~~>*/this.administrationInstructions = administrationInstructions;
 	}
 }

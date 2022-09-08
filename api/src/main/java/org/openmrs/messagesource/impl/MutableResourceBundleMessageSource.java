@@ -48,7 +48,7 @@ public class MutableResourceBundleMessageSource extends ReloadableResourceBundle
 	/**
 	 * Local reference to basenames used to search for properties files.
 	 */
-	private String[] basenames = new String[0];
+	private /*~~>*/String[] basenames = new /*~~>*/String[0];
 	
 	private int cacheMilliseconds = -1;
 	
@@ -88,7 +88,7 @@ public class MutableResourceBundleMessageSource extends ReloadableResourceBundle
 		Collection<Locale> foundLocales = new HashSet<>();
 		
 		for (Resource propertiesFile : findPropertiesFiles()) {
-			String filename = propertiesFile.getFilename();
+			/*~~>*/String filename = propertiesFile.getFilename();
 			
 			Locale parsedLocale = parseLocaleFrom(filename);
 			
@@ -110,14 +110,14 @@ public class MutableResourceBundleMessageSource extends ReloadableResourceBundle
 	 * @param filename the name to parse
 	 * @return Locale derived from the given string
 	 */
-	private Locale parseLocaleFrom(String filename) {
+	private Locale parseLocaleFrom(/*~~>*/String filename) {
 		Locale parsedLocale;
 		
 		// trim off leading basename
 		filename = filename.substring("messages".length());
 		
 		// trim off extension
-		String localespec = filename.substring(0, filename.indexOf('.'));
+		/*~~>*/String localespec = filename.substring(0, filename.indexOf('.'));
 		
 		if ("".equals(localespec)) {
 			parsedLocale = Locale.getDefault();
@@ -161,9 +161,9 @@ public class MutableResourceBundleMessageSource extends ReloadableResourceBundle
 	 * @see org.springframework.context.support.ReloadableResourceBundleMessageSource#setBasename(java.lang.String)
 	 */
 	@Override
-	public void setBasename(String basename) {
+	public void setBasename(/*~~>*/String basename) {
 		super.setBasename(basename);
-		this.basenames = new String[] { basename };
+		this.basenames = new /*~~>*/String[] { basename };
 	}
 	
 	/**
@@ -172,9 +172,9 @@ public class MutableResourceBundleMessageSource extends ReloadableResourceBundle
 	 * @see org.springframework.context.support.ReloadableResourceBundleMessageSource#setBasenames(java.lang.String[])
 	 */
 	@Override
-	public void setBasenames(String... basenames) {
+	public void setBasenames(/*~~>*/String... basenames) {
 		if (basenames == null) {
-			this.basenames = new String[0];
+			this.basenames = new /*~~>*/String[0];
 		} else {
 			this.basenames = Arrays.copyOf(basenames, basenames.length);
 		}
@@ -182,7 +182,7 @@ public class MutableResourceBundleMessageSource extends ReloadableResourceBundle
 		//add module file urls to basenames used for locating message properties files
 		Collection<Module> modules = ModuleFactory.getStartedModules();
 		if (!modules.isEmpty()) {
-			String[] names =  new String[this.basenames.length + modules.size()];
+			/*~~>*/String[] names =  new /*~~>*/String[this.basenames.length + modules.size()];
 			System.arraycopy(this.basenames, 0, names, 0, this.basenames.length);
 			int index = this.basenames.length;
 			for (Module module : modules) {
@@ -247,7 +247,7 @@ public class MutableResourceBundleMessageSource extends ReloadableResourceBundle
 	 * @param code
 	 * @return the file which defines the code, or null if not found
 	 */
-	private Resource findPropertiesFileFor(String code) {
+	private Resource findPropertiesFileFor(/*~~>*/String code) {
 		Properties props = new Properties();
 		Resource foundFile = null;
 		
@@ -276,7 +276,7 @@ public class MutableResourceBundleMessageSource extends ReloadableResourceBundle
 	private Resource[] findPropertiesFiles() {
 		Set<Resource> resourceSet = new HashSet<>();
 		try {
-			String pattern = "classpath*:messages*.properties";
+			/*~~>*/String pattern = "classpath*:messages*.properties";
 			ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver(OpenmrsClassLoader.getInstance());
 			Resource[] propertiesFiles = resourceResolver.getResources(pattern);
 			Collections.addAll(resourceSet, propertiesFiles);
@@ -357,7 +357,7 @@ public class MutableResourceBundleMessageSource extends ReloadableResourceBundle
 	 *      java.util.Locale)
 	 */
 	@Override
-	public PresentationMessage getPresentation(String key, Locale forLocale) {
+	public PresentationMessage getPresentation(/*~~>*/String key, Locale forLocale) {
 		// TODO Auto-generated method stub
 		return null;
 	}

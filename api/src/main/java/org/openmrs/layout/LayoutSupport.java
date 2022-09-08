@@ -21,11 +21,11 @@ public abstract class LayoutSupport<T extends LayoutTemplate> {
 	
 	private static final Logger log = LoggerFactory.getLogger(LayoutSupport.class);
 	
-	protected String defaultLayoutFormat;
+	protected /*~~>*/String defaultLayoutFormat;
 	
 	protected List<T> layoutTemplates;
 	
-	protected List<String> specialTokens;
+	protected List</*~~>*/String> specialTokens;
 	
 	/**
 	 * @return Returns the layoutTemplates.
@@ -48,7 +48,7 @@ public abstract class LayoutSupport<T extends LayoutTemplate> {
 		return getLayoutTemplateByName(getDefaultLayoutFormat());
 	}
 	
-	public T getLayoutTemplateByName(String templateName) {
+	public T getLayoutTemplateByName(/*~~>*/String templateName) {
 		log.debug("looking for template name: " + templateName);
 		
 		if (this.layoutTemplates != null && templateName != null) {
@@ -71,7 +71,7 @@ public abstract class LayoutSupport<T extends LayoutTemplate> {
 		}
 	}
 	
-	public T getLayoutTemplateByCodeName(String templateName) {
+	public T getLayoutTemplateByCodeName(/*~~>*/String templateName) {
 		if (this.layoutTemplates != null && templateName != null) {
 			T ret = null;
 			
@@ -89,7 +89,7 @@ public abstract class LayoutSupport<T extends LayoutTemplate> {
 		}
 	}
 	
-	public T getLayoutTemplateByCountry(String templateName) {
+	public T getLayoutTemplateByCountry(/*~~>*/String templateName) {
 		if (this.layoutTemplates != null && templateName != null) {
 			T ret = null;
 			
@@ -107,7 +107,7 @@ public abstract class LayoutSupport<T extends LayoutTemplate> {
 		}
 	}
 	
-	public T getLayoutTemplateByDisplayName(String templateName) {
+	public T getLayoutTemplateByDisplayName(/*~~>*/String templateName) {
 		if (this.layoutTemplates != null && templateName != null) {
 			T ret = null;
 			
@@ -128,27 +128,27 @@ public abstract class LayoutSupport<T extends LayoutTemplate> {
 	/**
 	 * @return Returns the specialTokens.
 	 */
-	public List<String> getSpecialTokens() {
+	public List</*~~>*/String> getSpecialTokens() {
 		return specialTokens;
 	}
 	
 	/**
 	 * @param specialTokens The specialTokens to set.
 	 */
-	public void setSpecialTokens(List<String> specialTokens) {
+	public void setSpecialTokens(List</*~~>*/String> specialTokens) {
 		this.specialTokens = specialTokens;
 	}
 	
 	/**
 	 * @return Returns the defaultLayoutFormat.
 	 */
-	public abstract String getDefaultLayoutFormat();
+	public abstract /*~~>*/String getDefaultLayoutFormat();
 	
 	/**
 	 * @param defaultLayoutFormat The defaultLayoutFormat to set.
 	 */
-	public void setDefaultLayoutFormat(String defaultLayoutFormat) {
-		this.defaultLayoutFormat = defaultLayoutFormat;
+	public void setDefaultLayoutFormat(/*~~>*/String defaultLayoutFormat) {
+		/*~~>*/this.defaultLayoutFormat = defaultLayoutFormat;
 	}
 	
 }

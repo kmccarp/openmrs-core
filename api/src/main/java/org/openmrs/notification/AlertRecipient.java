@@ -91,7 +91,7 @@ public class AlertRecipient extends BaseOpenmrsObject {
 	
 	// @override
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "Alert: " + alert + ". Recipient: " + recipient;
 	}
 	

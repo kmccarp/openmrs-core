@@ -21,7 +21,7 @@ public class DuplicateConceptNameException extends APIException {
 		super("Duplicate concept name found");
 	}
 	
-	public DuplicateConceptNameException(String message) {
+	public DuplicateConceptNameException(/*~~>*/String message) {
 		super(message);
 	}
 }

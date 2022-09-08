@@ -48,7 +48,7 @@ public class Graph<T> {
 		}
 		
 		@Override
-		public String toString() {
+		public /*~~>*/String toString() {
 			return toNode.toString() + "->" + fromNode.toString();
 		}
 		

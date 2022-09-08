@@ -31,7 +31,7 @@ public class EncounterEditor extends OpenmrsPropertyEditor<Encounter> {
 	}
 	
 	@Override
-	protected Encounter getObjectByUuid(String uuid) {
+	protected Encounter getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getEncounterService().getEncounterByUuid(uuid);
 	}
 }

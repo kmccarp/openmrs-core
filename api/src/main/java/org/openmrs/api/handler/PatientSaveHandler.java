@@ -36,7 +36,7 @@ public class PatientSaveHandler implements SaveHandler<Patient> {
 	 *      java.util.Date, java.lang.String)
 	 */
 	@Override
-	public void handle(Patient patient, User creator, Date dateCreated, String other) {
+	public void handle(Patient patient, User creator, Date dateCreated, /*~~>*/String other) {
 		if (patient.getIdentifiers() != null) {
 			for (PatientIdentifier pIdentifier : patient.getIdentifiers()) {
 				

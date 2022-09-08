@@ -24,7 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class HibernateFormDAOTest extends BaseContextSensitiveTest {
 	
-	private static final String FORM_XML = "org/openmrs/api/db/hibernate/include/HibernateFormDAOTestDataSet.xml";
+	private static final /*~~>*/String FORM_XML = "org/openmrs/api/db/hibernate/include/HibernateFormDAOTestDataSet.xml";
 	
 	@Autowired
 	private HibernateFormDAO dao;

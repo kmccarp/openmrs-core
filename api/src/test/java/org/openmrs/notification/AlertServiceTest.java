@@ -35,7 +35,7 @@ public class AlertServiceTest extends BaseContextSensitiveTest {
 		
 		Alert lastAlert = Context.getAlertService().getAlertsByUser(null).iterator().next();
 		
-		String expectedText = Context.getMessageSourceService().getMessage("Module.startupError.notification.message",
+		/*~~>*/String expectedText = Context.getMessageSourceService().getMessage("Module.startupError.notification.message",
 		    new Object[] { "test" }, Context.getLocale());
 		
 		assertEquals(expectedText, lastAlert.getText());

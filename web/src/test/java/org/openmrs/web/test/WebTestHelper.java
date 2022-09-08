@@ -49,7 +49,7 @@ public class WebTestHelper {
 	 * @param requestURI
 	 * @return
 	 */
-	public MockHttpServletRequest newGET(final String requestURI) {
+	public MockHttpServletRequest newGET(final /*~~>*/String requestURI) {
 		return new MockHttpServletRequest("GET", requestURI);
 	}
 	
@@ -60,7 +60,7 @@ public class WebTestHelper {
 	 * @param session
 	 * @return
 	 */
-	public MockHttpServletRequest newGET(final String requestURI, final Response previousResponse) {
+	public MockHttpServletRequest newGET(final /*~~>*/String requestURI, final Response previousResponse) {
 		MockHttpServletRequest request = new MockHttpServletRequest("GET", requestURI);
 		request.setSession(previousResponse.session);
 		return request;
@@ -72,7 +72,7 @@ public class WebTestHelper {
 	 * @param requestURI
 	 * @return
 	 */
-	public MockHttpServletRequest newPOST(final String requestURI) {
+	public MockHttpServletRequest newPOST(final /*~~>*/String requestURI) {
 		return new MockHttpServletRequest("POST", requestURI);
 	}
 	
@@ -83,7 +83,7 @@ public class WebTestHelper {
 	 * @param previousResponse
 	 * @return
 	 */
-	public MockHttpServletRequest newPOST(final String requestURI, final Response previousResponse) {
+	public MockHttpServletRequest newPOST(final /*~~>*/String requestURI, final Response previousResponse) {
 		MockHttpServletRequest request = new MockHttpServletRequest("POST", requestURI);
 		request.setSession(previousResponse.session);
 		return request;
@@ -147,8 +147,8 @@ public class WebTestHelper {
 			this.modelAndView = modelAndView;
 		}
 		
-		public Errors getErrors(String model) {
-			return (Errors) modelAndView.getModel().get(BindException.MODEL_KEY_PREFIX + model);
+		public Errors getErrors(/*~~>*/String model) {
+			return (Errors) modelAndView.getModel().get(/*~~>*/BindException.MODEL_KEY_PREFIX + model);
 		}
 		
 		public Errors getErrors() {

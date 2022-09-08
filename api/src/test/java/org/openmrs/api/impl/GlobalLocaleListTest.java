@@ -34,7 +34,7 @@ public class GlobalLocaleListTest {
 	@Test
 	public void globalPropertyChanged_shouldSetAllowedLocalesIfGlobalPropertyIsAnEmptyString() {
 
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST, "");
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST, "");
 
 		globalLocaleList.globalPropertyChanged(gp);
 
@@ -44,7 +44,7 @@ public class GlobalLocaleListTest {
 	@Test
 	public void globalPropertyChanged_shouldSetAllowedLocalesIfGlobalPropertyContainsTwoLocales() {
 
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST, "en_CA,fr");
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST, "en_CA,fr");
 
 		globalLocaleList.globalPropertyChanged(gp);
 

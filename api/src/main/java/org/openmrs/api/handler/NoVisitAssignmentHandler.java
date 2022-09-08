@@ -24,7 +24,7 @@ import org.openmrs.api.context.Context;
 public class NoVisitAssignmentHandler extends BaseEncounterVisitHandler {
 	
 	@Override
-	public String getDisplayName(Locale locale) {
+	public /*~~>*/String getDisplayName(Locale locale) {
 		return Context.getMessageSourceService().getMessage("Visit.assignmentHandler.noAssignment", null, locale);
 	}
 	

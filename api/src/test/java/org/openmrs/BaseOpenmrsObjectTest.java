@@ -282,14 +282,14 @@ public class BaseOpenmrsObjectTest extends BaseContextSensitiveTest {
 				return getUuid().equals(other.getUuid());
 			}
 			@Override
-			public String toString() {
+			public /*~~>*/String toString() {
 				return new org.apache.commons.lang3.builder.ToStringBuilder(this, org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE).append("hashCode",
 						Integer.toHexString(hashCode())).append("uuid", getUuid()).build();
 			}
 		}
 
 		Patient patient = (Patient) session.get(Patient.class, 2);
-		String uid = patient.getUuid();
+		/*~~>*/String uid = patient.getUuid();
 
 		//NonHibernate managed class Instantiation
 		TestClass obj = new TestClass();
@@ -341,7 +341,7 @@ public class BaseOpenmrsObjectTest extends BaseContextSensitiveTest {
 				}
 			}
 			@Override
-			public String toString() {
+			public /*~~>*/String toString() {
 				return new org.apache.commons.lang3.builder.ToStringBuilder(this, org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE).append("hashCode",
 						Integer.toHexString(hashCode())).append("uuid", getUuid()).build();
 			}
@@ -378,7 +378,7 @@ public class BaseOpenmrsObjectTest extends BaseContextSensitiveTest {
 
 		//Object of a NonHibernate managed class
 		TestClass testObj = new TestClass();
-		String uuid = testObj.getUuid();
+		/*~~>*/String uuid = testObj.getUuid();
 
 		TestClass testObjsameuuid = new TestClass();
 		testObjsameuuid.setUuid(uuid);

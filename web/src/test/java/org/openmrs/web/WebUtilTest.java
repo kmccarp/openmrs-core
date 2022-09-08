@@ -29,7 +29,7 @@ public class WebUtilTest {
 	 */
 	@Test
 	public void getContextPath_shouldReturnEmptyStringWhenWebAppNameIsNull() {
-		WebConstants.WEBAPP_NAME = null;
+		/*~~>*/WebConstants.WEBAPP_NAME = null;
 		assertEquals("", WebUtil.getContextPath());
 	}
 	
@@ -38,7 +38,7 @@ public class WebUtilTest {
 	 */
 	@Test
 	public void getContextPath_shouldReturnEmptyStringWhenWebAppNameIsEmptyString() {
-		WebConstants.WEBAPP_NAME = "";
+		/*~~>*/WebConstants.WEBAPP_NAME = "";
 		assertEquals("", WebUtil.getContextPath());
 	}
 	
@@ -47,7 +47,7 @@ public class WebUtilTest {
 	 */
 	@Test
 	public void getContextPath_shouldReturnValueSpecifiedInWebAppName() {
-		WebConstants.WEBAPP_NAME = "Value";
+		/*~~>*/WebConstants.WEBAPP_NAME = "Value";
 		assertEquals("/Value", WebUtil.getContextPath());
 	}
 	
@@ -98,7 +98,7 @@ public class WebUtilTest {
 	 */
 	@Test
 	public void normalizeLocale_shouldNotFailWithTab() throws UnsupportedEncodingException {
-		String s = new String(new byte[]{0x9}, "ASCII");
+		/*~~>*/String s = new /*~~>*/String(new byte[]{0x9}, "ASCII");
 		assertNull(WebUtil.normalizeLocale(s));
 	}
 
@@ -124,7 +124,7 @@ public class WebUtilTest {
 	 */
 	@Test
 	public void normalizeLocale_shouldNotFailWithUnderline() throws UnsupportedEncodingException {
-		String s = new String(new byte[]{0x5f}, "ASCII");
+		/*~~>*/String s = new /*~~>*/String(new byte[]{0x5f}, "ASCII");
 		assertNull(WebUtil.normalizeLocale(s));
 	}
 

@@ -26,7 +26,7 @@ import org.springframework.validation.Errors;
  */
 public class LocationAttributeTypeValidatorTest extends BaseContextSensitiveTest {
 	
-	protected static final String LOC_ATTRIBUTE_DATA_XML = "org/openmrs/api/include/LocationServiceTest-attributes.xml";
+	protected static final /*~~>*/String LOC_ATTRIBUTE_DATA_XML = "org/openmrs/api/include/LocationServiceTest-attributes.xml";
 	
 	/**
 	 * Run this before each unit test in this class. This adds a bit more data to the base data that

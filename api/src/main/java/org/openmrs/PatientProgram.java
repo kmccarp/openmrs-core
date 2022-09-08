@@ -215,7 +215,7 @@ public class PatientProgram extends BaseChangeableOpenmrsData implements Customi
 	 * @param voidReason - The reason for voiding the {@link PatientState}
 	 * <strong>Should</strong> void state with endDate null if startDates equal
 	 */
-	public void voidLastState(ProgramWorkflow workflow, User voidBy, Date voidDate, String voidReason) {
+	public void voidLastState(ProgramWorkflow workflow, User voidBy, Date voidDate, /*~~>*/String voidReason) {
 		List<PatientState> states = statesInWorkflow(workflow, false);
 		if (voidDate == null) {
 			voidDate = new Date();
@@ -329,7 +329,7 @@ public class PatientProgram extends BaseChangeableOpenmrsData implements Customi
 	
 	/** @see Object#toString() */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "PatientProgram(id=" + getPatientProgramId() + ", patient=" + getPatient() + ", program=" + getProgram()
 		        + ")";
 	}

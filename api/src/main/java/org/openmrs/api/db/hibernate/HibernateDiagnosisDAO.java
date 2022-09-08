@@ -78,7 +78,7 @@ public class HibernateDiagnosisDAO implements DiagnosisDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Diagnosis> getActiveDiagnoses(Patient patient, Date fromDate) {
-		String fromDateCriteria = "";
+		/*~~>*/String fromDateCriteria = "";
 		if(fromDate != null){
 			fromDateCriteria = " and d.dateCreated >= :fromDate ";
 		}
@@ -98,7 +98,7 @@ public class HibernateDiagnosisDAO implements DiagnosisDAO {
 	 */
 	@Override
 	public List<Diagnosis> getDiagnosesByEncounter(Encounter encounter, boolean primaryOnly, boolean confirmedOnly) {
-		String queryString = "from Diagnosis d where d.encounter.encounterId = :encounterId";
+		/*~~>*/String queryString = "from Diagnosis d where d.encounter.encounterId = :encounterId";
 		if (primaryOnly) {
 			queryString += " and d.rank = :rankId";
 		}
@@ -123,7 +123,7 @@ public class HibernateDiagnosisDAO implements DiagnosisDAO {
 	 */
 	@Override
 	public List<Diagnosis> getDiagnosesByVisit(Visit visit, boolean primaryOnly, boolean confirmedOnly) {
-		String queryString = "from Diagnosis d where d.encounter.visit.visitId = :visitId";
+		/*~~>*/String queryString = "from Diagnosis d where d.encounter.visit.visitId = :visitId";
 		if (primaryOnly) {
 			queryString += " and d.rank = :rankId";
 		}
@@ -161,7 +161,7 @@ public class HibernateDiagnosisDAO implements DiagnosisDAO {
 	 * @return the diagnosis associated with the UUID.
 	 */
 	@Override
-	public Diagnosis getDiagnosisByUuid(String uuid){
+	public Diagnosis getDiagnosisByUuid(/*~~>*/String uuid){
 		return (Diagnosis) sessionFactory.getCurrentSession().createQuery("from Diagnosis d where d.uuid = :uuid")
 			.setString("uuid", uuid).uniqueResult();
 	}
@@ -199,7 +199,7 @@ public class HibernateDiagnosisDAO implements DiagnosisDAO {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public DiagnosisAttributeType getDiagnosisAttributeTypeByUuid(String uuid) throws DAOException {
+	public DiagnosisAttributeType getDiagnosisAttributeTypeByUuid(/*~~>*/String uuid) throws DAOException {
 		return (DiagnosisAttributeType) sessionFactory.getCurrentSession().createCriteria(DiagnosisAttributeType.class).add(
 				Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
@@ -228,7 +228,7 @@ public class HibernateDiagnosisDAO implements DiagnosisDAO {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public DiagnosisAttribute getDiagnosisAttributeByUuid(String uuid) throws DAOException {
+	public DiagnosisAttribute getDiagnosisAttributeByUuid(/*~~>*/String uuid) throws DAOException {
 		return (DiagnosisAttribute) sessionFactory.getCurrentSession().createCriteria(DiagnosisAttribute.class).add(Restrictions.eq("uuid", uuid))
 				.uniqueResult();
 	}

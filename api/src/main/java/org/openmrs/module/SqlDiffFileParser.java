@@ -41,7 +41,7 @@ public class SqlDiffFileParser {
 	
 	private static final Logger log = LoggerFactory.getLogger(SqlDiffFileParser.class);
 	
-	private static final String SQLDIFF_CHANGELOG_FILENAME = "sqldiff.xml";
+	private static final /*~~>*/String SQLDIFF_CHANGELOG_FILENAME = "sqldiff.xml";
 	
 	/**
 	 * Get the diff map. Return a sorted map&lt;version, sql statements&gt;
@@ -49,12 +49,12 @@ public class SqlDiffFileParser {
 	 * @return SortedMap&lt;String, String&gt;
 	 * @throws ModuleException
 	 */
-	public static SortedMap<String, String> getSqlDiffs(Module module) throws ModuleException {
+	public static SortedMap</*~~>*/String, /*~~>*/String> getSqlDiffs(Module module) throws ModuleException {
 		if (module == null) {
 			throw new ModuleException("Module cannot be null");
 		}
 		
-		SortedMap<String, String> map = new TreeMap<>(new VersionComparator());
+		SortedMap</*~~>*/String, /*~~>*/String> map = new TreeMap<>(new VersionComparator());
 		
 		InputStream diffStream;
 		
@@ -104,7 +104,7 @@ public class SqlDiffFileParser {
 				
 				Element rootNode = diffDoc.getDocumentElement();
 				
-				String diffVersion = rootNode.getAttribute("version");
+				/*~~>*/String diffVersion = rootNode.getAttribute("version");
 				
 				if (!validConfigVersions().contains(diffVersion)) {
 					throw new ModuleException("Invalid config version: " + diffVersion, module.getModuleId());
@@ -116,8 +116,8 @@ public class SqlDiffFileParser {
 					int i = 0;
 					while (i < diffNodes.getLength()) {
 						Element el = (Element) diffNodes.item(i++);
-						String version = getElement(el, diffVersion, "version");
-						String sql = getElement(el, diffVersion, "sql");
+						/*~~>*/String version = getElement(el, diffVersion, "version");
+						/*~~>*/String sql = getElement(el, diffVersion, "sql");
 						map.put(version, sql);
 					}
 				}
@@ -158,7 +158,7 @@ public class SqlDiffFileParser {
 	 * @param tag
 	 * @return
 	 */
-	private static String getElement(Element element, String version, String tag) {
+	private static /*~~>*/String getElement(Element element, /*~~>*/String version, /*~~>*/String tag) {
 		if (element.getElementsByTagName(tag).getLength() > 0) {
 			return element.getElementsByTagName(tag).item(0).getTextContent();
 		}
@@ -170,8 +170,8 @@ public class SqlDiffFileParser {
 	 *
 	 * @return
 	 */
-	private static List<String> validConfigVersions() {
-		List<String> versions = new ArrayList<>();
+	private static List</*~~>*/String> validConfigVersions() {
+		List</*~~>*/String> versions = new ArrayList<>();
 		versions.add("1.0");
 		return versions;
 	}
@@ -183,7 +183,7 @@ public class SqlDiffFileParser {
 	 * @param version
 	 * @return
 	 */
-	private static NodeList getDiffNodes(Element element, String version) {
+	private static NodeList getDiffNodes(Element element, /*~~>*/String version) {
 		NodeList diffNodes = null;
 		
 		if ("1.0".equals(version)) {

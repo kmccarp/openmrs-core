@@ -29,7 +29,7 @@ import org.openmrs.util.OpenmrsConstants;
  */
 public class ExistingOrNewVisitAssignmentHandlerTest extends BaseContextSensitiveTest {
 	
-	protected static final String ENC_INITIAL_DATA_XML = "org/openmrs/api/include/EncounterServiceTest-initialData.xml";
+	protected static final /*~~>*/String ENC_INITIAL_DATA_XML = "org/openmrs/api/include/EncounterServiceTest-initialData.xml";
 	
 	/**
 	 * This method is run before all of the tests in this class because it has the @Before
@@ -112,7 +112,7 @@ public class ExistingOrNewVisitAssignmentHandlerTest extends BaseContextSensitiv
 		
 		encounter.setEncounterDatetime(calendar.getTime());
 		
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GP_ENCOUNTER_TYPE_TO_VISIT_TYPE_MAPPING,
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GP_ENCOUNTER_TYPE_TO_VISIT_TYPE_MAPPING,
 		        "3:4, 5:2, 1:2, 2:2");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		
@@ -130,8 +130,8 @@ public class ExistingOrNewVisitAssignmentHandlerTest extends BaseContextSensitiv
 	 */
 	@Test
 	public void beforeCreateEncounter_shouldResolveEncounterAndVisitTypeUuidsAsGlobalPropertyValues() {
-		final String encounterTypeUuid = "759799ab-c9a5-435e-b671-77773ada74e4";
-		final String visitTypeUuid = "c0c579b0-8e59-401d-8a4a-976a0b183519";
+		final /*~~>*/String encounterTypeUuid = "759799ab-c9a5-435e-b671-77773ada74e4";
+		final /*~~>*/String visitTypeUuid = "c0c579b0-8e59-401d-8a4a-976a0b183519";
 		Encounter encounter = Context.getEncounterService().getEncounter(1);
 		assertNull(encounter.getVisit());
 		assertEquals(encounterTypeUuid, encounter.getEncounterType().getUuid());
@@ -142,7 +142,7 @@ public class ExistingOrNewVisitAssignmentHandlerTest extends BaseContextSensitiv
 		
 		encounter.setEncounterDatetime(calendar.getTime());
 		
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GP_ENCOUNTER_TYPE_TO_VISIT_TYPE_MAPPING, encounterTypeUuid
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GP_ENCOUNTER_TYPE_TO_VISIT_TYPE_MAPPING, encounterTypeUuid
 		        + ":" + visitTypeUuid);
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		

@@ -38,8 +38,8 @@ import org.springframework.util.Assert;
 public class TextHandler extends AbstractHandler implements ComplexObsHandler {
 	
 	/** Views supported by this handler */
-	private static final String[] supportedViews = { ComplexObsHandler.TEXT_VIEW, ComplexObsHandler.RAW_VIEW,
-	        ComplexObsHandler.URI_VIEW };
+	private static final /*~~>*/String[] supportedViews = { /*~~>*/ComplexObsHandler.TEXT_VIEW, /*~~>*/ComplexObsHandler.RAW_VIEW,
+	        /*~~>*/ComplexObsHandler.URI_VIEW };
 	
 	private static final Logger log = LoggerFactory.getLogger(TextHandler.class);
 	
@@ -57,27 +57,27 @@ public class TextHandler extends AbstractHandler implements ComplexObsHandler {
 	 * @see org.openmrs.obs.ComplexObsHandler#getObs(org.openmrs.Obs, java.lang.String)
 	 */
 	@Override
-	public Obs getObs(Obs obs, String view) {
+	public Obs getObs(Obs obs, /*~~>*/String view) {
 		File file = getComplexDataFile(obs);
 		log.debug("value complex: " + obs.getValueComplex());
 		log.debug("file path: " + file.getAbsolutePath());
 		ComplexData complexData = null;
 		
-		if (ComplexObsHandler.TEXT_VIEW.equals(view) || ComplexObsHandler.RAW_VIEW.equals(view)) {
+		if (/*~~>*/ComplexObsHandler.TEXT_VIEW.equals(view) || /*~~>*/ComplexObsHandler.RAW_VIEW.equals(view)) {
 			// to handle problem with downloading/saving files with blank spaces or commas in their names
 			// also need to remove the "file" text appended to the end of the file name
-			String[] names = obs.getValueComplex().split("\\|");
-			String originalFilename = names[0];
+			/*~~>*/String[] names = obs.getValueComplex().split("\\|");
+			/*~~>*/String originalFilename = names[0];
 			originalFilename = originalFilename.replaceAll(",", "").replaceAll(" ", "").replaceAll("file$", "");
 			
 			try {
-				complexData = ComplexObsHandler.RAW_VIEW.equals(view) ? new ComplexData(originalFilename, OpenmrsUtil
+				complexData = /*~~>*/ComplexObsHandler.RAW_VIEW.equals(view) ? new ComplexData(originalFilename, OpenmrsUtil
 				        .getFileAsBytes(file)) : new ComplexData(originalFilename, OpenmrsUtil.getFileAsString(file));
 			}
 			catch (IOException e) {
 				log.error("Trying to read file: " + file.getAbsolutePath(), e);
 			}
-		} else if (ComplexObsHandler.URI_VIEW.equals(view)) {
+		} else if (/*~~>*/ComplexObsHandler.URI_VIEW.equals(view)) {
 			complexData = new ComplexData(file.getName(), file.getPath());
 		} else {
 			// No other view supported
@@ -88,7 +88,7 @@ public class TextHandler extends AbstractHandler implements ComplexObsHandler {
 		Assert.notNull(complexData, "Complex data must not be null");
 		
 		// Get the Mime Type and set it
-		String mimeType = OpenmrsUtil.getFileMimeType(file);
+		/*~~>*/String mimeType = OpenmrsUtil.getFileMimeType(file);
 		mimeType = !(mimeType.equals("application/octet-stream")) ? mimeType : "text/plain";
 		complexData.setMimeType(mimeType);
 		
@@ -101,7 +101,7 @@ public class TextHandler extends AbstractHandler implements ComplexObsHandler {
 	 * @see org.openmrs.obs.ComplexObsHandler#getSupportedViews()
 	 */
 	@Override
-	public String[] getSupportedViews() {
+	public /*~~>*//*~~>*/String[] getSupportedViews() {
 		return supportedViews;
 	}
 	

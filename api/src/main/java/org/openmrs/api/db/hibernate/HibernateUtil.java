@@ -107,7 +107,7 @@ public class HibernateUtil {
 	/**
 	 * @see HibernateUtil#escapeSqlWildcards(String, Connection)
 	 */
-	public static String escapeSqlWildcards(final String oldString, SessionFactory sessionFactory) {
+	public static /*~~>*/String escapeSqlWildcards(final /*~~>*/String oldString, SessionFactory sessionFactory) {
 		return sessionFactory.getCurrentSession().doReturningWork(connection -> escapeSqlWildcards(oldString, connection));
 		
 	}
@@ -121,11 +121,11 @@ public class HibernateUtil {
 	 * @return the string with sql wildcards escaped if any found otherwise the original string is
 	 *         returned
 	 */
-	public static String escapeSqlWildcards(String oldString, Connection connection) {
+	public static /*~~>*/String escapeSqlWildcards(/*~~>*/String oldString, Connection connection) {
 		
 		//replace all sql wildcards if any
 		if (!StringUtils.isBlank(oldString)) {
-			String escapeCharacter = "";
+			/*~~>*/String escapeCharacter = "";
 			
 			try {
 				//get the database specific escape character from the metadata
@@ -135,7 +135,7 @@ public class HibernateUtil {
 				log.warn("Error generated", e);
 			}
 			//insert an escape character before each sql wildcard in the search phrase
-			return StringUtils.replaceEach(oldString, new String[] { "%", "_", "*", "'" }, new String[] {
+			return StringUtils.replaceEach(oldString, new /*~~>*/String[] { "%", "_", "*", "'" }, new /*~~>*/String[] {
 			        escapeCharacter + "%", escapeCharacter + "_", escapeCharacter + "*", "''" });
 		} else {
 			return oldString;
@@ -150,12 +150,12 @@ public class HibernateUtil {
 	 * @param <AT> the attribute type
 	 */
 	public static <AT extends AttributeType> void addAttributeCriteria(Criteria criteria,
-	        Map<AT, String> serializedAttributeValues) {
+	        Map<AT, /*~~>*/String> serializedAttributeValues) {
 		Conjunction conjunction = Restrictions.conjunction();
 		int a = 0;
 		
-		for (Map.Entry<AT, String> entry : serializedAttributeValues.entrySet()) {
-			String alias = "attributes" + (a++);
+		for (Map.Entry<AT, /*~~>*/String> entry : serializedAttributeValues.entrySet()) {
+			/*~~>*/String alias = "attributes" + (a++);
 			DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Location.class).setProjection(Projections.id());
 			detachedCriteria.createAlias("attributes", alias);
 			detachedCriteria.add(Restrictions.eq(alias + ".attributeType", entry.getKey()));

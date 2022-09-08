@@ -24,6 +24,6 @@ public interface CustomDatatypeHandler<DT extends CustomDatatype<T>, T> {
 	 * takes care of constructing a handler, and setting its configuration (if any)  
 	 * @param handlerConfig
 	 */
-	void setHandlerConfiguration(String handlerConfig);
+	void setHandlerConfiguration(/*~~>*/String handlerConfig);
 	
 }

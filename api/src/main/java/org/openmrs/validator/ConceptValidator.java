@@ -110,7 +110,7 @@ public class ConceptValidator extends BaseCustomizableValidator implements Valid
 			boolean fullySpecifiedNameForLocaleFound = false;
 			boolean preferredNameForLocaleFound = false;
 			boolean shortNameForLocaleFound = false;
-			Set<String> validNamesFoundInLocale = new HashSet<>();
+			Set</*~~>*/String> validNamesFoundInLocale = new HashSet<>();
 			Collection<ConceptName> namesInLocale = conceptToValidate.getNames(conceptNameLocale);
 			for (ConceptName nameInLocale : namesInLocale) {
 				if (StringUtils.isBlank(nameInLocale.getName())) {

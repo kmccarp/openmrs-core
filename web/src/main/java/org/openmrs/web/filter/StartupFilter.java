@@ -74,7 +74,7 @@ public abstract class StartupFilter implements Filter {
 	
 	protected static VelocityEngine velocityEngine = null;
 	
-	public static final String AUTO_RUN_OPENMRS = "auto_run_openmrs";
+	public static final /*~~>*/String AUTO_RUN_OPENMRS = "auto_run_openmrs";
 	
 	/**
 	 * Set by the {@link #init(FilterConfig)} method so that we have access to the current
@@ -85,12 +85,12 @@ public abstract class StartupFilter implements Filter {
 	/**
 	 * Records errors that will be displayed to the user
 	 */
-	protected Map<String, Object[]> errors = new HashMap<>();
+	protected Map</*~~>*/String, Object[]> errors = new HashMap<>();
 	
 	/**
 	 * Messages that will be displayed to the user
 	 */
-	protected Map<String, Object[]> msgs = new HashMap<>();
+	protected Map</*~~>*/String, Object[]> msgs = new HashMap<>();
 	
 	/**
 	 * Used for configuring tools within velocity toolbox
@@ -113,7 +113,7 @@ public abstract class StartupFilter implements Filter {
 			HttpServletRequest httpRequest = (HttpServletRequest) request;
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			
-			String servletPath = httpRequest.getServletPath();
+			/*~~>*/String servletPath = httpRequest.getServletPath();
 			// for all /images and /initfilter/scripts files, write the path
 			// (the "/initfilter" part is needed so that the openmrs_static_context-servlet.xml file doesn't
 			//  get instantiated early, before the locale messages are all set up)
@@ -146,10 +146,10 @@ public abstract class StartupFilter implements Filter {
 				            + servletPath + "' instead.");
 			}
 			// for anything but /initialsetup
-			else if (!httpRequest.getServletPath().equals("/" + WebConstants.SETUP_PAGE_URL)
+			else if (!httpRequest.getServletPath().equals("/" + /*~~>*/WebConstants.SETUP_PAGE_URL)
 			        && !httpRequest.getServletPath().equals("/" + AUTO_RUN_OPENMRS)) {
 				// send the user to the setup page
-				httpResponse.sendRedirect("/" + WebConstants.WEBAPP_NAME + "/" + WebConstants.SETUP_PAGE_URL);
+				httpResponse.sendRedirect("/" + /*~~>*/WebConstants.WEBAPP_NAME + "/" + /*~~>*/WebConstants.SETUP_PAGE_URL);
 			} else {
 				
 				if ("GET".equals(httpRequest.getMethod())) {
@@ -176,14 +176,14 @@ public abstract class StartupFilter implements Filter {
 			velocityEngine = new VelocityEngine();
 			
 			Properties props = new Properties();
-			props.setProperty(RuntimeConstants.RUNTIME_LOG, "startup_wizard_vel.log");
+			props.setProperty(/*~~>*/RuntimeConstants.RUNTIME_LOG, "startup_wizard_vel.log");
 			// Linux requires setting logging properties to initialize Velocity Context.
-			props.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,
+			props.setProperty(/*~~>*/RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,
 			    "org.apache.velocity.runtime.log.CommonsLogLogChute");
-			props.setProperty(CommonsLogLogChute.LOGCHUTE_COMMONS_LOG_NAME, "initial_wizard_velocity");
+			props.setProperty(/*~~>*/CommonsLogLogChute.LOGCHUTE_COMMONS_LOG_NAME, "initial_wizard_velocity");
 			
 			// so the vm pages can import the header/footer
-			props.setProperty(RuntimeConstants.RESOURCE_LOADER, "class");
+			props.setProperty(/*~~>*/RuntimeConstants.RESOURCE_LOADER, "class");
 			props.setProperty("class.resource.loader.description", "Velocity Classpath Resource Loader");
 			props.setProperty("class.resource.loader.class",
 			    "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
@@ -224,7 +224,7 @@ public abstract class StartupFilter implements Filter {
 	 * @param referenceMap
 	 * @param httpResponse
 	 */
-	protected void renderTemplate(String templateName, Map<String, Object> referenceMap, HttpServletResponse httpResponse)
+	protected void renderTemplate(/*~~>*/String templateName, Map</*~~>*/String, Object> referenceMap, HttpServletResponse httpResponse)
 	        throws IOException {
 		// first we should get velocity tools context for current client request (within
 		// his http session) and merge that tools context with basic velocity context
@@ -232,12 +232,12 @@ public abstract class StartupFilter implements Filter {
 			return;
 		}
 		
-		Object locale = referenceMap.get(FilterUtil.LOCALE_ATTRIBUTE);
+		Object locale = referenceMap.get(/*~~>*/FilterUtil.LOCALE_ATTRIBUTE);
 		ToolContext velocityToolContext = getToolContext(
 		    locale != null ? locale.toString() : Context.getLocale().toString());
 		VelocityContext velocityContext = new VelocityContext(velocityToolContext);
 		
-		for (Map.Entry<String, Object> entry : referenceMap.entrySet()) {
+		for (Map.Entry</*~~>*/String, Object> entry : referenceMap.entrySet()) {
 			velocityContext.put(entry.getKey(), entry.getValue());
 		}
 		
@@ -254,7 +254,7 @@ public abstract class StartupFilter implements Filter {
 			}
 		}
 		
-		String fullTemplatePath = getTemplatePrefix() + templateName;
+		/*~~>*/String fullTemplatePath = getTemplatePrefix() + templateName;
 		InputStream templateInputStream = getClass().getClassLoader().getResourceAsStream(fullTemplatePath);
 		if (templateInputStream == null) {
 			throw new IOException("Unable to find " + fullTemplatePath);
@@ -297,7 +297,7 @@ public abstract class StartupFilter implements Filter {
 	 *
 	 * @return string to prepend as the path for the templates
 	 */
-	protected String getTemplatePrefix() {
+	protected /*~~>*/String getTemplatePrefix() {
 		return "org/openmrs/web/filter/";
 	}
 	
@@ -324,10 +324,10 @@ public abstract class StartupFilter implements Filter {
 	 * 
 	 * @param result A map to be returned as a JSON document
 	 */
-	protected void addLogLinesToResponse(Map<String, Object> result) {
+	protected void addLogLinesToResponse(Map</*~~>*/String, Object> result) {
 		MemoryAppender appender = OpenmrsUtil.getMemoryAppender();
 		if (appender != null) {
-			List<String> logLines = appender.getLogLines();
+			List</*~~>*/String> logLines = appender.getLogLines();
 			
 			// truncate the list to the last five so we don't overwhelm jquery
 			if (logLines.size() > 5) {
@@ -347,7 +347,7 @@ public abstract class StartupFilter implements Filter {
 	 * @param object object to convert to json
 	 * @return JSON string to be eval'd in javascript
 	 */
-	protected String toJSONString(Object object) {
+	protected /*~~>*/String toJSONString(Object object) {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.getJsonFactory().setCharacterEscapes(new OpenmrsCharacterEscapes());
 		try {
@@ -367,7 +367,7 @@ public abstract class StartupFilter implements Filter {
 	 * @param locale the string with locale parameter for configuring tools context
 	 * @return the tool context object
 	 */
-	public ToolContext getToolContext(String locale) {
+	public ToolContext getToolContext(/*~~>*/String locale) {
 		Locale systemLocale = LocaleUtility.fromSpecification(locale);
 		//Defaults to en if systemLocale is null or invalid e.g en_GBs
 		if (systemLocale == null || !ArrayUtils.contains(Locale.getAvailableLocales(), systemLocale)) {
@@ -382,13 +382,13 @@ public abstract class StartupFilter implements Filter {
 			// since we are using one tool box for all request within wizard
 			// we should propagate toolbox's scope on all application 
 			ToolboxConfiguration toolbox = new ToolboxConfiguration();
-			toolbox.setScope(Scope.APPLICATION);
+			toolbox.setScope(/*~~>*/Scope.APPLICATION);
 			// next we are directly configuring custom localization tool by
 			// setting its class name, locale property etc.
 			ToolConfiguration localizationTool = new ToolConfiguration();
 			localizationTool.setClassname(LocalizationTool.class.getName());
-			localizationTool.setProperty(ToolContext.LOCALE_KEY, systemLocale);
-			localizationTool.setProperty(LocalizationTool.BUNDLES_KEY, "messages");
+			localizationTool.setProperty(/*~~>*/ToolContext.LOCALE_KEY, systemLocale);
+			localizationTool.setProperty(/*~~>*/LocalizationTool.BUNDLES_KEY, "messages");
 			// and finally we are adding just configured tool into toolbox
 			// and creating tool context for this toolbox
 			toolbox.addTool(localizationTool);
@@ -403,7 +403,7 @@ public abstract class StartupFilter implements Filter {
 			// class using reflection
 			Annotation annotation = LocalizationTool.class.getAnnotation(DefaultKey.class);
 			DefaultKey defaultKeyAnnotation = (DefaultKey) annotation;
-			String key = defaultKeyAnnotation.value();
+			/*~~>*/String key = defaultKeyAnnotation.value();
 			//
 			LocalizationTool localizationTool = (LocalizationTool) toolContext.get(key);
 			localizationTool.setLocale(systemLocale);

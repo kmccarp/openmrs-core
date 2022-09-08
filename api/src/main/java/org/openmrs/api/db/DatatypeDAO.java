@@ -30,7 +30,7 @@ public interface DatatypeDAO {
 	 * @param uuid
 	 * @return clob storage object or null
 	 */
-	ClobDatatypeStorage getClobDatatypeStorageByUuid(String uuid);
+	ClobDatatypeStorage getClobDatatypeStorageByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Creates or updates a clob storage object

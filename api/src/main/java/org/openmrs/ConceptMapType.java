@@ -38,7 +38,7 @@ public class ConceptMapType extends BaseChangeableOpenmrsMetadata {
 	@Column(name = "is_hidden", nullable = false, length = 1)
 	private Boolean isHidden = Boolean.FALSE;
 	
-	public static final String SAME_AS_MAP_TYPE_UUID = "35543629-7d8c-11e1-909d-c80aa9edcf4e";
+	public static final /*~~>*/String SAME_AS_MAP_TYPE_UUID = "35543629-7d8c-11e1-909d-c80aa9edcf4e";
 	
 	/** default constructor */
 	public ConceptMapType() {
@@ -97,7 +97,7 @@ public class ConceptMapType extends BaseChangeableOpenmrsMetadata {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		if (getName() == null) {
 			return "";
 		}

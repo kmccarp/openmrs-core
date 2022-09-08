@@ -30,7 +30,7 @@ public class Patient extends Person {
 	
 	private Integer patientId;
 	
-	private String allergyStatus = Allergies.UNKNOWN;
+	private /*~~>*/String allergyStatus = /*~~>*/Allergies.UNKNOWN;
 	
 	@ContainedIn
 	private Set<PatientIdentifier> identifiers;
@@ -84,7 +84,7 @@ public class Patient extends Person {
 	public Patient(Patient patient) {
 		super(patient);
 		this.patientId = patient.getPatientId();
-		this.allergyStatus = patient.getAllergyStatus();
+		/*~~>*/this.allergyStatus = patient.getAllergyStatus();
 		Set<PatientIdentifier> newIdentifiers = new TreeSet<>();
 		for (PatientIdentifier pid : patient.getIdentifiers()) {
 			PatientIdentifier identifierClone = (PatientIdentifier) pid.clone();
@@ -124,8 +124,8 @@ public class Patient extends Person {
 	 * @since 2.0
 	 * <strong>Should</strong> return allergy status maintained by the supporting infrastructure
 	 */
-	public String getAllergyStatus() {
-		return this.allergyStatus;
+	public /*~~>*/String getAllergyStatus() {
+		return /*~~>*/this.allergyStatus;
 	}
 	
 	/**
@@ -136,8 +136,8 @@ public class Patient extends Person {
 	 * @since 2.0
 	 * <strong>Should</strong> not be called by service client
 	 */
-	public void setAllergyStatus(String allergyStatus) {
-		this.allergyStatus = allergyStatus;
+	public void setAllergyStatus(/*~~>*/String allergyStatus) {
+		/*~~>*/this.allergyStatus = allergyStatus;
 	}
 	
 	/**
@@ -313,7 +313,7 @@ public class Patient extends Person {
 	 * @param identifierTypeName
 	 * @return preferred patient identifier
 	 */
-	public PatientIdentifier getPatientIdentifier(String identifierTypeName) {
+	public PatientIdentifier getPatientIdentifier(/*~~>*/String identifierTypeName) {
 		if (!getIdentifiers().isEmpty()) {
 			for (PatientIdentifier id : getIdentifiers()) {
 				if (id.getPreferred() && !id.getVoided() && identifierTypeName.equals(id.getIdentifierType().getName())) {
@@ -373,7 +373,7 @@ public class Patient extends Person {
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "Patient#" + patientId;
 	}
 	

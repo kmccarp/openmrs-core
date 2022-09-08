@@ -37,13 +37,13 @@ public class UpgradeUtil {
 	 * <strong>Should</strong> return concept_id for units
 	 * <strong>Should</strong> fail if units is not specified
 	 */
-	public static Integer getConceptIdForUnits(String units) {
-		String appDataDir = OpenmrsUtil.getApplicationDataDirectory();
+	public static Integer getConceptIdForUnits(/*~~>*/String units) {
+		/*~~>*/String appDataDir = OpenmrsUtil.getApplicationDataDirectory();
 		Properties props = new Properties();
-		String conceptId = null;
-		String filePath = appDataDir +
+		/*~~>*/String conceptId = null;
+		/*~~>*/String filePath = appDataDir +
 				System.getProperty("file.separator") +
-				DatabaseUtil.ORDER_ENTRY_UPGRADE_SETTINGS_FILENAME;
+				/*~~>*/DatabaseUtil.ORDER_ENTRY_UPGRADE_SETTINGS_FILENAME;
 
 		try (FileInputStream fis = new FileInputStream(filePath)) {
 
@@ -74,7 +74,7 @@ public class UpgradeUtil {
 		        + ". Please refer to upgrade instructions for more details. https://wiki.openmrs.org/x/OALpAw");
 	}
 	
-	public static String getConceptUuid(Connection connection, int conceptId) throws SQLException {
+	public static /*~~>*/String getConceptUuid(Connection connection, int conceptId) throws SQLException {
 
 		try (PreparedStatement select = connection.prepareStatement("select uuid from concept where concept_id = ?")) {
 			select.setInt(1, conceptId);
@@ -88,7 +88,7 @@ public class UpgradeUtil {
 		}
 	}
 	
-	public static String getGlobalProperty(Connection connection, String gp) throws SQLException {
+	public static /*~~>*/String getGlobalProperty(Connection connection, /*~~>*/String gp) throws SQLException {
 
 		try (PreparedStatement select = connection
 				.prepareStatement("select property_value from global_property where property = ?")) {
@@ -103,7 +103,7 @@ public class UpgradeUtil {
 		}
 	}
 	
-	public static List<Integer> getMemberSetIds(Connection connection, String conceptUuid) throws SQLException {
+	public static List<Integer> getMemberSetIds(Connection connection, /*~~>*/String conceptUuid) throws SQLException {
 		Integer conceptSetId;
 
 		try (PreparedStatement select = connection.prepareStatement("select concept_id from concept where uuid = ?")) {

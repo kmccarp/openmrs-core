@@ -53,7 +53,7 @@ public class DiagnosisServiceImpl extends BaseOpenmrsService implements Diagnosi
 	 * @return the diagnosis that was voided
 	 */
 	@Override
-	public Diagnosis voidDiagnosis(Diagnosis diagnosis, String voidReason) {
+	public Diagnosis voidDiagnosis(Diagnosis diagnosis, /*~~>*/String voidReason) {
 		return Context.getDiagnosisService().save(diagnosis);
 	}
 
@@ -64,7 +64,7 @@ public class DiagnosisServiceImpl extends BaseOpenmrsService implements Diagnosi
 	 * @return diagnosis matching the given uuid
 	 */
 	@Override
-	public Diagnosis getDiagnosisByUuid(String uuid) {
+	public Diagnosis getDiagnosisByUuid(/*~~>*/String uuid) {
 		return diagnosisDAO.getDiagnosisByUuid(uuid);
 	}
 
@@ -212,7 +212,7 @@ public class DiagnosisServiceImpl extends BaseOpenmrsService implements Diagnosi
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public DiagnosisAttributeType getDiagnosisAttributeTypeByUuid(String uuid) throws APIException {
+	public DiagnosisAttributeType getDiagnosisAttributeTypeByUuid(/*~~>*/String uuid) throws APIException {
 		return diagnosisDAO.getDiagnosisAttributeTypeByUuid(uuid);
 	}
 
@@ -228,7 +228,7 @@ public class DiagnosisServiceImpl extends BaseOpenmrsService implements Diagnosi
 	 * @see org.openmrs.api.DiagnosisService#retireDiagnosisAttributeType(DiagnosisAttributeType, String) 
 	 */
 	@Override
-	public DiagnosisAttributeType retireDiagnosisAttributeType(DiagnosisAttributeType diagnosisAttributeType, String reason) throws APIException {
+	public DiagnosisAttributeType retireDiagnosisAttributeType(DiagnosisAttributeType diagnosisAttributeType, /*~~>*/String reason) throws APIException {
 		return Context.getDiagnosisService().saveDiagnosisAttributeType(diagnosisAttributeType);
 	}
 
@@ -253,7 +253,7 @@ public class DiagnosisServiceImpl extends BaseOpenmrsService implements Diagnosi
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public DiagnosisAttribute getDiagnosisAttributeByUuid(String uuid) throws APIException {
+	public DiagnosisAttribute getDiagnosisAttributeByUuid(/*~~>*/String uuid) throws APIException {
 		return diagnosisDAO.getDiagnosisAttributeByUuid(uuid);
 	}
 }

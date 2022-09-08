@@ -44,7 +44,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class OrderEntryIntegrationTest extends BaseContextSensitiveTest {
 	
-	protected static final String ORDER_ENTRY_DATASET_XML = "org/openmrs/api/include/OrderEntryIntegrationTest-other.xml";
+	protected static final /*~~>*/String ORDER_ENTRY_DATASET_XML = "org/openmrs/api/include/OrderEntryIntegrationTest-other.xml";
 	
 	@Autowired
 	private OrderService orderService;

@@ -38,26 +38,26 @@ import org.dbunit.operation.DatabaseOperation;
  */
 public class MigrateDataSet {
 	
-	private static String OLD_SCHEMA_FILE = "/home/ben/workspace/openmrs-trunk/metadata/model/1.3.0-schema-only.sql";
+	private static /*~~>*/String OLD_SCHEMA_FILE = "/home/ben/workspace/openmrs-trunk/metadata/model/1.3.0-schema-only.sql";
 	
-	private static String OLD_UPDATE_FILE = "/home/ben/workspace/openmrs-trunk/metadata/model/update-to-latest-db.mysqldiff.sql";
+	private static /*~~>*/String OLD_UPDATE_FILE = "/home/ben/workspace/openmrs-trunk/metadata/model/update-to-latest-db.mysqldiff.sql";
 	
-	private static String NEW_UPDATE_FILE = "/home/ben/workspace/openmrs-concept-name-tag/metadata/model/update-to-latest-db.mysqldiff.sql";
+	private static /*~~>*/String NEW_UPDATE_FILE = "/home/ben/workspace/openmrs-concept-name-tag/metadata/model/update-to-latest-db.mysqldiff.sql";
 	
-	private static String[] credentials = BaseContextSensitiveTest
+	private static /*~~>*/String[] credentials = BaseContextSensitiveTest
 	        .askForUsernameAndPassword("Enter your MYSQL DATABASE username and password");
 	
-	private static String tempDatabaseName = "junitmigration";
+	private static /*~~>*/String tempDatabaseName = "junitmigration";
 	
 	/**
 	 * Do the stuff for this class (create the file)
 	 * 
 	 * @throws Exception
 	 */
-	public static void main(String args[]) throws Exception {
+	public static void main(/*~~>*/String args[]) throws Exception {
 		System.out.println("Starting...");
 		
-		String wd = "./test";
+		/*~~>*/String wd = "./test";
 		
 		// choose the directory to open
 		JFileChooser chooser = new JFileChooser();
@@ -84,7 +84,7 @@ public class MigrateDataSet {
 	 */
 	private static void doMigration(File fileOrDirectory) throws Exception {
 		
-		String filename = fileOrDirectory.getName();
+		/*~~>*/String filename = fileOrDirectory.getName();
 		
 		if (filename.startsWith(".svn") || filename.endsWith("TestingApplicationContext.xml")) {
 			// skip .svn files
@@ -103,7 +103,7 @@ public class MigrateDataSet {
 			System.out.println(execMysqlCmd(null, OLD_UPDATE_FILE, true));
 			
 			// the straight-up database connection
-			String url = "jdbc:mysql://localhost/" + tempDatabaseName;
+			/*~~>*/String url = "jdbc:mysql://localhost/" + tempDatabaseName;
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(url, credentials[0], credentials[1]);
 			
@@ -151,12 +151,12 @@ public class MigrateDataSet {
 	 * @return
 	 * @throws Exception
 	 */
-	private static String execMysqlCmd(String cmd, String sourceFile, boolean includeDB) throws Exception {
+	private static /*~~>*/String execMysqlCmd(/*~~>*/String cmd, /*~~>*/String sourceFile, boolean includeDB) throws Exception {
 		
 		if (sourceFile == null && cmd == null)
 			throw new Exception("wha...?");
 		
-		String shellCommand = "";
+		/*~~>*/String shellCommand = "";
 		if (cmd != null)
 			shellCommand = "echo " + cmd + "\\; | ";
 		
@@ -171,7 +171,7 @@ public class MigrateDataSet {
 		
 		System.out.println("Executing: " + shellCommand);
 		
-		String[] cmds = new String[] { "/bin/sh", "-c", shellCommand };
+		/*~~>*/String[] cmds = new /*~~>*/String[] { "/bin/sh", "-c", shellCommand };
 		
 		File wd = new File("/tmp");
 		

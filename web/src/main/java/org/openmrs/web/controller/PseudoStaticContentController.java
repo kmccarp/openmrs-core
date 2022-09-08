@@ -39,7 +39,7 @@ public class PseudoStaticContentController implements Controller, LastModified, 
 	
 	private Boolean interpretJstl = false;
 	
-	private Map<String, String> rewrites;
+	private Map</*~~>*/String, /*~~>*/String> rewrites;
 	
 	private static Long lastModified = System.currentTimeMillis();
 	
@@ -51,18 +51,18 @@ public class PseudoStaticContentController implements Controller, LastModified, 
 		this.interpretJstl = interpretJstl;
 	}
 	
-	public Map<String, String> getRewrites() {
+	public Map</*~~>*/String, /*~~>*/String> getRewrites() {
 		return rewrites;
 	}
 	
-	public void setRewrites(Map<String, String> rewrites) {
+	public void setRewrites(Map</*~~>*/String, /*~~>*/String> rewrites) {
 		this.rewrites = rewrites;
 	}
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException,
 	        IOException {
-		String path = request.getServletPath() + request.getPathInfo();
+		/*~~>*/String path = request.getServletPath() + request.getPathInfo();
 		
 		if (rewrites != null && rewrites.containsKey(path)) {
 			path = rewrites.get(path);
@@ -101,17 +101,17 @@ public class PseudoStaticContentController implements Controller, LastModified, 
 	}
 	
 	@Override
-	public void globalPropertyDeleted(String propertyName) {
+	public void globalPropertyDeleted(/*~~>*/String propertyName) {
 		// reset for every global property change
 		setLastModified(System.currentTimeMillis());
 	}
 	
 	@Override
-	public boolean supportsPropertyName(String propertyName) {
+	public boolean supportsPropertyName(/*~~>*/String propertyName) {
 		return true;
 	}
 	
-	public static void invalidateCachedResources(Map<String, String> newValue) {
+	public static void invalidateCachedResources(Map</*~~>*/String, /*~~>*/String> newValue) {
 		setLastModified(System.currentTimeMillis());
 	}
 }

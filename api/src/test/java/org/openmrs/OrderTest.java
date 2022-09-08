@@ -46,7 +46,7 @@ import org.openmrs.util.Reflect;
 public class OrderTest extends BaseContextSensitiveTest {
 	
 	
-	private final static String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	private final static /*~~>*/String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
 	private DateFormat ymd;
 
@@ -59,12 +59,12 @@ public class OrderTest extends BaseContextSensitiveTest {
 	}
 
 	
-	protected static void assertThatAllFieldsAreCopied(Order original, String methodName, String... otherfieldsToExclude)
+	protected static void assertThatAllFieldsAreCopied(Order original, /*~~>*/String methodName, /*~~>*/String... otherfieldsToExclude)
 	        throws Exception {
 		if (methodName == null) {
 			methodName = "copy";
 		}
-		List<String> fieldsToExclude = new ArrayList<>(Arrays.asList("log", "serialVersionUID", "orderId", "uuid"));
+		List</*~~>*/String> fieldsToExclude = new ArrayList<>(Arrays.asList("log", "serialVersionUID", "orderId", "uuid"));
 		if (otherfieldsToExclude != null) {
 			fieldsToExclude.addAll(Arrays.asList(otherfieldsToExclude));
 		}

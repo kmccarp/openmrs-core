@@ -24,7 +24,7 @@ public class ConceptStopWordException extends APIException {
 	 *
 	 * @param message the String to show to the user as to why the concept stop word service failed
 	 */
-	public ConceptStopWordException(String message) {
+	public ConceptStopWordException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -35,7 +35,7 @@ public class ConceptStopWordException extends APIException {
 	 * @param message the String to show to the user as to why the concept stop word service failed
 	 * @param cause the parent exception
 	 */
-	public ConceptStopWordException(String message, Throwable cause) {
+	public ConceptStopWordException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

@@ -35,7 +35,7 @@ public class MigrateAllergiesChangeSet implements CustomTaskChange {
 	private Integer severeConcept;
 	
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Successfully moved un voided allergies from old to new tables";
 	}
 	
@@ -61,7 +61,7 @@ public class MigrateAllergiesChangeSet implements CustomTaskChange {
 			
 			JdbcConnection connection = (JdbcConnection) database.getConnection();
 			
-			String sql = "select active_list_type_id from active_list_type where name = 'Allergy'";
+			/*~~>*/String sql = "select active_list_type_id from active_list_type where name = 'Allergy'";
 			Statement selectStatement = connection.createStatement();
 			ResultSet rs = selectStatement.executeQuery(sql);
 			if (!rs.next()) {
@@ -87,14 +87,14 @@ public class MigrateAllergiesChangeSet implements CustomTaskChange {
 			selectStatement = connection.createStatement();
 			rs = selectStatement.executeQuery(sql);
 			while (rs.next()) {
-				String uuid = rs.getString("uuid");	
+				/*~~>*/String uuid = rs.getString("uuid");	
 				
 				//insert allergy
 				allergyInsertStatement.setInt(1, rs.getInt("person_id"));
 				allergyInsertStatement.setInt(2, rs.getInt("concept_id"));
 				
 				Integer severityConcept = null;
-				String severity = rs.getString("severity");
+				/*~~>*/String severity = rs.getString("severity");
 				if (AllergySeverity.MILD.name().equals(severity)) {
 					severityConcept = mildConcept;
 				}
@@ -115,7 +115,7 @@ public class MigrateAllergiesChangeSet implements CustomTaskChange {
 				allergyInsertStatement.setString(6, uuid);
 				allergyInsertStatement.setString(7, rs.getString("comments"));
 				
-				String allergyType = rs.getString("allergy_type");
+				/*~~>*/String allergyType = rs.getString("allergy_type");
 				if (allergyType == null) {
 					allergyType = "DRUG";
 				}
@@ -154,13 +154,13 @@ public class MigrateAllergiesChangeSet implements CustomTaskChange {
 		severeConcept = getConceptByGlobalProperty(database, "allergy.concept.severity.severe");
 	}
 	
-	private Integer getConceptByGlobalProperty(Database database, String globalPropertyName) throws Exception {
+	private Integer getConceptByGlobalProperty(Database database, /*~~>*/String globalPropertyName) throws Exception {
 		JdbcConnection connection = (JdbcConnection) database.getConnection();
 		PreparedStatement stmt = connection.prepareStatement("SELECT property_value FROM global_property WHERE property = ?");
 		stmt.setString(1, globalPropertyName);
 		ResultSet rs = stmt.executeQuery();
 		if (rs.next()) {
-			String uuid = rs.getString("property_value");
+			/*~~>*/String uuid = rs.getString("property_value");
 			
 			rs = stmt.executeQuery("SELECT concept_id FROM concept WHERE uuid = '" + uuid + "'");
 			if (rs.next()) {

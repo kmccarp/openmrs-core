@@ -25,7 +25,7 @@ public class PersonAttributeType extends BaseChangeableOpenmrsMetadata implement
 	
 	private Integer personAttributeTypeId;
 	
-	private String format;
+	private /*~~>*/String format;
 	
 	private Integer foreignKey;
 	
@@ -50,15 +50,15 @@ public class PersonAttributeType extends BaseChangeableOpenmrsMetadata implement
 	/**
 	 * @return Returns the format.
 	 */
-	public String getFormat() {
+	public /*~~>*/String getFormat() {
 		return format;
 	}
 	
 	/**
 	 * @param format The format to set.
 	 */
-	public void setFormat(String format) {
-		this.format = format;
+	public void setFormat(/*~~>*/String format) {
+		/*~~>*/this.format = format;
 	}
 	
 	/**
@@ -132,7 +132,7 @@ public class PersonAttributeType extends BaseChangeableOpenmrsMetadata implement
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return getName();
 	}
 	

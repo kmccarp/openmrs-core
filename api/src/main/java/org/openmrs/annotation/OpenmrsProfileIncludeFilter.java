@@ -29,7 +29,7 @@ public class OpenmrsProfileIncludeFilter implements TypeFilter {
 	 */
 	@Override
 	public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
-		Map<String, Object> openmrsProfileAttributes = metadataReader.getAnnotationMetadata().getAnnotationAttributes(
+		Map</*~~>*/String, Object> openmrsProfileAttributes = metadataReader.getAnnotationMetadata().getAnnotationAttributes(
 		    "org.openmrs.annotation.OpenmrsProfile");
 		if (openmrsProfileAttributes != null) {
 			return openmrsProfileExcludeFilter.matchOpenmrsProfileAttributes(openmrsProfileAttributes);

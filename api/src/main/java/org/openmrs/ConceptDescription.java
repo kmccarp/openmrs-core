@@ -24,7 +24,7 @@ public class ConceptDescription extends BaseOpenmrsObject implements Auditable, 
 	
 	private Concept concept;
 	
-	private String description;
+	private /*~~>*/String description;
 	
 	private Locale locale;
 	
@@ -57,7 +57,7 @@ public class ConceptDescription extends BaseOpenmrsObject implements Auditable, 
 	 * @param description
 	 * @param locale
 	 */
-	public ConceptDescription(String description, Locale locale) {
+	public ConceptDescription(/*~~>*/String description, Locale locale) {
 		setLocale(locale);
 		setDescription(description);
 	}
@@ -86,12 +86,12 @@ public class ConceptDescription extends BaseOpenmrsObject implements Auditable, 
 		this.concept = concept;
 	}
 	
-	public String getDescription() {
+	public /*~~>*/String getDescription() {
 		return description;
 	}
 	
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(/*~~>*/String description) {
+		/*~~>*/this.description = description;
 	}
 	
 	public Locale getLocale() {
@@ -172,8 +172,8 @@ public class ConceptDescription extends BaseOpenmrsObject implements Auditable, 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
-		return this.description;
+	public /*~~>*/String toString() {
+		return /*~~>*/this.description;
 	}
 	
 	/**

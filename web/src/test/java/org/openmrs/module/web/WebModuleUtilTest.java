@@ -43,7 +43,7 @@ import org.w3c.dom.Element;
  */
 public class WebModuleUtilTest {
 	
-	private static final String REAL_PATH = "/usr/local/apache-tomcat-7.0.27/webapps/openmrs";
+	private static final /*~~>*/String REAL_PATH = "/usr/local/apache-tomcat-7.0.27/webapps/openmrs";
 	
 	/**
 	 * @see WebModuleUtil#isModulePackageNameInTaskClass(String, String)
@@ -51,8 +51,8 @@ public class WebModuleUtilTest {
 	 */
 	@Test
 	public void isModulePackageNameInTaskClass_shouldReturnFalseForDifferentPackageName() {
-		String modulePackageName = "org.openmrs.logic.task";
-		String taskClass = "org.openmrs.logic.TaskInitializeLogicRuleProvidersTask";
+		/*~~>*/String modulePackageName = "org.openmrs.logic.task";
+		/*~~>*/String taskClass = "org.openmrs.logic.TaskInitializeLogicRuleProvidersTask";
 		boolean result = WebModuleUtil.isModulePackageNameInTaskClass(modulePackageName, taskClass);
 		assertFalse(result);
 	}
@@ -63,8 +63,8 @@ public class WebModuleUtilTest {
 	 */
 	@Test
 	public void isModulePackageNameInTaskClass_shouldReturnFalseIfModuleHasLongerPackageName() {
-		String modulePackageName = "org.openmrs.logic.task";
-		String taskClass = "org.openmrs.logic.TaskInitializeLogicRuleProvidersTask";
+		/*~~>*/String modulePackageName = "org.openmrs.logic.task";
+		/*~~>*/String taskClass = "org.openmrs.logic.TaskInitializeLogicRuleProvidersTask";
 		boolean result = WebModuleUtil.isModulePackageNameInTaskClass(modulePackageName, taskClass);
 		assertFalse(result);
 	}
@@ -75,8 +75,8 @@ public class WebModuleUtilTest {
 	 */
 	@Test
 	public void isModulePackageNameInTaskClass_shouldProperlyMatchSubpackages() {
-		String modulePackageName = "org.openmrs.module.xforms";
-		String taskClass = "org.openmrs.module.xforms.ProcessXformsQueueTask";
+		/*~~>*/String modulePackageName = "org.openmrs.module.xforms";
+		/*~~>*/String taskClass = "org.openmrs.module.xforms.ProcessXformsQueueTask";
 		boolean result = WebModuleUtil.isModulePackageNameInTaskClass(modulePackageName, taskClass);
 		assertTrue(result);
 	}
@@ -87,8 +87,8 @@ public class WebModuleUtilTest {
 	 */
 	@Test
 	public void isModulePackageNameInTaskClass_shouldReturnFalseForEmptyPackageNames() {
-		String modulePackageName = "";
-		String taskClass = "";
+		/*~~>*/String modulePackageName = "";
+		/*~~>*/String taskClass = "";
 		boolean result = WebModuleUtil.isModulePackageNameInTaskClass(modulePackageName, taskClass);
 		assertFalse(result);
 	}
@@ -104,7 +104,7 @@ public class WebModuleUtilTest {
 		ModuleFactory.getStartedModulesMap().put(mod.getModuleId(), mod);
 		
 		ServletContext servletContext = mock(ServletContext.class);
-		String realPath = servletContext.getRealPath("");
+		/*~~>*/String realPath = servletContext.getRealPath("");
 		if (realPath == null)
 			realPath = System.getProperty("user.dir");
 		
@@ -134,7 +134,7 @@ public class WebModuleUtilTest {
 		ModuleFactory.getStartedModulesMap().put(mod.getModuleId(), mod);
 		
 		ServletContext servletContext = mock(ServletContext.class);
-		String realPath = servletContext.getRealPath("");
+		/*~~>*/String realPath = servletContext.getRealPath("");
 		if (realPath == null)
 			realPath = System.getProperty("user.dir");
 		
@@ -145,7 +145,7 @@ public class WebModuleUtilTest {
 		Scanner scanner = new Scanner(f);
 		boolean found = false;
 		while (scanner.hasNextLine()) {
-			String line = scanner.nextLine();
+			/*~~>*/String line = scanner.nextLine();
 			if (line.contains(mod.getModuleId())) {
 				found = true;
 				break;
@@ -214,10 +214,10 @@ public class WebModuleUtilTest {
 	@Test
 	public void getModuleWebFolder_shouldReturnTheCorrectModuleFolder() {
 		setupMocks(false);
-		String moduleId = "basicmodule";
-		String expectedPath = Paths.get(REAL_PATH, "WEB-INF", "view", "module", moduleId).toString();
+		/*~~>*/String moduleId = "basicmodule";
+		/*~~>*/String expectedPath = Paths.get(REAL_PATH, "WEB-INF", "view", "module", moduleId).toString();
 		
-		String actualPath = WebModuleUtil.getModuleWebFolder(moduleId);
+		/*~~>*/String actualPath = WebModuleUtil.getModuleWebFolder(moduleId);
 		
 		assertEquals(expectedPath, actualPath);
 	}
@@ -228,9 +228,9 @@ public class WebModuleUtilTest {
 	@Test
 	public void getModuleWebFolder_shouldReturnTheCorrectModuleFolderIfRealPathHasATrailingSlash() {
 		setupMocks(true);
-		String moduleId = "basicmodule";
-		String expectedPath = Paths.get(REAL_PATH, "WEB-INF", "view", "module", moduleId).toString();
-		String actualPath = WebModuleUtil.getModuleWebFolder(moduleId);
+		/*~~>*/String moduleId = "basicmodule";
+		/*~~>*/String expectedPath = Paths.get(REAL_PATH, "WEB-INF", "view", "module", moduleId).toString();
+		/*~~>*/String actualPath = WebModuleUtil.getModuleWebFolder(moduleId);
 		
 		assertEquals(expectedPath, actualPath);
 	}
@@ -239,7 +239,7 @@ public class WebModuleUtilTest {
 		ServletConfig servletConfig = mock(ServletConfig.class);
 		
 		ServletContext servletContext = mock(ServletContext.class);
-		String realPath = (includeTrailingSlash) ? REAL_PATH + "/" : REAL_PATH;
+		/*~~>*/String realPath = (includeTrailingSlash) ? REAL_PATH + "/" : REAL_PATH;
 		when(servletContext.getRealPath("")).thenReturn(realPath);
 		
 		DispatcherServlet dispatcherServlet = mock(DispatcherServlet.class);

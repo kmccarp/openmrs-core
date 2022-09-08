@@ -77,8 +77,8 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 * @return the validTime for which the password reset activation key will be valid
 	 */
 	private int getValidTime() {
-		String validTimeGp = Context.getAdministrationService()
-		        .getGlobalProperty(OpenmrsConstants.GP_PASSWORD_RESET_VALIDTIME);
+		/*~~>*/String validTimeGp = Context.getAdministrationService()
+		        .getGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_RESET_VALIDTIME);
 		final int validTime = StringUtils.isBlank(validTimeGp) ? DEFAULT_VALID_TIME : Integer.parseInt(validTimeGp);
 		//if valid time is less that a minute or greater than 12hrs reset valid time to 1 minutes else set it to the required time.
 		return (validTime < MIN_VALID_TIME) || (validTime > MAX_VALID_TIME) ? DEFAULT_VALID_TIME : validTime;
@@ -88,12 +88,12 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 * @see org.openmrs.api.UserService#createUser(org.openmrs.User, java.lang.String)
 	 */
 	@Override
-	public User createUser(User user, String password) throws APIException {
+	public User createUser(User user, /*~~>*/String password) throws APIException {
 		if (user.getUserId() != null) {
 			throw new APIException("This method can be used for only creating new users");
 		}
 		
-		Context.requirePrivilege(PrivilegeConstants.ADD_USERS);
+		Context.requirePrivilege(/*~~>*/PrivilegeConstants.ADD_USERS);
 		
 		checkPrivileges(user);
 		
@@ -127,7 +127,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public User getUserByUsername(String username) throws APIException {
+	public User getUserByUsername(/*~~>*/String username) throws APIException {
 		return dao.getUserByUsername(username);
 	}
 	
@@ -162,7 +162,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 			throw new APIException("This method can be called only to update existing users");
 		}
 		
-		Context.requirePrivilege(PrivilegeConstants.EDIT_USERS);
+		Context.requirePrivilege(/*~~>*/PrivilegeConstants.EDIT_USERS);
 		
 		checkPrivileges(user);
 		
@@ -174,7 +174,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 		return dao.saveUser(user, null);
 	}
 	
-	public User voidUser(User user, String reason) throws APIException {
+	public User voidUser(User user, /*~~>*/String reason) throws APIException {
 		return Context.getUserService().retireUser(user, reason);
 	}
 	
@@ -182,7 +182,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 * @see org.openmrs.api.UserService#retireUser(org.openmrs.User, java.lang.String)
 	 */
 	@Override
-	public User retireUser(User user, String reason) throws APIException {
+	public User retireUser(User user, /*~~>*/String reason) throws APIException {
 		user.setRetired(true);
 		user.setRetireReason(reason);
 		user.setRetiredBy(Context.getAuthenticatedUser());
@@ -231,7 +231,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Privilege getPrivilege(String p) throws APIException {
+	public Privilege getPrivilege(/*~~>*/String p) throws APIException {
 		return dao.getPrivilege(p);
 	}
 	
@@ -269,7 +269,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Role getRole(String r) throws APIException {
+	public Role getRole(/*~~>*/String r) throws APIException {
 		return dao.getRole(r);
 	}
 	
@@ -313,7 +313,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 * @see org.openmrs.api.UserService#changePassword(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void changePassword(String pw, String pw2) throws APIException {
+	public void changePassword(/*~~>*/String pw, /*~~>*/String pw2) throws APIException {
 		User user = Context.getAuthenticatedUser();
 		
 		changePassword(user, pw, pw2);
@@ -323,7 +323,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 * @see org.openmrs.api.UserService#changeHashedPassword(User, String, String)
 	 */
 	@Override
-	public void changeHashedPassword(User user, String hashedPassword, String salt) throws APIException {
+	public void changeHashedPassword(User user, /*~~>*/String hashedPassword, /*~~>*/String salt) throws APIException {
 		dao.changeHashedPassword(user, hashedPassword, salt);
 	}
 	
@@ -331,7 +331,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 * @see org.openmrs.api.UserService#changeQuestionAnswer(User, String, String)
 	 */
 	@Override
-	public void changeQuestionAnswer(User u, String question, String answer) throws APIException {
+	public void changeQuestionAnswer(User u, /*~~>*/String question, /*~~>*/String answer) throws APIException {
 		dao.changeQuestionAnswer(u, question, answer);
 	}
 	
@@ -340,7 +340,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 *      java.lang.String)
 	 */
 	@Override
-	public void changeQuestionAnswer(String pw, String q, String a) {
+	public void changeQuestionAnswer(/*~~>*/String pw, /*~~>*/String q, /*~~>*/String a) {
 		dao.changeQuestionAnswer(pw, q, a);
 	}
 	
@@ -349,7 +349,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public boolean isSecretAnswer(User u, String answer) {
+	public boolean isSecretAnswer(User u, /*~~>*/String answer) {
 		return dao.isSecretAnswer(u, answer);
 	}
 	
@@ -358,7 +358,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<User> getUsersByName(String givenName, String familyName, boolean includeVoided) throws APIException {
+	public List<User> getUsersByName(/*~~>*/String givenName, /*~~>*/String familyName, boolean includeVoided) throws APIException {
 		return dao.getUsersByName(givenName, familyName, includeVoided);
 	}
 	
@@ -376,7 +376,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<User> getUsers(String nameSearch, List<Role> roles, boolean includeVoided) throws APIException {
+	public List<User> getUsers(/*~~>*/String nameSearch, List<Role> roles, boolean includeVoided) throws APIException {
 		return Context.getUserService().getUsers(nameSearch, roles, includeVoided, null, null);
 	}
 	
@@ -386,20 +386,20 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 * @param user user that has privileges
 	 */
 	private void checkPrivileges(User user) {
-		List<String> requiredPrivs = user.getAllRoles().stream().peek(this::checkSuperUserPrivilege)
+		List</*~~>*/String> requiredPrivs = user.getAllRoles().stream().peek(this::checkSuperUserPrivilege)
 				.map(Role::getPrivileges).filter(Objects::nonNull).flatMap(Collection::stream)
 				.map(Privilege::getPrivilege).filter(p -> !Context.hasPrivilege(p)).sorted().collect(Collectors.toList());
 		if (requiredPrivs.size() == 1) {
 			throw new APIException("User.you.must.have.privilege", new Object[] { requiredPrivs.get(0) });
 		} else if (requiredPrivs.size() > 1) {
-			throw new APIException("User.you.must.have.privileges", new Object[] { String.join(", ", requiredPrivs) });
+			throw new APIException("User.you.must.have.privileges", new Object[] { /*~~>*/String.join(", ", requiredPrivs) });
 		}		
 	}
 	
 	private void checkSuperUserPrivilege(Role r) {
-		if (r.getRole().equals(RoleConstants.SUPERUSER)
-				&& !Context.hasPrivilege(PrivilegeConstants.ASSIGN_SYSTEM_DEVELOPER_ROLE)) {
-			throw new APIException("User.you.must.have.role", new Object[] { RoleConstants.SUPERUSER });
+		if (r.getRole().equals(/*~~>*/RoleConstants.SUPERUSER)
+				&& !Context.hasPrivilege(/*~~>*/PrivilegeConstants.ASSIGN_SYSTEM_DEVELOPER_ROLE)) {
+			throw new APIException("User.you.must.have.role", new Object[] { /*~~>*/RoleConstants.SUPERUSER });
 		}
 	}
 	
@@ -407,19 +407,19 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 * @see org.openmrs.api.UserService#setUserProperty(User, String, String)
 	 */
 	@Override
-	public User setUserProperty(User user, String key, String value) {
+	public User setUserProperty(User user, /*~~>*/String key, /*~~>*/String value) {
 		if (user != null) {
-			if (!Context.hasPrivilege(PrivilegeConstants.EDIT_USERS) && !user.equals(Context.getAuthenticatedUser())) {
+			if (!Context.hasPrivilege(/*~~>*/PrivilegeConstants.EDIT_USERS) && !user.equals(Context.getAuthenticatedUser())) {
 				throw new APIException("you.are.not.authorized.change.properties", new Object[] { user.getUserId() });
 			}
 			
 			user.setUserProperty(key, value);
 			try {
-				Context.addProxyPrivilege(PrivilegeConstants.EDIT_USERS);
+				Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.EDIT_USERS);
 				Context.getUserService().saveUser(user);
 			}
 			finally {
-				Context.removeProxyPrivilege(PrivilegeConstants.EDIT_USERS);
+				Context.removeProxyPrivilege(/*~~>*/PrivilegeConstants.EDIT_USERS);
 			}
 		}
 		
@@ -430,24 +430,24 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 * @see org.openmrs.api.UserService#removeUserProperty(org.openmrs.User, java.lang.String)
 	 */
 	@Override
-	public User removeUserProperty(User user, String key) {
+	public User removeUserProperty(User user, /*~~>*/String key) {
 		if (user != null) {
 			
 			// if the current user isn't allowed to edit users and
 			// the user being edited is not the current user, throw an
 			// exception
-			if (!Context.hasPrivilege(PrivilegeConstants.EDIT_USERS) && !user.equals(Context.getAuthenticatedUser())) {
+			if (!Context.hasPrivilege(/*~~>*/PrivilegeConstants.EDIT_USERS) && !user.equals(Context.getAuthenticatedUser())) {
 				throw new APIException("you.are.not.authorized.change.properties", new Object[] { user.getUserId() });
 			}
 			
 			user.removeUserProperty(key);
 			
 			try {
-				Context.addProxyPrivilege(PrivilegeConstants.EDIT_USERS);
+				Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.EDIT_USERS);
 				Context.getUserService().saveUser(user);
 			}
 			finally {
-				Context.removeProxyPrivilege(PrivilegeConstants.EDIT_USERS);
+				Context.removeProxyPrivilege(/*~~>*/PrivilegeConstants.EDIT_USERS);
 			}
 		}
 		
@@ -461,12 +461,12 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public String generateSystemId() {
+	public /*~~>*/String generateSystemId() {
 		// Hardcoding Luhn algorithm since all existing openmrs user ids have
 		// had check digits generated this way.
 		LuhnIdentifierValidator liv = new LuhnIdentifierValidator();
 		
-		String systemId;
+		/*~~>*/String systemId;
 		Integer offset = 0;
 		do {
 			// generate and increment the system id if necessary
@@ -530,7 +530,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Privilege getPrivilegeByUuid(String uuid) throws APIException {
+	public Privilege getPrivilegeByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getPrivilegeByUuid(uuid);
 	}
 	
@@ -539,7 +539,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Role getRoleByUuid(String uuid) throws APIException {
+	public Role getRoleByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getRoleByUuid(uuid);
 	}
 	
@@ -548,7 +548,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public User getUserByUuid(String uuid) throws APIException {
+	public User getUserByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getUserByUuid(uuid);
 	}
 	
@@ -557,14 +557,14 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Integer getCountOfUsers(String name, List<Role> roles, boolean includeRetired) {
+	public Integer getCountOfUsers(/*~~>*/String name, List<Role> roles, boolean includeRetired) {
 		if (name != null) {
 			name = StringUtils.replace(name,", ", " ");
 		}
 		
 		// if the authenticated role is in the list of searched roles, then all
 		// persons should be searched
-		Role authRole = getRole(RoleConstants.AUTHENTICATED);
+		Role authRole = getRole(/*~~>*/RoleConstants.AUTHENTICATED);
 		if (roles.contains(authRole)) {
 			return dao.getCountOfUsers(name, new ArrayList<>(), includeRetired);
 		}
@@ -577,7 +577,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<User> getUsers(String name, List<Role> roles, boolean includeRetired, Integer start, Integer length)
+	public List<User> getUsers(/*~~>*/String name, List<Role> roles, boolean includeRetired, Integer start, Integer length)
 	        throws APIException {
 		if (name != null) {
 			name = StringUtils.replace(name,", ", " ");
@@ -589,7 +589,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 
 		// if the authenticated role is in the list of searched roles, then all
 		// persons should be searched
-		Role authRole = getRole(RoleConstants.AUTHENTICATED);
+		Role authRole = getRole(/*~~>*/RoleConstants.AUTHENTICATED);
 		if (roles.contains(authRole)) {
 			return dao.getUsers(name, new ArrayList<>(), includeRetired, start, length);
 		}
@@ -605,7 +605,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	}
 	
 	@Override
-	public User saveUserProperty(String key, String value) {
+	public User saveUserProperty(/*~~>*/String key, /*~~>*/String value) {
 		User user = Context.getAuthenticatedUser();
 		if (user == null) {
 			throw new APIException("no.authenticated.user.found", (Object[]) null);
@@ -615,13 +615,13 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	}
 	
 	@Override
-	public User saveUserProperties(Map<String, String> properties) {
+	public User saveUserProperties(Map</*~~>*/String, /*~~>*/String> properties) {
 		User user = Context.getAuthenticatedUser();
 		if (user == null) {
 			throw new APIException("no.authenticated.user.found", (Object[]) null);
 		}
 		user.getUserProperties().clear();
-		for (Map.Entry<String, String> entry : properties.entrySet()) {
+		for (Map.Entry</*~~>*/String, /*~~>*/String> entry : properties.entrySet()) {
 			user.setUserProperty(entry.getKey(), entry.getValue());
 		}
 		return dao.saveUser(user, null);
@@ -631,14 +631,14 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 * @see UserService#changePassword(User, String, String)
 	 */
 	@Override
-	@Authorized(PrivilegeConstants.EDIT_USER_PASSWORDS)
+	@Authorized(/*~~>*/PrivilegeConstants.EDIT_USER_PASSWORDS)
 	@Logging(ignoredArgumentIndexes = { 1, 2 })
-	public void changePassword(User user, String oldPassword, String newPassword) throws APIException {
+	public void changePassword(User user, /*~~>*/String oldPassword, /*~~>*/String newPassword) throws APIException {
 		if (user.getUserId() == null) {
 			throw new APIException("user.must.exist", (Object[]) null);
 		}
 		if (oldPassword == null) {
-			if (!Context.hasPrivilege(PrivilegeConstants.EDIT_USER_PASSWORDS)) {
+			if (!Context.hasPrivilege(/*~~>*/PrivilegeConstants.EDIT_USER_PASSWORDS)) {
 				throw new APIException("null.old.password.privilege.required", (Object[]) null);
 			}
 		} else if (!dao.getLoginCredential(user).checkPassword(oldPassword)) {
@@ -650,18 +650,18 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 		updatePassword(user, newPassword);
 	}
 
-	private void updatePassword(User user, String newPassword) {
+	private void updatePassword(User user, /*~~>*/String newPassword) {
 		OpenmrsUtil.validatePassword(user.getUsername(), newPassword, user.getSystemId());
 		dao.changePassword(user, newPassword);
 	}
 
 	@Override
-	public void changePassword(User user, String newPassword) throws APIException {
+	public void changePassword(User user, /*~~>*/String newPassword) throws APIException {
 		updatePassword(user, newPassword);
 	}
 
 	@Override
-	public void changePasswordUsingSecretAnswer(String secretAnswer, String pw) throws APIException {
+	public void changePasswordUsingSecretAnswer(/*~~>*/String secretAnswer, /*~~>*/String pw) throws APIException {
 		User user = Context.getAuthenticatedUser();
 		if(!isSecretAnswer(user, secretAnswer)) {
 			throw new APIException("secret.answer.not.correct", (Object[]) null);
@@ -670,7 +670,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	}
 
 	@Override
-    public String getSecretQuestion(User user) throws APIException {
+    public /*~~>*/String getSecretQuestion(User user) throws APIException {
 		if (user.getUserId() != null) {
 			LoginCredential loginCredential = dao.getLoginCredential(user);
 			return loginCredential.getSecretQuestion();
@@ -684,7 +684,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public User getUserByUsernameOrEmail(String usernameOrEmail) {
+	public User getUserByUsernameOrEmail(/*~~>*/String usernameOrEmail) {
 		if (StringUtils.isNotBlank(usernameOrEmail)) {
 			User user = dao.getUserByEmail(usernameOrEmail);
 			if (user == null) {
@@ -701,10 +701,10 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public User getUserByActivationKey(String activationKey) {
+	public User getUserByActivationKey(/*~~>*/String activationKey) {
 		LoginCredential loginCred = dao.getLoginCredentialByActivationKey(activationKey);
 		if (loginCred != null) {
-			String[] credTokens = loginCred.getActivationKey().split(":");
+			/*~~>*/String[] credTokens = loginCred.getActivationKey().split(":");
 			if (System.currentTimeMillis() <= Long.parseLong(credTokens[1])) {
 				return getUser(loginCred.getUserId());
 			}
@@ -719,10 +719,10 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 */
 	@Override
 	public User setUserActivationKey(User user) throws MessageException {
-		String token = RandomStringUtils.randomAlphanumeric(20);
+		/*~~>*/String token = RandomStringUtils.randomAlphanumeric(20);
 		long time = System.currentTimeMillis() + getValidTime();
-		String hashedKey = Security.encodeString(token);
-		String activationKey = hashedKey + ":" + time;
+		/*~~>*/String hashedKey = Security.encodeString(token);
+		/*~~>*/String activationKey = hashedKey + ":" + time;
 		LoginCredential credentials = dao.getLoginCredential(user);
 		credentials.setActivationKey(activationKey);	
 		dao.setUserActivationKey(credentials);	
@@ -734,17 +734,17 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 //		Delete this method call when removing {@link OpenmrsConstants#GP_HOST_URL}
 		copyHostURLGlobalPropertyToPasswordResetGlobalProperty(adminService);
 
-		String link = adminService.getGlobalProperty(OpenmrsConstants.GP_PASSWORD_RESET_URL)
+		/*~~>*/String link = adminService.getGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_RESET_URL)
 		        .replace("{activationKey}", token);
 		
-		String sender = adminService.getGlobalProperty("mail.from");
+		/*~~>*/String sender = adminService.getGlobalProperty("mail.from");
 		
-		String subject = messages.getMessage("mail.passwordreset.subject",null, locale);
+		/*~~>*/String subject = messages.getMessage("mail.passwordreset.subject",null, locale);
 		
-		String msg = messages.getMessage("mail.passwordreset.content", null, locale)
+		/*~~>*/String msg = messages.getMessage("mail.passwordreset.content", null, locale)
 				.replace("{name}", user.getUsername())
 		        .replace("{link}", link)
-		        .replace("{time}", String.valueOf(getValidTime() / 60000));
+		        .replace("{time}", /*~~>*/String.valueOf(getValidTime() / 60000));
 		
 		Context.getMessageService().sendMessage(user.getEmail(), sender, subject, msg);
 		
@@ -755,10 +755,10 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 * Delete this method when deleting {@link OpenmrsConstants#GP_HOST_URL}
 	 */
 	private void copyHostURLGlobalPropertyToPasswordResetGlobalProperty(AdministrationService adminService) {
-		String hostURLGP = adminService.getGlobalProperty(OpenmrsConstants.GP_HOST_URL);
-		String passwordResetGP = adminService.getGlobalProperty(OpenmrsConstants.GP_PASSWORD_RESET_URL);
+		/*~~>*/String hostURLGP = adminService.getGlobalProperty(/*~~>*/OpenmrsConstants.GP_HOST_URL);
+		/*~~>*/String passwordResetGP = adminService.getGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_RESET_URL);
 		if(StringUtils.isNotBlank(hostURLGP) && StringUtils.isBlank(passwordResetGP)) {
-			adminService.setGlobalProperty(OpenmrsConstants.GP_PASSWORD_RESET_URL,  hostURLGP);
+			adminService.setGlobalProperty(/*~~>*/OpenmrsConstants.GP_PASSWORD_RESET_URL,  hostURLGP);
 		}
 	}
 
@@ -770,7 +770,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 		Locale locale = null;
 		if (user != null) {
 			try {
-				String preferredLocale = user.getUserProperty(OpenmrsConstants.USER_PROPERTY_DEFAULT_LOCALE);
+				/*~~>*/String preferredLocale = user.getUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_DEFAULT_LOCALE);
 				if (StringUtils.isNotBlank(preferredLocale)) {
 					locale = LocaleUtility.fromSpecification(preferredLocale);
 				}
@@ -788,7 +788,7 @@ public class UserServiceImpl extends BaseOpenmrsService implements UserService {
 	 * @see org.openmrs.api.UserService#changePasswordUsingActivationKey(String, String);
 	 */
 	@Override
-	public void changePasswordUsingActivationKey(String activationKey, String newPassword) {
+	public void changePasswordUsingActivationKey(/*~~>*/String activationKey, /*~~>*/String newPassword) {
 		User user = getUserByActivationKey(activationKey);
 		if (user == null) {
 			throw new InvalidActivationKeyException("activation.key.not.correct");

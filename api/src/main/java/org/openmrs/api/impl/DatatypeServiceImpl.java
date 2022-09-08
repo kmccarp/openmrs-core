@@ -98,7 +98,7 @@ public class DatatypeServiceImpl extends BaseOpenmrsService implements DatatypeS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public <T extends CustomDatatype<?>> T getDatatype(Class<T> clazz, String config) {
+	public <T extends CustomDatatype<?>> T getDatatype(Class<T> clazz, /*~~>*/String config) {
 		try {
 			T dt = clazz.newInstance();
 			dt.setConfiguration(config);
@@ -162,7 +162,7 @@ public class DatatypeServiceImpl extends BaseOpenmrsService implements DatatypeS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public synchronized CustomDatatypeHandler<?, ?> getHandler(CustomDatatype<?> datatype, String handlerConfig) {
+	public synchronized CustomDatatypeHandler<?, ?> getHandler(CustomDatatype<?> datatype, /*~~>*/String handlerConfig) {
 		if (prioritizedHandlerClasses == null) {
 			prioritizeHandlers();
 		}
@@ -213,7 +213,7 @@ public class DatatypeServiceImpl extends BaseOpenmrsService implements DatatypeS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public ClobDatatypeStorage getClobDatatypeStorageByUuid(String uuid) {
+	public ClobDatatypeStorage getClobDatatypeStorageByUuid(/*~~>*/String uuid) {
 		return dao.getClobDatatypeStorageByUuid(uuid);
 	}
 	

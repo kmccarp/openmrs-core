@@ -26,15 +26,15 @@ public class OrderType extends BaseChangeableOpenmrsMetadata {
 	
 	public static final long serialVersionUID = 23232L;
 	
-	public static final String DRUG_ORDER_TYPE_UUID = "131168f4-15f5-102d-96e4-000c29c2a5d7";
+	public static final /*~~>*/String DRUG_ORDER_TYPE_UUID = "131168f4-15f5-102d-96e4-000c29c2a5d7";
 	
-	public static final String TEST_ORDER_TYPE_UUID = "52a447d3-a64a-11e3-9aeb-50e549534c5e";
+	public static final /*~~>*/String TEST_ORDER_TYPE_UUID = "52a447d3-a64a-11e3-9aeb-50e549534c5e";
 	
-	public static final String REFERRAL_ORDER_TYPE_UUID = "f1b63696-2b6c-11ec-8d3d-0242ac130003";
+	public static final /*~~>*/String REFERRAL_ORDER_TYPE_UUID = "f1b63696-2b6c-11ec-8d3d-0242ac130003";
 	
 	private Integer orderTypeId;
 	
-	private String javaClassName;
+	private /*~~>*/String javaClassName;
 	
 	private OrderType parent;
 	
@@ -64,7 +64,7 @@ public class OrderType extends BaseChangeableOpenmrsMetadata {
 	 * @param description A short description about this order type
 	 * @param javaClassName The fully qualified java class name
 	 */
-	public OrderType(String name, String description, String javaClassName) {
+	public OrderType(/*~~>*/String name, /*~~>*/String description, /*~~>*/String javaClassName) {
 		setName(name);
 		setDescription(description);
 		setJavaClassName(javaClassName);
@@ -104,15 +104,15 @@ public class OrderType extends BaseChangeableOpenmrsMetadata {
 	/**
 	 * @return Returns the Java className as String
 	 */
-	public String getJavaClassName() {
+	public /*~~>*/String getJavaClassName() {
 		return javaClassName;
 	}
 	
 	/**
 	 * @param javaClassName The Java class to set as String
 	 */
-	public void setJavaClassName(String javaClassName) {
-		this.javaClassName = javaClassName;
+	public void setJavaClassName(/*~~>*/String javaClassName) {
+		/*~~>*/this.javaClassName = javaClassName;
 	}
 	
 	/**
@@ -178,7 +178,7 @@ public class OrderType extends BaseChangeableOpenmrsMetadata {
 	 * @see org.openmrs.BaseOpenmrsObject#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		if (StringUtils.isNotBlank(getName())) {
 			return getName();
 		}

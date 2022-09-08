@@ -37,17 +37,17 @@ public class FormResource extends BaseOpenmrsObject implements CustomValueDescri
 	
 	private Form form;
 	
-	private String name;
+	private /*~~>*/String name;
 	
-	private String valueReference;
+	private /*~~>*/String valueReference;
 	
-	private String datatypeClassname;
+	private /*~~>*/String datatypeClassname;
 	
-	private String datatypeConfig;
+	private /*~~>*/String datatypeConfig;
 	
-	private String preferredHandlerClassname;
+	private /*~~>*/String preferredHandlerClassname;
 	
-	private String handlerConfig;
+	private /*~~>*/String handlerConfig;
 	
 	private transient boolean dirty = false;
 	
@@ -68,12 +68,12 @@ public class FormResource extends BaseOpenmrsObject implements CustomValueDescri
 	 */
 	public FormResource(FormResource old) {
 		this.form = old.getForm();
-		this.name = old.getName();
-		this.valueReference = old.getValueReference();
-		this.datatypeClassname = old.getDatatypeClassname();
-		this.datatypeConfig = old.getDatatypeConfig();
-		this.preferredHandlerClassname = old.getPreferredHandlerClassname();
-		this.handlerConfig = old.getHandlerConfig();
+		/*~~>*/this.name = old.getName();
+		/*~~>*/this.valueReference = old.getValueReference();
+		/*~~>*/this.datatypeClassname = old.getDatatypeClassname();
+		/*~~>*/this.datatypeConfig = old.getDatatypeConfig();
+		/*~~>*/this.preferredHandlerClassname = old.getPreferredHandlerClassname();
+		/*~~>*/this.handlerConfig = old.getHandlerConfig();
 	}
 	
 	/**
@@ -133,7 +133,7 @@ public class FormResource extends BaseOpenmrsObject implements CustomValueDescri
 	 *
 	 * @return the name of the resource
 	 */
-	public String getName() {
+	public /*~~>*/String getName() {
 		return name;
 	}
 	
@@ -142,68 +142,68 @@ public class FormResource extends BaseOpenmrsObject implements CustomValueDescri
 	 *
 	 * @param name the name of the resource
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setName(/*~~>*/String name) {
+		/*~~>*/this.name = name;
 	}
 	
 	/**
 	 * @see org.openmrs.customdatatype.CustomValueDescriptor#getDatatypeClassname()
 	 */
 	@Override
-	public String getDatatypeClassname() {
+	public /*~~>*/String getDatatypeClassname() {
 		return datatypeClassname;
 	}
 	
 	/**
 	 * @param datatypeClassname the datatypeClassname to set
 	 */
-	public void setDatatypeClassname(String datatypeClassname) {
-		this.datatypeClassname = datatypeClassname;
+	public void setDatatypeClassname(/*~~>*/String datatypeClassname) {
+		/*~~>*/this.datatypeClassname = datatypeClassname;
 	}
 	
 	/**
 	 * @see org.openmrs.customdatatype.CustomValueDescriptor#getDatatypeConfig()
 	 */
 	@Override
-	public String getDatatypeConfig() {
+	public /*~~>*/String getDatatypeConfig() {
 		return datatypeConfig;
 	}
 	
 	/**
 	 * @param datatypeConfig the datatypeConfig to set
 	 */
-	public void setDatatypeConfig(String datatypeConfig) {
-		this.datatypeConfig = datatypeConfig;
+	public void setDatatypeConfig(/*~~>*/String datatypeConfig) {
+		/*~~>*/this.datatypeConfig = datatypeConfig;
 	}
 	
 	/**
 	 * @see org.openmrs.customdatatype.CustomValueDescriptor#getPreferredHandlerClassname()
 	 */
 	@Override
-	public String getPreferredHandlerClassname() {
+	public /*~~>*/String getPreferredHandlerClassname() {
 		return preferredHandlerClassname;
 	}
 	
 	/**
 	 * @param preferredHandlerClassname the preferredHandlerClassname to set
 	 */
-	public void setPreferredHandlerClassname(String preferredHandlerClassname) {
-		this.preferredHandlerClassname = preferredHandlerClassname;
+	public void setPreferredHandlerClassname(/*~~>*/String preferredHandlerClassname) {
+		/*~~>*/this.preferredHandlerClassname = preferredHandlerClassname;
 	}
 	
 	/**
 	 * @see org.openmrs.customdatatype.CustomValueDescriptor#getHandlerConfig()
 	 */
 	@Override
-	public String getHandlerConfig() {
+	public /*~~>*/String getHandlerConfig() {
 		return handlerConfig;
 	}
 	
 	/**
 	 * @param handlerConfig the handlerConfig to set
 	 */
-	public void setHandlerConfig(String handlerConfig) {
-		this.handlerConfig = handlerConfig;
+	public void setHandlerConfig(/*~~>*/String handlerConfig) {
+		/*~~>*/this.handlerConfig = handlerConfig;
 	}
 	
 	/**
@@ -218,7 +218,7 @@ public class FormResource extends BaseOpenmrsObject implements CustomValueDescri
 	 * @see org.openmrs.customdatatype.SingleCustomValue#getValueReference()
 	 */
 	@Override
-	public String getValueReference() {
+	public /*~~>*/String getValueReference() {
 		if (valueReference == null) {
 			throw new NotYetPersistedException();
 		} else {
@@ -250,8 +250,8 @@ public class FormResource extends BaseOpenmrsObject implements CustomValueDescri
 	 * @see org.openmrs.customdatatype.SingleCustomValue#setValueReferenceInternal(java.lang.String)
 	 */
 	@Override
-	public void setValueReferenceInternal(String valueToPersist)  {
-		this.valueReference = valueToPersist;
+	public void setValueReferenceInternal(/*~~>*/String valueToPersist)  {
+		/*~~>*/this.valueReference = valueToPersist;
 	}
 	
 	/**

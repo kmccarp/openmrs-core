@@ -67,10 +67,10 @@ public interface Retireable extends OpenmrsObject {
 	/**
 	 * @return String - the reason the object was retired
 	 */
-	public String getRetireReason();
+	public /*~~>*/String getRetireReason();
 	
 	/**
 	 * @param retireReason - the reason the object was retired
 	 */
-	public void setRetireReason(String retireReason);
+	public void setRetireReason(/*~~>*/String retireReason);
 }

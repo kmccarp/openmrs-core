@@ -50,7 +50,7 @@ public interface DiagnosisDAO {
 	 * @param uuid the uuid to search for in the database.
 	 * @return the diagnosis associated with the UUID.
 	 */
-	Diagnosis getDiagnosisByUuid(String uuid);
+	Diagnosis getDiagnosisByUuid(/*~~>*/String uuid);
 
 	/**
 	 * Deletes a diagnosis
@@ -93,7 +93,7 @@ public interface DiagnosisDAO {
 	/**
 	 * @see org.openmrs.api.DiagnosisService#getDiagnosisAttributeTypeByUuid(String)
 	 */
-	DiagnosisAttributeType getDiagnosisAttributeTypeByUuid(String uuid) throws DAOException;
+	DiagnosisAttributeType getDiagnosisAttributeTypeByUuid(/*~~>*/String uuid) throws DAOException;
 
 	/**
 	 * @see org.openmrs.api.DiagnosisService#saveDiagnosisAttributeType(DiagnosisAttributeType)
@@ -108,5 +108,5 @@ public interface DiagnosisDAO {
 	/**
 	 * @see org.openmrs.api.DiagnosisService#getDiagnosisAttributeByUuid(String)
 	 */
-	DiagnosisAttribute getDiagnosisAttributeByUuid(String uuid) throws DAOException;
+	DiagnosisAttribute getDiagnosisAttributeByUuid(/*~~>*/String uuid) throws DAOException;
 }

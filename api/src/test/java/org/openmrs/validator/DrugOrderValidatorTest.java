@@ -178,7 +178,7 @@ public class DrugOrderValidatorTest extends BaseContextSensitiveTest {
 	@Test
 	public void validate_shouldNotFailValidationIfQuantityAndNumRefillsAreNullIfConfiguredToNotRequire() {
 		AdministrationService as = Context.getAdministrationService();
-		as.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_OUTPATIENT_QUANTITY, "false");
+		as.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_OUTPATIENT_QUANTITY, "false");
 		
 		DrugOrder OutpatientOrder = new DrugOrder();
 		OutpatientOrder.setCareSetting(Context.getOrderService().getCareSetting(1));
@@ -534,7 +534,7 @@ public class DrugOrderValidatorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void saveOrder_shouldFailDrugOrderWithoutADrugWhenDrugOrderRequireDrugGBIsTrue() {
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "true");
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "true");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		
 		Patient patient = Context.getPatientService().getPatient(7);
@@ -564,7 +564,7 @@ public class DrugOrderValidatorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void saveOrder_shouldPassDrugOrderWithoutADrugWhenDrugOrderRequireDrugGBIsFalse() {
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "false");
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "false");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		Patient patient = Context.getPatientService().getPatient(7);
 		CareSetting careSetting = Context.getOrderService().getCareSetting(2);
@@ -600,7 +600,7 @@ public class DrugOrderValidatorTest extends BaseContextSensitiveTest {
 		CareSetting careSetting = Context.getOrderService().getCareSetting(2);
 		OrderType orderType = Context.getOrderService().getOrderTypeByName("Drug order");
 		assertNull(Context.getAdministrationService().getGlobalPropertyObject(
-		    OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG));
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG));
 		//place drug order
 		DrugOrder order = new DrugOrder();
 		Encounter encounter = Context.getEncounterService().getEncounter(3);
@@ -730,7 +730,7 @@ public class DrugOrderValidatorTest extends BaseContextSensitiveTest {
 		CareSetting careSetting = Context.getOrderService().getCareSetting(2);
 		OrderType orderType = Context.getOrderService().getOrderTypeByName("Drug order");
 
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "true");
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "true");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		//place drug order
 		DrugOrder order = new DrugOrder();
@@ -758,7 +758,7 @@ public class DrugOrderValidatorTest extends BaseContextSensitiveTest {
 		CareSetting careSetting = Context.getOrderService().getCareSetting(2);
 		OrderType orderType = Context.getOrderService().getOrderTypeByName("Drug order");
 
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "true");
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "true");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		//place drug order
 		DrugOrder order = new DrugOrder();
@@ -784,7 +784,7 @@ public class DrugOrderValidatorTest extends BaseContextSensitiveTest {
 		Patient patient = Context.getPatientService().getPatient(7);
 		CareSetting careSetting = Context.getOrderService().getCareSetting(2);
 		OrderType orderType = Context.getOrderService().getOrderTypeByName("Drug order");
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "true");
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "true");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		//place drug order
 		DrugOrder order = new DrugOrder();
@@ -812,7 +812,7 @@ public class DrugOrderValidatorTest extends BaseContextSensitiveTest {
 		CareSetting careSetting = Context.getOrderService().getCareSetting(2);
 		OrderType orderType = Context.getOrderService().getOrderTypeByName("Drug order");
 
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "true");
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "true");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		//place drug order
 		DrugOrder order = new DrugOrder();
@@ -838,7 +838,7 @@ public class DrugOrderValidatorTest extends BaseContextSensitiveTest {
 		CareSetting careSetting = Context.getOrderService().getCareSetting(2);
 		OrderType orderType = Context.getOrderService().getOrderTypeByName("Drug order");
 
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "false");
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DRUG_ORDER_REQUIRE_DRUG, "false");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		//place drug order
 		DrugOrder order = new DrugOrder();

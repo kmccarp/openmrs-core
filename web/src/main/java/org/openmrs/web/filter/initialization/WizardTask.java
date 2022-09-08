@@ -27,15 +27,15 @@ public enum WizardTask {
 	IMPORT_TEST_DATA("install.progress.tasks.test"),
 	ADD_MODULES("install.progress.tasks.addModules");
 	
-	private final String displayText;
+	private final /*~~>*/String displayText;
 	
 	/**
 	 * Constructor
 	 * 
 	 * @param displayText The displayText for the enum value
 	 */
-	private WizardTask(String displayText) {
-		this.displayText = displayText;
+	private WizardTask(/*~~>*/String displayText) {
+		/*~~>*/this.displayText = displayText;
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public enum WizardTask {
 	 * 
 	 * @return The displayText for the enum value
 	 */
-	public String displayText() {
-		return this.displayText;
+	public /*~~>*/String displayText() {
+		return /*~~>*/this.displayText;
 	}
 }

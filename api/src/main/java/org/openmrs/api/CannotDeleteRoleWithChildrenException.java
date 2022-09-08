@@ -28,7 +28,7 @@ public class CannotDeleteRoleWithChildrenException extends APIException {
 	 * 
 	 * @param message the reason to show to the user as to why the role can't be deleted
 	 */
-	public CannotDeleteRoleWithChildrenException(String message) {
+	public CannotDeleteRoleWithChildrenException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -39,7 +39,7 @@ public class CannotDeleteRoleWithChildrenException extends APIException {
 	 * @param message the reason to show to the user as to why the role can't be deleted
 	 * @param cause the parent exception
 	 */
-	public CannotDeleteRoleWithChildrenException(String message, Throwable cause) {
+	public CannotDeleteRoleWithChildrenException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

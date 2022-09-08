@@ -74,7 +74,7 @@ public class Order extends BaseCustomizableData<OrderAttribute> implements FormR
 	
 	private Concept concept;
 	
-	private String instructions;
+	private /*~~>*/String instructions;
 	
 	private Date dateActivated;
 	
@@ -88,21 +88,21 @@ public class Order extends BaseCustomizableData<OrderAttribute> implements FormR
 	
 	private Concept orderReason;
 	
-	private String accessionNumber;
+	private /*~~>*/String accessionNumber;
 	
-	private String orderReasonNonCoded;
+	private /*~~>*/String orderReasonNonCoded;
 	
 	private Urgency urgency = Urgency.ROUTINE;
 	
-	private String orderNumber;
+	private /*~~>*/String orderNumber;
 	
-	private String commentToFulfiller;
+	private /*~~>*/String commentToFulfiller;
 	
 	private CareSetting careSetting;
 	
 	private Date scheduledDate;
 	
-	private String formNamespaceAndPath;
+	private /*~~>*/String formNamespaceAndPath;
 	
 	/**
 	 * Allows the orders if ordered as an orderGroup, to maintain a sequence of how members are
@@ -138,7 +138,7 @@ public class Order extends BaseCustomizableData<OrderAttribute> implements FormR
 	/**
 	 * Represents the comment that goes along with with fulfiller status
 	 */	
-	private String fulfillerComment;
+	private /*~~>*/String fulfillerComment;
 
 	// Constructors
 	
@@ -191,7 +191,7 @@ public class Order extends BaseCustomizableData<OrderAttribute> implements FormR
 		target.setCommentToFulfiller(getCommentToFulfiller());
 		target.previousOrder = getPreviousOrder();
 		target.action = getAction();
-		target.orderNumber = getOrderNumber();
+		/*~~>*/target.orderNumber = getOrderNumber();
 		target.setCareSetting(getCareSetting());
 		target.setChangedBy(getChangedBy());
 		target.setDateChanged(getDateChanged());
@@ -289,29 +289,29 @@ public class Order extends BaseCustomizableData<OrderAttribute> implements FormR
 	/**
 	 * @return Returns the instructions.
 	 */
-	public String getInstructions() {
+	public /*~~>*/String getInstructions() {
 		return instructions;
 	}
 	
 	/**
 	 * @param instructions The instructions to set.
 	 */
-	public void setInstructions(String instructions) {
-		this.instructions = instructions;
+	public void setInstructions(/*~~>*/String instructions) {
+		/*~~>*/this.instructions = instructions;
 	}
 	
 	/**
 	 * @return Returns the accessionNumber.
 	 */
-	public String getAccessionNumber() {
+	public /*~~>*/String getAccessionNumber() {
 		return accessionNumber;
 	}
 	
 	/**
 	 * @param accessionNumber The accessionNumber to set.
 	 */
-	public void setAccessionNumber(String accessionNumber) {
-		this.accessionNumber = accessionNumber;
+	public void setAccessionNumber(/*~~>*/String accessionNumber) {
+		/*~~>*/this.accessionNumber = accessionNumber;
 	}
 	
 	/**
@@ -359,22 +359,22 @@ public class Order extends BaseCustomizableData<OrderAttribute> implements FormR
 	/**
 	 * @return Returns the orderReasonNonCoded.
 	 */
-	public String getOrderReasonNonCoded() {
+	public /*~~>*/String getOrderReasonNonCoded() {
 		return orderReasonNonCoded;
 	}
 	
 	/**
 	 * @param orderReasonNonCoded The orderReasonNonCoded to set.
 	 */
-	public void setOrderReasonNonCoded(String orderReasonNonCoded) {
-		this.orderReasonNonCoded = orderReasonNonCoded;
+	public void setOrderReasonNonCoded(/*~~>*/String orderReasonNonCoded) {
+		/*~~>*/this.orderReasonNonCoded = orderReasonNonCoded;
 	}
 	
 	/**
 	 * @return the commentToFulfiller
 	 * @since 1.10
 	 */
-	public String getCommentToFulfiller() {
+	public /*~~>*/String getCommentToFulfiller() {
 		return commentToFulfiller;
 	}
 	
@@ -382,8 +382,8 @@ public class Order extends BaseCustomizableData<OrderAttribute> implements FormR
 	 * @param commentToFulfiller The commentToFulfiller to set
 	 * @since 1.10
 	 */
-	public void setCommentToFulfiller(String commentToFulfiller) {
-		this.commentToFulfiller = commentToFulfiller;
+	public void setCommentToFulfiller(/*~~>*/String commentToFulfiller) {
+		/*~~>*/this.commentToFulfiller = commentToFulfiller;
 	}
 	
 	/**
@@ -592,8 +592,8 @@ public class Order extends BaseCustomizableData<OrderAttribute> implements FormR
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
-		String prefix = Action.DISCONTINUE == getAction() ? "DC " : "";
+	public /*~~>*/String toString() {
+		/*~~>*/String prefix = Action.DISCONTINUE == getAction() ? "DC " : "";
 		return prefix + "Order. orderId: " + orderId + " patient: " + patient + " concept: " + concept + " care setting: "
 		        + careSetting;
 	}
@@ -627,7 +627,7 @@ public class Order extends BaseCustomizableData<OrderAttribute> implements FormR
 	 * @return the orderNumber
 	 * @since 1.10
 	 */
-	public String getOrderNumber() {
+	public /*~~>*/String getOrderNumber() {
 		return orderNumber;
 	}
 	
@@ -902,7 +902,7 @@ public class Order extends BaseCustomizableData<OrderAttribute> implements FormR
 	 * @since 2.2.0
 	 * @return the comment of the fulfiller  
 	 */
-	public String getFulfillerComment() {
+	public /*~~>*/String getFulfillerComment() {
 		return fulfillerComment;
 	}
 	
@@ -912,15 +912,15 @@ public class Order extends BaseCustomizableData<OrderAttribute> implements FormR
 	 * @param fulfillerComment the comment received from the fulfiller
 	 * @since 2.2.0
 	 */
-	public void setFulfillerComment(String fulfillerComment) {
-		this.fulfillerComment = fulfillerComment;		
+	public void setFulfillerComment(/*~~>*/String fulfillerComment) {
+		/*~~>*/this.fulfillerComment = fulfillerComment;		
 	}
 	
 	/**
 	 * @return Returns the formNamespaceAndPath.
 	 * @since 2.5.0
 	 */
-	public String getFormNamespaceAndPath() {
+	public /*~~>*/String getFormNamespaceAndPath() {
 		return formNamespaceAndPath;
 	}
 
@@ -930,22 +930,22 @@ public class Order extends BaseCustomizableData<OrderAttribute> implements FormR
 	 * @param formNamespaceAndPath the form namespace and path to set
 	 * @since 2.5.0
 	 */
-	public void setFormNamespaceAndPath(String formNamespaceAndPath) {
-		this.formNamespaceAndPath = formNamespaceAndPath;
+	public void setFormNamespaceAndPath(/*~~>*/String formNamespaceAndPath) {
+		/*~~>*/this.formNamespaceAndPath = formNamespaceAndPath;
 	}
 
 	@Override
-	public String getFormFieldNamespace() {
+	public /*~~>*/String getFormFieldNamespace() {
 		return BaseFormRecordableOpenmrsData.getFormFieldNamespace(formNamespaceAndPath);
 	}
 
 	@Override
-	public String getFormFieldPath() {
+	public /*~~>*/String getFormFieldPath() {
 		return BaseFormRecordableOpenmrsData.getFormFieldPath(formNamespaceAndPath);
 	}
 
 	@Override
-	public void setFormField(String namespace, String formFieldPath) {
+	public void setFormField(/*~~>*/String namespace, /*~~>*/String formFieldPath) {
 		formNamespaceAndPath = BaseFormRecordableOpenmrsData.getFormNamespaceAndPath(namespace, formFieldPath);
 	}
 }

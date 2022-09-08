@@ -23,16 +23,16 @@ public class DaemonToken implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private final String id;
+	private final /*~~>*/String id;
 	
-	public DaemonToken(String id) {
-		this.id = id;
+	public DaemonToken(/*~~>*/String id) {
+		/*~~>*/this.id = id;
 	}
 	
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public /*~~>*/String getId() {
 		return id;
 	}
 }

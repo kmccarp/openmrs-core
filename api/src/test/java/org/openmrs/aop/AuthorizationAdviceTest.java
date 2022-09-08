@@ -54,8 +54,8 @@ public class AuthorizationAdviceTest extends BaseContextSensitiveTest {
 		
 		Concept concept = Context.getConceptService().getConcept(3);
 		
-		assertThat("listener1", listener1.hasPrivileges, containsInAnyOrder(PrivilegeConstants.GET_CONCEPTS));
-		assertThat("listener2", listener2.hasPrivileges, containsInAnyOrder(PrivilegeConstants.GET_CONCEPTS));
+		assertThat("listener1", listener1.hasPrivileges, containsInAnyOrder(/*~~>*/PrivilegeConstants.GET_CONCEPTS));
+		assertThat("listener2", listener2.hasPrivileges, containsInAnyOrder(/*~~>*/PrivilegeConstants.GET_CONCEPTS));
 		assertThat(listener1.lacksPrivileges, empty());
 		assertThat(listener2.lacksPrivileges, empty());
 		
@@ -64,8 +64,8 @@ public class AuthorizationAdviceTest extends BaseContextSensitiveTest {
 		
 		Context.getConceptService().saveConcept(concept);
 		
-		String[] privileges = { PrivilegeConstants.MANAGE_CONCEPTS, PrivilegeConstants.GET_OBS,
-		        PrivilegeConstants.GET_CONCEPT_ATTRIBUTE_TYPES };
+		/*~~>*/String[] privileges = { /*~~>*/PrivilegeConstants.MANAGE_CONCEPTS, /*~~>*/PrivilegeConstants.GET_OBS,
+		        /*~~>*/PrivilegeConstants.GET_CONCEPT_ATTRIBUTE_TYPES };
 		assertThat("listener1", listener1.hasPrivileges, containsInAnyOrder(privileges));
 		assertThat("listener2", listener2.hasPrivileges, containsInAnyOrder(privileges));
 		assertThat(listener1.lacksPrivileges, empty());
@@ -75,12 +75,12 @@ public class AuthorizationAdviceTest extends BaseContextSensitiveTest {
 	@Component("listener1")
 	public static class Listener1 implements PrivilegeListener {
 		
-		public Set<String> hasPrivileges = new LinkedHashSet<>();
+		public Set</*~~>*/String> hasPrivileges = new LinkedHashSet<>();
 		
-		public Set<String> lacksPrivileges = new LinkedHashSet<>();
+		public Set</*~~>*/String> lacksPrivileges = new LinkedHashSet<>();
 		
 		@Override
-		public void privilegeChecked(User user, String privilege, boolean hasPrivilege) {
+		public void privilegeChecked(User user, /*~~>*/String privilege, boolean hasPrivilege) {
 			if (hasPrivilege) {
 				hasPrivileges.add(privilege);
 			} else {

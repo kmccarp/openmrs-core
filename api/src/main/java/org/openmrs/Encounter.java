@@ -621,8 +621,8 @@ public class Encounter extends BaseChangeableOpenmrsData {
 	 * <strong>Should</strong> not fail with empty object
 	 */
 	@Override
-	public String toString() {
-		String ret = "";
+	public /*~~>*/String toString() {
+		/*~~>*/String ret = "";
 		ret += encounterId == null ? "(no ID) " : encounterId.toString() + " ";
 		ret += this.getEncounterDatetime() == null ? "(no Date) " : this.getEncounterDatetime().toString() + " ";
 		ret += this.getEncounterType() == null ? "(no Type) " : this.getEncounterType().getName() + " ";
@@ -868,7 +868,7 @@ public class Encounter extends BaseChangeableOpenmrsData {
 	 * @return list of orderGroups
 	 */
 	public List<OrderGroup> getOrderGroups() {
-		Map<String, OrderGroup> orderGroups = new HashMap<>();
+		Map</*~~>*/String, OrderGroup> orderGroups = new HashMap<>();
 		for (Order order : orders) {
 			if (order.getOrderGroup() != null) {
 				orderGroups.computeIfAbsent(order.getOrderGroup().getUuid(), k -> order.getOrderGroup());

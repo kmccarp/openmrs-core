@@ -15,20 +15,20 @@ public class InvalidIdentifierFormatException extends PatientIdentifierException
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String format;
+	private /*~~>*/String format;
 	
 	public InvalidIdentifierFormatException() {
 	}
 	
-	public InvalidIdentifierFormatException(String message) {
+	public InvalidIdentifierFormatException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public InvalidIdentifierFormatException(String message, PatientIdentifier identifier) {
+	public InvalidIdentifierFormatException(/*~~>*/String message, PatientIdentifier identifier) {
 		super(message, identifier);
 	}
 	
-	public InvalidIdentifierFormatException(String message, Throwable cause) {
+	public InvalidIdentifierFormatException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	
@@ -36,11 +36,11 @@ public class InvalidIdentifierFormatException extends PatientIdentifierException
 		super(cause);
 	}
 	
-	public String getFormat() {
+	public /*~~>*/String getFormat() {
 		return format;
 	}
 	
-	public void setFormat(String format) {
-		this.format = format;
+	public void setFormat(/*~~>*/String format) {
+		/*~~>*/this.format = format;
 	}
 }

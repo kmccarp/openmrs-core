@@ -22,7 +22,7 @@ import static java.util.UUID.randomUUID;
 @DatabaseChange(name = "insertWithUuid", description = "Inserts data into an existing table and generates and inserts an uuid", priority = ChangeMetaData.PRIORITY_DEFAULT, appliesTo = "table")
 public class InsertWithUuidDataChange extends InsertDataChange {
 	
-	private static final String UUID = "uuid";
+	private static final /*~~>*/String UUID = "uuid";
 
 	@Override
 	public SqlStatement[] generateStatements(final Database database) {

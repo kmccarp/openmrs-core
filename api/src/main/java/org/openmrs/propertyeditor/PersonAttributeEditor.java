@@ -28,7 +28,7 @@ public class PersonAttributeEditor extends OpenmrsPropertyEditor<PersonAttribute
 	}
 	
 	@Override
-	protected PersonAttribute getObjectByUuid(String uuid) {
+	protected PersonAttribute getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getPersonService().getPersonAttributeByUuid(uuid);
 	}
 }

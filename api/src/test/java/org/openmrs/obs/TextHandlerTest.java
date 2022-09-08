@@ -45,8 +45,8 @@ public class TextHandlerTest extends BaseContextSensitiveTest {
     @Test
     public void shouldReturnSupportedViews() {
 		
-        String[] actualViews = handler.getSupportedViews();
-        String[] expectedViews = { ComplexObsHandler.TEXT_VIEW, ComplexObsHandler.RAW_VIEW, ComplexObsHandler.URI_VIEW };
+        /*~~>*/String[] actualViews = handler.getSupportedViews();
+        /*~~>*/String[] expectedViews = { /*~~>*/ComplexObsHandler.TEXT_VIEW, /*~~>*/ComplexObsHandler.RAW_VIEW, /*~~>*/ComplexObsHandler.URI_VIEW };
 
         assertArrayEquals(actualViews, expectedViews);
     }
@@ -54,17 +54,17 @@ public class TextHandlerTest extends BaseContextSensitiveTest {
     @Test
     public void shouldSupportRawView() {
 
-        assertTrue(handler.supportsView(ComplexObsHandler.RAW_VIEW));
-        assertTrue(handler.supportsView(ComplexObsHandler.TEXT_VIEW));
-        assertTrue(handler.supportsView(ComplexObsHandler.URI_VIEW));
+        assertTrue(handler.supportsView(/*~~>*/ComplexObsHandler.RAW_VIEW));
+        assertTrue(handler.supportsView(/*~~>*/ComplexObsHandler.TEXT_VIEW));
+        assertTrue(handler.supportsView(/*~~>*/ComplexObsHandler.URI_VIEW));
     }
 
     @Test
     public void shouldNotSupportOtherViews() {
 
-        assertFalse(handler.supportsView(ComplexObsHandler.HTML_VIEW));
-        assertFalse(handler.supportsView(ComplexObsHandler.PREVIEW_VIEW));
-        assertFalse(handler.supportsView(ComplexObsHandler.TITLE_VIEW));
+        assertFalse(handler.supportsView(/*~~>*/ComplexObsHandler.HTML_VIEW));
+        assertFalse(handler.supportsView(/*~~>*/ComplexObsHandler.PREVIEW_VIEW));
+        assertFalse(handler.supportsView(/*~~>*/ComplexObsHandler.TITLE_VIEW));
         assertFalse(handler.supportsView(""));
         assertFalse(handler.supportsView(null));
     }
@@ -81,7 +81,7 @@ public class TextHandlerTest extends BaseContextSensitiveTest {
 		obs2.setComplexData(complexData);
 
 		adminService.saveGlobalProperty(new GlobalProperty(
-			OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR, 
+			/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR, 
 			complexObsTestFolder.toAbsolutePath().toString()
 		));
 

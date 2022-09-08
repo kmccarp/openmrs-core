@@ -62,15 +62,15 @@ public class TestInstallUtil {
 	 * @param pwd
 	 * @return true if data was added successfully
 	 */
-	protected static boolean addTestData(String host, int port, String databaseName, String user, String pwd, String filePath) {
+	protected static boolean addTestData(/*~~>*/String host, int port, /*~~>*/String databaseName, /*~~>*/String user, /*~~>*/String pwd, /*~~>*/String filePath) {
 		Process proc;
 		BufferedReader br = null;
-		String errorMsg = null;
-		String[] command = new String[] { "mysql", "--host=" + host, "--port=" + port, "--user=" + user,
+		/*~~>*/String errorMsg = null;
+		/*~~>*/String[] command = new /*~~>*/String[] { "mysql", "--host=" + host, "--port=" + port, "--user=" + user,
 		        "--password=" + pwd, "--database=" + databaseName, "-e", "source " + filePath };
 		
 		//For stand-alone, use explicit path to the mysql executable.
-		String runDirectory = System.getProperties().getProperty("user.dir");
+		/*~~>*/String runDirectory = System.getProperties().getProperty("user.dir");
 		File file = Paths.get(runDirectory, "database", "bin", "mysql").toFile();
 		
 		if (file.exists()) {
@@ -81,7 +81,7 @@ public class TestInstallUtil {
 			proc = Runtime.getRuntime().exec(command);
 			try {
 				br = new BufferedReader(new InputStreamReader(proc.getErrorStream(), StandardCharsets.UTF_8));
-				String line;
+				/*~~>*/String line;
 				StringBuilder sb = new StringBuilder();
 				while ((line = br.readLine()) != null) {
 					sb.append(System.getProperty("line.separator"));
@@ -154,7 +154,7 @@ public class TestInstallUtil {
 					continue;
 				}
 				
-				String fileName = entry.getName();
+				/*~~>*/String fileName = entry.getName();
 				if (fileName.endsWith(".omod")) {
 					//Convert the names of .omod files located in nested directories so that they get
 					//created under the module repo directory when being copied
@@ -165,17 +165,17 @@ public class TestInstallUtil {
 					log.debug("Extracting module file: {}", fileName);
 					
 					//use the module repository folder GP value if specified
-					String moduleRepositoryFolder = FilterUtil
-					        .getGlobalPropertyValue(ModuleConstants.REPOSITORY_FOLDER_PROPERTY);
+					/*~~>*/String moduleRepositoryFolder = FilterUtil
+					        .getGlobalPropertyValue(/*~~>*/ModuleConstants.REPOSITORY_FOLDER_PROPERTY);
 					if (StringUtils.isBlank(moduleRepositoryFolder)) {
-						moduleRepositoryFolder = ModuleConstants.REPOSITORY_FOLDER_PROPERTY_DEFAULT;
+						moduleRepositoryFolder = /*~~>*/ModuleConstants.REPOSITORY_FOLDER_PROPERTY_DEFAULT;
 					}
 					
 					//At this point 'OpenmrsConstants.APPLICATION_DATA_DIRECTORY' is still null so we need check
 					//for the app data directory defined in the runtime props file if any otherwise the logic in
 					//the OpenmrsUtil.getDirectoryInApplicationDataDirectory(String) will default to the other
-					String appDataDirectory = Context.getRuntimeProperties().getProperty(
-					    OpenmrsConstants.APPLICATION_DATA_DIRECTORY_RUNTIME_PROPERTY);
+					/*~~>*/String appDataDirectory = Context.getRuntimeProperties().getProperty(
+					    /*~~>*/OpenmrsConstants.APPLICATION_DATA_DIRECTORY_RUNTIME_PROPERTY);
 					if (StringUtils.isNotBlank(appDataDirectory)) {
 						OpenmrsUtil.setApplicationDataDirectory(appDataDirectory);
 					}
@@ -221,7 +221,7 @@ public class TestInstallUtil {
 	 * @param urlString the url to test
 	 * @return true if a connection a established otherwise false
 	 */
-	protected static boolean testConnection(String urlString) {
+	protected static boolean testConnection(/*~~>*/String urlString) {
 		try {
 			HttpURLConnection urlConnect = (HttpURLConnection) new URL(urlString).openConnection();
 			//wait for 15sec
@@ -247,7 +247,7 @@ public class TestInstallUtil {
 	 * @throws MalformedURLException
 	 * @throws IOException
 	 */
-	protected static InputStream getResourceInputStream(String url, String openmrsUsername, String openmrsPassword)
+	protected static InputStream getResourceInputStream(/*~~>*/String url, /*~~>*/String openmrsUsername, /*~~>*/String openmrsPassword)
 	        throws MalformedURLException, IOException, APIException {
 		
 		HttpURLConnection connection = createConnection(url);
@@ -266,7 +266,7 @@ public class TestInstallUtil {
 		
 		return connection.getInputStream();
 	}
-	private static HttpURLConnection createConnection(String url) 
+	private static HttpURLConnection createConnection(/*~~>*/String url) 
 			throws IOException, MalformedURLException {
 		final HttpURLConnection result = (HttpURLConnection) new URL(url).openConnection();
 		result.setRequestMethod("POST");
@@ -275,14 +275,14 @@ public class TestInstallUtil {
 		result.setDoOutput(true);
 		return result;
 	}
-	private static String encodeCredentials(String openmrsUsername, String openmrsPassword) {
+	private static /*~~>*/String encodeCredentials(/*~~>*/String openmrsUsername, /*~~>*/String openmrsPassword) {
 		final StringBuilder result = new StringBuilder();
 		result.append("username=");
 		final Encoder encoder = Base64.getEncoder();
 		final Charset utf8 = StandardCharsets.UTF_8;
-		result.append(new String(encoder.encode(openmrsUsername.getBytes(utf8)), utf8));
+		result.append(new /*~~>*/String(encoder.encode(openmrsUsername.getBytes(utf8)), utf8));
 		result.append("&password=");
-		result.append(new String(encoder.encode(openmrsPassword.getBytes(utf8)), utf8));
+		result.append(new /*~~>*/String(encoder.encode(openmrsPassword.getBytes(utf8)), utf8));
 		return result.toString();
 	}
 }

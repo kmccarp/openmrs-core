@@ -29,7 +29,7 @@ public abstract class ServiceOrder extends Order {
 
 	private Laterality laterality;
 
-	private String clinicalHistory;
+	private /*~~>*/String clinicalHistory;
 
 	private OrderFrequency frequency;
 
@@ -47,7 +47,7 @@ public abstract class ServiceOrder extends Order {
 		super.copyHelper(target);
 		target.specimenSource = getSpecimenSource();
 		target.laterality = getLaterality();
-		target.clinicalHistory = getClinicalHistory();
+		/*~~>*/target.clinicalHistory = getClinicalHistory();
 		target.frequency = getFrequency();
 		target.numberOfRepeats = getNumberOfRepeats();
 		target.location = getLocation();
@@ -91,7 +91,7 @@ public abstract class ServiceOrder extends Order {
 	 *
 	 * @return the clinical history.
 	 */
-	public String getClinicalHistory() {
+	public /*~~>*/String getClinicalHistory() {
 		return clinicalHistory;
 	}
 
@@ -100,8 +100,8 @@ public abstract class ServiceOrder extends Order {
 	 *
 	 * @param clinicalHistory the clinical history to set.
 	 */
-	public void setClinicalHistory(String clinicalHistory) {
-		this.clinicalHistory = clinicalHistory;
+	public void setClinicalHistory(/*~~>*/String clinicalHistory) {
+		/*~~>*/this.clinicalHistory = clinicalHistory;
 	}
 
 	/**

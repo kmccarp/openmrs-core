@@ -49,8 +49,8 @@ import org.openmrs.test.jupiter.BaseContextSensitiveTest;
  * would span implementations should go on the {@link org.openmrs.api.DiagnosisService}.
  */
 public class DiagnosisServiceImplTest extends BaseContextSensitiveTest {
-	protected static final String DIAGNOSIS_XML = "org/openmrs/api/include/DiagnosisServiceImplTest-SetupDiagnosis.xml";
-	protected static final String DIAGNOSIS_ATTRIBUTES_XML = "org/openmrs/api/include/DiagnosisServiceImplTest-DiagnosisAttributes.xml";
+	protected static final /*~~>*/String DIAGNOSIS_XML = "org/openmrs/api/include/DiagnosisServiceImplTest-SetupDiagnosis.xml";
+	protected static final /*~~>*/String DIAGNOSIS_ATTRIBUTES_XML = "org/openmrs/api/include/DiagnosisServiceImplTest-DiagnosisAttributes.xml";
 	private DiagnosisService diagnosisService;
 	private VisitService visitService;
 	private PatientService patientService;
@@ -83,7 +83,7 @@ public class DiagnosisServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void saveDiagnosis_shouldSaveNewDiagnosis(){
-		String uuid = "a303bbfb-w5w4-25d1-9f11-4f33f99d456r";
+		/*~~>*/String uuid = "a303bbfb-w5w4-25d1-9f11-4f33f99d456r";
 		Condition condition = conditionService.getConditionByUuid("2cc6880e-2c46-15e4-9038-a6c5e4d22fb7");
 		Encounter encounter = encounterService.getEncounterByUuid("y403fafb-e5e4-42d0-9d11-4f52e89d123r");
 		Patient patient = patientService.getPatient(2);
@@ -95,8 +95,8 @@ public class DiagnosisServiceImplTest extends BaseContextSensitiveTest {
 		diagnosis.setPatient(patient);
 		diagnosis.setRank(2);
 		
-		final String NAMESPACE = "namespace";
-		final String FORMFIELD_PATH = "formFieldPath";
+		final /*~~>*/String NAMESPACE = "namespace";
+		final /*~~>*/String FORMFIELD_PATH = "formFieldPath";
 		diagnosis.setFormField(NAMESPACE, FORMFIELD_PATH);
 		
 		diagnosisService.save(diagnosis);
@@ -117,7 +117,7 @@ public class DiagnosisServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getDiagnosisByUuid_shouldFindDiagnosisGivenValidUuid() {
-		String uuid="68802cce-6880-17e4-6880-a68804d22fb7";
+		/*~~>*/String uuid="68802cce-6880-17e4-6880-a68804d22fb7";
 		Diagnosis diagnosis = diagnosisService.getDiagnosisByUuid(uuid);
 		assertEquals(uuid, diagnosis.getUuid());
 	}
@@ -290,8 +290,8 @@ public class DiagnosisServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void voidDiagnosis_shouldVoidDiagnosisSuccessfully(){
-		String voidReason = "void reason";
-		String uuid = "688804ce-6880-8804-6880-a68804d88047";
+		/*~~>*/String voidReason = "void reason";
+		/*~~>*/String uuid = "688804ce-6880-8804-6880-a68804d88047";
 		Diagnosis nonVoidedDiagnosis = diagnosisService.getDiagnosisByUuid(uuid);
 		assertFalse(nonVoidedDiagnosis.getVoided());
 		assertNull(nonVoidedDiagnosis.getVoidedBy());
@@ -310,7 +310,7 @@ public class DiagnosisServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void unvoidDiagnosis_shouldUnvoidDiagnosisSuccessfully(){
-		String uuid = "77009cce-8804-17e4-8804-a68804d22fb7";
+		/*~~>*/String uuid = "77009cce-8804-17e4-8804-a68804d22fb7";
 		Diagnosis voidedDiagnosis = diagnosisService.getDiagnosisByUuid(uuid);
 		assertTrue(voidedDiagnosis.getVoided());
 		assertNotNull(voidedDiagnosis.getVoidReason());
@@ -333,7 +333,7 @@ public class DiagnosisServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void purgeDiagnosis_shouldPurgeDiagnosis() {
-		String uuid = "77009cce-8804-17e4-8804-a68804d22fb7";
+		/*~~>*/String uuid = "77009cce-8804-17e4-8804-a68804d22fb7";
 		Diagnosis diagnosis = diagnosisService.getDiagnosisByUuid(uuid);
 		assertNotNull(diagnosis);
 		diagnosisService.purgeDiagnosis(diagnosis);
@@ -492,8 +492,8 @@ public class DiagnosisServiceImplTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void saveDiagnosis_shouldSaveTheDiagnosisWithTheProvidedAttributes() {
-		final String NAMESPACE = "namespace";
-		final String FORMFIELD_PATH = "formFieldPath";
+		final /*~~>*/String NAMESPACE = "namespace";
+		final /*~~>*/String FORMFIELD_PATH = "formFieldPath";
 		final DiagnosisAttributeType DIAGNOSIS_ATTRIBUTE_TYPE = Context.getDiagnosisService()
 				.getDiagnosisAttributeTypeByUuid("949daf5b-a83e-4b65-b914-502a553243d3");
 		DiagnosisAttribute diagnosisAttribute = new DiagnosisAttribute();
@@ -501,7 +501,7 @@ public class DiagnosisServiceImplTest extends BaseContextSensitiveTest {
 		diagnosisAttribute.setCreator(Context.getUserService().getUser(1));
 		diagnosisAttribute.setVoided(false);
 		diagnosisAttribute.setValueReferenceInternal("Diagnosis Attribute Reference");
-		final String UUID = "3c6422d8-7bdd-4e20-bd1b-a590f084db08";
+		final /*~~>*/String UUID = "3c6422d8-7bdd-4e20-bd1b-a590f084db08";
 		Condition condition = conditionService.getConditionByUuid("2cc6880e-2c46-15e4-9038-a6c5e4d22fb7");
 		Encounter encounter = encounterService.getEncounterByUuid("y403fafb-e5e4-42d0-9d11-4f52e89d123r");
 		Patient patient = patientService.getPatient(2);

@@ -27,7 +27,7 @@ public class OrderEditor extends OpenmrsPropertyEditor<Order> {
 	}
 	
 	@Override
-	protected Order getObjectByUuid(String uuid) {
+	protected Order getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getOrderService().getOrderByUuid(uuid);
 	}
 }

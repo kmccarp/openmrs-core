@@ -17,15 +17,15 @@ import org.openmrs.test.jupiter.BaseContextSensitiveTest;
  */
 public abstract class BaseModuleActivatorTest extends BaseContextSensitiveTest {
 	
-	protected static final String MODULE1_ID = "test1";
+	protected static final /*~~>*/String MODULE1_ID = "test1";
 	
-	protected static final String MODULE2_ID = "test2";
+	protected static final /*~~>*/String MODULE2_ID = "test2";
 	
-	protected static final String MODULE3_ID = "test3";
+	protected static final /*~~>*/String MODULE3_ID = "test3";
 	
-	protected static final String MODULE4_ID = "test4";
+	protected static final /*~~>*/String MODULE4_ID = "test4";
 	
-	protected static final String MODULE5_ID = "test5";
+	protected static final /*~~>*/String MODULE5_ID = "test5";
 	
 	protected ModuleTestData moduleTestData;
 	
@@ -37,10 +37,10 @@ public abstract class BaseModuleActivatorTest extends BaseContextSensitiveTest {
 		
 		init();
 		
-		String modulesToLoad = "org/openmrs/module/include/test3-1.0-SNAPSHOT.omod "
+		/*~~>*/String modulesToLoad = "org/openmrs/module/include/test3-1.0-SNAPSHOT.omod "
 		        + "org/openmrs/module/include/test1-1.0-SNAPSHOT.omod org/openmrs/module/include/test2-1.0-SNAPSHOT.omod "
 		        + "org/openmrs/module/include/test4-1.0-SNAPSHOT.omod org/openmrs/module/include/test5-1.0-SNAPSHOT.omod";
-		runtimeProperties.setProperty(ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD, modulesToLoad);
+		runtimeProperties.setProperty(/*~~>*/ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD, modulesToLoad);
 		ModuleUtil.startup(runtimeProperties);
 	}
 	

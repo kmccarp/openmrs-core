@@ -27,7 +27,7 @@ public class OpenmrsMetadataSaveHandler implements SaveHandler<OpenmrsMetadata> 
 	 * <strong>Should</strong> trim whitespace from description
 	 */
 	@Override
-	public void handle(OpenmrsMetadata object, User creator, Date dateCreated, String other) {
+	public void handle(OpenmrsMetadata object, User creator, Date dateCreated, /*~~>*/String other) {
 		if (object.getName() != null) {
 			object.setName(object.getName().trim());
 		}

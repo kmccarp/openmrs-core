@@ -67,14 +67,14 @@ public class UpdateFilter extends StartupFilter {
 	/**
 	 * The velocity macro page to redirect to if an error occurs or on initial startup
 	 */
-	private static final String DEFAULT_PAGE = "maintenance.vm";
+	private static final /*~~>*/String DEFAULT_PAGE = "maintenance.vm";
 	
 	/**
 	 * The page that lists off all the currently unexecuted changes
 	 */
-	private static final String REVIEW_CHANGES = "reviewchanges.vm";
+	private static final /*~~>*/String REVIEW_CHANGES = "reviewchanges.vm";
 	
-	private static final String PROGRESS_VM_AJAXREQUEST = "updateProgress.vm.ajaxRequest";
+	private static final /*~~>*/String PROGRESS_VM_AJAXREQUEST = "updateProgress.vm.ajaxRequest";
 	
 	/**
 	 * The model object behind this set of screens
@@ -117,13 +117,13 @@ public class UpdateFilter extends StartupFilter {
 	protected void doGet(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
 	        throws IOException, ServletException {
 		
-		Map<String, Object> referenceMap = new HashMap<>();
+		Map</*~~>*/String, Object> referenceMap = new HashMap<>();
 		checkLocaleAttributesForFirstTime(httpRequest);
 		// we need to save current user language in references map since it will be used when template
 		// will be rendered
-		if (httpRequest.getSession().getAttribute(FilterUtil.LOCALE_ATTRIBUTE) != null) {
-			referenceMap.put(FilterUtil.LOCALE_ATTRIBUTE,
-			    httpRequest.getSession().getAttribute(FilterUtil.LOCALE_ATTRIBUTE));
+		if (httpRequest.getSession().getAttribute(/*~~>*/FilterUtil.LOCALE_ATTRIBUTE) != null) {
+			referenceMap.put(/*~~>*/FilterUtil.LOCALE_ATTRIBUTE,
+			    httpRequest.getSession().getAttribute(/*~~>*/FilterUtil.LOCALE_ATTRIBUTE));
 		}
 		// do step one of the wizard
 		renderTemplate(DEFAULT_PAGE, referenceMap, httpResponse);
@@ -139,19 +139,19 @@ public class UpdateFilter extends StartupFilter {
 	protected synchronized void doPost(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
 	        throws IOException, ServletException {
 		
-		final String updJobStatus = "updateJobStarted";
-		String page = httpRequest.getParameter("page");
-		Map<String, Object> referenceMap = new HashMap<>();
-		if (httpRequest.getSession().getAttribute(FilterUtil.LOCALE_ATTRIBUTE) != null) {
-			referenceMap.put(FilterUtil.LOCALE_ATTRIBUTE,
-			    httpRequest.getSession().getAttribute(FilterUtil.LOCALE_ATTRIBUTE));
+		final /*~~>*/String updJobStatus = "updateJobStarted";
+		/*~~>*/String page = httpRequest.getParameter("page");
+		Map</*~~>*/String, Object> referenceMap = new HashMap<>();
+		if (httpRequest.getSession().getAttribute(/*~~>*/FilterUtil.LOCALE_ATTRIBUTE) != null) {
+			referenceMap.put(/*~~>*/FilterUtil.LOCALE_ATTRIBUTE,
+			    httpRequest.getSession().getAttribute(/*~~>*/FilterUtil.LOCALE_ATTRIBUTE));
 		}
 		
 		// step one
 		if (DEFAULT_PAGE.equals(page)) {
 			
-			String username = httpRequest.getParameter("username");
-			String password = httpRequest.getParameter("password");
+			/*~~>*/String username = httpRequest.getParameter("username");
+			/*~~>*/String password = httpRequest.getParameter("password");
 			
 			log.debug("Attempting to authenticate user: " + username);
 			if (authenticateAsSuperUser(username, password)) {
@@ -190,9 +190,9 @@ public class UpdateFilter extends StartupFilter {
 				
 				// need to configure velocity tool box for using user's preferred locale
 				// so we should store it for further using when configuring velocity tool context
-				String localeParameter = FilterUtil.restoreLocale(username);
-				httpRequest.getSession().setAttribute(FilterUtil.LOCALE_ATTRIBUTE, localeParameter);
-				referenceMap.put(FilterUtil.LOCALE_ATTRIBUTE, localeParameter);
+				/*~~>*/String localeParameter = FilterUtil.restoreLocale(username);
+				httpRequest.getSession().setAttribute(/*~~>*/FilterUtil.LOCALE_ATTRIBUTE, localeParameter);
+				referenceMap.put(/*~~>*/FilterUtil.LOCALE_ATTRIBUTE, localeParameter);
 				
 				renderTemplate(REVIEW_CHANGES, referenceMap, httpResponse);
 			} else {
@@ -205,7 +205,7 @@ public class UpdateFilter extends StartupFilter {
 					log.error("Unable to sleep", e);
 					throw new ServletException("Got interrupted while trying to sleep thread", e);
 				}
-				errors.put(ErrorMessageConstants.UPDATE_ERROR_UNABLE_AUTHENTICATE, null);
+				errors.put(/*~~>*/ErrorMessageConstants.UPDATE_ERROR_UNABLE_AUTHENTICATE, null);
 				renderTemplate(DEFAULT_PAGE, referenceMap, httpResponse);
 			}
 		}
@@ -242,7 +242,7 @@ public class UpdateFilter extends StartupFilter {
 			
 			httpResponse.setContentType("text/json");
 			httpResponse.setHeader("Cache-Control", "no-cache");
-			Map<String, Object> result = new HashMap<>();
+			Map</*~~>*/String, Object> result = new HashMap<>();
 			if (updateJob != null) {
 				result.put("hasErrors", updateJob.hasErrors());
 				if (updateJob.hasErrors()) {
@@ -253,7 +253,7 @@ public class UpdateFilter extends StartupFilter {
 					result.put("hasWarnings", updateJob.hasWarnings());
 					StringBuilder sb = new StringBuilder("<ul>");
 					
-					for (String warning : updateJob.getUpdateWarnings()) {
+					for (/*~~>*/String warning : updateJob.getUpdateWarnings()) {
 						sb.append("<li>").append(warning).append("</li>");
 					}
 					
@@ -261,7 +261,7 @@ public class UpdateFilter extends StartupFilter {
 					result.put("updateWarnings", sb.toString());
 					result.put("updateLogFile",
 					    StringUtils.replace(
-					        OpenmrsUtil.getApplicationDataDirectory() + DatabaseUpdater.DATABASE_UPDATES_LOG_FILE, "\\",
+					        OpenmrsUtil.getApplicationDataDirectory() + /*~~>*/DatabaseUpdater.DATABASE_UPDATES_LOG_FILE, "\\",
 					        "\\\\"));
 					updateJob.hasUpdateWarnings = false;
 					updateJob.getUpdateWarnings().clear();
@@ -275,7 +275,7 @@ public class UpdateFilter extends StartupFilter {
 				addLogLinesToResponse(result);
 			}
 			
-			String jsonText = toJSONString(result);
+			/*~~>*/String jsonText = toJSONString(result);
 			httpResponse.getWriter().write(jsonText);
 		}
 	}
@@ -290,15 +290,15 @@ public class UpdateFilter extends StartupFilter {
 	 */
 	public void checkLocaleAttributesForFirstTime(HttpServletRequest httpRequest) {
 		Locale locale = httpRequest.getLocale();
-		String systemDefaultLocale = FilterUtil.readSystemDefaultLocale(null);
+		/*~~>*/String systemDefaultLocale = FilterUtil.readSystemDefaultLocale(null);
 		if (CustomResourceLoader.getInstance(httpRequest).getAvailablelocales().contains(locale)) {
-			httpRequest.getSession().setAttribute(FilterUtil.LOCALE_ATTRIBUTE, locale.toString());
+			httpRequest.getSession().setAttribute(/*~~>*/FilterUtil.LOCALE_ATTRIBUTE, locale.toString());
 			log.info("Used client's locale " + locale.toString());
 		} else if (StringUtils.isNotBlank(systemDefaultLocale)) {
-			httpRequest.getSession().setAttribute(FilterUtil.LOCALE_ATTRIBUTE, systemDefaultLocale);
+			httpRequest.getSession().setAttribute(/*~~>*/FilterUtil.LOCALE_ATTRIBUTE, systemDefaultLocale);
 			log.info("Used system default locale " + systemDefaultLocale);
 		} else {
-			httpRequest.getSession().setAttribute(FilterUtil.LOCALE_ATTRIBUTE, Locale.ENGLISH.toString());
+			httpRequest.getSession().setAttribute(/*~~>*/FilterUtil.LOCALE_ATTRIBUTE, Locale.ENGLISH.toString());
 			log.info("Used default locale " + Locale.ENGLISH.toString());
 		}
 	}
@@ -315,12 +315,12 @@ public class UpdateFilter extends StartupFilter {
 	 *      <strong>Should</strong> return true if given user is superuser <strong>Should</strong> not
 	 *      authorize retired superusers <strong>Should</strong> authenticate with systemId
 	 */
-	protected boolean authenticateAsSuperUser(String usernameOrSystemId, String password) throws ServletException {
+	protected boolean authenticateAsSuperUser(/*~~>*/String usernameOrSystemId, /*~~>*/String password) throws ServletException {
 		Connection connection = null;
 		try {
 			connection = DatabaseUpdater.getConnection();
 			
-			String select = "select user_id, password, salt from users where (username = ? or system_id = ?) and retired = '0'";
+			/*~~>*/String select = "select user_id, password, salt from users where (username = ? or system_id = ?) and retired = '0'";
 			PreparedStatement statement = null;
 			try {
 				statement = connection.prepareStatement(select);
@@ -334,9 +334,9 @@ public class UpdateFilter extends StartupFilter {
 						if (results.next()) {
 							Integer userId = results.getInt(1);
 							DatabaseUpdater.setAuthenticatedUserId(userId);
-							String storedPassword = results.getString(2);
-							String salt = results.getString(3);
-							String passwordToHash = password + salt;
+							/*~~>*/String storedPassword = results.getString(2);
+							/*~~>*/String salt = results.getString(3);
+							/*~~>*/String passwordToHash = password + salt;
 							return Security.hashMatches(storedPassword, passwordToHash) && isSuperUser(connection, userId);
 						}
 					}
@@ -371,7 +371,7 @@ public class UpdateFilter extends StartupFilter {
 			// we may not have upgraded User to have retired instead of voided yet, so if the query above fails, we try
 			// again the old way
 			if (connection != null) {
-				String select = "select user_id, password, salt from users where (username = ? or system_id = ?) and voided = '0'";
+				/*~~>*/String select = "select user_id, password, salt from users where (username = ? or system_id = ?) and voided = '0'";
 				PreparedStatement statement = null;
 				try {
 					statement = connection.prepareStatement(select);
@@ -384,9 +384,9 @@ public class UpdateFilter extends StartupFilter {
 							if (results.next()) {
 								Integer userId = results.getInt(1);
 								DatabaseUpdater.setAuthenticatedUserId(userId);
-								String storedPassword = results.getString(2);
-								String salt = results.getString(3);
-								String passwordToHash = password + salt;
+								/*~~>*/String storedPassword = results.getString(2);
+								/*~~>*/String salt = results.getString(3);
+								/*~~>*/String passwordToHash = password + salt;
 								return Security.hashMatches(storedPassword, passwordToHash)
 								        && isSuperUser(connection, userId);
 							}
@@ -446,10 +446,10 @@ public class UpdateFilter extends StartupFilter {
 		// the 'Administrator' part of this string is necessary because if the database was upgraded
 		// by OpenMRS 1.6 alpha then System Developer was renamed to that. This has to be here so we
 		// can roll back that change in 1.6 beta+
-		String select = "select 1 from user_role where user_id = ? and (role = ? or role = 'Administrator')";
+		/*~~>*/String select = "select 1 from user_role where user_id = ? and (role = ? or role = 'Administrator')";
 		PreparedStatement statement = connection.prepareStatement(select);
 		statement.setInt(1, userId);
-		statement.setString(2, RoleConstants.SUPERUSER);
+		statement.setString(2, /*~~>*/RoleConstants.SUPERUSER);
 		if (statement.execute()) {
 			ResultSet results = statement.getResultSet();
 			if (results.next()) {
@@ -577,7 +577,7 @@ public class UpdateFilter extends StartupFilter {
 	 * @see org.openmrs.web.filter.StartupFilter#getTemplatePrefix()
 	 */
 	@Override
-	protected String getTemplatePrefix() {
+	protected /*~~>*/String getTemplatePrefix() {
 		return "org/openmrs/web/filter/update/";
 	}
 	
@@ -589,27 +589,27 @@ public class UpdateFilter extends StartupFilter {
 		
 		private Thread thread;
 		
-		private String executingChangesetId = null;
+		private /*~~>*/String executingChangesetId = null;
 		
-		private List<String> changesetIds = new ArrayList<>();
+		private List</*~~>*/String> changesetIds = new ArrayList<>();
 		
-		private Map<String, Object[]> errors = new HashMap<>();
+		private Map</*~~>*/String, Object[]> errors = new HashMap<>();
 		
-		private String message = null;
+		private /*~~>*/String message = null;
 		
 		private boolean erroneous = false;
 		
 		private boolean hasUpdateWarnings = false;
 		
-		private List<String> updateWarnings = new LinkedList<>();
+		private List</*~~>*/String> updateWarnings = new LinkedList<>();
 		
-		public synchronized void reportError(String error, Object... params) {
-			Map<String, Object[]> reportedErrors = new HashMap<>();
+		public synchronized void reportError(/*~~>*/String error, Object... params) {
+			Map</*~~>*/String, Object[]> reportedErrors = new HashMap<>();
 			reportedErrors.put(error, params);
 			reportErrors(reportedErrors);
 		}
 		
-		public synchronized void reportErrors(Map<String, Object[]> errs) {
+		public synchronized void reportErrors(Map</*~~>*/String, Object[]> errs) {
 			errors.putAll(errs);
 			erroneous = true;
 		}
@@ -618,7 +618,7 @@ public class UpdateFilter extends StartupFilter {
 			return erroneous;
 		}
 		
-		public synchronized Map<String, Object[]> getErrors() {
+		public synchronized Map</*~~>*/String, Object[]> getErrors() {
 			return errors;
 		}
 		
@@ -630,31 +630,31 @@ public class UpdateFilter extends StartupFilter {
 			thread.start();
 		}
 		
-		public synchronized void setMessage(String message) {
-			this.message = message;
+		public synchronized void setMessage(/*~~>*/String message) {
+			/*~~>*/this.message = message;
 		}
 		
-		public synchronized String getMessage() {
+		public synchronized /*~~>*/String getMessage() {
 			return message;
 		}
 		
-		public synchronized void addChangesetId(String changesetid) {
+		public synchronized void addChangesetId(/*~~>*/String changesetid) {
 			this.changesetIds.add(changesetid);
-			this.executingChangesetId = changesetid;
+			/*~~>*/this.executingChangesetId = changesetid;
 		}
 		
-		public synchronized List<String> getChangesetIds() {
+		public synchronized List</*~~>*/String> getChangesetIds() {
 			return changesetIds;
 		}
 		
-		public synchronized String getExecutingChangesetId() {
+		public synchronized /*~~>*/String getExecutingChangesetId() {
 			return executingChangesetId;
 		}
 		
 		/**
 		 * @return the database updater Warnings
 		 */
-		public synchronized List<String> getUpdateWarnings() {
+		public synchronized List</*~~>*/String> getUpdateWarnings() {
 			return updateWarnings;
 		}
 		
@@ -662,7 +662,7 @@ public class UpdateFilter extends StartupFilter {
 			return hasUpdateWarnings;
 		}
 		
-		public synchronized void reportWarnings(List<String> warnings) {
+		public synchronized void reportWarnings(List</*~~>*/String> warnings) {
 			updateWarnings.addAll(warnings);
 			hasUpdateWarnings = true;
 		}
@@ -686,10 +686,10 @@ public class UpdateFilter extends StartupFilter {
 						 */
 						class PrintingChangeSetExecutorCallback implements ChangeSetExecutorCallback {
 							
-							private String message;
+							private /*~~>*/String message;
 							
-							public PrintingChangeSetExecutorCallback(String message) {
-								this.message = message;
+							public PrintingChangeSetExecutorCallback(/*~~>*/String message) {
+								/*~~>*/this.message = message;
 							}
 							
 							/**
@@ -709,10 +709,10 @@ public class UpdateFilter extends StartupFilter {
 							ChangeLogDetective changeLogDetective = new ChangeLogDetective();
 							ChangeLogVersionFinder changeLogVersionFinder = new ChangeLogVersionFinder();
 							
-							List<String> changelogs = new ArrayList<>();
-							List<String> warnings = new ArrayList<>();
+							List</*~~>*/String> changelogs = new ArrayList<>();
+							List</*~~>*/String> warnings = new ArrayList<>();
 							
-							String version = changeLogDetective.getInitialLiquibaseSnapshotVersion(DatabaseUpdater.CONTEXT,
+							/*~~>*/String version = changeLogDetective.getInitialLiquibaseSnapshotVersion(/*~~>*/DatabaseUpdater.CONTEXT,
 							    new DatabaseUpdaterLiquibaseProvider());
 							
 							log.debug(
@@ -724,10 +724,10 @@ public class UpdateFilter extends StartupFilter {
 							
 							log.debug("found applicable Liquibase update change logs: {}", changelogs);
 							
-							for (String changelog : changelogs) {
+							for (/*~~>*/String changelog : changelogs) {
 								log.debug("applying Liquibase changelog '{}'", changelog);
 								
-								List<String> currentWarnings = DatabaseUpdater.executeChangelog(changelog,
+								List</*~~>*/String> currentWarnings = DatabaseUpdater.executeChangelog(changelog,
 								    new PrintingChangeSetExecutorCallback("executing Liquibase changelog :" + changelog));
 								
 								if (currentWarnings != null) {
@@ -744,15 +744,15 @@ public class UpdateFilter extends StartupFilter {
 							// the user would be stepped through the questions returned here.
 							log.error("Not implemented", inputRequired);
 							updateFilterModel.updateChanges();
-							reportError(ErrorMessageConstants.UPDATE_ERROR_INPUT_NOT_IMPLEMENTED,
+							reportError(/*~~>*/ErrorMessageConstants.UPDATE_ERROR_INPUT_NOT_IMPLEMENTED,
 							    inputRequired.getMessage());
 							return;
 						}
 						catch (DatabaseUpdateException e) {
 							log.error("Unable to update the database", e);
-							Map<String, Object[]> databaseUpdateErrors = new HashMap<>();
-							databaseUpdateErrors.put(ErrorMessageConstants.UPDATE_ERROR_UNABLE, null);
-							for (String errorMessage : Arrays.asList(e.getMessage().split("\n"))) {
+							Map</*~~>*/String, Object[]> databaseUpdateErrors = new HashMap<>();
+							databaseUpdateErrors.put(/*~~>*/ErrorMessageConstants.UPDATE_ERROR_UNABLE, null);
+							for (/*~~>*/String errorMessage : Arrays.asList(e.getMessage().split("\n"))) {
 								databaseUpdateErrors.put(errorMessage, null);
 							}
 							updateFilterModel.updateChanges();
@@ -770,7 +770,7 @@ public class UpdateFilter extends StartupFilter {
 						}
 						catch (Exception e) {
 							log.error("Unable to complete the startup.", e);
-							reportError(ErrorMessageConstants.UPDATE_ERROR_COMPLETE_STARTUP, e.getMessage());
+							reportError(/*~~>*/ErrorMessageConstants.UPDATE_ERROR_COMPLETE_STARTUP, e.getMessage());
 							return;
 						}
 						

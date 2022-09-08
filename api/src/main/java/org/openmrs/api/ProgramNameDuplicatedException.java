@@ -25,7 +25,7 @@ public class ProgramNameDuplicatedException extends APIException {
 	 * 
 	 * @param programName the name of the program
 	 */
-	public ProgramNameDuplicatedException(String programName) {
+	public ProgramNameDuplicatedException(/*~~>*/String programName) {
 		super("Several programs exist in the database with the name " + programName);
 	}
 }

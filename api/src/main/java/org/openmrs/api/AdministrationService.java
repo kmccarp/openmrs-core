@@ -56,7 +56,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * <strong>Should</strong> find object given valid uuid
 	 * <strong>Should</strong> return null if no object found with given uuid
 	 */
-	public GlobalProperty getGlobalPropertyByUuid(String uuid);
+	public GlobalProperty getGlobalPropertyByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Get a listing or important variables used in openmrs
@@ -65,8 +65,8 @@ public interface AdministrationService extends OpenmrsService {
 	 * <strong>Should</strong> return all registered system variables
 	 */
 	
-	@Authorized(PrivilegeConstants.VIEW_ADMIN_FUNCTIONS)
-	public SortedMap<String, String> getSystemVariables();
+	@Authorized(/*~~>*/PrivilegeConstants.VIEW_ADMIN_FUNCTIONS)
+	public SortedMap</*~~>*/String, /*~~>*/String> getSystemVariables();
 	
 	/**
 	 * Get a map of all the System Information. Java, user, time, runtime properties, etc
@@ -74,8 +74,8 @@ public interface AdministrationService extends OpenmrsService {
 	 * @return a map from variable name to a map of the information
 	 * <strong>Should</strong> return all system information
 	 */
-	@Authorized(PrivilegeConstants.VIEW_ADMIN_FUNCTIONS)
-	public Map<String, Map<String, String>> getSystemInformation();
+	@Authorized(/*~~>*/PrivilegeConstants.VIEW_ADMIN_FUNCTIONS)
+	public Map</*~~>*/String, Map</*~~>*/String, /*~~>*/String>> getSystemInformation();
 	
 	/**
 	 * Gets the global property that has the given <code>propertyName</code>.
@@ -90,7 +90,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * <strong>Should</strong> get property value given valid property name
 	 * <strong>Should</strong> get property in case insensitive way
 	 */
-	public String getGlobalProperty(String propertyName);
+	public /*~~>*/String getGlobalProperty(/*~~>*/String propertyName);
 	
 	/**
 	 * Gets the global property that has the given <code>propertyName</code>
@@ -106,7 +106,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * <strong>Should</strong> return default value if property name does not exist
 	 * <strong>Should</strong> not fail with null default value
 	 */
-	public String getGlobalProperty(String propertyName, String defaultValue);
+	public /*~~>*/String getGlobalProperty(/*~~>*/String propertyName, /*~~>*/String defaultValue);
 	
 	/**
 	 * Gets the global property that has the given <code>propertyName</code>
@@ -115,7 +115,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * @return the global property that matches the given <code>propertyName</code>
 	 * <strong>Should</strong> return null when no global property match given property name
 	 */
-	public GlobalProperty getGlobalPropertyObject(String propertyName);
+	public GlobalProperty getGlobalPropertyObject(/*~~>*/String propertyName);
 	
 	/**
 	 * Gets all global properties that begin with <code>prefix</code>.
@@ -125,7 +125,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * @since 1.5
 	 * <strong>Should</strong> return all relevant global properties in the database
 	 */
-	public List<GlobalProperty> getGlobalPropertiesByPrefix(String prefix);
+	public List<GlobalProperty> getGlobalPropertiesByPrefix(/*~~>*/String prefix);
 	
 	/**
 	 * Gets all global properties that end with <code>suffix</code>.
@@ -135,7 +135,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * @since 1.6
 	 * <strong>Should</strong> return all relevant global properties in the database
 	 */
-	public List<GlobalProperty> getGlobalPropertiesBySuffix(String suffix);
+	public List<GlobalProperty> getGlobalPropertiesBySuffix(/*~~>*/String suffix);
 	
 	/**
 	 * Get a list of all global properties in the system
@@ -143,7 +143,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * @return list of global properties
 	 * <strong>Should</strong> return all global properties in the database
 	 */
-	@Authorized(PrivilegeConstants.GET_GLOBAL_PROPERTIES)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_GLOBAL_PROPERTIES)
 	public List<GlobalProperty> getAllGlobalProperties();
 	
 	/**
@@ -156,7 +156,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * <strong>Should</strong> assign uuid to all new properties
 	 * <strong>Should</strong> save properties with case difference only
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_GLOBAL_PROPERTIES)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_GLOBAL_PROPERTIES)
 	public List<GlobalProperty> saveGlobalProperties(List<GlobalProperty> props);
 	
 	/**
@@ -166,7 +166,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> delete global property from database
 	 */
-	@Authorized(PrivilegeConstants.PURGE_GLOBAL_PROPERTIES)
+	@Authorized(/*~~>*/PrivilegeConstants.PURGE_GLOBAL_PROPERTIES)
 	public void purgeGlobalProperty(GlobalProperty globalProperty);
 	
 	/**
@@ -176,7 +176,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> delete global properties from database
 	 */
-	@Authorized(PrivilegeConstants.PURGE_GLOBAL_PROPERTIES)
+	@Authorized(/*~~>*/PrivilegeConstants.PURGE_GLOBAL_PROPERTIES)
 	public void purgeGlobalProperties(List<GlobalProperty> globalProperties);
 	
 	/**
@@ -189,7 +189,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * <strong>Should</strong> overwrite global property if exists
 	 * <strong>Should</strong> save a global property whose typed value is handled by a custom datatype
 	 */
-	public void setGlobalProperty(String propertyName, String propertyValue);
+	public void setGlobalProperty(/*~~>*/String propertyName, /*~~>*/String propertyValue);
 	
 	/**
 	 * Overwrites the value of the global property if it already exists. If the global property does
@@ -202,7 +202,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * <strong>Should</strong> fail if global property being updated does not already exist
 	 * <strong>Should</strong> update a global property whose typed value is handled by a custom datatype
 	 */
-	public void updateGlobalProperty(String propertyName, String propertyValue);
+	public void updateGlobalProperty(/*~~>*/String propertyName, /*~~>*/String propertyValue);
 	
 	/**
 	 * Save the given global property to the database
@@ -216,7 +216,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * <strong>Should</strong> save a global property whose typed value is handled by a custom datatype
 	 * <strong>Should</strong> evict all entries of search locale cache
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_GLOBAL_PROPERTIES)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_GLOBAL_PROPERTIES)
 	public GlobalProperty saveGlobalProperty(GlobalProperty gp);
 	
 	/**
@@ -245,8 +245,8 @@ public interface AdministrationService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> execute sql containing group by
 	 */
-	@Authorized(PrivilegeConstants.SQL_LEVEL_ACCESS)
-	public List<List<Object>> executeSQL(String sql, boolean selectOnly);
+	@Authorized(/*~~>*/PrivilegeConstants.SQL_LEVEL_ACCESS)
+	public List<List<Object>> executeSQL(/*~~>*/String sql, boolean selectOnly);
 	
 	/**
 	 * Get the implementation id stored for this server Returns null if no implementation id has
@@ -255,7 +255,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * @return ImplementationId object that is this implementation's unique id
 	 * <strong>Should</strong> return null if no implementation id is defined yet
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_IMPLEMENTATION_ID)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_IMPLEMENTATION_ID)
 	public ImplementationId getImplementationId();
 	
 	/**
@@ -272,7 +272,7 @@ public interface AdministrationService extends OpenmrsService {
 	 * <strong>Should</strong> throw APIException if given a pipe in the implementationId code
 	 * <strong>Should</strong> set uuid on implementation id global property
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_IMPLEMENTATION_ID)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_IMPLEMENTATION_ID)
 	public void setImplementationId(ImplementationId implementationId);
 	
 	/**
@@ -313,14 +313,14 @@ public interface AdministrationService extends OpenmrsService {
 	 * @return property value in the type of the default value
 	 * @since 1.7
 	 */
-	public <T> T getGlobalPropertyValue(String propertyName, T defaultValue);
+	public <T> T getGlobalPropertyValue(/*~~>*/String propertyName, T defaultValue);
 	
 	/**
 	 * @param aClass class of object getting length for
 	 * @param fieldName name of the field to get the length for
 	 * @return the max field length of a property
 	 */
-	public int getMaximumPropertyLength(Class<? extends OpenmrsObject> aClass, String fieldName);
+	public int getMaximumPropertyLength(Class<? extends OpenmrsObject> aClass, /*~~>*/String fieldName);
 	
 	/**
 	 * Performs validation in the manual flush mode to prevent any premature flushes.

@@ -19,11 +19,11 @@ public class AmbiguousOrderException extends OrderEntryException {
 	
 	private static final long serialVersionUID = -2946935560419378572L;
 	
-	public AmbiguousOrderException(String message) {
+	public AmbiguousOrderException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public AmbiguousOrderException(String messageKey, Object[] parameters) {
+	public AmbiguousOrderException(/*~~>*/String messageKey, Object[] parameters) {
 		super(messageKey, parameters);
 	}
 	

@@ -78,7 +78,7 @@ public class HibernateLocationDAO implements LocationDAO {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public Location getLocation(String name) {
+	public Location getLocation(/*~~>*/String name) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Location.class).add(
 		    Restrictions.eq("name", name));
 		
@@ -136,7 +136,7 @@ public class HibernateLocationDAO implements LocationDAO {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public LocationTag getLocationTagByName(String tag) {
+	public LocationTag getLocationTagByName(/*~~>*/String tag) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LocationTag.class).add(
 		    Restrictions.eq("name", tag));
 		
@@ -166,7 +166,7 @@ public class HibernateLocationDAO implements LocationDAO {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<LocationTag> getLocationTags(String search) {
+	public List<LocationTag> getLocationTags(/*~~>*/String search) {
 		return sessionFactory.getCurrentSession().createCriteria(LocationTag.class)
 		// 'ilike' case insensitive search
 		        .add(Restrictions.ilike("name", search, MatchMode.START)).addOrder(Order.asc("name")).list();
@@ -184,7 +184,7 @@ public class HibernateLocationDAO implements LocationDAO {
 	 * @see org.openmrs.api.db.LocationDAO#getLocationByUuid(java.lang.String)
 	 */
 	@Override
-	public Location getLocationByUuid(String uuid) {
+	public Location getLocationByUuid(/*~~>*/String uuid) {
 		return (Location) sessionFactory.getCurrentSession().createQuery("from Location l where l.uuid = :uuid").setString(
 		    "uuid", uuid).uniqueResult();
 	}
@@ -193,7 +193,7 @@ public class HibernateLocationDAO implements LocationDAO {
 	 * @see org.openmrs.api.db.LocationDAO#getLocationTagByUuid(java.lang.String)
 	 */
 	@Override
-	public LocationTag getLocationTagByUuid(String uuid) {
+	public LocationTag getLocationTagByUuid(/*~~>*/String uuid) {
 		return (LocationTag) sessionFactory.getCurrentSession().createQuery("from LocationTag where uuid = :uuid")
 		        .setString("uuid", uuid).uniqueResult();
 	}
@@ -202,7 +202,7 @@ public class HibernateLocationDAO implements LocationDAO {
 	 * @see org.openmrs.api.db.LocationDAO#getCountOfLocations(String, Boolean)
 	 */
 	@Override
-	public Long getCountOfLocations(String nameFragment, Boolean includeRetired) {
+	public Long getCountOfLocations(/*~~>*/String nameFragment, Boolean includeRetired) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Location.class);
 		if (!includeRetired) {
 			criteria.add(Restrictions.eq("retired", false));
@@ -221,8 +221,8 @@ public class HibernateLocationDAO implements LocationDAO {
 	 * @see LocationDAO#getLocations(String, org.openmrs.Location, java.util.Map, boolean, Integer, Integer)
 	 */
 	@Override
-	public List<Location> getLocations(String nameFragment, Location parent,
-	        Map<LocationAttributeType, String> serializedAttributeValues, boolean includeRetired, Integer start,
+	public List<Location> getLocations(/*~~>*/String nameFragment, Location parent,
+	        Map<LocationAttributeType, /*~~>*/String> serializedAttributeValues, boolean includeRetired, Integer start,
 	        Integer length) {
 		
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Location.class);
@@ -293,7 +293,7 @@ public class HibernateLocationDAO implements LocationDAO {
 	 * @see org.openmrs.api.db.LocationDAO#getLocationAttributeTypeByUuid(java.lang.String)
 	 */
 	@Override
-	public LocationAttributeType getLocationAttributeTypeByUuid(String uuid) {
+	public LocationAttributeType getLocationAttributeTypeByUuid(/*~~>*/String uuid) {
 		return (LocationAttributeType) sessionFactory.getCurrentSession().createCriteria(LocationAttributeType.class).add(
 		    Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
@@ -319,7 +319,7 @@ public class HibernateLocationDAO implements LocationDAO {
 	 * @see org.openmrs.api.db.LocationDAO#getLocationAttributeByUuid(java.lang.String)
 	 */
 	@Override
-	public LocationAttribute getLocationAttributeByUuid(String uuid) {
+	public LocationAttribute getLocationAttributeByUuid(/*~~>*/String uuid) {
 		return (LocationAttribute) sessionFactory.getCurrentSession().createCriteria(LocationAttribute.class).add(
 		    Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
@@ -328,7 +328,7 @@ public class HibernateLocationDAO implements LocationDAO {
 	 * @see org.openmrs.api.db.LocationDAO#getLocationAttributeTypeByName(java.lang.String)
 	 */
 	@Override
-	public LocationAttributeType getLocationAttributeTypeByName(String name) {
+	public LocationAttributeType getLocationAttributeTypeByName(/*~~>*/String name) {
 		return (LocationAttributeType) sessionFactory.getCurrentSession().createCriteria(LocationAttributeType.class).add(
 		    Restrictions.eq("name", name)).uniqueResult();
 	}

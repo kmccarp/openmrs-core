@@ -49,9 +49,9 @@ public class EncryptSecretAnswersChangeSet implements CustomTaskChange {
 			        .executeQuery("SELECT user_id, salt, secret_answer FROM users WHERE secret_answer IS NOT NULL");
 			pStmt = connection.prepareStatement("UPDATE users SET secret_answer = ? WHERE user_id = ?");
 			while (rs.next()) {
-				String answer = rs.getString("secret_answer");
-				String salt = rs.getString("salt");
-				String encryptedAnswer = Security.encodeString(answer.toLowerCase() + salt);
+				/*~~>*/String answer = rs.getString("secret_answer");
+				/*~~>*/String salt = rs.getString("salt");
+				/*~~>*/String encryptedAnswer = Security.encodeString(answer.toLowerCase() + salt);
 				
 				pStmt.setString(1, encryptedAnswer);
 				pStmt.setInt(2, rs.getInt("user_id"));
@@ -87,7 +87,7 @@ public class EncryptSecretAnswersChangeSet implements CustomTaskChange {
 	 * @see liquibase.change.custom.CustomChange#getConfirmationMessage()
 	 */
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished encrypting secret answers";
 	}
 	

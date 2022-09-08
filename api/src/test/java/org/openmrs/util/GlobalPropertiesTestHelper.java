@@ -23,8 +23,8 @@ public class GlobalPropertiesTestHelper {
 		this.administrationService = administrationService;
 	}
 	
-	public String setGlobalProperty(String propertyName, String propertyValue) {
-		String oldPropertyValue = administrationService.getGlobalProperty(propertyName);
+	public /*~~>*/String setGlobalProperty(/*~~>*/String propertyName, /*~~>*/String propertyValue) {
+		/*~~>*/String oldPropertyValue = administrationService.getGlobalProperty(propertyName);
 		
 		administrationService.setGlobalProperty(propertyName, propertyValue);
 		assertEquals(propertyValue, administrationService.getGlobalProperty(propertyName));
@@ -32,7 +32,7 @@ public class GlobalPropertiesTestHelper {
 		return oldPropertyValue;
 	}
 	
-	public void purgeGlobalProperty(String propertyName) {
+	public void purgeGlobalProperty(/*~~>*/String propertyName) {
 		GlobalProperty globalProperty = administrationService.getGlobalPropertyObject(propertyName);
 		
 		if (globalProperty != null) {

@@ -172,8 +172,8 @@ public final class Listener extends ContextLoader implements ServletContextListe
 				// used during sessionFactory creation
 				Context.setRuntimeProperties(props);
 				
-				String appDataRuntimeProperty = props
-				        .getProperty(OpenmrsConstants.APPLICATION_DATA_DIRECTORY_RUNTIME_PROPERTY, null);
+				/*~~>*/String appDataRuntimeProperty = props
+				        .getProperty(/*~~>*/OpenmrsConstants.APPLICATION_DATA_DIRECTORY_RUNTIME_PROPERTY, null);
 				if (StringUtils.hasLength(appDataRuntimeProperty)) {
 					OpenmrsUtil.setApplicationDataDirectory(null);
 				}
@@ -183,7 +183,7 @@ public final class Listener extends ContextLoader implements ServletContextListe
 				Logger contextLog = Logger.getLogger(getClass());
 				contextLog.setLevel(Level.INFO);
 				contextLog.info("Using runtime properties file: "
-				        + OpenmrsUtil.getRuntimePropertiesFilePathName(WebConstants.WEBAPP_NAME));
+				        + OpenmrsUtil.getRuntimePropertiesFilePathName(/*~~>*/WebConstants.WEBAPP_NAME));
 			}
 			
 			Thread.currentThread().setContextClassLoader(OpenmrsClassLoader.getInstance());
@@ -199,7 +199,7 @@ public final class Listener extends ContextLoader implements ServletContextListe
 				 */
 				XmlWebApplicationContext context = (XmlWebApplicationContext) createWebApplicationContext(servletContext);
 				configureAndRefreshWebApplicationContext(context, servletContext);
-				servletContext.setAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, context);
+				servletContext.setAttribute(/*~~>*/WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, context);
 				
 				WebDaemon.startOpenmrs(event.getServletContext());
 			} else {
@@ -221,7 +221,7 @@ public final class Listener extends ContextLoader implements ServletContextListe
 			inputStream = new FileInputStream(file);
 		}
 		catch (FileNotFoundException ex) {
-			final String fileName = servletContext.getRealPath("/WEB-INF/csrfguard.properties");
+			final /*~~>*/String fileName = servletContext.getRealPath("/WEB-INF/csrfguard.properties");
 			inputStream = new FileInputStream(fileName);
 			OutputStream outputStream = new FileOutputStream(file);
 			IOUtils.copy(inputStream, outputStream);
@@ -262,7 +262,7 @@ public final class Listener extends ContextLoader implements ServletContextListe
 		}
 		
 		DatabaseDetective databaseDetective = new DatabaseDetective();
-		if (databaseDetective.isDatabaseEmpty(OpenmrsUtil.getRuntimeProperties(WebConstants.WEBAPP_NAME))) {
+		if (databaseDetective.isDatabaseEmpty(OpenmrsUtil.getRuntimeProperties(/*~~>*/WebConstants.WEBAPP_NAME))) {
 			return true;
 		}
 		
@@ -321,12 +321,12 @@ public final class Listener extends ContextLoader implements ServletContextListe
 	 * @param servletContext startup context (web.xml)
 	 */
 	private void loadConstants(ServletContext servletContext) {
-		WebConstants.BUILD_TIMESTAMP = servletContext.getInitParameter("build.timestamp");
-		WebConstants.WEBAPP_NAME = getContextPath(servletContext);
-		WebConstants.MODULE_REPOSITORY_URL = servletContext.getInitParameter("module.repository.url");
+		/*~~>*/WebConstants.BUILD_TIMESTAMP = servletContext.getInitParameter("build.timestamp");
+		/*~~>*/WebConstants.WEBAPP_NAME = getContextPath(servletContext);
+		/*~~>*/WebConstants.MODULE_REPOSITORY_URL = servletContext.getInitParameter("module.repository.url");
 		
-		if (!"openmrs".equalsIgnoreCase(WebConstants.WEBAPP_NAME)) {
-			OpenmrsConstants.KEY_OPENMRS_APPLICATION_DATA_DIRECTORY = WebConstants.WEBAPP_NAME
+		if (!"openmrs".equalsIgnoreCase(/*~~>*/WebConstants.WEBAPP_NAME)) {
+			/*~~>*/OpenmrsConstants.KEY_OPENMRS_APPLICATION_DATA_DIRECTORY = /*~~>*/WebConstants.WEBAPP_NAME
 			        + "_APPLICATION_DATA_DIRECTORY";
 		}
 	}
@@ -334,21 +334,21 @@ public final class Listener extends ContextLoader implements ServletContextListe
 	private void setApplicationDataDirectory(ServletContext servletContext) {
 		// note: the below value will be overridden after reading the runtime properties if the
 		// "application_data_directory" runtime property is set
-		String appDataDir = servletContext.getInitParameter("application.data.directory");
+		/*~~>*/String appDataDir = servletContext.getInitParameter("application.data.directory");
 		if (StringUtils.hasLength(appDataDir)) {
 			OpenmrsUtil.setApplicationDataDirectory(appDataDir);
-		} else if (!"openmrs".equalsIgnoreCase(WebConstants.WEBAPP_NAME)) {
+		} else if (!"openmrs".equalsIgnoreCase(/*~~>*/WebConstants.WEBAPP_NAME)) {
 			OpenmrsUtil.setApplicationDataDirectory(
-			    Paths.get(OpenmrsUtil.getApplicationDataDirectory(), WebConstants.WEBAPP_NAME).toString());
+			    Paths.get(OpenmrsUtil.getApplicationDataDirectory(), /*~~>*/WebConstants.WEBAPP_NAME).toString());
 		}
 	}
 	
 	/**
 	 * @return current contextPath of this webapp without initial slash
 	 */
-	private String getContextPath(ServletContext servletContext) {
+	private /*~~>*/String getContextPath(ServletContext servletContext) {
 		// Get the context path without the request.
-		String contextPath = servletContext.getContextPath();
+		/*~~>*/String contextPath = servletContext.getContextPath();
 		
 		// trim off initial slash if it exists
 		if (contextPath.startsWith("/")) {
@@ -413,9 +413,9 @@ public final class Listener extends ContextLoader implements ServletContextListe
 	 * @param servletContext
 	 */
 	private void copyCustomizationIntoWebapp(ServletContext servletContext, Properties props) {
-		String realPath = servletContext.getRealPath("");
+		/*~~>*/String realPath = servletContext.getRealPath("");
 		// TODO centralize map to WebConstants?
-		Map<String, String> custom = new HashMap<>();
+		Map</*~~>*/String, /*~~>*/String> custom = new HashMap<>();
 		custom.put("custom.template.dir", "/WEB-INF/template");
 		custom.put("custom.index.jsp.file", "/WEB-INF/view/index.jsp");
 		custom.put("custom.login.jsp.file", "/WEB-INF/view/login.jsp");
@@ -427,13 +427,13 @@ public final class Listener extends ContextLoader implements ServletContextListe
 		custom.put("custom.messages_es", "/WEB-INF/custom_messages_es.properties");
 		custom.put("custom.messages_de", "/WEB-INF/custom_messages_de.properties");
 		
-		for (Map.Entry<String, String> entry : custom.entrySet()) {
-			String prop = entry.getKey();
-			String webappPath = entry.getValue();
-			String userOverridePath = props.getProperty(prop);
+		for (Map.Entry</*~~>*/String, /*~~>*/String> entry : custom.entrySet()) {
+			/*~~>*/String prop = entry.getKey();
+			/*~~>*/String webappPath = entry.getValue();
+			/*~~>*/String userOverridePath = props.getProperty(prop);
 			// if they defined the variable
 			if (userOverridePath != null) {
-				String absolutePath = realPath + webappPath;
+				/*~~>*/String absolutePath = realPath + webappPath;
 				File file = new File(userOverridePath);
 				
 				// if they got the path correct
@@ -447,7 +447,7 @@ public final class Listener extends ContextLoader implements ServletContextListe
 							for (File f : files) {
 								userOverridePath = f.getAbsolutePath();
 								if (!f.getName().startsWith(".")) {
-									String tmpAbsolutePath = absolutePath + "/" + f.getName();
+									/*~~>*/String tmpAbsolutePath = absolutePath + "/" + f.getName();
 									if (!copyFile(userOverridePath, tmpAbsolutePath)) {
 										log.warn("Unable to copy file in folder defined by runtime property: " + prop);
 										log.warn("Your source directory (or a file in it) '" + userOverridePath
@@ -477,7 +477,7 @@ public final class Listener extends ContextLoader implements ServletContextListe
 	 * @param toPath
 	 * @return true/false whether the copy was a success
 	 */
-	private boolean copyFile(String fromPath, String toPath) {
+	private boolean copyFile(/*~~>*/String fromPath, /*~~>*/String toPath) {
 		FileInputStream inputStream = null;
 		FileOutputStream outputStream = null;
 		try {
@@ -575,7 +575,7 @@ public final class Listener extends ContextLoader implements ServletContextListe
 		finally {
 			if ("true".equalsIgnoreCase(System.getProperty("FUNCTIONAL_TEST_MODE"))) {
 				//Delete the temporary file created for functional testing and shutdown the mysql daemon
-				String filename = WebConstants.WEBAPP_NAME + "-test-runtime.properties";
+				/*~~>*/String filename = /*~~>*/WebConstants.WEBAPP_NAME + "-test-runtime.properties";
 				File file = new File(OpenmrsUtil.getApplicationDataDirectory(), filename);
 				System.out.println(filename + " delete=" + file.delete());
 				
@@ -620,7 +620,7 @@ public final class Listener extends ContextLoader implements ServletContextListe
 	 * @see OpenmrsUtil#getRuntimeProperties(String)
 	 */
 	public static Properties getRuntimeProperties() {
-		return OpenmrsUtil.getRuntimeProperties(WebConstants.WEBAPP_NAME);
+		return OpenmrsUtil.getRuntimeProperties(/*~~>*/WebConstants.WEBAPP_NAME);
 	}
 	
 	/**
@@ -704,7 +704,7 @@ public final class Listener extends ContextLoader implements ServletContextListe
 			WebModuleUtil.loadServlets(mod, servletContext);
 			WebModuleUtil.loadFilters(mod, servletContext);
 		}
-		servletContext.setAttribute(OpenmrsJspServlet.OPENMRS_TLD_SCAN_NEEDED, true);
+		servletContext.setAttribute(/*~~>*/OpenmrsJspServlet.OPENMRS_TLD_SCAN_NEEDED, true);
 	}
 	
 	/**

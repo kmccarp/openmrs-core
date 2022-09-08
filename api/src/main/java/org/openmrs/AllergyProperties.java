@@ -26,8 +26,8 @@ public class AllergyProperties {
 	@Qualifier("adminService")
 	protected AdministrationService administrationService;
 	
-	protected Concept getConceptByGlobalProperty(String globalPropertyName) {
-		String globalProperty = administrationService.getGlobalProperty(globalPropertyName);
+	protected Concept getConceptByGlobalProperty(/*~~>*/String globalPropertyName) {
+		/*~~>*/String globalProperty = administrationService.getGlobalProperty(globalPropertyName);
 		Concept concept = conceptService.getConceptByUuid(globalProperty);
 		if (concept == null) {
 			throw new IllegalStateException("Configuration required: " + globalPropertyName);

@@ -24,7 +24,7 @@ package org.openmrs.logic.op;
 public class LessThan implements ComparisonOperator {
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "LESS THAN";
 	}
 	

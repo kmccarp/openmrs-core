@@ -89,7 +89,7 @@ public class SimpleXStreamSerializer implements OpenmrsSerializer {
 	 * <strong>Should</strong> not serialize proxies
 	 */
 	@Override
-	public String serialize(Object o) throws SerializationException {
+	public /*~~>*/String serialize(Object o) throws SerializationException {
 		
 		return xstream.toXML(o);
 	}
@@ -101,7 +101,7 @@ public class SimpleXStreamSerializer implements OpenmrsSerializer {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public <T> T deserialize(String serializedObject, Class<? extends T> clazz) throws SerializationException {
+	public <T> T deserialize(/*~~>*/String serializedObject, Class<? extends T> clazz) throws SerializationException {
 		
 		try {
 			return (T) xstream.fromXML(serializedObject);

@@ -98,7 +98,7 @@ public class PatientIdentifierTypeValidatorTest extends BaseContextSensitiveTest
 		PatientIdentifierType type = new PatientIdentifierType();
 		type.setName("Martin");
 		type.setDescription("helps");
-		String valid50charInput = "12345678901234567890123456789012345678901234567890";
+		/*~~>*/String valid50charInput = "12345678901234567890123456789012345678901234567890";
 		type.setFormat(valid50charInput);
 		
 		Errors errors = new BindException(type, "type");
@@ -115,7 +115,7 @@ public class PatientIdentifierTypeValidatorTest extends BaseContextSensitiveTest
 		PatientIdentifierType type = new PatientIdentifierType();
 		type.setName("Martin");
 		type.setDescription("helps");
-		String invalid255charInput = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456";
+		/*~~>*/String invalid255charInput = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456";
 		type.setFormat(invalid255charInput);
 		
 		Errors errors = new BindException(type, "type");
@@ -131,7 +131,7 @@ public class PatientIdentifierTypeValidatorTest extends BaseContextSensitiveTest
 	@Test
 	public void validate_shouldFailValidationIfNameFieldLengthIsTooLong() {
 		PatientIdentifierType type = new PatientIdentifierType();
-		String invalid51charInput = "123456789012345678901234567890123456789012345678901";
+		/*~~>*/String invalid51charInput = "123456789012345678901234567890123456789012345678901";
 		type.setName(invalid51charInput);
 		type.setDescription("helps");
 		type.setFormat("format");
@@ -151,7 +151,7 @@ public class PatientIdentifierTypeValidatorTest extends BaseContextSensitiveTest
 		PatientIdentifierType type = new PatientIdentifierType();
 		type.setName("OpenMRS Identification Number");
 		type.setDescription("helps");
-		String valid50charInput = "12345678901234567890123456789012345678901234567890";
+		/*~~>*/String valid50charInput = "12345678901234567890123456789012345678901234567890";
 		type.setFormat(valid50charInput);
 		
 		Errors errors = new BindException(type, "type");

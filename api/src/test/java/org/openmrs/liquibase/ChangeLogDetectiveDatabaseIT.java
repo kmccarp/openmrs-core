@@ -22,24 +22,24 @@ public class ChangeLogDetectiveDatabaseIT extends H2DatabaseIT {
 	
 	private static final Logger log = LoggerFactory.getLogger(ChangeLogDetectiveDatabaseIT.class);
 
-	private static final String VERSION_1_9_X = "1.9.x";
+	private static final /*~~>*/String VERSION_1_9_X = "1.9.x";
 
-	private static final String VERSION_2_1_X = "2.1.x";
+	private static final /*~~>*/String VERSION_2_1_X = "2.1.x";
 	
 	
 	@Test
 	public void shouldGetInitialLiquibaseSnapshotVersion() throws Exception {
 		ChangeLogDetective changeLogDetective = new ChangeLogDetective();
 		ChangeLogVersionFinder changeLogVersionFinder = new ChangeLogVersionFinder();
-		Map<String, List<String>> changeSetCombinations = changeLogVersionFinder.getChangeLogCombinations();
+		Map</*~~>*/String, List</*~~>*/String>> changeSetCombinations = changeLogVersionFinder.getChangeLogCombinations();
 		updateDatabase(changeSetCombinations.get(VERSION_2_1_X));
 		
 		/*
 		 * The database was initialised with snapshot version 2.1.x so this version is the expected outcome.
 		 */
-		String expected = VERSION_2_1_X;
+		/*~~>*/String expected = VERSION_2_1_X;
 		
-		String actual = changeLogDetective.getInitialLiquibaseSnapshotVersion("some context", this);
+		/*~~>*/String actual = changeLogDetective.getInitialLiquibaseSnapshotVersion("some context", this);
 		assertEquals(expected, actual);
 	}
 	
@@ -47,8 +47,8 @@ public class ChangeLogDetectiveDatabaseIT extends H2DatabaseIT {
 	public void shouldReturnDefaultSnapshotVersion() throws Exception {
 		ChangeLogDetective changeLogDetective = new ChangeLogDetective();
 
-		String expected = VERSION_1_9_X;
-		String actual = changeLogDetective.getInitialLiquibaseSnapshotVersion("some context", this);
+		/*~~>*/String expected = VERSION_1_9_X;
+		/*~~>*/String actual = changeLogDetective.getInitialLiquibaseSnapshotVersion("some context", this);
 
 		assertEquals(expected, actual);
 	}
@@ -57,17 +57,17 @@ public class ChangeLogDetectiveDatabaseIT extends H2DatabaseIT {
 	public void shouldGetUnrunLiquibaseUpdateFileNames() throws Exception {
 		ChangeLogDetective changeLogDetective = new ChangeLogDetective();
 		ChangeLogVersionFinder changeLogVersionFinder = new ChangeLogVersionFinder();
-		Map<String, List<String>> snapshotCombinations = changeLogVersionFinder.getSnapshotCombinations();
+		Map</*~~>*/String, List</*~~>*/String>> snapshotCombinations = changeLogVersionFinder.getSnapshotCombinations();
 		updateDatabase(snapshotCombinations.get(VERSION_2_1_X));
 		
 		/*
 		 * The database was initialised with snapshot 2.1.x only so getting all un-run update files is expected
 		 * to return all update versions greater than 2.1.x
 		 */
-		List<String> expected = changeLogVersionFinder
+		List</*~~>*/String> expected = changeLogVersionFinder
 		        .getUpdateFileNames(changeLogVersionFinder.getUpdateVersionsGreaterThan(VERSION_2_1_X));
 		
-		List<String> actual = changeLogDetective.getUnrunLiquibaseUpdateFileNames(VERSION_2_1_X, "some context", this);
+		List</*~~>*/String> actual = changeLogDetective.getUnrunLiquibaseUpdateFileNames(VERSION_2_1_X, "some context", this);
 		
 		assertEquals(expected, actual);
 	}

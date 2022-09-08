@@ -33,8 +33,8 @@ import org.springframework.validation.Errors;
  */
 public class ConditionValidatorTest {
 
-	private static final String NULL_ERROR_MESSAGE = "The object parameter should not be null";
-	private static final String INCOMPATIBLE_ERROR_MESSAGE = "The object parameter should be of type " + Condition.class;
+	private static final /*~~>*/String NULL_ERROR_MESSAGE = "The object parameter should not be null";
+	private static final /*~~>*/String INCOMPATIBLE_ERROR_MESSAGE = "The object parameter should be of type " + Condition.class;
 	
 	private ConditionValidator validator;
 

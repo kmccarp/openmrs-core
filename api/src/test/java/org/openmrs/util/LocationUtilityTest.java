@@ -33,7 +33,7 @@ public class LocationUtilityTest extends BaseContextSensitiveTest {
 	{
 		//sanity check
 		assertEquals("Unknown Location", LocationUtility.getDefaultLocation().getName());
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCATION_NAME, "Xanadu", "Testing");
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCATION_NAME, "Xanadu", "Testing");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		assertEquals("Xanadu", LocationUtility.getDefaultLocation().getName());
 	}
@@ -46,8 +46,8 @@ public class LocationUtilityTest extends BaseContextSensitiveTest {
 		//sanity check
 		assertNull(LocationUtility.getUserDefaultLocation());
 		User user = Context.getAuthenticatedUser();
-		Map<String, String> properties = user.getUserProperties();
-		properties.put(OpenmrsConstants.USER_PROPERTY_DEFAULT_LOCATION, "2");
+		Map</*~~>*/String, /*~~>*/String> properties = user.getUserProperties();
+		properties.put(/*~~>*/OpenmrsConstants.USER_PROPERTY_DEFAULT_LOCATION, "2");
 		user.setUserProperties(properties);
 		Context.getUserService().saveUser(user);
 		Context.refreshAuthenticatedUser();

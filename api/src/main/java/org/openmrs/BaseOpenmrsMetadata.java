@@ -34,10 +34,10 @@ public abstract class BaseOpenmrsMetadata extends BaseOpenmrsObject implements O
 	//***** Properties *****
 	@Column(name = "name", nullable = false, length = 255)
 	@Field
-	private String name;
+	private /*~~>*/String name;
 	
 	@Column(name = "description", length = 255)
-	private String description;
+	private /*~~>*/String description;
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "creator")
@@ -65,7 +65,7 @@ public abstract class BaseOpenmrsMetadata extends BaseOpenmrsObject implements O
 	private User retiredBy;
 	
 	@Column(name = "retire_reason", length = 255)
-	private String retireReason;
+	private /*~~>*/String retireReason;
 	
 	//***** Constructors *****
 	
@@ -81,7 +81,7 @@ public abstract class BaseOpenmrsMetadata extends BaseOpenmrsObject implements O
 	 * @return the name
 	 */
 	@Override
-	public String getName() {
+	public /*~~>*/String getName() {
 		return name;
 	}
 	
@@ -89,15 +89,15 @@ public abstract class BaseOpenmrsMetadata extends BaseOpenmrsObject implements O
 	 * @param name the name to set
 	 */
 	@Override
-	public void setName(String name) {
-		this.name = name;
+	public void setName(/*~~>*/String name) {
+		/*~~>*/this.name = name;
 	}
 	
 	/**
 	 * @return the description
 	 */
 	@Override
-	public String getDescription() {
+	public /*~~>*/String getDescription() {
 		return description;
 	}
 	
@@ -105,8 +105,8 @@ public abstract class BaseOpenmrsMetadata extends BaseOpenmrsObject implements O
 	 * @param description the description to set
 	 */
 	@Override
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(/*~~>*/String description) {
+		/*~~>*/this.description = description;
 	}
 	
 	/**
@@ -248,7 +248,7 @@ public abstract class BaseOpenmrsMetadata extends BaseOpenmrsObject implements O
 	 * @see org.openmrs.Retireable#getRetireReason()
 	 */
 	@Override
-	public String getRetireReason() {
+	public /*~~>*/String getRetireReason() {
 		return retireReason;
 	}
 	
@@ -256,8 +256,8 @@ public abstract class BaseOpenmrsMetadata extends BaseOpenmrsObject implements O
 	 * @see org.openmrs.Retireable#setRetireReason(java.lang.String)
 	 */
 	@Override
-	public void setRetireReason(String retireReason) {
-		this.retireReason = retireReason;
+	public void setRetireReason(/*~~>*/String retireReason) {
+		/*~~>*/this.retireReason = retireReason;
 	}
 	
 }

@@ -24,7 +24,7 @@ package org.openmrs.logic.op;
 public class Before implements ComparisonOperator {
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "BEFORE";
 	}
 	

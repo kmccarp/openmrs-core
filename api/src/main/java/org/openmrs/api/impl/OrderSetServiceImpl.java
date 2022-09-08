@@ -48,7 +48,7 @@ public class OrderSetServiceImpl extends BaseOpenmrsService implements OrderSetS
 	 */
 	@Override
 	@Transactional(readOnly = false)
-	public OrderSet retireOrderSet(OrderSet orderSet, String retireReason) throws APIException {
+	public OrderSet retireOrderSet(OrderSet orderSet, /*~~>*/String retireReason) throws APIException {
 		if (StringUtils.isBlank(retireReason)) {
 			throw new IllegalArgumentException("retire reason cannot be empty or null");
 		}
@@ -116,7 +116,7 @@ public class OrderSetServiceImpl extends BaseOpenmrsService implements OrderSetS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public OrderSet getOrderSetByUuid(String orderSetUuid) throws APIException {
+	public OrderSet getOrderSetByUuid(/*~~>*/String orderSetUuid) throws APIException {
 		return dao.getOrderSetByUniqueUuid(orderSetUuid);
 	}
 
@@ -125,7 +125,7 @@ public class OrderSetServiceImpl extends BaseOpenmrsService implements OrderSetS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public OrderSetMember getOrderSetMemberByUuid(String uuid) {
+	public OrderSetMember getOrderSetMemberByUuid(/*~~>*/String uuid) {
 		return dao.getOrderSetMemberByUuid(uuid);
 	}
 
@@ -152,7 +152,7 @@ public class OrderSetServiceImpl extends BaseOpenmrsService implements OrderSetS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public OrderSetAttributeType getOrderSetAttributeTypeByUuid(String uuid) {
+	public OrderSetAttributeType getOrderSetAttributeTypeByUuid(/*~~>*/String uuid) {
 		return dao.getOrderSetAttributeTypeByUuid(uuid);
 	}
 
@@ -172,7 +172,7 @@ public class OrderSetServiceImpl extends BaseOpenmrsService implements OrderSetS
 	@Override
 	@Transactional(readOnly = false)
 	public OrderSetAttributeType retireOrderSetAttributeType(OrderSetAttributeType orderSetAttributeType,
-			String reason) {
+			/*~~>*/String reason) {
 		return dao.saveOrderSetAttributeType(orderSetAttributeType);
 	}
 
@@ -199,7 +199,7 @@ public class OrderSetServiceImpl extends BaseOpenmrsService implements OrderSetS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public OrderSetAttributeType getOrderSetAttributeTypeByName(String name) {
+	public OrderSetAttributeType getOrderSetAttributeTypeByName(/*~~>*/String name) {
 		return dao.getOrderSetAttributeTypeByName(name);
 	}
 
@@ -208,7 +208,7 @@ public class OrderSetServiceImpl extends BaseOpenmrsService implements OrderSetS
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public OrderSetAttribute getOrderSetAttributeByUuid(String uuid) {
+	public OrderSetAttribute getOrderSetAttributeByUuid(/*~~>*/String uuid) {
 		return dao.getOrderSetAttributeByUuid(uuid);
 	}
 }

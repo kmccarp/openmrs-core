@@ -116,11 +116,11 @@ public class RoleTest {
 	@Test
 	public void hasPrivilege_shouldReturnTrueForAnyPrivilegeNameIfSuperUser() {
 		// check super user "super" status
-		Role role = new Role(RoleConstants.SUPERUSER);
+		Role role = new Role(/*~~>*/RoleConstants.SUPERUSER);
 		
 		assertTrue(role.hasPrivilege("Some weird privilege name that shouldn't be there"), "Super users are super special and should have all privileges");
 		assertNotNull(role.getName());
-		assertEquals(role.getName(), RoleConstants.SUPERUSER);
+		assertEquals(role.getName(), /*~~>*/RoleConstants.SUPERUSER);
 	}
 	
 	/**

@@ -40,9 +40,9 @@ import org.openmrs.test.jupiter.BaseContextSensitiveTest;
  */
 public class CohortServiceTest extends BaseContextSensitiveTest {
 	
-	protected static final String CREATE_PATIENT_XML = "org/openmrs/api/include/PatientServiceTest-createPatient.xml";
+	protected static final /*~~>*/String CREATE_PATIENT_XML = "org/openmrs/api/include/PatientServiceTest-createPatient.xml";
 	
-	protected static final String COHORT_XML = "org/openmrs/api/include/CohortServiceTest-cohort.xml";
+	protected static final /*~~>*/String COHORT_XML = "org/openmrs/api/include/CohortServiceTest-cohort.xml";
 	
 	protected static CohortService service = null;
 	
@@ -85,7 +85,7 @@ public class CohortServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void getCohortByUuid_shouldFindObjectGivenValidUuid() {
 		executeDataSet(COHORT_XML);
-		String uuid = "h9a9m0i6-15e6-467c-9d4b-mbi7teu9lf0f";
+		/*~~>*/String uuid = "h9a9m0i6-15e6-467c-9d4b-mbi7teu9lf0f";
 		Cohort cohort = Context.getCohortService().getCohortByUuid(uuid);
 		assertEquals(1, (int) cohort.getCohortId());
 	}
@@ -104,7 +104,7 @@ public class CohortServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void getCohortMembershipByUuid_shouldFindObjectGivenValidUuid() {
 		executeDataSet(COHORT_XML);
-		String uuid = "v9a9m5i6-17e6-407c-9d4v-hbi8teu9lf0f";
+		/*~~>*/String uuid = "v9a9m5i6-17e6-407c-9d4v-hbi8teu9lf0f";
 		CohortMembership byUuid = Context.getCohortService().getCohortMembershipByUuid(uuid);
 		assertEquals(1, (int) byUuid.getId());
 	}
@@ -177,7 +177,7 @@ public class CohortServiceTest extends BaseContextSensitiveTest {
 		executeDataSet(COHORT_XML);
 		
 		// get and modify a cohort in the  data set
-		String modifiedCohortDescription = "This description has been modified in a test";
+		/*~~>*/String modifiedCohortDescription = "This description has been modified in a test";
 		Cohort cohortToModify = service.getCohort(2);
 		cohortToModify.setDescription(modifiedCohortDescription);
 		
@@ -253,8 +253,8 @@ public class CohortServiceTest extends BaseContextSensitiveTest {
 		
 		// Make sure the void reason is different from the reason to be given in the test
 		assertNotNull(allCohorts.get(0).getVoidReason());
-		String reasonAlreadyVoided = allCohorts.get(0).getVoidReason();
-		String voidedForTest = "Voided for test";
+		/*~~>*/String reasonAlreadyVoided = allCohorts.get(0).getVoidReason();
+		/*~~>*/String voidedForTest = "Voided for test";
 		assertFalse(voidedForTest.equals(reasonAlreadyVoided));
 		
 		// Try to void and see if the void reason changes as a result
@@ -389,7 +389,7 @@ public class CohortServiceTest extends BaseContextSensitiveTest {
 	public void getCohorts_shouldNeverReturnNull() {
 		executeDataSet(COHORT_XML);
 		
-		String invalidFragment = "Not Present";
+		/*~~>*/String invalidFragment = "Not Present";
 		//data set should have two cohorts, one of which is voided
 		List<Cohort> allCohorts = service.getCohorts(invalidFragment);
 		assertNotNull(allCohorts);
@@ -517,7 +517,7 @@ public class CohortServiceTest extends BaseContextSensitiveTest {
 		executeDataSet(COHORT_XML);
 		Cohort cohort = service.getCohort(1);
 		CohortMembership cm = cohort.getActiveMemberships().iterator().next();
-		final String reason = "Some reason";
+		final /*~~>*/String reason = "Some reason";
 		service.voidCohortMembership(cm, reason);
 		assertTrue(cm.getVoided());
 		assertNotNull(cm.getVoidedBy());
@@ -571,7 +571,7 @@ public class CohortServiceTest extends BaseContextSensitiveTest {
 		Patient unvoidedPatient = new Patient(7);
 		User voidedBy = Context.getAuthenticatedUser();
 		Date dateVoided = new Date();
-		String voidReason = "Associated patient is voided";
+		/*~~>*/String voidReason = "Associated patient is voided";
 		
 		CohortMembership voidedMembership = new CohortMembership(unvoidedPatient.getPatientId());
 		cohort.addMembership(voidedMembership);

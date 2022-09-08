@@ -77,11 +77,11 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 		PRELIMINARY, FINAL, AMENDED
 	}
 	
-	private static final String DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm";
+	private static final /*~~>*/String DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm";
 	
-	private static final String TIME_PATTERN = "HH:mm";
+	private static final /*~~>*/String TIME_PATTERN = "HH:mm";
 	
-	private static final String DATE_PATTERN = "yyyy-MM-dd";
+	private static final /*~~>*/String DATE_PATTERN = "yyyy-MM-dd";
 	
 	public static final long serialVersionUID = 112342333L;
 	
@@ -93,7 +93,7 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 	
 	protected Date obsDatetime;
 	
-	protected String accessionNumber;
+	protected /*~~>*/String accessionNumber;
 	
 	/**
 	 * The "parent" of this obs. It is the grouping that brings other obs together. note:
@@ -122,16 +122,16 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 	
 	protected Double valueNumeric;
 	
-	protected String valueModifier;
+	protected /*~~>*/String valueModifier;
 	
-	protected String valueText;
+	protected /*~~>*/String valueText;
 	
-	protected String valueComplex;
+	protected /*~~>*/String valueComplex;
 	
 	// ComplexData is not persisted in the database.
 	protected transient ComplexData complexData;
 	
-	protected String comment;
+	protected /*~~>*/String comment;
 	
 	protected transient Integer personId;
 	
@@ -237,16 +237,16 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 	/**
 	 * @return Returns the comment.
 	 */
-	public String getComment() {
+	public /*~~>*/String getComment() {
 		return comment;
 	}
 	
 	/**
 	 * @param comment The comment to set.
 	 */
-	public void setComment(String comment) {
-		markAsDirty(this.comment, comment);
-		this.comment = comment;
+	public void setComment(/*~~>*/String comment) {
+		markAsDirty(/*~~>*/this.comment, comment);
+		/*~~>*/this.comment = comment;
 	}
 	
 	/**
@@ -790,16 +790,16 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 	/**
 	 * @return Returns the valueModifier.
 	 */
-	public String getValueModifier() {
+	public /*~~>*/String getValueModifier() {
 		return valueModifier;
 	}
 	
 	/**
 	 * @param valueModifier The valueModifier to set.
 	 */
-	public void setValueModifier(String valueModifier) {
-		markAsDirty(this.valueModifier, valueModifier);
-		this.valueModifier = valueModifier;
+	public void setValueModifier(/*~~>*/String valueModifier) {
+		markAsDirty(/*~~>*/this.valueModifier, valueModifier);
+		/*~~>*/this.valueModifier = valueModifier;
 	}
 	
 	/**
@@ -820,16 +820,16 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 	/**
 	 * @return Returns the valueText.
 	 */
-	public String getValueText() {
+	public /*~~>*/String getValueText() {
 		return valueText;
 	}
 	
 	/**
 	 * @param valueText The valueText to set.
 	 */
-	public void setValueText(String valueText) {
-		markAsDirty(this.valueText, valueText);
-		this.valueText = valueText;
+	public void setValueText(/*~~>*/String valueText) {
+		markAsDirty(/*~~>*/this.valueText, valueText);
+		/*~~>*/this.valueText = valueText;
 	}
 	
 	/**
@@ -854,8 +854,8 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 	 * @return readable title and URI for the location of the ComplexData binary object.
 	 * @since 1.5
 	 */
-	public String getValueComplex() {
-		return this.valueComplex;
+	public /*~~>*/String getValueComplex() {
+		return /*~~>*/this.valueComplex;
 	}
 	
 	/**
@@ -867,9 +867,9 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 	 * @param valueComplex readable title and URI for the location of the ComplexData binary object.
 	 * @since 1.5
 	 */
-	public void setValueComplex(String valueComplex) {
-		markAsDirty(this.valueComplex, valueComplex);
-		this.valueComplex = valueComplex;
+	public void setValueComplex(/*~~>*/String valueComplex) {
+		markAsDirty(/*~~>*/this.valueComplex, valueComplex);
+		/*~~>*/this.valueComplex = valueComplex;
 	}
 	
 	/**
@@ -909,16 +909,16 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 	/**
 	 * @return Returns the accessionNumber.
 	 */
-	public String getAccessionNumber() {
+	public /*~~>*/String getAccessionNumber() {
 		return accessionNumber;
 	}
 	
 	/**
 	 * @param accessionNumber The accessionNumber to set.
 	 */
-	public void setAccessionNumber(String accessionNumber) {
-		markAsDirty(this.accessionNumber, accessionNumber);
-		this.accessionNumber = accessionNumber;
+	public void setAccessionNumber(/*~~>*/String accessionNumber) {
+		markAsDirty(/*~~>*/this.accessionNumber, accessionNumber);
+		/*~~>*/this.accessionNumber = accessionNumber;
 	}
 	
 	/***************************************************************************
@@ -942,7 +942,7 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 	 * <strong>Should</strong> return regular number for size of zero to or greater than ten digits
 	 * <strong>Should</strong> return regular number if decimal places are as high as six
 	 */
-	public String getValueAsString(Locale locale) {
+	public /*~~>*/String getValueAsString(Locale locale) {
 		// formatting for the return of numbers of type double
 		NumberFormat nf = NumberFormat.getNumberInstance(locale);
 		DecimalFormat df = (DecimalFormat) nf;
@@ -950,7 +950,7 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 		df.applyPattern("#0.0#####");
 		//branch on hl7 abbreviations
 		if (getConcept() != null) {
-			String abbrev = getConcept().getDatatype().getHl7Abbreviation();
+			/*~~>*/String abbrev = getConcept().getDatatype().getHl7Abbreviation();
 			if ("BIT".equals(abbrev)) {
 				return getValueAsBoolean() == null ? "" : getValueAsBoolean().toString();
 			} else if ("CWE".equals(abbrev)) {
@@ -998,8 +998,8 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 			} else if ("ST".equals(abbrev)) {
 				return getValueText();
 			} else if ("ED".equals(abbrev) && getValueComplex() != null) {
-				String[] valuesComplex = getValueComplex().split("\\|");
-				for (String value : valuesComplex) {
+				/*~~>*/String[] valuesComplex = getValueComplex().split("\\|");
+				for (/*~~>*/String value : valuesComplex) {
 					if (StringUtils.isNotEmpty(value)) {
 						return value.trim();
 					}
@@ -1043,8 +1043,8 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 		// returns the title portion of the valueComplex
 		// which is everything before the first bar '|' character.
 		if (getValueComplex() != null) {
-			String[] valuesComplex = getValueComplex().split("\\|");
-			for (String value : valuesComplex) {
+			/*~~>*/String[] valuesComplex = getValueComplex().split("\\|");
+			for (/*~~>*/String value : valuesComplex) {
 				if (StringUtils.isNotEmpty(value)) {
 					return value.trim();
 				}
@@ -1062,11 +1062,11 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 	 * <strong>Should</strong> fail if the value of the string is null
 	 * <strong>Should</strong> fail if the value of the string is empty
 	 */
-	public void setValueAsString(String s) throws ParseException {
+	public void setValueAsString(/*~~>*/String s) throws ParseException {
 		log.debug("getConcept() == {}", getConcept());
 		
 		if (getConcept() != null && !StringUtils.isBlank(s)) {
-			String abbrev = getConcept().getDatatype().getHl7Abbreviation();
+			/*~~>*/String abbrev = getConcept().getDatatype().getHl7Abbreviation();
 			if ("BIT".equals(abbrev)) {
 				setValueBoolean(Boolean.valueOf(s));
 			} else if ("CWE".equals(abbrev)) {
@@ -1097,7 +1097,7 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		if (obsId == null) {
 			return "obs id is null";
 		}
@@ -1172,8 +1172,8 @@ public class Obs extends BaseFormRecordableOpenmrsData {
 	 * @see org.openmrs.FormRecordable#setFormField(String,String)
 	 */
 	@Override
-	public void setFormField(String namespace, String formFieldPath) {
-		String oldValue = formNamespaceAndPath;
+	public void setFormField(/*~~>*/String namespace, /*~~>*/String formFieldPath) {
+		/*~~>*/String oldValue = formNamespaceAndPath;
 		super.setFormField(namespace, formFieldPath);
 		markAsDirty(oldValue, formNamespaceAndPath);
 	}

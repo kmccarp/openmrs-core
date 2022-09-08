@@ -33,7 +33,7 @@ public class Role extends BaseChangeableOpenmrsMetadata {
 	
 	// Fields
 	
-	private String role;
+	private /*~~>*/String role;
 	
 	private Set<Privilege> privileges;
 	
@@ -48,13 +48,13 @@ public class Role extends BaseChangeableOpenmrsMetadata {
 	}
 	
 	/** constructor with id */
-	public Role(String role) {
-		this.role = role;
+	public Role(/*~~>*/String role) {
+		/*~~>*/this.role = role;
 	}
 	
 	/** constructor with all database required properties */
-	public Role(String role, String description) {
-		this.role = role;
+	public Role(/*~~>*/String role, /*~~>*/String description) {
+		/*~~>*/this.role = role;
 		setDescription(description);
 	}
 	
@@ -73,7 +73,7 @@ public class Role extends BaseChangeableOpenmrsMetadata {
 	}
 	
 	@Override
-	public String getName() {
+	public /*~~>*/String getName() {
 		return this.getRole();
 	}
 	
@@ -91,7 +91,7 @@ public class Role extends BaseChangeableOpenmrsMetadata {
 		}
 	}
 	
-	private boolean containsPrivilege(Collection<Privilege> privileges, String privilegeName) {
+	private boolean containsPrivilege(Collection<Privilege> privileges, /*~~>*/String privilegeName) {
 		for (Privilege privilege : privileges) {
 			if (privilege.getPrivilege().equals(privilegeName)) {
 				return true;
@@ -114,23 +114,23 @@ public class Role extends BaseChangeableOpenmrsMetadata {
 	/**
 	 * @return Returns the role.
 	 */
-	public String getRole() {
+	public /*~~>*/String getRole() {
 		return role;
 	}
 	
 	/**
 	 * @param role The role to set.
 	 */
-	public void setRole(String role) {
-		this.role = role;
+	public void setRole(/*~~>*/String role) {
+		/*~~>*/this.role = role;
 	}
 	
 	/**
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
-		return this.role;
+	public /*~~>*/String toString() {
+		return /*~~>*/this.role;
 	}
 	
 	/**
@@ -144,9 +144,9 @@ public class Role extends BaseChangeableOpenmrsMetadata {
 	 * <strong>Should</strong> not fail given null parameter
 	 * <strong>Should</strong> return true for any privilegeName if super user
 	 */
-	public boolean hasPrivilege(String privilegeName) {
+	public boolean hasPrivilege(/*~~>*/String privilegeName) {
 		
-		if (RoleConstants.SUPERUSER.equals(this.role)) {
+		if (/*~~>*/RoleConstants.SUPERUSER.equals(/*~~>*/this.role)) {
 			return true;
 		}
 		

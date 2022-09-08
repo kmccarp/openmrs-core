@@ -32,7 +32,7 @@ public interface MedicationDispenseDAO {
 	 * @param uuid - uuid of the MedicationDispense to be returned
 	 * @return the MedicationDispense
 	 */
-	MedicationDispense getMedicationDispenseByUuid(String uuid);
+	MedicationDispense getMedicationDispenseByUuid(/*~~>*/String uuid);
 
 	/**
 	 * Gets all MedicationDispense results that match the given criteria

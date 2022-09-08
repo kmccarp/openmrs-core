@@ -24,14 +24,14 @@ public class MandatoryModuleException extends ModuleMustStartException {
 	
 	public static final long serialVersionUID = 236472655L;
 	
-	private String moduleId;
+	private /*~~>*/String moduleId;
 	
 	/**
 	 * This constructor is used when a user tries to stop a mandatory module.
 	 * 
 	 * @param moduleId the module id that is trying to be stopped
 	 */
-	public MandatoryModuleException(String moduleId) {
+	public MandatoryModuleException(/*~~>*/String moduleId) {
 		this(moduleId, "");
 	}
 	
@@ -41,19 +41,19 @@ public class MandatoryModuleException extends ModuleMustStartException {
 	 * @param moduleId the module id that is trying to be stopped
 	 * @param extraErrorMessage extra data to provide in the error's message
 	 */
-	public MandatoryModuleException(String moduleId, String extraErrorMessage) {
+	public MandatoryModuleException(/*~~>*/String moduleId, /*~~>*/String extraErrorMessage) {
 		super("The " + moduleId + " module is marked as 'mandatory' and so cannot be stopped or unloaded. "
 		        + extraErrorMessage);
-		this.moduleId = moduleId;
+		/*~~>*/this.moduleId = moduleId;
 	}
 	
 	/**
 	 * @param moduleIds list of module ids that are mandatory and didn't start
 	 */
-	public MandatoryModuleException(List<String> moduleIds) {
+	public MandatoryModuleException(List</*~~>*/String> moduleIds) {
 		super("The following modules are marked as 'mandatory' but were unable to start: "
-		        + String.join(",", moduleIds));
-		this.moduleId = String.join(",", moduleIds);
+		        + /*~~>*/String.join(",", moduleIds));
+		/*~~>*/this.moduleId = /*~~>*/String.join(",", moduleIds);
 	}
 	
 	/**
@@ -61,7 +61,7 @@ public class MandatoryModuleException extends ModuleMustStartException {
 	 * 
 	 * @return the module id (or ids) that caused this exception
 	 */
-	public String getModuleId() {
+	public /*~~>*/String getModuleId() {
 		return moduleId;
 	}
 }

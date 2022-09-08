@@ -26,7 +26,7 @@ import org.openmrs.util.OpenmrsConstants;
  */
 public class AllergenTest extends BaseContextSensitiveTest {
 	
-	private static final String ALLERGY_OTHER_NONCODED_TEST_DATASET = "org/openmrs/api/include/otherNonCodedConcept.xml";
+	private static final /*~~>*/String ALLERGY_OTHER_NONCODED_TEST_DATASET = "org/openmrs/api/include/otherNonCodedConcept.xml";
 	
 	Allergen allergen;
 	
@@ -34,7 +34,7 @@ public class AllergenTest extends BaseContextSensitiveTest {
 	public void setup() {
 		executeDataSet(ALLERGY_OTHER_NONCODED_TEST_DATASET);
 		Allergen.setOtherNonCodedConceptUuid(Context.getAdministrationService().getGlobalProperty(
-			    OpenmrsConstants.GP_ALLERGEN_OTHER_NON_CODED_UUID));
+			    /*~~>*/OpenmrsConstants.GP_ALLERGEN_OTHER_NON_CODED_UUID));
 	}
 	
 	@Test

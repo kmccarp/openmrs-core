@@ -31,7 +31,7 @@ public class ProgramWorkflowStateEditor extends OpenmrsPropertyEditor<ProgramWor
 	}
 	
 	@Override
-	protected ProgramWorkflowState getObjectByUuid(String uuid) {
+	protected ProgramWorkflowState getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getProgramWorkflowService().getStateByUuid(uuid);
 	}
 }

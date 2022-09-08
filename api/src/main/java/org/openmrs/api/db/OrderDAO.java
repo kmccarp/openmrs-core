@@ -85,7 +85,7 @@ public interface OrderDAO {
 	 * @param uuid
 	 * @return order or null
 	 */
-	public Order getOrderByUuid(String uuid);
+	public Order getOrderByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Delete Obs that references an order
@@ -95,7 +95,7 @@ public interface OrderDAO {
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderByOrderNumber(java.lang.String)
 	 */
-	public Order getOrderByOrderNumber(String orderNumber);
+	public Order getOrderByOrderNumber(/*~~>*/String orderNumber);
 	
 	/**
 	 * Gets the next available order number seed
@@ -121,12 +121,12 @@ public interface OrderDAO {
 	/**
 	 * @see org.openmrs.api.OrderService#getCareSettingByUuid(String)
 	 */
-	public CareSetting getCareSettingByUuid(String uuid);
+	public CareSetting getCareSettingByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @see org.openmrs.api.OrderService#getCareSettingByName(String)
 	 */
-	public CareSetting getCareSettingByName(String name);
+	public CareSetting getCareSettingByName(/*~~>*/String name);
 	
 	/**
 	 * @see org.openmrs.api.OrderService#getCareSettings(boolean)
@@ -136,7 +136,7 @@ public interface OrderDAO {
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderTypeByName(String)
 	 */
-	public OrderType getOrderTypeByName(String orderTypeName);
+	public OrderType getOrderTypeByName(/*~~>*/String orderTypeName);
 	
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderFrequency
@@ -146,7 +146,7 @@ public interface OrderDAO {
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderFrequencyByUuid
 	 */
-	public OrderFrequency getOrderFrequencyByUuid(String uuid);
+	public OrderFrequency getOrderFrequencyByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderFrequencies(boolean)
@@ -156,7 +156,7 @@ public interface OrderDAO {
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderFrequencies(String, java.util.Locale, boolean, boolean)
 	 */
-	public List<OrderFrequency> getOrderFrequencies(String searchPhrase, Locale locale, boolean exactLocale,
+	public List<OrderFrequency> getOrderFrequencies(/*~~>*/String searchPhrase, Locale locale, boolean exactLocale,
 	        boolean includeRetired);
 	
 	/**
@@ -190,7 +190,7 @@ public interface OrderDAO {
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderTypeByUuid
 	 */
-	public OrderType getOrderTypeByUuid(String uuid);
+	public OrderType getOrderTypeByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderTypes
@@ -256,7 +256,7 @@ public interface OrderDAO {
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderGroupByUuid(String)
 	 */
-	public OrderGroup getOrderGroupByUuid(String uuid) throws DAOException;
+	public OrderGroup getOrderGroupByUuid(/*~~>*/String uuid) throws DAOException;
 	
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderGroup(Integer)
@@ -276,7 +276,7 @@ public interface OrderDAO {
 	/**
 	 * @see  org.openmrs.api.OrderService#getOrderGroupAttributeByUuid(String)
 	 */
-	public OrderGroupAttribute getOrderGroupAttributeByUuid(String uuid) throws DAOException;
+	public OrderGroupAttribute getOrderGroupAttributeByUuid(/*~~>*/String uuid) throws DAOException;
 
 	/**
 	 * @see org.openmrs.api.OrderService#getAllOrderGroupAttributeTypes()
@@ -291,7 +291,7 @@ public interface OrderDAO {
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderGroupAttributeTypeByUuid(String)
 	 */
-	public OrderGroupAttributeType getOrderGroupAttributeTypeByUuid(String uuid)throws DAOException;
+	public OrderGroupAttributeType getOrderGroupAttributeTypeByUuid(/*~~>*/String uuid)throws DAOException;
 
 	/**
 	 * @see org.openmrs.api.OrderService#saveOrderGroupAttributeType(OrderGroupAttributeType)
@@ -306,12 +306,12 @@ public interface OrderDAO {
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderGroupAttributeTypeByName(String)
 	 */
-	public OrderGroupAttributeType getOrderGroupAttributeTypeByName(String name)throws DAOException;
+	public OrderGroupAttributeType getOrderGroupAttributeTypeByName(/*~~>*/String name)throws DAOException;
 
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderAttributeByUuid(String)
 	 */
-	OrderAttribute getOrderAttributeByUuid(String uuid) throws DAOException;
+	OrderAttribute getOrderAttributeByUuid(/*~~>*/String uuid) throws DAOException;
 
 	/**
 	 * @see org.openmrs.api.OrderService#getAllOrderAttributeTypes()
@@ -326,7 +326,7 @@ public interface OrderDAO {
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderAttributeTypeByUuid(String)
 	 */
-	OrderAttributeType getOrderAttributeTypeByUuid(String uuid)throws DAOException;
+	OrderAttributeType getOrderAttributeTypeByUuid(/*~~>*/String uuid)throws DAOException;
 
 	/**
 	 * @see org.openmrs.api.OrderService#saveOrderAttributeType(OrderAttributeType)
@@ -341,5 +341,5 @@ public interface OrderDAO {
 	/**
 	 * @see org.openmrs.api.OrderService#getOrderAttributeTypeByName(String)
 	 */
-	OrderAttributeType getOrderAttributeTypeByName(String name)throws DAOException;
+	OrderAttributeType getOrderAttributeTypeByName(/*~~>*/String name)throws DAOException;
 }

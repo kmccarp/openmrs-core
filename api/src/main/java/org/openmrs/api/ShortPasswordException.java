@@ -26,7 +26,7 @@ public class ShortPasswordException extends PasswordException {
 		super("error.password.short");
 	}
 	
-	public ShortPasswordException(String message) {
+	public ShortPasswordException(/*~~>*/String message) {
 		super(message);
 	}
 }

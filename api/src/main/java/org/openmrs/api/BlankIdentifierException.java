@@ -38,7 +38,7 @@ public class BlankIdentifierException extends PatientIdentifierException {
 	 * 
 	 * @param message helpful message string for the end user
 	 */
-	public BlankIdentifierException(String message) {
+	public BlankIdentifierException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -49,7 +49,7 @@ public class BlankIdentifierException extends PatientIdentifierException {
 	 * @param message helpful message string for the end user
 	 * @param identifier the identifier that is blank
 	 */
-	public BlankIdentifierException(String message, PatientIdentifier identifier) {
+	public BlankIdentifierException(/*~~>*/String message, PatientIdentifier identifier) {
 		super(message, identifier);
 	}
 	
@@ -59,7 +59,7 @@ public class BlankIdentifierException extends PatientIdentifierException {
 	 * @param message helpful message string for the end user
 	 * @param cause parent exception cause that this exception is wrapping around
 	 */
-	public BlankIdentifierException(String message, Throwable cause) {
+	public BlankIdentifierException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

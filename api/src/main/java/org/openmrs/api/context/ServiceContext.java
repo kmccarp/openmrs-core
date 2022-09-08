@@ -104,7 +104,7 @@ public class ServiceContext implements ApplicationContextAware {
 	 *
 	 * @since 1.9
 	 */
-	Map<String, OpenmrsService> moduleOpenmrsServices = new HashMap<>();
+	Map</*~~>*/String, OpenmrsService> moduleOpenmrsServices = new HashMap<>();
 	
 	/**
 	 * The default constructor is private so as to keep only one instance per java vm.
@@ -755,7 +755,7 @@ public class ServiceContext implements ApplicationContextAware {
 	 * @param params list of parameters
 	 */
 	public void setModuleService(List<Object> params) {
-		String classString = (String) params.get(0);
+		/*~~>*/String classString = (/*~~>*/String) params.get(0);
 		Object classInstance = params.get(1);
 		
 		if (classString == null || classInstance == null) {
@@ -786,7 +786,7 @@ public class ServiceContext implements ApplicationContextAware {
 					//pay attention that here, cls = Class.forName(classString), the system class loader and
 					//cls2 is the openmrs class loader, like above.
 					log.debug("cls==cls2: {}",
-					    String.valueOf(cls == OpenmrsClassLoader.getInstance().loadClass(classString)));
+					    /*~~>*/String.valueOf(cls == OpenmrsClassLoader.getInstance().loadClass(classString)));
 				}
 				catch (Exception e) { /*pass*/}
 			}
@@ -883,7 +883,7 @@ public class ServiceContext implements ApplicationContextAware {
 	 */
 	
 	public <T> List<T> getRegisteredComponents(Class<T> type) {
-		Map<String, T> m = getRegisteredComponents(applicationContext, type);
+		Map</*~~>*/String, T> m = getRegisteredComponents(applicationContext, type);
 		if (log.isTraceEnabled()) {
 			log.trace("getRegisteredComponents(" + type + ") = " + m);
 		}
@@ -899,7 +899,7 @@ public class ServiceContext implements ApplicationContextAware {
 	 *
 	 * @since 1.9.4
 	 */
-	public <T> T getRegisteredComponent(String beanName, Class<T> type) throws APIException {
+	public <T> T getRegisteredComponent(/*~~>*/String beanName, Class<T> type) throws APIException {
 		try {
 			return applicationContext.getBean(beanName, type);
 		}
@@ -917,9 +917,9 @@ public class ServiceContext implements ApplicationContextAware {
 	 * @return all components registered in a Spring applicationContext of a given type
 	 */
 	@SuppressWarnings("unchecked")
-	private <T> Map<String, T> getRegisteredComponents(ApplicationContext context, Class<T> type) {
-		Map<String, T> components = new HashMap<>();
-		Map<String, T> registeredComponents = context.getBeansOfType(type);
+	private <T> Map</*~~>*/String, T> getRegisteredComponents(ApplicationContext context, Class<T> type) {
+		Map</*~~>*/String, T> components = new HashMap<>();
+		Map</*~~>*/String, T> registeredComponents = context.getBeansOfType(type);
 		if (log.isTraceEnabled()) {
 			log.trace("getRegisteredComponents(" + context + ", " + type + ") = " + registeredComponents);
 		}
@@ -952,7 +952,7 @@ public class ServiceContext implements ApplicationContextAware {
 	 * @param classString the full instance class name including the package name.
 	 * @since 1.9
 	 */
-	private void runOpenmrsServiceOnStartup(final OpenmrsService openmrsService, final String classString) {
+	private void runOpenmrsServiceOnStartup(final OpenmrsService openmrsService, final /*~~>*/String classString) {
 		new Thread(() -> {
 			try {
 				synchronized (refreshingContextLock) {
@@ -983,10 +983,10 @@ public class ServiceContext implements ApplicationContextAware {
 	 * @return the list of service instances.
 	 * @since 1.9
 	 */
-	public List<OpenmrsService> getModuleOpenmrsServices(String modulePackage) {
+	public List<OpenmrsService> getModuleOpenmrsServices(/*~~>*/String modulePackage) {
 		List<OpenmrsService> openmrsServices = new ArrayList<>();
 		
-		for (Entry<String, OpenmrsService> entry : moduleOpenmrsServices.entrySet()) {
+		for (Entry</*~~>*/String, OpenmrsService> entry : moduleOpenmrsServices.entrySet()) {
 			if (entry.getKey().startsWith(modulePackage)) {
 				openmrsServices.add(entry.getValue());
 			}

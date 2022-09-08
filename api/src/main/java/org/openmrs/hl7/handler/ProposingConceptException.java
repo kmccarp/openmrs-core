@@ -21,7 +21,7 @@ public class ProposingConceptException extends APIException {
 	
 	private Concept concept;
 	
-	private String valueName;
+	private /*~~>*/String valueName;
 	
 	/**
 	 * Default constructor that takes in the required parameters
@@ -29,9 +29,9 @@ public class ProposingConceptException extends APIException {
 	 * @param concept the question for this proposed concept
 	 * @param valueName the proposed text for this concept
 	 */
-	public ProposingConceptException(Concept concept, String valueName) {
+	public ProposingConceptException(Concept concept, /*~~>*/String valueName) {
 		this.concept = concept;
-		this.valueName = valueName;
+		/*~~>*/this.valueName = valueName;
 	}
 	
 	/**
@@ -51,15 +51,15 @@ public class ProposingConceptException extends APIException {
 	/**
 	 * @return the valueName
 	 */
-	public String getValueName() {
+	public /*~~>*/String getValueName() {
 		return valueName;
 	}
 	
 	/**
 	 * @param valueName the valueName to set
 	 */
-	public void setValueName(String valueName) {
-		this.valueName = valueName;
+	public void setValueName(/*~~>*/String valueName) {
+		/*~~>*/this.valueName = valueName;
 	}
 	
 }

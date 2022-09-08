@@ -79,7 +79,7 @@ public class Result extends ArrayList<Result> {
 	
 	private Double valueNumeric;
 	
-	private String valueText;
+	private /*~~>*/String valueText;
 	
 	private Object resultObject;
 	
@@ -246,7 +246,7 @@ public class Result extends ArrayList<Result> {
 	 * 
 	 * @param valueText
 	 */
-	public Result(String valueText) {
+	public Result(/*~~>*/String valueText) {
 		this(new Date(), valueText, null);
 	}
 	
@@ -256,7 +256,7 @@ public class Result extends ArrayList<Result> {
 	 * @param resultDate
 	 * @param valueText
 	 */
-	public Result(Date resultDate, String valueText, Object obj) {
+	public Result(Date resultDate, /*~~>*/String valueText, Object obj) {
 		this(resultDate, Datatype.TEXT, null, null, null, null, valueText, obj);
 	}
 	
@@ -285,12 +285,12 @@ public class Result extends ArrayList<Result> {
 	 * @param object
 	 */
 	public Result(Date resultDate, Datatype datatype, Boolean valueBoolean, Concept valueCoded, Date valueDatetime,
-	    Double valueNumeric, String valueText, Object object) {
+	    Double valueNumeric, /*~~>*/String valueText, Object object) {
 		this.resultDatetime = resultDate;
 		this.valueNumeric = valueNumeric;
 		this.valueDatetime = valueDatetime;
 		this.valueCoded = valueCoded;
-		this.valueText = valueText;
+		/*~~>*/this.valueText = valueText;
 		this.valueBoolean = valueBoolean;
 		this.datatype = datatype;
 		this.resultObject = object;
@@ -386,8 +386,8 @@ public class Result extends ArrayList<Result> {
 	 * 
 	 * @param valueText
 	 */
-	public void setValueText(String valueText) {
-		this.valueText = valueText;
+	public void setValueText(/*~~>*/String valueText) {
+		/*~~>*/this.valueText = valueText;
 	}
 	
 	/**
@@ -614,7 +614,7 @@ public class Result extends ArrayList<Result> {
 	 *         all members a joined with commas.
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		if (isSingleResult()) {
 			if (datatype == null) {
 				return valueText == null ? "" : valueText;
@@ -628,7 +628,7 @@ public class Result extends ArrayList<Result> {
 				case DATETIME:
 					return (valueDatetime == null ? "" : Context.getDateFormat().format(valueDatetime));
 				case NUMERIC:
-					return (valueNumeric == null ? "" : String.valueOf(valueNumeric));
+					return (valueNumeric == null ? "" : /*~~>*/String.valueOf(valueNumeric));
 				case TEXT:
 					return (valueText == null ? "" : valueText);
 				default:
@@ -794,7 +794,7 @@ public class Result extends ArrayList<Result> {
 				case NUMERIC:
 					return (valueNumeric.equals(r.valueNumeric));
 				case TEXT:
-					return (valueText.equals(r.valueText));
+					return (valueText.equals(/*~~>*/r.valueText));
 				default:
 					return false;
 			}

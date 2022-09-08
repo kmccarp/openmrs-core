@@ -60,15 +60,15 @@ public class ModuleFileParser {
 	
 	private static final Logger log = LoggerFactory.getLogger(ModuleFileParser.class);
 
-	private static final String MODULE_CONFIG_XML_FILENAME = "config.xml";
+	private static final /*~~>*/String MODULE_CONFIG_XML_FILENAME = "config.xml";
 
-	private static final String OPENMRS_MODULE_FILE_EXTENSION = ".omod";
+	private static final /*~~>*/String OPENMRS_MODULE_FILE_EXTENSION = ".omod";
 	
 	/**
 	 * List out all of the possible version numbers for config files that openmrs has DTDs for.
 	 * These are usually stored at http://resources.openmrs.org/doctype/config-x.x.dt
 	 */
-	private static List<String> validConfigVersions = new ArrayList<>();
+	private static List</*~~>*/String> validConfigVersions = new ArrayList<>();
 	
 	static {
 		validConfigVersions.add("1.0");
@@ -151,7 +151,7 @@ public class ModuleFileParser {
 		return parse(moduleFile);
 	}
 
-	private File createTempFile(String prefix, String suffix) {
+	private File createTempFile(/*~~>*/String prefix, /*~~>*/String suffix) {
 		File file;
 		try {
 			file = File.createTempFile(prefix, suffix);
@@ -257,7 +257,7 @@ public class ModuleFileParser {
 		catch (Exception e) {
 			log.error("Error parsing " + MODULE_CONFIG_XML_FILENAME + ": " + configStream.toString(), e);
 
-			String output = "";
+			/*~~>*/String output = "";
 			try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
 				// Now copy bytes from the URL to the output stream
 				byte[] buffer = new byte[4096];
@@ -293,15 +293,15 @@ public class ModuleFileParser {
 	private Module createModule(Document config, File moduleFile) {
 		Element configRoot = config.getDocumentElement();
 
-		String configVersion = ensureValidModuleConfigVersion(configRoot, moduleFile);
+		/*~~>*/String configVersion = ensureValidModuleConfigVersion(configRoot, moduleFile);
 		
-		String name = ensureNonEmptyName(configRoot, moduleFile);
-		String moduleId = ensureNonEmptyId(configRoot, name);
-		String packageName = ensureNonEmptyPackage(configRoot, name);
+		/*~~>*/String name = ensureNonEmptyName(configRoot, moduleFile);
+		/*~~>*/String moduleId = ensureNonEmptyId(configRoot, name);
+		/*~~>*/String packageName = ensureNonEmptyPackage(configRoot, name);
 		
-		String author = getElementTrimmed(configRoot, "author");
-		String desc = getElementTrimmed(configRoot, "description");
-		String version = getElementTrimmed(configRoot, "version");
+		/*~~>*/String author = getElementTrimmed(configRoot, "author");
+		/*~~>*/String desc = getElementTrimmed(configRoot, "description");
+		/*~~>*/String version = getElementTrimmed(configRoot, "version");
 
 		Module module = new Module(name, moduleId, packageName, author, desc, version);
 
@@ -328,29 +328,29 @@ public class ModuleFileParser {
 		return module;
 	}
 
-	private String ensureValidModuleConfigVersion(Element configRoot, File moduleFile) {
-		String configVersion = configRoot.getAttribute("configVersion").trim();
+	private /*~~>*/String ensureValidModuleConfigVersion(Element configRoot, File moduleFile) {
+		/*~~>*/String configVersion = configRoot.getAttribute("configVersion").trim();
 		validateModuleConfigVersion(configVersion, moduleFile);
 		return configVersion;
 	}
 
-	private void validateModuleConfigVersion(String version, File moduleFile) {
+	private void validateModuleConfigVersion(/*~~>*/String version, File moduleFile) {
 		if (!validConfigVersions.contains(version)) {
 			throw new ModuleException(Context.getMessageSourceService().getMessage("Module.error.invalidConfigVersion",
-				new Object[] { version, String.join(", ", validConfigVersions) }, Context.getLocale()),
+				new Object[] { version, /*~~>*/String.join(", ", validConfigVersions) }, Context.getLocale()),
 				moduleFile.getName());
 		}
 	}
 
-	private String ensureNonEmptyName(Element configRoot, File moduleFile) {
+	private /*~~>*/String ensureNonEmptyName(Element configRoot, File moduleFile) {
 		return getTrimmedElementOrFail(configRoot, "name", "Module.error.nameCannotBeEmpty", moduleFile.getName());
 	}
 
-	private String ensureNonEmptyId(Element configRoot, String name) {
+	private /*~~>*/String ensureNonEmptyId(Element configRoot, /*~~>*/String name) {
 		return getTrimmedElementOrFail(configRoot, "id", "Module.error.idCannotBeEmpty", name);
 	}
 
-	private String ensureNonEmptyPackage(Element configRoot, String name) {
+	private /*~~>*/String ensureNonEmptyPackage(Element configRoot, /*~~>*/String name) {
 		return getTrimmedElementOrFail(configRoot, "package", "Module.error.packageCannotBeEmpty", name);
 	}
 
@@ -360,7 +360,7 @@ public class ModuleFileParser {
 	 * @return map from module package name to required version
 	 * @since 1.5
 	 */
-	private Map<String, String> extractRequiredModules(Element configRoot) {
+	private Map</*~~>*/String, /*~~>*/String> extractRequiredModules(Element configRoot) {
 		return extractModulesWithVersionAttribute(configRoot, "require_module", "require_modules");
 	}
 	
@@ -370,20 +370,20 @@ public class ModuleFileParser {
 	 * @return map from module package name to aware of version
 	 * @since 1.9
 	 */
-	private Map<String, String> extractAwareOfModules(Element configRoot) {
+	private Map</*~~>*/String, /*~~>*/String> extractAwareOfModules(Element configRoot) {
 		return extractModulesWithVersionAttribute(configRoot, "aware_of_module", "aware_of_modules");
 	}
 	
-	private Map<String, String> extractStartBeforeModules(Element configRoot) {
+	private Map</*~~>*/String, /*~~>*/String> extractStartBeforeModules(Element configRoot) {
 		return extractModulesWithVersionAttribute(configRoot, "module", "start_before_modules");
 	}
 
-	private Map<String, String> extractModulesWithVersionAttribute(Element configRoot, String elementName,
-		String elementParentName) {
+	private Map</*~~>*/String, /*~~>*/String> extractModulesWithVersionAttribute(Element configRoot, /*~~>*/String elementName,
+		/*~~>*/String elementParentName) {
 		
 		NodeList parents = configRoot.getElementsByTagName(elementParentName);
 		
-		Map<String, String> result = new HashMap<>();
+		Map</*~~>*/String, /*~~>*/String> result = new HashMap<>();
 		if (parents.getLength() == 0) {
 			return result;
 		}
@@ -395,7 +395,7 @@ public class ModuleFileParser {
 		while (i < children.getLength()) {
 			Element child = (Element) children.item(i);
 			Attr versionAttribute = child.getAttributeNode("version");
-			String version = versionAttribute == null ? null : versionAttribute.getValue();
+			/*~~>*/String version = versionAttribute == null ? null : versionAttribute.getValue();
 			result.put(child.getTextContent().trim(), version);
 			i++;
 		}
@@ -415,8 +415,8 @@ public class ModuleFileParser {
 		int i = 0;
 		while (i < advice.getLength()) {
 			Element element = (Element) advice.item(i);
-			String point = getElementTrimmed(element, "point");
-			String adviceClass = getElementTrimmed(element, "class");
+			/*~~>*/String point = getElementTrimmed(element, "point");
+			/*~~>*/String adviceClass = getElementTrimmed(element, "class");
 			log.debug("advice point: {}, class: {}", point, adviceClass);
 
 			if (point.isEmpty() || adviceClass.isEmpty()) {
@@ -430,9 +430,9 @@ public class ModuleFileParser {
 		return result;
 	}
 
-	private Map<String, String> extractExtensions(Element configRoot) {
+	private Map</*~~>*/String, /*~~>*/String> extractExtensions(Element configRoot) {
 
-		Map<String, String> result = new IdentityHashMap<>();
+		Map</*~~>*/String, /*~~>*/String> result = new IdentityHashMap<>();
 
 		NodeList extensions = configRoot.getElementsByTagName("extension");
 		if (extensions.getLength() == 0) {
@@ -443,14 +443,14 @@ public class ModuleFileParser {
 		int i = 0;
 		while (i < extensions.getLength()) {
 			Element element = (Element) extensions.item(i);
-			String point = getElementTrimmed(element, "point");
-			String extClass = getElementTrimmed(element, "class");
+			/*~~>*/String point = getElementTrimmed(element, "point");
+			/*~~>*/String extClass = getElementTrimmed(element, "class");
 			log.debug("extension point: {}, class: {}", point, extClass);
 
 			if (point.isEmpty() || extClass.isEmpty()) {
 				log.warn("'point' and 'class' are required for extensions. Given '{}' and '{}'", point, extClass);
-			} else if (point.contains(Extension.EXTENSION_ID_SEPARATOR)) {
-				log.warn("Point id contains illegal character: '{}'", Extension.EXTENSION_ID_SEPARATOR);
+			} else if (point.contains(/*~~>*/Extension.EXTENSION_ID_SEPARATOR)) {
+				log.warn("Point id contains illegal character: '{}'", /*~~>*/Extension.EXTENSION_ID_SEPARATOR);
 			} else {
 				result.put(point, extClass);
 			}
@@ -472,8 +472,8 @@ public class ModuleFileParser {
 		int i = 0;
 		while (i < privileges.getLength()) {
 			Element element = (Element) privileges.item(i);
-			String name = getElementTrimmed(element, "name");
-			String description = getElementTrimmed(element, "description");
+			/*~~>*/String name = getElementTrimmed(element, "name");
+			/*~~>*/String description = getElementTrimmed(element, "description");
 			log.debug("extension name: {}, description: {}", name, description);
 
 			if (name.isEmpty() || description.isEmpty()) {
@@ -512,11 +512,11 @@ public class ModuleFileParser {
 	}
 
 	private GlobalProperty extractGlobalProperty(Element element) {
-		String property = getElementTrimmed(element, "property");
-		String defaultValue = getElementTrimmed(element, "defaultValue");
-		String description = removeTabsAndTrim(getElementTrimmed(element, "description"));
-		String datatypeClassname = getElementTrimmed(element, "datatypeClassname");
-		String datatypeConfig = getElementTrimmed(element, "datatypeConfig");
+		/*~~>*/String property = getElementTrimmed(element, "property");
+		/*~~>*/String defaultValue = getElementTrimmed(element, "defaultValue");
+		/*~~>*/String description = removeTabsAndTrim(getElementTrimmed(element, "description"));
+		/*~~>*/String datatypeClassname = getElementTrimmed(element, "datatypeClassname");
+		/*~~>*/String datatypeConfig = getElementTrimmed(element, "datatypeConfig");
 		
 		log.debug("property: {}, defaultValue: {}", property, defaultValue);
 		log.debug("description: {}, datatypeClassname: {}", description, datatypeClassname);
@@ -526,12 +526,12 @@ public class ModuleFileParser {
 			datatypeConfig);
 	}
 
-	private String removeTabsAndTrim(String string) {
+	private /*~~>*/String removeTabsAndTrim(/*~~>*/String string) {
 		return string.replaceAll("	", "").trim();
 	}
 
-	private GlobalProperty createGlobalProperty(String property, String defaultValue, String description,
-		String datatypeClassname, String datatypeConfig) {
+	private GlobalProperty createGlobalProperty(/*~~>*/String property, /*~~>*/String defaultValue, /*~~>*/String description,
+		/*~~>*/String datatypeClassname, /*~~>*/String datatypeConfig) {
 
 		GlobalProperty globalProperty = null;
 		if (property.isEmpty()) {
@@ -548,8 +548,8 @@ public class ModuleFileParser {
 		return globalProperty;
 	}
 
-	private GlobalProperty createGlobalPropertyWithDatatype(String property, String defaultValue, String description,
-		String datatypeClassname, String datatypeConfig) {
+	private GlobalProperty createGlobalPropertyWithDatatype(/*~~>*/String property, /*~~>*/String defaultValue, /*~~>*/String description,
+		/*~~>*/String datatypeClassname, /*~~>*/String datatypeConfig) {
 		GlobalProperty globalProperty = null;
 		try {
 			Class<CustomDatatype<?>> datatypeClazz = (Class<CustomDatatype<?>>) Class.forName(datatypeClassname)
@@ -567,22 +567,22 @@ public class ModuleFileParser {
 		return globalProperty;
 	}
 
-	private List<String> extractMappingFiles(Element configRoot) {
-		List<String> result = new ArrayList<>();
+	private List</*~~>*/String> extractMappingFiles(Element configRoot) {
+		List</*~~>*/String> result = new ArrayList<>();
 		splitTagContentByWhitespace(configRoot, "mappingFiles", result);
 		return result;
 	}
 
-	private Set<String> extractPackagesWithMappedClasses(Element configRoot) {
-		Set<String> result = new HashSet<>();
+	private Set</*~~>*/String> extractPackagesWithMappedClasses(Element configRoot) {
+		Set</*~~>*/String> result = new HashSet<>();
 		splitTagContentByWhitespace(configRoot, "packagesWithMappedClasses", result);
 		return result;
 	}
 
-	private Collection<String> splitTagContentByWhitespace(Element rootNode, String tag, Collection<String> result) {
-		String content = getElement(rootNode, tag);
-		for (String s : content.split("\\s")) {
-			String s2 = s.trim();
+	private Collection</*~~>*/String> splitTagContentByWhitespace(Element rootNode, /*~~>*/String tag, Collection</*~~>*/String> result) {
+		/*~~>*/String content = getElement(rootNode, tag);
+		for (/*~~>*/String s : content.split("\\s")) {
+			/*~~>*/String s2 = s.trim();
 			if (s2.length() > 0) {
 				result.add(s2);
 			}
@@ -590,8 +590,8 @@ public class ModuleFileParser {
 		return result;
 	}
 	
-	private String getTrimmedElementOrFail(Element rootNode, String elementName, String errorMessageKey, String moduleName) {
-		String element = getElementTrimmed(rootNode, elementName);
+	private /*~~>*/String getTrimmedElementOrFail(Element rootNode, /*~~>*/String elementName, /*~~>*/String errorMessageKey, /*~~>*/String moduleName) {
+		/*~~>*/String element = getElementTrimmed(rootNode, elementName);
 		if (element == null || element.length() == 0) {
 			throw new ModuleException(messageSourceService.getMessage(errorMessageKey),
 				moduleName);
@@ -599,11 +599,11 @@ public class ModuleFileParser {
 		return element;
 	}
 
-	private String getElementTrimmed(Element element, String name) {
+	private /*~~>*/String getElementTrimmed(Element element, /*~~>*/String name) {
 		return getElement(element, name).trim();
 	}
 
-	private String getElement(Element root, String tag) {
+	private /*~~>*/String getElement(Element root, /*~~>*/String tag) {
 		if (root.getElementsByTagName(tag).getLength() > 0) {
 			return root.getElementsByTagName(tag).item(0).getTextContent();
 		}
@@ -614,9 +614,9 @@ public class ModuleFileParser {
 	 * Looks for the "<mandatory>" element in the config file and returns true if the value is
 	 * exactly "true".
 	 */
-	private boolean extractMandatory(Element configRoot, String configVersion) {
+	private boolean extractMandatory(Element configRoot, /*~~>*/String configVersion) {
 		if (Double.parseDouble(configVersion) >= 1.3) {
-			String mandatory = getElementTrimmed(configRoot, "mandatory");
+			/*~~>*/String mandatory = getElementTrimmed(configRoot, "mandatory");
 			return "true".equalsIgnoreCase(mandatory);
 		}
 

@@ -30,17 +30,17 @@ public class InsertWithUuidDataChangeDatabaseIT extends H2DatabaseIT {
 	public void shouldInsertUuids() throws Exception {
 		this.updateDatabase("org/openmrs/liquibase/liquibase-test-insert-with-uuid.xml");
 		
-		Map<String, String> expected = new HashMap<>();
+		Map</*~~>*/String, /*~~>*/String> expected = new HashMap<>();
 		expected.put("alpha", "alpha123-alph-alph-alph-alpha1234567");
 		expected.put("bravo", "bravo123-brav-brav-brav-bravo1234567");
 		
-		Map<String, String> actual = getNamesWithUuids();
+		Map</*~~>*/String, /*~~>*/String> actual = getNamesWithUuids();
 		
 		assertEquals(3, actual.size());
 		assertEquals(expected.get("alpha"), actual.get("alpha"));
 		assertEquals(expected.get("bravo"), actual.get("bravo"));
 		
-		String uuid = actual.get("charlie");
+		/*~~>*/String uuid = actual.get("charlie");
 		assertNotNull(uuid);
 		try {
 			UUID.fromString(uuid);
@@ -50,11 +50,11 @@ public class InsertWithUuidDataChangeDatabaseIT extends H2DatabaseIT {
 		}
 	}
 	
-	protected Map<String, String> getNamesWithUuids() throws SQLException {
-		Map<String, String> result = new HashMap<>();
+	protected Map</*~~>*/String, /*~~>*/String> getNamesWithUuids() throws SQLException {
+		Map</*~~>*/String, /*~~>*/String> result = new HashMap<>();
 		try (Connection connection = getConnection();
 			Statement statement = connection.createStatement()) {
-			String query = "select * from name_with_uuid";
+			/*~~>*/String query = "select * from name_with_uuid";
 			statement.execute(query);
 			
 			ResultSet resultSet = statement.getResultSet();

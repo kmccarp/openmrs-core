@@ -27,7 +27,7 @@ public abstract class BaseEncounterVisitHandler implements EncounterVisitHandler
 	 * @return a displayable string so that users can pick between different assignment handlers
 	 */
 	@Override
-	public String getDisplayName() {
+	public /*~~>*/String getDisplayName() {
 		return getDisplayName(Context.getLocale());
 	}
 	

@@ -37,7 +37,7 @@ public class TestTypeFilter implements TypeFilter {
 	/**
 	 * Any class with a super class in this list will not be loaded (scanned) by Spring
 	 */
-	private static List<String> superClassNamesToExclude = new ArrayList<>();
+	private static List</*~~>*/String> superClassNamesToExclude = new ArrayList<>();
 	
 	static {
 		superClassNamesToExclude.add("org.openmrs.test.BaseContextSensitiveTest");
@@ -55,7 +55,7 @@ public class TestTypeFilter implements TypeFilter {
 	 */
 	@Override
 	public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
-		String superClassName = metadataReader.getClassMetadata().getSuperClassName();
+		/*~~>*/String superClassName = metadataReader.getClassMetadata().getSuperClassName();
 		if (superClassName != null) {
 			return superClassNamesToExclude.contains(superClassName);
 		}

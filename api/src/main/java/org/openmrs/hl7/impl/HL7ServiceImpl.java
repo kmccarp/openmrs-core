@@ -195,7 +195,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public HL7Source getHL7SourceByName(String name) throws APIException {
+	public HL7Source getHL7SourceByName(/*~~>*/String name) throws APIException {
 		return dao.getHL7SourceByName(name);
 	}
 	
@@ -213,7 +213,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<HL7InQueue> getHL7InQueueBatch(int start, int length, int messageState, String query) throws APIException {
+	public List<HL7InQueue> getHL7InQueueBatch(int start, int length, int messageState, /*~~>*/String query) throws APIException {
 		return dao.getHL7Batch(HL7InQueue.class, start, length, messageState, query);
 	}
 	
@@ -222,7 +222,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<HL7InError> getHL7InErrorBatch(int start, int length, String query) throws APIException {
+	public List<HL7InError> getHL7InErrorBatch(int start, int length, /*~~>*/String query) throws APIException {
 		return dao.getHL7Batch(HL7InError.class, start, length, null, query);
 	}
 	
@@ -231,7 +231,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<HL7InArchive> getHL7InArchiveBatch(int start, int length, int messageState, String query)
+	public List<HL7InArchive> getHL7InArchiveBatch(int start, int length, int messageState, /*~~>*/String query)
 	        throws APIException {
 		return dao.getHL7Batch(HL7InArchive.class, start, length, messageState, query);
 	}
@@ -241,7 +241,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Integer countHL7InQueue(int messageState, String query) throws APIException {
+	public Integer countHL7InQueue(int messageState, /*~~>*/String query) throws APIException {
 		return OpenmrsUtil.convertToInteger(dao.countHL7s(HL7InQueue.class, messageState, query));
 	}
 	
@@ -250,7 +250,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Integer countHL7InError(String query) throws APIException {
+	public Integer countHL7InError(/*~~>*/String query) throws APIException {
 		return OpenmrsUtil.convertToInteger(dao.countHL7s(HL7InError.class, null, query));
 	}
 	
@@ -259,7 +259,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Integer countHL7InArchive(int messageState, String query) throws APIException {
+	public Integer countHL7InArchive(int messageState, /*~~>*/String query) throws APIException {
 		return OpenmrsUtil.convertToInteger(dao.countHL7s(HL7InArchive.class, messageState, query));
 	}
 	
@@ -298,7 +298,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public HL7InQueue getHL7InQueueByUuid(String uuid) throws APIException {
+	public HL7InQueue getHL7InQueueByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getHL7InQueueByUuid(uuid);
 	}
 	
@@ -414,7 +414,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public HL7InError getHL7InErrorByUuid(String uuid) throws APIException {
+	public HL7InError getHL7InErrorByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getHL7InErrorByUuid(uuid);
 	}
 	
@@ -424,7 +424,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
  	 * @param gName given name
  	 * @return error string. User can not be resolveUserId
  	 */
- 	private String getFindingUserErrorMessage(String idNum, String fName, String gName) {
+ 	private /*~~>*/String getFindingUserErrorMessage(/*~~>*/String idNum, /*~~>*/String fName, /*~~>*/String gName) {
 	    return "Error resolving user with id '" + idNum + "' family name '" + fName
 			      + "' and given name '" + gName + "'";
  	}
@@ -438,9 +438,9 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	@Override
 	@Transactional(readOnly = true)
 	public Integer resolveUserId(XCN xcn) throws HL7Exception {
-		String idNumber = xcn.getIDNumber().getValue();
-		String familyName = xcn.getFamilyName().getSurname().getValue();
-		String givenName = xcn.getGivenName().getValue();
+		/*~~>*/String idNumber = xcn.getIDNumber().getValue();
+		/*~~>*/String familyName = xcn.getFamilyName().getSurname().getValue();
+		/*~~>*/String givenName = xcn.getGivenName().getValue();
 		
 		if (idNumber != null && idNumber.length() > 0) {
 			try {
@@ -497,9 +497,9 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	@Override
 	@Transactional(readOnly = true)
 	public Integer resolvePersonId(XCN xcn) throws HL7Exception {
-		String idNumber = xcn.getIDNumber().getValue();
-		String familyName = xcn.getFamilyName().getSurname().getValue();
-		String givenName = xcn.getGivenName().getValue();
+		/*~~>*/String idNumber = xcn.getIDNumber().getValue();
+		/*~~>*/String familyName = xcn.getFamilyName().getSurname().getValue();
+		/*~~>*/String givenName = xcn.getGivenName().getValue();
 		
 		if (idNumber != null && idNumber.length() > 0) {
 			try {
@@ -534,8 +534,8 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	public Integer resolveLocationId(PL pl) throws HL7Exception {
 		// TODO: Get rid of hack that allows first component to be an integer
 		// location.location_id
-		String pointOfCare = pl.getPointOfCare().getValue();
-		String facility = pl.getFacility().getUniversalID().getValue();
+		/*~~>*/String pointOfCare = pl.getPointOfCare().getValue();
+		/*~~>*/String facility = pl.getFacility().getUniversalID().getValue();
 		// HACK: try to treat the first component (which should be "Point of
 		// Care" as an internal openmrs location_id
 		try {
@@ -606,10 +606,10 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 		
 		// Take the first uniquely matching identifier
 		for (CX identifier : identifiers) {
-			String hl7PersonId = identifier.getIDNumber().getValue();
+			/*~~>*/String hl7PersonId = identifier.getIDNumber().getValue();
 			// TODO if 1st component is blank, check 2nd and 3rd of assigning
 			// authority
-			String assigningAuthority = identifier.getAssigningAuthority().getNamespaceID().getValue();
+			/*~~>*/String assigningAuthority = identifier.getAssigningAuthority().getNamespaceID().getValue();
 			
 			if (StringUtils.isNotBlank(assigningAuthority)) {
 				// Assigning authority defined
@@ -618,7 +618,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 					    assigningAuthority);
 					if (pit == null) {
 						// there is no matching PatientIdentifierType
-						if (assigningAuthority.equals(HL7Constants.HL7_AUTHORITY_UUID)) {
+						if (assigningAuthority.equals(/*~~>*/HL7Constants.HL7_AUTHORITY_UUID)) {
 							// the identifier is a UUID
 							Person p = Context.getPersonService().getPersonByUuid(hl7PersonId);
 							if (p != null) {
@@ -626,9 +626,9 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 							}
 							log.warn("Can't find person for UUID '" + hl7PersonId + "'");
 							continue; // skip identifiers with unknown type
-						} else if (assigningAuthority.equals(HL7Constants.HL7_AUTHORITY_LOCAL)) {
+						} else if (assigningAuthority.equals(/*~~>*/HL7Constants.HL7_AUTHORITY_LOCAL)) {
 							// the ID is internal (local)
-							String idType = identifier.getIdentifierTypeCode().getValue();
+							/*~~>*/String idType = identifier.getIdentifierTypeCode().getValue();
 							try {
 								if (idType.equals(HL7Constants.HL7_ID_PERSON)) {
 									Integer pid = Integer.parseInt(hl7PersonId);
@@ -717,7 +717,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 		log.debug("Processing HL7 inbound queue (id={},key={})", hl7InQueue.getHL7InQueueId(), hl7InQueue.getHL7SourceKey());
 		
 		// Parse the HL7 into an HL7Message or abort with failure
-		String hl7Message = hl7InQueue.getHL7Data();
+		/*~~>*/String hl7Message = hl7InQueue.getHL7Data();
 		try {
 			// Parse the inbound HL7 message using the parser
 			// NOT making a direct call here so that AOP can happen around this
@@ -744,12 +744,12 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 			log.debug("Hl7inqueue source: " + hl7InQueue.getHL7Source());
 			log.debug("hl7_processor.ignore_missing_patient_non_local? "
 			        + Context.getAdministrationService().getGlobalProperty(
-			            OpenmrsConstants.GLOBAL_PROPERTY_IGNORE_MISSING_NONLOCAL_PATIENTS, "false"));
+			            /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_IGNORE_MISSING_NONLOCAL_PATIENTS, "false"));
 			if (e.getCause() != null
 			        && "Could not resolve patient".equals(e.getCause().getMessage())
 			        && !"local".equals(hl7InQueue.getHL7Source().getName())
 			        && "true".equals(Context.getAdministrationService().getGlobalProperty(
-			            OpenmrsConstants.GLOBAL_PROPERTY_IGNORE_MISSING_NONLOCAL_PATIENTS, "false"))) {
+			            /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_IGNORE_MISSING_NONLOCAL_PATIENTS, "false"))) {
 				skipError = true;
 			}
 			if (!skipError) {
@@ -769,7 +769,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	 * Convenience method to respond to fatal errors by moving the queue entry into an error bin
 	 * prior to aborting
 	 */
-	private void setFatalError(HL7InQueue hl7InQueue, String error, Throwable cause) {
+	private void setFatalError(HL7InQueue hl7InQueue, /*~~>*/String error, Throwable cause) {
 		HL7InError hl7InError = new HL7InError(hl7InQueue);
 		hl7InError.setError(error);
 		if (cause == null) {
@@ -787,7 +787,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	 * @see org.openmrs.hl7.HL7Service#parseHL7String(String)
 	 */
 	@Override
-	public Message parseHL7String(String hl7Message) throws HL7Exception {
+	public Message parseHL7String(/*~~>*/String hl7Message) throws HL7Exception {
 		// Any pre-parsing for HL7 messages would go here
 		// or a module can use AOP to pre-parse the message
 		
@@ -811,7 +811,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public HL7InArchive getHL7InArchiveByUuid(String uuid) throws APIException {
+	public HL7InArchive getHL7InArchiveByUuid(/*~~>*/String uuid) throws APIException {
 		if (Hl7InArchivesMigrateThread.isActive()) {
 			throw new APIException("Hl7Service.cannot.fetch.archives", (Object[]) null);
 		}
@@ -851,16 +851,16 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	 *
 	 * @param handlers a map from MessageName to Application object
 	 */
-	public void setHL7Handlers(Map<String, Application> handlers) {
+	public void setHL7Handlers(Map</*~~>*/String, Application> handlers) {
 		// loop over all the given handlers and add them to the router
-		for (Map.Entry<String, Application> entry : handlers.entrySet()) {
-			String messageName = entry.getKey();
+		for (Map.Entry</*~~>*/String, Application> entry : handlers.entrySet()) {
+			/*~~>*/String messageName = entry.getKey();
 			if (!messageName.contains("_")) {
 				throw new APIException("Hl7Service.invalid.messageName", (Object[]) null);
 			}
 			
-			String messageType = messageName.split("_")[0];
-			String triggerEvent = messageName.split("_")[1];
+			/*~~>*/String messageType = messageName.split("_")[0];
+			/*~~>*/String triggerEvent = messageName.split("_")[1];
 			
 			router.registerApplication(messageType, triggerEvent, entry.getValue());
 		}
@@ -879,7 +879,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 		
 		// UUID
 		CX[] identifiers = nk1.getNextOfKinAssociatedPartySIdentifiers();
-		String uuid = getUuidFromIdentifiers(identifiers);
+		/*~~>*/String uuid = getUuidFromIdentifiers(identifiers);
 		if (Context.getPersonService().getPersonByUuid(uuid) != null) {
 			throw new HL7Exception("Non-unique UUID '" + uuid + "' for new person");
 		}
@@ -889,8 +889,8 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 		List<PatientIdentifier> goodIdentifiers = new ArrayList<>();
 		for (CX id : identifiers) {
 			
-			String assigningAuthority = id.getAssigningAuthority().getNamespaceID().getValue();
-			String hl7PatientId = id.getIDNumber().getValue();
+			/*~~>*/String assigningAuthority = id.getAssigningAuthority().getNamespaceID().getValue();
+			/*~~>*/String hl7PatientId = id.getIDNumber().getValue();
 			
 			log.debug("identifier has id=" + hl7PatientId + " assigningAuthority=" + assigningAuthority);
 			
@@ -954,7 +954,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 		}
 		
 		// Gender (checks for null, but not for 'M' or 'F')
-		String gender = nk1.getAdministrativeSex().getValue();
+		/*~~>*/String gender = nk1.getAdministrativeSex().getValue();
 		if (gender == null) {
 			throw new HL7Exception("Missing gender in an NK1 segment");
 		}
@@ -974,7 +974,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 		// Estimated birthdate?
 		ID precisionTemp = dateOfBirth.getDegreeOfPrecision();
 		if (precisionTemp != null && precisionTemp.getValue() != null) {
-			String precision = precisionTemp.getValue().toUpperCase();
+			/*~~>*/String precision = precisionTemp.getValue().toUpperCase();
 			log.debug("The birthdate is estimated: " + precision);
 			
 			if ("Y".equals(precision) || "L".equals(precision)) {
@@ -996,9 +996,9 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	 * @see org.openmrs.hl7.HL7Service#getUuidFromIdentifiers(ca.uhn.hl7v2.model.v25.datatype.CX[])
 	 */
 	@Override
-	public String getUuidFromIdentifiers(CX[] identifiers) throws HL7Exception {
+	public /*~~>*/String getUuidFromIdentifiers(CX[] identifiers) throws HL7Exception {
 		boolean found = false;
-		String uuid = null;
+		/*~~>*/String uuid = null;
 		for (CX identifier : identifiers) {
 			// check for UUID as the assigning authority
 			if (OpenmrsUtil.nullSafeEquals(identifier.getAssigningAuthority().getNamespaceID().getValue(), "UUID")) {
@@ -1055,7 +1055,7 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	 * @see org.openmrs.hl7.HL7Service#migrateHl7InArchivesToFileSystem(Map)
 	 */
 	@Override
-	public void migrateHl7InArchivesToFileSystem(Map<String, Integer> progressStatusMap) throws APIException {
+	public void migrateHl7InArchivesToFileSystem(Map</*~~>*/String, Integer> progressStatusMap) throws APIException {
 		int numberTransferred = 0;
 		int numberOfFailedTransfers = 0;
 		
@@ -1074,10 +1074,10 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 				
 				try {
 					migrateHL7InArchive(archive);
-					progressStatusMap.put(HL7Constants.NUMBER_TRANSFERRED_KEY, numberTransferred++);
+					progressStatusMap.put(/*~~>*/HL7Constants.NUMBER_TRANSFERRED_KEY, numberTransferred++);
 				}
 				catch (DAOException e) {
-					progressStatusMap.put(HL7Constants.NUMBER_OF_FAILED_TRANSFERS_KEY, numberOfFailedTransfers++);
+					progressStatusMap.put(/*~~>*/HL7Constants.NUMBER_OF_FAILED_TRANSFERS_KEY, numberOfFailedTransfers++);
 				}
 			}
 			
@@ -1187,20 +1187,20 @@ public class HL7ServiceImpl extends BaseOpenmrsService implements HL7Service {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public HL7QueueItem getHl7QueueItemByUuid(String uuid) throws APIException {
+	public HL7QueueItem getHl7QueueItemByUuid(/*~~>*/String uuid) throws APIException {
 		HL7QueueItem result = getHL7InQueueByUuid(uuid);
 		if (result != null) {
-			Context.hasPrivilege(PrivilegeConstants.GET_HL7_IN_QUEUE);
+			Context.hasPrivilege(/*~~>*/PrivilegeConstants.GET_HL7_IN_QUEUE);
 			return result;
 		}
 		result = getHL7InErrorByUuid(uuid);
 		if (result != null) {
-			Context.hasPrivilege(PrivilegeConstants.GET_HL7_IN_EXCEPTION);
+			Context.hasPrivilege(/*~~>*/PrivilegeConstants.GET_HL7_IN_EXCEPTION);
 			return result;
 		}
 		result = getHL7InArchiveByUuid(uuid);
 		if (result != null) {
-			Context.hasPrivilege(PrivilegeConstants.GET_HL7_IN_ARCHIVE);
+			Context.hasPrivilege(/*~~>*/PrivilegeConstants.GET_HL7_IN_ARCHIVE);
 			return result;
 		}
 		return null;

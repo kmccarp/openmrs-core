@@ -18,15 +18,15 @@ public class MissingRequiredIdentifierException extends PatientIdentifierExcepti
 	public MissingRequiredIdentifierException() {
 	}
 	
-	public MissingRequiredIdentifierException(String message) {
+	public MissingRequiredIdentifierException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public MissingRequiredIdentifierException(String message, PatientIdentifier identifier) {
+	public MissingRequiredIdentifierException(/*~~>*/String message, PatientIdentifier identifier) {
 		super(message, identifier);
 	}
 	
-	public MissingRequiredIdentifierException(String message, Throwable cause) {
+	public MissingRequiredIdentifierException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

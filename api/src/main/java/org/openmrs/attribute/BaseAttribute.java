@@ -38,7 +38,7 @@ public abstract class BaseAttribute<AT extends AttributeType, OwningType extends
 	// value pulled from the database
 	@Field
 	@Column(name = "value_reference", nullable = false, length = 65535)
-	private String valueReference;
+	private /*~~>*/String valueReference;
 	
 	// temporarily holds a typed value, either when getValue() is called the first time (causing valueReference to be converted) or when setValue has been called, but this attribute has not yet been committed to persistent storage
 	private transient Object value;
@@ -88,7 +88,7 @@ public abstract class BaseAttribute<AT extends AttributeType, OwningType extends
 	 * @see org.openmrs.customdatatype.SingleCustomValue#getValueReference()
 	 */
 	@Override
-	public String getValueReference() {
+	public /*~~>*/String getValueReference() {
 		if (valueReference == null) {
 			throw new NotYetPersistedException();
 		} else {
@@ -100,8 +100,8 @@ public abstract class BaseAttribute<AT extends AttributeType, OwningType extends
 	 * @see org.openmrs.customdatatype.SingleCustomValue#setValueReferenceInternal(java.lang.String)
 	 */
 	@Override
-	public void setValueReferenceInternal(String valueReference) throws InvalidCustomValueException {
-		this.valueReference = valueReference;
+	public void setValueReferenceInternal(/*~~>*/String valueReference) throws InvalidCustomValueException {
+		/*~~>*/this.valueReference = valueReference;
 		this.dirty = false;
 	}
 	

@@ -87,7 +87,7 @@ public interface LogicDataSource {
 	 * Implementations should override this like
 	 *     public static final String NAME = "person";
 	 */
-	public static String NAME = "org.openmrs.logic.LogicDataSource.name";
+	public static /*~~>*/String NAME = "org.openmrs.logic.LogicDataSource.name";
 	
 	/**
 	 * Extracts data from the data source. Actually, this function only checks for cached data and
@@ -100,9 +100,9 @@ public interface LogicDataSource {
 	 */
 	public Map<Integer, Result> read(LogicContext context, Cohort patients, LogicCriteria criteria) throws LogicException;
 	
-	public abstract Collection<String> getKeys();
+	public abstract Collection</*~~>*/String> getKeys();
 	
-	public boolean hasKey(String key);
+	public boolean hasKey(/*~~>*/String key);
 	
 	public abstract int getDefaultTTL();
 	

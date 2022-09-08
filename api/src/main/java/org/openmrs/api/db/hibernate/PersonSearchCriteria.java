@@ -20,15 +20,15 @@ import org.openmrs.util.OpenmrsConstants;
 
 public class PersonSearchCriteria {
 	
-	Criterion prepareCriterionForAttribute(String value, MatchMode matchMode) {
+	Criterion prepareCriterionForAttribute(/*~~>*/String value, MatchMode matchMode) {
 		return (prepareCriterionForAttribute(value, null, matchMode));
 	}
 	
-	Criterion prepareCriterionForName(String value) {
+	Criterion prepareCriterionForName(/*~~>*/String value) {
 		return prepareCriterionForName(value, null);
 	}
 	
-	Criterion prepareCriterionForAttribute(String value, Boolean voided, MatchMode matchMode) {
+	Criterion prepareCriterionForAttribute(/*~~>*/String value, Boolean voided, MatchMode matchMode) {
 		if (voided == null || !voided) {
 			return Restrictions.conjunction().add(Restrictions.eq("attributeType.searchable", true)).add(
 			    Restrictions.eq("attribute.voided", false)).add(Restrictions.ilike("attribute.value", value, matchMode));
@@ -38,7 +38,7 @@ public class PersonSearchCriteria {
 		}
 	}
 	
-	Criterion prepareCriterionForName(String value, Boolean voided) {
+	Criterion prepareCriterionForName(/*~~>*/String value, Boolean voided) {
 		if (voided == null || !voided) {
 			return Restrictions.conjunction().add(Restrictions.eq("name.voided", false)).add(
 			    Restrictions.disjunction().add(Restrictions.ilike("name.givenName", value, MatchMode.START)).add(
@@ -65,9 +65,9 @@ public class PersonSearchCriteria {
 	
 	MatchMode getAttributeMatchMode() {
 		AdministrationService adminService = Context.getAdministrationService();
-		String matchModeProperty = adminService.getGlobalProperty(
-		    OpenmrsConstants.GLOBAL_PROPERTY_PERSON_ATTRIBUTE_SEARCH_MATCH_MODE, "");
-		return (matchModeProperty.equals(OpenmrsConstants.GLOBAL_PROPERTY_PERSON_ATTRIBUTE_SEARCH_MATCH_ANYWHERE)) ? MatchMode.ANYWHERE
+		/*~~>*/String matchModeProperty = adminService.getGlobalProperty(
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PERSON_ATTRIBUTE_SEARCH_MATCH_MODE, "");
+		return (matchModeProperty.equals(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_PERSON_ATTRIBUTE_SEARCH_MATCH_ANYWHERE)) ? MatchMode.ANYWHERE
 		        : MatchMode.EXACT;
 	}
 	

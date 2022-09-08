@@ -61,7 +61,7 @@ public class HibernateMedicationDispenseDAOTest extends BaseContextSensitiveTest
 	 */
 	@Test
 	public void getMedicationDispenseByUuid_shouldGetExistingMedicationDispense() {
-		String uuid = "b75c5c9e-b66c-11ec-8065-0242ac110002";
+		/*~~>*/String uuid = "b75c5c9e-b66c-11ec-8065-0242ac110002";
 		MedicationDispense existing = medicationDispenseDAO.getMedicationDispenseByUuid(uuid);
 		testMedicationDispense1(existing);
 	}

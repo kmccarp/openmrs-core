@@ -47,12 +47,12 @@ public class OpenmrsMatchers {
 	 * @param uuid
 	 * @return the uuid
 	 */
-	public static Matcher<OpenmrsObject> hasUuid(final String uuid) {
-		return new FeatureMatcher<OpenmrsObject, String>(
+	public static Matcher<OpenmrsObject> hasUuid(final /*~~>*/String uuid) {
+		return new FeatureMatcher<OpenmrsObject, /*~~>*/String>(
 		                                                 is(uuid), "uuid", "uuid") {
 			
 			@Override
-			protected String featureValueOf(final OpenmrsObject actual) {
+			protected /*~~>*/String featureValueOf(final OpenmrsObject actual) {
 				return actual.getUuid();
 			}
 		};

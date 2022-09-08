@@ -25,7 +25,7 @@ public interface FormRecordable {
 	 * <strong>Should</strong> return the correct namespace for a form field with a path
 	 * <strong>Should</strong> return null if the namespace is not specified
 	 */
-	String getFormFieldNamespace();
+	/*~~>*/String getFormFieldNamespace();
 	
 	/**
 	 * Gets the path for the form field that was used to capture the obs details in the form
@@ -36,7 +36,7 @@ public interface FormRecordable {
 	 * <strong>Should</strong> return the correct path for a form field with a namespace
 	 * <strong>Should</strong> return null if the path is not specified
 	 */
-	String getFormFieldPath();
+	/*~~>*/String getFormFieldPath();
 	
 	/**
 	 * Sets the namespace and path of the form field that was used to capture the obs details in the
@@ -57,5 +57,5 @@ public interface FormRecordable {
 	 * <strong>Should</strong> mark the obs as dirty when the value is changed from a null to a non null value
 	 * <strong>Should</strong> mark the obs as dirty when the value is changed from a non null to a null value
 	 */
-	void setFormField(String namespace, String formFieldPath);
+	void setFormField(/*~~>*/String namespace, /*~~>*/String formFieldPath);
 }

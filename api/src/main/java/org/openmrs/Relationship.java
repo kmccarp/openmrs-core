@@ -171,8 +171,8 @@ public class Relationship extends BaseChangeableOpenmrsData {
 	}
 	
 	@Override
-	public String toString() {
-		String relType = getRelationshipType() == null ? "NULL" : getRelationshipType().getaIsToB();
+	public /*~~>*/String toString() {
+		/*~~>*/String relType = getRelationshipType() == null ? "NULL" : getRelationshipType().getaIsToB();
 		return personA + " is the " + relType + " of " + personB;
 	}
 	

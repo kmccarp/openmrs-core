@@ -35,11 +35,11 @@ public class DisableTriggersChangeSet implements CustomTaskChange {
 		DatabaseMetaData metadata;
 		try {
 			metadata = connection.getMetaData();
-			String[] types = { "TABLE" };
+			/*~~>*/String[] types = { "TABLE" };
 			ResultSet rs = metadata.getTables(null, null, "%", types);
 			
 			while (rs.next()) {
-				String tableName = rs.getString(3);
+				/*~~>*/String tableName = rs.getString(3);
 				connection.prepareStatement("ALTER TABLE " + tableName + " DISABLE TRIGGER ALL").execute();
 			}
 		}
@@ -49,7 +49,7 @@ public class DisableTriggersChangeSet implements CustomTaskChange {
 	}
 	
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished disabling triggers for all tables";
 	}
 	

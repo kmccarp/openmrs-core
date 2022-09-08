@@ -58,7 +58,7 @@ public interface MutableMessageSource extends MessageSource, HierarchicalMessage
 	 * @param forLocale locale for which to get the message
 	 * @return corresponding PresentationMessage, or null if not available
 	 */
-	public PresentationMessage getPresentation(String key, Locale forLocale);
+	public PresentationMessage getPresentation(/*~~>*/String key, Locale forLocale);
 	
 	/**
 	 * Removes a presentation message from the source.

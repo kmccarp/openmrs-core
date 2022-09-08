@@ -31,7 +31,7 @@ public class UserEditor extends OpenmrsPropertyEditor<User> {
 	}
 	
 	@Override
-	protected User getObjectByUuid(String uuid) {
+	protected User getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getUserService().getUserByUuid(uuid);
 	}
 }

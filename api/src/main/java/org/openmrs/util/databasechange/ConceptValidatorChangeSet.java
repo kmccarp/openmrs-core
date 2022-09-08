@@ -57,10 +57,10 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 	private static final Logger log = LoggerFactory.getLogger(ConceptValidatorChangeSet.class);
 	
 	//List to store warnings
-	private List<String> updateWarnings = new LinkedList<>();
+	private List</*~~>*/String> updateWarnings = new LinkedList<>();
 	
 	//List to store info messages
-	private List<String> logMessages = new LinkedList<>();
+	private List</*~~>*/String> logMessages = new LinkedList<>();
 	
 	//A set to store unique concept names that have been updated and changes have to be persisted to the database
 	private Set<ConceptName> updatedConceptNames = new HashSet<>();
@@ -116,7 +116,7 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 		//default locale(if none, then 'en') is always the last in the list.
 		defaultLocale = allowedLocales.get(allowedLocales.size() - 1);
 		//a map to store all duplicates names found for each locale
-		Map<Locale, Set<String>> localeDuplicateNamesMap = null;
+		Map<Locale, Set</*~~>*/String>> localeDuplicateNamesMap = null;
 		
 		for (Integer conceptId : conceptIds) {
 			
@@ -136,7 +136,7 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 				boolean preferredNameForLocaleFound = false;
 				boolean shortNameForLocaleFound = false;
 				//map to hold a name and a list of conceptNames that are found as duplicates
-				Map<String, List<ConceptName>> nameDuplicateConceptNamesMap = new HashMap<>();
+				Map</*~~>*/String, List<ConceptName>> nameDuplicateConceptNamesMap = new HashMap<>();
 				
 				//for each name in the locale
 				for (ConceptName nameInLocale : e.getValue()) {
@@ -236,7 +236,7 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 						localeDuplicateNamesMap.get(conceptNameLocale).add(nameInLocale.getName());
 					}
 					
-					String name = nameInLocale.getName().toLowerCase();
+					/*~~>*/String name = nameInLocale.getName().toLowerCase();
 					if (!nameDuplicateConceptNamesMap.containsKey(name)) {
 						nameDuplicateConceptNamesMap.put(name, new ArrayList<>());
 					}
@@ -246,7 +246,7 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 				}//close for each name
 				
 				//No duplicate names allowed for the same locale and concept
-				for (Map.Entry<String, List<ConceptName>> entry : nameDuplicateConceptNamesMap.entrySet()) {
+				for (Map.Entry</*~~>*/String, List<ConceptName>> entry : nameDuplicateConceptNamesMap.entrySet()) {
 					//no duplicates found for the current name
 					if (entry.getValue().size() < 2) {
 						continue;
@@ -322,13 +322,13 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 		}
 		
 		if (!MapUtils.isEmpty(localeDuplicateNamesMap)) {
-			for (Map.Entry<Locale, Set<String>> entry : localeDuplicateNamesMap.entrySet()) {
+			for (Map.Entry<Locale, Set</*~~>*/String>> entry : localeDuplicateNamesMap.entrySet()) {
 				//no duplicates found in the locale
 				if (CollectionUtils.isEmpty(entry.getValue())) {
 					continue;
 				}
 				
-				for (String duplicateName : entry.getValue()) {
+				for (/*~~>*/String duplicateName : entry.getValue()) {
 					updateWarnings.add("Concept Name '" + duplicateName + "' was found multiple times in locale '"
 					        + entry.getKey() + "'");
 				}
@@ -343,15 +343,15 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 	 */
 	private void writeWarningsToFile() {
 		
-		String lineSeparator = System.getProperty("line.separator");
+		/*~~>*/String lineSeparator = System.getProperty("line.separator");
 		StringBuilder sb = new StringBuilder("WARNINGS:").append(lineSeparator);
-		for (String warning : updateWarnings) {
+		for (/*~~>*/String warning : updateWarnings) {
 			sb.append(lineSeparator).append(warning);
 		}
 		
 		sb.append(lineSeparator).append(lineSeparator).append("NOTIFICATIONS:").append(lineSeparator);
 		
-		for (String message : logMessages) {
+		for (/*~~>*/String message : logMessages) {
 			sb.append(lineSeparator).append(message);
 		}
 		
@@ -422,7 +422,7 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 	 * @param updatedName the name that has been updated
 	 * @param updateMessage the message to report
 	 */
-	private void reportUpdatedName(ConceptName updatedName, String updateMessage) {
+	private void reportUpdatedName(ConceptName updatedName, /*~~>*/String updateMessage) {
 		updatedConceptNames.add(updatedName);
 		logMessages.add(updateMessage);
 	}
@@ -505,10 +505,10 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 			//get the default locale
 			stmt = connection.createStatement();
 			ResultSet rsDefaultLocale = stmt.executeQuery("SELECT property_value FROM global_property WHERE property = '"
-			        + OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE + "'");
+			        + /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE + "'");
 			
 			if (rsDefaultLocale.next()) {
-				String defaultLocaleStr = rsDefaultLocale.getString("property_value");
+				/*~~>*/String defaultLocaleStr = rsDefaultLocale.getString("property_value");
 				if (!StringUtils.isBlank(defaultLocaleStr) && defaultLocaleStr.length() > 1) {
 					Locale defaultLocaleGP = LocaleUtility.fromSpecification(defaultLocaleStr);
 					if (defaultLocaleGP != null) {
@@ -524,13 +524,13 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 			
 			//get the locale.allowed.list
 			ResultSet rsAllowedLocales = stmt.executeQuery("SELECT property_value FROM global_property WHERE property = '"
-			        + OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST + "'");
+			        + /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST + "'");
 			
 			if (rsAllowedLocales.next()) {
-				String allowedLocaleStr = rsAllowedLocales.getString("property_value");
+				/*~~>*/String allowedLocaleStr = rsAllowedLocales.getString("property_value");
 				if (!StringUtils.isBlank(allowedLocaleStr)) {
-					String[] localesArray = allowedLocaleStr.split(",");
-					for (String localeStr : localesArray) {
+					/*~~>*/String[] localesArray = allowedLocaleStr.split(",");
+					for (/*~~>*/String localeStr : localesArray) {
 						if (localeStr.trim().length() > 1) {
 							allowedLocales.add(LocaleUtility.fromSpecification(localeStr.trim()));
 						} else {
@@ -540,7 +540,7 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 					}
 				}
 			} else {
-				log.warn("The global property '" + OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST + "' isn't set");
+				log.warn("The global property '" + /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST + "' isn't set");
 			}
 		}
 		catch (DatabaseException | SQLException e) {
@@ -591,7 +591,7 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 				conceptName.setConceptNameId(rs.getInt("concept_name_id"));
 				conceptName.setName(rs.getString("name"));
 				
-				String cnType = rs.getString("concept_name_type");
+				/*~~>*/String cnType = rs.getString("concept_name_type");
 				if (!StringUtils.isBlank(cnType)) {
 					ConceptNameType conceptNameType = null;
 					if (cnType.equals(ConceptNameType.FULLY_SPECIFIED.toString())) {
@@ -603,7 +603,7 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 					}
 					conceptName.setConceptNameType(conceptNameType);
 				}
-				String localeString = rs.getString("locale");
+				/*~~>*/String localeString = rs.getString("locale");
 				conceptName.setLocale(!StringUtils.isBlank(localeString) ? LocaleUtility.fromSpecification(localeString)
 				        : null);
 				conceptName.setLocalePreferred(rs.getBoolean("locale_preferred"));
@@ -739,7 +739,7 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 	 * @param sql the sql statement to execute
 	 * @return integer resulting from the execution of the sql statement
 	 */
-	private int getInt(JdbcConnection connection, String sql) {
+	private int getInt(JdbcConnection connection, /*~~>*/String sql) {
 		Statement stmt = null;
 		int result = 0;
 		try {
@@ -779,7 +779,7 @@ public class ConceptValidatorChangeSet implements CustomTaskChange {
 	 * @see liquibase.change.custom.CustomChange#getConfirmationMessage()
 	 */
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished validating concepts";
 	}
 	

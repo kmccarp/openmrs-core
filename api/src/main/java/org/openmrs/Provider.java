@@ -25,7 +25,7 @@ public class Provider extends BaseCustomizableMetadata<ProviderAttribute> {
 	
 	private Person person;
 	
-	private String identifier;
+	private /*~~>*/String identifier;
 	
 	private Concept role;
 	
@@ -85,14 +85,14 @@ public class Provider extends BaseCustomizableMetadata<ProviderAttribute> {
 	/**
 	 * @param identifier the identifier to set
 	 */
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
+	public void setIdentifier(/*~~>*/String identifier) {
+		/*~~>*/this.identifier = identifier;
 	}
 	
 	/**
 	 * @return the identifier
 	 */
-	public String getIdentifier() {
+	public /*~~>*/String getIdentifier() {
 		return identifier;
 	}
 	
@@ -137,8 +137,8 @@ public class Provider extends BaseCustomizableMetadata<ProviderAttribute> {
 	}
 	
 	@Override
-	public String toString() {
-		String provider = String.valueOf(providerId) + " providerName:" + ((person != null) ? person.getNames() : "");
+	public /*~~>*/String toString() {
+		/*~~>*/String provider = /*~~>*/String.valueOf(providerId) + " providerName:" + ((person != null) ? person.getNames() : "");
 		return "[Provider: providerId:" + provider + " ]";
 	}
 	
@@ -148,7 +148,7 @@ public class Provider extends BaseCustomizableMetadata<ProviderAttribute> {
 	 */
 	
 	@Override
-	public String getName() {
+	public /*~~>*/String getName() {
 		if (getPerson() != null && getPerson().getPersonName() != null) {
 			return getPerson().getPersonName().getFullName();
 		} else {

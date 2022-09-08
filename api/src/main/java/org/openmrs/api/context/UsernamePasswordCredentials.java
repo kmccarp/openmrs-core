@@ -16,32 +16,32 @@ package org.openmrs.api.context;
  */
 public class UsernamePasswordCredentials implements Credentials {
 
-	protected String username;
-	protected String password;
+	protected /*~~>*/String username;
+	protected /*~~>*/String password;
 	
-	public static final String SCHEME = "OPENMRS_USERPASS_AUTH_SCHEME";
+	public static final /*~~>*/String SCHEME = "OPENMRS_USERPASS_AUTH_SCHEME";
 
-	public UsernamePasswordCredentials(String username, String password) {
+	public UsernamePasswordCredentials(/*~~>*/String username, /*~~>*/String password) {
 		super();
-		this.username = username;
-		this.password = password;
+		/*~~>*/this.username = username;
+		/*~~>*/this.password = password;
 	}
 
 	@Override
-	public String getAuthenticationScheme() {
+	public /*~~>*/String getAuthenticationScheme() {
 		return SCHEME;
 	}
 
-	public String getUsername() {
+	public /*~~>*/String getUsername() {
 		return username;
 	}
 
-	public String getPassword() {
+	public /*~~>*/String getPassword() {
 		return password;
 	}
 
 	@Override
-	public String getClientName() {
+	public /*~~>*/String getClientName() {
 		return getUsername();
 	}
 }

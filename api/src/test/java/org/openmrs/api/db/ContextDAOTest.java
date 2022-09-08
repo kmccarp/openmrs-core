@@ -193,8 +193,8 @@ public class ContextDAOTest extends BaseContextSensitiveTest {
 		User user = dao.authenticate("admin", "test");
 		assertNotNull(user, "This test depends on there being an admin:test user");
 		
-		String invalidUsernameErrorMessage = null;
-		String invalidPasswordErrorMessage = null;
+		/*~~>*/String invalidUsernameErrorMessage = null;
+		/*~~>*/String invalidPasswordErrorMessage = null;
 		
 		try {
 			dao.authenticate("some invalid username", "and an invalid password");
@@ -347,8 +347,8 @@ public class ContextDAOTest extends BaseContextSensitiveTest {
 	
 	@Component("testUserSessionListener")
 	public static class TestUserSessionListener implements UserSessionListener {
-		public Set<String> logins = new LinkedHashSet<>();
-		public Set<String> logouts = new LinkedHashSet<>();
+		public Set</*~~>*/String> logins = new LinkedHashSet<>();
+		public Set</*~~>*/String> logouts = new LinkedHashSet<>();
 
 		@Override
 		public void loggedInOrOut(User user, Event event, Status status) {

@@ -16,14 +16,14 @@ import org.openmrs.patient.UnallowedIdentifierException;
  */
 public class LuhnIdentifierValidator extends BaseHyphenatedIdentifierValidator {
 	
-	private static final String ALLOWED_CHARS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
+	private static final /*~~>*/String ALLOWED_CHARS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
 	
-	private static final String LUHN_NAME = "Luhn CheckDigit Validator";
+	private static final /*~~>*/String LUHN_NAME = "Luhn CheckDigit Validator";
 	
 	@Override
-	protected int getCheckDigit(String undecoratedIdentifier) {
+	protected int getCheckDigit(/*~~>*/String undecoratedIdentifier) {
 		//		 remove leading or trailing whitespace, convert to uppercase
-		String trimmedUppercaseUndecoratedIdentifier = undecoratedIdentifier.trim().toUpperCase();
+		/*~~>*/String trimmedUppercaseUndecoratedIdentifier = undecoratedIdentifier.trim().toUpperCase();
 		
 		// this will privatebe a running total
 		int sum = 0;
@@ -76,7 +76,7 @@ public class LuhnIdentifierValidator extends BaseHyphenatedIdentifierValidator {
 	 * @see org.openmrs.patient.IdentifierValidator#getName()
 	 */
 	@Override
-	public String getName() {
+	public /*~~>*/String getName() {
 		return LUHN_NAME;
 	}
 	
@@ -84,7 +84,7 @@ public class LuhnIdentifierValidator extends BaseHyphenatedIdentifierValidator {
 	 * @see org.openmrs.patient.IdentifierValidator#getAllowedCharacters()
 	 */
 	@Override
-	public String getAllowedCharacters() {
+	public /*~~>*/String getAllowedCharacters() {
 		return ALLOWED_CHARS;
 	}
 	
@@ -94,7 +94,7 @@ public class LuhnIdentifierValidator extends BaseHyphenatedIdentifierValidator {
 	 * <strong>Should</strong> fail with invalid identifiers
 	 */
 	@Override
-	public String getValidIdentifier(String undecoratedIdentifier) throws UnallowedIdentifierException {
+	public /*~~>*/String getValidIdentifier(/*~~>*/String undecoratedIdentifier) throws UnallowedIdentifierException {
 		
 		checkAllowedIdentifier(undecoratedIdentifier);
 		

@@ -107,7 +107,7 @@ public class MessageServiceImpl implements MessageService {
 	 * @param content the content or body of the message
 	 */
 	@Override
-	public Message createMessage(String recipients, String sender, String subject, String content) throws MessageException {
+	public Message createMessage(/*~~>*/String recipients, /*~~>*/String sender, /*~~>*/String subject, /*~~>*/String content) throws MessageException {
 		return Context.getMessageService().createMessage(recipients, sender, subject, content, null, null, null);
 	}
 	
@@ -119,7 +119,7 @@ public class MessageServiceImpl implements MessageService {
 	 * @param content the content or body of the message
 	 */
 	@Override
-	public Message createMessage(String sender, String subject, String content) throws MessageException {
+	public Message createMessage(/*~~>*/String sender, /*~~>*/String subject, /*~~>*/String content) throws MessageException {
 		return Context.getMessageService().createMessage(null, sender, subject, content);
 	}
 	
@@ -130,7 +130,7 @@ public class MessageServiceImpl implements MessageService {
 	 * @param content the content or body of the message
 	 */
 	@Override
-	public Message createMessage(String subject, String content) throws MessageException {
+	public Message createMessage(/*~~>*/String subject, /*~~>*/String content) throws MessageException {
 		return Context.getMessageService().createMessage(null, null, subject, content);
 	}
 	
@@ -140,8 +140,8 @@ public class MessageServiceImpl implements MessageService {
 	 *      java.lang.String, java.lang.String)
 	 */
 	@Override
-	public Message createMessage(String recipients, String sender, String subject, String content, String attachment,
-	        String attachmentContentType, String attachmentFileName) throws MessageException {
+	public Message createMessage(/*~~>*/String recipients, /*~~>*/String sender, /*~~>*/String subject, /*~~>*/String content, /*~~>*/String attachment,
+	        /*~~>*/String attachmentContentType, /*~~>*/String attachmentFileName) throws MessageException {
 		Message message = new Message();
 		message.setRecipients(recipients);
 		message.setSender(sender);
@@ -158,7 +158,7 @@ public class MessageServiceImpl implements MessageService {
 	 * does not need to create its own Message object.
 	 */
 	@Override
-	public void sendMessage(String recipients, String sender, String subject, String content) throws MessageException {
+	public void sendMessage(/*~~>*/String recipients, /*~~>*/String sender, /*~~>*/String subject, /*~~>*/String content) throws MessageException {
 		Message message = createMessage(recipients, sender, subject, content);
 		Context.getMessageService().sendMessage(message);
 	}
@@ -173,7 +173,7 @@ public class MessageServiceImpl implements MessageService {
 	public void sendMessage(Message message, Integer recipientId) throws MessageException {
 		log.debug("Sending message to user with user id " + recipientId);
 		User user = Context.getUserService().getUser(recipientId);
-		message.addRecipient(user.getUserProperty(OpenmrsConstants.USER_PROPERTY_NOTIFICATION_ADDRESS));
+		message.addRecipient(user.getUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_NOTIFICATION_ADDRESS));
 		Context.getMessageService().sendMessage(message);
 	}
 	
@@ -186,7 +186,7 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public void sendMessage(Message message, User user) throws MessageException {
 		log.debug("Sending message to user " + user);
-		String address = user.getUserProperty(OpenmrsConstants.USER_PROPERTY_NOTIFICATION_ADDRESS);
+		/*~~>*/String address = user.getUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_NOTIFICATION_ADDRESS);
 		if (address != null) {
 			message.addRecipient(address);
 		}
@@ -200,7 +200,7 @@ public class MessageServiceImpl implements MessageService {
 	public void sendMessage(Message message, Collection<User> users) throws MessageException {
 		log.debug("Sending message to users " + users);
 		for (User user : users) {
-			String address = user.getUserProperty(OpenmrsConstants.USER_PROPERTY_NOTIFICATION_ADDRESS);
+			/*~~>*/String address = user.getUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_NOTIFICATION_ADDRESS);
 			if (address != null) {
 				message.addRecipient(address);
 			}
@@ -212,7 +212,7 @@ public class MessageServiceImpl implements MessageService {
 	 * Send a message to a group of users identified by their role.
 	 */
 	@Override
-	public void sendMessage(Message message, String roleName) throws MessageException {
+	public void sendMessage(Message message, /*~~>*/String roleName) throws MessageException {
 		log.debug("Sending message to role with name " + roleName);
 		Role role = Context.getUserService().getRole(roleName);
 		Context.getMessageService().sendMessage(message, role);
@@ -256,7 +256,7 @@ public class MessageServiceImpl implements MessageService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Message prepareMessage(String templateName, Map data) throws MessageException {
+	public Message prepareMessage(/*~~>*/String templateName, Map data) throws MessageException {
 		try {
 			Template template = (Template) getTemplatesByName(templateName).get(0);
 			template.setData(data);
@@ -298,7 +298,7 @@ public class MessageServiceImpl implements MessageService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List getTemplatesByName(String name) throws MessageException {
+	public List getTemplatesByName(/*~~>*/String name) throws MessageException {
 		return templateDAO.getTemplatesByName(name);
 	}	
 }

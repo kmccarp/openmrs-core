@@ -63,11 +63,11 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 		NORMAL, SOUNDEX
 	}
 	
-	public static <T> LuceneQuery<T> newQuery(final Class<T> type, final Session session, final String query, final Collection<String> fields) {
+	public static <T> LuceneQuery<T> newQuery(final Class<T> type, final Session session, final /*~~>*/String query, final Collection</*~~>*/String> fields) {
 		return newQuery(type, session, query, fields, MatchType.NORMAL);
 	}
 	
-	public static <T> LuceneQuery<T> newQuery(final Class<T> type, final Session session, final String query, final Collection<String> fields, MatchType matchType) {
+	public static <T> LuceneQuery<T> newQuery(final Class<T> type, final Session session, final /*~~>*/String query, final Collection</*~~>*/String> fields, MatchType matchType) {
 		return new LuceneQuery<T>(type, session) {
 			@Override
 			protected Query prepareQuery() throws ParseException {
@@ -87,7 +87,7 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 	 * 
 	 * @return the Lucene query
 	 */
-	public static <T> LuceneQuery<T> newQuery(final Class<T> type, final Session session, final String query) {
+	public static <T> LuceneQuery<T> newQuery(final Class<T> type, final Session session, final /*~~>*/String query) {
 		return new LuceneQuery<T>(type, session) {
 			
 			@Override
@@ -107,7 +107,7 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 	 * @param query
 	 * @return the escaped query
 	 */
-	public static String escapeQuery(final String query) {
+	public static /*~~>*/String escapeQuery(final /*~~>*/String query) {
 		return QueryParser.escape(query);
 	}
 	
@@ -130,7 +130,7 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 	 * @param value
 	 * @return the query
 	 */
-	public LuceneQuery<T> include(String field, Object value) {
+	public LuceneQuery<T> include(/*~~>*/String field, Object value) {
 		if (value != null) {
 			include(field, new Object[] { value });
 		}
@@ -138,7 +138,7 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 		return this;
 	}
 	
-	public LuceneQuery<T> include(String field, Collection<?> values) {
+	public LuceneQuery<T> include(/*~~>*/String field, Collection<?> values) {
 		if (values != null) {
 			include(field, values.toArray());
 		}
@@ -155,7 +155,7 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 	 * @param values
 	 * @return the query
 	 */
-	public LuceneQuery<T> include(String field, Object[] values) {
+	public LuceneQuery<T> include(/*~~>*/String field, Object[] values) {
 		if (values != null && values.length != 0) {
 			Set<Term> terms = new HashSet<>();
 			for (Object value : values) {
@@ -176,7 +176,7 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 	 * @param value
 	 * @return the query
 	 */
-	public LuceneQuery<T> exclude(String field, Object value) {
+	public LuceneQuery<T> exclude(/*~~>*/String field, Object value) {
 		if (value != null) {
 			exclude(field, new Object[] { value });
 		}
@@ -193,7 +193,7 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 	 * @param values
 	 * @return the query
 	 */
-	public LuceneQuery<T> exclude(String field, Object[] values) {
+	public LuceneQuery<T> exclude(/*~~>*/String field, Object[] values) {
 		if (values != null && values.length != 0) {
 			for (Object value : values) {
 				excludeTerms.add(new Term(field, value.toString()));
@@ -246,18 +246,18 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 	}
 
 
-	protected MultiFieldQueryParser newMultipleFieldQueryParser(Collection<String> fields, MatchType matchType) {
+	protected MultiFieldQueryParser newMultipleFieldQueryParser(Collection</*~~>*/String> fields, MatchType matchType) {
 		Analyzer analyzer;
 		
 		if(matchType == MatchType.SOUNDEX) {
 			analyzer = getFullTextSession().getSearchFactory().getAnalyzer(getType());
 		}
 		else if (getType().isAssignableFrom(PatientIdentifier.class) || getType().isAssignableFrom(PersonName.class) || getType().isAssignableFrom(PersonAttribute.class)) {
-			analyzer = getFullTextSession().getSearchFactory().getAnalyzer(LuceneAnalyzers.EXACT_ANALYZER);
+			analyzer = getFullTextSession().getSearchFactory().getAnalyzer(/*~~>*/LuceneAnalyzers.EXACT_ANALYZER);
 		} else {
 			analyzer = getFullTextSession().getSearchFactory().getAnalyzer(getType());
 		}
-		MultiFieldQueryParser queryParser = new MultiFieldQueryParser(fields.toArray(new String[fields.size()]), analyzer);
+		MultiFieldQueryParser queryParser = new MultiFieldQueryParser(fields.toArray(new /*~~>*/String[fields.size()]), analyzer);
 
 		setDefaultOperator(queryParser);
 		return queryParser;
@@ -292,7 +292,7 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 	 * @param field
 	 * @return this
 	 */
-	public LuceneQuery<T> skipSame(String field){
+	public LuceneQuery<T> skipSame(/*~~>*/String field){
 		return skipSame(field, null);
 	}
 
@@ -308,8 +308,8 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 	 * @param luceneQuery results of which should be skipped too. It works only for queries, which called skipSame as well.
 	 * @return this
 	 */
-	public LuceneQuery<T> skipSame(String field, LuceneQuery<?> luceneQuery){
-		String idPropertyName = getSession().getSessionFactory().getClassMetadata(getType()).getIdentifierPropertyName();
+	public LuceneQuery<T> skipSame(/*~~>*/String field, LuceneQuery<?> luceneQuery){
+		/*~~>*/String idPropertyName = getSession().getSessionFactory().getClassMetadata(getType()).getIdentifierPropertyName();
 
 		FullTextQuery query = buildQuery();
 		query.setProjection(idPropertyName, field);
@@ -393,7 +393,7 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 		return buildQuery().getResultSize();
 	}
 	
-	public List<Object[]> listProjection(String... fields) {
+	public List<Object[]> listProjection(/*~~>*/String... fields) {
 		if (noUniqueTerms) {
 			return Collections.emptyList();
 		}
@@ -407,7 +407,7 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 		return list;
 	}
 	
-	public ListPart<Object[]> listPartProjection(Long firstResult, Long maxResults, String... fields) {
+	public ListPart<Object[]> listPartProjection(Long firstResult, Long maxResults, /*~~>*/String... fields) {
 		if (noUniqueTerms) {
 			return ListPart.newListPart(Collections.emptyList(), firstResult, maxResults, 0L, true);
 		}
@@ -425,7 +425,7 @@ public abstract class LuceneQuery<T> extends SearchQuery<T> {
 		
 	}
 	
-	public ListPart<Object[]> listPartProjection(Integer firstResult, Integer maxResults, String... fields) {
+	public ListPart<Object[]> listPartProjection(Integer firstResult, Integer maxResults, /*~~>*/String... fields) {
 		Long first = (firstResult != null) ? Long.valueOf(firstResult) : null;
 		Long max = (maxResults != null) ? Long.valueOf(maxResults) : null;
 		return listPartProjection(first, max, fields);

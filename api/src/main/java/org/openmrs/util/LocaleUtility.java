@@ -56,8 +56,8 @@ public class LocaleUtility implements GlobalPropertyListener {
 		if (defaultLocaleCache == null) {
 			if (Context.isSessionOpen()) {
 				try {
-					String locale = Context.getAdministrationService().getGlobalProperty(
-					    OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE);
+					/*~~>*/String locale = Context.getAdministrationService().getGlobalProperty(
+					    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE);
 					
 					if (StringUtils.hasLength(locale)) {
 						try {
@@ -77,11 +77,11 @@ public class LocaleUtility implements GlobalPropertyListener {
 				// if we weren't able to load the locale from the global property,
 				// use the default one
 				if (defaultLocaleCache == null) {
-					defaultLocaleCache = fromSpecification(OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE_DEFAULT_VALUE);
+					defaultLocaleCache = fromSpecification(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE_DEFAULT_VALUE);
 				}
 			} else {
 				// if session is not open, return the default locale without caching
-				return fromSpecification(OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE_DEFAULT_VALUE);
+				return fromSpecification(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE_DEFAULT_VALUE);
 			}
 			
 		}
@@ -126,18 +126,18 @@ public class LocaleUtility implements GlobalPropertyListener {
 	 * <strong>Should</strong> get locale from language code and country code
 	 * <strong>Should</strong> get locale from language code country code and variant
 	 */
-	public static Locale fromSpecification(String localeSpecification) {
+	public static Locale fromSpecification(/*~~>*/String localeSpecification) {
 		Locale createdLocale = null;
 		
 		localeSpecification = localeSpecification.trim();
 		
-		String[] localeComponents = localeSpecification.split("_");
+		/*~~>*/String[] localeComponents = localeSpecification.split("_");
 		if (localeComponents.length == 1) {
 			createdLocale = new Locale(localeComponents[0]);
 		} else if (localeComponents.length == 2) {
 			createdLocale = new Locale(localeComponents[0], localeComponents[1]);
 		} else if (localeComponents.length > 2) {
-			String variant = localeSpecification.substring(localeSpecification.indexOf(localeComponents[2])); // gets everything after the
+			/*~~>*/String variant = localeSpecification.substring(localeSpecification.indexOf(localeComponents[2])); // gets everything after the
 			// second underscore
 			createdLocale = new Locale(localeComponents[0], localeComponents[1], variant);
 		}
@@ -174,7 +174,7 @@ public class LocaleUtility implements GlobalPropertyListener {
 		}
 		
 		locales.add(Locale.ENGLISH);
-		locales.add(fromSpecification(OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE_DEFAULT_VALUE));
+		locales.add(fromSpecification(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE_DEFAULT_VALUE));
 		
 		return locales;
 	}
@@ -195,16 +195,16 @@ public class LocaleUtility implements GlobalPropertyListener {
 	}
 	
 	@Override
-	public void globalPropertyDeleted(String propertyName) {
+	public void globalPropertyDeleted(/*~~>*/String propertyName) {
 		// reset the value
 		setDefaultLocaleCache(null);
 		setLocalesAllowedListCache(null);
 	}
 	
 	@Override
-	public boolean supportsPropertyName(String propertyName) {
-		return propertyName.equals(OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE)
-		        || propertyName.equals(OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST);
+	public boolean supportsPropertyName(/*~~>*/String propertyName) {
+		return propertyName.equals(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_LOCALE)
+		        || propertyName.equals(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST);
 		
 	}
 	

@@ -116,19 +116,19 @@ public interface PatientDAO {
 	 * <strong>Should</strong> not get patients with match mode anywhere _ signature no 2
 	 *
 	 */
-	public List<Patient> getPatients(String query, Integer start, Integer length) throws DAOException;
+	public List<Patient> getPatients(/*~~>*/String query, Integer start, Integer length) throws DAOException;
 	
 	/**
 	 * @see org.openmrs.api.PatientService#getPatients(String, boolean, Integer, Integer)
 	 * <strong>Should</strong> get voided person when voided true is passed
 	 * <strong>Should</strong> get no voided person when voided false is passed
 	 */
-	public List<Patient> getPatients(String query, boolean includeVoided, Integer start, Integer length) throws DAOException;
+	public List<Patient> getPatients(/*~~>*/String query, boolean includeVoided, Integer start, Integer length) throws DAOException;
 	
 	/**
 	 * @see PatientService#getPatients(String, String, List, boolean, Integer, Integer)
 	 */
-	public List<Patient> getPatients(String name, List<PatientIdentifierType> identifierTypes,
+	public List<Patient> getPatients(/*~~>*/String name, List<PatientIdentifierType> identifierTypes,
 		boolean matchIdentifierExactly, Integer start, Integer length) throws DAOException;
 	
 	
@@ -146,7 +146,7 @@ public interface PatientDAO {
 	 * <strong>Should</strong> not fetch patient identifiers that partially matches given identifier  
 	 * <strong>Should</strong> not get voided patient identifiers 
 	 */
-	public List<PatientIdentifier> getPatientIdentifiers(String identifier,
+	public List<PatientIdentifier> getPatientIdentifiers(/*~~>*/String identifier,
 	        List<PatientIdentifierType> patientIdentifierTypes, List<Location> locations, List<Patient> patients,
 	        Boolean isPreferred) throws DAOException;
 	
@@ -168,7 +168,7 @@ public interface PatientDAO {
 	 * @see org.openmrs.api.PatientService#getPatientIdentifierTypes(java.lang.String,
 	 *      java.lang.String, java.lang.Boolean, java.lang.Boolean)
 	 */
-	public List<PatientIdentifierType> getPatientIdentifierTypes(String name, String format, Boolean required,
+	public List<PatientIdentifierType> getPatientIdentifierTypes(/*~~>*/String name, /*~~>*/String format, Boolean required,
 	        Boolean hasCheckDigit) throws DAOException;
 	
 	/**
@@ -184,7 +184,7 @@ public interface PatientDAO {
 	/**
 	 * @see org.openmrs.api.PatientService#getDuplicatePatientsByAttributes(java.util.List)
 	 */
-	public List<Patient> getDuplicatePatientsByAttributes(List<String> attributes) throws DAOException;
+	public List<Patient> getDuplicatePatientsByAttributes(List</*~~>*/String> attributes) throws DAOException;
 	
 	/**
 	 * @see org.openmrs.api.PatientService#isIdentifierInUseByAnotherPatient(PatientIdentifier)
@@ -195,15 +195,15 @@ public interface PatientDAO {
 	 * @param uuid
 	 * @return patient or null
 	 */
-	public Patient getPatientByUuid(String uuid);
+	public Patient getPatientByUuid(/*~~>*/String uuid);
 	
-	public PatientIdentifier getPatientIdentifierByUuid(String uuid);
+	public PatientIdentifier getPatientIdentifierByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @param uuid
 	 * @return patient identifier type or null
 	 */
-	public PatientIdentifierType getPatientIdentifierTypeByUuid(String uuid);
+	public PatientIdentifierType getPatientIdentifierTypeByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @see org.openmrs.api.PatientService#getPatientIdentifier(java.lang.Integer)
@@ -236,12 +236,12 @@ public interface PatientDAO {
 	 * <strong>Should</strong> count patients by searchable attribute _ signature no 2
 	 * <strong>Should</strong> obey attribute match mode
 	 */
-	public Long getCountOfPatients(String query);
+	public Long getCountOfPatients(/*~~>*/String query);
 	
 	/**
 	 * @see org.openmrs.api.PatientService#getCountOfPatients(String, boolean)
 	 */
-	public Long getCountOfPatients(String query, boolean includeVoided);
+	public Long getCountOfPatients(/*~~>*/String query, boolean includeVoided);
 	
 	/**
 	 * Gets a list of allergies that a patient has
@@ -257,7 +257,7 @@ public interface PatientDAO {
 	 * @param patient the patient
 	 * @return the allergy status
 	 */
-	public String getAllergyStatus(Patient patient);
+	public /*~~>*/String getAllergyStatus(Patient patient);
 	
 	/**
 	 * Saves patient allergies to the database.
@@ -288,7 +288,7 @@ public interface PatientDAO {
 	 * <strong>Should</strong> return allergy given valid uuid
 	 * <strong>Should</strong> return null if no object found with given uuid
 	 */
-	public Allergy getAllergyByUuid(String uuid);
+	public Allergy getAllergyByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Saves an allergy to the database

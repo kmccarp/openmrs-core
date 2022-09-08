@@ -112,7 +112,7 @@ public class PatientProgramValidator implements Validator {
 			Set<PatientState> patientStates = patientProgram.getStates();
 			if (patientStates != null) {
 				//Set to store to keep track of unique valid state and start date combinations
-				Set<String> statesAndStartDates = new HashSet<>();
+				Set</*~~>*/String> statesAndStartDates = new HashSet<>();
 				PatientState latestState = null;
 				boolean foundCurrentPatientState = false;
 				boolean foundStateWithNullStartDate = false;
@@ -121,7 +121,7 @@ public class PatientProgramValidator implements Validator {
 						continue;
 					}
 					
-					String missingRequiredFieldCode = null;
+					/*~~>*/String missingRequiredFieldCode = null;
 					//only the initial state can have a null start date
 					if (patientState.getStartDate() == null) {
 						if (foundStateWithNullStartDate) {

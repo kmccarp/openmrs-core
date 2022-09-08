@@ -38,12 +38,12 @@ public class OrderSearchCriteria {
 	/**
 	 * Accession Number to match on; performs an exact match, case-insensitive
 	 */
-	private String accessionNumber;
+	private /*~~>*/String accessionNumber;
 
 	/**
 	 * Accession Number to match on; performs an exact match, case-insensitive
 	 */
-	private String orderNumber;
+	private /*~~>*/String orderNumber;
 
 	/**
 	 * Matches on dateActivated that is any time on this date or less
@@ -107,7 +107,7 @@ public class OrderSearchCriteria {
 	 * @param includeVoided whether to include the voided orders or not
 	 */
 	public OrderSearchCriteria(Patient patient, CareSetting careSetting, Collection<Concept> concepts,
-							   Collection<OrderType> orderTypes, String accessionNumber, String orderNumber,
+							   Collection<OrderType> orderTypes, /*~~>*/String accessionNumber, /*~~>*/String orderNumber,
 							   Date activatedOnOrBeforeDate, Date activatedOnOrAfterDate, boolean isStopped,
 							   Date autoExpireOnOrBeforeDate,
 							   Date canceledOrExpiredOnOrBeforeDate,
@@ -121,8 +121,8 @@ public class OrderSearchCriteria {
 		this.careSetting = careSetting;
 		this.concepts = concepts;
 		this.orderTypes = orderTypes;
-		this.accessionNumber = accessionNumber;
-		this.orderNumber = orderNumber;
+		/*~~>*/this.accessionNumber = accessionNumber;
+		/*~~>*/this.orderNumber = orderNumber;
 		this.activatedOnOrBeforeDate = activatedOnOrBeforeDate;
 		this.activatedOnOrAfterDate = activatedOnOrAfterDate;
 		this.isStopped = isStopped;
@@ -189,7 +189,7 @@ public class OrderSearchCriteria {
 	 * @return the accession number to match on; must be case-insensitive exact-match
 	 * @since 2.3.1
 	 */
-	public String getAccessionNumber() {
+	public /*~~>*/String getAccessionNumber() {
 		return accessionNumber;
 	}
 
@@ -197,7 +197,7 @@ public class OrderSearchCriteria {
 	 * @return the order number to match on; must be case-insensitive exact-match
 	 * @since 2.3.1
 	 */
-	public String getOrderNumber() {
+	public /*~~>*/String getOrderNumber() {
 		return orderNumber;
 	}
 

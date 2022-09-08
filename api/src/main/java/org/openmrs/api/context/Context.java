@@ -214,7 +214,7 @@ public class Context {
 	 * @throws ClassNotFoundException
 	 * <strong>Should</strong> load class with the OpenmrsClassLoader
 	 */
-	public static Class<?> loadClass(String className) throws ClassNotFoundException {
+	public static Class<?> loadClass(/*~~>*/String className) throws ClassNotFoundException {
 		return OpenmrsClassLoader.getInstance().loadClass(className);
 	}
 
@@ -321,7 +321,7 @@ public class Context {
 	 * <strong>Should</strong> not authenticate with null password and proper system id
 	 */
 	@Deprecated
-	public static void authenticate(String username, String password) throws ContextAuthenticationException {
+	public static void authenticate(/*~~>*/String username, /*~~>*/String password) throws ContextAuthenticationException {
 		authenticate(new UsernamePasswordCredentials(username, password));
 	}
 
@@ -370,15 +370,15 @@ public class Context {
 	 * @throws ContextAuthenticationException
 	 * <strong>Should</strong> change locale when become another user
 	 */
-	public static void becomeUser(String systemId) throws ContextAuthenticationException {
+	public static void becomeUser(/*~~>*/String systemId) throws ContextAuthenticationException {
 		log.info("systemId: {}", systemId);
 
 		User user = getUserContext().becomeUser(systemId);
 
 		// if assuming identity procedure finished successfully, we should change context locale parameter
 		Locale locale = null;
-		if (user.getUserProperties().containsKey(OpenmrsConstants.USER_PROPERTY_DEFAULT_LOCALE)) {
-			String localeString = user.getUserProperty(OpenmrsConstants.USER_PROPERTY_DEFAULT_LOCALE);
+		if (user.getUserProperties().containsKey(/*~~>*/OpenmrsConstants.USER_PROPERTY_DEFAULT_LOCALE)) {
+			/*~~>*/String localeString = user.getUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_DEFAULT_LOCALE);
 			locale = LocaleUtility.fromSpecification(localeString);
 		}
 		// when locale parameter is not valid or does not exist
@@ -601,7 +601,7 @@ public class Context {
 	 */
 	public static Properties getMailProperties() {
 		Properties p = new Properties();
-		String prefix = "mail.";
+		/*~~>*/String prefix = "mail.";
 		for (GlobalProperty gp : getAdministrationService().getGlobalPropertiesByPrefix(prefix)) {
 			// Historically, some mail properties defined with underscores, support these for legacy compatibility
 			if (gp.getProperty().equals("mail.transport_protocol")) {
@@ -620,12 +620,12 @@ public class Context {
 				p.setProperty(gp.getProperty(), gp.getPropertyValue());
 			}
 		}
-		for (String runtimeProperty : runtimeProperties.stringPropertyNames()) {
+		for (/*~~>*/String runtimeProperty : runtimeProperties.stringPropertyNames()) {
 			if (runtimeProperty.startsWith(prefix)) {
 				p.setProperty(runtimeProperty, runtimeProperties.getProperty(runtimeProperty));
 			}
 		}
-		for (String systemProperty : System.getProperties().stringPropertyNames()) {
+		for (/*~~>*/String systemProperty : System.getProperties().stringPropertyNames()) {
 			if (systemProperty.startsWith(prefix)) {
 				p.setProperty(systemProperty, System.getProperty(systemProperty));
 			}
@@ -733,7 +733,7 @@ public class Context {
 	 *
 	 * <strong>Should</strong> give daemon user full privileges
 	 */
-	public static boolean hasPrivilege(String privilege) {
+	public static boolean hasPrivilege(/*~~>*/String privilege) {
 		// the daemon threads have access to all things
 		if (Daemon.isDaemonThread()) {
 			return true;
@@ -749,9 +749,9 @@ public class Context {
 	 * @param privilege
 	 * @throws ContextAuthenticationException
 	 */
-	public static void requirePrivilege(String privilege) throws ContextAuthenticationException {
+	public static void requirePrivilege(/*~~>*/String privilege) throws ContextAuthenticationException {
 		if (!hasPrivilege(privilege)) {
-			String errorMessage;
+			/*~~>*/String errorMessage;
 			if (StringUtils.isNotBlank(privilege)) {
 				errorMessage = Context.getMessageSourceService().getMessage("error.privilegesRequired",
 						new Object[] { privilege }, null);
@@ -767,14 +767,14 @@ public class Context {
 	/**
 	 * Convenience method. Passes through to {@link UserContext#addProxyPrivilege(String)}
 	 */
-	public static void addProxyPrivilege(String privilege) {
+	public static void addProxyPrivilege(/*~~>*/String privilege) {
 		getUserContext().addProxyPrivilege(privilege);
 	}
 
 	/**
 	 * Convenience method. Passes through to {@link UserContext#removeProxyPrivilege(String)}
 	 */
-	public static void removeProxyPrivilege(String privilege) {
+	public static void removeProxyPrivilege(/*~~>*/String privilege) {
 		getUserContext().removeProxyPrivilege(privilege);
 	}
 
@@ -952,7 +952,7 @@ public class Context {
 	 * @see InputRequiredException#getRequiredInput() InputRequiredException#getRequiredInput() for
 	 *      the required question/datatypes
 	 */
-	public static synchronized void startup(String url, String username, String password, Properties properties)
+	public static synchronized void startup(/*~~>*/String url, /*~~>*/String username, /*~~>*/String password, Properties properties)
 			throws DatabaseUpdateException, InputRequiredException, ModuleMustStartException {
 		if (properties == null) {
 			properties = new Properties();
@@ -1075,14 +1075,14 @@ public class Context {
 	public static void checkCoreDataset() {
 		// setting core roles
 		try {
-			Context.addProxyPrivilege(PrivilegeConstants.MANAGE_ROLES);
-			Set<String> currentRoleNames = new HashSet<>();
+			Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.MANAGE_ROLES);
+			Set</*~~>*/String> currentRoleNames = new HashSet<>();
 			for (Role role : Context.getUserService().getAllRoles()) {
 				currentRoleNames.add(role.getRole().toUpperCase());
 			}
-			Map<String, String> map = OpenmrsUtil.getCoreRoles();
-			for (Map.Entry<String, String> entry : map.entrySet()) {
-				String roleName = entry.getKey();
+			Map</*~~>*/String, /*~~>*/String> map = OpenmrsUtil.getCoreRoles();
+			for (Map.Entry</*~~>*/String, /*~~>*/String> entry : map.entrySet()) {
+				/*~~>*/String roleName = entry.getKey();
 				if (!currentRoleNames.contains(roleName.toUpperCase())) {
 					Role role = new Role();
 					role.setRole(roleName);
@@ -1095,19 +1095,19 @@ public class Context {
 			log.error("Error while setting core roles for openmrs system", e);
 		}
 		finally {
-			Context.removeProxyPrivilege(PrivilegeConstants.MANAGE_ROLES);
+			Context.removeProxyPrivilege(/*~~>*/PrivilegeConstants.MANAGE_ROLES);
 		}
 
 		// setting core privileges
 		try {
-			Context.addProxyPrivilege(PrivilegeConstants.MANAGE_PRIVILEGES);
-			Set<String> currentPrivilegeNames = new HashSet<>();
+			Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.MANAGE_PRIVILEGES);
+			Set</*~~>*/String> currentPrivilegeNames = new HashSet<>();
 			for (Privilege privilege : Context.getUserService().getAllPrivileges()) {
 				currentPrivilegeNames.add(privilege.getPrivilege().toUpperCase());
 			}
-			Map<String, String> map = OpenmrsUtil.getCorePrivileges();
-			for (Map.Entry<String, String> entry : map.entrySet()) {
-				String privilegeName = entry.getKey();
+			Map</*~~>*/String, /*~~>*/String> map = OpenmrsUtil.getCorePrivileges();
+			for (Map.Entry</*~~>*/String, /*~~>*/String> entry : map.entrySet()) {
+				/*~~>*/String privilegeName = entry.getKey();
 				if (!currentPrivilegeNames.contains(privilegeName.toUpperCase())) {
 					Privilege p = new Privilege();
 					p.setPrivilege(privilegeName);
@@ -1120,16 +1120,16 @@ public class Context {
 			log.error("Error while setting core privileges", e);
 		}
 		finally {
-			Context.removeProxyPrivilege(PrivilegeConstants.MANAGE_PRIVILEGES);
+			Context.removeProxyPrivilege(/*~~>*/PrivilegeConstants.MANAGE_PRIVILEGES);
 		}
 
 		// setting core global properties
 		try {
-			Context.addProxyPrivilege(PrivilegeConstants.MANAGE_GLOBAL_PROPERTIES);
-			Context.addProxyPrivilege(PrivilegeConstants.GET_GLOBAL_PROPERTIES);
-			Set<String> currentPropNames = new HashSet<>();
-			Map<String, GlobalProperty> propsMissingDescription = new HashMap<>();
-			Map<String, GlobalProperty> propsMissingDatatype = new HashMap<>();
+			Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.MANAGE_GLOBAL_PROPERTIES);
+			Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.GET_GLOBAL_PROPERTIES);
+			Set</*~~>*/String> currentPropNames = new HashSet<>();
+			Map</*~~>*/String, GlobalProperty> propsMissingDescription = new HashMap<>();
+			Map</*~~>*/String, GlobalProperty> propsMissingDatatype = new HashMap<>();
 			for (GlobalProperty prop : Context.getAdministrationService().getAllGlobalProperties()) {
 				currentPropNames.add(prop.getProperty().toUpperCase());
 				if (prop.getDescription() == null) {
@@ -1141,7 +1141,7 @@ public class Context {
 			}
 
 			for (GlobalProperty coreProp : OpenmrsConstants.CORE_GLOBAL_PROPERTIES()) {
-				String corePropName = coreProp.getProperty().toUpperCase();
+				/*~~>*/String corePropName = coreProp.getProperty().toUpperCase();
 				// if the prop doesn't exist, save it
 				if (!currentPropNames.contains(corePropName)) {
 					Context.getAdministrationService().saveGlobalProperty(coreProp);
@@ -1170,20 +1170,20 @@ public class Context {
 			log.error("Error while setting core global properties", e);
 		}
 		finally {
-			Context.removeProxyPrivilege(PrivilegeConstants.MANAGE_GLOBAL_PROPERTIES);
-			Context.removeProxyPrivilege(PrivilegeConstants.GET_GLOBAL_PROPERTIES);
+			Context.removeProxyPrivilege(/*~~>*/PrivilegeConstants.MANAGE_GLOBAL_PROPERTIES);
+			Context.removeProxyPrivilege(/*~~>*/PrivilegeConstants.GET_GLOBAL_PROPERTIES);
 		}
 
 		// setting default validation rule
 		AdministrationService as = Context.getAdministrationService();
-		Boolean disableValidation = Boolean.valueOf(as.getGlobalProperty(OpenmrsConstants.GP_DISABLE_VALIDATION, "false"));
+		Boolean disableValidation = Boolean.valueOf(as.getGlobalProperty(/*~~>*/OpenmrsConstants.GP_DISABLE_VALIDATION, "false"));
 		ValidateUtil.setDisableValidation(disableValidation);
 
 		PersonName.setFormat(Context.getAdministrationService().getGlobalProperty(
-				OpenmrsConstants.GLOBAL_PROPERTY_LAYOUT_NAME_FORMAT));
+				/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LAYOUT_NAME_FORMAT));
 
 		Allergen.setOtherNonCodedConceptUuid(Context.getAdministrationService().getGlobalProperty(
-				OpenmrsConstants.GP_ALLERGEN_OTHER_NON_CODED_UUID));
+				/*~~>*/OpenmrsConstants.GP_ALLERGEN_OTHER_NON_CODED_UUID));
 	}
 
 	/**
@@ -1232,7 +1232,7 @@ public class Context {
 	 * 
 	 */
 	@Deprecated
-	public static void updateDatabase(Map<String, Object> userInput) throws DatabaseUpdateException {
+	public static void updateDatabase(Map</*~~>*/String, Object> userInput) throws DatabaseUpdateException {
 		throw new UnsupportedOperationException("As of 2.4, this method is not longer implemented");
 	}
 
@@ -1292,7 +1292,7 @@ public class Context {
 	 * @see ServiceContext#getRegisteredComponent(String, Class)
 	 * @since 1.9.4
 	 */
-	public static <T> T getRegisteredComponent(String beanName, Class<T> type) throws APIException {
+	public static <T> T getRegisteredComponent(/*~~>*/String beanName, Class<T> type) throws APIException {
 		return getServiceContext().getRegisteredComponent(beanName, type);
 	}
 
@@ -1300,7 +1300,7 @@ public class Context {
 	 * @see ServiceContext#getModuleOpenmrsServices(String)
 	 * @since 1.9
 	 */
-	public static List<OpenmrsService> getModuleOpenmrsServices(String modulePackage) {
+	public static List<OpenmrsService> getModuleOpenmrsServices(/*~~>*/String modulePackage) {
 		return getServiceContext().getModuleOpenmrsServices(modulePackage);
 	}
 

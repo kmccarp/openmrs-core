@@ -40,9 +40,9 @@ public class RelationshipType extends BaseChangeableOpenmrsMetadata{
 	
 	private Integer relationshipTypeId;
 	
-	private String aIsToB;
+	private /*~~>*/String aIsToB;
 	
-	private String bIsToA;
+	private /*~~>*/String bIsToA;
 	
 	private Integer weight = 0;
 	
@@ -96,21 +96,21 @@ public class RelationshipType extends BaseChangeableOpenmrsMetadata{
 	 * 
 	 * @return the aIsToB
 	 */
-	public String getaIsToB() {
+	public /*~~>*/String getaIsToB() {
 		return aIsToB;
 	}
 	
 	/**
 	 * @param aisToB the aIsToB to set
 	 */
-	public void setaIsToB(String aisToB) {
+	public void setaIsToB(/*~~>*/String aisToB) {
 		aIsToB = aisToB;
 	}
 	
 	/**
 	 * @return the bIsToA
 	 */
-	public String getbIsToA() {
+	public /*~~>*/String getbIsToA() {
 		return bIsToA;
 	}
 	
@@ -145,7 +145,7 @@ public class RelationshipType extends BaseChangeableOpenmrsMetadata{
 	/**
 	 * @param bisToA the bIsToA to set
 	 */
-	public void setbIsToA(String bisToA) {
+	public void setbIsToA(/*~~>*/String bisToA) {
 		bIsToA = bisToA;
 	}
 	
@@ -153,7 +153,7 @@ public class RelationshipType extends BaseChangeableOpenmrsMetadata{
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return getaIsToB() + "/" + getbIsToA();
 	}
 	

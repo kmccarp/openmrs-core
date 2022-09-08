@@ -29,11 +29,11 @@ public interface OpenmrsObject {
 	/**
 	 * @return the universally unique id for this object
 	 */
-	public String getUuid();
+	public /*~~>*/String getUuid();
 	
 	/**
 	 * @param uuid a universally unique id for this object
 	 */
-	public void setUuid(String uuid);
+	public void setUuid(/*~~>*/String uuid);
 	
 }

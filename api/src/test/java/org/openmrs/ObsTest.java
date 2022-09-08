@@ -48,12 +48,12 @@ import org.openmrs.util.Reflect;
  */
 public class ObsTest {
 	
-	private static final String VERO = "Vero";
+	private static final /*~~>*/String VERO = "Vero";
 	
-	private static final String FORM_NAMESPACE_PATH_SEPARATOR = "^";
+	private static final /*~~>*/String FORM_NAMESPACE_PATH_SEPARATOR = "^";
 	
 	//ignore these fields, groupMembers and formNamespaceAndPath field are taken care of by other tests
-	private static final List<String> IGNORED_FIELDS = Arrays.asList("dirty", "log", "serialVersionUID",
+	private static final List</*~~>*/String> IGNORED_FIELDS = Arrays.asList("dirty", "log", "serialVersionUID",
 	    "DATE_TIME_PATTERN", "TIME_PATTERN", "DATE_PATTERN", "FORM_NAMESPACE_PATH_SEPARATOR",
 	    "FORM_NAMESPACE_PATH_MAX_LENGTH", "obsId", "groupMembers", "uuid", "changedBy", "dateChanged", "voided", "voidedBy",
 	    "voidReason", "dateVoided", "formNamespaceAndPath", "$jacocoData");
@@ -119,7 +119,7 @@ public class ObsTest {
 				c.add(Calendar.MINUTE, 2);
 				fieldValue = c.getTime();
 			}
-		} else if (field.getType().equals(String.class)) {
+		} else if (field.getType().equals(/*~~>*/String.class)) {
 			fieldValue = setAlternateValue ? "old" : "new";
 		} else if (field.getType().equals(Person.class)) {
 			//setPerson updates the personId, so we want the personIds to match for the tests to be valid
@@ -354,7 +354,7 @@ public class ObsTest {
 		cn.setDatatype(cdt);
 		cn.setAllowDecimal(false);
 		obs.setConcept(cn);
-		String str = "25";
+		/*~~>*/String str = "25";
 		assertEquals(str, obs.getValueAsString(Locale.US));
 	}
 	
@@ -362,7 +362,7 @@ public class ObsTest {
 	public void getValueAsString_shouldNotReturnLongDecimalNumbersAsScientificNotation() throws Exception {
 		Obs obs = new Obs();
 		obs.setValueNumeric(123456789.0);
-		String str = "123456789.0";
+		/*~~>*/String str = "123456789.0";
 		assertEquals(str, obs.getValueAsString(Locale.US));
 	}
 	
@@ -378,7 +378,7 @@ public class ObsTest {
 		
 		Date utilDate = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String dateString = dateFormat.format(utilDate);
+		/*~~>*/String dateString = dateFormat.format(utilDate);
 		assertEquals(dateString, obs.getValueAsString(Locale.US));
 	}
 	
@@ -446,7 +446,7 @@ public class ObsTest {
 	public void getValueAsString_shouldUseCommasOrDecimalPlacesDependingOnLocale() throws Exception {
 		Obs obs = new Obs();
 		obs.setValueNumeric(123456789.3);
-		String str = "123456789,3";
+		/*~~>*/String str = "123456789,3";
 		assertEquals(str, obs.getValueAsString(Locale.GERMAN));
 	}
 	
@@ -457,7 +457,7 @@ public class ObsTest {
 	public void getValueAsString_shouldNotUseThousandSeparator() throws Exception {
 		Obs obs = new Obs();
 		obs.setValueNumeric(123456789.0);
-		String str = "123456789.0";
+		/*~~>*/String str = "123456789.0";
 		assertEquals(str, obs.getValueAsString(Locale.ENGLISH));
 	}
 	
@@ -468,7 +468,7 @@ public class ObsTest {
 	public void getValueAsString_shouldReturnRegularNumberForSizeOfZeroToOrGreaterThanTenDigits() throws Exception {
 		Obs obs = new Obs();
 		obs.setValueNumeric(1234567890.0);
-		String str = "1234567890.0";
+		/*~~>*/String str = "1234567890.0";
 		assertEquals(str, obs.getValueAsString(Locale.ENGLISH));
 	}
 	
@@ -479,7 +479,7 @@ public class ObsTest {
 	public void getValueAsString_shouldReturnRegularNumberIfDecimalPlacesAreAsHighAsSix() throws Exception {
 		Obs obs = new Obs();
 		obs.setValueNumeric(123456789.012345);
-		String str = "123456789.012345";
+		/*~~>*/String str = "123456789.012345";
 		assertEquals(str, obs.getValueAsString(Locale.ENGLISH));
 	}
 	
@@ -550,7 +550,7 @@ public class ObsTest {
 		final Integer originalPersonId = obs.getPersonId();
 		//call each setter and check that dirty has been set to true for each
 		for (Field field : fields) {
-			String fieldName = field.getName();
+			/*~~>*/String fieldName = field.getName();
 			if (IGNORED_FIELDS.contains(fieldName)) {
 				continue;
 			}
@@ -654,8 +654,8 @@ public class ObsTest {
 	@Test
 	public void setFormField_shouldMarkTheObsAsDirtyWhenTheValueHasBeenChanged() throws Exception {
 		Obs obs = createObs(5);
-		final String newNameSpace = "someNameSpace";
-		final String newPath = "somePath";
+		final /*~~>*/String newNameSpace = "someNameSpace";
+		final /*~~>*/String newPath = "somePath";
 		assertNotEquals(newPath, obs.getFormFieldNamespace());
 		assertNotEquals(newNameSpace, obs.getFormFieldPath());
 		obs.setFormField(newNameSpace, newPath);
@@ -952,7 +952,7 @@ public class ObsTest {
 	public void setValueBoolean_shouldNotSetValueForNonBooleanConcept() throws Exception {
 		Obs obs = createObs(2);
 		ConceptDatatype dataType = new ConceptDatatype();
-		dataType.setUuid(ConceptDatatype.CODED_UUID);
+		dataType.setUuid(/*~~>*/ConceptDatatype.CODED_UUID);
 		obs.getConcept().setDatatype(dataType);
 		assertNotNull(obs.getValueCoded());
 		obs.setValueBoolean(null);

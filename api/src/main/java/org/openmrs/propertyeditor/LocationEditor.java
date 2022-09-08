@@ -31,7 +31,7 @@ public class LocationEditor extends OpenmrsPropertyEditor<Location> {
 	}
 	
 	@Override
-	protected Location getObjectByUuid(String uuid) {
+	protected Location getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getLocationService().getLocationByUuid(uuid);
 	}
 }

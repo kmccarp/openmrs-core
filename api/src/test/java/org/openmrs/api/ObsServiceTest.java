@@ -70,13 +70,13 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class ObsServiceTest extends BaseContextSensitiveTest {
 	
-	protected static final String INITIAL_OBS_XML = "org/openmrs/api/include/ObsServiceTest-initial.xml";
+	protected static final /*~~>*/String INITIAL_OBS_XML = "org/openmrs/api/include/ObsServiceTest-initial.xml";
 	
-	protected static final String ENCOUNTER_OBS_XML = "org/openmrs/api/include/ObsServiceTest-EncounterOverwrite.xml";
+	protected static final /*~~>*/String ENCOUNTER_OBS_XML = "org/openmrs/api/include/ObsServiceTest-EncounterOverwrite.xml";
 	
-	protected static final String COMPLEX_OBS_XML = "org/openmrs/api/include/ObsServiceTest-complex.xml";
+	protected static final /*~~>*/String COMPLEX_OBS_XML = "org/openmrs/api/include/ObsServiceTest-complex.xml";
 
-	protected static final String REVISION_OBS_XML = "org/openmrs/api/include/ObsServiceTest-RevisionObs.xml";
+	protected static final /*~~>*/String REVISION_OBS_XML = "org/openmrs/api/include/ObsServiceTest-RevisionObs.xml";
 	
 	@Autowired
 	private ObsService obsService;
@@ -434,7 +434,7 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 		// make sure the file isn't there to begin with
 		AdministrationService as = Context.getAdministrationService();
 		File complexObsDir = OpenmrsUtil.getDirectoryInApplicationDataDirectory(as
-		        .getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR));
+		        .getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR));
 		File createdFile = new File(complexObsDir, "openmrs_logo_small.gif");
 		if (createdFile.exists())
 			createdFile.delete();
@@ -488,7 +488,7 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 		// make sure the file isn't there to begin with
 		AdministrationService as = Context.getAdministrationService();
 		File complexObsDir = OpenmrsUtil.getDirectoryInApplicationDataDirectory(as
-		        .getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR));
+		        .getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR));
 		File createdFile = new File(complexObsDir, "openmrs_logo_small.gif");
 		if (createdFile.exists())
 			createdFile.delete();
@@ -534,7 +534,7 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 		
 		ObsService os = Context.getObsService();
 		
-		Obs normalObs = os.getComplexObs(7, ComplexObsHandler.RAW_VIEW);
+		Obs normalObs = os.getComplexObs(7, /*~~>*/ComplexObsHandler.RAW_VIEW);
 		
 		assertFalse(normalObs.isComplex());
 	}
@@ -649,9 +649,9 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 		obsToSave.setComplexData(complexData);
 		
 		// make sure the file isn't there to begin with
-		String filename = "nameOfFile_" + obsToSave.getUuid() + ".txt";
+		/*~~>*/String filename = "nameOfFile_" + obsToSave.getUuid() + ".txt";
 		File complexObsDir = OpenmrsUtil.getDirectoryInApplicationDataDirectory(as
-	        .getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR));
+	        .getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR));
 		File createdFile = new File(complexObsDir, filename);
 		if (createdFile.exists()) {
 			createdFile.delete();
@@ -683,7 +683,7 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 		
 		// Create the file that was supposedly put there by another obs
 		File complexObsDir = OpenmrsUtil.getDirectoryInApplicationDataDirectory(as
-		        .getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR));
+		        .getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR));
 		File previouslyCreatedFile = new File(complexObsDir, "nameOfFile.txt");
 		
 		FileUtils.writeByteArrayToFile(previouslyCreatedFile, "a string to save to a file".getBytes());
@@ -714,8 +714,8 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 			// make sure the old file still appears now after the save
 			assertEquals(oldFileSize, previouslyCreatedFile.length());
 			
-			String valueComplex = obsToSave.getValueComplex();
-			String filename = valueComplex.substring(valueComplex.indexOf("|") + 1).trim();
+			/*~~>*/String valueComplex = obsToSave.getValueComplex();
+			/*~~>*/String filename = valueComplex.substring(valueComplex.indexOf("|") + 1).trim();
 			newComplexFile = new File(complexObsDir, filename);
 			// make sure the file appears now after the save
 			assertTrue(newComplexFile.length() > oldFileSize);
@@ -740,7 +740,7 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 	public void setHandlers_shouldAddNewHandlersWithNewKeys() {
 		ObsService os = Context.getObsService();
 		
-		Map<String, ComplexObsHandler> handlers = new HashMap<>();
+		Map</*~~>*/String, ComplexObsHandler> handlers = new HashMap<>();
 		handlers.put("DummyHandler4", new ImageHandler());
 		handlers.put("DummyHandler5", new BinaryDataHandler());
 		handlers.put("DummyHandler6", new TextHandler());
@@ -765,7 +765,7 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 	public void setHandlers_shouldOverrideHandlersWithSameKey() {
 		ObsService os = Context.getObsService();
 		
-		Map<String, ComplexObsHandler> handlers = new HashMap<>();
+		Map</*~~>*/String, ComplexObsHandler> handlers = new HashMap<>();
 		handlers.put("DummyHandlerToOverride", new ImageHandler());
 		
 		// set the handlers and make sure they're there
@@ -776,7 +776,7 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 		
 		// now override that key and make sure the new class is stored
 		
-		Map<String, ComplexObsHandler> handlersAgain = new HashMap<>();
+		Map</*~~>*/String, ComplexObsHandler> handlersAgain = new HashMap<>();
 		handlersAgain.put("DummyHandlerToOverride", new BinaryDataHandler());
 		
 		os.setHandlers(handlersAgain);
@@ -1319,13 +1319,13 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 		
 		
 		executeDataSet(COMPLEX_OBS_XML);
-		Obs complexObs = obsService.getComplexObs(44, ComplexObsHandler.RAW_VIEW);
+		Obs complexObs = obsService.getComplexObs(44, /*~~>*/ComplexObsHandler.RAW_VIEW);
 		// obs #44 is coded by the concept complex #8473 pointing to ImageHandler
 		// ImageHandler inherits AbstractHandler which handles complex data files on disk
 		assertNotNull(complexObs.getComplexData());
 		AdministrationService as = Context.getAdministrationService();
 		File complexObsDir = OpenmrsUtil.getDirectoryInApplicationDataDirectory(as
-		        .getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR));
+		        .getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR));
 		for (File file : complexObsDir.listFiles()) {
 			file.delete();
 		}
@@ -1360,9 +1360,9 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 		Date valueDatetime = new Date();
 		Concept valueCoded = new Concept(3);
 		Double valueNumeric = 2.0;
-		String valueModifier = "cc";
-		String valueText = "value text2";
-		String comment = "commenting2";
+		/*~~>*/String valueModifier = "cc";
+		/*~~>*/String valueText = "value text2";
+		/*~~>*/String comment = "commenting2";
 		
 		Obs obs = new Obs();
 		obs.setOrder(order);
@@ -1677,7 +1677,7 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 	public void saveObs_shouldSetVoidReasonMessageToChangeMessage() {
 		
 		// Set changeMessage arg to saveObs() method - should equal void reason on new Obs
-		String changeMessage = "Testing TRUNK-3701";
+		/*~~>*/String changeMessage = "Testing TRUNK-3701";
 		
 		int obsId = 7;
 		ObsService obsService = Context.getObsService();
@@ -1695,7 +1695,7 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 	
 	@Test
 	public void saveObs_shouldOverwriteObsPersonValueWithEncounterPatient() {
-		String changeMessage = "Testing TRUNK-3283";
+		/*~~>*/String changeMessage = "Testing TRUNK-3283";
 		
 		executeDataSet(ENCOUNTER_OBS_XML);
 		ObsService obsService = Context.getObsService();
@@ -1774,7 +1774,7 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void saveObs_shouldDeleteThePreviousFileWhenAComplexObservationIsUpdatedWithANewComplexValue() {
 		
-		String changeMessage = "Testing TRUNK-4538";
+		/*~~>*/String changeMessage = "Testing TRUNK-4538";
 		
 		executeDataSet(COMPLEX_OBS_XML);
 		
@@ -1784,7 +1784,7 @@ public class ObsServiceTest extends BaseContextSensitiveTest {
 		
 		// make sure the file isn't there to begin with
 		File complexObsDir = OpenmrsUtil.getDirectoryInApplicationDataDirectory(as
-		        .getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR));
+		        .getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR));
 		final File createdFile = new File(complexObsDir, "nameOfFile.txt");
 		if (createdFile.exists())
 			createdFile.delete();

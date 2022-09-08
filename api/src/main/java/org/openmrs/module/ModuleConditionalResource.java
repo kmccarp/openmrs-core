@@ -21,32 +21,32 @@ import java.util.Objects;
  */
 public class ModuleConditionalResource {
 	
-	private String path;
+	private /*~~>*/String path;
 	
-	private String openmrsPlatformVersion;
+	private /*~~>*/String openmrsPlatformVersion;
 	
 	private List<ModuleAndVersion> modules = new ArrayList<>();
 	
-	public String getPath() {
+	public /*~~>*/String getPath() {
 		return path;
 	}
 	
-	public void setPath(String path) {
-		this.path = path;
+	public void setPath(/*~~>*/String path) {
+		/*~~>*/this.path = path;
 	}
 	
 	/**
 	 * @since 1.11.3, 1.10.2, 1.9.9
 	 */
-    public String getOpenmrsPlatformVersion() {
+    public /*~~>*/String getOpenmrsPlatformVersion() {
     	return openmrsPlatformVersion;
     }
 
     /**
 	 * @since 1.11.3, 1.10.2, 1.9.9
 	 */
-    public void setOpenmrsPlatformVersion(String openmrsPlatformVersion) {
-    	this.openmrsPlatformVersion = openmrsPlatformVersion;
+    public void setOpenmrsPlatformVersion(/*~~>*/String openmrsPlatformVersion) {
+    	/*~~>*/this.openmrsPlatformVersion = openmrsPlatformVersion;
     }
 
 	public List<ModuleAndVersion> getModules() {
@@ -70,14 +70,14 @@ public class ModuleConditionalResource {
 		if (!Objects.equals(modules, that.modules)) {
 			return false;
 		}
-		if (!Objects.equals(openmrsPlatformVersion, that.openmrsPlatformVersion)) {
+		if (!Objects.equals(openmrsPlatformVersion, /*~~>*/that.openmrsPlatformVersion)) {
 			return false;
 		}
-		return Objects.equals(path, that.path);
+		return Objects.equals(path, /*~~>*/that.path);
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "ModuleConditionalResource{" + "path='" + path + '\'' + ", openmrsPlatformVersion='" + openmrsPlatformVersion + '\''
 		        + ", modules=" + modules + '}';
 	}
@@ -92,24 +92,24 @@ public class ModuleConditionalResource {
 	
 	public static class ModuleAndVersion {
 		
-		private String moduleId;
+		private /*~~>*/String moduleId;
 		
-		private String version;
+		private /*~~>*/String version;
 		
-		public String getModuleId() {
+		public /*~~>*/String getModuleId() {
 			return moduleId;
 		}
 		
-		public void setModuleId(String moduleId) {
-			this.moduleId = moduleId;
+		public void setModuleId(/*~~>*/String moduleId) {
+			/*~~>*/this.moduleId = moduleId;
 		}
 		
-		public String getVersion() {
+		public /*~~>*/String getVersion() {
 			return version;
 		}
 		
-		public void setVersion(String version) {
-			this.version = version;
+		public void setVersion(/*~~>*/String version) {
+			/*~~>*/this.version = version;
 		}
 		
 		@Override
@@ -122,10 +122,10 @@ public class ModuleConditionalResource {
 			}
 			ModuleAndVersion that = (ModuleAndVersion) o;
 
-			if (!Objects.equals(moduleId, that.moduleId)) {
+			if (!Objects.equals(moduleId, /*~~>*/that.moduleId)) {
 				return false;
 			}
-			return Objects.equals(version, that.version);
+			return Objects.equals(version, /*~~>*/that.version);
 		}
 		
 		@Override
@@ -136,7 +136,7 @@ public class ModuleConditionalResource {
 		}
 		
 		@Override
-		public String toString() {
+		public /*~~>*/String toString() {
 			return "ModuleAndVersion{" + "moduleId='" + moduleId + '\'' + ", version='" + version + '\'' + '}';
 		}
 	}

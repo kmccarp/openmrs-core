@@ -27,7 +27,7 @@ public class Form extends BaseChangeableOpenmrsMetadata {
 	
 	private Integer formId;
 	
-	private String version;
+	private /*~~>*/String version;
 	
 	private Integer build;
 	
@@ -71,15 +71,15 @@ public class Form extends BaseChangeableOpenmrsMetadata {
 	/**
 	 * @return Returns the version.
 	 */
-	public String getVersion() {
+	public /*~~>*/String getVersion() {
 		return version;
 	}
 	
 	/**
 	 * @param version The version to set.
 	 */
-	public void setVersion(String version) {
-		this.version = version;
+	public void setVersion(/*~~>*/String version) {
+		/*~~>*/this.version = version;
 	}
 	
 	/**
@@ -202,7 +202,7 @@ public class Form extends BaseChangeableOpenmrsMetadata {
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		if (formId == null) {
 			return "";
 		}

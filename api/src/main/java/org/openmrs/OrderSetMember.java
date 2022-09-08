@@ -23,9 +23,9 @@ public class OrderSetMember extends BaseChangeableOpenmrsMetadata {
 	
 	private OrderSet orderSet;
 	
-	private String orderTemplate;
+	private /*~~>*/String orderTemplate;
 	
-	private String orderTemplateType;
+	private /*~~>*/String orderTemplateType;
 	
 	private Concept concept;
 	
@@ -70,7 +70,7 @@ public class OrderSetMember extends BaseChangeableOpenmrsMetadata {
 	 *
 	 * @return the orderTemplate
 	 */
-	public String getOrderTemplate() {
+	public /*~~>*/String getOrderTemplate() {
 		return orderTemplate;
 	}
 	
@@ -79,8 +79,8 @@ public class OrderSetMember extends BaseChangeableOpenmrsMetadata {
 	 *
 	 * @param orderTemplate the orderTemplate to set
 	 */
-	public void setOrderTemplate(String orderTemplate) {
-		this.orderTemplate = orderTemplate;
+	public void setOrderTemplate(/*~~>*/String orderTemplate) {
+		/*~~>*/this.orderTemplate = orderTemplate;
 	}
 	
 	/**
@@ -88,7 +88,7 @@ public class OrderSetMember extends BaseChangeableOpenmrsMetadata {
 	 * 
 	 * @return the orderTemplateType
 	 */
-	public String getOrderTemplateType() {
+	public /*~~>*/String getOrderTemplateType() {
 		return orderTemplateType;
 	}
 	
@@ -97,8 +97,8 @@ public class OrderSetMember extends BaseChangeableOpenmrsMetadata {
 	 * 
 	 * @param orderTemplateType the orderTemplateType to be set
 	 */
-	public void setOrderTemplateType(String orderTemplateType) {
-		this.orderTemplateType = orderTemplateType;
+	public void setOrderTemplateType(/*~~>*/String orderTemplateType) {
+		/*~~>*/this.orderTemplateType = orderTemplateType;
 	}
 	
 	public Concept getConcept() {

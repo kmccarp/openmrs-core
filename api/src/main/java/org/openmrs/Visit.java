@@ -228,7 +228,7 @@ public class Visit extends BaseCustomizableData<VisitAttribute> implements Audit
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "Visit #" + visitId;
 	}
 	

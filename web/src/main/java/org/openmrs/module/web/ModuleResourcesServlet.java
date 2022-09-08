@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
 
 public class ModuleResourcesServlet extends HttpServlet {
 	
-	private static final String MODULE_PATH = "/WEB-INF/view/module/";
+	private static final /*~~>*/String MODULE_PATH = "/WEB-INF/view/module/";
 	
 	private static final long serialVersionUID = 1239820102030344L;
 	
@@ -61,7 +61,7 @@ public class ModuleResourcesServlet extends HttpServlet {
 		
 		response.setDateHeader("Last-Modified", f.lastModified());
 		response.setContentLength(Long.valueOf(f.length()).intValue());
-		String mimeType = getServletContext().getMimeType(f.getName());
+		/*~~>*/String mimeType = getServletContext().getMimeType(f.getName());
 		response.setContentType(mimeType);
 		
 		FileInputStream is = new FileInputStream(f);
@@ -81,7 +81,7 @@ public class ModuleResourcesServlet extends HttpServlet {
 	 */
 	protected File getFile(HttpServletRequest request) {
 		
-		String path = request.getPathInfo();
+		/*~~>*/String path = request.getPathInfo();
 		
 		Module module = ModuleUtil.getModuleForPath(path);
 		if (module == null) {
@@ -89,8 +89,8 @@ public class ModuleResourcesServlet extends HttpServlet {
 			return null;
 		}
 		
-		String relativePath = ModuleUtil.getPathForResource(module, path);
-		String realPath = getServletContext().getRealPath("") + MODULE_PATH + module.getModuleIdAsPath() + "/resources"
+		/*~~>*/String relativePath = ModuleUtil.getPathForResource(module, path);
+		/*~~>*/String realPath = getServletContext().getRealPath("") + MODULE_PATH + module.getModuleIdAsPath() + "/resources"
 		        + relativePath;
 		
 		//if in dev mode, load resources from the development directory
@@ -99,7 +99,7 @@ public class ModuleResourcesServlet extends HttpServlet {
 			realPath = devDir.getAbsolutePath() + "/omod/target/classes/web/module/resources" + relativePath;
 		}
 		
-		realPath = realPath.replace("/", File.separator);
+		realPath = realPath.replace("/", /*~~>*/File.separator);
 		
 		File f = new File(realPath);
 		if (!f.exists()) {

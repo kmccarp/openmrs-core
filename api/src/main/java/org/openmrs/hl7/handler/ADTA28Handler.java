@@ -149,11 +149,11 @@ public class ADTA28Handler implements Application {
 		
 		// Obtain message control id (unique ID for message from sending
 		// application). Eventually avoid replaying the same message.
-		String messageControlId = msh.getMessageControlID().getValue();
+		/*~~>*/String messageControlId = msh.getMessageControlID().getValue();
 		log.debug("Found HL7 message in inbound queue with control id = " + messageControlId);
 		
 		// Add creator of the patient to application
-		String sendingApp = msh.getSendingApplication().getComponent(0).toString();
+		/*~~>*/String sendingApp = msh.getSendingApplication().getComponent(0).toString();
 		log.debug("SendingApplication = " + sendingApp);
 		
 		// Search for the patient  
@@ -190,7 +190,7 @@ public class ADTA28Handler implements Application {
 	}
 	
 	// Create a new patient when this patient doesn't exist in the database
-	private Patient createPatient(PID pid, String creatorName) throws HL7Exception {
+	private Patient createPatient(PID pid, /*~~>*/String creatorName) throws HL7Exception {
 		
 		Patient patient = new Patient();
 		
@@ -210,8 +210,8 @@ public class ADTA28Handler implements Application {
 		List<PatientIdentifier> goodIdentifiers = new ArrayList<>();
 		for (CX id : idList) {
 			
-			String assigningAuthority = id.getAssigningAuthority().getNamespaceID().getValue();
-			String hl7PatientId = id.getIDNumber().getValue();
+			/*~~>*/String assigningAuthority = id.getAssigningAuthority().getNamespaceID().getValue();
+			/*~~>*/String hl7PatientId = id.getIDNumber().getValue();
 			
 			log.debug("identifier has id=" + hl7PatientId + " assigningAuthority=" + assigningAuthority);
 			
@@ -277,7 +277,7 @@ public class ADTA28Handler implements Application {
 		patient.addName(name);
 		
 		// Gender (checks for null, but not for 'M' or 'F')
-		String gender = pid.getAdministrativeSex().getValue();
+		/*~~>*/String gender = pid.getAdministrativeSex().getValue();
 		if (gender == null) {
 			throw new HL7Exception("Missing gender in the PID segment");
 		}
@@ -297,7 +297,7 @@ public class ADTA28Handler implements Application {
 		// Estimated birthdate?
 		ID precisionTemp = dateOfBirth.getDegreeOfPrecision();
 		if (precisionTemp != null && precisionTemp.getValue() != null) {
-			String precision = precisionTemp.getValue().toUpperCase();
+			/*~~>*/String precision = precisionTemp.getValue().toUpperCase();
 			log.debug("The birthdate is estimated: " + precision);
 			
 			if ("Y".equals(precision) || "L".equals(precision)) {
@@ -325,7 +325,7 @@ public class ADTA28Handler implements Application {
 	//TODO: Debug (and use) methods in HL7Util instead
 	private Date tsToDate(TS ts) throws HL7Exception {
 		// need to handle timezone
-		String dtm = ts.getTime().getValue();
+		/*~~>*/String dtm = ts.getTime().getValue();
 		int year = Integer.parseInt(dtm.substring(0, 4));
 		int month = (dtm.length() >= 6 ? Integer.parseInt(dtm.substring(4, 6)) - 1 : 0);
 		int day = (dtm.length() >= 8 ? Integer.parseInt(dtm.substring(6, 8)) : 1);

@@ -47,19 +47,19 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	
 	private Person person;
 	
-	private String systemId;
+	private /*~~>*/String systemId;
 	
-	private String username;
+	private /*~~>*/String username;
 	
-	private String email;
+	private /*~~>*/String email;
 	
 	private Set<Role> roles;
 	
-	private Map<String, String> userProperties;
+	private Map</*~~>*/String, /*~~>*/String> userProperties;
 	
 	private List<Locale> proficientLocales = null;
 	
-	private String parsedProficientLocalesProperty = "";
+	private /*~~>*/String parsedProficientLocalesProperty = "";
 	
 	private User creator;
 	
@@ -75,7 +75,7 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	
 	private Date dateRetired;
 	
-	private String retireReason;
+	private /*~~>*/String retireReason;
 	
 	// Constructors
 	
@@ -99,7 +99,7 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * @return true/false if this user is defined as a super user
 	 */
 	public boolean isSuperUser() {
-		return containsRole(RoleConstants.SUPERUSER);
+		return containsRole(/*~~>*/RoleConstants.SUPERUSER);
 	}
 	
 	/**
@@ -110,7 +110,7 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * @param privilege
 	 * @return true/false depending on whether user has specified privilege
 	 */
-	public boolean hasPrivilege(String privilege) {
+	public boolean hasPrivilege(/*~~>*/String privilege) {
 		
 		// All authenticated users have the "" (empty) privilege
 		if (StringUtils.isEmpty(privilege)) {
@@ -139,7 +139,7 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * @param r String name of a role to check
 	 * @return Returns true if this user has the specified role, false otherwise
 	 */
-	public boolean hasRole(String r) {
+	public boolean hasRole(/*~~>*/String r) {
 		return hasRole(r, false);
 	}
 	
@@ -152,7 +152,7 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * @return Returns true if the user has the given role, or if ignoreSuperUser is false and the user
 	 *         is a superUser
 	 */
-	public boolean hasRole(String r, boolean ignoreSuperUser) {
+	public boolean hasRole(/*~~>*/String r, boolean ignoreSuperUser) {
 		if (!ignoreSuperUser && isSuperUser()) {
 			return true;
 		}
@@ -177,7 +177,7 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * <strong>Should</strong> return false if the user does not have the given role
 	 * <strong>Should</strong> be case insensitive
 	 */
-	public boolean containsRole(String roleName) {
+	public boolean containsRole(/*~~>*/String roleName) {
 		for (Role role : getAllRoles()) {
 			if (role.getRole().equalsIgnoreCase(roleName)) {
 				return true;
@@ -296,7 +296,7 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 */
 	@Override
 	@Deprecated
-	public List<User> findPossibleValues(String searchText) {
+	public List<User> findPossibleValues(/*~~>*/String searchText) {
 		try {
 			return Context.getUserService().getUsersByName(searchText, "", false);
 		}
@@ -323,7 +323,7 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * @see org.openmrs.Attributable#hydrate(java.lang.String)
 	 */
 	@Override
-	public User hydrate(String userId) {
+	public User hydrate(/*~~>*/String userId) {
 		try {
 			return Context.getUserService().getUser(Integer.valueOf(userId));
 		}
@@ -336,7 +336,7 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * @see org.openmrs.Attributable#serialize()
 	 */
 	@Override
-	public String serialize() {
+	public /*~~>*/String serialize() {
 		if (getUserId() != null) {
 			return "" + getUserId();
 		} else {
@@ -348,8 +348,8 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * @see org.openmrs.Attributable#getDisplayString()
 	 */
 	@Override
-	public String getDisplayString() {
-		String returnString = "";
+	public /*~~>*/String getDisplayString() {
+		/*~~>*/String returnString = "";
 		if (getPersonName() != null) {
 			returnString += getPersonName().getFullName() + " ";
 		}
@@ -362,15 +362,15 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	/**
 	 * @return Returns the systemId.
 	 */
-	public String getSystemId() {
+	public /*~~>*/String getSystemId() {
 		return systemId;
 	}
 	
 	/**
 	 * @param systemId The systemId to set.
 	 */
-	public void setSystemId(String systemId) {
-		this.systemId = systemId;
+	public void setSystemId(/*~~>*/String systemId) {
+		/*~~>*/this.systemId = systemId;
 	}
 	
 	/**
@@ -416,22 +416,22 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	/**
 	 * @return Returns the username.
 	 */
-	public String getUsername() {
+	public /*~~>*/String getUsername() {
 		return username;
 	}
 	
 	/**
 	 * @param username The username to set.
 	 */
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(/*~~>*/String username) {
+		/*~~>*/this.username = username;
 	}
 	
 	/**
 	 * @since 2.2
 	 * @return Returns the email.
 	 */
-	public String getEmail() {
+	public /*~~>*/String getEmail() {
 		return email;
 	}
 	
@@ -439,19 +439,19 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * @since 2.2
 	 * @param email The email to set.
 	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail(/*~~>*/String email) {
+		/*~~>*/this.email = email;
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return StringUtils.isNotBlank(username) ? username : systemId;
 	}
 	
 	/**
 	 * @return Returns the userProperties.
 	 */
-	public Map<String, String> getUserProperties() {
+	public Map</*~~>*/String, /*~~>*/String> getUserProperties() {
 		if (userProperties == null) {
 			userProperties = new HashMap<>();
 		}
@@ -461,21 +461,21 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	/**
 	 * @param userProperties A Map&lt;String,String&gt; of the properties to set.
 	 */
-	public void setUserProperties(Map<String, String> userProperties) {
+	public void setUserProperties(Map</*~~>*/String, /*~~>*/String> userProperties) {
 		this.userProperties = userProperties;
 	}
 	
 	/**
 	 * Convenience method. Adds the given property to the user's properties
 	 */
-	public void setUserProperty(String prop, String value) {
+	public void setUserProperty(/*~~>*/String prop, /*~~>*/String value) {
 		getUserProperties().put(prop, value);
 	}
 	
 	/**
 	 * Convenience method. Removes the given property from the user's properties
 	 */
-	public void removeUserProperty(String prop) {
+	public void removeUserProperty(/*~~>*/String prop) {
 		if (getUserProperties() != null && userProperties.containsKey(prop)) {
 			userProperties.remove(prop);
 		}
@@ -488,7 +488,7 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * @param prop
 	 * @return property value
 	 */
-	public String getUserProperty(String prop) {
+	public /*~~>*/String getUserProperty(/*~~>*/String prop) {
 		if (getUserProperties() != null && userProperties.containsKey(prop)) {
 			return userProperties.get(prop);
 		}
@@ -505,7 +505,7 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * @return property value
 	 * @see #getUserProperty(java.lang.String)
 	 */
-	public String getUserProperty(String prop, String defaultValue) {
+	public /*~~>*/String getUserProperty(/*~~>*/String prop, /*~~>*/String defaultValue) {
 		if (getUserProperties() != null && userProperties.containsKey(prop)) {
 			return userProperties.get(prop);
 		}
@@ -532,7 +532,7 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * 
 	 * @see Person#getGivenName()
 	 */
-	public String getGivenName() {
+	public /*~~>*/String getGivenName() {
 		return getPerson() == null ? null : getPerson().getGivenName();
 	}
 	
@@ -541,7 +541,7 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * 
 	 * @see Person#getFamilyName()
 	 */
-	public String getFamilyName() {
+	public /*~~>*/String getFamilyName() {
 		return getPerson() == null ? null : getPerson().getFamilyName();
 	}
 	
@@ -558,15 +558,15 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	 * @return List of the User's proficient locales
 	 */
 	public List<Locale> getProficientLocales() {
-		String proficientLocalesProperty = getUserProperty(OpenmrsConstants.USER_PROPERTY_PROFICIENT_LOCALES);
+		/*~~>*/String proficientLocalesProperty = getUserProperty(/*~~>*/OpenmrsConstants.USER_PROPERTY_PROFICIENT_LOCALES);
 		
 		if ((proficientLocales == null)
 		        || (!OpenmrsUtil.nullSafeEquals(parsedProficientLocalesProperty, proficientLocalesProperty))) {
 			parsedProficientLocalesProperty = proficientLocalesProperty;
 			proficientLocales = new ArrayList<>();
 			if (proficientLocalesProperty != null) {
-				String[] proficientLocalesArray = proficientLocalesProperty.split(",");
-				for (String proficientLocaleSpec : proficientLocalesArray) {
+				/*~~>*/String[] proficientLocalesArray = proficientLocalesProperty.split(",");
+				for (/*~~>*/String proficientLocaleSpec : proficientLocalesArray) {
 					if (proficientLocaleSpec.length() > 0) {
 						Locale proficientLocale = LocaleUtility.fromSpecification(proficientLocaleSpec);
 						if (!proficientLocales.contains(proficientLocale)) {
@@ -682,12 +682,12 @@ public class User extends BaseOpenmrsObject implements java.io.Serializable, Att
 	}
 
 	@Override
-	public String getRetireReason() {
+	public /*~~>*/String getRetireReason() {
 		return retireReason;
 	}
 
 	@Override
-	public void setRetireReason(String retireReason) {
-		this.retireReason = retireReason;
+	public void setRetireReason(/*~~>*/String retireReason) {
+		/*~~>*/this.retireReason = retireReason;
 	}
 }

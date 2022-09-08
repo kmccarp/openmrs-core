@@ -48,7 +48,7 @@ public class DuplicateLocationAttributeTypeNameChangeSet implements CustomTaskCh
 	private static final Logger log = LoggerFactory.getLogger(DuplicateLocationAttributeTypeNameChangeSet.class);
 	
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Completed updating duplicate LocationAttributeType names";
 	}
 	
@@ -73,7 +73,7 @@ public class DuplicateLocationAttributeTypeNameChangeSet implements CustomTaskCh
 	@Override
 	public void execute(Database database) throws CustomChangeException {
 		JdbcConnection connection = (JdbcConnection) database.getConnection();
-		Map<String, HashSet<Integer>> duplicates = new HashMap<>();
+		Map</*~~>*/String, HashSet<Integer>> duplicates = new HashMap<>();
 		Statement stmt = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
@@ -87,7 +87,7 @@ public class DuplicateLocationAttributeTypeNameChangeSet implements CustomTaskCh
 			        + "INNER JOIN (SELECT name FROM location_attribute_type GROUP BY name HAVING count(name) > 1) "
 			        + "dup ON location_attribute_type.name = dup.name");
 			Integer id;
-			String name;
+			/*~~>*/String name;
 			
 			while (rs.next()) {
 				id = rs.getInt("location_attribute_type_id");
@@ -108,12 +108,12 @@ public class DuplicateLocationAttributeTypeNameChangeSet implements CustomTaskCh
 				List<Integer> duplicateNames = new ArrayList<Integer>(values);
 				int duplicateNameId = 1;
 				for (int i = 1; i < duplicateNames.size(); i++) {
-					String newName = pairs.getKey() + "_" + duplicateNameId;
+					/*~~>*/String newName = pairs.getKey() + "_" + duplicateNameId;
 					List<List<Object>> duplicateResult;
 					boolean duplicateName;
 					Connection con = DatabaseUpdater.getConnection();
 					do {
-						String sqlValidatorString = "select * from location_attribute_type where name = '" + newName + "'";
+						/*~~>*/String sqlValidatorString = "select * from location_attribute_type where name = '" + newName + "'";
 						duplicateResult = DatabaseUtil.executeSQL(con, sqlValidatorString, true);
 						if (!duplicateResult.isEmpty()) {
 							duplicateNameId += 1;

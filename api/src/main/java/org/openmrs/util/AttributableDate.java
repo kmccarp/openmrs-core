@@ -32,7 +32,7 @@ public class AttributableDate extends Date implements Attributable<AttributableD
 	
 	private static final long serialVersionUID = 4280303636131451746L;
 	
-	private static final String DATE_FORMAT = "yyyy-MM-dd";
+	private static final /*~~>*/String DATE_FORMAT = "yyyy-MM-dd";
 	
 	/**
 	 * Default empty constructor
@@ -58,7 +58,7 @@ public class AttributableDate extends Date implements Attributable<AttributableD
 	 */
 	@Override
 	@Deprecated
-	public List<AttributableDate> findPossibleValues(String searchText) {
+	public List<AttributableDate> findPossibleValues(/*~~>*/String searchText) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -67,7 +67,7 @@ public class AttributableDate extends Date implements Attributable<AttributableD
 	 * @see org.openmrs.Attributable#getDisplayString()
 	 */
 	@Override
-	public String getDisplayString() {
+	public /*~~>*/String getDisplayString() {
 		return new SimpleDateFormat(DATE_FORMAT).format(this);
 	}
 	
@@ -85,7 +85,7 @@ public class AttributableDate extends Date implements Attributable<AttributableD
 	 * @see org.openmrs.Attributable#hydrate(java.lang.String)
 	 */
 	@Override
-	public AttributableDate hydrate(String s) {
+	public AttributableDate hydrate(/*~~>*/String s) {
 		// don't do anything to empty dates
 		if (StringUtils.isEmpty(s)) {
 			return null;
@@ -111,7 +111,7 @@ public class AttributableDate extends Date implements Attributable<AttributableD
 	 * @see org.openmrs.Attributable#serialize()
 	 */
 	@Override
-	public String serialize() {
+	public /*~~>*/String serialize() {
 		return new SimpleDateFormat(DATE_FORMAT).format(this);
 	}
 	

@@ -28,20 +28,20 @@ public class ChangeLogVersionsTest {
 	
 	private static final org.slf4j.Logger log = LoggerFactory.getLogger(ChangeLogVersionFinderTest.class);
 	
-	private static final String CORE_DATA_BASE_NAME = ChangeLogVersionFinder.CORE_DATA_BASE_NAME;
+	private static final /*~~>*/String CORE_DATA_BASE_NAME = /*~~>*/ChangeLogVersionFinder.CORE_DATA_BASE_NAME;
 	
-	private static final String CORE_DATA_PATTERN = "classpath*:" + ChangeLogVersionFinder.CORE_DATA_FOLDER_NAME
-	        + File.separator + "*";
+	private static final /*~~>*/String CORE_DATA_PATTERN = "classpath*:" + /*~~>*/ChangeLogVersionFinder.CORE_DATA_FOLDER_NAME
+	        + /*~~>*/File.separator + "*";
 	
-	private static final String SCHEMA_ONLY_BASE_NAME = ChangeLogVersionFinder.SCHEMA_ONLY_BASE_NAME;
+	private static final /*~~>*/String SCHEMA_ONLY_BASE_NAME = /*~~>*/ChangeLogVersionFinder.SCHEMA_ONLY_BASE_NAME;
 	
-	private static final String SCHEMA_ONLY_PATTERN = "classpath*:" + ChangeLogVersionFinder.SCHEMA_ONLY_FOLDER_NAME
-	        + File.separator + "*";
+	private static final /*~~>*/String SCHEMA_ONLY_PATTERN = "classpath*:" + /*~~>*/ChangeLogVersionFinder.SCHEMA_ONLY_FOLDER_NAME
+	        + /*~~>*/File.separator + "*";
 	
-	private static final String UPDATE_TO_LATEST_BASE_NAME = ChangeLogVersionFinder.UPDATE_TO_LATEST_BASE_NAME;
+	private static final /*~~>*/String UPDATE_TO_LATEST_BASE_NAME = /*~~>*/ChangeLogVersionFinder.UPDATE_TO_LATEST_BASE_NAME;
 	
-	private static final String UPDATE_TO_LATEST_PATTERN = "classpath*:" + ChangeLogVersionFinder.UPDATES_FOLDER_NAME
-	        + File.separator + "*";
+	private static final /*~~>*/String UPDATE_TO_LATEST_PATTERN = "classpath*:" + /*~~>*/ChangeLogVersionFinder.UPDATES_FOLDER_NAME
+	        + /*~~>*/File.separator + "*";
 	
 	private ChangeLogVersions changeLogVersions;
 	
@@ -86,27 +86,27 @@ public class ChangeLogVersionsTest {
 	 */
 	@Test
 	public void shouldGetChangeLogNameFromVersions() {
-		List<String> actual = this.getChangelogNamesFromVersions(Arrays.asList("alpha", "bravo", "charlie"), "basename-");
-		List<String> expected = Arrays.asList("basename-alpha.xml", "basename-bravo.xml", "basename-charlie.xml");
+		List</*~~>*/String> actual = this.getChangelogNamesFromVersions(Arrays.asList("alpha", "bravo", "charlie"), "basename-");
+		List</*~~>*/String> expected = Arrays.asList("basename-alpha.xml", "basename-bravo.xml", "basename-charlie.xml");
 		assertEquals(expected, actual);
 	}
 	
-	private void compareActualAndExpectedChangeLogs(List<String> versions, String basename, String pattern)
+	private void compareActualAndExpectedChangeLogs(List</*~~>*/String> versions, /*~~>*/String basename, /*~~>*/String pattern)
 	        throws IOException {
-		List<String> expectedChangeLogFiles = getChangelogNamesFromVersions(versions, basename);
-		List<String> actualChangeLogFiles = lookupLiquibaseChangeLogs(pattern);
+		List</*~~>*/String> expectedChangeLogFiles = getChangelogNamesFromVersions(versions, basename);
+		List</*~~>*/String> actualChangeLogFiles = lookupLiquibaseChangeLogs(pattern);
 		assertEquals(expectedChangeLogFiles, actualChangeLogFiles);
 	}
 	
-	private List<String> getChangelogNamesFromVersions(List<String> versions, String baseName) {
-		List<String> changeLogNames = new ArrayList<>();
-		for (String version : versions) {
-			changeLogNames.add(String.format("%s%s.xml", baseName, version));
+	private List</*~~>*/String> getChangelogNamesFromVersions(List</*~~>*/String> versions, /*~~>*/String baseName) {
+		List</*~~>*/String> changeLogNames = new ArrayList<>();
+		for (/*~~>*/String version : versions) {
+			changeLogNames.add(/*~~>*/String.format("%s%s.xml", baseName, version));
 		}
 		return changeLogNames;
 	}
 	
-	private List<String> lookupLiquibaseChangeLogs(String resourcePattern) throws IOException {
+	private List</*~~>*/String> lookupLiquibaseChangeLogs(/*~~>*/String resourcePattern) throws IOException {
 		PathMatchingResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
 		Resource[] resources = resourcePatternResolver.getResources(resourcePattern);
 		

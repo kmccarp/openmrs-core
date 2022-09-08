@@ -39,7 +39,7 @@ public class LocationTag extends BaseChangeableOpenmrsMetadata {
 	 * @param name the name of this encounter type
 	 * @param description a short description of why this encounter type exists
 	 */
-	public LocationTag(String name, String description) {
+	public LocationTag(/*~~>*/String name, /*~~>*/String description) {
 		setName(name);
 		setDescription(description);
 	}
@@ -61,7 +61,7 @@ public class LocationTag extends BaseChangeableOpenmrsMetadata {
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return getName();
 	}
 	

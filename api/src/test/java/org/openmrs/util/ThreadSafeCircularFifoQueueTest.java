@@ -23,7 +23,7 @@ import org.apache.commons.collections4.queue.AbstractQueueTest;
 public class ThreadSafeCircularFifoQueueTest<E> extends AbstractQueueTest<E> {
 	// TODO We should add some tests related to concurrent access
 
-	public ThreadSafeCircularFifoQueueTest(String testName) {
+	public ThreadSafeCircularFifoQueueTest(/*~~>*/String testName) {
 		super(testName);
 	}
 

@@ -53,7 +53,7 @@ public interface LocationDAO {
 	 * @param name String name of the <code>Location</code> to get
 	 * @return the requested <code>Location</code>
 	 */
-	public Location getLocation(String name);
+	public Location getLocation(/*~~>*/String name);
 	
 	/**
 	 * Get all locations
@@ -75,8 +75,8 @@ public interface LocationDAO {
 	 * @param length the number of matching locations to return
 	 * @return the list of locations
 	 */
-	public List<Location> getLocations(String nameFragment, Location parent,
-	        Map<LocationAttributeType, String> serializedAttributeValues, boolean includeRetired, Integer start,
+	public List<Location> getLocations(/*~~>*/String nameFragment, Location parent,
+	        Map<LocationAttributeType, /*~~>*/String> serializedAttributeValues, boolean includeRetired, Integer start,
 	        Integer length) throws DAOException;
 	
 	/**
@@ -108,7 +108,7 @@ public interface LocationDAO {
 	 * @param tag String representation of the <code>LocationTag</code> to get
 	 * @return the requested <code>LocationTag</code>
 	 */
-	public LocationTag getLocationTagByName(String tag);
+	public LocationTag getLocationTagByName(/*~~>*/String tag);
 	
 	/**
 	 * Get all location tags
@@ -125,7 +125,7 @@ public interface LocationDAO {
 	 * @param search name to search
 	 * @return List&lt;LocationTag&gt; with all matching <code>LocationTags</code>
 	 */
-	public List<LocationTag> getLocationTags(String search);
+	public List<LocationTag> getLocationTags(/*~~>*/String search);
 	
 	/**
 	 * Completely remove the location tag from the database.
@@ -138,18 +138,18 @@ public interface LocationDAO {
 	 * @param uuid the uuid to look for
 	 * @return location matching uuid
 	 */
-	public Location getLocationByUuid(String uuid);
+	public Location getLocationByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @param uuid
 	 * @return location tag or null
 	 */
-	public LocationTag getLocationTagByUuid(String uuid);
+	public LocationTag getLocationTagByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @see org.openmrs.api.LocationService#getCountOfLocations(String, Boolean)
 	 */
-	public Long getCountOfLocations(String nameFragment, Boolean includeRetired);
+	public Long getCountOfLocations(/*~~>*/String nameFragment, Boolean includeRetired);
 	
 	/**
 	 * @see LocationService#getRootLocations(boolean)
@@ -169,7 +169,7 @@ public interface LocationDAO {
 	/**
 	 * @see LocationService#getLocationAttributeTypeByUuid(String)
 	 */
-	public LocationAttributeType getLocationAttributeTypeByUuid(String uuid);
+	public LocationAttributeType getLocationAttributeTypeByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @see LocationService#saveLocationAttributeType(LocationAttributeType)
@@ -184,12 +184,12 @@ public interface LocationDAO {
 	/**
 	 * @see LocationService#getLocationAttributeByUuid(String)
 	 */
-	public LocationAttribute getLocationAttributeByUuid(String uuid);
+	public LocationAttribute getLocationAttributeByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @see LocationService#getLocationAttributeTypeByName(String)
 	 */
-	public LocationAttributeType getLocationAttributeTypeByName(String name);
+	public LocationAttributeType getLocationAttributeTypeByName(/*~~>*/String name);
 	
 	/**
 	 * Get locations that have all the location tags specified.

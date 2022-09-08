@@ -40,7 +40,7 @@ public interface MessageService {
 	public void sendMessage(Message message) throws MessageException;
 	
 	//sends message to everyone of a certain role
-	public void sendMessage(Message message, String roleName) throws MessageException;
+	public void sendMessage(Message message, /*~~>*/String roleName) throws MessageException;
 	
 	//sends message to user with the given id
 	public void sendMessage(Message message, Integer userId) throws MessageException;
@@ -54,12 +54,12 @@ public interface MessageService {
 	//sends message to a collection of users
 	public void sendMessage(Message message, Collection<User> users) throws MessageException;
 	
-	public void sendMessage(String recipients, String sender, String subject, String message) throws MessageException;
+	public void sendMessage(/*~~>*/String recipients, /*~~>*/String sender, /*~~>*/String subject, /*~~>*/String message) throws MessageException;
 	
 	// Prepare message methods
-	public Message createMessage(String subject, String message) throws MessageException;
+	public Message createMessage(/*~~>*/String subject, /*~~>*/String message) throws MessageException;
 	
-	public Message createMessage(String sender, String subject, String message) throws MessageException;
+	public Message createMessage(/*~~>*/String sender, /*~~>*/String subject, /*~~>*/String message) throws MessageException;
 	
 	/**
 	 * TODO Auto generated method comment
@@ -72,12 +72,12 @@ public interface MessageService {
 	 * @throws MessageException
 	 * <strong>Should</strong> create message
 	 */
-	public Message createMessage(String recipients, String sender, String subject, String message) throws MessageException;
+	public Message createMessage(/*~~>*/String recipients, /*~~>*/String sender, /*~~>*/String subject, /*~~>*/String message) throws MessageException;
 	
-	public Message createMessage(String recipients, String sender, String subject, String message, String attachment,
-	        String attachmentContentType, String attachmentFileName) throws MessageException;
+	public Message createMessage(/*~~>*/String recipients, /*~~>*/String sender, /*~~>*/String subject, /*~~>*/String message, /*~~>*/String attachment,
+	        /*~~>*/String attachmentContentType, /*~~>*/String attachmentFileName) throws MessageException;
 	
-	public Message prepareMessage(String templateName, Map data) throws MessageException;
+	public Message prepareMessage(/*~~>*/String templateName, Map data) throws MessageException;
 	
 	public Message prepareMessage(Template template) throws MessageException;
 	
@@ -86,5 +86,5 @@ public interface MessageService {
 	
 	public Template getTemplate(Integer id) throws MessageException;
 	
-	public List getTemplatesByName(String name) throws MessageException;
+	public List getTemplatesByName(/*~~>*/String name) throws MessageException;
 }

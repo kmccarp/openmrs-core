@@ -72,7 +72,7 @@ public interface ProgramWorkflowDAO {
 	 * @return List&lt;Program&gt; - list of Programs whose name matches the input parameter
 	 * @throws DAOException
 	 */
-	public List<Program> findPrograms(String nameFragment) throws DAOException;
+	public List<Program> findPrograms(/*~~>*/String nameFragment) throws DAOException;
 	
 	/**
 	 * Completely remove a program from the database (not reversible) This method delegates to
@@ -201,19 +201,19 @@ public interface ProgramWorkflowDAO {
 	 * @param uuid
 	 * @return concept state conversion or null
 	 */
-	public ConceptStateConversion getConceptStateConversionByUuid(String uuid);
+	public ConceptStateConversion getConceptStateConversionByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @param uuid
 	 * @return patient program or null
 	 */
-	public PatientProgram getPatientProgramByUuid(String uuid);
+	public PatientProgram getPatientProgramByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @param uuid
 	 * @return program or null
 	 */
-	public Program getProgramByUuid(String uuid);
+	public Program getProgramByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Retrieves the Programs from the dB which have the given name.
@@ -223,7 +223,7 @@ public interface ProgramWorkflowDAO {
 	 * <strong>Should</strong> return only and exactly the programs with the given name
 	 * @return all Programs with the given name.
 	 */
-	public List<Program> getProgramsByName(String name, boolean includeRetired);
+	public List<Program> getProgramsByName(/*~~>*/String name, boolean includeRetired);
 	
 	/**
 	 * Retrieves a {@code ProgramWorkflowState} from the database by its primary key.
@@ -238,9 +238,9 @@ public interface ProgramWorkflowDAO {
 	 * @param uuid
 	 * @return program workflow state or null
 	 */
-	public ProgramWorkflowState getStateByUuid(String uuid);
+	public ProgramWorkflowState getStateByUuid(/*~~>*/String uuid);
 	
-	public PatientState getPatientStateByUuid(String uuid);
+	public PatientState getPatientStateByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Retrieves a {@code ProgramWorkflow} from the database by its primary key.
@@ -255,7 +255,7 @@ public interface ProgramWorkflowDAO {
 	 * @param uuid
 	 * @return program workflow or null
 	 */
-	public ProgramWorkflow getWorkflowByUuid(String uuid);
+	public ProgramWorkflow getWorkflowByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Returns a list of Programs that are using a particular concept.
@@ -284,15 +284,15 @@ public interface ProgramWorkflowDAO {
 
         public ProgramAttributeType getProgramAttributeType(Integer var1);
 
-        public ProgramAttributeType getProgramAttributeTypeByUuid(String var1);
+        public ProgramAttributeType getProgramAttributeTypeByUuid(/*~~>*/String var1);
 
         public ProgramAttributeType saveProgramAttributeType(ProgramAttributeType var1);
 
-        public PatientProgramAttribute getPatientProgramAttributeByUuid(String var1);
+        public PatientProgramAttribute getPatientProgramAttributeByUuid(/*~~>*/String var1);
 
         public void purgeProgramAttributeType(ProgramAttributeType var1);
 
-        public List<PatientProgram> getPatientProgramByAttributeNameAndValue(String attributeName, String attributeValue);
+        public List<PatientProgram> getPatientProgramByAttributeNameAndValue(/*~~>*/String attributeName, /*~~>*/String attributeValue);
 
-        public Map<Object, Object> getPatientProgramAttributeByAttributeName(List<Integer> patientIds, String attributeName);
+        public Map<Object, Object> getPatientProgramAttributeByAttributeName(List<Integer> patientIds, /*~~>*/String attributeName);
 }

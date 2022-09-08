@@ -69,7 +69,7 @@ public interface LogicService {
 	 * @return all known (registered) tokens
 	 * <strong>Should</strong> return all registered token
 	 */
-	public List<String> getAllTokens();
+	public List</*~~>*/String> getAllTokens();
 	
 	/**
 	 * Fetch all known (registered) tokens matching a given string
@@ -80,7 +80,7 @@ public interface LogicService {
 	 * <strong>Should</strong> return all registered token matching the input partially
 	 * <strong>Should</strong> not fail when input is null
 	 */
-	public List<String> getTokens(String partialToken);
+	public List</*~~>*/String> getTokens(/*~~>*/String partialToken);
 	
 	/**
 	 * Registers a new rule with the logic service.
@@ -92,7 +92,7 @@ public interface LogicService {
 	 * <strong>Should</strong> not fail when another rule is registered on the same token
 	 * <strong>Should</strong> persist the rule and associate it with the token
 	 */
-	public void addRule(String token, Rule rule) throws LogicException;
+	public void addRule(/*~~>*/String token, Rule rule) throws LogicException;
 	
 	/**
 	 * Registers a new rule with the logic service, associating the tags with the given token
@@ -104,7 +104,7 @@ public interface LogicService {
 	 * <strong>Should</strong> not fail when no tags is specified
 	 * <strong>Should</strong> persist rule with the tags
 	 */
-	public void addRule(String token, String[] tags, Rule rule) throws LogicException;
+	public void addRule(/*~~>*/String token, /*~~>*/String[] tags, Rule rule) throws LogicException;
 	
 	/**
 	 * Gets the rule registered under a given token
@@ -116,7 +116,7 @@ public interface LogicService {
 	 * <strong>Should</strong> fail when no Rule is associated with the input token
 	 * <strong>Should</strong> return ReferenceRule
 	 */
-	public Rule getRule(String token) throws LogicException;
+	public Rule getRule(/*~~>*/String token) throws LogicException;
 	
 	/**
 	 * Update a rule that has previously been registered
@@ -126,7 +126,7 @@ public interface LogicService {
 	 * @throws LogicException
 	 * <strong>Should</strong> update Rule when another Rule is registered under the same token
 	 */
-	public void updateRule(String token, Rule rule) throws LogicException;
+	public void updateRule(/*~~>*/String token, Rule rule) throws LogicException;
 	
 	/**
 	 * Removes a rule from the logic service
@@ -135,7 +135,7 @@ public interface LogicService {
 	 * @throws LogicException
 	 * <strong>Should</strong> remove rule
 	 */
-	public void removeRule(String token) throws LogicException;
+	public void removeRule(/*~~>*/String token) throws LogicException;
 	
 	/**
 	 * Evaluates a rule for a given patient, given the token for the rule.
@@ -147,7 +147,7 @@ public interface LogicService {
 	 * @see #parse(String)
 	 * @since 1.6.3, 1.7.2, and 1.8
 	 */
-	public Result eval(Integer patientId, String expression) throws LogicException;
+	public Result eval(Integer patientId, /*~~>*/String expression) throws LogicException;
 	
 	/**
 	 * Evaluates a rule for a given patient, given a token and parameters for the rule.
@@ -160,7 +160,7 @@ public interface LogicService {
 	 * @see #parse(String)
 	 * @since 1.6.3, 1.7.2, and 1.8
 	 */
-	public Result eval(Integer patientId, String expression, Map<String, Object> parameters) throws LogicException;
+	public Result eval(Integer patientId, /*~~>*/String expression, Map</*~~>*/String, Object> parameters) throws LogicException;
 	
 	/**
 	 * Evaluates a query for a given patient
@@ -184,7 +184,7 @@ public interface LogicService {
 	 * @throws LogicException
 	 * @since 1.6.3, 1.7.2, and 1.8
 	 */
-	public Result eval(Integer patientId, LogicCriteria criteria, Map<String, Object> parameters) throws LogicException;
+	public Result eval(Integer patientId, LogicCriteria criteria, Map</*~~>*/String, Object> parameters) throws LogicException;
 	
 	/**
 	 * Evaluates multiple logic expressions for a single patient.
@@ -199,7 +199,7 @@ public interface LogicService {
 	 * @see #parse(String)
 	 * @since 1.6.3, 1.7.2, and 1.8
 	 */
-	public Map<String, Result> eval(Integer patientId, Map<String, Object> parameters, String... expressions)
+	public Map</*~~>*/String, Result> eval(Integer patientId, Map</*~~>*/String, Object> parameters, /*~~>*/String... expressions)
 	        throws LogicException;
 	
 	/**
@@ -214,7 +214,7 @@ public interface LogicService {
 	 * @throws LogicException
 	 * @since 1.6.3, 1.7.2, and 1.8
 	 */
-	public Map<LogicCriteria, Result> eval(Integer patientId, Map<String, Object> parameters, LogicCriteria... criteria)
+	public Map<LogicCriteria, Result> eval(Integer patientId, Map</*~~>*/String, Object> parameters, LogicCriteria... criteria)
 	        throws LogicException;
 		
 	/**
@@ -226,7 +226,7 @@ public interface LogicService {
 	 * @throws LogicException
 	 * @see #parse(String)
 	 */
-	public Map<Integer, Result> eval(Cohort who, String expression) throws LogicException;
+	public Map<Integer, Result> eval(Cohort who, /*~~>*/String expression) throws LogicException;
 	
 	/**
 	 * Evaluates a query over a list of patients
@@ -238,7 +238,7 @@ public interface LogicService {
 	 * @throws LogicException
 	 * @see #parse(String)
 	 */
-	public Map<Integer, Result> eval(Cohort who, String expression, Map<String, Object> parameters) throws LogicException;
+	public Map<Integer, Result> eval(Cohort who, /*~~>*/String expression, Map</*~~>*/String, Object> parameters) throws LogicException;
 	
 	/**
 	 * Evaluates a query over a list of patients
@@ -259,7 +259,7 @@ public interface LogicService {
 	 * @return result for each patient
 	 * @throws LogicException
 	 */
-	public Map<Integer, Result> eval(Cohort who, LogicCriteria criteria, Map<String, Object> parameters)
+	public Map<Integer, Result> eval(Cohort who, LogicCriteria criteria, Map</*~~>*/String, Object> parameters)
 	        throws LogicException;
 	
 	/**
@@ -280,7 +280,7 @@ public interface LogicService {
 	 * @param tag
 	 * <strong>Should</strong> add tag for a token
 	 */
-	public void addTokenTag(String token, String tag);
+	public void addTokenTag(/*~~>*/String token, /*~~>*/String tag);
 	
 	/**
 	 * Removes a token's previously assigned tag.
@@ -289,7 +289,7 @@ public interface LogicService {
 	 * @param tag
 	 * <strong>Should</strong> remove tag from a token
 	 */
-	public void removeTokenTag(String token, String tag);
+	public void removeTokenTag(/*~~>*/String token, /*~~>*/String tag);
 	
 	/**
 	 * Gets all tags associated with this token.
@@ -298,7 +298,7 @@ public interface LogicService {
 	 * @return collection of tags
 	 * <strong>Should</strong> return set of tags for a certain token
 	 */
-	public Set<String> getTokenTags(String token);
+	public Set</*~~>*/String> getTokenTags(/*~~>*/String token);
 	
 	/**
 	 * Gets all tokens associated with this tag.
@@ -307,7 +307,7 @@ public interface LogicService {
 	 * @return collection of tokens
 	 * <strong>Should</strong> return set of token associated with a tag
 	 */
-	public List<String> getTokensWithTag(String tag);
+	public List</*~~>*/String> getTokensWithTag(/*~~>*/String tag);
 	
 	/**
 	 * Performs a partial match search for token tags among all known tokens.
@@ -316,7 +316,7 @@ public interface LogicService {
 	 * @return collection of tags
 	 * <strong>Should</strong> return set of tags matching input tag partially
 	 */
-	public List<String> getTags(String partialTag);
+	public List</*~~>*/String> getTags(/*~~>*/String partialTag);
 	
 	/**
 	 * Fetches the default datatype this token will return when fed to an eval() call. Results
@@ -327,21 +327,21 @@ public interface LogicService {
 	 * @param token token to look the datatype up for
 	 * @return datatype of the given token
 	 */
-	public Datatype getDefaultDatatype(String token);
+	public Datatype getDefaultDatatype(/*~~>*/String token);
 	
 	/**
 	 * Fetches the parameters expected by a given rule
 	 * 
 	 * @return list of parameters
 	 */
-	public Set<RuleParameterInfo> getParameterList(String token);
+	public Set<RuleParameterInfo> getParameterList(/*~~>*/String token);
 		
 	/**
 	 * Get all registered logic data sources
 	 * 
 	 * @return all registered logic data sources
 	 */
-	public Map<String, LogicDataSource> getLogicDataSources();
+	public Map</*~~>*/String, LogicDataSource> getLogicDataSources();
 		
 	/**
 	 * Get a logic data source by name
@@ -350,7 +350,7 @@ public interface LogicService {
 	 * @return the logic data source with the given name or <code>null</code> if there is no data
 	 *         source registered under the given name (must be an exact match)
 	 */
-	public LogicDataSource getLogicDataSource(String name);
+	public LogicDataSource getLogicDataSource(/*~~>*/String name);
 	
 	/**
 	 * Parse a criteria String to create a new LogicCriteria. <br>
@@ -361,6 +361,6 @@ public interface LogicService {
 	 * @param criteria LogicCriteria expression in a plain String object.
 	 * @return LogicCriteria using all possible operand and operator from the String input
 	 */
-	public LogicCriteria parse(String criteria);
+	public LogicCriteria parse(/*~~>*/String criteria);
 	
 }

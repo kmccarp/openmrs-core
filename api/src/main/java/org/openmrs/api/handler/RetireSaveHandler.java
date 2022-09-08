@@ -60,7 +60,7 @@ public class RetireSaveHandler implements SaveHandler<Retireable> {
 	 * <strong>Should</strong> set retiredBy to null if retired is true
 	 */
 	@Override
-	public void handle(Retireable retireableObject, User currentUser, Date currentDate, String notUsed) {
+	public void handle(Retireable retireableObject, User currentUser, Date currentDate, /*~~>*/String notUsed) {
 		
 		// retire reason is not set here, it should be set prior to this method
 		

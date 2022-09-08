@@ -21,34 +21,34 @@ import java.util.Map;
  */
 public abstract class LayoutTemplate {
 	
-	protected static final String LAYOUT_TOKEN = "<!-- openmrsToken -->";
+	protected static final /*~~>*/String LAYOUT_TOKEN = "<!-- openmrsToken -->";
 	
-	protected String displayName;
+	protected /*~~>*/String displayName;
 	
-	protected String codeName;
+	protected /*~~>*/String codeName;
 	
-	protected String country;
+	protected /*~~>*/String country;
 	
-	protected Map<String, String> nameMappings;
+	protected Map</*~~>*/String, /*~~>*/String> nameMappings;
 	
-	protected Map<String, String> sizeMappings;
+	protected Map</*~~>*/String, /*~~>*/String> sizeMappings;
 	
-	protected Map<String, String> elementDefaults;
+	protected Map</*~~>*/String, /*~~>*/String> elementDefaults;
 	
-	protected Map<String, String> elementRegex;
+	protected Map</*~~>*/String, /*~~>*/String> elementRegex;
 	
-	protected Map<String, String> elementRegexFormats;
+	protected Map</*~~>*/String, /*~~>*/String> elementRegexFormats;
 	
-	protected List<String> lineByLineFormat;
+	protected List</*~~>*/String> lineByLineFormat;
 	
-	protected List<String> requiredElements;
+	protected List</*~~>*/String> requiredElements;
 	
 	// The largest number of tokens on one given line
 	protected int maxTokens = 0;
 	
-	protected String startDate;
+	protected /*~~>*/String startDate;
 	
-	protected String endDate;
+	protected /*~~>*/String endDate;
 	
 	public LayoutTemplate() {
 	}
@@ -60,30 +60,30 @@ public abstract class LayoutTemplate {
 	 * @param simpleTemplate
 	 *            first template line
 	 */
-	public LayoutTemplate(String simpleTemplate) {
+	public LayoutTemplate(/*~~>*/String simpleTemplate) {
 		setLineByLineFormat(Collections.singletonList(simpleTemplate));
 	}
 	
-	public abstract String getLayoutToken();
+	public abstract /*~~>*/String getLayoutToken();
 	
-	public abstract String getNonLayoutToken();
+	public abstract /*~~>*/String getNonLayoutToken();
 	
-	private String replaceTokens(String line) {
+	private /*~~>*/String replaceTokens(/*~~>*/String line) {
 		LayoutSupport<?> as = getLayoutSupportInstance();
-		List<String> specialTokens = nonUniqueStringsGoLast(as.getSpecialTokens());
-		for (String token : specialTokens) {
+		List</*~~>*/String> specialTokens = nonUniqueStringsGoLast(as.getSpecialTokens());
+		for (/*~~>*/String token : specialTokens) {
 			line = line.replaceAll(token, LAYOUT_TOKEN);
 		}
 		return line;
 	}
 	
-	private List<Map<String, String>> convertToTokens(String line, String[] nonTokens) {
-		List<Map<String, String>> ret = null;
+	private List<Map</*~~>*/String, /*~~>*/String>> convertToTokens(/*~~>*/String line, /*~~>*/String[] nonTokens) {
+		List<Map</*~~>*/String, /*~~>*/String>> ret = null;
 		if (line != null && nonTokens != null && nonTokens.length > 0) {
 			int idxCurr = -1;
 			
 			for (int i = 0; i < nonTokens.length; i++) {
-				String nonToken = nonTokens[i];
+				/*~~>*/String nonToken = nonTokens[i];
 				if (idxCurr + 1 < line.length()) {
 					idxCurr = line.indexOf(nonToken, idxCurr + 1);
 				}
@@ -94,9 +94,9 @@ public abstract class LayoutTemplate {
 				
 				if (i == 0 && idxCurr > 0) {
 					// this means there is a token at the beginning - we'll have to grab it
-					Map<String, String> currToken = new HashMap<>();
+					Map</*~~>*/String, /*~~>*/String> currToken = new HashMap<>();
 					currToken.put("isToken", getLayoutToken());
-					String realToken = line.substring(0, idxCurr);
+					/*~~>*/String realToken = line.substring(0, idxCurr);
 					currToken.put("displayText", this.getNameMappings().get(realToken));
 					currToken.put("displaySize", this.getSizeMappings().get(realToken));
 					currToken.put("codeName", realToken);
@@ -107,14 +107,14 @@ public abstract class LayoutTemplate {
 					// this means we are still not at the last non-token, so let's add this non-token AND this token
 					int idxNext = line.indexOf(nonTokens[i + 1], idxCurr + 1);
 					
-					Map<String, String> currNonToken = new HashMap<>();
+					Map</*~~>*/String, /*~~>*/String> currNonToken = new HashMap<>();
 					currNonToken.put("isToken", getNonLayoutToken());
 					currNonToken.put("displayText", nonToken);
 					
-					Map<String, String> currToken = new HashMap<>();
+					Map</*~~>*/String, /*~~>*/String> currToken = new HashMap<>();
 					currToken.put("isToken", getLayoutToken());
 					//HERE:  real Token is wrong...
-					String realToken = line.substring(idxCurr + nonToken.length(), idxNext);
+					/*~~>*/String realToken = line.substring(idxCurr + nonToken.length(), idxNext);
 					currToken.put("displayText", this.getNameMappings().get(realToken));
 					currToken.put("displaySize", this.getSizeMappings().get(realToken));
 					currToken.put("codeName", realToken);
@@ -122,16 +122,16 @@ public abstract class LayoutTemplate {
 					ret.add(currToken);
 				} else {
 					// we are on the last non-token, so check if it is the end
-					Map<String, String> currNonToken = new HashMap<>();
+					Map</*~~>*/String, /*~~>*/String> currNonToken = new HashMap<>();
 					currNonToken.put("isToken", getNonLayoutToken());
 					currNonToken.put("displayText", nonToken);
 					
 					ret.add(currNonToken);
 					if (idxCurr + nonToken.length() < line.length()) {
 						// we need to add one last token at the end
-						Map<String, String> currToken = new HashMap<>();
+						Map</*~~>*/String, /*~~>*/String> currToken = new HashMap<>();
 						currToken.put("isToken", getLayoutToken());
-						String realToken = line.substring(idxCurr + nonToken.length());
+						/*~~>*/String realToken = line.substring(idxCurr + nonToken.length());
 						currToken.put("displayText", this.getNameMappings().get(realToken));
 						currToken.put("displaySize", this.getSizeMappings().get(realToken));
 						currToken.put("codeName", realToken);
@@ -144,10 +144,10 @@ public abstract class LayoutTemplate {
 			if (ret == null) {
 				ret = new ArrayList<>();
 			}
-			Map<String, String> currToken = new HashMap<>();
+			Map</*~~>*/String, /*~~>*/String> currToken = new HashMap<>();
 			
 			// adding a nontoken to match the code that does "more than a single token on a line"
-			Map<String, String> currNonToken = new HashMap<>();
+			Map</*~~>*/String, /*~~>*/String> currNonToken = new HashMap<>();
 			currNonToken.put("isToken", getNonLayoutToken());
 			currNonToken.put("displayText", "");
 			ret.add(currNonToken);
@@ -167,17 +167,17 @@ public abstract class LayoutTemplate {
 		return ret;
 	}
 	
-	public List<List<Map<String, String>>> getLines() {
-		List<List<Map<String, String>>> ret = null;
+	public List<List<Map</*~~>*/String, /*~~>*/String>>> getLines() {
+		List<List<Map</*~~>*/String, /*~~>*/String>>> ret = null;
 		
 		if (this.lineByLineFormat != null) {
-			for (String line : this.lineByLineFormat) {
+			for (/*~~>*/String line : this.lineByLineFormat) {
 				if (ret == null) {
 					ret = new ArrayList<>();
 				}
-				String tokenizedLine = replaceTokens(line);
-				String[] nonTokens = tokenizedLine.split(LAYOUT_TOKEN);
-				List<Map<String, String>> lineTokens = convertToTokens(line, nonTokens);
+				/*~~>*/String tokenizedLine = replaceTokens(line);
+				/*~~>*/String[] nonTokens = tokenizedLine.split(LAYOUT_TOKEN);
+				List<Map</*~~>*/String, /*~~>*/String>> lineTokens = convertToTokens(line, nonTokens);
 				ret.add(lineTokens);
 			}
 			
@@ -190,56 +190,56 @@ public abstract class LayoutTemplate {
 	/**
 	 * @return the codeName
 	 */
-	public String getCodeName() {
+	public /*~~>*/String getCodeName() {
 		return codeName;
 	}
 	
 	/**
 	 * @param codeName the codeName to set
 	 */
-	public void setCodeName(String codeName) {
-		this.codeName = codeName;
+	public void setCodeName(/*~~>*/String codeName) {
+		/*~~>*/this.codeName = codeName;
 	}
 	
 	/**
 	 * @return the country
 	 */
-	public String getCountry() {
+	public /*~~>*/String getCountry() {
 		return country;
 	}
 	
 	/**
 	 * @param country the country to set
 	 */
-	public void setCountry(String country) {
-		this.country = country;
+	public void setCountry(/*~~>*/String country) {
+		/*~~>*/this.country = country;
 	}
 	
 	/**
 	 * @return the displayName
 	 */
-	public String getDisplayName() {
+	public /*~~>*/String getDisplayName() {
 		return displayName;
 	}
 	
 	/**
 	 * @param displayName the displayName to set
 	 */
-	public void setDisplayName(String displayName) {
-		this.displayName = displayName;
+	public void setDisplayName(/*~~>*/String displayName) {
+		/*~~>*/this.displayName = displayName;
 	}
 	
 	/**
 	 * @return the elementDefaults
 	 */
-	public Map<String, String> getElementDefaults() {
+	public Map</*~~>*/String, /*~~>*/String> getElementDefaults() {
 		return elementDefaults;
 	}
 	
 	/**
 	 * @param elementDefaults the elementDefaults to set
 	 */
-	public void setElementDefaults(Map<String, String> elementDefaults) {
+	public void setElementDefaults(Map</*~~>*/String, /*~~>*/String> elementDefaults) {
 		this.elementDefaults = elementDefaults;
 	}
 	
@@ -249,7 +249,7 @@ public abstract class LayoutTemplate {
 	 *
 	 * @return the elementRegex
 	 */
-	public Map<String, String> getElementRegex() {
+	public Map</*~~>*/String, /*~~>*/String> getElementRegex() {
 		return elementRegex;
 	}
 	
@@ -259,7 +259,7 @@ public abstract class LayoutTemplate {
 	 *
 	 * @param elementRegex the elementRegex to set
 	 */
-	public void setElementRegex(Map<String, String> elementRegex) {
+	public void setElementRegex(Map</*~~>*/String, /*~~>*/String> elementRegex) {
 		this.elementRegex = elementRegex;
 	}
 	
@@ -269,7 +269,7 @@ public abstract class LayoutTemplate {
 	 *
 	 * @return the elementFormats
 	 */
-	public Map<String, String> getElementRegexFormats() {
+	public Map</*~~>*/String, /*~~>*/String> getElementRegexFormats() {
 		return elementRegexFormats;
 	}
 	
@@ -279,35 +279,35 @@ public abstract class LayoutTemplate {
 	 *
 	 * @param elementRegexFormats the elementFormats to set
 	 */
-	public void setElementRegexFormats(Map<String, String> elementRegexFormats) {
+	public void setElementRegexFormats(Map</*~~>*/String, /*~~>*/String> elementRegexFormats) {
 		this.elementRegexFormats = elementRegexFormats;
 	}
 	
 	/**
 	 * @return the lineByLineFormat
 	 */
-	public List<String> getLineByLineFormat() {
+	public List</*~~>*/String> getLineByLineFormat() {
 		return lineByLineFormat;
 	}
 	
 	/**
 	 * @param lineByLineFormat the lineByLineFormat to set
 	 */
-	public void setLineByLineFormat(List<String> lineByLineFormat) {
+	public void setLineByLineFormat(List</*~~>*/String> lineByLineFormat) {
 		this.lineByLineFormat = lineByLineFormat;
 	}
 	
 	/**
 	 * @return the requiredElements
 	 */
-	public List<String> getRequiredElements() {
+	public List</*~~>*/String> getRequiredElements() {
 		return requiredElements;
 	}
 	
 	/**
 	 * @param requiredElements the requiredElements to set
 	 */
-	public void setRequiredElements(List<String> requiredElements) {
+	public void setRequiredElements(List</*~~>*/String> requiredElements) {
 		this.requiredElements = requiredElements;
 	}
 	
@@ -333,39 +333,39 @@ public abstract class LayoutTemplate {
 	/**
 	 * @return the nameMappings
 	 */
-	public Map<String, String> getNameMappings() {
+	public Map</*~~>*/String, /*~~>*/String> getNameMappings() {
 		return nameMappings;
 	}
 	
 	/**
 	 * @param nameMappings the nameMappings to set
 	 */
-	public void setNameMappings(Map<String, String> nameMappings) {
+	public void setNameMappings(Map</*~~>*/String, /*~~>*/String> nameMappings) {
 		this.nameMappings = nameMappings;
 	}
 	
 	/**
 	 * @return the sizeMappings
 	 */
-	public Map<String, String> getSizeMappings() {
+	public Map</*~~>*/String, /*~~>*/String> getSizeMappings() {
 		return sizeMappings;
 	}
 	
 	/**
 	 * @param sizeMappings the sizeMappings to set
 	 */
-	public void setSizeMappings(Map<String, String> sizeMappings) {
+	public void setSizeMappings(Map</*~~>*/String, /*~~>*/String> sizeMappings) {
 		this.sizeMappings = sizeMappings;
 	}
 	
 	public abstract LayoutSupport<?> getLayoutSupportInstance();
 	
-	public List<String> nonUniqueStringsGoLast(List<String> strListArg) {
-		List<String> dup = new ArrayList<>();
+	public List</*~~>*/String> nonUniqueStringsGoLast(List</*~~>*/String> strListArg) {
+		List</*~~>*/String> dup = new ArrayList<>();
 		// copy the list so we don't get concurrentmodification exceptions
-		List<String> strList = new ArrayList<>(strListArg);
-		for (String s : strList) {
-			for (String sInner : strList) {
+		List</*~~>*/String> strList = new ArrayList<>(strListArg);
+		for (/*~~>*/String s : strList) {
+			for (/*~~>*/String sInner : strList) {
 				if (sInner.contains(s) && s.length() < sInner.length() && !dup.contains(s)) {
 					dup.add(s);
 				}

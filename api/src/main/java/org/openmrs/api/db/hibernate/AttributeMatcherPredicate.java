@@ -22,16 +22,16 @@ import org.openmrs.customdatatype.Customizable;
  */
 public class AttributeMatcherPredicate<T extends Customizable, AT extends AttributeType> implements Predicate {
 	
-	private final Map<AT, String> serializedAttributeValues;
+	private final Map<AT, /*~~>*/String> serializedAttributeValues;
 	
-	public AttributeMatcherPredicate(Map<AT, String> serializedAttributeValues) {
+	public AttributeMatcherPredicate(Map<AT, /*~~>*/String> serializedAttributeValues) {
 		this.serializedAttributeValues = serializedAttributeValues;
 	}
 	
 	@Override
 	public boolean evaluate(Object o) {
 		final T customizable = (T) o;
-		for (Map.Entry<AT, String> entry : serializedAttributeValues.entrySet()) {
+		for (Map.Entry<AT, /*~~>*/String> entry : serializedAttributeValues.entrySet()) {
 			for (Object attr : customizable.getActiveAttributes(entry.getKey())) {
 				Attribute attribute = (Attribute) attr;
 				if (attribute.getValueReference().equals(entry.getValue())) {

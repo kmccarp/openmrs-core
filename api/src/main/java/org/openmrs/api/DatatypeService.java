@@ -39,7 +39,7 @@ public interface DatatypeService extends OpenmrsService {
 	 * @return an instantiated {@link CustomDatatype}, with a configuration set
 	 * @throws CustomDatatypeException
 	 */
-	<T extends CustomDatatype<?>> T getDatatype(Class<T> clazz, String config) throws CustomDatatypeException;
+	<T extends CustomDatatype<?>> T getDatatype(Class<T> clazz, /*~~>*/String config) throws CustomDatatypeException;
 	
 	/**
 	 * Gets the default handler for a {@link CustomDatatype}, and sets its configuration
@@ -51,7 +51,7 @@ public interface DatatypeService extends OpenmrsService {
      * <strong>Should</strong> return a handler for the specified datatype
      * <strong>Should</strong> return a handler for a datatype that extends a generic superclass
 	 */
-	CustomDatatypeHandler<?, ?> getHandler(CustomDatatype<?> datatype, String handlerConfig);
+	CustomDatatypeHandler<?, ?> getHandler(CustomDatatype<?> datatype, /*~~>*/String handlerConfig);
 	
 	/**
 	 * @param datatypeClass
@@ -74,7 +74,7 @@ public interface DatatypeService extends OpenmrsService {
 	 * @param uuid
 	 * @return clob storage object
 	 */
-	ClobDatatypeStorage getClobDatatypeStorageByUuid(String uuid);
+	ClobDatatypeStorage getClobDatatypeStorageByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Creates or updates a clob storage object

@@ -21,7 +21,7 @@ package org.openmrs.logic.op;
 public class Exists implements TransformOperator {
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "EXISTS";
 	}
 	

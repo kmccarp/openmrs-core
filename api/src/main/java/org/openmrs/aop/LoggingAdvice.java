@@ -33,14 +33,14 @@ public class LoggingAdvice implements MethodInterceptor {
 	/**
 	 * List of all method name prefixes that result in DEBUG-level log messages
 	 */
-	private static final String[] SETTER_METHOD_PREFIXES = { "save", "create", "update", "void", "unvoid", "retire",
+	private static final /*~~>*/String[] SETTER_METHOD_PREFIXES = { "save", "create", "update", "void", "unvoid", "retire",
 	        "unretire", "delete", "purge" };
 
 	/**
 	 * Logger for this class. Uses the name "org.openmrs.api" so that it seems to fit into the
 	 * log4j2.xml configuration
 	 */
-	private final Logger log = LoggerFactory.getLogger(OpenmrsConstants.LOG_CLASS_DEFAULT);
+	private final Logger log = LoggerFactory.getLogger(/*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT);
 	
 	/**
 	 * This method prints out trace statements for getters and debug statements for everything else
@@ -54,7 +54,7 @@ public class LoggingAdvice implements MethodInterceptor {
 	public Object invoke(MethodInvocation invocation) throws Throwable {
 		
 		Method method = invocation.getMethod();
-		String name = method.getName();
+		/*~~>*/String name = method.getName();
 		
 		// decide what type of logging we're doing with the current method and the loglevel
 		boolean isSetterTypeOfMethod = OpenmrsUtil.stringStartsWith(name, SETTER_METHOD_PREFIXES);
@@ -124,7 +124,7 @@ public class LoggingAdvice implements MethodInterceptor {
 		}
 		catch (Exception e) {
 			if (logGetter || logSetter) {
-				String username;
+				/*~~>*/String username;
 				User user = Context.getAuthenticatedUser();
 				if (user == null) {
 					username = "Guest (Not logged in)";
@@ -134,7 +134,7 @@ public class LoggingAdvice implements MethodInterceptor {
 						username = user.getSystemId();
 					}
 				}
-				log.debug(String.format(
+				log.debug(/*~~>*/String.format(
 				    "An error occurred while executing this method.%nCurrent user: %s%nError message: %s", username, e
 				            .getMessage()), e);
 			}

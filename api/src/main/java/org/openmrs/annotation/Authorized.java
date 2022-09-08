@@ -50,7 +50,7 @@ public @interface Authorized {
 	 * 
 	 * @return String[] The secure method attributes
 	 */
-	public String[] value() default {};
+	public /*~~>*//*~~>*/String[] value() default {};
 	
 	/**
 	 * If set to true, will require that the user have <i>all</i> privileges listed in

@@ -75,7 +75,7 @@ public class SimpleDosingInstructionsTest extends BaseContextSensitiveTest {
 		DrugOrder drugOrder = new DrugOrder();
 		drugOrder.setDateActivated(createDateTime("2014-07-01 10:00:00"));
 		drugOrder.setDuration(30);
-		drugOrder.setDurationUnits(createUnits(Duration.SNOMED_CT_SECONDS_CODE));
+		drugOrder.setDurationUnits(createUnits(/*~~>*/Duration.SNOMED_CT_SECONDS_CODE));
 		Date autoExpireDate = new SimpleDosingInstructions().getAutoExpireDate(drugOrder);
 		assertEquals(createDateTime("2014-07-01 10:00:29"), autoExpireDate);
 	}
@@ -87,7 +87,7 @@ public class SimpleDosingInstructionsTest extends BaseContextSensitiveTest {
 		drugOrder.setScheduledDate(createDateTime("2014-07-05 00:00:00"));
 		drugOrder.setUrgency(Order.Urgency.ON_SCHEDULED_DATE);
 		drugOrder.setDuration(10);
-		drugOrder.setDurationUnits(createUnits(Duration.SNOMED_CT_DAYS_CODE));
+		drugOrder.setDurationUnits(createUnits(/*~~>*/Duration.SNOMED_CT_DAYS_CODE));
 		Date autoExpireDate = new SimpleDosingInstructions().getAutoExpireDate(drugOrder);
 		assertEquals(createDateTime("2014-07-14 23:59:59"), autoExpireDate);
 	}
@@ -98,7 +98,7 @@ public class SimpleDosingInstructionsTest extends BaseContextSensitiveTest {
 		drugOrder.setDosingType(FreeTextDosingInstructions.class);
 		drugOrder.setDateActivated(createDateTime("2014-07-01 00:00:00"));
 		drugOrder.setDuration(30);
-		drugOrder.setDurationUnits(createUnits(Duration.SNOMED_CT_DAYS_CODE));
+		drugOrder.setDurationUnits(createUnits(/*~~>*/Duration.SNOMED_CT_DAYS_CODE));
 		drugOrder.setNumRefills(1);
 		drugOrder.setAutoExpireDateBasedOnDuration();
 		assertEquals(createDateTime("2014-07-30 23:59:59"), drugOrder.getAutoExpireDate());
@@ -108,7 +108,7 @@ public class SimpleDosingInstructionsTest extends BaseContextSensitiveTest {
 	public void getAutoExpireDate_shouldNotInferAutoExpireDateWhenDurationDoesNotExist() throws ParseException {
 		DrugOrder drugOrder = new DrugOrder();
 		drugOrder.setDateActivated(createDateTime("2014-07-01 10:00:00"));
-		drugOrder.setDurationUnits(createUnits(Duration.SNOMED_CT_SECONDS_CODE));
+		drugOrder.setDurationUnits(createUnits(/*~~>*/Duration.SNOMED_CT_SECONDS_CODE));
 		drugOrder.setDuration(null);
 		
 		Date autoExpireDate = new SimpleDosingInstructions().getAutoExpireDate(drugOrder);
@@ -134,7 +134,7 @@ public class SimpleDosingInstructionsTest extends BaseContextSensitiveTest {
 		DrugOrder drugOrder = new DrugOrder();
 		drugOrder.setDateActivated(createDateTime("2014-07-01 10:00:00"));
 		drugOrder.setDuration(30);
-		drugOrder.setDurationUnits(createUnits("Other.Source", Duration.SNOMED_CT_HOURS_CODE, null));
+		drugOrder.setDurationUnits(createUnits("Other.Source", /*~~>*/Duration.SNOMED_CT_HOURS_CODE, null));
 		
 		Date autoExpireDate = new SimpleDosingInstructions().getAutoExpireDate(drugOrder);
 		
@@ -152,7 +152,7 @@ public class SimpleDosingInstructionsTest extends BaseContextSensitiveTest {
 		return drugOrder;
 	}
 	
-	private Concept createConceptWithName(String name) {
+	private Concept createConceptWithName(/*~~>*/String name) {
 		Concept concept = new Concept(new Random().nextInt());
 		ConceptName conceptName = new ConceptName();
 		conceptName.setName(name);
@@ -162,17 +162,17 @@ public class SimpleDosingInstructionsTest extends BaseContextSensitiveTest {
 		return concept;
 	}
 	
-	public static Concept createUnits(String code) {
-		return createUnits(Duration.SNOMED_CT_CONCEPT_SOURCE_HL7_CODE, code, null);
+	public static Concept createUnits(/*~~>*/String code) {
+		return createUnits(/*~~>*/Duration.SNOMED_CT_CONCEPT_SOURCE_HL7_CODE, code, null);
 	}
 	
-	public static Concept createUnits(String source, String code, String mapTypeUuid) {
+	public static Concept createUnits(/*~~>*/String source, /*~~>*/String code, /*~~>*/String mapTypeUuid) {
 		Concept doseUnits = new Concept();
 		doseUnits.addConceptMapping(getConceptMap(source, code, mapTypeUuid));
 		return doseUnits;
 	}
 	
-	private static ConceptMap getConceptMap(String sourceHl7Code, String code, String mapTypeUuid) {
+	private static ConceptMap getConceptMap(/*~~>*/String sourceHl7Code, /*~~>*/String code, /*~~>*/String mapTypeUuid) {
 		ConceptMap conceptMap = new ConceptMap();
 		ConceptReferenceTerm conceptReferenceTerm = new ConceptReferenceTerm();
 		ConceptSource conceptSource = new ConceptSource();
@@ -184,7 +184,7 @@ public class SimpleDosingInstructionsTest extends BaseContextSensitiveTest {
 		if (mapTypeUuid != null) {
 			conceptMapType.setUuid(mapTypeUuid);
 		} else {
-			conceptMapType.setUuid(ConceptMapType.SAME_AS_MAP_TYPE_UUID);
+			conceptMapType.setUuid(/*~~>*/ConceptMapType.SAME_AS_MAP_TYPE_UUID);
 		}
 		conceptMap.setConceptMapType(conceptMapType);
 		return conceptMap;
@@ -197,7 +197,7 @@ public class SimpleDosingInstructionsTest extends BaseContextSensitiveTest {
 	public void validate_shouldRejectADurationUnitWithAMappingOfAnInvalidType() {
 		DrugOrder drugOrder = createValidDrugOrder();
 		drugOrder.setDuration(30);
-		Concept durationUnitWithInvalidMapType = createUnits("SCT", Duration.SNOMED_CT_DAYS_CODE, "Some-uuid");
+		Concept durationUnitWithInvalidMapType = createUnits("SCT", /*~~>*/Duration.SNOMED_CT_DAYS_CODE, "Some-uuid");
 		drugOrder.setDurationUnits(durationUnitWithInvalidMapType);
 		Errors errors = new BindException(drugOrder, "drugOrder");
 		

@@ -35,7 +35,7 @@ public class OpenmrsCacheManagerFactoryBean extends EhCacheManagerFactoryBean {
 	public CacheManager getObject() {
 		CacheManager cacheManager = super.getObject();
 
-		Map<String, CacheConfiguration> cacheConfig = cacheManager.getConfiguration().getCacheConfigurations();
+		Map</*~~>*/String, CacheConfiguration> cacheConfig = cacheManager.getConfiguration().getCacheConfigurations();
 
 		List<CacheConfiguration> cacheConfigurations = CachePropertiesUtil.getCacheConfigurations();
 		cacheConfigurations.stream()

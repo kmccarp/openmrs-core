@@ -19,7 +19,7 @@ public class EditedOrderDoesNotMatchPreviousException extends OrderEntryExceptio
 	
 	public static final long serialVersionUID = 22121218L;
 	
-	public EditedOrderDoesNotMatchPreviousException(String message) {
+	public EditedOrderDoesNotMatchPreviousException(/*~~>*/String message) {
 		super(message, (Object[]) null);
 	}
 }

@@ -249,13 +249,13 @@ public class PatientIdentifierValidatorTest extends BaseContextSensitiveTest {
 	public void checkIdentifierAgainstFormat_shouldIncludeFormatInErrorMessageIfNoFormatDescriptionIsSpecified()
 	{
 		
-		String format = "\\d+";
-		String formatDescription = null;
-		String expectedErrorMessage = "Identifier \"abc\" does not match : \"\\d+\"";
+		/*~~>*/String format = "\\d+";
+		/*~~>*/String formatDescription = null;
+		/*~~>*/String expectedErrorMessage = "Identifier \"abc\" does not match : \"\\d+\"";
 		
 		Mockito.when(
 		    messageSourceService.getMessage(eq("PatientIdentifier.error.invalidFormat"),
-		        aryEq(new String[] { "abc", format }), isA(Locale.class))).thenReturn(expectedErrorMessage);
+		        aryEq(new /*~~>*/String[] { "abc", format }), isA(Locale.class))).thenReturn(expectedErrorMessage);
 		
 		assertThrows(InvalidIdentifierFormatException.class, () -> PatientIdentifierValidator.checkIdentifierAgainstFormat("abc", format, formatDescription));
 	}
@@ -266,12 +266,12 @@ public class PatientIdentifierValidatorTest extends BaseContextSensitiveTest {
 	@Test
 	public void checkIdentifierAgainstFormat_shouldIncludeFormatDescriptionInErrorMessageIfSpecified() {
 		
-		String format = "\\d+";
-		String formatDescription = "formatDescription";
-		String expectedErrorMessage = "Identifier \"abc\" does not match : \"formatDescription\"";
+		/*~~>*/String format = "\\d+";
+		/*~~>*/String formatDescription = "formatDescription";
+		/*~~>*/String expectedErrorMessage = "Identifier \"abc\" does not match : \"formatDescription\"";
 		
 		Mockito.when(
-		    messageSourceService.getMessage(eq("PatientIdentifier.error.invalidFormat"), aryEq(new String[] { "abc",
+		    messageSourceService.getMessage(eq("PatientIdentifier.error.invalidFormat"), aryEq(new /*~~>*/String[] { "abc",
 		            formatDescription }), isA(Locale.class))).thenReturn(expectedErrorMessage);
 		
 		assertThrows(InvalidIdentifierFormatException.class, () -> PatientIdentifierValidator.checkIdentifierAgainstFormat("abc", format, formatDescription));

@@ -54,7 +54,7 @@ public class AuditableInterceptor extends EmptyInterceptor {
 	 *      java.lang.Object[], java.lang.String[], org.hibernate.type.Type[])
 	 */
 	@Override
-	public boolean onSave(Object entity, Serializable id, Object[] entityCurrentState, String[] propertyNames, Type[] types) {
+	public boolean onSave(Object entity, Serializable id, Object[] entityCurrentState, /*~~>*/String[] propertyNames, Type[] types) {
 		return setCreatorAndDateCreatedIfNull(entity, entityCurrentState, propertyNames);
 	}
 	
@@ -72,7 +72,7 @@ public class AuditableInterceptor extends EmptyInterceptor {
 	
 	@Override
 	public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState,
-	        String[] propertyNames, Type[] types) throws CallbackException {
+	        /*~~>*/String[] propertyNames, Type[] types) throws CallbackException {
 		boolean objectWasChanged;
 		
 		objectWasChanged = setCreatorAndDateCreatedIfNull(entity, currentState, propertyNames);
@@ -80,7 +80,7 @@ public class AuditableInterceptor extends EmptyInterceptor {
 		if (entity instanceof Auditable && propertyNames != null) {
 			log.debug("Setting changed by fields on {}", entity.getClass());
 			
-			Map<String, Object> propertyValues = getPropertyValuesToUpdate();
+			Map</*~~>*/String, Object> propertyValues = getPropertyValuesToUpdate();
 			objectWasChanged = changeProperties(currentState, propertyNames, objectWasChanged, propertyValues, false);
 		}
 		return objectWasChanged;
@@ -97,23 +97,23 @@ public class AuditableInterceptor extends EmptyInterceptor {
 	 * @param propertyNames
 	 * @return true if creator and dateCreated were changed
 	 */
-	private boolean setCreatorAndDateCreatedIfNull(Object entity, Object[] currentState, String[] propertyNames) {
+	private boolean setCreatorAndDateCreatedIfNull(Object entity, Object[] currentState, /*~~>*/String[] propertyNames) {
 		
 		boolean objectWasChanged = false;
 		
 		if (entity instanceof OpenmrsObject) {
 			log.debug("Setting creator and dateCreated on {}", entity);
 			
-			Map<String, Object> propertyValues = getPropertyValuesToSave();
+			Map</*~~>*/String, Object> propertyValues = getPropertyValuesToSave();
 			objectWasChanged = changeProperties(currentState, propertyNames, objectWasChanged, propertyValues, true);
 		}
 		return objectWasChanged;
 	}
 	
-	private boolean changeProperties(Object[] currentState, String[] propertyNames, boolean objectWasChanged,
-	        Map<String, Object> propertyValues, Boolean setNullOnly) {
+	private boolean changeProperties(Object[] currentState, /*~~>*/String[] propertyNames, boolean objectWasChanged,
+	        Map</*~~>*/String, Object> propertyValues, Boolean setNullOnly) {
 		
-		for (Map.Entry<String, Object> e : propertyValues.entrySet()) {
+		for (Map.Entry</*~~>*/String, Object> e : propertyValues.entrySet()) {
 			if (changePropertyValue(currentState, propertyNames, e.getKey(), e.getValue(), setNullOnly)) {
 				objectWasChanged = true;
 			}
@@ -121,8 +121,8 @@ public class AuditableInterceptor extends EmptyInterceptor {
 		return objectWasChanged;
 	}
 	
-	private Map<String, Object> getPropertyValuesToSave() {
-		Map<String, Object> propertyValues = new HashMap<>();
+	private Map</*~~>*/String, Object> getPropertyValuesToSave() {
+		Map</*~~>*/String, Object> propertyValues = new HashMap<>();
 		propertyValues.put("creator", Context.getAuthenticatedUser());
 		propertyValues.put("dateCreated", new Date());
 		propertyValues.put("personCreator", Context.getAuthenticatedUser());
@@ -130,8 +130,8 @@ public class AuditableInterceptor extends EmptyInterceptor {
 		return propertyValues;
 	}
 	
-	private Map<String, Object> getPropertyValuesToUpdate() {
-		Map<String, Object> propertyValues = new HashMap<>();
+	private Map</*~~>*/String, Object> getPropertyValuesToUpdate() {
+		Map</*~~>*/String, Object> propertyValues = new HashMap<>();
 		propertyValues.put("changedBy", Context.getAuthenticatedUser());
 		propertyValues.put("dateChanged", new Date());
 		propertyValues.put("personChangedBy", Context.getAuthenticatedUser());
@@ -149,7 +149,7 @@ public class AuditableInterceptor extends EmptyInterceptor {
 	 * @param setNullOnly
 	 * @return true if the property was changed
 	 */
-	private boolean changePropertyValue(Object[] currentState, String[] propertyNames, String propertyToSet, Object value,
+	private boolean changePropertyValue(Object[] currentState, /*~~>*/String[] propertyNames, /*~~>*/String propertyToSet, Object value,
 	        boolean setNullOnly) {
 		
 		int index = Arrays.asList(propertyNames).indexOf(propertyToSet);

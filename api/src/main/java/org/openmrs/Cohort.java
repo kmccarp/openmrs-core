@@ -27,9 +27,9 @@ public class Cohort extends BaseChangeableOpenmrsData {
 	
 	private Integer cohortId;
 	
-	private String name;
+	private /*~~>*/String name;
 	
-	private String description;
+	private /*~~>*/String description;
 	
 	private Collection<CohortMembership> memberships;
 	
@@ -56,10 +56,10 @@ public class Cohort extends BaseChangeableOpenmrsData {
 	 * @param description optional description
 	 * @param ids option array of Integer ids
 	 */
-	public Cohort(String name, String description, Integer[] ids) {
+	public Cohort(/*~~>*/String name, /*~~>*/String description, Integer[] ids) {
 		this();
-		this.name = name;
-		this.description = description;
+		/*~~>*/this.name = name;
+		/*~~>*/this.description = description;
 		if (ids != null) {
 			Arrays.stream(ids).forEach(this::addMember);
 		}
@@ -73,7 +73,7 @@ public class Cohort extends BaseChangeableOpenmrsData {
 	 * @param description optional description
 	 * @param patients optional array of patients
 	 */
-	public Cohort(String name, String description, Patient[] patients) {
+	public Cohort(/*~~>*/String name, /*~~>*/String description, Patient[] patients) {
 		this(name, description, (Integer[]) null);
 		if (patients != null) {
 			Arrays.stream(patients).forEach(p -> addMembership(new CohortMembership(p.getPatientId())));
@@ -100,7 +100,7 @@ public class Cohort extends BaseChangeableOpenmrsData {
 	 * @param patientsOrIds optional collection which may contain Patients, or patientIds which may
 	 *            be Integers, Strings, or anything whose toString() can be parsed to an Integer.
 	 */
-	public Cohort(String name, String description, Collection<?> patientsOrIds) {
+	public Cohort(/*~~>*/String name, /*~~>*/String description, Collection<?> patientsOrIds) {
 		this(name, description, (Integer[]) null);
 		if (patientsOrIds != null) {
 			for (Object o : patientsOrIds) {
@@ -120,9 +120,9 @@ public class Cohort extends BaseChangeableOpenmrsData {
 	 * 
 	 * @param commaSeparatedIds
 	 */
-	public Cohort(String commaSeparatedIds) {
+	public Cohort(/*~~>*/String commaSeparatedIds) {
 		this();
-		String[] ids = StringUtils.split(commaSeparatedIds, ',');
+		/*~~>*/String[] ids = StringUtils.split(commaSeparatedIds, ',');
 		Arrays.stream(ids).forEach(id -> addMembership(new CohortMembership(Integer.valueOf(id.trim()))));
 	}
 	
@@ -131,7 +131,7 @@ public class Cohort extends BaseChangeableOpenmrsData {
 	 * @return Returns a comma-separated list of patient ids in the cohort.
 	 */
 	@Deprecated
-	public String getCommaSeparatedPatientIds() {
+	public /*~~>*/String getCommaSeparatedPatientIds() {
 		return StringUtils.join(getMemberIds(), ',');
 	}
 	
@@ -141,7 +141,7 @@ public class Cohort extends BaseChangeableOpenmrsData {
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		StringBuilder sb = new StringBuilder("Cohort id=" + getCohortId());
 		if (getName() != null) {
 			sb.append(" name=").append(getName());
@@ -302,20 +302,20 @@ public class Cohort extends BaseChangeableOpenmrsData {
 		this.cohortId = cohortId;
 	}
 	
-	public String getDescription() {
+	public /*~~>*/String getDescription() {
 		return description;
 	}
 	
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(/*~~>*/String description) {
+		/*~~>*/this.description = description;
 	}
 	
-	public String getName() {
+	public /*~~>*/String getName() {
 		return name;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setName(/*~~>*/String name) {
+		/*~~>*/this.name = name;
 	}
 	
 	/**

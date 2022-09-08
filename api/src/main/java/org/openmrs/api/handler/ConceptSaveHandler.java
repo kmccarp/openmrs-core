@@ -41,7 +41,7 @@ public class ConceptSaveHandler implements SaveHandler<Concept> {
 	 *      java.util.Date, java.lang.String)
 	 */
 	@Override
-	public void handle(Concept concept, User creator, Date dateCreated, String other) {
+	public void handle(Concept concept, User creator, Date dateCreated, /*~~>*/String other) {
 		if (concept.getNames() != null) {
 			for (ConceptName cn : concept.getNames()) {
 				cn.setConcept(concept);

@@ -33,7 +33,7 @@ public class HttpClient {
 	
 	private HttpUrl url;
 	
-	public HttpClient(String url) throws MalformedURLException {
+	public HttpClient(/*~~>*/String url) throws MalformedURLException {
 		this(new HttpUrl(url));
 	}
 	
@@ -41,10 +41,10 @@ public class HttpClient {
 		this.url = url;
 	}
 	
-	public String post(Map<String, String> parameters) {
+	public /*~~>*/String post(Map</*~~>*/String, /*~~>*/String> parameters) {
 		OutputStreamWriter wr = null;
 		BufferedReader rd = null;
-		String response = "";
+		/*~~>*/String response = "";
 
 		try {
 			StringBuilder data = constructData(parameters);
@@ -54,7 +54,7 @@ public class HttpClient {
 			connection.setDoOutput(true);
 			connection.setDoInput(true);
 			connection.setRequestMethod("POST");
-			connection.setRequestProperty("Content-Length", String.valueOf(data.length()));
+			connection.setRequestProperty("Content-Length", /*~~>*/String.valueOf(data.length()));
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
 			wr = new OutputStreamWriter(connection.getOutputStream(), StandardCharsets.UTF_8);
@@ -75,7 +75,7 @@ public class HttpClient {
 			if (redirect) {
 
 				// get redirect url from "location" header field
-				String newUrl = connection.getHeaderField("Location");
+				/*~~>*/String newUrl = connection.getHeaderField("Location");
 				connection = (HttpURLConnection)new URL(newUrl).openConnection();
 
 				log.info("Redirection to : " + newUrl);
@@ -84,7 +84,7 @@ public class HttpClient {
 				connection.setDoOutput(true);
 				connection.setDoInput(true);
 				connection.setRequestMethod("POST");
-				connection.setRequestProperty("Content-Length", String.valueOf(data.length()));
+				connection.setRequestProperty("Content-Length", /*~~>*/String.valueOf(data.length()));
 				connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 											
 				wr = new OutputStreamWriter(connection.getOutputStream(), StandardCharsets.UTF_8);
@@ -95,9 +95,9 @@ public class HttpClient {
 		
 			// Get the response
 			rd = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
-			String line;
+			/*~~>*/String line;
 			while ((line = rd.readLine()) != null) {
-				response = String.format("%s%s%n", response, line);
+				response = /*~~>*/String.format("%s%s%n", response, line);
 			}
 			
 		}
@@ -125,9 +125,9 @@ public class HttpClient {
 		return response;
 	}
 
-	private StringBuilder constructData(Map<String, String> parameters) throws UnsupportedEncodingException {
+	private StringBuilder constructData(Map</*~~>*/String, /*~~>*/String> parameters) throws UnsupportedEncodingException {
 		StringBuilder data = new StringBuilder();
-		for (Map.Entry<String, String> entry : parameters.entrySet()) {
+		for (Map.Entry</*~~>*/String, /*~~>*/String> entry : parameters.entrySet()) {
 			if (isInvalidPostVariable(entry)) {
 				continue;
 			}
@@ -142,7 +142,7 @@ public class HttpClient {
 		return data;
 	}
 
-	private boolean isInvalidPostVariable(Map.Entry<String, String> entry) {
+	private boolean isInvalidPostVariable(Map.Entry</*~~>*/String, /*~~>*/String> entry) {
 		return entry.getKey() == null || entry.getValue() == null;
 	}
 }

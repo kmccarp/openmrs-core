@@ -48,7 +48,7 @@ public class ConditionServiceImpl extends BaseOpenmrsService implements Conditio
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Condition getConditionByUuid(String uuid) {
+	public Condition getConditionByUuid(/*~~>*/String uuid) {
 		return conditionDAO.getConditionByUuid(uuid);
 	}
 
@@ -151,7 +151,7 @@ public class ConditionServiceImpl extends BaseOpenmrsService implements Conditio
 	 * @return the voided condition
 	 */
 	@Override
-	public Condition voidCondition(Condition condition, String voidReason) {
+	public Condition voidCondition(Condition condition, /*~~>*/String voidReason) {
 		if (StringUtils.isBlank(voidReason)) {
 			throw new IllegalArgumentException("voidReason cannot be null or empty");
 		}

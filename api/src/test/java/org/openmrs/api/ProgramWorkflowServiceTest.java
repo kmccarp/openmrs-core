@@ -55,13 +55,13 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class ProgramWorkflowServiceTest extends BaseContextSensitiveTest {
 	
-	protected static final String CREATE_PATIENT_PROGRAMS_XML = "org/openmrs/api/include/ProgramWorkflowServiceTest-createPatientProgram.xml";
+	protected static final /*~~>*/String CREATE_PATIENT_PROGRAMS_XML = "org/openmrs/api/include/ProgramWorkflowServiceTest-createPatientProgram.xml";
 	
-	protected static final String PROGRAM_WITH_OUTCOMES_XML = "org/openmrs/api/include/ProgramWorkflowServiceTest-initialData.xml";
+	protected static final /*~~>*/String PROGRAM_WITH_OUTCOMES_XML = "org/openmrs/api/include/ProgramWorkflowServiceTest-initialData.xml";
 	
-	protected static final String PROGRAM_ATTRIBUTES_XML = "org/openmrs/api/include/ProgramAttributesDataset.xml";
+	protected static final /*~~>*/String PROGRAM_ATTRIBUTES_XML = "org/openmrs/api/include/ProgramAttributesDataset.xml";
 
-	protected static final String OTHER_PROGRAM_WORKFLOWS = "org/openmrs/api/include/ProgramWorkflowServiceTest-otherProgramWorkflows.xml";
+	protected static final /*~~>*/String OTHER_PROGRAM_WORKFLOWS = "org/openmrs/api/include/ProgramWorkflowServiceTest-otherProgramWorkflows.xml";
         
 	protected ProgramWorkflowService pws = null;
 	
@@ -424,7 +424,7 @@ public class ProgramWorkflowServiceTest extends BaseContextSensitiveTest {
 		ProgramWorkflow wf = p.getWorkflowByName("CIVIL STATUS");
 		assertNotNull(wf);
 		
-		List<String> names = new ArrayList<>();
+		List</*~~>*/String> names = new ArrayList<>();
 		for (ProgramWorkflowState s : wf.getStates()) {
 			names.add(s.getConcept().getName().getName());
 		}
@@ -436,7 +436,7 @@ public class ProgramWorkflowServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getConceptStateConversionByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "6c72b064-506d-11de-80cb-001e378eb67e";
+		/*~~>*/String uuid = "6c72b064-506d-11de-80cb-001e378eb67e";
 		ConceptStateConversion conceptStateConversion = Context.getProgramWorkflowService().getConceptStateConversionByUuid(
 		    uuid);
 		assertEquals(1, (int) conceptStateConversion.getConceptStateConversionId());
@@ -455,7 +455,7 @@ public class ProgramWorkflowServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getPatientProgramByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "2edf272c-bf05-4208-9f93-2fa213ed0415";
+		/*~~>*/String uuid = "2edf272c-bf05-4208-9f93-2fa213ed0415";
 		PatientProgram patientProgram = Context.getProgramWorkflowService().getPatientProgramByUuid(uuid);
 		assertEquals(2, (int) patientProgram.getPatientProgramId());
 	}
@@ -473,7 +473,7 @@ public class ProgramWorkflowServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getPatientStateByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "ea89deaa-23cc-4840-92fe-63d199c37e4c";
+		/*~~>*/String uuid = "ea89deaa-23cc-4840-92fe-63d199c37e4c";
 		PatientState patientState = Context.getProgramWorkflowService().getPatientStateByUuid(uuid);
 		assertEquals(1, (int) patientState.getPatientStateId());
 	}
@@ -491,7 +491,7 @@ public class ProgramWorkflowServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getProgramByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "eae98b4c-e195-403b-b34a-82d94103b2c0";
+		/*~~>*/String uuid = "eae98b4c-e195-403b-b34a-82d94103b2c0";
 		Program program = Context.getProgramWorkflowService().getProgramByUuid(uuid);
 		assertEquals(1, (int) program.getProgramId());
 	}
@@ -526,7 +526,7 @@ public class ProgramWorkflowServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getStateByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "92584cdc-6a20-4c84-a659-e035e45d36b0";
+		/*~~>*/String uuid = "92584cdc-6a20-4c84-a659-e035e45d36b0";
 		ProgramWorkflowState state = Context.getProgramWorkflowService().getStateByUuid(uuid);
 		assertEquals(1, (int) state.getProgramWorkflowStateId());
 	}
@@ -561,7 +561,7 @@ public class ProgramWorkflowServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getWorkflowByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "84f0effa-dd73-46cb-b931-7cd6be6c5f81";
+		/*~~>*/String uuid = "84f0effa-dd73-46cb-b931-7cd6be6c5f81";
 		ProgramWorkflow programWorkflow = Context.getProgramWorkflowService().getWorkflowByUuid(uuid);
 		assertEquals(1, (int) programWorkflow.getProgramWorkflowId());
 	}
@@ -695,9 +695,9 @@ public class ProgramWorkflowServiceTest extends BaseContextSensitiveTest {
 	
 	@Test
 	public void retireProgram_shouldSaveTheRetiredProgramWithReason() throws APIException {
-		String reason = "Feeling well.";
+		/*~~>*/String reason = "Feeling well.";
 		
-		String uuid = "eae98b4c-e195-403b-b34a-82d94103b2c0";
+		/*~~>*/String uuid = "eae98b4c-e195-403b-b34a-82d94103b2c0";
 		Program program = Context.getProgramWorkflowService().getProgramByUuid(uuid);
 		
 		Program retireProgram = pws.retireProgram(program, reason);
@@ -881,8 +881,8 @@ public class ProgramWorkflowServiceTest extends BaseContextSensitiveTest {
 
 	@Test
 	public void savePatientProgram_shouldTestPatientStateFormNamespaceAndPath() {
-		final String NAMESPACE = "namespace";
-		final String FORMFIELD_PATH = "formFieldPath";
+		final /*~~>*/String NAMESPACE = "namespace";
+		final /*~~>*/String FORMFIELD_PATH = "formFieldPath";
 		
 		PatientProgram patientProgram = pws.getPatientProgram(1);
 		for (PatientState state : patientProgram.getStates()) {
@@ -976,7 +976,7 @@ public class ProgramWorkflowServiceTest extends BaseContextSensitiveTest {
 		newConceptStateConversion.setConcept(existingConceptStateConversion.getConcept());
 		newConceptStateConversion.setProgramWorkflow(existingConceptStateConversion.getProgramWorkflow());
 		newConceptStateConversion.setProgramWorkflowState(existingConceptStateConversion.getProgramWorkflowState());
-		String conceptStateConversionUuid = newConceptStateConversion.getUuid();
+		/*~~>*/String conceptStateConversionUuid = newConceptStateConversion.getUuid();
 		pws.saveConceptStateConversion(newConceptStateConversion);
 		ConceptStateConversion conceptStateConversion2 = dao.getConceptStateConversionByUuid(conceptStateConversionUuid);
 		assertEquals(conceptStateConversionUuid, conceptStateConversion2.getUuid());
@@ -1043,7 +1043,7 @@ public class ProgramWorkflowServiceTest extends BaseContextSensitiveTest {
 	@Test 
 	public void getProgram_shouldGetProgramByName(){
 		Program program = pws.getAllPrograms().get(0);
-		String programName = program.getName();
+		/*~~>*/String programName = program.getName();
 		assertEquals(Context.getProgramWorkflowService().getProgramByName(programName), program);
 	}
 	

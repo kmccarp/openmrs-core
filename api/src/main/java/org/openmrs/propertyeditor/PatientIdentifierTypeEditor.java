@@ -31,7 +31,7 @@ public class PatientIdentifierTypeEditor extends OpenmrsPropertyEditor<PatientId
 	}
 	
 	@Override
-	protected PatientIdentifierType getObjectByUuid(String uuid) {
+	protected PatientIdentifierType getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getPatientService().getPatientIdentifierTypeByUuid(uuid);
 	}
 }

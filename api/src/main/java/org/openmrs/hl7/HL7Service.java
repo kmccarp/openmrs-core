@@ -46,7 +46,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @param hl7Source the source to save
 	 * @return the saved source
 	 */
-	@Authorized(PrivilegeConstants.PRIV_UPDATE_HL7_SOURCE)
+	@Authorized(/*~~>*/PrivilegeConstants.PRIV_UPDATE_HL7_SOURCE)
 	public HL7Source saveHL7Source(HL7Source hl7Source) throws APIException;
 	
 	/**
@@ -55,7 +55,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @param hl7SourceId
 	 * @return <code>HL7Source</code>object for given identifier
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_SOURCE)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_SOURCE)
 	public HL7Source getHL7Source(Integer hl7SourceId) throws APIException;
 	
 	/**
@@ -64,15 +64,15 @@ public interface HL7Service extends OpenmrsService {
 	 * @param name string to 'search' on
 	 * @return hl7 source object
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_SOURCE)
-	public HL7Source getHL7SourceByName(String name) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_SOURCE)
+	public HL7Source getHL7SourceByName(/*~~>*/String name) throws APIException;
 	
 	/**
 	 * Get all of the hl7 source objects from the database. This includes retired ones
 	 * 
 	 * @return list of hl7 source objects
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_SOURCE)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_SOURCE)
 	public List<HL7Source> getAllHL7Sources() throws APIException;
 	
 	/**
@@ -81,7 +81,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @param hl7Source the source to retire
 	 * @return the retired source
 	 */
-	@Authorized(PrivilegeConstants.PRIV_UPDATE_HL7_SOURCE)
+	@Authorized(/*~~>*/PrivilegeConstants.PRIV_UPDATE_HL7_SOURCE)
 	public HL7Source retireHL7Source(HL7Source hl7Source) throws APIException;
 	
 	/**
@@ -90,7 +90,7 @@ public interface HL7Service extends OpenmrsService {
 	 * 
 	 * @param hl7Source
 	 */
-	@Authorized(PrivilegeConstants.PRIV_PURGE_HL7_SOURCE)
+	@Authorized(/*~~>*/PrivilegeConstants.PRIV_PURGE_HL7_SOURCE)
 	public void purgeHL7Source(HL7Source hl7Source) throws APIException;
 	
 	/**
@@ -100,7 +100,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @return the saved queue item
 	 * <strong>Should</strong> add generated uuid if uuid is null
 	 */
-	@Authorized(value = { PrivilegeConstants.PRIV_UPDATE_HL7_IN_QUEUE, PrivilegeConstants.PRIV_ADD_HL7_IN_QUEUE }, requireAll = false)
+	@Authorized(value = { /*~~>*/PrivilegeConstants.PRIV_UPDATE_HL7_IN_QUEUE, /*~~>*/PrivilegeConstants.PRIV_ADD_HL7_IN_QUEUE }, requireAll = false)
 	public HL7InQueue saveHL7InQueue(HL7InQueue hl7InQueue) throws APIException;
 	
 	/**
@@ -110,7 +110,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @return the desired hl7InQueue object or null if none found
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_QUEUE)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_QUEUE)
 	public HL7InQueue getHL7InQueue(Integer hl7InQueueId) throws APIException;
 	
 	/**
@@ -121,8 +121,8 @@ public interface HL7Service extends OpenmrsService {
 	 * @throws APIException
 	 * @since 1.9
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_QUEUE)
-	public HL7InQueue getHL7InQueueByUuid(String uuid) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_QUEUE)
+	public HL7InQueue getHL7InQueueByUuid(/*~~>*/String uuid) throws APIException;
 	
 	/**
 	 * Return a list of all hl7 in queues in the database
@@ -130,7 +130,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @return all hl7 queue items
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_QUEUE)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_QUEUE)
 	public List<HL7InQueue> getAllHL7InQueues() throws APIException;
 	
 	/**
@@ -144,8 +144,8 @@ public interface HL7Service extends OpenmrsService {
 	 * @throws APIException
 	 * @since 1.7
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_QUEUE)
-	public List<HL7InQueue> getHL7InQueueBatch(int start, int length, int messageState, String query) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_QUEUE)
+	public List<HL7InQueue> getHL7InQueueBatch(int start, int length, int messageState, /*~~>*/String query) throws APIException;
 	
 	/**
 	 * the total count of all HL7InQueue objects in the database
@@ -156,8 +156,8 @@ public interface HL7Service extends OpenmrsService {
 	 * @throws APIException
 	 * @since 1.7
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_QUEUE)
-	public Integer countHL7InQueue(int messageState, String query) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_QUEUE)
+	public Integer countHL7InQueue(int messageState, /*~~>*/String query) throws APIException;
 	
 	/**
 	 * Return a list of all hl7 in errors based on batch settings and a query string
@@ -169,8 +169,8 @@ public interface HL7Service extends OpenmrsService {
 	 * @throws APIException
 	 * @since 1.7
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_QUEUE)
-	public List<HL7InError> getHL7InErrorBatch(int start, int length, String query) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_QUEUE)
+	public List<HL7InError> getHL7InErrorBatch(int start, int length, /*~~>*/String query) throws APIException;
 	
 	/**
 	 * the total count of all HL7InError objects in the database
@@ -180,8 +180,8 @@ public interface HL7Service extends OpenmrsService {
 	 * @throws APIException
 	 * @since 1.7
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_QUEUE)
-	public Integer countHL7InError(String query) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_QUEUE)
+	public Integer countHL7InError(/*~~>*/String query) throws APIException;
 	
 	/**
 	 * Return a list of all hl7 in archives based on batch settings and a query string
@@ -194,8 +194,8 @@ public interface HL7Service extends OpenmrsService {
 	 * @throws APIException
 	 * @since 1.7
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_ARCHIVE)
-	public List<HL7InArchive> getHL7InArchiveBatch(int start, int length, int messageState, String query)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_ARCHIVE)
+	public List<HL7InArchive> getHL7InArchiveBatch(int start, int length, int messageState, /*~~>*/String query)
 	        throws APIException;
 	
 	/**
@@ -207,15 +207,15 @@ public interface HL7Service extends OpenmrsService {
 	 * @throws APIException
 	 * @since 1.7
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_ARCHIVE)
-	public Integer countHL7InArchive(int messageState, String query) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_ARCHIVE)
+	public Integer countHL7InArchive(int messageState, /*~~>*/String query) throws APIException;
 	
 	/**
 	 * Get the first queue item in the database
 	 * 
 	 * @return the first queue item
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_QUEUE)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_QUEUE)
 	public HL7InQueue getNextHL7InQueue() throws APIException;
 	
 	/**
@@ -223,7 +223,7 @@ public interface HL7Service extends OpenmrsService {
 	 * 
 	 * @param hl7InQueue
 	 */
-	@Authorized(PrivilegeConstants.PRIV_PURGE_HL7_IN_QUEUE)
+	@Authorized(/*~~>*/PrivilegeConstants.PRIV_PURGE_HL7_IN_QUEUE)
 	public void purgeHL7InQueue(HL7InQueue hl7InQueue);
 	
 	/**
@@ -233,7 +233,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @return the saved archive item
 	 * @throws APIException
 	 */
-	@Authorized(value = { PrivilegeConstants.PRIV_UPDATE_HL7_IN_ARCHIVE, PrivilegeConstants.PRIV_ADD_HL7_IN_ARCHIVE }, requireAll = false)
+	@Authorized(value = { /*~~>*/PrivilegeConstants.PRIV_UPDATE_HL7_IN_ARCHIVE, /*~~>*/PrivilegeConstants.PRIV_ADD_HL7_IN_ARCHIVE }, requireAll = false)
 	public HL7InArchive saveHL7InArchive(HL7InArchive hl7InArchive) throws APIException;
 
 	/**
@@ -244,7 +244,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @param hl7InArchiveId the id to search on
 	 * @return the matching archive item
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_ARCHIVE)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_ARCHIVE)
 	public HL7InArchive getHL7InArchive(Integer hl7InArchiveId);
 	
 	/**
@@ -255,8 +255,8 @@ public interface HL7Service extends OpenmrsService {
 	 * @throws APIException
 	 * @since Version 1.7
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_ARCHIVE)
-	public HL7InArchive getHL7InArchiveByUuid(String uuid) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_ARCHIVE)
+	public HL7InArchive getHL7InArchiveByUuid(/*~~>*/String uuid) throws APIException;
 	
 	/**
 	 * If hl7 migration has been run and the state matches that of processed items, the method
@@ -269,7 +269,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @throws APIException
 	 * @since 1.5
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_ARCHIVE)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_ARCHIVE)
 	public List<HL7InArchive> getHL7InArchiveByState(Integer state) throws APIException;
 	
 	/**
@@ -279,7 +279,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @throws APIException
 	 * @since 1.7
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_QUEUE)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_QUEUE)
 	public List<HL7InQueue> getHL7InQueueByState(Integer state) throws APIException;
 	
 	/**
@@ -287,7 +287,7 @@ public interface HL7Service extends OpenmrsService {
 	 * 
 	 * @return list of archive items
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_ARCHIVE)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_ARCHIVE)
 	public List<HL7InArchive> getAllHL7InArchives() throws APIException;
 	
 	/**
@@ -296,7 +296,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @param hl7InArchive the archived item to delete
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.PRIV_PURGE_HL7_IN_ARCHIVE)
+	@Authorized(/*~~>*/PrivilegeConstants.PRIV_PURGE_HL7_IN_ARCHIVE)
 	public void purgeHL7InArchive(HL7InArchive hl7InArchive) throws APIException;
 	
 	/**
@@ -306,7 +306,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @return the saved item
 	 * @throws APIException
 	 */
-	@Authorized(value = { PrivilegeConstants.PRIV_UPDATE_HL7_IN_EXCEPTION, PrivilegeConstants.PRIV_ADD_HL7_IN_EXCEPTION }, requireAll = false)
+	@Authorized(value = { /*~~>*/PrivilegeConstants.PRIV_UPDATE_HL7_IN_EXCEPTION, /*~~>*/PrivilegeConstants.PRIV_ADD_HL7_IN_EXCEPTION }, requireAll = false)
 	public HL7InError saveHL7InError(HL7InError hl7InError) throws APIException;
 	
 	/**
@@ -315,7 +315,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @param hl7InErrorId the id to search on
 	 * @return the matching error item
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_EXCEPTION)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_EXCEPTION)
 	public HL7InError getHL7InError(Integer hl7InErrorId) throws APIException;
 	
 	/**
@@ -326,8 +326,8 @@ public interface HL7Service extends OpenmrsService {
 	 * @throws APIException
 	 * @since 1.9
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_EXCEPTION)
-	public HL7InError getHL7InErrorByUuid(String uuid) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_EXCEPTION)
+	public HL7InError getHL7InErrorByUuid(/*~~>*/String uuid) throws APIException;
 	
 	/**
 	 * Get all <code>HL7InError</code> items from the database
@@ -335,7 +335,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @return a List&lt;HL7InError&gt; object with all <code>HL7InError</code> items from the database
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.GET_HL7_IN_EXCEPTION)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_HL7_IN_EXCEPTION)
 	public List<HL7InError> getAllHL7InErrors() throws APIException;
 	
 	/**
@@ -344,7 +344,7 @@ public interface HL7Service extends OpenmrsService {
 	 * @param hl7InError the item to remove
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.PRIV_PURGE_HL7_IN_EXCEPTION)
+	@Authorized(/*~~>*/PrivilegeConstants.PRIV_PURGE_HL7_IN_EXCEPTION)
 	public void purgeHL7InError(HL7InError hl7InError) throws APIException;
 	
 	/**
@@ -431,7 +431,7 @@ public interface HL7Service extends OpenmrsService {
 	 * <strong>Should</strong> parse the given string into Message
 	 */
 	@Logging(ignoreAllArgumentValues = true)
-	public Message parseHL7String(String hl7String) throws HL7Exception;
+	public Message parseHL7String(/*~~>*/String hl7String) throws HL7Exception;
 	
 	/**
 	 * Parses the given {@link Message} and saves the resulting content to the database
@@ -453,9 +453,9 @@ public interface HL7Service extends OpenmrsService {
 	 *            transfers
 	 * @throws APIException
 	 */
-	@Authorized(requireAll = true, value = { PrivilegeConstants.GET_HL7_IN_ARCHIVE, PrivilegeConstants.PRIV_PURGE_HL7_IN_ARCHIVE,
-			PrivilegeConstants.PRIV_ADD_HL7_IN_QUEUE })
-	public void migrateHl7InArchivesToFileSystem(Map<String, Integer> progressStatusMap) throws APIException;
+	@Authorized(requireAll = true, value = { /*~~>*/PrivilegeConstants.GET_HL7_IN_ARCHIVE, /*~~>*/PrivilegeConstants.PRIV_PURGE_HL7_IN_ARCHIVE,
+			/*~~>*/PrivilegeConstants.PRIV_ADD_HL7_IN_QUEUE })
+	public void migrateHl7InArchivesToFileSystem(Map</*~~>*/String, Integer> progressStatusMap) throws APIException;
 	
 	/**
 	 * finds a UUID from an array of identifiers
@@ -469,7 +469,7 @@ public interface HL7Service extends OpenmrsService {
 	 * <strong>Should</strong> not fail if no assigning authority is found
 	 * <strong>Should</strong> fail if multiple different UUIDs exist in identifiers
 	 */
-	public String getUuidFromIdentifiers(CX[] identifiers) throws HL7Exception;
+	public /*~~>*/String getUuidFromIdentifiers(CX[] identifiers) throws HL7Exception;
 	
 	/**
 	 * creates a Person from information held in an NK1 segment; if valid PatientIdentifiers exist,
@@ -516,6 +516,6 @@ public interface HL7Service extends OpenmrsService {
 	 * @throws APIException
 	 * @since 1.9
 	 */
-	public HL7QueueItem getHl7QueueItemByUuid(String uuid) throws APIException;
+	public HL7QueueItem getHl7QueueItemByUuid(/*~~>*/String uuid) throws APIException;
 	
 }

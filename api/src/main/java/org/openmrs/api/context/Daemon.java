@@ -41,7 +41,7 @@ public class Daemon {
 	/**
 	 * The uuid defined for the daemon user object
 	 */
-	protected static final String DAEMON_USER_UUID = "A4F30A1B-5EB9-11DF-A648-37A07F9C90FB";
+	protected static final /*~~>*/String DAEMON_USER_UUID = "A4F30A1B-5EB9-11DF-A648-37A07F9C90FB";
 	
 	protected static final ThreadLocal<Boolean> isDaemonThread = new ThreadLocal<>();
 	
@@ -128,7 +128,7 @@ public class Daemon {
 	 * 
 	 * @since 2.3.0
 	 */
-	public static User createUser(User user, String password, List<String> roleNames) throws Exception {
+	public static User createUser(User user, /*~~>*/String password, List</*~~>*/String> roleNames) throws Exception {
 
 		// quick check to make sure we're only being called by ourselves
 		Class<?> callerClass = new OpenmrsSecurityManager().getCallerClass(0);
@@ -449,7 +449,7 @@ public class Daemon {
 		}
 	}
 
-	public static String getDaemonUserUuid() {
+	public static /*~~>*/String getDaemonUserUuid() {
 		return DAEMON_USER_UUID;
 	}
 }

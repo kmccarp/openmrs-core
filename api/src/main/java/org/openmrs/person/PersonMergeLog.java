@@ -47,7 +47,7 @@ public class PersonMergeLog extends BaseChangeableOpenmrsData {
 	/**
 	 * serialized data representing the details of the merge
 	 */
-	private String serializedMergedData;
+	private /*~~>*/String serializedMergedData;
 	
 	/**
 	 * object representing the deserialized form of the merge data. This field is not directly
@@ -79,12 +79,12 @@ public class PersonMergeLog extends BaseChangeableOpenmrsData {
 		this.loser = loser;
 	}
 	
-	public String getSerializedMergedData() {
+	public /*~~>*/String getSerializedMergedData() {
 		return serializedMergedData;
 	}
 	
-	public void setSerializedMergedData(String serializedMergedData) {
-		this.serializedMergedData = serializedMergedData;
+	public void setSerializedMergedData(/*~~>*/String serializedMergedData) {
+		/*~~>*/this.serializedMergedData = serializedMergedData;
 	}
 	
 	public PersonMergeLogData getPersonMergeLogData() {

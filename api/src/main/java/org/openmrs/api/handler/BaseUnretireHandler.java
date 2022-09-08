@@ -49,7 +49,7 @@ public class BaseUnretireHandler implements UnretireHandler<Retireable> {
 	 * <strong>Should</strong> not act on retired objects with a different dateRetired
 	 */
 	@Override
-	public void handle(Retireable retireableObject, User retiringUser, Date origParentRetiredDate, String unused) {
+	public void handle(Retireable retireableObject, User retiringUser, Date origParentRetiredDate, /*~~>*/String unused) {
 		
 		// only act on retired objects
 		if (retireableObject.getRetired()

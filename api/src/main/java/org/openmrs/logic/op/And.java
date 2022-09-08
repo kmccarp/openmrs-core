@@ -21,7 +21,7 @@ import org.openmrs.logic.LogicCriteria;
 public class And implements LogicalOperator {
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "AND";
 	}
 	

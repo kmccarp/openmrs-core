@@ -41,18 +41,18 @@ public class ValidateHibernateMappingsDatabaseIT extends H2DatabaseIT {
 		this.dropAllDatabaseObjects();
 		
 		ChangeLogVersionFinder changeLogVersionFinder = new ChangeLogVersionFinder();
-		Map<String, List<String>> changeLogCombinations = changeLogVersionFinder.getChangeLogCombinations();
+		Map</*~~>*/String, List</*~~>*/String>> changeLogCombinations = changeLogVersionFinder.getChangeLogCombinations();
 		
 		// test all possible combinations of liquibase snapshot and update files
 		//
-		for (List<String> snapshotAndUpdateFileNames : changeLogCombinations.values()) {
+		for (List</*~~>*/String> snapshotAndUpdateFileNames : changeLogCombinations.values()) {
 			
 			this.initializeDatabase();
 			
 			log.info(
 			    "liquibase files used for creating and updating the OpenMRS database are: " + snapshotAndUpdateFileNames);
 			
-			for (String fileName : snapshotAndUpdateFileNames) {
+			for (/*~~>*/String fileName : snapshotAndUpdateFileNames) {
 				// process the core data file only for the first generation of liquibase snapshot files
 				//
 				if (fileName.contains("liquibase-core-data-1.9.x.xml")) {
@@ -87,16 +87,16 @@ public class ValidateHibernateMappingsDatabaseIT extends H2DatabaseIT {
 		for (Class<?> clazz : entityClasses) {
 			configuration.addAnnotatedClass(clazz);
 		}
-		configuration.setProperty(Environment.DIALECT, H2LessStrictDialect.class.getName());
-		configuration.setProperty(Environment.URL, "jdbc:h2:mem:openmrs;AUTO_RECONNECT=TRUE;DB_CLOSE_DELAY=-1");
-		configuration.setProperty(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-		configuration.setProperty(Environment.USER, USER_NAME);
-		configuration.setProperty(Environment.PASS, PASSWORD);
-		configuration.setProperty(Environment.USE_SECOND_LEVEL_CACHE, "false");
-		configuration.setProperty(Environment.USE_QUERY_CACHE, "false");
+		configuration.setProperty(/*~~>*/Environment.DIALECT, H2LessStrictDialect.class.getName());
+		configuration.setProperty(/*~~>*/Environment.URL, "jdbc:h2:mem:openmrs;AUTO_RECONNECT=TRUE;DB_CLOSE_DELAY=-1");
+		configuration.setProperty(/*~~>*/Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+		configuration.setProperty(/*~~>*/Environment.USER, USER_NAME);
+		configuration.setProperty(/*~~>*/Environment.PASS, PASSWORD);
+		configuration.setProperty(/*~~>*/Environment.USE_SECOND_LEVEL_CACHE, "false");
+		configuration.setProperty(/*~~>*/Environment.USE_QUERY_CACHE, "false");
 		
 		// Validate HBMs against the actual schema
-		configuration.setProperty(Environment.HBM2DDL_AUTO, "validate");
+		configuration.setProperty(/*~~>*/Environment.HBM2DDL_AUTO, "validate");
 		
 		return configuration.buildSessionFactory();
 	}

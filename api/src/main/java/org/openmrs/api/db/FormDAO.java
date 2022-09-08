@@ -58,7 +58,7 @@ public interface FormDAO {
 	 * @return the form with the exact name and version given
 	 * @throws DAOException
 	 */
-	public Form getForm(String name, String version) throws DAOException;
+	public Form getForm(/*~~>*/String name, /*~~>*/String version) throws DAOException;
 	
 	/**
 	 * Gets all forms with the given name, sorted (alphabetically) by descending version
@@ -67,7 +67,7 @@ public interface FormDAO {
 	 * @return All forms with the given name, sorted by (alphabetically) by descending version
 	 * @throws DAOException
 	 */
-	public List<Form> getFormsByName(String name) throws DAOException;
+	public List<Form> getFormsByName(/*~~>*/String name) throws DAOException;
 	
 	/**
 	 * Delete form from database. This is included for troubleshooting and low-level system
@@ -130,7 +130,7 @@ public interface FormDAO {
 	 * @return list of fields in the database matching search phrase
 	 * @throws DAOException
 	 */
-	public List<Field> getFields(String search) throws DAOException;
+	public List<Field> getFields(/*~~>*/String search) throws DAOException;
 	
 	/**
 	 * Returns all fields in the database, possibly including retired ones
@@ -202,7 +202,7 @@ public interface FormDAO {
 	 * @return All Fields that match the criteria
 	 */
 	public List<Field> getFields(Collection<Form> forms, Collection<FieldType> fieldTypes, Collection<Concept> concepts,
-	        Collection<String> tableNames, Collection<String> attributeNames, Boolean selectMultiple,
+	        Collection</*~~>*/String> tableNames, Collection</*~~>*/String> attributeNames, Boolean selectMultiple,
 	        Collection<FieldAnswer> containsAllAnswers, Collection<FieldAnswer> containsAnyAnswer, Boolean retired)
 	        throws DAOException;
 	
@@ -232,14 +232,14 @@ public interface FormDAO {
 	 *      java.util.Collection, java.lang.Boolean, java.util.Collection, java.util.Collection,
 	 *      java.util.Collection)
 	 */
-	public List<Form> getForms(String partialName, Boolean published, Collection<EncounterType> encounterTypes,
+	public List<Form> getForms(/*~~>*/String partialName, Boolean published, Collection<EncounterType> encounterTypes,
 	        Boolean retired, Collection<FormField> containingAnyFormField, Collection<FormField> containingAllFormFields,
 	        Collection<Field> fields) throws DAOException;
 	
 	/**
 	 * @see #getForms(String, Boolean, Collection, Boolean, Collection, Collection, Collection)
 	 */
-	public Integer getFormCount(String partialName, Boolean published, Collection<EncounterType> encounterTypes,
+	public Integer getFormCount(/*~~>*/String partialName, Boolean published, Collection<EncounterType> encounterTypes,
 	        Boolean retired, Collection<FormField> containingAnyFormField, Collection<FormField> containingAllFormFields,
 	        Collection<Field> fields) throws DAOException;
 	
@@ -254,15 +254,15 @@ public interface FormDAO {
 	 * @param uuid
 	 * @return field or null
 	 */
-	public Field getFieldByUuid(String uuid);
+	public Field getFieldByUuid(/*~~>*/String uuid);
 	
-	public FieldAnswer getFieldAnswerByUuid(String uuid);
+	public FieldAnswer getFieldAnswerByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @param uuid
 	 * @return field type or null
 	 */
-	public FieldType getFieldTypeByUuid(String uuid);
+	public FieldType getFieldTypeByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Return fieldType  associated with given name
@@ -270,19 +270,19 @@ public interface FormDAO {
 	 * @param name Name of the fileType to query
 	 * @return fieldType object associate with given name
 	 */
-	public FieldType getFieldTypeByName(String name);
+	public FieldType getFieldTypeByName(/*~~>*/String name);
 	
 	/**
 	 * @param uuid
 	 * @return form or null
 	 */
-	public Form getFormByUuid(String uuid);
+	public Form getFormByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @param uuid
 	 * @return form field or null
 	 */
-	public FormField getFormFieldByUuid(String uuid);
+	public FormField getFormFieldByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Save the given field type to the database
@@ -310,13 +310,13 @@ public interface FormDAO {
 	 * @see FormService#getFormResourceByUuid(java.lang.String) 
 	 * @since 1.9
 	 */
-	public FormResource getFormResourceByUuid(String uuid);
+	public FormResource getFormResourceByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @see FormService#getFormResource(org.openmrs.Form, java.lang.String)
 	 * @since 1.9
 	 */
-	public FormResource getFormResource(Form form, String name);
+	public FormResource getFormResource(Form form, /*~~>*/String name);
 	
 	/**
 	 * @see FormService#getFormResourcesForForm(org.openmrs.Form)

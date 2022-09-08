@@ -18,11 +18,11 @@ import java.util.Set;
 /**
  * A mapped collection of PresentationMessages, all of which are enforced to be in the same locale.
  */
-public class PresentationMessageMap implements Map<String, PresentationMessage> {
+public class PresentationMessageMap implements Map</*~~>*/String, PresentationMessage> {
 	
 	private Locale locale;
 	
-	private Map<String, PresentationMessage> internalMap = new HashMap<>();
+	private Map</*~~>*/String, PresentationMessage> internalMap = new HashMap<>();
 	
 	/**
 	 * Create a new PresentationMessageMap for the given locale.
@@ -61,7 +61,7 @@ public class PresentationMessageMap implements Map<String, PresentationMessage> 
 	 * @see java.util.Map#entrySet()
 	 */
 	@Override
-	public Set<Entry<String, PresentationMessage>> entrySet() {
+	public Set<Entry</*~~>*/String, PresentationMessage>> entrySet() {
 		return internalMap.entrySet();
 	}
 	
@@ -85,7 +85,7 @@ public class PresentationMessageMap implements Map<String, PresentationMessage> 
 	 * @see java.util.Map#keySet()
 	 */
 	@Override
-	public Set<String> keySet() {
+	public Set</*~~>*/String> keySet() {
 		return internalMap.keySet();
 	}
 	
@@ -94,7 +94,7 @@ public class PresentationMessageMap implements Map<String, PresentationMessage> 
 	 * <strong>Should</strong> should ignore non matching locale messages
 	 */
 	@Override
-	public PresentationMessage put(String key, PresentationMessage value) {
+	public PresentationMessage put(/*~~>*/String key, PresentationMessage value) {
 		PresentationMessage putValue = null;
 		if (value.getLocale().equals(locale)) {
 			putValue = internalMap.put(key, value);
@@ -109,8 +109,8 @@ public class PresentationMessageMap implements Map<String, PresentationMessage> 
 	 * <strong>Should</strong> filter out non matching locale messages from batch add
 	 */
 	@Override
-	public void putAll(Map<? extends String, ? extends PresentationMessage> t) {
-		for (Entry<? extends String, ? extends PresentationMessage> entry : t.entrySet()) {
+	public void putAll(Map<? extends /*~~>*/String, ? extends PresentationMessage> t) {
+		for (Entry<? extends /*~~>*/String, ? extends PresentationMessage> entry : t.entrySet()) {
 			put(entry.getKey(), entry.getValue());
 		}
 	}

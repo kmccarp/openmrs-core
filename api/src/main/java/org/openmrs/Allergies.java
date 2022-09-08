@@ -23,20 +23,20 @@ import org.openmrs.util.OpenmrsUtil;
  */
 public class Allergies implements List<Allergy> {
 	
-	public static final String UNKNOWN = "Unknown";
+	public static final /*~~>*/String UNKNOWN = "Unknown";
 	
-	public static final String NO_KNOWN_ALLERGIES = "No known allergies";
+	public static final /*~~>*/String NO_KNOWN_ALLERGIES = "No known allergies";
 	
-	public static final String SEE_LIST = "See list";
+	public static final /*~~>*/String SEE_LIST = "See list";
 	
-	private String allergyStatus = UNKNOWN;
+	private /*~~>*/String allergyStatus = UNKNOWN;
 	
 	private List<Allergy> allergies = new ArrayList<>();
 
 	/**
      * @return the allergyStatus
      */
-    public String getAllergyStatus() {
+    public /*~~>*/String getAllergyStatus() {
     	return allergyStatus;
     }
 

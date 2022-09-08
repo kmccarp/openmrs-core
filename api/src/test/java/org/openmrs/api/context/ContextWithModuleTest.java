@@ -54,7 +54,7 @@ public class ContextWithModuleTest extends BaseContextSensitiveTest {
 		// the "/lib" folder has been emptied to compact the size.
 		// the "/metadata/sqldiff.xml" file has been deleted in order to load the modules into hsql.
 		//    (the sql tables are built from hibernate mapping files automatically in unit tests)
-		props.setProperty(ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD,
+		props.setProperty(/*~~>*/ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD,
 		    "org/openmrs/module/include/test1-1.0-SNAPSHOT.omod org/openmrs/module/include/test2-1.0-SNAPSHOT.omod");
 		
 		return props;

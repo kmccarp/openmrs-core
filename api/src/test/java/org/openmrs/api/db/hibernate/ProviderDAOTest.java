@@ -27,7 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ProviderDAOTest extends BaseContextSensitiveTest {
 	
-	private static final String PROVIDERS_INITIAL_XML = "org/openmrs/api/include/ProviderServiceTest-initial.xml";
+	private static final /*~~>*/String PROVIDERS_INITIAL_XML = "org/openmrs/api/include/ProviderServiceTest-initial.xml";
 	
 	@Autowired
 	private PersonDAO personDao;

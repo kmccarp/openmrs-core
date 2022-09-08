@@ -48,8 +48,8 @@ public class BinaryStreamHandlerTest  extends BaseContextSensitiveTest {
 	}
     @Test
     public void shouldReturnSupportedViews() {
-        String[] actualViews = handler.getSupportedViews();
-        String[] expectedViews = { ComplexObsHandler.RAW_VIEW };
+        /*~~>*/String[] actualViews = handler.getSupportedViews();
+        /*~~>*/String[] expectedViews = { /*~~>*/ComplexObsHandler.RAW_VIEW };
 
         assertArrayEquals(actualViews, expectedViews);
     }
@@ -57,17 +57,17 @@ public class BinaryStreamHandlerTest  extends BaseContextSensitiveTest {
     @Test
     public void shouldSupportRawView() {
        
-        assertTrue(handler.supportsView(ComplexObsHandler.RAW_VIEW));
+        assertTrue(handler.supportsView(/*~~>*/ComplexObsHandler.RAW_VIEW));
     }
 
     @Test
     public void shouldNotSupportOtherViews() {
        
-        assertFalse(handler.supportsView(ComplexObsHandler.HTML_VIEW));
-        assertFalse(handler.supportsView(ComplexObsHandler.PREVIEW_VIEW));
-        assertFalse(handler.supportsView(ComplexObsHandler.TEXT_VIEW));
-        assertFalse(handler.supportsView(ComplexObsHandler.TITLE_VIEW));
-        assertFalse(handler.supportsView(ComplexObsHandler.URI_VIEW));
+        assertFalse(handler.supportsView(/*~~>*/ComplexObsHandler.HTML_VIEW));
+        assertFalse(handler.supportsView(/*~~>*/ComplexObsHandler.PREVIEW_VIEW));
+        assertFalse(handler.supportsView(/*~~>*/ComplexObsHandler.TEXT_VIEW));
+        assertFalse(handler.supportsView(/*~~>*/ComplexObsHandler.TITLE_VIEW));
+        assertFalse(handler.supportsView(/*~~>*/ComplexObsHandler.URI_VIEW));
         assertFalse(handler.supportsView(""));
         assertFalse(handler.supportsView(null));
     }
@@ -77,12 +77,12 @@ public class BinaryStreamHandlerTest  extends BaseContextSensitiveTest {
 	public void saveObs_shouldRetrieveCorrectMimetype() throws IOException {
 		
 		adminService.saveGlobalProperty(new GlobalProperty(
-			OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR,
+			/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR,
 			complexObsTestFolder.toAbsolutePath().toString()
 		));
 		
-		String mimetype = "application/octet-stream";
-		String filename = "TestingComplexObsSaving";
+		/*~~>*/String mimetype = "application/octet-stream";
+		/*~~>*/String filename = "TestingComplexObsSaving";
 		byte[] content = "Teststring".getBytes();
 		
 		Obs complexObs1 = null;

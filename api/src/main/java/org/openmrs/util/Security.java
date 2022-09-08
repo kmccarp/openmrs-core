@@ -59,7 +59,7 @@ public class Security {
 	 * <strong>Should</strong> match strings hashed with sha1 algorithm
 	 * <strong>Should</strong> match strings hashed with sha512 algorithm and 128 characters salt
 	 */
-	public static boolean hashMatches(String hashedPassword, String passwordToHash) {
+	public static boolean hashMatches(/*~~>*/String hashedPassword, /*~~>*/String passwordToHash) {
 		if (hashedPassword == null || passwordToHash == null) {
 			throw new APIException("password.cannot.be.null", (Object[]) null);
 		}
@@ -78,7 +78,7 @@ public class Security {
 	 * @return the SHA-512 encryption of a given string
 	 * <strong>Should</strong> encode strings to 128 characters
 	 */
-	public static String encodeString(String strToEncode) throws APIException {
+	public static /*~~>*/String encodeString(/*~~>*/String strToEncode) throws APIException {
 		return encodeString(strToEncode, "SHA-512");
 	}
 
@@ -88,15 +88,15 @@ public class Security {
 	 * @param strToEncode string to encode
 	 * @return the SHA-1 encryption of a given string
 	 */
-	private static String encodeStringSHA1(String strToEncode) throws APIException {
+	private static /*~~>*/String encodeStringSHA1(/*~~>*/String strToEncode) throws APIException {
 		return encodeString(strToEncode, "SHA-1");
 	}
 
-	private static String encodeString(String strToEncode, String algorithm) {
+	private static /*~~>*/String encodeString(/*~~>*/String strToEncode, /*~~>*/String algorithm) {
 		return hexString(digest(strToEncode.getBytes(StandardCharsets.UTF_8), algorithm));
 	}
 
-	private static byte[] digest(byte[] input, String algorithm) {
+	private static byte[] digest(byte[] input, /*~~>*/String algorithm) {
 		MessageDigest md;
 		try {
 			md = MessageDigest.getInstance(algorithm);
@@ -116,7 +116,7 @@ public class Security {
 	 * @param block Byte array to convert to HexString
 	 * @return Hexadecimal string encoding the byte array
 	 */
-	private static String hexString(byte[] block) {
+	private static /*~~>*/String hexString(byte[] block) {
 		StringBuilder buf = new StringBuilder();
 		char[] hexChars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 		int high;
@@ -138,7 +138,7 @@ public class Security {
 	 * @param strToEncode string to encode
 	 * @return the SHA-1 encryption of a given string
 	 */
-	private static String incorrectlyEncodeString(String strToEncode) throws APIException {
+	private static /*~~>*/String incorrectlyEncodeString(/*~~>*/String strToEncode) throws APIException {
 		return incorrectHexString(digest(strToEncode.getBytes(StandardCharsets.UTF_8), "SHA-1"));
 	}
 
@@ -152,7 +152,7 @@ public class Security {
 	 * @param b the byte array to encode
 	 * @return the old possibly less than 40 characters hashed string
 	 */
-	private static String incorrectHexString(byte[] b) {
+	private static /*~~>*/String incorrectHexString(byte[] b) {
 		if (b == null || b.length < 1) {
 			return "";
 		}
@@ -160,7 +160,7 @@ public class Security {
 		for (byte aB : b) {
 			s.append(Integer.toHexString(aB & 0xFF));
 		}
-		return new String(s);
+		return new /*~~>*/String(s);
 	}
 
 	/**
@@ -168,7 +168,7 @@ public class Security {
 	 *
 	 * @return a secure random token.
 	 */
-	public static String getRandomToken() throws APIException {
+	public static /*~~>*/String getRandomToken() throws APIException {
 		byte[] token = new byte[64];
 		RANDOM.nextBytes(token);
 		return hexString(digest(token, "SHA-512"));
@@ -186,17 +186,17 @@ public class Security {
 	 * @return encrypted text
 	 * @since 1.9
 	 */
-	public static String encrypt(String text, byte[] initVector, byte[] secretKey) {
+	public static /*~~>*/String encrypt(/*~~>*/String text, byte[] initVector, byte[] secretKey) {
 		IvParameterSpec initVectorSpec = new IvParameterSpec(initVector);
-		SecretKeySpec secret = new SecretKeySpec(secretKey, OpenmrsConstants.ENCRYPTION_KEY_SPEC);
+		SecretKeySpec secret = new SecretKeySpec(secretKey, /*~~>*/OpenmrsConstants.ENCRYPTION_KEY_SPEC);
 		byte[] encrypted;
-		String result;
+		/*~~>*/String result;
 
 		try {
-			Cipher cipher = Cipher.getInstance(OpenmrsConstants.ENCRYPTION_CIPHER_CONFIGURATION);
+			Cipher cipher = Cipher.getInstance(/*~~>*/OpenmrsConstants.ENCRYPTION_CIPHER_CONFIGURATION);
 			cipher.init(Cipher.ENCRYPT_MODE, secret, initVectorSpec);
 			encrypted = cipher.doFinal(text.getBytes(StandardCharsets.UTF_8));
-			result = new String(Base64.getEncoder().encode(encrypted), StandardCharsets.UTF_8);
+			result = new /*~~>*/String(Base64.getEncoder().encode(encrypted), StandardCharsets.UTF_8);
 		}
 		catch (GeneralSecurityException e) {
 			throw new APIException("could.not.encrypt.text", null, e);
@@ -217,7 +217,7 @@ public class Security {
 	 * GitHub OpenMRS organisation.
 	 */
 	@Deprecated
-	public static String encrypt(String text) {
+	public static /*~~>*/String encrypt(/*~~>*/String text) {
 		return Security.encrypt(text, Security.getSavedInitVector(), Security.getSavedSecretKey());
 	}
 
@@ -233,16 +233,16 @@ public class Security {
 	 * @return decrypted text
 	 * @since 1.9
 	 */
-	public static String decrypt(String text, byte[] initVector, byte[] secretKey) {
+	public static /*~~>*/String decrypt(/*~~>*/String text, byte[] initVector, byte[] secretKey) {
 		IvParameterSpec initVectorSpec = new IvParameterSpec(initVector);
-		SecretKeySpec secret = new SecretKeySpec(secretKey, OpenmrsConstants.ENCRYPTION_KEY_SPEC);
-		String decrypted;
+		SecretKeySpec secret = new SecretKeySpec(secretKey, /*~~>*/OpenmrsConstants.ENCRYPTION_KEY_SPEC);
+		/*~~>*/String decrypted;
 
 		try {
-			Cipher cipher = Cipher.getInstance(OpenmrsConstants.ENCRYPTION_CIPHER_CONFIGURATION);
+			Cipher cipher = Cipher.getInstance(/*~~>*/OpenmrsConstants.ENCRYPTION_CIPHER_CONFIGURATION);
 			cipher.init(Cipher.DECRYPT_MODE, secret, initVectorSpec);
 			byte[] original = cipher.doFinal(Base64.getDecoder().decode(text));
-			decrypted = new String(original, StandardCharsets.UTF_8);
+			decrypted = new /*~~>*/String(original, StandardCharsets.UTF_8);
 		}
 		catch (GeneralSecurityException e) {
 			throw new APIException("could.not.decrypt.text", null, e);
@@ -263,7 +263,7 @@ public class Security {
 	 * GitHub OpenMRS organisation.
 	 */
 	@Deprecated
-	public static String decrypt(String text) {
+	public static /*~~>*/String decrypt(/*~~>*/String text) {
 		return Security.decrypt(text, Security.getSavedInitVector(), Security.getSavedSecretKey());
 	}
 
@@ -274,8 +274,8 @@ public class Security {
 	 * @since 1.9
 	 */
 	public static byte[] getSavedInitVector() {
-		String initVectorText = Context.getRuntimeProperties().getProperty(
-			OpenmrsConstants.ENCRYPTION_VECTOR_RUNTIME_PROPERTY, OpenmrsConstants.ENCRYPTION_VECTOR_DEFAULT);
+		/*~~>*/String initVectorText = Context.getRuntimeProperties().getProperty(
+			/*~~>*/OpenmrsConstants.ENCRYPTION_VECTOR_RUNTIME_PROPERTY, /*~~>*/OpenmrsConstants.ENCRYPTION_VECTOR_DEFAULT);
 
 		if (StringUtils.hasText(initVectorText)) {
 			return Base64.getDecoder().decode(initVectorText);
@@ -306,8 +306,8 @@ public class Security {
 	 * @since 1.9
 	 */
 	public static byte[] getSavedSecretKey() {
-		String keyText = Context.getRuntimeProperties().getProperty(OpenmrsConstants.ENCRYPTION_KEY_RUNTIME_PROPERTY,
-			OpenmrsConstants.ENCRYPTION_KEY_DEFAULT);
+		/*~~>*/String keyText = Context.getRuntimeProperties().getProperty(/*~~>*/OpenmrsConstants.ENCRYPTION_KEY_RUNTIME_PROPERTY,
+			/*~~>*/OpenmrsConstants.ENCRYPTION_KEY_DEFAULT);
 
 		if (StringUtils.hasText(keyText)) {
 			return Base64.getDecoder().decode(keyText);
@@ -327,7 +327,7 @@ public class Security {
 		// Get the KeyGenerator
 		KeyGenerator kgen;
 		try {
-			kgen = KeyGenerator.getInstance(OpenmrsConstants.ENCRYPTION_KEY_SPEC);
+			kgen = KeyGenerator.getInstance(/*~~>*/OpenmrsConstants.ENCRYPTION_KEY_SPEC);
 		}
 		catch (NoSuchAlgorithmException e) {
 			throw new APIException("could.not.generate.cipher.key", null, e);

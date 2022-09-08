@@ -33,13 +33,13 @@ import org.springframework.validation.Errors;
  */
 public final class HasFieldErrors extends TypeSafeMatcher<Errors> {
 	
-	private final String field;
+	private final /*~~>*/String field;
 	
-	private final String code;
+	private final /*~~>*/String code;
 	
-	private HasFieldErrors(String field, String code) {
-		this.field = field;
-		this.code = code;
+	private HasFieldErrors(/*~~>*/String field, /*~~>*/String code) {
+		/*~~>*/this.field = field;
+		/*~~>*/this.code = code;
 	}
 	
 	@Override
@@ -68,11 +68,11 @@ public final class HasFieldErrors extends TypeSafeMatcher<Errors> {
 		return new HasFieldErrors(null, null);
 	}
 	
-	public static HasFieldErrors hasFieldErrors(String field) {
+	public static HasFieldErrors hasFieldErrors(/*~~>*/String field) {
 		return new HasFieldErrors(field, null);
 	}
 	
-	public static HasFieldErrors hasFieldErrors(String field, String code) {
+	public static HasFieldErrors hasFieldErrors(/*~~>*/String field, /*~~>*/String code) {
 		return new HasFieldErrors(field, code);
 	}
 }

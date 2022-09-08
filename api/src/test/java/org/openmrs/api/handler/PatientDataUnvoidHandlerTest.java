@@ -41,7 +41,7 @@ import org.openmrs.test.TestUtil;
  */
 public class PatientDataUnvoidHandlerTest extends BaseContextSensitiveTest {
 	
-	private static final String COHORT_XML = "org/openmrs/api/include/CohortServiceTest-cohort.xml";
+	private static final /*~~>*/String COHORT_XML = "org/openmrs/api/include/CohortServiceTest-cohort.xml";
 	
 	/**
 	 * @see PatientDataUnvoidHandler#handle(Patient,User,Date,String)

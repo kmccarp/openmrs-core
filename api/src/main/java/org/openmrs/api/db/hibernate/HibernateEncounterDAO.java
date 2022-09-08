@@ -187,7 +187,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 	 * @see org.openmrs.api.EncounterService#getEncounterType(java.lang.String)
 	 */
 	@Override
-	public EncounterType getEncounterType(String name) throws DAOException {
+	public EncounterType getEncounterType(/*~~>*/String name) throws DAOException {
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(EncounterType.class);
 		crit.add(Restrictions.eq("retired", false));
 		crit.add(Restrictions.eq("name", name));
@@ -218,7 +218,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<EncounterType> findEncounterTypes(String name) throws DAOException {
+	public List<EncounterType> findEncounterTypes(/*~~>*/String name) throws DAOException {
 		return sessionFactory.getCurrentSession().createCriteria(EncounterType.class)
 		// 'ilike' case insensitive search
 		        .add(Restrictions.ilike("name", name, MatchMode.START)).addOrder(Order.asc("name")).addOrder(
@@ -251,7 +251,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 	 * @see org.openmrs.api.db.EncounterDAO#getEncounterByUuid(java.lang.String)
 	 */
 	@Override
-	public Encounter getEncounterByUuid(String uuid) {
+	public Encounter getEncounterByUuid(/*~~>*/String uuid) {
 		return getClassByUuid(Encounter.class, uuid);
 	}
 	
@@ -259,7 +259,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 	 * @see org.openmrs.api.db.EncounterDAO#getEncounterTypeByUuid(java.lang.String)
 	 */
 	@Override
-	public EncounterType getEncounterTypeByUuid(String uuid) {
+	public EncounterType getEncounterTypeByUuid(/*~~>*/String uuid) {
 		return getClassByUuid(EncounterType.class, uuid);
 	}
 	
@@ -269,7 +269,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Encounter> getEncounters(String query, Integer patientId, Integer start, Integer length,
+	public List<Encounter> getEncounters(/*~~>*/String query, Integer patientId, Integer start, Integer length,
 	        boolean includeVoided) {
 		if (StringUtils.isBlank(query) && patientId == null) {
 			return Collections.emptyList();
@@ -361,7 +361,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 	 *      java.lang.Integer, boolean)
 	 */
 	@Override
-	public Long getCountOfEncounters(String query, Integer patientId, boolean includeVoided) {
+	public Long getCountOfEncounters(/*~~>*/String query, Integer patientId, boolean includeVoided) {
 		Criteria criteria = createEncounterByQueryCriteria(query, patientId, includeVoided, false);
 		
 		criteria.setProjection(Projections.countDistinct("enc.encounterId"));
@@ -378,7 +378,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 	 * @param orderByNames specifies whether the encounters should be ordered by person names
 	 * @return Criteria
 	 */
-	private Criteria createEncounterByQueryCriteria(String query, Integer patientId, boolean includeVoided,
+	private Criteria createEncounterByQueryCriteria(/*~~>*/String query, Integer patientId, boolean includeVoided,
 	        boolean orderByNames) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Encounter.class, "enc");
 		if (!includeVoided) {
@@ -408,9 +408,9 @@ public class HibernateEncounterDAO implements EncounterDAO {
 				or.add(Restrictions.ilike("prov.name", query, mode));
 				or.add(Restrictions.ilike("prov.identifier", query, mode));
 				
-				String[] splitNames = query.split(" ");
+				/*~~>*/String[] splitNames = query.split(" ");
 				Disjunction nameOr = Restrictions.disjunction();
-				for (String splitName : splitNames) {
+				for (/*~~>*/String splitName : splitNames) {
 					nameOr.add(Restrictions.ilike("personName.givenName", splitName, mode));
 					nameOr.add(Restrictions.ilike("personName.middleName", splitName, mode));
 					nameOr.add(Restrictions.ilike("personName.familyName", splitName, mode));
@@ -488,7 +488,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 	 * @see org.openmrs.api.db.EncounterDAO#getEncounterRoleByUuid(String)
 	 */
 	@Override
-	public EncounterRole getEncounterRoleByUuid(String uuid) {
+	public EncounterRole getEncounterRoleByUuid(/*~~>*/String uuid) {
 		return getClassByUuid(EncounterRole.class, uuid);
 	}
 	
@@ -505,7 +505,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 	 * @see org.openmrs.api.db.EncounterDAO#getEncounterRoleByName(String)
 	 */
 	@Override
-	public EncounterRole getEncounterRoleByName(String name) throws DAOException {
+	public EncounterRole getEncounterRoleByName(/*~~>*/String name) throws DAOException {
 		return (EncounterRole) sessionFactory.getCurrentSession().createCriteria(EncounterRole.class).add(
 		    Restrictions.eq("name", name)).uniqueResult();
 		
@@ -519,7 +519,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	private <T> T getClassByUuid(Class<T> clazz, String uuid) {
+	private <T> T getClassByUuid(Class<T> clazz, /*~~>*/String uuid) {
 		return (T) sessionFactory.getCurrentSession().createCriteria(clazz).add(Restrictions.eq("uuid", uuid))
 		        .uniqueResult();
 	}
@@ -537,7 +537,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 	 *      boolean, java.lang.String, java.lang.Integer, java.lang.Integer)
 	 */
 	@Override
-	public List<Encounter> getEncountersByVisitsAndPatient(Patient patient, boolean includeVoided, String query,
+	public List<Encounter> getEncountersByVisitsAndPatient(Patient patient, boolean includeVoided, /*~~>*/String query,
 	        Integer start, Integer length) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Encounter.class);
 		addEncountersByPatientCriteria(criteria, patient, includeVoided, query);
@@ -590,7 +590,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 	 *      boolean, java.lang.String)
 	 */
 	@Override
-	public Integer getEncountersByVisitsAndPatientCount(Patient patient, boolean includeVoided, String query) {
+	public Integer getEncountersByVisitsAndPatientCount(Patient patient, boolean includeVoided, /*~~>*/String query) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Visit.class);
 		addEmptyVisitsByPatientCriteria(criteria, patient, includeVoided, query);
 		
@@ -606,7 +606,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 		return count;
 	}
 	
-	private void addEmptyVisitsByPatientCriteria(Criteria criteria, Patient patient, boolean includeVoided, String query) {
+	private void addEmptyVisitsByPatientCriteria(Criteria criteria, Patient patient, boolean includeVoided, /*~~>*/String query) {
 		criteria.add(Restrictions.eq("patient", patient));
 		criteria.add(Restrictions.isEmpty("encounters"));
 		
@@ -626,7 +626,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 		
 	}
 	
-	private void addEncountersByPatientCriteria(Criteria criteria, Patient patient, boolean includeVoided, String query) {
+	private void addEncountersByPatientCriteria(Criteria criteria, Patient patient, boolean includeVoided, /*~~>*/String query) {
 		criteria.add(Restrictions.eq("patient", patient));
 		criteria.createAlias("visit", "visit", JoinType.LEFT_OUTER_JOIN);
 		
@@ -655,7 +655,7 @@ public class HibernateEncounterDAO implements EncounterDAO {
 	 */
 	
 	@Override
-	public List<EncounterRole> getEncounterRolesByName(String name) throws DAOException {
+	public List<EncounterRole> getEncounterRolesByName(/*~~>*/String name) throws DAOException {
 		return sessionFactory.getCurrentSession().createCriteria(EncounterRole.class).add(Restrictions.eq("name", name))
 		        .list();
 	}

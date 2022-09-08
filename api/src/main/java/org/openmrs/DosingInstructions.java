@@ -39,7 +39,7 @@ public interface DosingInstructions {
 	 * 
 	 * @return localized drug instructions string
 	 */
-	public String getDosingInstructionsAsString(Locale locale);
+	public /*~~>*/String getDosingInstructionsAsString(Locale locale);
 	
 	/**
 	 * Serialize dosing instructions into order

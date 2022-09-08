@@ -68,7 +68,7 @@ public class HibernateOpenmrsDataDAO<T extends BaseOpenmrsData> extends Hibernat
 	@Override
 	public int getAllCount(boolean includeVoided) {
 		
-		String hql = "select count(*)" + " from " + mappedClass;
+		/*~~>*/String hql = "select count(*)" + " from " + mappedClass;
 		
 		if (!includeVoided) {
 			hql += " where voided = false";

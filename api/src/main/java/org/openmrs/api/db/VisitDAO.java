@@ -49,12 +49,12 @@ public interface VisitDAO {
 	/**
 	 * @see org.openmrs.api.VisitService#getVisitTypeByUuid(java.lang.String)
 	 */
-	VisitType getVisitTypeByUuid(String uuid);
+	VisitType getVisitTypeByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @see org.openmrs.api.VisitService#getVisitTypes(java.lang.String)
 	 */
-	List<VisitType> getVisitTypes(String fuzzySearchPhrase);
+	List<VisitType> getVisitTypes(/*~~>*/String fuzzySearchPhrase);
 	
 	/**
 	 * @see org.openmrs.api.VisitService#saveVisitType(org.openmrs.VisitType)
@@ -76,7 +76,7 @@ public interface VisitDAO {
 	 * @see VisitService#getVisitByUuid(String)
 	 * @throws DAOException
 	 */
-	public Visit getVisitByUuid(String uuid) throws DAOException;
+	public Visit getVisitByUuid(/*~~>*/String uuid) throws DAOException;
 	
 	/**
 	 * @see VisitService#saveVisit(Visit)
@@ -110,7 +110,7 @@ public interface VisitDAO {
 	 */
 	public List<Visit> getVisits(Collection<VisitType> visitTypes, Collection<Patient> patients,
 	        Collection<Location> locations, Collection<Concept> indications, Date minStartDatetime, Date maxStartDatetime,
-	        Date minEndDatetime, Date maxEndDatetime, Map<VisitAttributeType, String> serializedAttributeValues,
+	        Date minEndDatetime, Date maxEndDatetime, Map<VisitAttributeType, /*~~>*/String> serializedAttributeValues,
 	        boolean includeInactive, boolean includeVoided) throws DAOException;
 	
 	/**
@@ -126,7 +126,7 @@ public interface VisitDAO {
 	/**
 	 * @see VisitService#getVisitAttributeTypeByUuid(String)
 	 */
-	VisitAttributeType getVisitAttributeTypeByUuid(String uuid);
+	VisitAttributeType getVisitAttributeTypeByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * @see VisitService#saveVisitAttributeType(VisitAttributeType)
@@ -143,7 +143,7 @@ public interface VisitDAO {
 	/**
 	 * @see VisitService#getVisitAttributeByUuid(String)
 	 */
-	VisitAttribute getVisitAttributeByUuid(String uuid);
+	VisitAttribute getVisitAttributeByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Gets the next active visit which matches the specified visit types

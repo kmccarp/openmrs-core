@@ -35,7 +35,7 @@ public class UsernamePasswordAuthenticationScheme extends DaoAuthenticationSchem
 
 		UsernamePasswordCredentials userPassCreds = (UsernamePasswordCredentials) credentials;
 		return new BasicAuthenticated(getContextDAO().authenticate(userPassCreds.getUsername(), userPassCreds.getPassword()),
-			UsernamePasswordCredentials.SCHEME);
+			/*~~>*/UsernamePasswordCredentials.SCHEME);
 	}
 
 }

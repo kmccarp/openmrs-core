@@ -23,40 +23,40 @@ public class Message implements Serializable {
 	
 	private StringBuilder recipients = new StringBuilder();
 	
-	private String sender;
+	private /*~~>*/String sender;
 	
-	private String subject;
+	private /*~~>*/String subject;
 	
-	private String content;
+	private /*~~>*/String content;
 	
-	private String contentType;
+	private /*~~>*/String contentType;
 	
 	private Date sentDate;
 	
-	private String attachment;
+	private /*~~>*/String attachment;
 	
-	private String attachmentContentType;
+	private /*~~>*/String attachmentContentType;
 	
-	private String attachmentFileName;
+	private /*~~>*/String attachmentFileName;
 	
 	public Message() {
 	}
 	
-	public Message(Integer id, String recipients, String sender, String subject, String content) {
+	public Message(Integer id, /*~~>*/String recipients, /*~~>*/String sender, /*~~>*/String subject, /*~~>*/String content) {
 		this.id = id;
 		this.recipients.append(recipients);
-		this.sender = sender;
-		this.subject = subject;
-		this.content = content;
+		/*~~>*/this.sender = sender;
+		/*~~>*/this.subject = subject;
+		/*~~>*/this.content = content;
 	}
 	
-	public Message(Integer id, String recipients, String sender, String subject, String content, String contentType) {
+	public Message(Integer id, /*~~>*/String recipients, /*~~>*/String sender, /*~~>*/String subject, /*~~>*/String content, /*~~>*/String contentType) {
 		this.id = id;
 		this.recipients.append(recipients);
-		this.sender = sender;
-		this.subject = subject;
-		this.content = content;
-		this.contentType = contentType;
+		/*~~>*/this.sender = sender;
+		/*~~>*/this.subject = subject;
+		/*~~>*/this.content = content;
+		/*~~>*/this.contentType = contentType;
 	}
 	
 	/**
@@ -70,20 +70,20 @@ public class Message implements Serializable {
 	 * @param attachmentFileName
 	 * <strong>Should</strong> fill in all parameters
 	 */
-	public Message(Integer id, String recipients, String sender, String subject, String content, String attachment,
-	    String attachmentContentType, String attachmentFileName) {
+	public Message(Integer id, /*~~>*/String recipients, /*~~>*/String sender, /*~~>*/String subject, /*~~>*/String content, /*~~>*/String attachment,
+	    /*~~>*/String attachmentContentType, /*~~>*/String attachmentFileName) {
 		this(id, recipients, sender, subject, content);
-		this.attachment = attachment;
-		this.attachmentContentType = attachmentContentType;
-		this.attachmentFileName = attachmentFileName;
+		/*~~>*/this.attachment = attachment;
+		/*~~>*/this.attachmentContentType = attachmentContentType;
+		/*~~>*/this.attachmentFileName = attachmentFileName;
 	}
 	
-	public Message(Integer id, String recipients, String sender, String subject, String content, String contentType,
-	    String attachment, String attachmentContentType, String attachmentFileName) {
+	public Message(Integer id, /*~~>*/String recipients, /*~~>*/String sender, /*~~>*/String subject, /*~~>*/String content, /*~~>*/String contentType,
+	    /*~~>*/String attachment, /*~~>*/String attachmentContentType, /*~~>*/String attachmentFileName) {
 		this(id, recipients, sender, subject, content, contentType);
-		this.attachment = attachment;
-		this.attachmentContentType = attachmentContentType;
-		this.attachmentFileName = attachmentFileName;
+		/*~~>*/this.attachment = attachment;
+		/*~~>*/this.attachmentContentType = attachmentContentType;
+		/*~~>*/this.attachmentFileName = attachmentFileName;
 	}
 	
 	public void setId(Integer id) {
@@ -100,13 +100,13 @@ public class Message implements Serializable {
 	 * @param recipients
 	 * <strong>Should</strong> set multiple recipients
 	 */
-	public void setRecipients(String recipients) {
+	public void setRecipients(/*~~>*/String recipients) {
 		if (recipients != null) {
 			this.recipients = new StringBuilder(recipients);
 		}
 	}
 	
-	public String getRecipients() {
+	public /*~~>*/String getRecipients() {
 		return this.recipients.toString();
 	}
 	
@@ -118,26 +118,26 @@ public class Message implements Serializable {
 	 * @param recipient a new address to assign
 	 * <strong>Should</strong> add new recipient
 	 */
-	public void addRecipient(String recipient) {
+	public void addRecipient(/*~~>*/String recipient) {
 		if (recipient != null) {
 			this.recipients.append(",").append(recipient);
 		}
 	}
 	
-	public void setSender(String sender) {
-		this.sender = sender;
+	public void setSender(/*~~>*/String sender) {
+		/*~~>*/this.sender = sender;
 	}
 	
-	public String getSender() {
-		return this.sender;
+	public /*~~>*/String getSender() {
+		return /*~~>*/this.sender;
 	}
 	
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setSubject(/*~~>*/String subject) {
+		/*~~>*/this.subject = subject;
 	}
 	
-	public String getSubject() {
-		return this.subject;
+	public /*~~>*/String getSubject() {
+		return /*~~>*/this.subject;
 	}
 	
 	public void setSentDate(Date sentDate) {
@@ -148,44 +148,44 @@ public class Message implements Serializable {
 		return this.sentDate;
 	}
 	
-	public void setContent(String content) {
-		this.content = content;
+	public void setContent(/*~~>*/String content) {
+		/*~~>*/this.content = content;
 	}
 	
-	public String getContent() {
-		return this.content;
+	public /*~~>*/String getContent() {
+		return /*~~>*/this.content;
 	}
 	
-	public void setContentType(String contentType) {
-		this.contentType = contentType;
+	public void setContentType(/*~~>*/String contentType) {
+		/*~~>*/this.contentType = contentType;
 	}
 	
-	public String getContentType() {
+	public /*~~>*/String getContentType() {
 		return contentType;
 	}
 	
-	public String getAttachment() {
+	public /*~~>*/String getAttachment() {
 		return attachment;
 	}
 	
-	public void setAttachment(String attachment) {
-		this.attachment = attachment;
+	public void setAttachment(/*~~>*/String attachment) {
+		/*~~>*/this.attachment = attachment;
 	}
 	
-	public String getAttachmentContentType() {
+	public /*~~>*/String getAttachmentContentType() {
 		return attachmentContentType;
 	}
 	
-	public void setAttachmentContentType(String attachmentContentType) {
-		this.attachmentContentType = attachmentContentType;
+	public void setAttachmentContentType(/*~~>*/String attachmentContentType) {
+		/*~~>*/this.attachmentContentType = attachmentContentType;
 	}
 	
-	public String getAttachmentFileName() {
+	public /*~~>*/String getAttachmentFileName() {
 		return attachmentFileName;
 	}
 	
-	public void setAttachmentFileName(String attachmentFileName) {
-		this.attachmentFileName = attachmentFileName;
+	public void setAttachmentFileName(/*~~>*/String attachmentFileName) {
+		/*~~>*/this.attachmentFileName = attachmentFileName;
 	}
 	
 	/**

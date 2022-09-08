@@ -44,8 +44,8 @@ public class PatientIdentifierTypeDefaultComparator implements Comparator<Patien
 		
 		//By name
 		comparatorChain.addComparator((Comparator<PatientIdentifierType>) (o1, o2) -> {
-			String o1Name = (o1.getName() != null) ? o1.getName().toLowerCase() : null;
-			String o2Name = (o2.getName() != null) ? o2.getName().toLowerCase() : null;
+			/*~~>*/String o1Name = (o1.getName() != null) ? o1.getName().toLowerCase() : null;
+			/*~~>*/String o2Name = (o2.getName() != null) ? o2.getName().toLowerCase() : null;
 
 			return nullHigherComparator.compare(o1Name, o2Name);
 		});

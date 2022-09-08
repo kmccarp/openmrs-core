@@ -35,7 +35,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class HibernateDiagnosisDAOTest extends BaseContextSensitiveTest {
 
-	private static final String DIAGNOSIS_XML = "org/openmrs/api/include/HibernateDiagnosisDAOTestDataset.xml";
+	private static final /*~~>*/String DIAGNOSIS_XML = "org/openmrs/api/include/HibernateDiagnosisDAOTestDataset.xml";
 
 	@Autowired
 	DiagnosisDAO diagnosisDAO;
@@ -147,7 +147,7 @@ public class HibernateDiagnosisDAOTest extends BaseContextSensitiveTest {
 
 	@Test
 	public void shouldDeleteDiagnosis() {
-		String uuid = "4e663d66-6b78-11e0-93c3-18a905e044dc";
+		/*~~>*/String uuid = "4e663d66-6b78-11e0-93c3-18a905e044dc";
 		Diagnosis diagnosis = diagnosisDAO.getDiagnosisByUuid(uuid);
 		assertNotNull(diagnosis);
 		diagnosisDAO.deleteDiagnosis(diagnosis);

@@ -21,7 +21,7 @@ public class OpenmrsObjectFieldBridge implements StringBridge {
 	 * @see org.hibernate.search.bridge.StringBridge#objectToString(java.lang.Object)
 	 */
 	@Override
-	public String objectToString(Object obj) {
+	public /*~~>*/String objectToString(Object obj) {
 		OpenmrsObject openmrsObject = (OpenmrsObject) obj;
 		return openmrsObject.getId().toString();
 	}

@@ -14,19 +14,19 @@ package org.openmrs.api.context;
  */
 public class TestUsernameCredentials implements Credentials {
 	
-	private String username;
+	private /*~~>*/String username;
 	
-	public TestUsernameCredentials(String username) {
-		this.username = username;
+	public TestUsernameCredentials(/*~~>*/String username) {
+		/*~~>*/this.username = username;
 	}
 	
 	@Override
-	public String getAuthenticationScheme() {
+	public /*~~>*/String getAuthenticationScheme() {
 		return "test-scheme";
 	}
 
 	@Override
-	public String getClientName() {
+	public /*~~>*/String getClientName() {
 		return username;
 	}
 }

@@ -42,25 +42,25 @@ public class BooleanConceptChangeSet implements CustomTaskChange {
 	private Integer falseConceptId;
 	
 	//string values for boolean concepts
-	private static Map<String, String[]> trueNames = new HashMap<>();
+	private static Map</*~~>*/String, /*~~>*//*~~>*/String[]> trueNames = new HashMap<>();
 	
-	private static Map<String, String[]> falseNames = new HashMap<>();
+	private static Map</*~~>*/String, /*~~>*//*~~>*/String[]> falseNames = new HashMap<>();
 	
 	// how to say True and Yes in OpenMRS core languages
 	static {
 		// names may not include spaces, or else the logic to create concept words will break
 		
-		trueNames.put("en", new String[] { "True", "Yes" });
-		trueNames.put("fr", new String[] { "Vrai", "Oui" });
-		trueNames.put("es", new String[] { "Verdadero", "Sí" });
-		trueNames.put("it", new String[] { "Vero", "Sì" });
-		trueNames.put("pt", new String[] { "Verdadeiro", "Sim" });
+		trueNames.put("en", new /*~~>*/String[] { "True", "Yes" });
+		trueNames.put("fr", new /*~~>*/String[] { "Vrai", "Oui" });
+		trueNames.put("es", new /*~~>*/String[] { "Verdadero", "Sí" });
+		trueNames.put("it", new /*~~>*/String[] { "Vero", "Sì" });
+		trueNames.put("pt", new /*~~>*/String[] { "Verdadeiro", "Sim" });
 		
-		falseNames.put("en", new String[] { "False", "No" });
-		falseNames.put("fr", new String[] { "Faux", "Non" });
-		falseNames.put("es", new String[] { "Falso", "No" });
-		falseNames.put("it", new String[] { "Falso", "No" });
-		falseNames.put("pt", new String[] { "Falso", "Não" });
+		falseNames.put("en", new /*~~>*/String[] { "False", "No" });
+		falseNames.put("fr", new /*~~>*/String[] { "Faux", "Non" });
+		falseNames.put("es", new /*~~>*/String[] { "Falso", "No" });
+		falseNames.put("it", new /*~~>*/String[] { "Falso", "No" });
+		falseNames.put("pt", new /*~~>*/String[] { "Falso", "Não" });
 	}
 	
 	/**
@@ -84,8 +84,8 @@ public class BooleanConceptChangeSet implements CustomTaskChange {
 		
 		// create the global properties
 		final boolean trueFalseGlobalPropertiesPresent = getInt(connection,
-		    "SELECT COUNT(*) FROM global_property WHERE property IN ('" + OpenmrsConstants.GLOBAL_PROPERTY_TRUE_CONCEPT
-		            + "', '" + OpenmrsConstants.GLOBAL_PROPERTY_FALSE_CONCEPT + "')") == 2;
+		    "SELECT COUNT(*) FROM global_property WHERE property IN ('" + /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_TRUE_CONCEPT
+		            + "', '" + /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_FALSE_CONCEPT + "')") == 2;
 		if (!trueFalseGlobalPropertiesPresent) {
 			createGlobalProperties(connection, trueConceptId, falseConceptId);
 		}
@@ -103,10 +103,10 @@ public class BooleanConceptChangeSet implements CustomTaskChange {
 	 * @return a concept id.
 	 * @throws CustomChangeException
 	 */
-	private Integer findConceptByName(JdbcConnection connection, Map<String, String[]> names) throws CustomChangeException {
-		for (Map.Entry<String, String[]> e : names.entrySet()) {
-			String locale = e.getKey();
-			for (String name : e.getValue()) {
+	private Integer findConceptByName(JdbcConnection connection, Map</*~~>*/String, /*~~>*//*~~>*/String[]> names) throws CustomChangeException {
+		for (Map.Entry</*~~>*/String, /*~~>*//*~~>*/String[]> e : names.entrySet()) {
+			/*~~>*/String locale = e.getKey();
+			for (/*~~>*/String name : e.getValue()) {
 				Integer ret = getInt(connection, "select concept_id from concept_name where name = '" + name
 				        + "' and locale like '" + locale + "%'");
 				if (ret != null) {
@@ -125,7 +125,7 @@ public class BooleanConceptChangeSet implements CustomTaskChange {
 	 *            concept
 	 * @throws CustomChangeException
 	 */
-	private Integer createConcept(JdbcConnection connection, Map<String, String[]> names) throws CustomChangeException {
+	private Integer createConcept(JdbcConnection connection, Map</*~~>*/String, /*~~>*//*~~>*/String[]> names) throws CustomChangeException {
 		PreparedStatement updateStatement = null;
 		
 		try {
@@ -140,9 +140,9 @@ public class BooleanConceptChangeSet implements CustomTaskChange {
 			boolean preferredDoneAlready = false; // only tag one name as preferred
 			
 			int conceptNameId = getInt(connection, "SELECT MAX(concept_name_id) FROM concept_name");
-			for (Map.Entry<String, String[]> e : names.entrySet()) {
-				String locale = e.getKey();
-				for (String name : e.getValue()) {
+			for (Map.Entry</*~~>*/String, /*~~>*//*~~>*/String[]> e : names.entrySet()) {
+				/*~~>*/String locale = e.getKey();
+				for (/*~~>*/String name : e.getValue()) {
 					conceptNameId++;
 					updateStatement = connection
 					        .prepareStatement("INSERT INTO concept_name (concept_name_id, concept_id, locale, name, creator, date_created, uuid) VALUES (?, ?, ?, ?, 1, NOW(), ?)");
@@ -248,13 +248,13 @@ public class BooleanConceptChangeSet implements CustomTaskChange {
 		try {
 			updateStatement = connection
 			        .prepareStatement("INSERT INTO global_property (property, property_value, description, uuid) VALUES (?, ?, ?, ?)");
-			updateStatement.setString(1, OpenmrsConstants.GLOBAL_PROPERTY_TRUE_CONCEPT);
+			updateStatement.setString(1, /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_TRUE_CONCEPT);
 			updateStatement.setInt(2, trueConceptId);
 			updateStatement.setString(3, "Concept id of the concept defining the TRUE boolean concept");
 			updateStatement.setString(4, UUID.randomUUID().toString());
 			updateStatement.executeUpdate();
 			
-			updateStatement.setString(1, OpenmrsConstants.GLOBAL_PROPERTY_FALSE_CONCEPT);
+			updateStatement.setString(1, /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_FALSE_CONCEPT);
 			updateStatement.setInt(2, falseConceptId);
 			updateStatement.setString(3, "Concept id of the concept defining the FALSE boolean concept");
 			updateStatement.setString(4, UUID.randomUUID().toString());
@@ -282,7 +282,7 @@ public class BooleanConceptChangeSet implements CustomTaskChange {
 	 * @return integer resulting from the execution of the sql statement
 	 * @throws CustomChangeException
 	 */
-	private Integer getInt(JdbcConnection connection, String sql) throws CustomChangeException {
+	private Integer getInt(JdbcConnection connection, /*~~>*/String sql) throws CustomChangeException {
 		Statement stmt = null;
 		try {
 			stmt = connection.createStatement();
@@ -319,7 +319,7 @@ public class BooleanConceptChangeSet implements CustomTaskChange {
 	 * @see liquibase.change.custom.CustomChange#getConfirmationMessage()
 	 */
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished creating boolean concepts";
 	}
 	

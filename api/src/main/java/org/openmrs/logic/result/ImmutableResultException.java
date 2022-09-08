@@ -22,11 +22,11 @@ public class ImmutableResultException extends APIException {
 		super();
 	}
 	
-	public ImmutableResultException(String message, Throwable cause) {
+	public ImmutableResultException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	
-	public ImmutableResultException(String message) {
+	public ImmutableResultException(/*~~>*/String message) {
 		super(message);
 	}
 	

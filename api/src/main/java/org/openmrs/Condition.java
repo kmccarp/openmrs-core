@@ -67,7 +67,7 @@ public class Condition extends BaseFormRecordableOpenmrsData {
 	private Condition previousVersion;
 	
 	@Column(name = "additional_detail")
-	private String additionalDetail;
+	private /*~~>*/String additionalDetail;
 	
 	@Column(name = "onset_date")
 	private Date onsetDate;
@@ -76,7 +76,7 @@ public class Condition extends BaseFormRecordableOpenmrsData {
 	private Date endDate;
 	
 	@Transient
-	private String endReason;
+	private /*~~>*/String endReason;
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "patient_id")
@@ -102,13 +102,13 @@ public class Condition extends BaseFormRecordableOpenmrsData {
 	 * @param patient - the patient associated with the condition
 	 */
 	public Condition(CodedOrFreeText condition, ConditionClinicalStatus clinicalStatus,
-	    ConditionVerificationStatus verificationStatus, Condition previousVersion, String additionalDetail, Date onsetDate,
+	    ConditionVerificationStatus verificationStatus, Condition previousVersion, /*~~>*/String additionalDetail, Date onsetDate,
 	    Date endDate, Patient patient) {
 		this.condition = condition;
 		this.clinicalStatus = clinicalStatus;
 		this.verificationStatus = verificationStatus;
 		this.previousVersion = previousVersion;
-		this.additionalDetail = additionalDetail;
+		/*~~>*/this.additionalDetail = additionalDetail;
 		this.onsetDate = onsetDate != null ? new Date(onsetDate.getTime()) : null;
 		this.endDate = endDate != null ? new Date(endDate.getTime()) : null;
 		this.patient = patient;
@@ -230,7 +230,7 @@ public class Condition extends BaseFormRecordableOpenmrsData {
 	 *
 	 * @return additionalDetail - a string showing additional detail of the condition
 	 */
-	public String getAdditionalDetail() {
+	public /*~~>*/String getAdditionalDetail() {
 		return additionalDetail;
 	}
 	
@@ -239,8 +239,8 @@ public class Condition extends BaseFormRecordableOpenmrsData {
 	 *
 	 * @param additionalDetail the additional detail of the condition to be set
 	 */
-	public void setAdditionalDetail(String additionalDetail) {
-		this.additionalDetail = additionalDetail;
+	public void setAdditionalDetail(/*~~>*/String additionalDetail) {
+		/*~~>*/this.additionalDetail = additionalDetail;
 	}
 	
 	/**
@@ -285,7 +285,7 @@ public class Condition extends BaseFormRecordableOpenmrsData {
 	 *
 	 * @return endReason - a string that shows the end reason of the condition
 	 */
-	public String getEndReason() {
+	public /*~~>*/String getEndReason() {
 		return endReason;
 	}
 	
@@ -294,8 +294,8 @@ public class Condition extends BaseFormRecordableOpenmrsData {
 	 *
 	 * @param endReason the end reason to be set for the condition
 	 */
-	public void setEndReason(String endReason) {
-		this.endReason = endReason;
+	public void setEndReason(/*~~>*/String endReason) {
+		/*~~>*/this.endReason = endReason;
 	}
 	
 	/**

@@ -60,7 +60,7 @@ public class Person extends BaseChangeableOpenmrsData {
 	private Set<PersonAttribute> attributes = null;
 	
 	@Field
-	private String gender;
+	private /*~~>*/String gender;
 	
 
 	@Field(analyze = Analyze.YES)
@@ -80,7 +80,7 @@ public class Person extends BaseChangeableOpenmrsData {
 	
 	private Concept causeOfDeath;
 	
-	private String causeOfDeathNonCoded;
+	private /*~~>*/String causeOfDeathNonCoded;
 	
 	private User personCreator;
 	
@@ -96,7 +96,7 @@ public class Person extends BaseChangeableOpenmrsData {
 	
 	private Date personDateVoided;
 	
-	private String personVoidReason;
+	private /*~~>*/String personVoidReason;
 	
 	@Field
 	private boolean isPatient;
@@ -108,10 +108,10 @@ public class Person extends BaseChangeableOpenmrsData {
 	 * cleared and rebuilt on next access.
 	 */
 	@Transient
-	Map<String, PersonAttribute> attributeMap = null;
+	Map</*~~>*/String, PersonAttribute> attributeMap = null;
 	
 	@Transient
-	private Map<String, PersonAttribute> allAttributeMap = null;
+	private Map</*~~>*/String, PersonAttribute> allAttributeMap = null;
 	
 	/**
 	 * default empty constructor
@@ -192,15 +192,15 @@ public class Person extends BaseChangeableOpenmrsData {
 	/**
 	 * @return person's gender
 	 */
-	public String getGender() {
-		return this.gender;
+	public /*~~>*/String getGender() {
+		return /*~~>*/this.gender;
 	}
 	
 	/**
 	 * @param gender person's gender
 	 */
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setGender(/*~~>*/String gender) {
+		/*~~>*/this.gender = gender;
 	}
 	
 	/**
@@ -261,8 +261,8 @@ public class Person extends BaseChangeableOpenmrsData {
 	 */
 	public Date getBirthDateTime() {
 		if (birthdate != null && birthtime != null) {
-			String birthDateString = new SimpleDateFormat("yyyy-MM-dd").format(birthdate);
-			String birthTimeString = new SimpleDateFormat("HH:mm:ss").format(birthtime);
+			/*~~>*/String birthDateString = new SimpleDateFormat("yyyy-MM-dd").format(birthdate);
+			/*~~>*/String birthTimeString = new SimpleDateFormat("HH:mm:ss").format(birthtime);
 			
 			try {
 				return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(birthDateString + " " + birthTimeString);
@@ -342,8 +342,8 @@ public class Person extends BaseChangeableOpenmrsData {
 	 * @return non coded cause of death
 	 * @since 2.2.0
 	 */
-	public String getCauseOfDeathNonCoded() {
-		return this.causeOfDeathNonCoded;
+	public /*~~>*/String getCauseOfDeathNonCoded() {
+		return /*~~>*/this.causeOfDeathNonCoded;
 	}
 	
 	/**
@@ -354,8 +354,8 @@ public class Person extends BaseChangeableOpenmrsData {
 	 * <strong>Should</strong> not fail with null causeOfDeathNonCoded
 	 * <strong>Should</strong> set the attribute causeOfDeathNonCoded with the given parameter
 	 */
-	public void setCauseOfDeathNonCoded(String causeOfDeathNonCoded) {
-		this.causeOfDeathNonCoded = causeOfDeathNonCoded;
+	public void setCauseOfDeathNonCoded(/*~~>*/String causeOfDeathNonCoded) {
+		/*~~>*/this.causeOfDeathNonCoded = causeOfDeathNonCoded;
 	}
 	
 	/**
@@ -548,7 +548,7 @@ public class Person extends BaseChangeableOpenmrsData {
 	 * <strong>Should</strong> return person attribute based on attributeName
 	 * <strong>Should</strong> return null if AttributeName is voided
 	 */
-	public PersonAttribute getAttribute(String attributeName) {
+	public PersonAttribute getAttribute(/*~~>*/String attributeName) {
 		if (attributeName != null) {
 			for (PersonAttribute attribute : getAttributes()) {
 				PersonAttributeType type = attribute.getAttributeType();
@@ -591,7 +591,7 @@ public class Person extends BaseChangeableOpenmrsData {
 	 * @param attributeName
 	 * <strong>Should</strong> return all PersonAttributes with matching attributeType names
 	 */
-	public List<PersonAttribute> getAttributes(String attributeName) {
+	public List<PersonAttribute> getAttributes(/*~~>*/String attributeName) {
 		List<PersonAttribute> ret = new ArrayList<>();
 		
 		for (PersonAttribute attribute : getActiveAttributes()) {
@@ -644,7 +644,7 @@ public class Person extends BaseChangeableOpenmrsData {
 	 * Convenience method to get this person's active attributes in map form: &lt;String,
 	 * PersonAttribute&gt;.
 	 */
-	public Map<String, PersonAttribute> getAttributeMap() {
+	public Map</*~~>*/String, PersonAttribute> getAttributeMap() {
 		if (attributeMap != null) {
 			return attributeMap;
 		}
@@ -666,7 +666,7 @@ public class Person extends BaseChangeableOpenmrsData {
 	 * @return All person's attributes in map form
 	 * @since 1.12
 	 */
-	public Map<String, PersonAttribute> getAllAttributeMap() {
+	public Map</*~~>*/String, PersonAttribute> getAllAttributeMap() {
 		if (allAttributeMap != null) {
 			return allAttributeMap;
 		}
@@ -686,7 +686,7 @@ public class Person extends BaseChangeableOpenmrsData {
 	 * 
 	 * @return Returns a string with all the attributes
 	 */
-	public String printAttributes() {
+	public /*~~>*/String printAttributes() {
 		StringBuilder s = new StringBuilder("");
 		
 		for (PersonAttribute attribute : getAttributes()) {
@@ -803,7 +803,7 @@ public class Person extends BaseChangeableOpenmrsData {
 	 * 
 	 * @return String given name of the person
 	 */
-	public String getGivenName() {
+	public /*~~>*/String getGivenName() {
 		PersonName personName = getPersonName();
 		if (personName == null) {
 			return "";
@@ -817,7 +817,7 @@ public class Person extends BaseChangeableOpenmrsData {
 	 * 
 	 * @return String middle name of the person
 	 */
-	public String getMiddleName() {
+	public /*~~>*/String getMiddleName() {
 		PersonName personName = getPersonName();
 		if (personName == null) {
 			return "";
@@ -831,7 +831,7 @@ public class Person extends BaseChangeableOpenmrsData {
 	 * 
 	 * @return String family name of the person
 	 */
-	public String getFamilyName() {
+	public /*~~>*/String getFamilyName() {
 		PersonName personName = getPersonName();
 		if (personName == null) {
 			return "";
@@ -1034,12 +1034,12 @@ public class Person extends BaseChangeableOpenmrsData {
 		this.setVoidedBy(voidedBy);
 	}
 	
-	public String getPersonVoidReason() {
+	public /*~~>*/String getPersonVoidReason() {
 		return personVoidReason;
 	}
 	
-	public void setPersonVoidReason(String voidReason) {
-		this.personVoidReason = voidReason;
+	public void setPersonVoidReason(/*~~>*/String voidReason) {
+		/*~~>*/this.personVoidReason = voidReason;
 		this.setVoidReason(voidReason);
 	}
 	
@@ -1071,7 +1071,7 @@ public class Person extends BaseChangeableOpenmrsData {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "Person(personId=" + personId + ")";
 	}
 	

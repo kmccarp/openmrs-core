@@ -86,8 +86,8 @@ public class ModuleTest {
 		testModule.setRequiredModulesMap(null);
 		assertNull(testModule.getRequiredModulesMap());
 
-		ArrayList<String> first = new ArrayList<>();
-		ArrayList<String> second = new ArrayList<>();
+		ArrayList</*~~>*/String> first = new ArrayList<>();
+		ArrayList</*~~>*/String> second = new ArrayList<>();
 
 		first.add("mod1");
 		first.add("mod2");
@@ -97,7 +97,7 @@ public class ModuleTest {
 		testModule.setRequiredModules(first);
 		testModule.setRequiredModules(second);
 
-		ArrayList<String> ret = new ArrayList<>(testModule.getRequiredModules());
+		ArrayList</*~~>*/String> ret = new ArrayList<>(testModule.getRequiredModules());
 		assertTrue(ret.contains("mod1"));
 		assertTrue(ret.contains("mod2"));
 		assertTrue(ret.contains("mod3"));
@@ -121,7 +121,7 @@ public class ModuleTest {
 	 */
 	@Test
 	public void getRequiredModuleVersion_shouldReturnNullIfNoRequiredModuleByGivenNameExists () {
-		IdentityHashMap<String, String> requiredModules = new IdentityHashMap<>();
+		IdentityHashMap</*~~>*/String, /*~~>*/String> requiredModules = new IdentityHashMap<>();
 		
 		requiredModules.put("mod1", "1.0");
 		testModule.setRequiredModulesMap(requiredModules);
@@ -147,8 +147,8 @@ public class ModuleTest {
 	@Test
 	public void disposeAdvicePointsClassInstance_shouldDisposeAllClassInstancesNotAdvicePoints() {
 		ArrayList<AdvicePoint> points = new ArrayList<>();
-		String obj1 = "string";
-		ArrayList<String> obj2 = new ArrayList<>();
+		/*~~>*/String obj1 = "string";
+		ArrayList</*~~>*/String> obj2 = new ArrayList<>();
 		AdvicePoint point1 = new AdvicePoint("point1", obj1.getClass());
 		AdvicePoint point2 = new AdvicePoint("point2", obj2.getClass());
 

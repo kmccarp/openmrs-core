@@ -35,7 +35,7 @@ import org.hibernate.type.Type;
  */
 public class NativeIfNotAssignedIdentityGenerator extends IdentityGenerator implements Configurable {
 	
-	private String entityName;
+	private /*~~>*/String entityName;
 	
 	@Override
 	public Serializable generate(SharedSessionContractImplementor session, Object entity) throws HibernateException {
@@ -51,7 +51,7 @@ public class NativeIfNotAssignedIdentityGenerator extends IdentityGenerator impl
 
 	@Override
 	public void configure(Type type, Properties params, ServiceRegistry serviceRegistry) throws MappingException {
-		this.entityName = params.getProperty(ENTITY_NAME);
+		/*~~>*/this.entityName = params.getProperty(ENTITY_NAME);
 		if (entityName == null) {
 			throw new MappingException("no entity name");
 		}

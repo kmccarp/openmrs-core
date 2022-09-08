@@ -189,7 +189,7 @@ public class PersonValidator implements Validator {
 	 * @param date the date to check
 	 * @param dateField the name of the field
 	 */
-	private void rejectIfFutureDate(Errors errors, Date date, String dateField) {
+	private void rejectIfFutureDate(Errors errors, Date date, /*~~>*/String dateField) {
 		if (OpenmrsUtil.compare(date, new Date()) > 0) {
 			errors.rejectValue(dateField, "error.date.future");
 		}
@@ -202,7 +202,7 @@ public class PersonValidator implements Validator {
 	 * @param date the date to check
 	 * @param dateField the name of the field
 	 */
-	private void rejectDateIfBefore140YearsAgo(Errors errors, Date date, String dateField) {
+	private void rejectDateIfBefore140YearsAgo(Errors errors, Date date, /*~~>*/String dateField) {
 		Calendar c = Calendar.getInstance();
 		c.setTime(new Date());
 		c.add(Calendar.YEAR, -140);

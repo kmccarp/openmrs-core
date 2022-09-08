@@ -65,11 +65,11 @@ public class CreateDiscontinueOrders implements CustomTaskChange {
 				insertStatement.setInt(5, discontinuedOrder.discontinuedById);
 				insertStatement.setDate(6, new Date(System.currentTimeMillis()));
 				setIntOrNull(insertStatement, 7, discontinuedOrder.discontinuedReasonId);
-				insertStatement.setString(8, discontinuedOrder.discontinuedReasonNonCoded);
+				insertStatement.setString(8, /*~~>*/discontinuedOrder.discontinuedReasonNonCoded);
 				insertStatement.setString(9, UUID.randomUUID().toString());
 				insertStatement.setString(10, Order.Action.DISCONTINUE.name());
 				setIntOrNull(insertStatement, 11, discontinuedOrder.discontinuedById);
-				insertStatement.setString(12, discontinuedOrder.orderNumber);
+				insertStatement.setString(12, /*~~>*/discontinuedOrder.orderNumber);
 				insertStatement.setInt(13, discontinuedOrder.orderTypeId);
 				insertStatement.setDate(14, discontinuedOrder.dateActivated);
 				insertStatement.setDate(15, discontinuedOrder.dateActivated);
@@ -138,7 +138,7 @@ public class CreateDiscontinueOrders implements CustomTaskChange {
 	}
 	
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished creating discontinue orders for discontinued orders";
 	}
 	
@@ -167,7 +167,7 @@ public class CreateDiscontinueOrders implements CustomTaskChange {
 		
 		public int discontinuedReasonId;
 		
-		public String discontinuedReasonNonCoded;
+		public /*~~>*/String discontinuedReasonNonCoded;
 		
 		public Date dateActivated;
 		
@@ -177,25 +177,25 @@ public class CreateDiscontinueOrders implements CustomTaskChange {
 		
 		public int previousOrderId;
 		
-		public String orderNumber;
+		public /*~~>*/String orderNumber;
 		
 		public int orderTypeId;
 		
 		public Date date;
 		
 		private DiscontinuedOrder(int orderId, int conceptId, int patientId, int encounterId, int discontinuedById,
-		    int discontinuedReasonId, String discontinuedReasonNonCoded, Date dateStopped, int orderTypeId) {
+		    int discontinuedReasonId, /*~~>*/String discontinuedReasonNonCoded, Date dateStopped, int orderTypeId) {
 			this.orderId = orderId;
 			this.previousOrderId = orderId;
 			this.conceptId = conceptId;
 			this.patientId = patientId;
 			this.encounterId = encounterId;
 			this.discontinuedReasonId = discontinuedReasonId;
-			this.discontinuedReasonNonCoded = discontinuedReasonNonCoded;
+			/*~~>*/this.discontinuedReasonNonCoded = discontinuedReasonNonCoded;
 			this.dateActivated = dateStopped;
 			this.discontinuedById = discontinuedById;
 			this.dateCreated = dateStopped;
-			this.orderNumber = String.valueOf(orderId).concat("-DC");
+			/*~~>*/this.orderNumber = /*~~>*/String.valueOf(orderId).concat("-DC");
 			this.orderTypeId = orderTypeId;
 		}
 	}

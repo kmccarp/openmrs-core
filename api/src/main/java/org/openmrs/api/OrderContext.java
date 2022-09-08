@@ -29,7 +29,7 @@ public class OrderContext {
 	
 	private CareSetting careSetting;
 	
-	private Map<String, Object> contextAttributes;
+	private Map</*~~>*/String, Object> contextAttributes;
 	
 	/**
 	 * @return the orderType
@@ -62,7 +62,7 @@ public class OrderContext {
 	/**
 	 * @return the contextAttributes
 	 */
-	public Map<String, Object> getContextAttributes() {
+	public Map</*~~>*/String, Object> getContextAttributes() {
 		if (contextAttributes == null) {
 			contextAttributes = new HashMap<>();
 		}
@@ -72,7 +72,7 @@ public class OrderContext {
 	/**
 	 * @param contextAttributes the context attributes to set
 	 */
-	public void setContextAttributes(Map<String, Object> contextAttributes) {
+	public void setContextAttributes(Map</*~~>*/String, Object> contextAttributes) {
 		this.contextAttributes = contextAttributes;
 	}
 	
@@ -81,7 +81,7 @@ public class OrderContext {
 	 * 
 	 * @param attributeName the attribute name
 	 */
-	public Object getAttribute(String attributeName) {
+	public Object getAttribute(/*~~>*/String attributeName) {
 		return getContextAttributes().get(attributeName);
 	}
 	
@@ -91,7 +91,7 @@ public class OrderContext {
 	 * @param attributeName the attribute name
 	 * @param attributeValue the attribute value
 	 */
-	public void setAttribute(String attributeName, Object attributeValue) {
+	public void setAttribute(/*~~>*/String attributeName, Object attributeValue) {
 		getContextAttributes().put(attributeName, attributeValue);
 	}
 	
@@ -100,7 +100,7 @@ public class OrderContext {
 	 * 
 	 * @param attributeName the attribute name
 	 */
-	public void removeAttribute(String attributeName) {
+	public void removeAttribute(/*~~>*/String attributeName) {
 		getContextAttributes().remove(attributeName);
 	}
 	

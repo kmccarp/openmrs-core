@@ -70,10 +70,10 @@ public interface Voidable extends OpenmrsObject {
 	/**
 	 * @return String - the reason the object was voided
 	 */
-	public String getVoidReason();
+	public /*~~>*/String getVoidReason();
 	
 	/**
 	 * @param voidReason - the reason the object was voided
 	 */
-	public void setVoidReason(String voidReason);
+	public void setVoidReason(/*~~>*/String voidReason);
 }

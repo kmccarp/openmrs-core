@@ -37,9 +37,9 @@ import org.openmrs.test.jupiter.BaseContextSensitiveTest;
  */
 abstract class BasePropertyEditorTest<T extends OpenmrsObject, E extends PropertyEditor> extends BaseContextSensitiveTest {
 	
-	private static final String NON_EXISTING_ID = "999999";
+	private static final /*~~>*/String NON_EXISTING_ID = "999999";
 	
-	private static final String NON_EXISTING_UUID = "9999xxxx-e131-11de-babe-001e378eb67e";
+	private static final /*~~>*/String NON_EXISTING_UUID = "9999xxxx-e131-11de-babe-001e378eb67e";
 	
 	protected PropertyEditor editor;
 	
@@ -56,14 +56,14 @@ abstract class BasePropertyEditorTest<T extends OpenmrsObject, E extends Propert
 	/**
 	 * @return a non existing object uuid for testing set as text
 	 */
-	protected String getNonExistingObjectId() {
+	protected /*~~>*/String getNonExistingObjectId() {
 		return NON_EXISTING_ID;
 	}
 	
 	/**
 	 * @return a non existing object id for testing set as text
 	 */
-	protected String getNonExistingObjectUuid() {
+	protected /*~~>*/String getNonExistingObjectUuid() {
 		return NON_EXISTING_UUID;
 	}
 	

@@ -20,7 +20,7 @@ public class ConceptAttributeTypeEditor extends OpenmrsPropertyEditor<ConceptAtt
 	}
 	
 	@Override
-	protected ConceptAttributeType getObjectByUuid(String uuid) {
+	protected ConceptAttributeType getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getConceptService().getConceptAttributeTypeByUuid(uuid);
 	}
 }

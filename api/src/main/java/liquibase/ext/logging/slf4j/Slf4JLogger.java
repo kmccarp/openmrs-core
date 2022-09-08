@@ -31,7 +31,7 @@ public class Slf4JLogger extends AbstractLogger {
 	}
 	
 	@Override
-	public void log(Level level, String message, Throwable e) {
+	public void log(Level level, /*~~>*/String message, Throwable e) {
 		// NB java.util.logging supports a couple of levels not replicable through SLF4J
 		// These messages are attempted to be routed to their closest level
 		

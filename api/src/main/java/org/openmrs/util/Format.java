@@ -29,11 +29,11 @@ public class Format {
 		TIMESTAMP
 	}
 	
-	public static String formatPercentage(double pct) {
+	public static /*~~>*/String formatPercentage(double pct) {
 		return NumberFormat.getPercentInstance().format(pct);
 	}
 	
-	public static String formatPercentage(Number pct) {
+	public static /*~~>*/String formatPercentage(Number pct) {
 		if (pct == null) {
 			return "";
 		} else {
@@ -41,23 +41,23 @@ public class Format {
 		}
 	}
 	
-	public static String format(double d) {
+	public static /*~~>*/String format(double d) {
 		return "" + (d);
 	}
 	
-	public static String format(Double d) {
+	public static /*~~>*/String format(Double d) {
 		return d == null ? "" : format(d.doubleValue());
 	}
 	
-	public static String formatTextBoxDate(Date date) {
+	public static /*~~>*/String formatTextBoxDate(Date date) {
 		return format(date, Context.getLocale(), FORMAT_TYPE.DATE);
 	}
 	
-	public static String format(Date date) {
+	public static /*~~>*/String format(Date date) {
 		return format(date, Context.getLocale(), FORMAT_TYPE.DATE);
 	}
 	
-	public static String format(Date date, FORMAT_TYPE type) {
+	public static /*~~>*/String format(Date date, FORMAT_TYPE type) {
 		return format(date, Context.getLocale(), type);
 	}
 
@@ -80,7 +80,7 @@ public class Format {
 	 * <strong>Should</strong> not fail when all parameters are null
 	 * <strong>Should</strong> not fail when none of the parameters are null
 	 */
-	public static String format(Date date, Locale locale, FORMAT_TYPE type) {
+	public static /*~~>*/String format(Date date, Locale locale, FORMAT_TYPE type) {
 		if (date == null || locale == null || type == null) {
 			return "";
 		}
@@ -98,7 +98,7 @@ public class Format {
 		return dateFormat.format(date);
 	}
 	
-	public static String format(Throwable t) {
+	public static /*~~>*/String format(Throwable t) {
 		return t + "\n" + ExceptionUtils.getStackTrace(t);
 	}
 	

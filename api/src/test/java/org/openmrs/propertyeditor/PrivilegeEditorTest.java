@@ -17,7 +17,7 @@ import org.openmrs.test.jupiter.BaseContextSensitiveTest;
 
 public class PrivilegeEditorTest extends BaseContextSensitiveTest {
 	
-	protected static final String XML_FILENAME = "org/openmrs/api/include/UserServiceTest.xml";
+	protected static final /*~~>*/String XML_FILENAME = "org/openmrs/api/include/UserServiceTest.xml";
 	
 	@BeforeEach
 	public void prepareData() {

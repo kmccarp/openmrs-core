@@ -57,8 +57,8 @@ public class SerializationServiceImpl extends BaseOpenmrsService implements Seri
 	@Override
 	@Transactional(readOnly = true)
 	public OpenmrsSerializer getDefaultSerializer() {
-		String prop = Context.getAdministrationService().getGlobalProperty(
-		    OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_SERIALIZER);
+		/*~~>*/String prop = Context.getAdministrationService().getGlobalProperty(
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_DEFAULT_SERIALIZER);
 		if (StringUtils.isNotEmpty(prop)) {
 			try {
 				Class<?> clazz = Context.loadClass(prop);
@@ -79,7 +79,7 @@ public class SerializationServiceImpl extends BaseOpenmrsService implements Seri
 	 * @see org.openmrs.api.SerializationService#serialize(java.lang.Object, java.lang.Class)
 	 */
 	@Override
-	public String serialize(Object o, Class<? extends OpenmrsSerializer> clazz) throws SerializationException {
+	public /*~~>*/String serialize(Object o, Class<? extends OpenmrsSerializer> clazz) throws SerializationException {
 		
 		// Get appropriate OpenmrsSerializer implementation
 		OpenmrsSerializer serializer = getSerializer(clazz);
@@ -101,7 +101,7 @@ public class SerializationServiceImpl extends BaseOpenmrsService implements Seri
 	 *      java.lang.Class)
 	 */
 	@Override
-	public <T> T deserialize(String serializedObject, Class<? extends T> objectClass,
+	public <T> T deserialize(/*~~>*/String serializedObject, Class<? extends T> objectClass,
 	        Class<? extends OpenmrsSerializer> serializerClass) throws SerializationException {
 		
 		// Get appropriate OpenmrsSerializer implementation
@@ -115,7 +115,7 @@ public class SerializationServiceImpl extends BaseOpenmrsService implements Seri
 			return serializer.deserialize(serializedObject, objectClass);
 		}
 		catch (Exception e) {
-			String msg = "An error occurred during deserialization of data <" + serializedObject + ">";
+			/*~~>*/String msg = "An error occurred during deserialization of data <" + serializedObject + ">";
 			throw new SerializationException(msg, e);
 		}
 	}

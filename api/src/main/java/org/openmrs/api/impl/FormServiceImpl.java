@@ -139,7 +139,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 * @see org.openmrs.api.FormService#retireForm(org.openmrs.Form, java.lang.String)
 	 */
 	@Override
-	public void retireForm(Form form, String reason) throws APIException {
+	public void retireForm(Form form, /*~~>*/String reason) throws APIException {
 		form.setRetired(true);
 		form.setRetireReason(reason);
 		Context.getFormService().saveForm(form);
@@ -221,13 +221,13 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Field getFieldByUuid(String uuid) throws APIException {
+	public Field getFieldByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getFieldByUuid(uuid);
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
-	public FieldAnswer getFieldAnswerByUuid(String uuid) throws APIException {
+	public FieldAnswer getFieldAnswerByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getFieldAnswerByUuid(uuid);
 	}
 	
@@ -236,7 +236,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public FieldType getFieldTypeByUuid(String uuid) throws APIException {
+	public FieldType getFieldTypeByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getFieldTypeByUuid(uuid);
 	}
 	
@@ -245,7 +245,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public FieldType getFieldTypeByName(String name) throws APIException {
+	public FieldType getFieldTypeByName(/*~~>*/String name) throws APIException {
 		return dao.getFieldTypeByName(name);
 	}
 	
@@ -254,7 +254,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Form getFormByUuid(String uuid) throws APIException {
+	public Form getFormByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getFormByUuid(uuid);
 	}
 	
@@ -263,7 +263,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public FormField getFormFieldByUuid(String uuid) throws APIException {
+	public FormField getFormFieldByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getFormFieldByUuid(uuid);
 	}
 	
@@ -320,15 +320,15 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Field> getFields(Collection<Form> forms, Collection<FieldType> fieldTypes, Collection<Concept> concepts,
-	        Collection<String> tableNames, Collection<String> attributeNames, Boolean selectMultiple,
+	        Collection</*~~>*/String> tableNames, Collection</*~~>*/String> attributeNames, Boolean selectMultiple,
 	        Collection<FieldAnswer> containsAllAnswers, Collection<FieldAnswer> containsAnyAnswer, Boolean retired)
 	        throws APIException {
 
 		Collection<Form> tmpForms = forms == null ? Collections.emptyList() : forms;
 		Collection<Concept> tmpConcepts = concepts == null ? Collections.emptyList() : concepts;
 		Collection<FieldType> tmpFieldTypes = fieldTypes == null ? Collections.emptyList() : fieldTypes;
-		Collection<String> tmpTableNames = tableNames == null ? Collections.emptyList() : tableNames;
-		Collection<String> tmpAttributeNames = attributeNames == null ? Collections.emptyList() : attributeNames;
+		Collection</*~~>*/String> tmpTableNames = tableNames == null ? Collections.emptyList() : tableNames;
+		Collection</*~~>*/String> tmpAttributeNames = attributeNames == null ? Collections.emptyList() : attributeNames;
 		Collection<FieldAnswer> tmpContainsAllAnswers = containsAllAnswers == null ? Collections.emptyList() : containsAllAnswers;
 		Collection<FieldAnswer> tmpContainsAnyAnswer = containsAnyAnswer == null ? Collections.emptyList() : containsAnyAnswer;
 		
@@ -343,7 +343,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Form getForm(String name) throws APIException {
+	public Form getForm(/*~~>*/String name) throws APIException {
 		List<Form> forms = dao.getFormsByName(name);
 		if (forms == null || forms.isEmpty()) {
 			return null;
@@ -357,7 +357,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Form getForm(String name, String version) throws APIException {
+	public Form getForm(/*~~>*/String name, /*~~>*/String version) throws APIException {
 		return dao.getForm(name, version);
 	}
 	
@@ -366,11 +366,11 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Form> getForms(String fuzzyName, boolean onlyLatestVersion) {
+	public List<Form> getForms(/*~~>*/String fuzzyName, boolean onlyLatestVersion) {
 		// get all forms including unpublished and including retired
 		List<Form> forms = Context.getFormService().getForms(fuzzyName, null, null, null, null, null, null);
 		
-		Set<String> namesAlreadySeen = new HashSet<>();
+		Set</*~~>*/String> namesAlreadySeen = new HashSet<>();
 		for (Iterator<Form> i = forms.iterator(); i.hasNext();) {
 			Form form = i.next();
 			if (namesAlreadySeen.contains(form.getName())) {
@@ -389,7 +389,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Form> getForms(String partialName, Boolean published, Collection<EncounterType> encounterTypes,
+	public List<Form> getForms(/*~~>*/String partialName, Boolean published, Collection<EncounterType> encounterTypes,
 	        Boolean retired, Collection<FormField> containingAnyFormField, Collection<FormField> containingAllFormFields,
 	        Collection<Field> fields) {
 
@@ -409,7 +409,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Integer getFormCount(String partialName, Boolean published, Collection<EncounterType> encounterTypes,
+	public Integer getFormCount(/*~~>*/String partialName, Boolean published, Collection<EncounterType> encounterTypes,
 	        Boolean retired, Collection<FormField> containingAnyFormField, Collection<FormField> containingAllFormFields,
 	        Collection<Field> fields) {
 
@@ -592,7 +592,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 * @see org.openmrs.api.FormService#getFields(java.lang.String)
 	 */
 	@Override
-	public List<Field> getFields(String fuzzySearchPhrase) throws APIException {
+	public List<Field> getFields(/*~~>*/String fuzzySearchPhrase) throws APIException {
 		return dao.getFields(fuzzySearchPhrase);
 	}
 	
@@ -644,7 +644,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 		List<Field> fields = dao.getAllFields(true);
 		Set<Field> fieldsToDelete = new HashSet<>();
 		
-		Map<String, Integer> fieldNameAsKeyAndFieldIdAsValueMap = new HashMap<>();
+		Map</*~~>*/String, Integer> fieldNameAsKeyAndFieldIdAsValueMap = new HashMap<>();
 		
 		for (Field field : fields) {
 			if (fieldNameAsKeyAndFieldIdAsValueMap.containsKey(field.getName())) {
@@ -704,7 +704,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public FormResource getFormResourceByUuid(String uuid) throws APIException {
+	public FormResource getFormResourceByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getFormResourceByUuid(uuid);
 	}
 	
@@ -713,7 +713,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public FormResource getFormResource(Form form, String name) throws APIException {
+	public FormResource getFormResource(Form form, /*~~>*/String name) throws APIException {
 		return dao.getFormResource(form, name);
 	}
 	
@@ -785,7 +785,7 @@ public class FormServiceImpl extends BaseOpenmrsService implements FormService {
 	 */
 	@Override
 	public void checkIfFormsAreLocked() {
-		String locked = Context.getAdministrationService().getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_FORMS_LOCKED,
+		/*~~>*/String locked = Context.getAdministrationService().getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_FORMS_LOCKED,
 		    "false");
 		if (Boolean.valueOf(locked)) {
 			throw new FormsLockedException();

@@ -34,14 +34,14 @@ public class SerializationException extends Exception {
 	/**
 	 * Inherited Constructor
 	 */
-	public SerializationException(String message) {
+	public SerializationException(/*~~>*/String message) {
 		super(message);
 	}
 	
 	/**
 	 * Inherited Constructor
 	 */
-	public SerializationException(String message, Throwable cause) {
+	public SerializationException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 }

@@ -40,7 +40,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class PatientDataVoidHandlerTest extends BaseContextSensitiveTest {
 	
-	private final static String COHORT_UUID = "cohort-uuid";
+	private final static /*~~>*/String COHORT_UUID = "cohort-uuid";
 	
 	@Autowired
 	private CohortService cohortService;

@@ -26,7 +26,7 @@ public class AllergyReaction extends BaseOpenmrsObject implements java.io.Serial
 	
 	private Concept reaction;
 	
-	private String reactionNonCoded;
+	private /*~~>*/String reactionNonCoded;
 	
 	/**
 	 * Default constructor
@@ -40,10 +40,10 @@ public class AllergyReaction extends BaseOpenmrsObject implements java.io.Serial
 	 * @param reaction the reaction to set
 	 * @param reactionNonCoded the reactionNonCoded to set
 	 */
-	public AllergyReaction(Allergy allergy, Concept reaction, String reactionNonCoded) {
+	public AllergyReaction(Allergy allergy, Concept reaction, /*~~>*/String reactionNonCoded) {
 		this.allergy = allergy;
 		this.reaction = reaction;
-		this.reactionNonCoded = reactionNonCoded;
+		/*~~>*/this.reactionNonCoded = reactionNonCoded;
 	}
 	
 	public Integer getAllergyReactionId() {
@@ -101,19 +101,19 @@ public class AllergyReaction extends BaseOpenmrsObject implements java.io.Serial
 	/**
 	 * @return Returns the reactionNonCoded
 	 */
-	public String getReactionNonCoded() {
+	public /*~~>*/String getReactionNonCoded() {
 		return reactionNonCoded;
 	}
 	
 	/**
 	 * @param reactionNonCoded the reactionNonCoded to set
 	 */
-	public void setReactionNonCoded(String reactionNonCoded) {
-		this.reactionNonCoded = reactionNonCoded;
+	public void setReactionNonCoded(/*~~>*/String reactionNonCoded) {
+		/*~~>*/this.reactionNonCoded = reactionNonCoded;
 	}
 	
 	@Override
-    public String toString() {
+    public /*~~>*/String toString() {
 	    if (StringUtils.isNotBlank(reactionNonCoded)) {
 	    	return reactionNonCoded;
 	    }

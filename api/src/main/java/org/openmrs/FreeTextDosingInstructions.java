@@ -20,14 +20,14 @@ import java.util.Locale;
  */
 public class FreeTextDosingInstructions extends BaseDosingInstructions {
 	
-	private String instructions;
+	private /*~~>*/String instructions;
 	
 	/**
 	 * @see DosingInstructions#getDosingInstructions(DrugOrder)
 	 */
 	@Override
-	public String getDosingInstructionsAsString(Locale locale) {
-		return this.instructions;
+	public /*~~>*/String getDosingInstructionsAsString(Locale locale) {
+		return /*~~>*/this.instructions;
 	}
 	
 	/**
@@ -59,12 +59,12 @@ public class FreeTextDosingInstructions extends BaseDosingInstructions {
 		    "DrugOrder.error.dosingInstructionsIsNullForDosingTypeFreeText");
 	}
 	
-	public String getInstructions() {
+	public /*~~>*/String getInstructions() {
 		return instructions;
 	}
 	
-	public void setInstructions(String instructions) {
-		this.instructions = instructions;
+	public void setInstructions(/*~~>*/String instructions) {
+		/*~~>*/this.instructions = instructions;
 	}
 	
 }

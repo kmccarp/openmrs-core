@@ -36,9 +36,9 @@ public class ImmutableEntityInterceptorTest extends BaseContextSensitiveTest {
 			this.ignoreVoidedOrRetiredObjects = ignoreVoidedOrRetiredObjects;
 		}
 		
-		static final String MUTABLE_FIELD_NAME = "mutable";
+		static final /*~~>*/String MUTABLE_FIELD_NAME = "mutable";
 		
-		static final String IMMUTABLE_FIELD_NAME = "immutable";
+		static final /*~~>*/String IMMUTABLE_FIELD_NAME = "immutable";
 		
 		@Override
 		protected Class<?> getSupportedType() {
@@ -46,8 +46,8 @@ public class ImmutableEntityInterceptorTest extends BaseContextSensitiveTest {
 		}
 		
 		@Override
-		protected String[] getMutablePropertyNames() {
-			return new String[] { MUTABLE_FIELD_NAME };
+		protected /*~~>*//*~~>*/String[] getMutablePropertyNames() {
+			return new /*~~>*/String[] { MUTABLE_FIELD_NAME };
 		}
 		
 		@Override
@@ -62,9 +62,9 @@ public class ImmutableEntityInterceptorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void onFlushDirty_shouldFailIfAnEntityHasAChangedProperty() {
-		String[] propertyNames = new String[] { SomeImmutableEntityInterceptor.IMMUTABLE_FIELD_NAME };
-		String[] previousState = new String[] { "old" };
-		String[] currentState = new String[] { "new" };
+		/*~~>*/String[] propertyNames = new /*~~>*/String[] { /*~~>*/SomeImmutableEntityInterceptor.IMMUTABLE_FIELD_NAME };
+		/*~~>*/String[] previousState = new /*~~>*/String[] { "old" };
+		/*~~>*/String[] currentState = new /*~~>*/String[] { "new" };
 		ImmutableEntityInterceptor interceptor = new SomeImmutableEntityInterceptor();
 		UnchangeableObjectException exception = assertThrows(UnchangeableObjectException.class, () -> interceptor.onFlushDirty(new Order(), null, currentState, previousState, propertyNames, null));
 		assertThat(exception.getMessage(), is(Context.getMessageSourceService().getMessage("editing.fields.not.allowed", new Object[] { "[immutable]", Order.class.getSimpleName() }, null)));
@@ -76,9 +76,9 @@ public class ImmutableEntityInterceptorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void onFlushDirty_shouldPassIfAnEntityHasChangesForAnAllowedMutableProperty() {
-		String[] propertyNames = new String[] { SomeImmutableEntityInterceptor.MUTABLE_FIELD_NAME };
-		String[] previousState = new String[] { "old" };
-		String[] currentState = new String[] { "new" };
+		/*~~>*/String[] propertyNames = new /*~~>*/String[] { /*~~>*/SomeImmutableEntityInterceptor.MUTABLE_FIELD_NAME };
+		/*~~>*/String[] previousState = new /*~~>*/String[] { "old" };
+		/*~~>*/String[] currentState = new /*~~>*/String[] { "new" };
 		new SomeImmutableEntityInterceptor().onFlushDirty(new Order(), null, currentState, previousState, propertyNames,
 		    null);
 	}
@@ -89,9 +89,9 @@ public class ImmutableEntityInterceptorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void onFlushDirty_shouldFailIfTheEditedObjectIsVoidedOrRetiredAndIgnoreIsSetToFalse() {
-		String[] propertyNames = new String[] { SomeImmutableEntityInterceptor.IMMUTABLE_FIELD_NAME };
-		String[] previousState = new String[] { "old" };
-		String[] currentState = new String[] { "new" };
+		/*~~>*/String[] propertyNames = new /*~~>*/String[] { /*~~>*/SomeImmutableEntityInterceptor.IMMUTABLE_FIELD_NAME };
+		/*~~>*/String[] previousState = new /*~~>*/String[] { "old" };
+		/*~~>*/String[] currentState = new /*~~>*/String[] { "new" };
 		ImmutableEntityInterceptor interceptor = new SomeImmutableEntityInterceptor();
 		Order order = new Order();
 		order.setVoided(true);
@@ -105,9 +105,9 @@ public class ImmutableEntityInterceptorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void onFlushDirty_shouldPassIfTheEditedObjectIsVoidedOrRetiredAndIgnoreIsSetToTrue() {
-		String[] propertyNames = new String[] { SomeImmutableEntityInterceptor.IMMUTABLE_FIELD_NAME };
-		String[] previousState = new String[] { "old" };
-		String[] currentState = new String[] { "new" };
+		/*~~>*/String[] propertyNames = new /*~~>*/String[] { /*~~>*/SomeImmutableEntityInterceptor.IMMUTABLE_FIELD_NAME };
+		/*~~>*/String[] previousState = new /*~~>*/String[] { "old" };
+		/*~~>*/String[] currentState = new /*~~>*/String[] { "new" };
 		ImmutableEntityInterceptor interceptor = new SomeImmutableEntityInterceptor(true);
 		Order order = new Order();
 		order.setVoided(true);

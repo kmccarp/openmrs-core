@@ -33,7 +33,7 @@ public class InputRequiredException extends Exception {
 	/**
 	 * A mapping from user prompt to answer datatype
 	 */
-	private Map<String, DATATYPE> requiredInput;
+	private Map</*~~>*/String, DATATYPE> requiredInput;
 	
 	/**
 	 * Common constructor taking in a message to give the user some context as to where/why the
@@ -41,7 +41,7 @@ public class InputRequiredException extends Exception {
 	 * 
 	 * @param requiredInput a list of questions that need to be answered in the form question, type
 	 */
-	public InputRequiredException(Map<String, DATATYPE> requiredInput) {
+	public InputRequiredException(Map</*~~>*/String, DATATYPE> requiredInput) {
 		super("Input is required before being able to update the database");
 		
 		this.requiredInput = requiredInput;
@@ -52,7 +52,7 @@ public class InputRequiredException extends Exception {
 	 * 
 	 * @return the requiredInput
 	 */
-	public Map<String, DATATYPE> getRequiredInput() {
+	public Map</*~~>*/String, DATATYPE> getRequiredInput() {
 		return requiredInput;
 	}
 	

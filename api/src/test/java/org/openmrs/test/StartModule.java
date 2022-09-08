@@ -29,5 +29,5 @@ public @interface StartModule {
 	 * 
 	 * @return a list of omods to start up
 	 */
-	String[] value();
+	/*~~>*//*~~>*/String[] value();
 }

@@ -31,7 +31,7 @@ public class PersonAttributeTypeLockedException extends APIException {
 	 * 
 	 * @param message the reason to show to the user as to why we cannot manipulate of a person attribute type
 	 */
-	public PersonAttributeTypeLockedException(String message) {
+	public PersonAttributeTypeLockedException(/*~~>*/String message) {
 		super(message);
 	}
 	
@@ -42,7 +42,7 @@ public class PersonAttributeTypeLockedException extends APIException {
 	 * @param message the reason to show to the user as to why we cannot manipulate of a person attribute type
 	 * @param cause the parent exception
 	 */
-	public PersonAttributeTypeLockedException(String message, Throwable cause) {
+	public PersonAttributeTypeLockedException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

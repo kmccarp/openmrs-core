@@ -41,7 +41,7 @@ public class Drug extends BaseChangeableOpenmrsMetadata {
 	
 	private Double minimumDailyDose;
 	
-	private String strength;
+	private /*~~>*/String strength;
 	
 	private Concept doseLimitUnits;
 	
@@ -91,7 +91,7 @@ public class Drug extends BaseChangeableOpenmrsMetadata {
 	 * @param locale
 	 * @return full drug name (with concept name appended)
 	 */
-	public String getFullName(Locale locale) {
+	public /*~~>*/String getFullName(Locale locale) {
 		if (concept == null) {
 			return getName();
 		} else {
@@ -131,7 +131,7 @@ public class Drug extends BaseChangeableOpenmrsMetadata {
 	 * @return String
 	 * @since 1.10
 	 */
-	public String getStrength() {
+	public /*~~>*/String getStrength() {
 		return strength;
 	}
 	
@@ -141,8 +141,8 @@ public class Drug extends BaseChangeableOpenmrsMetadata {
 	 * @param strength
 	 * @since 1.10
 	 */
-	public void setStrength(String strength) {
-		this.strength = strength;
+	public void setStrength(/*~~>*/String strength) {
+		/*~~>*/this.strength = strength;
 	}
 	
 	/**
@@ -229,7 +229,7 @@ public class Drug extends BaseChangeableOpenmrsMetadata {
 	 * @return the display name
 	 * @since 1.8.5, 1.9.4, 1.10
 	 */
-	public String getDisplayName() {
+	public /*~~>*/String getDisplayName() {
 		if (StringUtils.isNotBlank(getName())) {
 			return getName();
 		}

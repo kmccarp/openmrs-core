@@ -22,7 +22,7 @@ public class LocaleFieldBridge implements StringBridge {
 	 * @see org.hibernate.search.bridge.StringBridge#objectToString(java.lang.Object)
 	 */
 	@Override
-	public String objectToString(Object object) {
+	public /*~~>*/String objectToString(Object object) {
 		return object.toString();
 	}
 }

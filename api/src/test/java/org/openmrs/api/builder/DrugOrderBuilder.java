@@ -55,7 +55,7 @@ public class DrugOrderBuilder {
 		return this;
 	}
 	
-	public DrugOrderBuilder withDosingInstructions(String dosingInstructions) {
+	public DrugOrderBuilder withDosingInstructions(/*~~>*/String dosingInstructions) {
 		drugOrder.setDosingInstructions(dosingInstructions);
 		return this;
 	}

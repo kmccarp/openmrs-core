@@ -21,7 +21,7 @@ public class CustomDatatypeException extends APIException {
 	/**
 	 * @param msg
 	 */
-	public CustomDatatypeException(String msg) {
+	public CustomDatatypeException(/*~~>*/String msg) {
 		super(msg);
 	}
 	
@@ -29,7 +29,7 @@ public class CustomDatatypeException extends APIException {
 	 * @param msg
 	 * @param cause
 	 */
-	public CustomDatatypeException(String msg, Exception cause) {
+	public CustomDatatypeException(/*~~>*/String msg, Exception cause) {
 		super(msg, cause);
 	}
 	

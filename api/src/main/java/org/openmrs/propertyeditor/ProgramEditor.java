@@ -42,7 +42,7 @@ public class ProgramEditor extends PropertyEditorSupport {
 	 * <strong>Should</strong> set using program uuid
 	 */
 	@Override
-	public void setAsText(String text) throws IllegalArgumentException {
+	public void setAsText(/*~~>*/String text) throws IllegalArgumentException {
 		if (StringUtils.hasText(text)) {
 			try {
 				if (text.startsWith("concept.")) {
@@ -75,7 +75,7 @@ public class ProgramEditor extends PropertyEditorSupport {
 	}
 	
 	@Override
-	public String getAsText() {
+	public /*~~>*/String getAsText() {
 		Program p = (Program) getValue();
 		if (p == null) {
 			return "";

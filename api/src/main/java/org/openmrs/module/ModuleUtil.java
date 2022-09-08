@@ -69,7 +69,7 @@ public class ModuleUtil {
 	 */
 	public static void startup(Properties props) throws ModuleMustStartException, OpenmrsCoreModuleException {
 		
-		String moduleListString = props.getProperty(ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD);
+		/*~~>*/String moduleListString = props.getProperty(/*~~>*/ModuleConstants.RUNTIMEPROPERTY_MODULE_LIST_TO_LOAD);
 		
 		if (moduleListString == null || moduleListString.length() == 0) {
 			// Attempt to get all of the modules from the modules folder
@@ -80,10 +80,10 @@ public class ModuleUtil {
 			// use the list of modules and load only those
 			log.debug("Starting all modules in this list: " + moduleListString);
 			
-			String[] moduleArray = moduleListString.split(" ");
+			/*~~>*/String[] moduleArray = moduleListString.split(" ");
 			List<File> modulesToLoad = new ArrayList<>();
 			
-			for (String modulePath : moduleArray) {
+			for (/*~~>*/String modulePath : moduleArray) {
 				if (modulePath != null && modulePath.length() > 0) {
 					File file = new File(modulePath);
 					if (file.exists()) {
@@ -96,7 +96,7 @@ public class ModuleUtil {
 						if (stream != null) {
 							try {
 								// get and make a temp directory if necessary
-								String tmpDir = System.getProperty("java.io.tmpdir");
+								/*~~>*/String tmpDir = System.getProperty("java.io.tmpdir");
 								File expandedFile = File.createTempFile(file.getName() + "-", ".omod", new File(tmpDir));
 								
 								// pull the name from the absolute path load attempt
@@ -176,7 +176,7 @@ public class ModuleUtil {
 	 * @param inputStream <code>InputStream</code> to load
 	 * @return filename String of the file's name of the stream
 	 */
-	public static File insertModuleFile(InputStream inputStream, String filename) {
+	public static File insertModuleFile(InputStream inputStream, /*~~>*/String filename) {
 		File folder = getModuleRepository();
 		
 		// check if module filename is already loaded
@@ -221,15 +221,15 @@ public class ModuleUtil {
 	 * <strong>Should</strong> return true if current openmrs version matches one element in versions
 	 * <strong>Should</strong> return false if current openmrs version does not match any element in versions
 	 */
-	public static boolean isOpenmrsVersionInVersions(String ...versions) {
+	public static boolean isOpenmrsVersionInVersions(/*~~>*/String ...versions) {
 
 		if (versions == null || versions.length == 0) {
 			return false;
 		}
 
 		boolean result = false;
-		for (String version : versions) {
-			if (matchRequiredVersions(OpenmrsConstants.OPENMRS_VERSION_SHORT, version)) {
+		for (/*~~>*/String version : versions) {
+			if (matchRequiredVersions(/*~~>*/OpenmrsConstants.OPENMRS_VERSION_SHORT, version)) {
 				result = true;
 				break;
 			}
@@ -287,21 +287,21 @@ public class ModuleUtil {
 	 * <strong>Should</strong> not match when version has wild card and is outside boundary
 	 * <strong>Should</strong> return true when required version is empty
 	 */
-	public static boolean matchRequiredVersions(String version, String versionRange) {
+	public static boolean matchRequiredVersions(/*~~>*/String version, /*~~>*/String versionRange) {
 		// There is a null check so no risk in keeping the literal on the right side
 		if (StringUtils.isNotEmpty(versionRange)) {
-			String[] ranges = versionRange.split(",");
-			for (String range : ranges) {
+			/*~~>*/String[] ranges = versionRange.split(",");
+			for (/*~~>*/String range : ranges) {
 				// need to externalize this string
-				String separator = "-";
+				/*~~>*/String separator = "-";
 				if (range.indexOf("*") > 0 || range.indexOf(separator) > 0 && (!isVersionWithQualifier(range))) {
 					// if it contains "*" or "-" then we must separate those two
 					// assume it's always going to be two part
 					// assign the upper and lower bound
 					// if there's no "-" to split lower and upper bound
 					// then assign the same value for the lower and upper
-					String lowerBound = range;
-					String upperBound = range;
+					/*~~>*/String lowerBound = range;
+					/*~~>*/String upperBound = range;
 					
 					int indexOfSeparator = range.indexOf(separator);
 					while (indexOfSeparator > 0) {
@@ -390,10 +390,10 @@ public class ModuleUtil {
 	 * <strong>Should</strong> handle SNAPSHOT versions
 	 * <strong>Should</strong> handle ALPHA versions
 	 */
-	public static void checkRequiredVersion(String version, String versionRange) throws ModuleException {
+	public static void checkRequiredVersion(/*~~>*/String version, /*~~>*/String versionRange) throws ModuleException {
 		if (!matchRequiredVersions(version, versionRange)) {
-			String ms = Context.getMessageSourceService().getMessage("Module.requireVersion.outOfBounds",
-			    new String[] { versionRange, version }, Context.getLocale());
+			/*~~>*/String ms = Context.getMessageSourceService().getMessage("Module.requireVersion.outOfBounds",
+			    new /*~~>*/String[] { versionRange, version }, Context.getLocale());
 			throw new ModuleException(ms);
 		}
 	}
@@ -412,15 +412,15 @@ public class ModuleUtil {
 	 * <strong>Should</strong> correctly comparing two version numbers
 	 * <strong>Should</strong> treat SNAPSHOT as earliest version
 	 */
-	public static int compareVersion(String version, String value) {
+	public static int compareVersion(/*~~>*/String version, /*~~>*/String value) {
 		try {
 			if (version == null || value == null) {
 				return 0;
 			}
 			
-			List<String> versions = new ArrayList<>();
-			List<String> values = new ArrayList<>();
-			String separator = "-";
+			List</*~~>*/String> versions = new ArrayList<>();
+			List</*~~>*/String> values = new ArrayList<>();
+			/*~~>*/String separator = "-";
 			
 			// strip off any qualifier e.g. "-SNAPSHOT"
 			int qualifierIndex = version.indexOf(separator);
@@ -445,8 +445,8 @@ public class ModuleUtil {
 			}
 			
 			for (int x = 0; x < versions.size(); x++) {
-				String verNum = versions.get(x).trim();
-				String valNum = values.get(x).trim();
+				/*~~>*/String verNum = versions.get(x).trim();
+				/*~~>*/String valNum = values.get(x).trim();
 				Long ver = NumberUtils.toLong(verNum, 0);
 				Long val = NumberUtils.toLong(valNum, 0);
 				
@@ -470,7 +470,7 @@ public class ModuleUtil {
 	 * @param version String like 1.9.2-SNAPSHOT
 	 * @return true if version contains qualifier
 	 */
-	public static boolean isVersionWithQualifier(String version) {
+	public static boolean isVersionWithQualifier(/*~~>*/String version) {
 		Matcher matcher = Pattern.compile("(\\d+)\\.(\\d+)(\\.(\\d+))?(\\-([A-Za-z]+))").matcher(version);
 		return matcher.matches();
 	}
@@ -484,11 +484,11 @@ public class ModuleUtil {
 	 */
 	public static File getModuleRepository() {
 		
-		String folderName = Context.getRuntimeProperties().getProperty(ModuleConstants.REPOSITORY_FOLDER_RUNTIME_PROPERTY);
+		/*~~>*/String folderName = Context.getRuntimeProperties().getProperty(/*~~>*/ModuleConstants.REPOSITORY_FOLDER_RUNTIME_PROPERTY);
 		if (StringUtils.isBlank(folderName)) {
 			AdministrationService as = Context.getAdministrationService();
-			folderName = as.getGlobalProperty(ModuleConstants.REPOSITORY_FOLDER_PROPERTY,
-			    ModuleConstants.REPOSITORY_FOLDER_PROPERTY_DEFAULT);
+			folderName = as.getGlobalProperty(/*~~>*/ModuleConstants.REPOSITORY_FOLDER_PROPERTY,
+			    /*~~>*/ModuleConstants.REPOSITORY_FOLDER_PROPERTY_DEFAULT);
 		}
 		// try to load the repository folder straight away.
 		File folder = new File(folderName);
@@ -552,10 +552,10 @@ public class ModuleUtil {
 	 * <strong>Should</strong> expand directory without parent tree if name is directory and keepFullPath is false
 	 * <strong>Should</strong> expand file with parent tree if name is file and keepFullPath is true
 	 */
-	public static void expandJar(File fileToExpand, File tmpModuleDir, String name, boolean keepFullPath) throws IOException {
+	public static void expandJar(File fileToExpand, File tmpModuleDir, /*~~>*/String name, boolean keepFullPath) throws IOException {
 		JarFile jarFile = null;
 		InputStream input = null;
-		String docBase = tmpModuleDir.getAbsolutePath();
+		/*~~>*/String docBase = tmpModuleDir.getAbsolutePath();
 		try {
 			jarFile = new JarFile(fileToExpand);
 			Enumeration<JarEntry> jarEntries = jarFile.entries();
@@ -565,7 +565,7 @@ public class ModuleUtil {
 			while (jarEntries.hasMoreElements()) {
 				JarEntry jarEntry = jarEntries.nextElement();
 				if (name == null || jarEntry.getName().startsWith(name)) {
-					String entryName = jarEntry.getName();
+					/*~~>*/String entryName = jarEntry.getName();
 					// trim out the name path from the name of the new file
 					if (!keepFullPath && name != null) {
 						entryName = entryName.replaceFirst(name, "");
@@ -621,7 +621,7 @@ public class ModuleUtil {
 	 * @return File the file created by the expansion.
 	 * @throws IOException if an error occurred while copying
 	 */
-	private static File expand(InputStream input, String fileDir, String name) throws IOException {
+	private static File expand(InputStream input, /*~~>*/String fileDir, /*~~>*/String name) throws IOException {
 		log.debug("expanding: {}", name);
 		
 		File file = new File(fileDir, name);
@@ -694,7 +694,7 @@ public class ModuleUtil {
 				int stat = http.getResponseCode();
 				if (stat == 300 || stat == 301 || stat == 302 || stat == 303 || stat == 305 || stat == 307) {
 					URL base = http.getURL();
-					String loc = http.getHeaderField("Location");
+					/*~~>*/String loc = http.getHeaderField("Location");
 					URL target = null;
 					if (loc != null) {
 						target = new URL(base, loc);
@@ -724,10 +724,10 @@ public class ModuleUtil {
 	 * <strong>Should</strong> return an update rdf page for old https module urls
 	 * <strong>Should</strong> return an update rdf page for module urls
 	 */
-	public static String getURL(URL url) {
+	public static /*~~>*/String getURL(URL url) {
 		InputStream in = null;
 		ByteArrayOutputStream out = null;
-		String output = "";
+		/*~~>*/String output = "";
 		try {
 			in = getURLStream(url);
 			if (in == null) {
@@ -767,16 +767,16 @@ public class ModuleUtil {
 		Boolean updateFound = false;
 		
 		for (Module mod : ModuleFactory.getLoadedModules()) {
-			String updateURL = mod.getUpdateURL();
+			/*~~>*/String updateURL = mod.getUpdateURL();
 			if (StringUtils.isNotEmpty(updateURL)) {
 				try {
 					// get the contents pointed to by the url
 					URL url = new URL(updateURL);
-					if (!url.toString().endsWith(ModuleConstants.UPDATE_FILE_NAME)) {
+					if (!url.toString().endsWith(/*~~>*/ModuleConstants.UPDATE_FILE_NAME)) {
 						log.warn("Illegal url: " + url);
 						continue;
 					}
-					String content = getURL(url);
+					/*~~>*/String content = getURL(url);
 					
 					// skip empty or invalid updates
 					if ("".equals(content)) {
@@ -823,9 +823,9 @@ public class ModuleUtil {
 	public static Boolean allowAdmin() {
 		
 		Properties properties = Context.getRuntimeProperties();
-		String prop = properties.getProperty(ModuleConstants.RUNTIMEPROPERTY_ALLOW_UPLOAD, null);
+		/*~~>*/String prop = properties.getProperty(/*~~>*/ModuleConstants.RUNTIMEPROPERTY_ALLOW_UPLOAD, null);
 		if (prop == null) {
-			prop = properties.getProperty(ModuleConstants.RUNTIMEPROPERTY_ALLOW_ADMIN, "false");
+			prop = properties.getProperty(/*~~>*/ModuleConstants.RUNTIMEPROPERTY_ALLOW_ADMIN, "false");
 		}
 		
 		return "true".equals(prop);
@@ -954,8 +954,8 @@ public class ModuleUtil {
 	 */
 	protected static void checkMandatoryModulesStarted() throws ModuleException {
 		
-		List<String> mandatoryModuleIds = getMandatoryModules();
-		Set<String> startedModuleIds = ModuleFactory.getStartedModulesMap().keySet();
+		List</*~~>*/String> mandatoryModuleIds = getMandatoryModules();
+		Set</*~~>*/String> startedModuleIds = ModuleFactory.getStartedModulesMap().keySet();
 		
 		mandatoryModuleIds.removeAll(startedModuleIds);
 		
@@ -981,15 +981,15 @@ public class ModuleUtil {
 		}
 		
 		// make a copy of the constant so we can modify the list
-		Map<String, String> coreModules = new HashMap<>(ModuleConstants.CORE_MODULES);
+		Map</*~~>*/String, /*~~>*/String> coreModules = new HashMap<>(ModuleConstants.CORE_MODULES);
 		
 		Collection<Module> startedModules = ModuleFactory.getStartedModulesMap().values();
 		
 		// loop through the current modules and test them
 		for (Module mod : startedModules) {
-			String moduleId = mod.getModuleId();
+			/*~~>*/String moduleId = mod.getModuleId();
 			if (coreModules.containsKey(moduleId)) {
-				String coreReqVersion = coreModules.get(moduleId);
+				/*~~>*/String coreReqVersion = coreModules.get(moduleId);
 				if (compareVersion(mod.getVersion(), coreReqVersion) >= 0) {
 					coreModules.remove(moduleId);
 				} else {
@@ -1011,7 +1011,7 @@ public class ModuleUtil {
 	 * @return true if the core modules list can be ignored.
 	 */
 	public static boolean ignoreCoreModules() {
-		String ignoreCoreModules = Context.getRuntimeProperties().getProperty(ModuleConstants.IGNORE_CORE_MODULES_PROPERTY,
+		/*~~>*/String ignoreCoreModules = Context.getRuntimeProperties().getProperty(/*~~>*/ModuleConstants.IGNORE_CORE_MODULES_PROPERTY,
 		    "false");
 		return Boolean.parseBoolean(ignoreCoreModules);
 	}
@@ -1023,9 +1023,9 @@ public class ModuleUtil {
 	 * @return list of modules ids for mandatory modules
 	 * <strong>Should</strong> return mandatory module ids
 	 */
-	public static List<String> getMandatoryModules() {
+	public static List</*~~>*/String> getMandatoryModules() {
 		
-		List<String> mandatoryModuleIds = new ArrayList<>();
+		List</*~~>*/String> mandatoryModuleIds = new ArrayList<>();
 		
 		try {
 			List<GlobalProperty> props = Context.getAdministrationService().getGlobalPropertiesBySuffix(".mandatory");
@@ -1062,13 +1062,13 @@ public class ModuleUtil {
 	 * <strong>Should</strong> handle ui springmvc css ui dot css when ui module is running
 	 * <strong>Should</strong> return null for ui springmvc css ui dot css when no relevant module is running
 	 */
-	public static Module getModuleForPath(String path) {
+	public static Module getModuleForPath(/*~~>*/String path) {
 		int ind = path.lastIndexOf('/');
 		if (ind <= 0) {
 			throw new IllegalArgumentException(
 			        "Input must be /moduleId/resource. Input needs a / after the first character: " + path);
 		}
-		String moduleId = path.startsWith("/") ? path.substring(1, ind) : path.substring(0, ind);
+		/*~~>*/String moduleId = path.startsWith("/") ? path.substring(1, ind) : path.substring(0, ind);
 		moduleId = moduleId.replace('/', '.');
 		// iterate over progressively shorter module ids
 		while (true) {
@@ -1096,7 +1096,7 @@ public class ModuleUtil {
 	 * @return local path
 	 * <strong>Should</strong> handle ui springmvc css ui dot css example
 	 */
-	public static String getPathForResource(Module module, String path) {
+	public static /*~~>*/String getPathForResource(Module module, /*~~>*/String path) {
 		if (path.startsWith("/")) {
 			path = path.substring(1);
 		}
@@ -1110,14 +1110,14 @@ public class ModuleUtil {
 	 * @param file jar file to look into
 	 * @return list of strings of package names in this jar
 	 */
-	public static Collection<String> getPackagesFromFile(File file) {
+	public static Collection</*~~>*/String> getPackagesFromFile(File file) {
 		
 		// End early if we're given a non jar file
 		if (!file.getName().endsWith(".jar")) {
 			return Collections.emptySet();
 		}
 		
-		Set<String> packagesProvided = new HashSet<>();
+		Set</*~~>*/String> packagesProvided = new HashSet<>();
 		
 		JarFile jar = null;
 		try {
@@ -1130,7 +1130,7 @@ public class ModuleUtil {
 					// skip over directory entries, we only care about files
 					continue;
 				}
-				String name = jarEntry.getName();
+				/*~~>*/String name = jarEntry.getName();
 				
 				// Skip over some folders in the jar/omod
 				if (name.startsWith("lib") || name.startsWith("META-INF") || name.startsWith("web/module")) {
@@ -1141,7 +1141,7 @@ public class ModuleUtil {
 				if (indexOfLastSlash <= 0) {
 					continue;
 				}
-				String packageName = name.substring(0, indexOfLastSlash);
+				/*~~>*/String packageName = name.substring(0, indexOfLastSlash);
 				
 				packageName = packageName.replaceAll("/", ".");
 				
@@ -1181,8 +1181,8 @@ public class ModuleUtil {
 	 * <strong>Should</strong> return null if api is not found
 	 * <strong>Should</strong> return null if file is not found in api
 	 */
-	public static InputStream getResourceFromApi(JarFile jarFile, String moduleId, String version, String resource) {
-		String apiLocation = "lib/" + moduleId + "-api-" + version + ".jar";
+	public static InputStream getResourceFromApi(JarFile jarFile, /*~~>*/String moduleId, /*~~>*/String version, /*~~>*/String resource) {
+		/*~~>*/String apiLocation = "lib/" + moduleId + "-api-" + version + ".jar";
 		return getResourceFromInnerJar(jarFile, apiLocation, resource);
 	}
 	
@@ -1194,7 +1194,7 @@ public class ModuleUtil {
 	 * @param resource path to a resource relative to the inner jar
 	 * @return resource from the inner jar as an input stream or <code>null</code> if resource cannot be loaded
 	 */
-	private static InputStream getResourceFromInnerJar(JarFile outerJarFile, String innerJarFileLocation, String resource) {
+	private static InputStream getResourceFromInnerJar(JarFile outerJarFile, /*~~>*/String innerJarFileLocation, /*~~>*/String resource) {
 		File tempFile = null;
 		FileOutputStream tempOut = null;
 		JarFile innerJarFile = null;
@@ -1247,8 +1247,8 @@ public class ModuleUtil {
 	 * @param moduleId the module id
 	 * @return the module's development folder is specified, else null
 	 */
-	public static File getDevelopmentDirectory(String moduleId) {
-		String directory = System.getProperty(moduleId + ".development.directory");
+	public static File getDevelopmentDirectory(/*~~>*/String moduleId) {
+		/*~~>*/String directory = System.getProperty(moduleId + ".development.directory");
 		if (StringUtils.isNotBlank(directory)) {
 			return new File(directory);
 		}

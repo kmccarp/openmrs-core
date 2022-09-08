@@ -126,7 +126,7 @@ public class VisitValidator extends BaseCustomizableValidator implements Validat
 	
 	private boolean allowOverlappingVisits() {
 		return Boolean.parseBoolean(Context.getAdministrationService().getGlobalProperty(
-		    OpenmrsConstants.GLOBAL_PROPERTY_ALLOW_OVERLAPPING_VISITS, "true"));
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ALLOW_OVERLAPPING_VISITS, "true"));
 	}
 	
 	private void validateStartDatetime(Visit visit, Visit otherVisit, Errors errors) {
@@ -159,7 +159,7 @@ public class VisitValidator extends BaseCustomizableValidator implements Validat
 		        && otherVisit.getStopDatetime() != null && visit.getStartDatetime().before(otherVisit.getStartDatetime())
 		        && visit.getStopDatetime().after(otherVisit.getStopDatetime())) {
 
-			String message = "This visit contains another visit of the same patient, "
+			/*~~>*/String message = "This visit contains another visit of the same patient, "
 					+ "i.e. its start date is before the start date of the other visit "
 					+ "and its stop date is after the stop date of the other visit.";
 

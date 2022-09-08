@@ -54,8 +54,8 @@ public class ModifyColumnChangeTest {
 		
 		change.setColumns(Arrays.asList(new ColumnConfig(columnOne), new ColumnConfig(columnTwo)));
 		
-		String actual = change.getConfirmationMessage();
-		String expected = "Columns column_one(type_one),column_two(type_two) of some_table modified";
+		/*~~>*/String actual = change.getConfirmationMessage();
+		/*~~>*/String expected = "Columns column_one(type_one),column_two(type_two) of some_table modified";
 		
 		assertEquals( expected, actual );
 	}

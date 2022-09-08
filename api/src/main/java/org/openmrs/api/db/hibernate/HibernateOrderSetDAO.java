@@ -88,7 +88,7 @@ public class HibernateOrderSetDAO implements OrderSetDAO {
 	 * @see org.openmrs.api.db.OrderSetDAO#getOrderSetByUniqueUuid(String)
 	 */
 	@Override
-	public OrderSet getOrderSetByUniqueUuid(String orderSetUuid) throws DAOException {
+	public OrderSet getOrderSetByUniqueUuid(/*~~>*/String orderSetUuid) throws DAOException {
 		return (OrderSet) sessionFactory.getCurrentSession().createQuery("from OrderSet o where o.uuid = :uuid").setString(
 		    "uuid", orderSetUuid).uniqueResult();
 	}
@@ -98,7 +98,7 @@ public class HibernateOrderSetDAO implements OrderSetDAO {
 	 * @see org.openmrs.api.db.OrderSetDAO#getOrderSetMemberByUuid(String)
 	 */
 	@Override
-	public OrderSetMember getOrderSetMemberByUuid(String uuid) throws DAOException {
+	public OrderSetMember getOrderSetMemberByUuid(/*~~>*/String uuid) throws DAOException {
 		return (OrderSetMember) sessionFactory.getCurrentSession().createQuery("from OrderSetMember osm where osm.uuid = :uuid").setString(
 				"uuid", uuid).uniqueResult();
 	}
@@ -124,7 +124,7 @@ public class HibernateOrderSetDAO implements OrderSetDAO {
 	 * @see org.openmrs.api.db.OrderSetDAO#getOrderSetAttributeTypeByUuid(java.lang.String)
 	 */
 	@Override
-	public OrderSetAttributeType getOrderSetAttributeTypeByUuid(String uuid) {
+	public OrderSetAttributeType getOrderSetAttributeTypeByUuid(/*~~>*/String uuid) {
 		return (OrderSetAttributeType) sessionFactory.getCurrentSession().createCriteria(OrderSetAttributeType.class).add(
 		    Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
@@ -150,7 +150,7 @@ public class HibernateOrderSetDAO implements OrderSetDAO {
 	 * @see org.openmrs.api.db.OrderSetDAO#getOrderSetAttributeByUuid(java.lang.String)
 	 */
 	@Override
-	public OrderSetAttribute getOrderSetAttributeByUuid(String uuid) {
+	public OrderSetAttribute getOrderSetAttributeByUuid(/*~~>*/String uuid) {
 		return (OrderSetAttribute) sessionFactory.getCurrentSession().createCriteria(OrderSetAttribute.class).add(
 		    Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
@@ -159,7 +159,7 @@ public class HibernateOrderSetDAO implements OrderSetDAO {
 	 * @see org.openmrs.api.db.OrderSetDAO#getOrderSetAttributeTypeByName(java.lang.String)
 	 */
 	@Override
-	public OrderSetAttributeType getOrderSetAttributeTypeByName(String name) {
+	public OrderSetAttributeType getOrderSetAttributeTypeByName(/*~~>*/String name) {
 		return (OrderSetAttributeType) sessionFactory.getCurrentSession().createCriteria(OrderSetAttributeType.class).add(
 		    Restrictions.eq("name", name)).uniqueResult();
 	}

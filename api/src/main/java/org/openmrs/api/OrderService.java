@@ -38,7 +38,7 @@ import java.util.Locale;
  */
 public interface OrderService extends OpenmrsService {
 	
-	public static final String PARALLEL_ORDERS = "PARALLEL_ORDERS";
+	public static final /*~~>*/String PARALLEL_ORDERS = "PARALLEL_ORDERS";
 	
 	/**
 	 * Setter for the Order data access object. The dao is used for saving and getting orders
@@ -108,7 +108,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> throw AmbiguousOrderException if disconnecting multiple active drug orders with the
 	 *         same drug
 	 */
-	@Authorized({ PrivilegeConstants.EDIT_ORDERS, PrivilegeConstants.ADD_ORDERS })
+	@Authorized({ /*~~>*/PrivilegeConstants.EDIT_ORDERS, /*~~>*/PrivilegeConstants.ADD_ORDERS })
 	public Order saveOrder(Order order, OrderContext orderContext) throws APIException;
 	
 	/**
@@ -127,7 +127,7 @@ public interface OrderService extends OpenmrsService {
 	 * @throws APIException
 	 * @see #saveOrder(Order, OrderContext)
 	 */
-	@Authorized({ PrivilegeConstants.EDIT_ORDERS, PrivilegeConstants.ADD_ORDERS })
+	@Authorized({ /*~~>*/PrivilegeConstants.EDIT_ORDERS, /*~~>*/PrivilegeConstants.ADD_ORDERS })
 	public Order saveRetrospectiveOrder(Order order, OrderContext orderContext);
 	
 	/**
@@ -138,7 +138,7 @@ public interface OrderService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> delete order from the database
 	 */
-	@Authorized(PrivilegeConstants.PURGE_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.PURGE_ORDERS)
 	public void purgeOrder(Order order) throws APIException;
 	
 	/**
@@ -154,7 +154,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.9.4
 	 * <strong>Should</strong> delete any Obs associated to the order when cascade is true
 	 */
-	@Authorized(PrivilegeConstants.PURGE_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.PURGE_ORDERS)
 	public void purgeOrder(Order order, boolean cascade) throws APIException;
 	
 	/**
@@ -169,8 +169,8 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> unset dateStopped of the previous order if the specified order is a discontinuation
 	 * <strong>Should</strong> unset dateStopped of the previous order if the specified order is a revision
 	 */
-	@Authorized(PrivilegeConstants.DELETE_ORDERS)
-	public Order voidOrder(Order order, String voidReason) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.DELETE_ORDERS)
+	public Order voidOrder(Order order, /*~~>*/String voidReason) throws APIException;
 	
 	/**
 	 * Get order by internal primary key identifier
@@ -179,7 +179,7 @@ public interface OrderService extends OpenmrsService {
 	 * @return order with given internal identifier
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	public Order getOrder(Integer orderId) throws APIException;
 	
 	/**
@@ -190,8 +190,8 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> find object given valid uuid
 	 * <strong>Should</strong> return null if no object found with given uuid
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
-	public Order getOrderByUuid(String uuid) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
+	public Order getOrderByUuid(/*~~>*/String uuid) throws APIException;
 	
 	/**
 	 * Get discontinuation order for the given order, it is the un voided discontinuation order with
@@ -205,7 +205,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> return null if order has not been discontinued
 	 * <strong>Should</strong> return null if dc order is voided
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	public Order getDiscontinuationOrder(Order order) throws APIException;
 	
 	/**
@@ -221,7 +221,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> return null if order has not been revised
 	 * <strong>Should</strong> not return a voided revision order
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	public Order getRevisionOrder(Order order) throws APIException;
 	
 	/**
@@ -240,7 +240,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> include voided matches if includeVoided is set to true
 	 * <strong>Should</strong> include orders for sub types if order type is specified
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	public List<Order> getOrders(Patient patient, CareSetting careSetting, OrderType orderType, boolean includeVoided);
 	
 	/**
@@ -252,7 +252,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> fail if patient is null
 	 * <strong>Should</strong> get all the orders for the specified patient
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	public List<Order> getAllOrdersByPatient(Patient patient);
 
 	/**
@@ -264,7 +264,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 2.2
 	 * <strong>Should</strong> get the order matching the search criteria
 	 */
-	@Authorized( { PrivilegeConstants.GET_ORDERS })
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_ORDERS })
 	public List<Order> getOrders(OrderSearchCriteria orderSearchCriteria);
 	
 	/**
@@ -278,7 +278,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> fail for a discontinuation order if the previousOrder is inactive
 	 * <strong>Should</strong> fail for a revise order if the previousOrder is inactive
 	 */
-	@Authorized(PrivilegeConstants.DELETE_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.DELETE_ORDERS)
 	public Order unvoidOrder(Order order) throws APIException;
 	
 	/**
@@ -293,8 +293,8 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> not update fulfillerStatus or fulFillerComment if null passed in to that field
 	 * <strong>Should</strong> save the changed order
 	 */
-	@Authorized(PrivilegeConstants.EDIT_ORDERS)
-	public Order updateOrderFulfillerStatus(Order order, Order.FulfillerStatus orderFulfillerStatus, String fullFillerComment);
+	@Authorized(/*~~>*/PrivilegeConstants.EDIT_ORDERS)
+	public Order updateOrderFulfillerStatus(Order order, Order.FulfillerStatus orderFulfillerStatus, /*~~>*/String fullFillerComment);
 	
 	/**
 	 * Updates the fulfillerStatus of an order and the related comment and finally persists it
@@ -310,8 +310,8 @@ public interface OrderService extends OpenmrsService {
 	 *  <strong>Should</strong> not update fulfillerStatus or fulFillerComment or accessionNumber if null passed in to that field
 	 * <strong>Should</strong> save the changed order
 	 */
-	@Authorized(PrivilegeConstants.EDIT_ORDERS)
-	public Order updateOrderFulfillerStatus(Order order, Order.FulfillerStatus orderFulfillerStatus, String fullFillerComment, String accessionNumber);
+	@Authorized(/*~~>*/PrivilegeConstants.EDIT_ORDERS)
+	public Order updateOrderFulfillerStatus(Order order, Order.FulfillerStatus orderFulfillerStatus, /*~~>*/String fullFillerComment, /*~~>*/String accessionNumber);
 	
 	/**
 	 * Gets the order identified by a given order number
@@ -321,8 +321,8 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> find object given valid order number
 	 * <strong>Should</strong> return null if no object found with given order number
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
-	public Order getOrderByOrderNumber(String orderNumber);
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
+	public Order getOrderByOrderNumber(/*~~>*/String orderNumber);
 	
 	/**
 	 * Gets all Order objects that use this Concept for a given patient. Orders will be returned in
@@ -336,7 +336,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> reject a null patient
 	 * <strong>Should</strong> reject a null concept
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	public List<Order> getOrderHistoryByConcept(Patient patient, Concept concept);
 	
 	/**
@@ -344,7 +344,7 @@ public interface OrderService extends OpenmrsService {
 	 * 
 	 * @return the order number seed
 	 */
-	@Authorized(PrivilegeConstants.ADD_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.ADD_ORDERS)
 	public Long getNextOrderNumberSeedSequenceValue();
 	
 	/**
@@ -356,8 +356,8 @@ public interface OrderService extends OpenmrsService {
 	 * @return a list of orders for given order number
 	 * <strong>Should</strong> return all order history for given order number
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
-	public List<Order> getOrderHistoryByOrderNumber(String orderNumber);
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
+	public List<Order> getOrderHistoryByOrderNumber(/*~~>*/String orderNumber);
 	
 	/**
 	 * Gets all active orders for the specified patient matching the specified CareSetting,
@@ -387,7 +387,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> return all orders if no orderType is specified
 	 * <strong>Should</strong> include orders for sub types if order type is specified
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	public List<Order> getActiveOrders(Patient patient, OrderType orderType, CareSetting careSetting, Date asOfDate);
 	
 	/**
@@ -397,7 +397,7 @@ public interface OrderService extends OpenmrsService {
 	 * @return the care setting
 	 * @since 1.10
 	 */
-	@Authorized(PrivilegeConstants.GET_CARE_SETTINGS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_CARE_SETTINGS)
 	public CareSetting getCareSetting(Integer careSettingId);
 	
 	/**
@@ -407,8 +407,8 @@ public interface OrderService extends OpenmrsService {
 	 * @return CareSetting
 	 * <strong>Should</strong> return the care setting with the specified uuid
 	 */
-	@Authorized(PrivilegeConstants.GET_CARE_SETTINGS)
-	public CareSetting getCareSettingByUuid(String uuid);
+	@Authorized(/*~~>*/PrivilegeConstants.GET_CARE_SETTINGS)
+	public CareSetting getCareSettingByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Gets the CareSetting with the specified name
@@ -417,8 +417,8 @@ public interface OrderService extends OpenmrsService {
 	 * @return CareSetting
 	 * <strong>Should</strong> return the care setting with the specified name
 	 */
-	@Authorized(PrivilegeConstants.GET_CARE_SETTINGS)
-	public CareSetting getCareSettingByName(String name);
+	@Authorized(/*~~>*/PrivilegeConstants.GET_CARE_SETTINGS)
+	public CareSetting getCareSettingByName(/*~~>*/String name);
 	
 	/**
 	 * Gets all non retired CareSettings if includeRetired is set to true otherwise retired ones are
@@ -429,7 +429,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> return only un retired care settings if includeRetired is set to false
 	 * <strong>Should</strong> return retired care settings if includeRetired is set to true
 	 */
-	@Authorized(PrivilegeConstants.GET_CARE_SETTINGS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_CARE_SETTINGS)
 	public List<CareSetting> getCareSettings(boolean includeRetired);
 	
 	/**
@@ -440,8 +440,8 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.10
 	 * <strong>Should</strong> return the order type that matches the specified name
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_TYPES)
-	public OrderType getOrderTypeByName(String orderTypeName);
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_TYPES)
+	public OrderType getOrderTypeByName(/*~~>*/String orderTypeName);
 	
 	/**
 	 * Gets OrderFrequency that matches the specified orderFrequencyId
@@ -451,7 +451,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.10
 	 * <strong>Should</strong> return the order frequency that matches the specified id
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_FREQUENCIES)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_FREQUENCIES)
 	public OrderFrequency getOrderFrequency(Integer orderFrequencyId);
 	
 	/**
@@ -462,8 +462,8 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.10
 	 * <strong>Should</strong> return the order frequency that matches the specified uuid
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_FREQUENCIES)
-	public OrderFrequency getOrderFrequencyByUuid(String uuid);
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_FREQUENCIES)
+	public OrderFrequency getOrderFrequencyByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Gets an OrderFrequency that matches the specified concept
@@ -473,7 +473,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.10
 	 * <strong>Should</strong> return the order frequency that matches the specified concept
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_FREQUENCIES)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_FREQUENCIES)
 	public OrderFrequency getOrderFrequencyByConcept(Concept concept);
 	
 	/**
@@ -485,7 +485,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> return only non retired order frequencies if includeRetired is set to false
 	 * <strong>Should</strong> return all the order frequencies if includeRetired is set to true
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_FREQUENCIES)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_FREQUENCIES)
 	public List<OrderFrequency> getOrderFrequencies(boolean includeRetired);
 	
 	/**
@@ -508,8 +508,8 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> return unique frequencies
 	 * <strong>Should</strong> reject a null search phrase
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_FREQUENCIES)
-	public List<OrderFrequency> getOrderFrequencies(String searchPhrase, Locale locale, boolean exactLocale,
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_FREQUENCIES)
+	public List<OrderFrequency> getOrderFrequencies(/*~~>*/String searchPhrase, Locale locale, boolean exactLocale,
 	        boolean includeRetired);
 	
 	/**
@@ -532,7 +532,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> reject a future discontinueDate
 	 * <strong>Should</strong> not pass for a discontinued order
 	 */
-	@Authorized({ PrivilegeConstants.ADD_ORDERS, PrivilegeConstants.EDIT_ORDERS })
+	@Authorized({ /*~~>*/PrivilegeConstants.ADD_ORDERS, /*~~>*/PrivilegeConstants.EDIT_ORDERS })
 	public Order discontinueOrder(Order orderToDiscontinue, Concept reasonCoded, Date discontinueDate, Provider orderer,
 	        Encounter encounter);
 	
@@ -555,8 +555,8 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> fail for a voided order
 	 * <strong>Should</strong> fail for a discontinued order
 	 */
-	@Authorized({ PrivilegeConstants.ADD_ORDERS, PrivilegeConstants.EDIT_ORDERS })
-	public Order discontinueOrder(Order orderToDiscontinue, String reasonNonCoded, Date discontinueDate, Provider orderer,
+	@Authorized({ /*~~>*/PrivilegeConstants.ADD_ORDERS, /*~~>*/PrivilegeConstants.EDIT_ORDERS })
+	public Order discontinueOrder(Order orderToDiscontinue, /*~~>*/String reasonNonCoded, Date discontinueDate, Provider orderer,
 	        Encounter encounter);
 	
 	/**
@@ -569,7 +569,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> edit an existing order frequency that is not in use
 	 * <strong>Should</strong> not allow editing an existing order frequency that is in use
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ORDER_FREQUENCIES)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ORDER_FREQUENCIES)
 	public OrderFrequency saveOrderFrequency(OrderFrequency orderFrequency) throws APIException;
 	
 	/**
@@ -581,8 +581,8 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.10
 	 * <strong>Should</strong> retire given order frequency
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ORDER_FREQUENCIES)
-	public OrderFrequency retireOrderFrequency(OrderFrequency orderFrequency, String reason);
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ORDER_FREQUENCIES)
+	public OrderFrequency retireOrderFrequency(OrderFrequency orderFrequency, /*~~>*/String reason);
 	
 	/**
 	 * Restores an order frequency that was previously retired in the database
@@ -592,7 +592,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.10
 	 * <strong>Should</strong> unretire given order frequency
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ORDER_FREQUENCIES)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ORDER_FREQUENCIES)
 	public OrderFrequency unretireOrderFrequency(OrderFrequency orderFrequency);
 	
 	/**
@@ -603,7 +603,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> delete given order frequency
 	 * <strong>Should</strong> not allow deleting an order frequency that is in use
 	 */
-	@Authorized(PrivilegeConstants.PURGE_ORDER_FREQUENCIES)
+	@Authorized(/*~~>*/PrivilegeConstants.PURGE_ORDER_FREQUENCIES)
 	public void purgeOrderFrequency(OrderFrequency orderFrequency) throws APIException;
 	
 	/**
@@ -615,7 +615,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> find order type object given valid id
 	 * <strong>Should</strong> return null if no order type object found with given id
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_TYPES)
 	public OrderType getOrderType(Integer orderTypeId);
 	
 	/**
@@ -627,8 +627,8 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> find order type object given valid uuid
 	 * <strong>Should</strong> return null if no order type object found with given uuid
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_TYPES)
-	public OrderType getOrderTypeByUuid(String uuid);
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_TYPES)
+	public OrderType getOrderTypeByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Get all order types, if includeRetired is set to true then retired ones will be included
@@ -641,7 +641,7 @@ public interface OrderService extends OpenmrsService {
 	 * @return list of order types
 	 * @since 1.10
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_TYPES)
 	public List<OrderType> getOrderTypes(boolean includeRetired);
 	
 	/**
@@ -653,7 +653,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> add a new order type to the database
 	 * <strong>Should</strong> edit an existing order type
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ORDER_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ORDER_TYPES)
 	public OrderType saveOrderType(OrderType orderType);
 	
 	/**
@@ -664,7 +664,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> delete order type if not in use
 	 * <strong>Should</strong> not allow deleting an order type that is in use
 	 */
-	@Authorized(PrivilegeConstants.PURGE_ORDER_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.PURGE_ORDER_TYPES)
 	public void purgeOrderType(OrderType orderType) throws APIException;
 	
 	/**
@@ -676,8 +676,8 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.10
 	 * <strong>Should</strong> retire order type
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ORDER_TYPES)
-	public OrderType retireOrderType(OrderType orderType, String reason);
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ORDER_TYPES)
+	public OrderType retireOrderType(OrderType orderType, /*~~>*/String reason);
 	
 	/**
 	 * Restores an order type that was previously retired in the database
@@ -687,7 +687,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.10
 	 * <strong>Should</strong> unretire order type
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ORDER_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ORDER_TYPES)
 	public OrderType unretireOrderType(OrderType orderType);
 	
 	/**
@@ -699,7 +699,7 @@ public interface OrderService extends OpenmrsService {
 	 * @param includeRetired boolean flag for include retired order types or not
 	 * @return list of order type which matches the given order type
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_TYPES)
 	public List<OrderType> getSubtypes(OrderType orderType, boolean includeRetired);
 	
 	/**
@@ -710,7 +710,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.10
 	 * <strong>Should</strong> get order type mapped to the given concept class
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_TYPES)
 	public OrderType getOrderTypeByConceptClass(ConceptClass conceptClass);
 	
 	/**
@@ -721,7 +721,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.10
 	 * <strong>Should</strong> get order type mapped to the given concept
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDER_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDER_TYPES)
 	public OrderType getOrderTypeByConcept(Concept concept);
 	
 	/**
@@ -733,7 +733,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.10
 	 * <strong>Should</strong> return an empty list if nothing is configured
 	 */
-	@Authorized(PrivilegeConstants.GET_CONCEPTS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_CONCEPTS)
 	public List<Concept> getDrugRoutes();
 	
 	/**
@@ -746,7 +746,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> return an empty list if nothing is configured
 	 * <strong>Should</strong> return a list if GP is set
 	 */
-	@Authorized(PrivilegeConstants.GET_CONCEPTS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_CONCEPTS)
 	public List<Concept> getDrugDosingUnits();
 	
 	/**
@@ -760,7 +760,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> return a list if GP is set
 	 * <strong>Should</strong> return the union of the dosing and dispensing units
 	 */
-	@Authorized(PrivilegeConstants.GET_CONCEPTS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_CONCEPTS)
 	public List<Concept> getDrugDispensingUnits();
 	
 	/**
@@ -773,7 +773,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> return an empty list if nothing is configured
 	 * <strong>Should</strong> return a list if GP is set
 	 */
-	@Authorized(PrivilegeConstants.GET_CONCEPTS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_CONCEPTS)
 	public List<Concept> getDurationUnits();
 	
 	/**
@@ -786,7 +786,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> return an empty list if nothing is configured
 	 * <strong>Should</strong> return a list if GP is set
 	 */
-	@Authorized(PrivilegeConstants.GET_CONCEPTS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_CONCEPTS)
 	public List<Concept> getTestSpecimenSources();
 	
 	/**
@@ -798,7 +798,7 @@ public interface OrderService extends OpenmrsService {
 	 * <strong>Should</strong> return null if nothing is configured
 	 * <strong>Should</strong> return a concept if GP is set
 	 */
-	@Authorized(PrivilegeConstants.GET_CONCEPTS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_CONCEPTS)
 	public Concept getNonCodedDrugConcept();
 	
 	/**
@@ -809,8 +809,8 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.12
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
-	public OrderGroup getOrderGroupByUuid(String uuid) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
+	public OrderGroup getOrderGroupByUuid(/*~~>*/String uuid) throws APIException;
 	
 	/**
 	 * Fetches the OrderGroup by Id.
@@ -820,7 +820,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.12
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	public OrderGroup getOrderGroup(Integer orderGroupId) throws APIException;
 	
 	/**
@@ -831,7 +831,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 1.12
 	 * @throws APIException
 	 */
-	@Authorized({ PrivilegeConstants.EDIT_ORDERS, PrivilegeConstants.ADD_ORDERS })
+	@Authorized({ /*~~>*/PrivilegeConstants.EDIT_ORDERS, /*~~>*/PrivilegeConstants.ADD_ORDERS })
 	public OrderGroup saveOrderGroup(OrderGroup orderGroup) throws APIException;
 
 	/**
@@ -842,7 +842,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 2.4.0
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	public List<OrderGroup> getOrderGroupsByPatient(Patient patient) throws APIException;
 
 	/**
@@ -853,7 +853,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 2.4.0
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	public List<OrderGroup> getOrderGroupsByEncounter(Encounter encounter) throws APIException;
 
 	/**
@@ -862,7 +862,7 @@ public interface OrderService extends OpenmrsService {
 	 * @return all {@link OrderGroupAttributeType}s
 	 * @should return all order group attribute types including retired ones
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	 List<OrderGroupAttributeType> getAllOrderGroupAttributeTypes() throws APIException;
 	
 	/**
@@ -873,7 +873,7 @@ public interface OrderService extends OpenmrsService {
 	 * @should return the order group attribute type using the provided id
 	 * @should return null if no order group attribute type exists with the given id
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	OrderGroupAttributeType getOrderGroupAttributeType(Integer orderGroupAttributeTypeId) throws APIException;
 
 	/**
@@ -884,7 +884,7 @@ public interface OrderService extends OpenmrsService {
 	 * @should return the order group attribute type with the given uuid
 	 * @should return null if no order group attribute type exists with the given uuid
 	 */
-	OrderGroupAttributeType getOrderGroupAttributeTypeByUuid(String uuid) throws APIException;
+	OrderGroupAttributeType getOrderGroupAttributeTypeByUuid(/*~~>*/String uuid) throws APIException;
 	
 	/**
 	 * Creates or updates the given order group attribute type in the database
@@ -894,7 +894,7 @@ public interface OrderService extends OpenmrsService {
 	 * @should create a new order group attribute type
 	 * @should edit an existing order group attribute type
 	 */
-    @Authorized({PrivilegeConstants.EDIT_ORDERS,PrivilegeConstants.ADD_ORDERS})
+    @Authorized({/*~~>*/PrivilegeConstants.EDIT_ORDERS,/*~~>*/PrivilegeConstants.ADD_ORDERS})
 	OrderGroupAttributeType saveOrderGroupAttributeType(OrderGroupAttributeType orderGroupAttributeType) throws APIException;
 
 	/**
@@ -905,8 +905,8 @@ public interface OrderService extends OpenmrsService {
 	 * @return the order group attribute type retired
 	 * @should retire an order group attribute type
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ORDER_TYPES)
-	OrderGroupAttributeType retireOrderGroupAttributeType(OrderGroupAttributeType orderGroupAttributeType, String reason) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ORDER_TYPES)
+	OrderGroupAttributeType retireOrderGroupAttributeType(OrderGroupAttributeType orderGroupAttributeType, /*~~>*/String reason) throws APIException;
 
 	/**
 	 * Restores an order group attribute type that was previously retired in the database
@@ -915,7 +915,7 @@ public interface OrderService extends OpenmrsService {
 	 * @return the order group attribute type unretired
 	 * @should unretire an order group attribute type
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ORDER_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ORDER_TYPES)
 	OrderGroupAttributeType unretireOrderGroupAttributeType(OrderGroupAttributeType orderGroupAttributeType) throws APIException;
 
 	/**
@@ -924,7 +924,7 @@ public interface OrderService extends OpenmrsService {
 	 * @param orderGroupAttributeType The order group attribute type to purge
 	 * @should completely remove an order group attribute type
 	 */
-    @Authorized(PrivilegeConstants.PURGE_ORDERS)
+    @Authorized(/*~~>*/PrivilegeConstants.PURGE_ORDERS)
 	void purgeOrderGroupAttributeType(OrderGroupAttributeType orderGroupAttributeType) throws APIException;
 
 	/**
@@ -935,8 +935,8 @@ public interface OrderService extends OpenmrsService {
 	 * @should return the order group attribute type with the specified name
 	 * @should return null if no order group attribute type exists with the specified name
 	 */
-    @Authorized(PrivilegeConstants.GET_ORDERS)
-	OrderGroupAttributeType getOrderGroupAttributeTypeByName(String orderGroupAttributeTypeName) throws APIException;
+    @Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
+	OrderGroupAttributeType getOrderGroupAttributeTypeByName(/*~~>*/String orderGroupAttributeTypeName) throws APIException;
     
 	/**
 	 * Fetches a given order group attribute using the provided uuid
@@ -947,8 +947,8 @@ public interface OrderService extends OpenmrsService {
 	 * @should get the order group attribute with the given uuid
 	 * @should return null if no order group attribute has the given uuid
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
-	OrderGroupAttribute getOrderGroupAttributeByUuid(String uuid) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
+	OrderGroupAttribute getOrderGroupAttributeByUuid(/*~~>*/String uuid) throws APIException;
 
 	/**
 	 * Returns all order attribute types
@@ -957,7 +957,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 2.5.0
 	 * @should return all order attribute types including retired ones
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	List<OrderAttributeType> getAllOrderAttributeTypes() throws APIException;
 
 	/**
@@ -969,7 +969,7 @@ public interface OrderService extends OpenmrsService {
 	 * @should return the order attribute type using the provided id
 	 * @should return null if no order attribute type exists with the given id
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
 	OrderAttributeType getOrderAttributeTypeById(Integer orderAttributeTypeId) throws APIException;
 
 	/**
@@ -981,7 +981,7 @@ public interface OrderService extends OpenmrsService {
 	 * @should return the order attribute type with the given uuid
 	 * @should return null if no order attribute type exists with the given uuid
 	 */
-	OrderAttributeType getOrderAttributeTypeByUuid(String uuid) throws APIException;
+	OrderAttributeType getOrderAttributeTypeByUuid(/*~~>*/String uuid) throws APIException;
 
 	/**
 	 * Creates or updates the given order attribute type in the database
@@ -992,7 +992,7 @@ public interface OrderService extends OpenmrsService {
 	 * @should create a new order attribute type
 	 * @should edit an existing order attribute type
 	 */
-	@Authorized({PrivilegeConstants.EDIT_ORDERS,PrivilegeConstants.ADD_ORDERS})
+	@Authorized({/*~~>*/PrivilegeConstants.EDIT_ORDERS,/*~~>*/PrivilegeConstants.ADD_ORDERS})
 	OrderAttributeType saveOrderAttributeType(OrderAttributeType orderAttributeType) throws APIException;
 
 	/**
@@ -1004,8 +1004,8 @@ public interface OrderService extends OpenmrsService {
 	 * @since 2.5.0
 	 * @should retire an order attribute type
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ORDER_TYPES)
-	OrderAttributeType retireOrderAttributeType(OrderAttributeType orderAttributeType, String reason) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ORDER_TYPES)
+	OrderAttributeType retireOrderAttributeType(OrderAttributeType orderAttributeType, /*~~>*/String reason) throws APIException;
 
 	/**
 	 * Restores an order attribute type that was previously retired in the database
@@ -1015,7 +1015,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 2.5.0
 	 * @should unretire an order attribute type
 	 */
-	@Authorized(PrivilegeConstants.MANAGE_ORDER_TYPES)
+	@Authorized(/*~~>*/PrivilegeConstants.MANAGE_ORDER_TYPES)
 	OrderAttributeType unretireOrderAttributeType(OrderAttributeType orderAttributeType) throws APIException;
 
 	/**
@@ -1025,7 +1025,7 @@ public interface OrderService extends OpenmrsService {
 	 * @since 2.5.0
 	 * @should completely remove an order attribute type
 	 */
-	@Authorized(PrivilegeConstants.PURGE_ORDERS)
+	@Authorized(/*~~>*/PrivilegeConstants.PURGE_ORDERS)
 	void purgeOrderAttributeType(OrderAttributeType orderAttributeType) throws APIException;
 
 	/**
@@ -1037,8 +1037,8 @@ public interface OrderService extends OpenmrsService {
 	 * @should return the order attribute type with the specified name
 	 * @should return null if no order attribute type exists with the specified name
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
-	OrderAttributeType getOrderAttributeTypeByName(String orderAttributeTypeName) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
+	OrderAttributeType getOrderAttributeTypeByName(/*~~>*/String orderAttributeTypeName) throws APIException;
 
 	/**
 	 * Fetches a given order attribute using the provided uuid
@@ -1049,6 +1049,6 @@ public interface OrderService extends OpenmrsService {
 	 * @should get the order attribute with the given uuid
 	 * @should return null if no order attribute has the given uuid
 	 */
-	@Authorized(PrivilegeConstants.GET_ORDERS)
-	OrderAttribute getOrderAttributeByUuid(String uuid) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_ORDERS)
+	OrderAttribute getOrderAttributeByUuid(/*~~>*/String uuid) throws APIException;
 }

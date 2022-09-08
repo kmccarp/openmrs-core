@@ -25,7 +25,7 @@ public class InsertWithUuidDataChangeTest {
 	@Test
 	public void shouldNotModifyUuidValueIfColumnExists() {
 		InsertWithUuidDataChange dataChange = new InsertWithUuidDataChange();
-		String expected = "expected_value_for_UUID";
+		/*~~>*/String expected = "expected_value_for_UUID";
 
 		ColumnConfig uuid = new ColumnConfig( new Column("uuid") );
 		uuid.setValue( expected );
@@ -47,7 +47,7 @@ public class InsertWithUuidDataChangeTest {
 		Object actual = insertStatement.getColumnValue( "uuid" );
 
 		try {
-			UUID.fromString( (String) actual );
+			UUID.fromString( (/*~~>*/String) actual );
 		} catch (RuntimeException re) {
 			fail("generated uuid is not valid");
 		}

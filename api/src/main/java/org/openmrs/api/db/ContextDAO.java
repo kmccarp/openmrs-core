@@ -51,7 +51,7 @@ public interface ContextDAO {
 	 * <strong>Should</strong> throw a ContextAuthenticationException if username is an empty string
 	 * <strong>Should</strong> throw a ContextAuthenticationException if username is white space
 	 */
-	public User authenticate(String username, String password) throws ContextAuthenticationException;
+	public User authenticate(/*~~>*/String username, /*~~>*/String password) throws ContextAuthenticationException;
 	
 	/**
 	 * Gets a user given the uuid. Privilege checks are not done here because this is used by the
@@ -61,7 +61,7 @@ public interface ContextDAO {
 	 * @return the User from the database
 	 * @throws ContextAuthenticationException
 	 */
-	public User getUserByUuid(String uuid) throws ContextAuthenticationException;
+	public User getUserByUuid(/*~~>*/String uuid) throws ContextAuthenticationException;
 	
 	/**
 	 * Gets a user given the username. Privilege checks are not done here because this is used by the
@@ -72,7 +72,7 @@ public interface ContextDAO {
 	 * 
 	 * @since 2.3.0
 	 */
-	public User getUserByUsername(String username);
+	public User getUserByUsername(/*~~>*/String username);
 	
 	/**
 	 * Creates a new user.
@@ -87,7 +87,7 @@ public interface ContextDAO {
 	 * 
 	 * @since 2.3.0
 	 */
-	public User createUser(User user, String password, List<String> roleNames) throws Exception;
+	public User createUser(User user, /*~~>*/String password, List</*~~>*/String> roleNames) throws Exception;
 	
 	/**
 	 * Open session.

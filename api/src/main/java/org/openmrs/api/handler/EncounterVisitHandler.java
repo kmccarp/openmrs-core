@@ -29,14 +29,14 @@ public interface EncounterVisitHandler {
 	/**
 	 * @return a displayable string so that users can pick between different assignment handlers
 	 */
-	public String getDisplayName();
+	public /*~~>*/String getDisplayName();
 	
 	/**
 	 * @param locale optional locale to specify. If none is passed, {@link Context#getLocale()}
 	 *            should be used
 	 * @return a displayable string so that users can pick between different assignment handlers
 	 */
-	public String getDisplayName(Locale locale);
+	public /*~~>*/String getDisplayName(Locale locale);
 	
 	/**
 	 * Implementations of this method should look at the given <code>encounter</code> and choose

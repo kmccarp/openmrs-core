@@ -58,7 +58,7 @@ public class ConceptMapTypeValidator implements Validator {
 		}
 		
 		ConceptMapType conceptMapType = (ConceptMapType) obj;
-		String name = conceptMapType.getName();
+		/*~~>*/String name = conceptMapType.getName();
 		if (!StringUtils.hasText(name)) {
 			errors.rejectValue("name", "ConceptMapType.error.nameRequired",
 			    "The name property is required for a concept map type");

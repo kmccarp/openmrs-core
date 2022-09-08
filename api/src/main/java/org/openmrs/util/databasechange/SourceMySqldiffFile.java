@@ -49,16 +49,16 @@ import java.util.Set;
  */
 public class SourceMySqldiffFile implements CustomTaskChange {
 	
-	public static final String CONNECTION_USERNAME = "connection.username";
+	public static final /*~~>*/String CONNECTION_USERNAME = "connection.username";
 	
-	public static final String CONNECTION_PASSWORD = "connection.password";
+	public static final /*~~>*/String CONNECTION_PASSWORD = "connection.password";
 	
 	private static final Logger log = LoggerFactory.getLogger(SourceMySqldiffFile.class);
 	
 	/**
 	 * Absolute path and name of file to source
 	 */
-	private String sqlFile = null;
+	private /*~~>*/String sqlFile = null;
 	
 	private ResourceAccessor fileOpener = null;
 	
@@ -72,8 +72,8 @@ public class SourceMySqldiffFile implements CustomTaskChange {
 		
 		Properties runtimeProperties = Context.getRuntimeProperties();
 		
-		String username = runtimeProperties.getProperty(CONNECTION_USERNAME);
-		String password = runtimeProperties.getProperty(CONNECTION_PASSWORD);
+		/*~~>*/String username = runtimeProperties.getProperty(CONNECTION_USERNAME);
+		/*~~>*/String password = runtimeProperties.getProperty(CONNECTION_PASSWORD);
 		
 		if (username == null) {
 			username = System.getProperty(CONNECTION_USERNAME);
@@ -112,13 +112,13 @@ public class SourceMySqldiffFile implements CustomTaskChange {
 		}
 		
 		// build the mysql command line string
-		List<String> commands = new ArrayList<>();
-		String databaseName;
+		List</*~~>*/String> commands = new ArrayList<>();
+		/*~~>*/String databaseName;
 		try {
 			commands.add("mysql");
 			commands.add("-u" + username);
 			commands.add("-p" + password);
-			String path = tmpOutputFile.getAbsolutePath();
+			/*~~>*/String path = tmpOutputFile.getAbsolutePath();
 			if (!OpenmrsConstants.UNIX_BASED_OPERATING_SYSTEM) {
 				// windows hacks
 				path = fixWindowsPathHack(path);
@@ -133,14 +133,14 @@ public class SourceMySqldiffFile implements CustomTaskChange {
 		}
 		
 		// to be used in error messages if this fails
-		String errorCommand = "\"mysql -u" + username + " -p -e\"source " + tmpOutputFile.getAbsolutePath() + "\""
+		/*~~>*/String errorCommand = "\"mysql -u" + username + " -p -e\"source " + tmpOutputFile.getAbsolutePath() + "\""
 		        + databaseName;
 		
 		// run the command line string
 		StringBuilder output = new StringBuilder();
 		Integer exitValue = -1; // default to a non-zero exit value in case of exceptions
 		try {
-			exitValue = execCmd(tmpOutputFile.getParentFile(), commands.toArray(new String[] {}), output);
+			exitValue = execCmd(tmpOutputFile.getParentFile(), commands.toArray(new /*~~>*/String[] {}), output);
 		}
 		catch (IOException io) {
 			if (io.getMessage().endsWith("not found")) {
@@ -178,10 +178,10 @@ public class SourceMySqldiffFile implements CustomTaskChange {
 	 * @param path
 	 * @return
 	 */
-	private String fixWindowsPathHack(String path) {
+	private /*~~>*/String fixWindowsPathHack(/*~~>*/String path) {
 		StringBuilder returnedPath = new StringBuilder();
 		path = path.replace("\\", "/"); // so java doesn't freak out with windows backslashes
-		for (String pathPart : path.split("/")) {
+		for (/*~~>*/String pathPart : path.split("/")) {
 			if (pathPart.contains(" ")) {
 				// shorten to the first 6 characters uppercased
 				pathPart = pathPart.substring(0, 6).toUpperCase();
@@ -200,7 +200,7 @@ public class SourceMySqldiffFile implements CustomTaskChange {
 	 * @param out
 	 * @return process exit value
 	 */
-	private Integer execCmd(File wd, String[] cmdWithArguments, StringBuilder out) throws Exception {
+	private Integer execCmd(File wd, /*~~>*/String[] cmdWithArguments, StringBuilder out) throws Exception {
 		log.debug("executing command: " + Arrays.toString(cmdWithArguments));
 		
 		Integer exitValue;
@@ -247,7 +247,7 @@ public class SourceMySqldiffFile implements CustomTaskChange {
 	 * @see liquibase.change.custom.CustomChange#getConfirmationMessage()
 	 */
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished executing " + sqlFile + " on database";
 	}
 	
@@ -280,8 +280,8 @@ public class SourceMySqldiffFile implements CustomTaskChange {
 	/**
 	 * @param sqlFile the sqlFile to set
 	 */
-	public void setSqlFile(String sqlFile) {
-		this.sqlFile = sqlFile;
+	public void setSqlFile(/*~~>*/String sqlFile) {
+		/*~~>*/this.sqlFile = sqlFile;
 	}
 	
 }

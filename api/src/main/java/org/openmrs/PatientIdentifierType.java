@@ -61,14 +61,14 @@ public class PatientIdentifierType extends BaseChangeableOpenmrsMetadata {
 	@DocumentId
 	private Integer patientIdentifierTypeId;
 	
-	private String format;
+	private /*~~>*/String format;
 
 	@Field
 	private Boolean required = Boolean.FALSE;
 	
-	private String formatDescription;
+	private /*~~>*/String formatDescription;
 
-	private String validator;
+	private /*~~>*/String validator;
 	
 	private LocationBehavior locationBehavior;
 	
@@ -88,15 +88,15 @@ public class PatientIdentifierType extends BaseChangeableOpenmrsMetadata {
 	/**
 	 * @return Returns the formatDescription.
 	 */
-	public String getFormatDescription() {
+	public /*~~>*/String getFormatDescription() {
 		return formatDescription;
 	}
 	
 	/**
 	 * @param formatDescription The formatDescription to set.
 	 */
-	public void setFormatDescription(String formatDescription) {
-		this.formatDescription = formatDescription;
+	public void setFormatDescription(/*~~>*/String formatDescription) {
+		/*~~>*/this.formatDescription = formatDescription;
 	}
 	
 	/**
@@ -146,15 +146,15 @@ public class PatientIdentifierType extends BaseChangeableOpenmrsMetadata {
 	/**
 	 * @return Returns the format.
 	 */
-	public String getFormat() {
+	public /*~~>*/String getFormat() {
 		return format;
 	}
 	
 	/**
 	 * @param format The format to set.
 	 */
-	public void setFormat(String format) {
-		this.format = format;
+	public void setFormat(/*~~>*/String format) {
+		/*~~>*/this.format = format;
 	}
 	
 	/**
@@ -171,12 +171,12 @@ public class PatientIdentifierType extends BaseChangeableOpenmrsMetadata {
 		this.patientIdentifierTypeId = patientIdentifierTypeId;
 	}
 	
-	public String getValidator() {
+	public /*~~>*/String getValidator() {
 		return validator;
 	}
 	
-	public void setValidator(String validator) {
-		this.validator = validator;
+	public void setValidator(/*~~>*/String validator) {
+		/*~~>*/this.validator = validator;
 	}
 	
 	/**
@@ -190,7 +190,7 @@ public class PatientIdentifierType extends BaseChangeableOpenmrsMetadata {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return getName();
 	}
 	

@@ -26,9 +26,9 @@ import org.openmrs.test.jupiter.BaseContextSensitiveTest;
  */
 public class VisitDAOTest extends BaseContextSensitiveTest {
 	
-	protected static final String VISITS_WITH_DATES_XML = "org/openmrs/api/include/VisitServiceTest-otherVisits.xml";
+	protected static final /*~~>*/String VISITS_WITH_DATES_XML = "org/openmrs/api/include/VisitServiceTest-otherVisits.xml";
 	
-	protected static final String VISITS_INCLUDE_VISITS_TO_AUTO_CLOSE_XML = "org/openmrs/api/include/VisitServiceTest-includeVisitsAndTypeToAutoClose.xml";
+	protected static final /*~~>*/String VISITS_INCLUDE_VISITS_TO_AUTO_CLOSE_XML = "org/openmrs/api/include/VisitServiceTest-includeVisitsAndTypeToAutoClose.xml";
 	
 	private VisitDAO dao = null;
 	

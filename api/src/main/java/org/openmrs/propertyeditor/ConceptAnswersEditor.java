@@ -55,13 +55,13 @@ public class ConceptAnswersEditor extends PropertyEditorSupport {
 	 * <strong>Should</strong> set the sort weights with the least possible changes
 	 */
 	@Override
-	public void setAsText(String text) throws IllegalArgumentException {
+	public void setAsText(/*~~>*/String text) throws IllegalArgumentException {
 		if (StringUtils.hasText(text)) {
 			ConceptService cs = Context.getConceptService();
-			String[] conceptIds = text.split(" ");
-			List<String> requestConceptIds = new ArrayList<>();
+			/*~~>*/String[] conceptIds = text.split(" ");
+			List</*~~>*/String> requestConceptIds = new ArrayList<>();
 			//set up parameter answer Set for easier add/delete functions and removal of duplicates
-			for (String id : conceptIds) {
+			for (/*~~>*/String id : conceptIds) {
 				id = id.trim();
 				if (!("".equals(id)) && !requestConceptIds.contains(id)) { //remove whitespace, blank lines, and duplicates
 					requestConceptIds.add(id);
@@ -73,7 +73,7 @@ public class ConceptAnswersEditor extends PropertyEditorSupport {
 			// loop over original concept answers to find any deleted answers
 			for (ConceptAnswer origConceptAnswer : originalConceptAnswers) {
 				boolean answerDeleted = true;
-				for (String conceptId : requestConceptIds) {
+				for (/*~~>*/String conceptId : requestConceptIds) {
 					Integer id = getConceptId(conceptId);
 					Integer drugId = getDrugId(conceptId);
 					Drug answerDrug = origConceptAnswer.getAnswerDrug();
@@ -97,7 +97,7 @@ public class ConceptAnswersEditor extends PropertyEditorSupport {
 			}
 			
 			// loop over concept ids in the request to add any that are new
-			for (String conceptId : requestConceptIds) {
+			for (/*~~>*/String conceptId : requestConceptIds) {
 				Integer id = getConceptId(conceptId);
 				Integer drugId = getDrugId(conceptId);
 				boolean newAnswerConcept = true;
@@ -174,7 +174,7 @@ public class ConceptAnswersEditor extends PropertyEditorSupport {
 			}
 			
 			log.debug("requestConceptIds: ");
-			for (String i : requestConceptIds) {
+			for (/*~~>*/String i : requestConceptIds) {
 				log.debug("id: " + i);
 			}
 		} else {
@@ -203,7 +203,7 @@ public class ConceptAnswersEditor extends PropertyEditorSupport {
 	 * @param conceptId
 	 * @return
 	 */
-	private Integer getConceptId(String conceptId) {
+	private Integer getConceptId(/*~~>*/String conceptId) {
 		if (conceptId.contains("^")) {
 			return Integer.valueOf(conceptId.substring(0, conceptId.indexOf("^")));
 		} else {
@@ -218,7 +218,7 @@ public class ConceptAnswersEditor extends PropertyEditorSupport {
 	 * @param conceptId
 	 * @return
 	 */
-	private Integer getDrugId(String conceptId) {
+	private Integer getDrugId(/*~~>*/String conceptId) {
 		if (conceptId.contains("^")) {
 			return Integer.valueOf(conceptId.substring(conceptId.indexOf("^") + 1));
 		}

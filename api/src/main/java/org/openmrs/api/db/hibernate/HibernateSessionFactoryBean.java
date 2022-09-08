@@ -42,12 +42,12 @@ public class HibernateSessionFactoryBean extends LocalSessionFactoryBean impleme
 	
 	private static final Logger log = LoggerFactory.getLogger(HibernateSessionFactoryBean.class);
 	
-	protected Set<String> mappingResources = new HashSet<>();
+	protected Set</*~~>*/String> mappingResources = new HashSet<>();
 	
 	/**
 	 * @since 1.9.2, 1.10
 	 */
-	protected Set<String> packagesToScan = new HashSet<>();
+	protected Set</*~~>*/String> packagesToScan = new HashSet<>();
 	
 	// @since 1.6.3, 1.7.2, 1.8.0, 1.9
 	protected ChainingInterceptor chainingInterceptor = new ChainingInterceptor();
@@ -55,7 +55,7 @@ public class HibernateSessionFactoryBean extends LocalSessionFactoryBean impleme
 	// @since 1.6.3, 1.7.2, 1.8.0, 1.9
 	// This will be sorted on keys before being used
 	@Autowired(required = false)
-	public Map<String, Interceptor> interceptors = new HashMap<>();
+	public Map</*~~>*/String, Interceptor> interceptors = new HashMap<>();
 	
 	private Metadata metadata;
 	
@@ -64,10 +64,10 @@ public class HibernateSessionFactoryBean extends LocalSessionFactoryBean impleme
 	 * as 'private' instead of 'protected'
 	 */
 	@Override
-	public void setMappingResources(String... mappingResources) {
+	public void setMappingResources(/*~~>*/String... mappingResources) {
 		Collections.addAll(this.mappingResources, mappingResources);
 		
-		super.setMappingResources(this.mappingResources.toArray(new String[] {}));
+		super.setMappingResources(this.mappingResources.toArray(new /*~~>*/String[] {}));
 	}
 	
 	/**
@@ -76,13 +76,13 @@ public class HibernateSessionFactoryBean extends LocalSessionFactoryBean impleme
 	 * It adds to the set instead of overwriting it with each call.
 	 */
 	@Override
-	public void setPackagesToScan(String... packagesToScan) {
+	public void setPackagesToScan(/*~~>*/String... packagesToScan) {
 		this.packagesToScan.addAll(Arrays.asList(packagesToScan));
 		
-		super.setPackagesToScan(this.packagesToScan.toArray(new String[0]));
+		super.setPackagesToScan(this.packagesToScan.toArray(new /*~~>*/String[0]));
 	}
 	
-	public Set<String> getModuleMappingResources() {
+	public Set</*~~>*/String> getModuleMappingResources() {
 		for (Module mod : ModuleFactory.getStartedModules()) {
 			mappingResources.addAll(mod.getMappingFiles());
 		}
@@ -95,8 +95,8 @@ public class HibernateSessionFactoryBean extends LocalSessionFactoryBean impleme
 	 * @return the set of packages with mapped classes
 	 * @since 1.9.2, 1.10
 	 */
-	public Set<String> getModulePackagesWithMappedClasses() {
-		Set<String> packages = new HashSet<>();
+	public Set</*~~>*/String> getModulePackagesWithMappedClasses() {
+		Set</*~~>*/String> packages = new HashSet<>();
 		for (Module module : ModuleFactory.getStartedModules()) {
 			packages.addAll(module.getPackagesWithMappedClasses());
 		}
@@ -116,8 +116,8 @@ public class HibernateSessionFactoryBean extends LocalSessionFactoryBean impleme
 		// override or initialize config properties with module-provided ones
 		for (Map.Entry<Object, Object> entry : moduleProperties.entrySet()) {
 			Object key = entry.getKey();
-			String prop = (String) key;
-			String value = (String) entry.getValue();
+			/*~~>*/String prop = (/*~~>*/String) key;
+			/*~~>*/String value = (/*~~>*/String) entry.getValue();
 			log.trace("Setting module property: " + prop + ":" + value);
 			config.setProperty(prop, value);
 			if (!prop.startsWith("hibernate")) {
@@ -130,8 +130,8 @@ public class HibernateSessionFactoryBean extends LocalSessionFactoryBean impleme
 		// loop over runtime properties and override each in the configuration
 		for (Map.Entry<Object, Object> entry : properties.entrySet()) {
 			Object key = entry.getKey();
-			String prop = (String) key;
-			String value = (String) entry.getValue();
+			/*~~>*/String prop = (/*~~>*/String) key;
+			/*~~>*/String value = (/*~~>*/String) entry.getValue();
 			log.trace("Setting property: " + prop + ":" + value);
 			config.setProperty(prop, value);
 			if (!prop.startsWith("hibernate")) {
@@ -160,9 +160,9 @@ public class HibernateSessionFactoryBean extends LocalSessionFactoryBean impleme
 		}
 		
 		log.debug("Replacing variables in hibernate properties");
-		final String applicationDataDirectory = OpenmrsUtil.getApplicationDataDirectory();
+		final /*~~>*/String applicationDataDirectory = OpenmrsUtil.getApplicationDataDirectory();
 		for (Entry<Object, Object> entry : config.entrySet()) {
-			String value = (String) entry.getValue();
+			/*~~>*/String value = (/*~~>*/String) entry.getValue();
 			
 			value = value.replace("%APPLICATION_DATA_DIRECTORY%", applicationDataDirectory);
 			entry.setValue(value);
@@ -172,18 +172,18 @@ public class HibernateSessionFactoryBean extends LocalSessionFactoryBean impleme
 		
 		// make sure all autowired interceptors are put onto our chaining interceptor
 		// sort on the keys so that the devs/modules have some sort of control over the order of the interceptors 
-		List<String> keys = new ArrayList<>(interceptors.keySet());
+		List</*~~>*/String> keys = new ArrayList<>(interceptors.keySet());
 		Collections.sort(keys);
-		for (String key : keys) {
+		for (/*~~>*/String key : keys) {
 			chainingInterceptor.addInterceptor(interceptors.get(key));
 		}
 		
 		setEntityInterceptor(chainingInterceptor);
 		
 		//Adding each module's mapping file to the list of mapping resources
-		setMappingResources(getModuleMappingResources().toArray(new String[0]));
+		setMappingResources(getModuleMappingResources().toArray(new /*~~>*/String[0]));
 		
-		setPackagesToScan(getModulePackagesWithMappedClasses().toArray(new String[0]));
+		setPackagesToScan(getModulePackagesWithMappedClasses().toArray(new /*~~>*/String[0]));
 		
 		setHibernateIntegrators(this);
 		

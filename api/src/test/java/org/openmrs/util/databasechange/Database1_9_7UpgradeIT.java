@@ -49,23 +49,23 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 	
-	public static final String TEST_DATA_DIR = "/org/openmrs/util/databasechange/";
+	public static final /*~~>*/String TEST_DATA_DIR = "/org/openmrs/util/databasechange/";
 	
-	public static final String UPGRADE_TEST_1_9_7_TO_1_10_DATASET = TEST_DATA_DIR
+	public static final /*~~>*/String UPGRADE_TEST_1_9_7_TO_1_10_DATASET = TEST_DATA_DIR
 	        + "database1_9To1_10UpgradeTest-dataSet.xml";
 	
-	public static final String STANDARD_TEST_1_9_7_DATASET = TEST_DATA_DIR + "standardTest-1.9.7-dataSet.xml";
+	public static final /*~~>*/String STANDARD_TEST_1_9_7_DATASET = TEST_DATA_DIR + "standardTest-1.9.7-dataSet.xml";
 	
-	public final static String DATABASE_PATH = TEST_DATA_DIR + "openmrs-1.9.7.h2.db";
+	public final static /*~~>*/String DATABASE_PATH = TEST_DATA_DIR + "openmrs-1.9.7.h2.db";
 	
-	public static final String LIQUIBASE_UPDATE_TO_LATEST_XML = "liquibase-update-to-latest-from-1.9.x.xml";
+	public static final /*~~>*/String LIQUIBASE_UPDATE_TO_LATEST_XML = "liquibase-update-to-latest-from-1.9.x.xml";
 	
 	private DatabaseUpgradeTestUtil upgradeTestUtil;
 	
 	private static File testAppDataDir;
 	
-	private Map<String, String> row(String... values) {
-		Map<String, String> row = new HashMap<>();
+	private Map</*~~>*/String, /*~~>*/String> row(/*~~>*/String... values) {
+		Map</*~~>*/String, /*~~>*/String> row = new HashMap<>();
 		for (int i = 0; i < values.length; i += 2) {
 			row.put(values[i], values[i + 1]);
 		}
@@ -105,11 +105,11 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 	 *
 	 * @see org.openmrs.util.UpgradeUtil#getConceptIdForUnits(String)
 	 */
-	public static void createOrderEntryUpgradeFileWithTestData(String propString) throws IOException {
+	public static void createOrderEntryUpgradeFileWithTestData(/*~~>*/String propString) throws IOException {
 		Properties props = new Properties();
 		props.load(new StringReader(propString));
-		String appDataDir = OpenmrsUtil.getApplicationDataDirectory();
-		File propFile = new File(appDataDir, DatabaseUtil.ORDER_ENTRY_UPGRADE_SETTINGS_FILENAME);
+		/*~~>*/String appDataDir = OpenmrsUtil.getApplicationDataDirectory();
+		File propFile = new File(appDataDir, /*~~>*/DatabaseUtil.ORDER_ENTRY_UPGRADE_SETTINGS_FILENAME);
 		props.store(new FileWriter(propFile), null);
 		propFile.deleteOnExit();
 	}
@@ -120,7 +120,7 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 		testAppDataDir.delete();// so we can make turn it into a directory
 		testAppDataDir.mkdir();
 		
-		System.setProperty(OpenmrsConstants.APPLICATION_DATA_DIRECTORY_RUNTIME_PROPERTY, testAppDataDir.getAbsolutePath());
+		System.setProperty(/*~~>*/OpenmrsConstants.APPLICATION_DATA_DIRECTORY_RUNTIME_PROPERTY, testAppDataDir.getAbsolutePath());
 		OpenmrsUtil.setApplicationDataDirectory(testAppDataDir.getAbsolutePath());
 	}
 	
@@ -128,7 +128,7 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 	public static void afterClass() throws Exception {
 		FileUtils.deleteDirectory(testAppDataDir);
 		//Just to be safe, not to affect other units in the test suite
-		System.clearProperty(OpenmrsConstants.APPLICATION_DATA_DIRECTORY_RUNTIME_PROPERTY);
+		System.clearProperty(/*~~>*/OpenmrsConstants.APPLICATION_DATA_DIRECTORY_RUNTIME_PROPERTY);
 	}
 	
 	@BeforeEach
@@ -145,11 +145,11 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 	public void shouldUpgradeFromClean1_9To1_10() throws IOException, SQLException {
 		upgradeTestUtil.upgrade();
 		
-		List<Map<String, String>> orderFrequencySelect = upgradeTestUtil.select("order_frequency", null,
+		List<Map</*~~>*/String, /*~~>*/String>> orderFrequencySelect = upgradeTestUtil.select("order_frequency", null,
 		    "order_frequency_id");
 		assertThat(orderFrequencySelect.size(), Matchers.is(0));
 		
-		List<Map<String, String>> drugOrderSelect = upgradeTestUtil.select("drug_order", null, "order_id");
+		List<Map</*~~>*/String, /*~~>*/String>> drugOrderSelect = upgradeTestUtil.select("drug_order", null, "order_id");
 		assertThat(drugOrderSelect.size(), Matchers.is(0));
 	}
 	
@@ -157,8 +157,8 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 	public void shouldFailMigratingDrugOrdersIfUnitsToConceptsMappingsIsNotSet() throws IOException, SQLException {
 		upgradeTestUtil.executeDataset(STANDARD_TEST_1_9_7_DATASET);
 		createOrderEntryUpgradeFileWithTestData("");
-		String errorMsgSubString1 = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201401101647-TRUNK-4187::wyclif";
-		String errorMsgSubString2 = Context.getMessageSourceService().getMessage("upgrade.settings.file.not.have.mapping",
+		/*~~>*/String errorMsgSubString1 = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201401101647-TRUNK-4187::wyclif";
+		/*~~>*/String errorMsgSubString2 = Context.getMessageSourceService().getMessage("upgrade.settings.file.not.have.mapping",
 		    new Object[] { "mg" }, null);
 		IOException exception = assertThrows(IOException.class, () -> upgradeTestUtil.upgrade());
 		assertThat(exception.getMessage(), containsString(errorMsgSubString1));
@@ -174,7 +174,7 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 		    "mg=111\ntab(s)=112\n1/day\\ x\\ 7\\ days/week=113\n2/day\\ x\\ 7\\ days/week=114");
 		createOrderEntryUpgradeFileWithTestData("mg=111\ntab(s)=invalid");
 		
-		String errorMsgSubString1 = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201401101647-TRUNK-4187::wyclif";
+		/*~~>*/String errorMsgSubString1 = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201401101647-TRUNK-4187::wyclif";
 		IOException exception = assertThrows(IOException.class, () -> upgradeTestUtil.upgrade());
 		assertThat(exception.getMessage(), containsString(errorMsgSubString1));
 		assertThat(exception.getMessage(), containsString("For input string: \"invalid\""));
@@ -191,11 +191,11 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 		
 		upgradeTestUtil.upgrade();
 		
-		List<Map<String, String>> orderFrequencySelect = upgradeTestUtil.select("order_frequency", null,
+		List<Map</*~~>*/String, /*~~>*/String>> orderFrequencySelect = upgradeTestUtil.select("order_frequency", null,
 		    "order_frequency_id", "concept_id");
 		assertThat(orderFrequencySelect.size(), Matchers.is(2));
 		
-		Map<String, String> conceptsToFrequencies = new HashMap<>();
+		Map</*~~>*/String, /*~~>*/String> conceptsToFrequencies = new HashMap<>();
 		conceptsToFrequencies.put(orderFrequencySelect.get(0).get("concept_id"),
 		    orderFrequencySelect.get(0).get("order_frequency_id"));
 		conceptsToFrequencies.put(orderFrequencySelect.get(1).get("concept_id"),
@@ -203,7 +203,7 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 		
 		assertThat(conceptsToFrequencies.keySet(), Matchers.containsInAnyOrder("113", "114"));
 		
-		List<Map<String, String>> drugOrderSelect = upgradeTestUtil.select("drug_order", null, "order_id", "frequency");
+		List<Map</*~~>*/String, /*~~>*/String>> drugOrderSelect = upgradeTestUtil.select("drug_order", null, "order_id", "frequency");
 		
 		assertThat(drugOrderSelect,
 		    Matchers.containsInAnyOrder(row("order_id", "1", "frequency", conceptsToFrequencies.get("113")),
@@ -217,14 +217,14 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 	public void shouldFailIfAnyDrugOrderUnitsNotMappedToConceptsAreFound() throws Exception {
 		//sanity check that we have some unmapped drug order dose units
 		upgradeTestUtil.executeDataset(STANDARD_TEST_1_9_7_DATASET);
-		Set<String> uniqueUnits = DatabaseUtil.getUniqueNonNullColumnValues("units", "drug_order", String.class,
+		Set</*~~>*/String> uniqueUnits = DatabaseUtil.getUniqueNonNullColumnValues("units", "drug_order", /*~~>*/String.class,
 		    upgradeTestUtil.getConnection());
 		assertTrue(uniqueUnits.size() > 0);
 		
 		//map the frequencies only
 		createOrderEntryUpgradeFileWithTestData("1/day\\ x\\ 7\\ days/week=113\n2/day\\ x\\ 7\\ days/week=114");
 		
-		String errorMsgSubString1 = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201401101647-TRUNK-4187::wyclif";
+		/*~~>*/String errorMsgSubString1 = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201401101647-TRUNK-4187::wyclif";
 		IOException exception = assertThrows(IOException.class, () -> upgradeTestUtil.upgrade());
 		assertThat(exception.getMessage(), containsString(errorMsgSubString1));
 	}
@@ -233,14 +233,14 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 	public void shouldFailIfAnyDrugOrderFrequenciesNotMappedToConceptsAreFound() throws Exception {
 		//sanity check that we have some unmapped drug order frequencies
 		upgradeTestUtil.executeDataset(STANDARD_TEST_1_9_7_DATASET);
-		Set<String> uniqueFrequencies = DatabaseUtil.getUniqueNonNullColumnValues("frequency", "drug_order", String.class,
+		Set</*~~>*/String> uniqueFrequencies = DatabaseUtil.getUniqueNonNullColumnValues("frequency", "drug_order", /*~~>*/String.class,
 		    upgradeTestUtil.getConnection());
 		assertTrue(uniqueFrequencies.size() > 0);
 		
 		//map the dose units only
 		createOrderEntryUpgradeFileWithTestData("mg=111\ntab(s)=112");
 		
-		String errorMsgSubString1 = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201401101647-TRUNK-4187::wyclif";
+		/*~~>*/String errorMsgSubString1 = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201401101647-TRUNK-4187::wyclif";
 		
 		IOException exception = assertThrows(IOException.class, () -> upgradeTestUtil.upgrade());
 		assertThat(exception.getMessage(), containsString(errorMsgSubString1));
@@ -250,11 +250,11 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 	public void shouldPassIfAllExistingDrugOrderUnitsAndFrequenciesAreMappedToConcepts() throws Exception {
 		//sanity check that we have some drug order dose units and frequencies in the test dataset
 		upgradeTestUtil.executeDataset(STANDARD_TEST_1_9_7_DATASET);
-		Set<String> uniqueUnits = DatabaseUtil.getUniqueNonNullColumnValues("units", "drug_order", String.class,
+		Set</*~~>*/String> uniqueUnits = DatabaseUtil.getUniqueNonNullColumnValues("units", "drug_order", /*~~>*/String.class,
 		    upgradeTestUtil.getConnection());
 		assertTrue(uniqueUnits.size() > 0);
 		
-		Set<String> uniqueFrequencies = DatabaseUtil.getUniqueNonNullColumnValues("frequency", "drug_order", String.class,
+		Set</*~~>*/String> uniqueFrequencies = DatabaseUtil.getUniqueNonNullColumnValues("frequency", "drug_order", /*~~>*/String.class,
 		    upgradeTestUtil.getConnection());
 		assertTrue(uniqueFrequencies.size() > 0);
 		
@@ -311,7 +311,7 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 		rows = DatabaseUtil.executeSQL(upgradeTestUtil.getConnection(),
 		    "select order_id from orders where orderer = (Select provider_id from provider where uuid ="
 		            + "(select property_value from global_property where property = '"
-		            + OpenmrsConstants.GP_UNKNOWN_PROVIDER_UUID + "'))",
+		            + /*~~>*/OpenmrsConstants.GP_UNKNOWN_PROVIDER_UUID + "'))",
 		    true);
 		
 		assertEquals(orderIdsWithNoOrderer.size(), rows.size());
@@ -328,7 +328,7 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 		
 		upgradeTestUtil.upgrade();
 		
-		List<Map<String, String>> drugs = upgradeTestUtil.select("drug", null, "strength");
+		List<Map</*~~>*/String, /*~~>*/String>> drugs = upgradeTestUtil.select("drug", null, "strength");
 		
 		assertThat(drugs.size(), Matchers.is(3));
 		assertTrue(drugs.get(0).containsValue("1.0tab(s)"));
@@ -344,7 +344,7 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 		createOrderEntryUpgradeFileWithTestData(
 		    "mg=111\ntab(s)=112\n1/day\\ x\\ 7\\ days/week=113\n2/day\\ x\\ 7\\ days/week=114");
 		
-		String errorMsgSubString = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201403262140-TRUNK-4265::wyclif";
+		/*~~>*/String errorMsgSubString = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201403262140-TRUNK-4265::wyclif";
 		IOException exception = assertThrows(IOException.class, () -> upgradeTestUtil.upgrade());
 		assertThat(exception.getMessage(), containsString(errorMsgSubString));
 	}
@@ -357,7 +357,7 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 		createOrderEntryUpgradeFileWithTestData(
 		    "mg=111\ntab(s)=112\n1/day\\ x\\ 7\\ days/week=113\n2/day\\ x\\ 7\\ days/week=114");
 		
-		String errorMsgSubString = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201403262140-TRUNK-4265::wyclif";
+		/*~~>*/String errorMsgSubString = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201403262140-TRUNK-4265::wyclif";
 		IOException exception = assertThrows(IOException.class, () -> upgradeTestUtil.upgrade());
 		assertThat(exception.getMessage(), containsString(errorMsgSubString));
 	}
@@ -371,7 +371,7 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 		createOrderEntryUpgradeFileWithTestData(
 		    "mg=111\ntab(s)=112\n1/day\\ x\\ 7\\ days/week=113\n2/day\\ x\\ 7\\ days/week=114");
 		
-		String errorMsgSubString = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201404091110::wyclif";
+		/*~~>*/String errorMsgSubString = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201404091110::wyclif";
 		IOException exception = assertThrows(IOException.class, () -> upgradeTestUtil.upgrade());
 		assertThat(exception.getLocalizedMessage(), containsString(errorMsgSubString));
 	}
@@ -428,7 +428,7 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 		createOrderEntryUpgradeFileWithTestData(
 		    "mg=111\ntab(s)=112\n1/day\\ x\\ 7\\ days/week=113\n2/day\\ x\\ 7\\ days/week=114");
 		
-		String errorMsgSubString = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201406262016::wyclif";
+		/*~~>*/String errorMsgSubString = "liquibase.exception.MigrationFailedException: Migration failed for change set liquibase-update-to-latest.xml::201406262016::wyclif";
 		IOException exception = assertThrows(IOException.class, () -> upgradeTestUtil.upgrade());
 		assertThat(exception.getMessage(), containsString(errorMsgSubString));
 	}
@@ -443,7 +443,7 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 		
 		upgradeTestUtil.upgrade();
 		
-		List<Map<String, String>> drug_orders = upgradeTestUtil.select("drug_order", "order_id = 6 or order_id = 7",
+		List<Map</*~~>*/String, /*~~>*/String>> drug_orders = upgradeTestUtil.select("drug_order", "order_id = 6 or order_id = 7",
 		    "order_id", "dose_units", "frequency");
 		
 		assertThat(drug_orders, containsInAnyOrder(row("order_id", "6", "dose_units", null, "frequency", null),
@@ -452,17 +452,17 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 	
 	@Test
 	public void shouldAddTheNecessaryPrivilegesAndAssignThemToSpecificRoles() throws Exception {
-		final String GET_ENCOUNTERS = "Get Encounters";
-		final String ADD_VISITS = "Add Visits";
-		final String ADD_ENCOUNTERS = "Add Encounters";
-		final String EDIT_ENCOUNTERS = "Edit Encounters";
-		final String GET_VISITS = "Get Visits";
-		final String GET_PROVIDERS = "Get Providers";
-		final String PROVIDER_ROLE = "Provider";
-		final String AUTHENTICATED_ROLE = "Authenticated";
+		final /*~~>*/String GET_ENCOUNTERS = "Get Encounters";
+		final /*~~>*/String ADD_VISITS = "Add Visits";
+		final /*~~>*/String ADD_ENCOUNTERS = "Add Encounters";
+		final /*~~>*/String EDIT_ENCOUNTERS = "Edit Encounters";
+		final /*~~>*/String GET_VISITS = "Get Visits";
+		final /*~~>*/String GET_PROVIDERS = "Get Providers";
+		final /*~~>*/String PROVIDER_ROLE = "Provider";
+		final /*~~>*/String AUTHENTICATED_ROLE = "Authenticated";
 		Connection connection = upgradeTestUtil.getConnection();
 		//Insert Get encounters privilege for testing purposes
-		final String insertPrivilegeQuery = "insert into privilege (privilege,uuid) values ('" + GET_ENCOUNTERS
+		final /*~~>*/String insertPrivilegeQuery = "insert into privilege (privilege,uuid) values ('" + GET_ENCOUNTERS
 		        + "','a6a521de-3992-11e6-899a-a4d646d86a8a')";
 		DatabaseUtil.executeSQL(connection, insertPrivilegeQuery, false);
 		//Assign some privileges to some roles for testing purposes
@@ -473,7 +473,7 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 		    false);
 		connection.commit();
 		
-		String query = "select privilege from privilege where privilege = '" + GET_VISITS + "' or " + "privilege = '"
+		/*~~>*/String query = "select privilege from privilege where privilege = '" + GET_VISITS + "' or " + "privilege = '"
 		        + GET_PROVIDERS + "'";
 		assertEquals(0, DatabaseUtil.executeSQL(connection, query, true).size());
 		assertTrue(roleHasPrivilege(PROVIDER_ROLE, GET_ENCOUNTERS));
@@ -492,8 +492,8 @@ public class Database1_9_7UpgradeIT extends BaseContextSensitiveTest {
 		assertTrue(roleHasPrivilege(AUTHENTICATED_ROLE, ADD_VISITS));
 	}
 	
-	private boolean roleHasPrivilege(String role, String privilege) {
-		final String query = "select * from role_privilege where role='" + role + "' and privilege ='" + privilege + "'";
+	private boolean roleHasPrivilege(/*~~>*/String role, /*~~>*/String privilege) {
+		final /*~~>*/String query = "select * from role_privilege where role='" + role + "' and privilege ='" + privilege + "'";
 		return DatabaseUtil.executeSQL(upgradeTestUtil.getConnection(), query, true).size() == 1;
 	}
 	

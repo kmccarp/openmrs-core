@@ -730,7 +730,7 @@ public class ConceptTest extends BaseContextSensitiveTest {
 		//preferred name in en_US
 		ConceptName preferredNameEN_US = createConceptName(3, "Aspirin", Locale.US, null, false);
 		testConcept.addName(preferredNameEN_US);
-		String fullySpecName = testConcept.getFullySpecifiedName(Locale.US).getName();
+		/*~~>*/String fullySpecName = testConcept.getFullySpecifiedName(Locale.US).getName();
 		//preferred name in en
 		ConceptName preferredNameEN = createConceptName(4, "Doctor", new Locale("en"), null, false);
 		testConcept.addName(preferredNameEN);
@@ -1033,7 +1033,7 @@ public class ConceptTest extends BaseContextSensitiveTest {
 	 * @param conceptNameType the conceptNameType of the concept
 	 * @param isLocalePreferred if this name should be marked as preferred in its locale
 	 */
-	private ConceptName createConceptName(int id, String name, Locale locale, ConceptNameType conceptNameType,
+	private ConceptName createConceptName(int id, /*~~>*/String name, Locale locale, ConceptNameType conceptNameType,
 	        Boolean isLocalePreferred) {
 		ConceptName result = new ConceptName();
 		result.setConceptNameId(id);

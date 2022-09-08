@@ -40,7 +40,7 @@ public class HibernateMedicationDispenseDAO implements MedicationDispenseDAO {
 	}
 
 	@Override
-	public MedicationDispense getMedicationDispenseByUuid(String uuid) {
+	public MedicationDispense getMedicationDispenseByUuid(/*~~>*/String uuid) {
 		return sessionFactory.getCurrentSession()
 			.createQuery("select md from MedicationDispense md where md.uuid = :uuid", MedicationDispense.class)
 			.setParameter("uuid", uuid)

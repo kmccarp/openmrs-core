@@ -31,9 +31,9 @@ public class ConceptProposalHandler implements SaveHandler<ConceptProposal> {
 	 *      java.util.Date, java.lang.String)
 	 */
 	@Override
-	public void handle(ConceptProposal cp, User creator, Date dateCreated, String other) {
+	public void handle(ConceptProposal cp, User creator, Date dateCreated, /*~~>*/String other) {
 		if (cp.getState() == null) {
-			cp.setState(OpenmrsConstants.CONCEPT_PROPOSAL_UNMAPPED);
+			cp.setState(/*~~>*/OpenmrsConstants.CONCEPT_PROPOSAL_UNMAPPED);
 		}
 		
 		// set the creator and date created

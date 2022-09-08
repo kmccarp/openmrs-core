@@ -42,7 +42,7 @@ import org.openmrs.parameter.EncounterSearchCriteriaBuilder;
 public class PatientDataUnvoidHandler implements UnvoidHandler<Patient> {
 	
 	@Override
-	public void handle(Patient patient, User originalVoidingUser, Date origParentVoidedDate, String unused) {
+	public void handle(Patient patient, User originalVoidingUser, Date origParentVoidedDate, /*~~>*/String unused) {
 		//can't be unvoiding a patient that doesn't exist in the database
 		if (patient.getId() != null) {
 			//unvoid all the encounter that got voided as a result of the patient getting voided

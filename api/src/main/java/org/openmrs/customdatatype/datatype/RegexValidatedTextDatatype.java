@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
  * @since 1.9
  */
 @Component
-public class RegexValidatedTextDatatype extends SerializingCustomDatatype<String> {
+public class RegexValidatedTextDatatype extends SerializingCustomDatatype</*~~>*/String> {
 	
 	private Pattern pattern;
 	
@@ -28,7 +28,7 @@ public class RegexValidatedTextDatatype extends SerializingCustomDatatype<String
 	 * @see org.openmrs.customdatatype.CustomDatatype#setConfiguration(java.lang.String)
 	 */
 	@Override
-	public void setConfiguration(String regex) {
+	public void setConfiguration(/*~~>*/String regex) {
 		pattern = Pattern.compile(regex);
 	}
 	
@@ -37,7 +37,7 @@ public class RegexValidatedTextDatatype extends SerializingCustomDatatype<String
 	 * <strong>Should</strong> fail if the string does not match the regex
 	 */
 	@Override
-	public String serialize(String typedValue) {
+	public /*~~>*/String serialize(/*~~>*/String typedValue) {
 		return typedValue;
 	}
 	
@@ -45,7 +45,7 @@ public class RegexValidatedTextDatatype extends SerializingCustomDatatype<String
 	 * @see org.openmrs.customdatatype.SerializingCustomDatatype#deserialize(java.lang.String)
 	 */
 	@Override
-	public String deserialize(String serializedValue) {
+	public /*~~>*/String deserialize(/*~~>*/String serializedValue) {
 		return serializedValue;
 	}
 	
@@ -55,7 +55,7 @@ public class RegexValidatedTextDatatype extends SerializingCustomDatatype<String
 	 * <strong>Should</strong> fail if the string does not match the regex
 	 */
 	@Override
-	public void validate(String typedValue) throws InvalidCustomValueException {
+	public void validate(/*~~>*/String typedValue) throws InvalidCustomValueException {
 		if (!pattern.matcher(typedValue).matches()) {
 			throw new InvalidCustomValueException("Doesn't match regex");
 		}

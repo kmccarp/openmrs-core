@@ -53,13 +53,13 @@ public class WorkflowCollectionEditor extends PropertyEditorSupport {
 	 * <strong>Should</strong> update workflows in program
 	 */
 	@Override
-	public void setAsText(String text) throws IllegalArgumentException {
+	public void setAsText(/*~~>*/String text) throws IllegalArgumentException {
 		if (StringUtils.hasText(text)) {
 			ConceptService cs = Context.getConceptService();
 			ProgramWorkflowService pws = Context.getProgramWorkflowService();
 			try {
 				int ind = text.indexOf(":");
-				String progIdStr = text.substring(0, ind);
+				/*~~>*/String progIdStr = text.substring(0, ind);
 				text = text.substring(ind + 1);
 				if (program == null) {
 					// if a program wasn't passed in, try to look it up now
@@ -68,11 +68,11 @@ public class WorkflowCollectionEditor extends PropertyEditorSupport {
 			}
 			catch (Exception ex) {}
 			
-			String[] conceptIds = text.split(" ");
+			/*~~>*/String[] conceptIds = text.split(" ");
 			Set<ProgramWorkflow> oldSet = program == null ? new HashSet<>() : program.getAllWorkflows();
 			Set<Integer> newConceptIds = new HashSet<>();
 			
-			for (String id : conceptIds) {
+			for (/*~~>*/String id : conceptIds) {
 				if (id.trim().length() == 0) {
 					continue;
 				}
@@ -113,7 +113,7 @@ public class WorkflowCollectionEditor extends PropertyEditorSupport {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public String getAsText() {
+	public /*~~>*/String getAsText() {
 		Collection<ProgramWorkflow> pws = (Collection<ProgramWorkflow>) getValue();
 		if (pws == null || pws.isEmpty()) {
 			return ":";

@@ -33,10 +33,10 @@ public class ModuleServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("In service method for module servlet: " + request.getPathInfo());
-		String servletName = request.getPathInfo();
+		/*~~>*/String servletName = request.getPathInfo();
 		int end = servletName.indexOf("/", 1);
 		
-		String moduleId = null;
+		/*~~>*/String moduleId = null;
 		if (end > 0) {
 			moduleId = servletName.substring(1, end);
 		}
@@ -77,17 +77,17 @@ public class ModuleServlet extends HttpServlet {
 	 */
 	public static class SimpleServletConfig implements ServletConfig {
 		
-		private String name;
+		private /*~~>*/String name;
 		
 		private ServletContext servletContext;
 		
-		public SimpleServletConfig(String name, ServletContext servletContext) {
-			this.name = name;
+		public SimpleServletConfig(/*~~>*/String name, ServletContext servletContext) {
+			/*~~>*/this.name = name;
 			this.servletContext = servletContext;
 		}
 		
 		@Override
-		public String getServletName() {
+		public /*~~>*/String getServletName() {
 			return name;
 		}
 		
@@ -98,7 +98,7 @@ public class ModuleServlet extends HttpServlet {
 		
 		// not implemented in a module's config.xml yet
 		@Override
-		public String getInitParameter(String paramName) {
+		public /*~~>*/String getInitParameter(/*~~>*/String paramName) {
 			return null;
 		}
 		

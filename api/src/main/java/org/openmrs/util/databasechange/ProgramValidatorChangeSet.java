@@ -38,7 +38,7 @@ public class ProgramValidatorChangeSet implements CustomTaskChange {
 	@Override
 	public void execute(Database database) throws CustomChangeException {
 		Connection conn = ((JdbcConnection) database.getConnection()).getUnderlyingConnection();
-		List<String> messages = new ArrayList<>();
+		List</*~~>*/String> messages = new ArrayList<>();
 		
 		// Warn if any states are configured as both initial and terminal
 		StringBuilder message = new StringBuilder();
@@ -91,8 +91,8 @@ public class ProgramValidatorChangeSet implements CustomTaskChange {
 			message.append("None found.");
 		} else {
 			for (Integer conceptId : missingInitial) {
-				String sql = "select min(name) from concept_name where concept_id = " + conceptId;
-				String name = DatabaseUtil.executeSQL(conn, sql, true).get(0).get(0).toString();
+				/*~~>*/String sql = "select min(name) from concept_name where concept_id = " + conceptId;
+				/*~~>*/String name = DatabaseUtil.executeSQL(conn, sql, true).get(0).get(0).toString();
 				message.append(name).append("<br/>");
 			}
 		}
@@ -105,7 +105,7 @@ public class ProgramValidatorChangeSet implements CustomTaskChange {
 	 * @see liquibase.change.custom.CustomChange#getConfirmationMessage()
 	 */
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished validating programs";
 	}
 	

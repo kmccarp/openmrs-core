@@ -57,7 +57,7 @@ public class Program extends BaseChangeableOpenmrsMetadata {
 	 *
 	 * @since 1.10
 	 */
-	public Program(String name) {
+	public Program(/*~~>*/String name) {
 		setName(name);
 	}
 	
@@ -104,7 +104,7 @@ public class Program extends BaseChangeableOpenmrsMetadata {
 	 * @return a {@link ProgramWorkflow} which has the passed <code>name</code> in any
 	 *         {@link Locale}
 	 */
-	public ProgramWorkflow getWorkflowByName(String name) {
+	public ProgramWorkflow getWorkflowByName(/*~~>*/String name) {
 		for (ProgramWorkflow pw : getAllWorkflows()) {
 			if (pw.getConcept().isNamed(name)) {
 				return pw;
@@ -115,7 +115,7 @@ public class Program extends BaseChangeableOpenmrsMetadata {
 	
 	/** @see Object#toString() */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "Program(id=" + getProgramId() + ", concept=" + getConcept() + ", workflows=" + getWorkflows() + ")";
 	}
 	

@@ -21,17 +21,17 @@ public class AddressTemplate extends LayoutTemplate implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public AddressTemplate(String string) {
+	public AddressTemplate(/*~~>*/String string) {
 		super(string);
 	}
 	
 	@Override
-	public String getLayoutToken() {
+	public /*~~>*/String getLayoutToken() {
 		return "IS_ADDR_TOKEN";
 	}
 	
 	@Override
-	public String getNonLayoutToken() {
+	public /*~~>*/String getNonLayoutToken() {
 		return "IS_NOT_ADDR_TOKEN";
 	}
 	
@@ -41,12 +41,12 @@ public class AddressTemplate extends LayoutTemplate implements Serializable {
 	}
 	
 	@Override
-	public String getCodeName() {
-		if (this.codeName == null) {
-			this.codeName = "default";
-			return this.codeName;
+	public /*~~>*/String getCodeName() {
+		if (/*~~>*/this.codeName == null) {
+			/*~~>*/this.codeName = "default";
+			return /*~~>*/this.codeName;
 		} else {
-			return this.codeName;
+			return /*~~>*/this.codeName;
 		}
 	}
 }

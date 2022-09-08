@@ -27,13 +27,13 @@ import org.hibernate.Hibernate;
 public abstract class BaseOpenmrsObject implements Serializable, OpenmrsObject {
 	
 	@Column(name = "uuid", unique = true, nullable = false, length = 38, updatable = false)
-	private String uuid = UUID.randomUUID().toString();
+	private /*~~>*/String uuid = UUID.randomUUID().toString();
 	
 	/**
 	 * @see org.openmrs.OpenmrsObject#getUuid()
 	 */
 	@Override
-	public String getUuid() {
+	public /*~~>*/String getUuid() {
 		return uuid;
 	}
 	
@@ -41,8 +41,8 @@ public abstract class BaseOpenmrsObject implements Serializable, OpenmrsObject {
 	 * @see org.openmrs.OpenmrsObject#setUuid(java.lang.String)
 	 */
 	@Override
-	public void setUuid(String uuid) {
-		this.uuid = uuid;
+	public void setUuid(/*~~>*/String uuid) {
+		/*~~>*/this.uuid = uuid;
 	}
 	
 	/**
@@ -110,7 +110,7 @@ public abstract class BaseOpenmrsObject implements Serializable, OpenmrsObject {
 	 * <strong>Should</strong> include uuid if not null
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append("hashCode",
 		    Integer.toHexString(hashCode())).append("uuid", getUuid()).build();
 	}

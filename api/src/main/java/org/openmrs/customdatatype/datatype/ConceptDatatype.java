@@ -28,7 +28,7 @@ public class ConceptDatatype extends BaseOpenmrsDatatype<Concept> {
 	 * @override
 	 */
 	@Override
-	public Concept deserialize(String uuid) {
+	public Concept deserialize(/*~~>*/String uuid) {
 		if (StringUtils.isBlank(uuid)) {
 			return null;
 		}
@@ -41,7 +41,7 @@ public class ConceptDatatype extends BaseOpenmrsDatatype<Concept> {
 	 */
 	@Override
 	public Summary doGetTextSummary(Concept concept) {
-		String name = "";
+		/*~~>*/String name = "";
 		if (concept != null && concept.getName() != null) {
 			name = concept.getName().getName();
 		}

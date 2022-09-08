@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class CohortEditorTest extends BasePropertyEditorTest<Cohort, CohortEditor> {
 	
-	protected static final String COHORT_XML = "org/openmrs/api/include/CohortServiceTest-cohort.xml";
+	protected static final /*~~>*/String COHORT_XML = "org/openmrs/api/include/CohortServiceTest-cohort.xml";
 	
 	private static final Integer EXISTING_ID = 1;
 	

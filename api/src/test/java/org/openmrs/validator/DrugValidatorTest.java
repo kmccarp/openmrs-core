@@ -39,7 +39,7 @@ public class DrugValidatorTest extends BaseContextSensitiveTest {
 	@Autowired
 	private ConceptService conceptService;
 	
-	protected static final String GET_DRUG_MAPPINGS = "org/openmrs/api/include/ConceptServiceTest-getDrugMappings.xml";
+	protected static final /*~~>*/String GET_DRUG_MAPPINGS = "org/openmrs/api/include/ConceptServiceTest-getDrugMappings.xml";
 	
 	@BeforeEach
 	public void executeDrugMappingsDataSet() {

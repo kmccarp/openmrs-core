@@ -32,7 +32,7 @@ public class GlobalLocaleList implements GlobalPropertyListener {
 	@Override
 	public void globalPropertyChanged(GlobalProperty newValue) {
 		allowedLocales = new LinkedHashSet<>();
-		for (String allowedLocaleString : newValue.getPropertyValue().split(",")) {
+		for (/*~~>*/String allowedLocaleString : newValue.getPropertyValue().split(",")) {
 			Locale allowedLocale = LocaleUtility.fromSpecification(allowedLocaleString.trim());
 			if (allowedLocale != null) {
 				allowedLocales.add(allowedLocale);
@@ -44,7 +44,7 @@ public class GlobalLocaleList implements GlobalPropertyListener {
 	 * @see org.openmrs.api.GlobalPropertyListener#globalPropertyDeleted(java.lang.String)
 	 */
 	@Override
-	public void globalPropertyDeleted(String propertyName) {
+	public void globalPropertyDeleted(/*~~>*/String propertyName) {
 		allowedLocales = null;
 	}
 	
@@ -52,8 +52,8 @@ public class GlobalLocaleList implements GlobalPropertyListener {
 	 * @see org.openmrs.api.GlobalPropertyListener#supportsPropertyName(java.lang.String)
 	 */
 	@Override
-	public boolean supportsPropertyName(String propertyName) {
-		return OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST.equals(propertyName);
+	public boolean supportsPropertyName(/*~~>*/String propertyName) {
+		return /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOCALE_ALLOWED_LIST.equals(propertyName);
 	}
 	
 	/**

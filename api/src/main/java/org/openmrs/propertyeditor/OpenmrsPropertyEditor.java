@@ -29,10 +29,10 @@ public abstract class OpenmrsPropertyEditor<T extends OpenmrsObject> extends Pro
 	
 	protected abstract T getObjectById(Integer id);
 	
-	protected abstract T getObjectByUuid(String uuid);
+	protected abstract T getObjectByUuid(/*~~>*/String uuid);
 	
 	@Override
-	public void setAsText(String text) throws IllegalArgumentException {
+	public void setAsText(/*~~>*/String text) throws IllegalArgumentException {
 		if (StringUtils.isNotBlank(text)) {
 			try {
 				setValue(getObjectById(Integer.valueOf(text)));
@@ -50,7 +50,7 @@ public abstract class OpenmrsPropertyEditor<T extends OpenmrsObject> extends Pro
 	}
 	
 	@Override
-	public String getAsText() {
+	public /*~~>*/String getAsText() {
 		T t = (T) getValue();
 		if (t == null) {
 			return "";

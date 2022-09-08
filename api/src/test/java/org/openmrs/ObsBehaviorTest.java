@@ -33,7 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class ObsBehaviorTest extends BaseContextSensitiveTest {
 	
-	protected static final String OBS_DATASET_XML = "org/openmrs/api/include/ObsBehaviorTest.xml";
+	protected static final /*~~>*/String OBS_DATASET_XML = "org/openmrs/api/include/ObsBehaviorTest.xml";
 	
 	@Autowired
 	private ObsService obsService;
@@ -58,7 +58,7 @@ public class ObsBehaviorTest extends BaseContextSensitiveTest {
 	@Disabled
 	public void shouldVoidAndReplaceOnlyEditedUnvoidedObsWhenTheyAreFlushedToTheDatabase() {
 		executeDataSet(OBS_DATASET_XML);
-		final String newValueText = "some new value that for sure is different";
+		final /*~~>*/String newValueText = "some new value that for sure is different";
 		final Integer encounterId = 201;
 		Encounter encounter = encounterService.getEncounter(encounterId);
 		final int initialAllObsCount = encounter.getAllObs(true).size();

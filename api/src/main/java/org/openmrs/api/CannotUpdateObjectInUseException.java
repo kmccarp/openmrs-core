@@ -18,15 +18,15 @@ package org.openmrs.api;
  */
 public class CannotUpdateObjectInUseException extends InvalidOperationOnObjectException {
 	
-	public CannotUpdateObjectInUseException(String message) {
+	public CannotUpdateObjectInUseException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public CannotUpdateObjectInUseException(String message, Throwable cause) {
+	public CannotUpdateObjectInUseException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	
-	public CannotUpdateObjectInUseException(String messageKey, Object[] parameters) {
+	public CannotUpdateObjectInUseException(/*~~>*/String messageKey, Object[] parameters) {
 		super(messageKey, parameters);
 	}
 	

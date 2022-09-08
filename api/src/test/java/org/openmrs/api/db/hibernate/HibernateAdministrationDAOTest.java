@@ -41,14 +41,14 @@ public class HibernateAdministrationDAOTest extends BaseContextSensitiveTest {
 	@Test
 	public void validate_shouldFailValidationForLocationClassIfFieldLengthsAreNotCorrect() {
 		Location location = new Location();
-		String longString = "too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text";
+		/*~~>*/String longString = "too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text";
 		
-		String[] LocationFields = new String[] { "name", "description", "address1", "address2", "address3", "address4",
+		/*~~>*/String[] LocationFields = new /*~~>*/String[] { "name", "description", "address1", "address2", "address3", "address4",
 		        "address5", "address6", "address7", "address8", "address9", "address10", "address11", "address12",
 		        "address13", "address14", "address15", "cityVillage", "stateProvince", "country", "postalCode", "latitude",
 		        "longitude", "countyDistrict", "retireReason" };
 		
-		String errorCode = "error.exceededMaxLengthOfField";
+		/*~~>*/String errorCode = "error.exceededMaxLengthOfField";
 		
 		location.setName(longString);
 		location.setDescription(longString);
@@ -79,7 +79,7 @@ public class HibernateAdministrationDAOTest extends BaseContextSensitiveTest {
 		Errors errors = new BindException(location, "location");
 		dao.validate(location, errors);
 		
-		for (String feilds : LocationFields) {
+		for (/*~~>*/String feilds : LocationFields) {
 			FieldError fielderror = errors.getFieldError(feilds);
 			assertTrue(errorCode.equals(fielderror.getCode()));
 		}
@@ -91,15 +91,15 @@ public class HibernateAdministrationDAOTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validate_shouldFailValidationIfFieldLengthsAreNotCorrect() {
-		String errorCode = "error.exceededMaxLengthOfField";
-		String[] RoleFeilds = new String[] { "role", "description" };
+		/*~~>*/String errorCode = "error.exceededMaxLengthOfField";
+		/*~~>*/String[] RoleFeilds = new /*~~>*/String[] { "role", "description" };
 		Role role = new Role();
 		role.setRole("too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text");
 		role.setDescription("too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text too long text");
 		Errors errors = new BindException(role, "type");
 		dao.validate(role, errors);
 		
-		for (String feilds : RoleFeilds) {
+		for (/*~~>*/String feilds : RoleFeilds) {
 			FieldError fielderror = errors.getFieldError(feilds);
 			assertTrue(errorCode.equals(fielderror.getCode()));
 		}

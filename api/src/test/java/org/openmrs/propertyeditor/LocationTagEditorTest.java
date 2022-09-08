@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class LocationTagEditorTest extends BasePropertyEditorTest<LocationTag, LocationTagEditor> {
 	
-	protected static final String LOC_INITIAL_DATA_XML = "org/openmrs/api/include/LocationServiceTest-initialData.xml";
+	protected static final /*~~>*/String LOC_INITIAL_DATA_XML = "org/openmrs/api/include/LocationServiceTest-initialData.xml";
 	
 	private static final Integer EXISTING_ID = 1;
 	

@@ -39,7 +39,7 @@ public interface LogicContext {
 	 * @throws LogicException
 	 * @see org.openmrs.logic.LogicService#eval(Integer, String)
 	 */
-	public Result eval(Integer patientId, String token) throws LogicException;
+	public Result eval(Integer patientId, /*~~>*/String token) throws LogicException;
 	
 	/**
 	 * Evaluate a rule with parameters for a single patient
@@ -51,7 +51,7 @@ public interface LogicContext {
 	 * @throws LogicException
 	 * @see org.openmrs.logic.LogicService#eval(Integer, String, Map)
 	 */
-	public Result eval(Integer patientId, String token, Map<String, Object> parameters) throws LogicException;
+	public Result eval(Integer patientId, /*~~>*/String token, Map</*~~>*/String, Object> parameters) throws LogicException;
 	
 	/**
 	 * Evaluate a rule with criteria and parameters for a single patient
@@ -63,7 +63,7 @@ public interface LogicContext {
 	 * @throws LogicException
 	 * @see org.openmrs.logic.LogicService#eval(Integer, LogicCriteria, Map)
 	 */
-	public Result eval(Integer patientId, LogicCriteria criteria, Map<String, Object> parameters) throws LogicException;
+	public Result eval(Integer patientId, LogicCriteria criteria, Map</*~~>*/String, Object> parameters) throws LogicException;
 	
 	/**
 	 * Fetches a logic data source by name
@@ -71,7 +71,7 @@ public interface LogicContext {
 	 * @param name
 	 * @return the requested <code>LogicDataSource</code>
 	 */
-	public LogicDataSource getLogicDataSource(String name);
+	public LogicDataSource getLogicDataSource(/*~~>*/String name);
 	
 	/**
 	 * Reads a key from a logic data source
@@ -82,7 +82,7 @@ public interface LogicContext {
 	 * @return <code>Result</code> of the read operation
 	 * @throws LogicException
 	 */
-	public Result read(Integer patientId, LogicDataSource dataSource, String key) throws LogicException;
+	public Result read(Integer patientId, LogicDataSource dataSource, /*~~>*/String key) throws LogicException;
 	
 	/**
 	 * Reads a key from a logic data source
@@ -92,7 +92,7 @@ public interface LogicContext {
 	 * @return <code>Result</code> of the read operation
 	 * @throws LogicException
 	 */
-	public Result read(Integer patientId, String key) throws LogicException;
+	public Result read(Integer patientId, /*~~>*/String key) throws LogicException;
 	
 	/**
 	 * Reads a key with criteria from a logic data source
@@ -141,7 +141,7 @@ public interface LogicContext {
 	 * @param value
 	 * @return the value of the parameter that was set
 	 */
-	public Object setGlobalParameter(String id, Object value);
+	public Object setGlobalParameter(/*~~>*/String id, Object value);
 	
 	/**
 	 * Fetches a global parameter value by name
@@ -149,10 +149,10 @@ public interface LogicContext {
 	 * @param id
 	 * @return The requested Global parameter <code>Object</code>
 	 */
-	public Object getGlobalParameter(String id);
+	public Object getGlobalParameter(/*~~>*/String id);
 	
 	/**
 	 * @return all global parameters defined within this logic context
 	 */
-	public Collection<String> getGlobalParameters();
+	public Collection</*~~>*/String> getGlobalParameters();
 }

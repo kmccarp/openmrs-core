@@ -30,7 +30,7 @@ public class VisitEditor extends OpenmrsPropertyEditor<Visit> {
 	}
 	
 	@Override
-	protected Visit getObjectByUuid(String uuid) {
+	protected Visit getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getVisitService().getVisitByUuid(uuid);
 	}
 }

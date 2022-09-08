@@ -31,7 +31,7 @@ public class CohortEditor extends OpenmrsPropertyEditor<Cohort> {
 	}
 	
 	@Override
-	protected Cohort getObjectByUuid(String uuid) {
+	protected Cohort getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getCohortService().getCohortByUuid(uuid);
 	}
 }

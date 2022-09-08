@@ -20,25 +20,25 @@ import org.openmrs.patient.UnallowedIdentifierException;
  */
 public abstract class BaseHyphenatedIdentifierValidator implements IdentifierValidator {
 	
-	protected abstract int getCheckDigit(String undecoratedIdentifier);
+	protected abstract int getCheckDigit(/*~~>*/String undecoratedIdentifier);
 	
 	/**
 	 * @see org.openmrs.patient.IdentifierValidator#getAllowedCharacters()
 	 */
 	@Override
-	public abstract String getAllowedCharacters();
+	public abstract /*~~>*/String getAllowedCharacters();
 	
 	/**
 	 * @see org.openmrs.patient.IdentifierValidator#getName()
 	 */
 	@Override
-	public abstract String getName();
+	public abstract /*~~>*/String getName();
 	
 	/**
 	 * @see org.openmrs.patient.IdentifierValidator#getValidIdentifier(java.lang.String)
 	 */
 	@Override
-	public String getValidIdentifier(String undecoratedIdentifier) throws UnallowedIdentifierException {
+	public /*~~>*/String getValidIdentifier(/*~~>*/String undecoratedIdentifier) throws UnallowedIdentifierException {
 		
 		checkAllowedIdentifier(undecoratedIdentifier);
 		
@@ -51,7 +51,7 @@ public abstract class BaseHyphenatedIdentifierValidator implements IdentifierVal
 	 * @see org.openmrs.patient.IdentifierValidator#isValid(java.lang.String)
 	 */
 	@Override
-	public boolean isValid(String identifier) throws UnallowedIdentifierException {
+	public boolean isValid(/*~~>*/String identifier) throws UnallowedIdentifierException {
 		
 		if (identifier.indexOf("-") < 1) {
 			throw new UnallowedIdentifierException(
@@ -64,13 +64,13 @@ public abstract class BaseHyphenatedIdentifierValidator implements IdentifierVal
 							+ "\" must not end with a hyphen - a check digit character (A-J) must follow.");
 		}
 		
-		String idWithoutCheckDigit = identifier.substring(0, identifier.indexOf("-"));
+		/*~~>*/String idWithoutCheckDigit = identifier.substring(0, identifier.indexOf("-"));
 		
 		checkAllowedIdentifier(idWithoutCheckDigit);
 		
 		int computedCheckDigit = getCheckDigit(idWithoutCheckDigit);
 		
-		String checkDigit = identifier.substring(identifier.indexOf("-") + 1);
+		/*~~>*/String checkDigit = identifier.substring(identifier.indexOf("-") + 1);
 		
 		if (checkDigit.length() != 1) {
 			throw new UnallowedIdentifierException("Identifier must have a check digit of length 1.");
@@ -125,7 +125,7 @@ public abstract class BaseHyphenatedIdentifierValidator implements IdentifierVal
 	 * @throws UnallowedIdentifierException if identifier contains unallowed characters or is
 	 *             otherwise invalid.
 	 */
-	protected void checkAllowedIdentifier(String undecoratedIdentifier) throws UnallowedIdentifierException {
+	protected void checkAllowedIdentifier(/*~~>*/String undecoratedIdentifier) throws UnallowedIdentifierException {
 		if (undecoratedIdentifier == null) {
 			throw new UnallowedIdentifierException("Identifier can not be null.");
 		}

@@ -28,7 +28,7 @@ import org.xml.sax.InputSource;
 
 public class ModuleFilterDefinitionTest {
 	
-	public static Document getDocument(String xmlString) {
+	public static Document getDocument(/*~~>*/String xmlString) {
 		try {
 			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
@@ -56,7 +56,7 @@ public class ModuleFilterDefinitionTest {
 	 */
 	@Test
 	public void retrieveFilterDefinitions_shouldReturnEmptyListIfNoFilterNodes() {
-		String xmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+		/*~~>*/String xmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 						 + "<data></data>";
 		Module module = new Module("test");
 		module.setConfig(getDocument(xmlString));
@@ -71,7 +71,7 @@ public class ModuleFilterDefinitionTest {
 	 */
 	@Test
 	public void retrieveFilterDefinitions_shouldReturnListOfSizeOneUsingInitParams() {
-		String xmlString = "<?xml version =\"1.0\" encoding=\"UTF-8\"?>\n"
+		/*~~>*/String xmlString = "<?xml version =\"1.0\" encoding=\"UTF-8\"?>\n"
 						 + "<data><filter>\n"
 						 + "	<init-param>\n"
 						 + "		<param-name>test</param-name>\n"
@@ -92,7 +92,7 @@ public class ModuleFilterDefinitionTest {
 	 */
 	@Test
 	public void retrieveFilterDefinitions_shouldReturnListOfSizeOneUsingFilterNameAndClass() {
-		String xmlString = "<?xml version =\"1.0\" encoding=\"UTF-8\"?>\n"
+		/*~~>*/String xmlString = "<?xml version =\"1.0\" encoding=\"UTF-8\"?>\n"
 						 + "<data><filter>\n"
 						 + "	<filter-name>test</filter-name>\n"
 						 + "	<filter-class>123</filter-class>\n"

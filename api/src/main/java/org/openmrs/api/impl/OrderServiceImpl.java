@@ -84,7 +84,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	
 	private static final Logger log = LoggerFactory.getLogger(OrderServiceImpl.class);
 	
-	private static final String ORDER_NUMBER_PREFIX = "ORD-";
+	private static final /*~~>*/String ORDER_NUMBER_PREFIX = "ORD-";
 	
 	protected OrderDAO dao;
 	
@@ -192,9 +192,9 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 				asOfDate = order.getDateActivated();
 			}
 			List<Order> activeOrders = getActiveOrders(order.getPatient(), null, order.getCareSetting(), asOfDate);
-			List<String> parallelOrders = Collections.emptyList();
+			List</*~~>*/String> parallelOrders = Collections.emptyList();
 			if (orderContext != null && orderContext.getAttribute(PARALLEL_ORDERS) != null) {
-				parallelOrders = Arrays.asList((String[]) orderContext.getAttribute(PARALLEL_ORDERS));
+				parallelOrders = Arrays.asList((/*~~>*//*~~>*/String[]) orderContext.getAttribute(PARALLEL_ORDERS));
 			}
 			for (Order activeOrder : activeOrders) {
 				//Reject if there is an active drug order for the same orderable with overlapping schedule
@@ -251,13 +251,13 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 			orderType = getOrderTypeByConcept(order.getConcept());
 		}
 		if (orderType == null && order instanceof DrugOrder) {
-			orderType = Context.getOrderService().getOrderTypeByUuid(OrderType.DRUG_ORDER_TYPE_UUID);
+			orderType = Context.getOrderService().getOrderTypeByUuid(/*~~>*/OrderType.DRUG_ORDER_TYPE_UUID);
 		}
 		if (orderType == null && order instanceof TestOrder) {
-			orderType = Context.getOrderService().getOrderTypeByUuid(OrderType.TEST_ORDER_TYPE_UUID);
+			orderType = Context.getOrderService().getOrderTypeByUuid(/*~~>*/OrderType.TEST_ORDER_TYPE_UUID);
 		}
 		if (orderType == null && order instanceof ReferralOrder) {
-			orderType = Context.getOrderService().getOrderTypeByUuid(OrderType.REFERRAL_ORDER_TYPE_UUID);
+			orderType = Context.getOrderService().getOrderTypeByUuid(/*~~>*/OrderType.REFERRAL_ORDER_TYPE_UUID);
 		}
 		if (orderType == null) {
 			throw new OrderEntryException("Order.type.cannot.determine");
@@ -296,7 +296,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 		        && !OpenmrsUtil.nullSafeEquals(firstOrder.getPreviousOrder(), secondOrder)
 		        && OrderUtil.checkScheduleOverlap(firstOrder, secondOrder)
 		        && firstOrder.getOrderType().equals(
-		            Context.getOrderService().getOrderTypeByUuid(OrderType.DRUG_ORDER_TYPE_UUID));
+		            Context.getOrderService().getOrderTypeByUuid(/*~~>*/OrderType.DRUG_ORDER_TYPE_UUID));
 	}
 
 	private boolean isDrugOrder(Order order) {
@@ -345,7 +345,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 		return dao.saveOrder(order);
 	}
 	
-	private void setProperty(Order order, String propertyName, Object value) {
+	private void setProperty(Order order, /*~~>*/String propertyName, Object value) {
 		Boolean isAccessible = null;
 		Field field = null;
 		try {
@@ -371,8 +371,8 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 */
 	private OrderNumberGenerator getOrderNumberGenerator() {
 		if (orderNumberGenerator == null) {
-			String generatorBeanId = Context.getAdministrationService().getGlobalProperty(
-			    OpenmrsConstants.GP_ORDER_NUMBER_GENERATOR_BEAN_ID);
+			/*~~>*/String generatorBeanId = Context.getAdministrationService().getGlobalProperty(
+			    /*~~>*/OpenmrsConstants.GP_ORDER_NUMBER_GENERATOR_BEAN_ID);
 			if (StringUtils.hasText(generatorBeanId)) {
 				orderNumberGenerator = Context.getRegisteredComponent(generatorBeanId, OrderNumberGenerator.class);
 				log.info("Successfully set the configured order number generator");
@@ -484,7 +484,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 * @see org.openmrs.api.OrderService#voidOrder(org.openmrs.Order, java.lang.String)
 	 */
 	@Override
-	public Order voidOrder(Order order, String voidReason) throws APIException {
+	public Order voidOrder(Order order, /*~~>*/String voidReason) throws APIException {
 		if (!StringUtils.hasLength(voidReason)) {
 			throw new IllegalArgumentException("voidReason cannot be empty or null");
 		}
@@ -505,7 +505,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 		Order previousOrder = order.getPreviousOrder();
 		if (previousOrder != null && isDiscontinueOrReviseOrder(order)) {
 			if (!previousOrder.isActive()) {
-				final String action = DISCONTINUE == order.getAction() ? "discontinuation" : "revision";
+				final /*~~>*/String action = DISCONTINUE == order.getAction() ? "discontinuation" : "revision";
 				throw new CannotUnvoidOrderException(action);
 			}
 			stopOrder(previousOrder, aMomentBefore(order.getDateActivated()), false);
@@ -515,13 +515,13 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	}
 	
 	@Override
-	public Order updateOrderFulfillerStatus(Order order, Order.FulfillerStatus orderFulfillerStatus, String fullFillerComment) {
+	public Order updateOrderFulfillerStatus(Order order, Order.FulfillerStatus orderFulfillerStatus, /*~~>*/String fullFillerComment) {
 		return updateOrderFulfillerStatus(order, orderFulfillerStatus, fullFillerComment, null);
 	}
 
 	@Override
-	public Order updateOrderFulfillerStatus(Order order, FulfillerStatus orderFulfillerStatus, String fullFillerComment,
-											String accessionNumber) {
+	public Order updateOrderFulfillerStatus(Order order, FulfillerStatus orderFulfillerStatus, /*~~>*/String fullFillerComment,
+											/*~~>*/String accessionNumber) {
 
 		if (orderFulfillerStatus != null) {
 			order.setFulfillerStatus(orderFulfillerStatus);
@@ -589,7 +589,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Order getOrderByUuid(String uuid) throws APIException {
+	public Order getOrderByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getOrderByUuid(uuid);
 	}
 	
@@ -615,7 +615,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 * @param orderContext
 	 */
 	@Override
-	public String getNewOrderNumber(OrderContext orderContext) throws APIException {
+	public /*~~>*/String getNewOrderNumber(OrderContext orderContext) throws APIException {
 		return ORDER_NUMBER_PREFIX + Context.getOrderService().getNextOrderNumberSeedSequenceValue();
 	}
 	
@@ -624,7 +624,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Order getOrderByOrderNumber(String orderNumber) {
+	public Order getOrderByOrderNumber(/*~~>*/String orderNumber) {
 		return dao.getOrderByOrderNumber(orderNumber);
 	}
 	
@@ -661,7 +661,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Order> getOrderHistoryByOrderNumber(String orderNumber) {
+	public List<Order> getOrderHistoryByOrderNumber(/*~~>*/String orderNumber) {
 		List<Order> orders = new ArrayList<>();
 		Order order = dao.getOrderByOrderNumber(orderNumber);
 		while (order != null) {
@@ -705,7 +705,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 * @see org.openmrs.api.OrderService#getCareSettingByUuid(String)
 	 */
 	@Override
-	public CareSetting getCareSettingByUuid(String uuid) {
+	public CareSetting getCareSettingByUuid(/*~~>*/String uuid) {
 		return dao.getCareSettingByUuid(uuid);
 	}
 	
@@ -713,7 +713,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 * @see org.openmrs.api.OrderService#getCareSettingByName(String)
 	 */
 	@Override
-	public CareSetting getCareSettingByName(String name) {
+	public CareSetting getCareSettingByName(/*~~>*/String name) {
 		return dao.getCareSettingByName(name);
 	}
 	
@@ -729,7 +729,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 * @see OrderService#getOrderTypeByName(String)
 	 */
 	@Override
-	public OrderType getOrderTypeByName(String orderTypeName) {
+	public OrderType getOrderTypeByName(/*~~>*/String orderTypeName) {
 		return dao.getOrderTypeByName(orderTypeName);
 	}
 	
@@ -745,7 +745,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 * @see OrderService#getOrderFrequencyByUuid(String)
 	 */
 	@Override
-	public OrderFrequency getOrderFrequencyByUuid(String uuid) {
+	public OrderFrequency getOrderFrequencyByUuid(/*~~>*/String uuid) {
 		return dao.getOrderFrequencyByUuid(uuid);
 	}
 	
@@ -761,7 +761,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 * @see OrderService#getOrderFrequencies(String, java.util.Locale, boolean, boolean)
 	 */
 	@Override
-	public List<OrderFrequency> getOrderFrequencies(String searchPhrase, Locale locale, boolean exactLocale,
+	public List<OrderFrequency> getOrderFrequencies(/*~~>*/String searchPhrase, Locale locale, boolean exactLocale,
 	                                                boolean includeRetired) {
 		if (searchPhrase == null) {
 			throw new IllegalArgumentException("searchPhrase is required");
@@ -793,7 +793,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 *      org.openmrs.Provider, org.openmrs.Encounter)
 	 */
 	@Override
-	public Order discontinueOrder(Order orderToDiscontinue, String reasonNonCoded, Date discontinueDate, Provider orderer,
+	public Order discontinueOrder(Order orderToDiscontinue, /*~~>*/String reasonNonCoded, Date discontinueDate, Provider orderer,
 	                              Encounter encounter) {
 		if (discontinueDate == null) {
 			discontinueDate = aMomentBefore(new Date());
@@ -855,7 +855,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 *      java.lang.String)
 	 */
 	@Override
-	public OrderFrequency retireOrderFrequency(OrderFrequency orderFrequency, String reason) {
+	public OrderFrequency retireOrderFrequency(OrderFrequency orderFrequency, /*~~>*/String reason) {
 		return dao.saveOrderFrequency(orderFrequency);
 	}
 	
@@ -893,8 +893,8 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 * @see GlobalPropertyListener#supportsPropertyName(String)
 	 */
 	@Override
-	public boolean supportsPropertyName(String propertyName) {
-		return OpenmrsConstants.GP_ORDER_NUMBER_GENERATOR_BEAN_ID.equals(propertyName);
+	public boolean supportsPropertyName(/*~~>*/String propertyName) {
+		return /*~~>*/OpenmrsConstants.GP_ORDER_NUMBER_GENERATOR_BEAN_ID.equals(propertyName);
 	}
 	
 	/**
@@ -909,7 +909,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 * @see GlobalPropertyListener#globalPropertyDeleted(String)
 	 */
 	@Override
-	public void globalPropertyDeleted(String propertyName) {
+	public void globalPropertyDeleted(/*~~>*/String propertyName) {
 		setOrderNumberGenerator(null);
 	}
 	
@@ -935,7 +935,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public OrderType getOrderTypeByUuid(String uuid) {
+	public OrderType getOrderTypeByUuid(/*~~>*/String uuid) {
 		return dao.getOrderTypeByUuid(uuid);
 	}
 	
@@ -971,7 +971,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 * @see org.openmrs.api.OrderService#retireOrderType(org.openmrs.OrderType, String)
 	 */
 	@Override
-	public OrderType retireOrderType(OrderType orderType, String reason) {
+	public OrderType retireOrderType(OrderType orderType, /*~~>*/String reason) {
 		return saveOrderType(orderType);
 	}
 	
@@ -1026,20 +1026,20 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	@Override
 	@Transactional(readOnly = true)
 	public List<Concept> getDrugRoutes() {
-		return getSetMembersOfConceptSetFromGP(OpenmrsConstants.GP_DRUG_ROUTES_CONCEPT_UUID);
+		return getSetMembersOfConceptSetFromGP(/*~~>*/OpenmrsConstants.GP_DRUG_ROUTES_CONCEPT_UUID);
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
 	public List<Concept> getDrugDosingUnits() {
-		return getSetMembersOfConceptSetFromGP(OpenmrsConstants.GP_DRUG_DOSING_UNITS_CONCEPT_UUID);
+		return getSetMembersOfConceptSetFromGP(/*~~>*/OpenmrsConstants.GP_DRUG_DOSING_UNITS_CONCEPT_UUID);
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
 	public List<Concept> getDrugDispensingUnits() {
 		List<Concept> dispensingUnits = new ArrayList<>(
-				getSetMembersOfConceptSetFromGP(OpenmrsConstants.GP_DRUG_DISPENSING_UNITS_CONCEPT_UUID));
+				getSetMembersOfConceptSetFromGP(/*~~>*/OpenmrsConstants.GP_DRUG_DISPENSING_UNITS_CONCEPT_UUID));
 		for (Concept concept : getDrugDosingUnits()) {
 			if (!dispensingUnits.contains(concept)) {
 				dispensingUnits.add(concept);
@@ -1051,7 +1051,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	@Override
 	@Transactional(readOnly = true)
 	public List<Concept> getDurationUnits() {
-		return getSetMembersOfConceptSetFromGP(OpenmrsConstants.GP_DURATION_UNITS_CONCEPT_UUID);
+		return getSetMembersOfConceptSetFromGP(/*~~>*/OpenmrsConstants.GP_DURATION_UNITS_CONCEPT_UUID);
 	}
 	
 	/**
@@ -1059,12 +1059,12 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 */
 	@Override
 	public List<Concept> getTestSpecimenSources() {
-		return getSetMembersOfConceptSetFromGP(OpenmrsConstants.GP_TEST_SPECIMEN_SOURCES_CONCEPT_UUID);
+		return getSetMembersOfConceptSetFromGP(/*~~>*/OpenmrsConstants.GP_TEST_SPECIMEN_SOURCES_CONCEPT_UUID);
 	}
 	
 	@Override
 	public Concept getNonCodedDrugConcept() {
-		String conceptUuid = Context.getAdministrationService().getGlobalProperty(OpenmrsConstants.GP_DRUG_ORDER_DRUG_OTHER);
+		/*~~>*/String conceptUuid = Context.getAdministrationService().getGlobalProperty(/*~~>*/OpenmrsConstants.GP_DRUG_ORDER_DRUG_OTHER);
 		if (StringUtils.hasText(conceptUuid)) {
 			return Context.getConceptService().getConceptByUuid(conceptUuid);
 		}
@@ -1073,7 +1073,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	
 	@Override
 	@Transactional(readOnly = true)
-	public OrderGroup getOrderGroupByUuid(String uuid) throws APIException {
+	public OrderGroup getOrderGroupByUuid(/*~~>*/String uuid) throws APIException {
 		return dao.getOrderGroupByUuid(uuid);
 	}
 	
@@ -1083,8 +1083,8 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 		return dao.getOrderGroupById(orderGroupId);
 	}
 	
-	private List<Concept> getSetMembersOfConceptSetFromGP(String globalProperty) {
-		String conceptUuid = Context.getAdministrationService().getGlobalProperty(globalProperty);
+	private List<Concept> getSetMembersOfConceptSetFromGP(/*~~>*/String globalProperty) {
+		/*~~>*/String conceptUuid = Context.getAdministrationService().getGlobalProperty(globalProperty);
 		Concept concept = Context.getConceptService().getConceptByUuid(conceptUuid);
 		if (concept != null && concept.getSet()) {
 			return concept.getSetMembers();
@@ -1124,7 +1124,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public OrderGroupAttributeType getOrderGroupAttributeTypeByUuid(String uuid)throws APIException {
+	public OrderGroupAttributeType getOrderGroupAttributeTypeByUuid(/*~~>*/String uuid)throws APIException {
 		return dao.getOrderGroupAttributeTypeByUuid(uuid);
 	}
 	
@@ -1140,7 +1140,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 * @see org.openmrs.api.OrderService#retireOrderGroupAttributeType()
 	 */
 	@Override
-	public OrderGroupAttributeType retireOrderGroupAttributeType(OrderGroupAttributeType orderGroupAttributeType, String reason)throws APIException {
+	public OrderGroupAttributeType retireOrderGroupAttributeType(OrderGroupAttributeType orderGroupAttributeType, /*~~>*/String reason)throws APIException {
 		return Context.getOrderService().saveOrderGroupAttributeType(orderGroupAttributeType);
 	}
 
@@ -1165,7 +1165,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public OrderGroupAttributeType getOrderGroupAttributeTypeByName(String orderGroupAttributeTypeName)throws APIException {
+	public OrderGroupAttributeType getOrderGroupAttributeTypeByName(/*~~>*/String orderGroupAttributeTypeName)throws APIException {
 		return dao.getOrderGroupAttributeTypeByName(orderGroupAttributeTypeName);
 	}
 
@@ -1174,7 +1174,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public OrderGroupAttribute getOrderGroupAttributeByUuid(String uuid)throws APIException {
+	public OrderGroupAttribute getOrderGroupAttributeByUuid(/*~~>*/String uuid)throws APIException {
 		return dao.getOrderGroupAttributeByUuid(uuid);
 	}
 
@@ -1201,7 +1201,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public OrderAttributeType getOrderAttributeTypeByUuid(String uuid)throws APIException {
+	public OrderAttributeType getOrderAttributeTypeByUuid(/*~~>*/String uuid)throws APIException {
 		return dao.getOrderAttributeTypeByUuid(uuid);
 	}
 
@@ -1217,7 +1217,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 * @see org.openmrs.api.OrderService#retireOrderAttributeType(OrderAttributeType)
 	 */
 	@Override
-	public OrderAttributeType retireOrderAttributeType(OrderAttributeType orderAttributeType, String reason)throws APIException {
+	public OrderAttributeType retireOrderAttributeType(OrderAttributeType orderAttributeType, /*~~>*/String reason)throws APIException {
 		return Context.getOrderService().saveOrderAttributeType(orderAttributeType);
 	}
 
@@ -1242,7 +1242,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public OrderAttributeType getOrderAttributeTypeByName(String orderAttributeTypeName)throws APIException {
+	public OrderAttributeType getOrderAttributeTypeByName(/*~~>*/String orderAttributeTypeName)throws APIException {
 		return dao.getOrderAttributeTypeByName(orderAttributeTypeName);
 	}
 
@@ -1251,7 +1251,7 @@ public class OrderServiceImpl extends BaseOpenmrsService implements OrderService
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public OrderAttribute getOrderAttributeByUuid(String uuid)throws APIException {
+	public OrderAttribute getOrderAttributeByUuid(/*~~>*/String uuid)throws APIException {
 		return dao.getOrderAttributeByUuid(uuid);
 	}
 }

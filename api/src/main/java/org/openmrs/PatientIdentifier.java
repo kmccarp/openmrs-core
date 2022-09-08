@@ -54,12 +54,12 @@ public class PatientIdentifier extends BaseChangeableOpenmrsData implements java
 	private Patient patient;
 
 	@Fields({
-			@Field(name = "identifierPhrase", analyzer = @Analyzer(definition = LuceneAnalyzers.PHRASE_ANALYZER), boost = @Boost(8f)),
-			@Field(name = "identifierExact", analyzer = @Analyzer(definition = LuceneAnalyzers.EXACT_ANALYZER), boost = @Boost(4f)),
-			@Field(name = "identifierStart", analyzer = @Analyzer(definition = LuceneAnalyzers.START_ANALYZER), boost = @Boost(2f)),
-			@Field(name = "identifierAnywhere", analyzer = @Analyzer(definition = LuceneAnalyzers.ANYWHERE_ANALYZER))
+			@Field(name = "identifierPhrase", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.PHRASE_ANALYZER), boost = @Boost(8f)),
+			@Field(name = "identifierExact", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.EXACT_ANALYZER), boost = @Boost(4f)),
+			@Field(name = "identifierStart", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.START_ANALYZER), boost = @Boost(2f)),
+			@Field(name = "identifierAnywhere", analyzer = @Analyzer(definition = /*~~>*/LuceneAnalyzers.ANYWHERE_ANALYZER))
 	})
-	private String identifier;
+	private /*~~>*/String identifier;
 
 	@IndexedEmbedded(includeEmbeddedObjectId = true)
 	private PatientIdentifierType identifierType;
@@ -83,8 +83,8 @@ public class PatientIdentifier extends BaseChangeableOpenmrsData implements java
 	 * @param type PatientIdentifierType
 	 * @param location Location of the identifier
 	 */
-	public PatientIdentifier(String identifier, PatientIdentifierType type, Location location) {
-		this.identifier = identifier;
+	public PatientIdentifier(/*~~>*/String identifier, PatientIdentifierType type, Location location) {
+		/*~~>*/this.identifier = identifier;
 		this.identifierType = type;
 		this.location = location;
 	}
@@ -102,12 +102,12 @@ public class PatientIdentifier extends BaseChangeableOpenmrsData implements java
 		boolean returnValue = true;
 		
 		// these are the methods to compare.
-		String[] methods = { "getIdentifier", "getIdentifierType", "getLocation" };
+		/*~~>*/String[] methods = { "getIdentifier", "getIdentifierType", "getLocation" };
 		
 		Class<? extends PatientIdentifier> identifierClass = this.getClass();
 		
 		// loop over all of the selected methods and compare this and other
-		for (String methodName : methods) {
+		for (/*~~>*/String methodName : methods) {
 			try {
 				Method method = identifierClass.getMethod(methodName);
 				
@@ -136,15 +136,15 @@ public class PatientIdentifier extends BaseChangeableOpenmrsData implements java
 	/**
 	 * @return Returns the identifier.
 	 */
-	public String getIdentifier() {
+	public /*~~>*/String getIdentifier() {
 		return identifier;
 	}
 	
 	/**
 	 * @param identifier The identifier to set.
 	 */
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
+	public void setIdentifier(/*~~>*/String identifier) {
+		/*~~>*/this.identifier = identifier;
 	}
 	
 	/**
@@ -190,8 +190,8 @@ public class PatientIdentifier extends BaseChangeableOpenmrsData implements java
 	}
 	
 	@Override
-	public String toString() {
-		return this.identifier;
+	public /*~~>*/String toString() {
+		return /*~~>*/this.identifier;
 	}
 	
 	/**

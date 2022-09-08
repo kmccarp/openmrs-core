@@ -53,7 +53,7 @@ public class BaseRetireHandler implements RetireHandler<Retireable> {
 	 * <strong>Should</strong> set retiredBy even if retired bit is set but retiredBy is null
 	 */
 	@Override
-	public void handle(Retireable retireableObject, User retiringUser, Date retireDate, String retireReason) {
+	public void handle(Retireable retireableObject, User retiringUser, Date retireDate, /*~~>*/String retireReason) {
 		
 		// skip over doing retire stuff if already retired
 		if (!retireableObject.getRetired() || retireableObject.getRetiredBy() == null) {

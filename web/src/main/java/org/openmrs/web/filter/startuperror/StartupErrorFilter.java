@@ -45,7 +45,7 @@ public class StartupErrorFilter extends StartupFilter {
 	/**
 	 * The velocity macro page to redirect to if an error occurs or on initial startup
 	 */
-	private static final String DEFAULT_PAGE = "generalerror.vm";
+	private static final /*~~>*/String DEFAULT_PAGE = "generalerror.vm";
 	
 	/**
 	 * Called by {@link #doFilter(ServletRequest, ServletResponse, FilterChain)} on GET requests
@@ -95,7 +95,7 @@ public class StartupErrorFilter extends StartupFilter {
 				Context.closeSession();
 			}
 			
-			Map<String, Object> map = new HashMap<>();
+			Map</*~~>*/String, Object> map = new HashMap<>();
 			map.put("success", Boolean.TRUE);
 			renderTemplate("coremoduleerror.vm", map, httpResponse);
 			
@@ -124,7 +124,7 @@ public class StartupErrorFilter extends StartupFilter {
 	 * @see org.openmrs.web.filter.StartupFilter#getTemplatePrefix()
 	 */
 	@Override
-	protected String getTemplatePrefix() {
+	protected /*~~>*/String getTemplatePrefix() {
 		return "org/openmrs/web/filter/startuperror/";
 	}
 	

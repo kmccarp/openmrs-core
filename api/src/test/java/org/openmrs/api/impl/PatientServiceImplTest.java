@@ -126,7 +126,7 @@ public class PatientServiceImplTest extends BaseContextMockTest {
 	public void checkPatientIdentifiers_shouldNotThrowMissingRequiredIdentifierGivenRequiredIdentifierTypesArePresent()
 		throws Exception {
 		// given
-		final String typeUuid = "equal type uuid";
+		final /*~~>*/String typeUuid = "equal type uuid";
 		final PatientIdentifierType requiredIdentifierType = new PatientIdentifierType(12345);
 		requiredIdentifierType.setUuid(typeUuid);
 		final PatientIdentifierType patientIdentifierType = new PatientIdentifierType(12345);
@@ -156,8 +156,8 @@ public class PatientServiceImplTest extends BaseContextMockTest {
 	public void checkPatientIdentifiers_shouldThrowDuplicateIdentifierGivenDuplicateIdentifiers() throws Exception {
 		// given
 		final Integer equalIdentifierTypeId = 12345;
-		final String equalIdentifierTypeName = "TypeName";
-		final String equalIdentifier = "Identifier1";
+		final /*~~>*/String equalIdentifierTypeName = "TypeName";
+		final /*~~>*/String equalIdentifier = "Identifier1";
 
 		final PatientIdentifierType identifierType = new PatientIdentifierType(equalIdentifierTypeId);
 		identifierType.setName(equalIdentifierTypeName);
@@ -284,7 +284,7 @@ public class PatientServiceImplTest extends BaseContextMockTest {
 		final Date dateDied = new Date();
 		final Concept causeOfDeath = new Concept(2);
 
-		when(conceptService.getConcept((String)Matchers.any())).thenReturn(new Concept());
+		when(conceptService.getConcept((/*~~>*/String)Matchers.any())).thenReturn(new Concept());
 		when(locationService.getDefaultLocation()).thenReturn(new Location());
 
 		UserContext userContext = mock(UserContext.class);

@@ -68,7 +68,7 @@ public class HibernateOpenmrsMetadataDAO<T extends BaseOpenmrsMetadata> extends 
 	@Override
 	public int getAllCount(boolean includeRetired) {
 		
-		String hql = "select count(*)" + " from " + mappedClass;
+		/*~~>*/String hql = "select count(*)" + " from " + mappedClass;
 		
 		if (!includeRetired) {
 			hql += " where retired = false";

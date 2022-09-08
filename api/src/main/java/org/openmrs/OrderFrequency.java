@@ -24,7 +24,7 @@ public class OrderFrequency extends BaseChangeableOpenmrsMetadata {
 	
 	private Double frequencyPerDay;
 	
-	private String uuid;
+	private /*~~>*/String uuid;
 	
 	private Concept concept;
 	
@@ -59,13 +59,13 @@ public class OrderFrequency extends BaseChangeableOpenmrsMetadata {
 	 * Get the uuid
 	 */
 	@Override
-	public String getUuid() {
+	public /*~~>*/String getUuid() {
 		return uuid;
 	}
 	
 	@Override
-	public void setUuid(String uuid) {
-		this.uuid = uuid;
+	public void setUuid(/*~~>*/String uuid) {
+		/*~~>*/this.uuid = uuid;
 	}
 	
 	/**
@@ -102,7 +102,7 @@ public class OrderFrequency extends BaseChangeableOpenmrsMetadata {
 	 * @see BaseOpenmrsMetadata#getDescription()
 	 */
 	@Override
-	public String getName() {
+	public /*~~>*/String getName() {
 		if (getConcept() != null && getConcept().getName() != null) {
 			return getConcept().getName().toString();
 		}
@@ -113,7 +113,7 @@ public class OrderFrequency extends BaseChangeableOpenmrsMetadata {
 	 * @see org.openmrs.BaseOpenmrsMetadata#getName()
 	 */
 	@Override
-	public String getDescription() {
+	public /*~~>*/String getDescription() {
 		if (getConcept() != null && getConcept().getDescription() != null) {
 			return getConcept().getDescription().getDescription();
 		}
@@ -121,7 +121,7 @@ public class OrderFrequency extends BaseChangeableOpenmrsMetadata {
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return getName();
 	}
 }

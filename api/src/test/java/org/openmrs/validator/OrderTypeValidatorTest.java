@@ -188,7 +188,7 @@ public class OrderTypeValidatorTest extends BaseContextSensitiveTest {
 	public void validate_shouldBeInvokedWhenAnOrderTypeIsSaved() {
 		OrderType orderType = orderService.getOrderType(1);
 		orderType.setName(null);
-		String expectedMsg = "'" + orderType + "' failed to validate with reason: name: " + Context.getMessageSourceService().getMessage("error.name");
+		/*~~>*/String expectedMsg = "'" + orderType + "' failed to validate with reason: name: " + Context.getMessageSourceService().getMessage("error.name");
 		APIException exception = assertThrows(APIException.class, () -> orderService.saveOrderType(orderType));
 		assertThat(exception.getMessage(), is(expectedMsg));
 	}

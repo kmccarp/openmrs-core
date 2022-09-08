@@ -27,7 +27,7 @@ public class ChangeLogDetectiveTest {
 	
 	@Test
 	public void shouldGetSnapshotVersionsInDescendingOrder() {
-		Map<String, List<String>> snapshotCombinations = new HashMap<>();
+		Map</*~~>*/String, List</*~~>*/String>> snapshotCombinations = new HashMap<>();
 		snapshotCombinations.put("1.9.x", null);
 		snapshotCombinations.put("2.4.x", null);
 		snapshotCombinations.put("2.1.x", null);
@@ -35,8 +35,8 @@ public class ChangeLogDetectiveTest {
 		snapshotCombinations.put("2.3.x", null);
 		
 		ChangeLogDetective changeLogDetective = new ChangeLogDetective();
-		List<String> actual = changeLogDetective.getSnapshotVersionsInDescendingOrder(snapshotCombinations);
-		List<String> expected = Arrays.asList("2.4.x", "2.3.x", "2.2.x", "2.1.x", "1.9.x");
+		List</*~~>*/String> actual = changeLogDetective.getSnapshotVersionsInDescendingOrder(snapshotCombinations);
+		List</*~~>*/String> expected = Arrays.asList("2.4.x", "2.3.x", "2.2.x", "2.1.x", "1.9.x");
 		
 		assertEquals(expected, actual);
 	}

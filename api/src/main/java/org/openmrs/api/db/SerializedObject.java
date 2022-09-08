@@ -19,13 +19,13 @@ public class SerializedObject extends BaseChangeableOpenmrsMetadata {
 	
 	private Integer id;
 	
-	private String type;
+	private /*~~>*/String type;
 	
-	private String subtype;
+	private /*~~>*/String subtype;
 	
 	private Class<? extends OpenmrsSerializer> serializationClass;
 	
-	private String serializedData;
+	private /*~~>*/String serializedData;
 	
 	/**
 	 * Default Constructor
@@ -39,7 +39,7 @@ public class SerializedObject extends BaseChangeableOpenmrsMetadata {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "Serialized " + subtype + " named <" + getName() + ">";
 	}
 	
@@ -64,29 +64,29 @@ public class SerializedObject extends BaseChangeableOpenmrsMetadata {
 	/**
 	 * @return the type
 	 */
-	public String getType() {
+	public /*~~>*/String getType() {
 		return type;
 	}
 	
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(String type) {
-		this.type = type;
+	public void setType(/*~~>*/String type) {
+		/*~~>*/this.type = type;
 	}
 	
 	/**
 	 * @return the subtype
 	 */
-	public String getSubtype() {
+	public /*~~>*/String getSubtype() {
 		return subtype;
 	}
 	
 	/**
 	 * @param subtype the subtype to set
 	 */
-	public void setSubtype(String subtype) {
-		this.subtype = subtype;
+	public void setSubtype(/*~~>*/String subtype) {
+		/*~~>*/this.subtype = subtype;
 	}
 	
 	/**
@@ -106,15 +106,15 @@ public class SerializedObject extends BaseChangeableOpenmrsMetadata {
 	/**
 	 * @return the serializedData
 	 */
-	public String getSerializedData() {
+	public /*~~>*/String getSerializedData() {
 		return serializedData;
 	}
 	
 	/**
 	 * @param serializedData the serializedData to set
 	 */
-	public void setSerializedData(String serializedData) {
-		this.serializedData = serializedData;
+	public void setSerializedData(/*~~>*/String serializedData) {
+		/*~~>*/this.serializedData = serializedData;
 	}
 	
 }

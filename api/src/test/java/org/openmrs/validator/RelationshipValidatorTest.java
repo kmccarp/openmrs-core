@@ -40,7 +40,7 @@ public class RelationshipValidatorTest extends BaseContextSensitiveTest {
 		Relationship relationship = new Relationship(1);
 		relationship.setStartDate(Context.getDateFormat().parse("18/02/2012"));
 		relationship.setEndDate(Context.getDateFormat().parse("18/02/2001"));
-		Map<String, String> map = new HashMap<>();
+		Map</*~~>*/String, /*~~>*/String> map = new HashMap<>();
 		MapBindingResult errors = new MapBindingResult(map, Relationship.class.getName());
 		new RelationshipValidator().validate(relationship, errors);
 		assertTrue(errors.hasErrors());
@@ -55,7 +55,7 @@ public class RelationshipValidatorTest extends BaseContextSensitiveTest {
 		Relationship relationship = new Relationship(1);
 		relationship.setStartDate(Context.getDateFormat().parse("18/02/2012"));
 		relationship.setEndDate(Context.getDateFormat().parse("18/03/2012"));
-		Map<String, String> map = new HashMap<>();
+		Map</*~~>*/String, /*~~>*/String> map = new HashMap<>();
 		MapBindingResult errors = new MapBindingResult(map, Relationship.class.getName());
 		new RelationshipValidator().validate(relationship, errors);
 		assertFalse(errors.hasErrors());
@@ -69,7 +69,7 @@ public class RelationshipValidatorTest extends BaseContextSensitiveTest {
 		Relationship relationship = new Relationship(1);
 		relationship.setVoidReason("voidReason");
 		
-		Map<String, String> map = new HashMap<>();
+		Map</*~~>*/String, /*~~>*/String> map = new HashMap<>();
 		MapBindingResult errors = new MapBindingResult(map, Relationship.class.getName());
 		new RelationshipValidator().validate(relationship, errors);
 		assertFalse(errors.hasErrors());
@@ -95,7 +95,7 @@ public class RelationshipValidatorTest extends BaseContextSensitiveTest {
 	@Test
 	public void validate_shouldFailIfStartDateIsInFuture() {
 		Relationship relationship = new Relationship(1);
-		Map<String, String> map = new HashMap<>();
+		Map</*~~>*/String, /*~~>*/String> map = new HashMap<>();
 		MapBindingResult errors = new MapBindingResult(map, Relationship.class.getName());
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.YEAR, 1);
@@ -111,7 +111,7 @@ public class RelationshipValidatorTest extends BaseContextSensitiveTest {
 	@Test
 	public void validate_shouldPassIfStartDateIsNotInFuture() {
 		Relationship relationship = new Relationship(1);
-		Map<String, String> map = new HashMap<>();
+		Map</*~~>*/String, /*~~>*/String> map = new HashMap<>();
 		MapBindingResult errors = new MapBindingResult(map, Relationship.class.getName());
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.YEAR, -1);
@@ -126,7 +126,7 @@ public class RelationshipValidatorTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void validate_shouldPassIfStartDateIsEmpty() {
-		Map<String, String> map = new HashMap<>();
+		Map</*~~>*/String, /*~~>*/String> map = new HashMap<>();
 		MapBindingResult errors = new MapBindingResult(map, Relationship.class.getName());
 		Relationship relationship = new Relationship(1);
 		relationship.setStartDate(null);

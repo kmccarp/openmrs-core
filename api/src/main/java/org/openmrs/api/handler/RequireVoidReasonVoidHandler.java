@@ -42,7 +42,7 @@ public class RequireVoidReasonVoidHandler implements VoidHandler<Voidable> {
 	 * <strong>Should</strong> not throw Exception if voidReason is null for unsupported types
 	 */
 	@Override
-	public void handle(Voidable voidableObject, User voidingUser, Date voidedDate, String voidReason) {
+	public void handle(Voidable voidableObject, User voidingUser, Date voidedDate, /*~~>*/String voidReason) {
 		
 		if (StringUtils.isBlank(voidReason)) {
 			throw new IllegalArgumentException("The 'reason' argument is required");

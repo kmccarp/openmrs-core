@@ -57,7 +57,7 @@ public class ReflectTest {
 		assertFalse(reflect.hasField(normalClassField));
 	}
 	
-	private Field findFieldByName(List<Field> fields, String name) {
+	private Field findFieldByName(List<Field> fields, /*~~>*/String name) {
 		for (Field field : fields) {
 			if (name.equals(field.getName())) {
 				return field;
@@ -242,14 +242,14 @@ public class ReflectTest {
 
 class NormalClass {
 	
-	private String normalClassField;
+	private /*~~>*/String normalClassField;
 	
-	public String getNormalClassField() {
+	public /*~~>*/String getNormalClassField() {
 		return normalClassField;
 	}
 	
-	public void setNormalClassField(String normalClassField) {
-		this.normalClassField = normalClassField;
+	public void setNormalClassField(/*~~>*/String normalClassField) {
+		/*~~>*/this.normalClassField = normalClassField;
 	}
 }
 
@@ -258,7 +258,7 @@ class OpenmrsObjectImp extends NormalClass implements OpenmrsObject {
 	protected Collection<BaseOpenmrsObject> subClassField;
 	
 	@SuppressWarnings("unused")
-	private String nonCollectionField;
+	private /*~~>*/String nonCollectionField;
 	
 	Collection genericCollectionField;
 	
@@ -268,7 +268,7 @@ class OpenmrsObjectImp extends NormalClass implements OpenmrsObject {
 	}
 	
 	@Override
-	public String getUuid() {
+	public /*~~>*/String getUuid() {
 		return null;
 	}
 	
@@ -277,7 +277,7 @@ class OpenmrsObjectImp extends NormalClass implements OpenmrsObject {
 	}
 	
 	@Override
-	public void setUuid(String uuid) {
+	public void setUuid(/*~~>*/String uuid) {
 	}
 	
 }

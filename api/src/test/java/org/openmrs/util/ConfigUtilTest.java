@@ -88,7 +88,7 @@ public class ConfigUtilTest extends BaseContextSensitiveTest {
 	public void shouldDetermineIfRuntimePropertyIsDefined() {
 		assertFalse(ConfigUtil.hasRuntimeProperty("undefined.property"));
 		int numMatches = 0;
-		for (String property : Context.getRuntimeProperties().stringPropertyNames()) {
+		for (/*~~>*/String property : Context.getRuntimeProperties().stringPropertyNames()) {
 			assertTrue(ConfigUtil.hasRuntimeProperty(property));
 			numMatches++;
 		}
@@ -100,7 +100,7 @@ public class ConfigUtilTest extends BaseContextSensitiveTest {
 		assertThat(ConfigUtil.getRuntimeProperty("undefined.property"), nullValue());
 		int numMatches = 0;
 		Properties properties = Context.getRuntimeProperties();
-		for (String property : properties.stringPropertyNames()) {
+		for (/*~~>*/String property : properties.stringPropertyNames()) {
 			assertThat(ConfigUtil.getRuntimeProperty(property), is(properties.getProperty(property)));
 			numMatches++;
 		}
@@ -113,7 +113,7 @@ public class ConfigUtilTest extends BaseContextSensitiveTest {
 	public void shouldDetermineIfSystemPropertyIsDefined() {
 		assertFalse(ConfigUtil.hasSystemProperty("undefined.property"));
 		int numMatches = 0;
-		for (String property : System.getProperties().stringPropertyNames()) {
+		for (/*~~>*/String property : System.getProperties().stringPropertyNames()) {
 			assertTrue(ConfigUtil.hasSystemProperty(property));
 			numMatches++;
 		}
@@ -125,7 +125,7 @@ public class ConfigUtilTest extends BaseContextSensitiveTest {
 		assertThat(ConfigUtil.getSystemProperty("undefined.property"), nullValue());
 		int numMatches = 0;
 		Properties properties = System.getProperties();
-		for (String property : properties.stringPropertyNames()) {
+		for (/*~~>*/String property : properties.stringPropertyNames()) {
 			assertThat(ConfigUtil.getSystemProperty(property), is(properties.getProperty(property)));
 			numMatches++;
 		}

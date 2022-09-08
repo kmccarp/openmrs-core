@@ -26,7 +26,7 @@ public class VerhoeffIdentifierValidatorTest {
 	
 	private VerhoeffIdentifierValidator validator = new VerhoeffIdentifierValidator();
 	
-	private String[] allowedIdentifiers = { "12345678", "87654321", "11111111", "64537218", "00000000" };
+	private /*~~>*/String[] allowedIdentifiers = { "12345678", "87654321", "11111111", "64537218", "00000000" };
 	
 	private char[] allowedIdentifiersCheckDigits = { 'G', 'E', 'B', 'A', 'B' };
 	
@@ -34,7 +34,7 @@ public class VerhoeffIdentifierValidatorTest {
 	
 	private char unusedCheckDigit = 'C';
 	
-	private String[] invalidIdentifiers = { "", " ", "-", "adsfalasdf-adfasdf", "ABC DEF", "!234*", "++", " ABC", "def ",
+	private /*~~>*/String[] invalidIdentifiers = { "", " ", "-", "adsfalasdf-adfasdf", "ABC DEF", "!234*", "++", " ABC", "def ",
 	        "ab32kcdak3", "chaseisreallycoolyay", "1", "moose", "MOOSE", "MooSE", "adD3Eddf429daD999" };
 
 	private static final int EXPECTED_RAW_IDENTIFIER_LENGTH = 8;
@@ -56,7 +56,7 @@ public class VerhoeffIdentifierValidatorTest {
 	@Test
 	public void getValidIdentifier_shouldFailWithInvalidIdentifiers() {
 		//Make sure invalid identifiers throw an exception
-		for (String invalidIdentifier: invalidIdentifiers) {
+		for (/*~~>*/String invalidIdentifier: invalidIdentifiers) {
 			try {
 				validator.getValidIdentifier(invalidIdentifier);
 				fail("Identifier " + invalidIdentifier + " should have failed.");
@@ -79,14 +79,14 @@ public class VerhoeffIdentifierValidatorTest {
 	@Test
 	public void isValid_shouldFailWithInvalidIdentifiers() {
 		//Make sure invalid identifiers throw an exception
-		for (String invalidIdentifier: invalidIdentifiers) {
+		for (/*~~>*/String invalidIdentifier: invalidIdentifiers) {
 			assertThrows(Exception.class, () -> validator.isValid(invalidIdentifier));
 		}
 	}
 
 	@Test
 	public void isValid_shouldFailWithInvalidSuffixes() {
-		for (String allowedIdentifier : allowedIdentifiers) {
+		for (/*~~>*/String allowedIdentifier : allowedIdentifiers) {
 			assertThrows(Exception.class, () -> validator.isValid(allowedIdentifier + "-X"));
 			assertThrows(Exception.class, () -> validator.isValid(allowedIdentifier + "-10"));
 		}
@@ -103,7 +103,7 @@ public class VerhoeffIdentifierValidatorTest {
 	@Test
 	public void isValid_shouldFailWithIncorrectlyCalculatedSuffixes() {
 		// Test allowed identifiers that just have the wrong check digit.
-		for (String allowedIdentifier : allowedIdentifiers) {
+		for (/*~~>*/String allowedIdentifier : allowedIdentifiers) {
 			assertFalse(validator.isValid(allowedIdentifier + "-" + unusedCheckDigit));
 		}
 	}
@@ -118,16 +118,16 @@ public class VerhoeffIdentifierValidatorTest {
 	@Test
 	public void checkDigit_shouldChangeWhenAdjacentCharsAreTransposed() {
 		VerhoeffIdentifierValidator validator = new VerhoeffIdentifierValidator();
-		String test;
+		/*~~>*/String test;
 		int checkDigit;
-		String pre;
-		String post;
+		/*~~>*/String pre;
+		/*~~>*/String post;
 		int failures = 0;
 		StringBuilder failureMsg = new StringBuilder();
 		char c;
 		char d;
-		final String lineSeparator = System.getProperty("line.separator");
-		for (String allowedIdentifier: allowedIdentifiers) {
+		final /*~~>*/String lineSeparator = System.getProperty("line.separator");
+		for (/*~~>*/String allowedIdentifier: allowedIdentifiers) {
 			for (int i = 0; i < allowedIdentifier.length(); i++) {
 				checkDigit = validator.getCheckDigit(allowedIdentifier);
 				for (int j = 1; j < allowedIdentifier.length(); j++) {

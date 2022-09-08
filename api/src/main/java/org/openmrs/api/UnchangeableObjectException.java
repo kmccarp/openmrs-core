@@ -20,15 +20,15 @@ public class UnchangeableObjectException extends InvalidOperationOnObjectExcepti
 		this("Cannot update an unchangeable object");
 	}
 	
-	public UnchangeableObjectException(String message) {
+	public UnchangeableObjectException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public UnchangeableObjectException(String message, Throwable cause) {
+	public UnchangeableObjectException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	
-	public UnchangeableObjectException(String messageKey, Object[] parameters) {
+	public UnchangeableObjectException(/*~~>*/String messageKey, Object[] parameters) {
 		super(messageKey, parameters);
 	}
 	

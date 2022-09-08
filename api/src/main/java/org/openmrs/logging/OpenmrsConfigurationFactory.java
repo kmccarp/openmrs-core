@@ -45,17 +45,17 @@ import org.slf4j.LoggerFactory;
  *     <li>Allows the <tt>log.level</tt> setting to override logger settings</li>
  * </ul>
  */
-@Plugin(name = "OpenmrsConfigurationFactory", category = ConfigurationFactory.CATEGORY)
+@Plugin(name = "OpenmrsConfigurationFactory", category = /*~~>*/ConfigurationFactory.CATEGORY)
 @Order(10)
 @SuppressWarnings("unused")
 public class OpenmrsConfigurationFactory extends ConfigurationFactory {
 	
 	private static final org.slf4j.Logger log = LoggerFactory.getLogger(OpenmrsConfigurationFactory.class);
 	
-	public static final String[] SUFFIXES = new String[] { ".xml", ".yml", ".yaml", ".json", "*" };
+	public static final /*~~>*/String[] SUFFIXES = new /*~~>*/String[] { ".xml", ".yml", ".yaml", ".json", "*" };
 	
 	@Override
-	public Configuration getConfiguration(LoggerContext loggerContext, String name, URI configLocation) {
+	public Configuration getConfiguration(LoggerContext loggerContext, /*~~>*/String name, URI configLocation) {
 		if (!isActive()) {
 			return null;
 		}
@@ -66,7 +66,7 @@ public class OpenmrsConfigurationFactory extends ConfigurationFactory {
 				OpenmrsUtil.getDirectoryInApplicationDataDirectory("configuration"),
 				OpenmrsUtil.getApplicationDataDirectoryAsFile()
  			}) {
-				for (String suffix : getSupportedTypes()) {
+				for (/*~~>*/String suffix : getSupportedTypes()) {
 					if (suffix.equals("*")) {
 						continue;
 					}
@@ -99,13 +99,13 @@ public class OpenmrsConfigurationFactory extends ConfigurationFactory {
 	}
 	
 	@Override
-	protected String[] getSupportedTypes() {
+	protected /*~~>*//*~~>*/String[] getSupportedTypes() {
 		return SUFFIXES;
 	}
 	
 	protected static void doOpenmrsCustomisations(AbstractConfiguration configuration) {
 		// if we don't have an in-memory appender, add it
-		MemoryAppender memoryAppender = configuration.getAppender(OpenmrsConstants.MEMORY_APPENDER_NAME);
+		MemoryAppender memoryAppender = configuration.getAppender(/*~~>*/OpenmrsConstants.MEMORY_APPENDER_NAME);
 		if (memoryAppender == null) {
 			memoryAppender = MemoryAppender.newBuilder().build();
 			memoryAppender.start();
@@ -114,7 +114,7 @@ public class OpenmrsConfigurationFactory extends ConfigurationFactory {
 		}
 		
 		LoggerConfig rootLogger = configuration.getRootLogger();
-		if (rootLogger.getAppenders().get(OpenmrsConstants.MEMORY_APPENDER_NAME) == null) {
+		if (rootLogger.getAppenders().get(/*~~>*/OpenmrsConstants.MEMORY_APPENDER_NAME) == null) {
 			rootLogger.addAppender(memoryAppender, null, memoryAppender.getFilter());
 		}
 		
@@ -130,48 +130,48 @@ public class OpenmrsConfigurationFactory extends ConfigurationFactory {
 	}
 	
 	private static void applyLogLevels(AbstractConfiguration configuration, AdministrationService adminService) {
-		String logLevel = adminService.getGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_LOG_LEVEL, "");
+		/*~~>*/String logLevel = adminService.getGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_LOG_LEVEL, "");
 		
-		for (String level : logLevel.split(",")) {
-			String[] classAndLevel = level.split(":");
+		for (/*~~>*/String level : logLevel.split(",")) {
+			/*~~>*/String[] classAndLevel = level.split(":");
 			if (classAndLevel.length == 0) {
 				break;
 			} else if (classAndLevel.length == 1) {
-				applyLogLevel(configuration, OpenmrsConstants.LOG_CLASS_DEFAULT, classAndLevel[0].trim());
+				applyLogLevel(configuration, /*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT, classAndLevel[0].trim());
 			} else {
 				applyLogLevel(configuration, classAndLevel[0].trim(), classAndLevel[1].trim());
 			}
 		}
 	}
 	
-	private static void applyLogLevel(AbstractConfiguration configuration, @NotNull String loggerName, String loggerLevel) {
+	private static void applyLogLevel(AbstractConfiguration configuration, @NotNull /*~~>*/String loggerName, /*~~>*/String loggerLevel) {
 		if (StringUtils.isBlank(loggerLevel)) {
 			return;
 		}
 		
 		if (loggerName == null) {
-			loggerName = OpenmrsConstants.LOG_CLASS_DEFAULT;
+			loggerName = /*~~>*/OpenmrsConstants.LOG_CLASS_DEFAULT;
 		}
 		
 		LoggerConfig loggerConfig = configuration.getLogger(loggerName);
 		if (loggerConfig != null) {
 			switch (loggerLevel.toLowerCase(Locale.ROOT)) {
-				case OpenmrsConstants.LOG_LEVEL_TRACE:
+				case /*~~>*/OpenmrsConstants.LOG_LEVEL_TRACE:
 					loggerConfig.setLevel(Level.TRACE);
 					break;
-				case OpenmrsConstants.LOG_LEVEL_DEBUG:
+				case /*~~>*/OpenmrsConstants.LOG_LEVEL_DEBUG:
 					loggerConfig.setLevel(Level.DEBUG);
 					break;
-				case OpenmrsConstants.LOG_LEVEL_INFO:
+				case /*~~>*/OpenmrsConstants.LOG_LEVEL_INFO:
 					loggerConfig.setLevel(Level.INFO);
 					break;
-				case OpenmrsConstants.LOG_LEVEL_WARN:
+				case /*~~>*/OpenmrsConstants.LOG_LEVEL_WARN:
 					loggerConfig.setLevel(Level.WARN);
 					break;
-				case OpenmrsConstants.LOG_LEVEL_ERROR:
+				case /*~~>*/OpenmrsConstants.LOG_LEVEL_ERROR:
 					loggerConfig.setLevel(Level.ERROR);
 					break;
-				case OpenmrsConstants.LOG_LEVEL_FATAL:
+				case /*~~>*/OpenmrsConstants.LOG_LEVEL_FATAL:
 					loggerConfig.setLevel(Level.FATAL);
 					break;
 				default:

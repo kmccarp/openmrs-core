@@ -19,9 +19,9 @@ import org.openmrs.patient.UnallowedIdentifierException;
  */
 public class VerhoeffIdentifierValidator extends BaseHyphenatedIdentifierValidator {
 	
-	private static final String ALLOWED_CHARS = "0123456789";
+	private static final /*~~>*/String ALLOWED_CHARS = "0123456789";
 	
-	private static final String VERHOEFF_NAME = "Verhoeff Check Digit Validator.";
+	private static final /*~~>*/String VERHOEFF_NAME = "Verhoeff Check Digit Validator.";
 	
 	private static final int VERHOEFF_ID_LENGTH = 10;
 	
@@ -31,7 +31,7 @@ public class VerhoeffIdentifierValidator extends BaseHyphenatedIdentifierValidat
 	 * @see org.openmrs.patient.impl.BaseHyphenatedIdentifierValidator#getAllowedCharacters()
 	 */
 	@Override
-	public String getAllowedCharacters() {
+	public /*~~>*/String getAllowedCharacters() {
 		return ALLOWED_CHARS;
 	}
 	
@@ -39,7 +39,7 @@ public class VerhoeffIdentifierValidator extends BaseHyphenatedIdentifierValidat
 	 * @see org.openmrs.patient.impl.BaseHyphenatedIdentifierValidator#getName()
 	 */
 	@Override
-	public String getName() {
+	public /*~~>*/String getName() {
 		return VERHOEFF_NAME;
 	}
 	
@@ -47,7 +47,7 @@ public class VerhoeffIdentifierValidator extends BaseHyphenatedIdentifierValidat
 	 * @see org.openmrs.patient.impl.BaseHyphenatedIdentifierValidator#getCheckDigit(java.lang.String)
 	 */
 	@Override
-	protected int getCheckDigit(String undecoratedIdentifier) {
+	protected int getCheckDigit(/*~~>*/String undecoratedIdentifier) {
 		int[] a = getBase(Integer.parseInt(undecoratedIdentifier), undecoratedIdentifier.length());
 		insertCheck(a);
 		return a[0];
@@ -60,7 +60,7 @@ public class VerhoeffIdentifierValidator extends BaseHyphenatedIdentifierValidat
 	 * @see org.openmrs.patient.impl.BaseHyphenatedIdentifierValidator#isValid(java.lang.String)
 	 */
 	@Override
-	public boolean isValid(String identifier) throws UnallowedIdentifierException {
+	public boolean isValid(/*~~>*/String identifier) throws UnallowedIdentifierException {
 		
 		boolean result = super.isValid(identifier);
 		
@@ -81,9 +81,9 @@ public class VerhoeffIdentifierValidator extends BaseHyphenatedIdentifierValidat
 	 * <strong>Should</strong> get valid identifier
 	 */
 	@Override
-	public String getValidIdentifier(String undecoratedIdentifier) throws UnallowedIdentifierException {
+	public /*~~>*/String getValidIdentifier(/*~~>*/String undecoratedIdentifier) throws UnallowedIdentifierException {
 		
-		String result = super.getValidIdentifier(undecoratedIdentifier);
+		/*~~>*/String result = super.getValidIdentifier(undecoratedIdentifier);
 		
 		if (undecoratedIdentifier.length() != VERHOEFF_UNDECORATED_ID_LENGTH) {
 			throw new UnallowedIdentifierException("Undecorated identifier must be " + VERHOEFF_UNDECORATED_ID_LENGTH

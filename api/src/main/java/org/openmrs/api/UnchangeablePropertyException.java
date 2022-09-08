@@ -17,15 +17,15 @@ package org.openmrs.api;
  */
 public class UnchangeablePropertyException extends APIException {
 	
-	public UnchangeablePropertyException(String message) {
+	public UnchangeablePropertyException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public UnchangeablePropertyException(String message, Throwable cause) {
+	public UnchangeablePropertyException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	
-	public UnchangeablePropertyException(String messageKey, Object[] parameters) {
+	public UnchangeablePropertyException(/*~~>*/String messageKey, Object[] parameters) {
 		super(messageKey, parameters);
 	}
 	
@@ -33,7 +33,7 @@ public class UnchangeablePropertyException extends APIException {
 	 * @param clazz the class of the object on which it was changed
 	 * @param property the name of the unchangeable property
 	 */
-	public UnchangeablePropertyException(Class clazz, String property) {
+	public UnchangeablePropertyException(Class clazz, /*~~>*/String property) {
 		this(clazz.getName() + "." + property + " cannot be changed");
 	}
 }

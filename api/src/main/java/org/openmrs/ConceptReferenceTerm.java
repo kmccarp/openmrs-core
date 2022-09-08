@@ -34,9 +34,9 @@ public class ConceptReferenceTerm extends BaseChangeableOpenmrsMetadata {
 	
 	//The unique code used to identify the reference term in it's reference terminology
 	@Field(analyze = Analyze.NO)
-	private String code;
+	private /*~~>*/String code;
 	
-	private String version;
+	private /*~~>*/String version;
 	
 	private Set<ConceptReferenceTermMap> conceptReferenceTermMaps;
 	
@@ -57,9 +57,9 @@ public class ConceptReferenceTerm extends BaseChangeableOpenmrsMetadata {
 	 * @param name the user readable name of this term
 	 * @since 1.9.2, 1.10.0
 	 */
-	public ConceptReferenceTerm(ConceptSource source, String code, String name) {
+	public ConceptReferenceTerm(ConceptSource source, /*~~>*/String code, /*~~>*/String name) {
 		this.conceptSource = source;
-		this.code = code;
+		/*~~>*/this.code = code;
 		setName(name);
 	}
 	
@@ -94,29 +94,29 @@ public class ConceptReferenceTerm extends BaseChangeableOpenmrsMetadata {
 	/**
 	 * @return the code
 	 */
-	public String getCode() {
+	public /*~~>*/String getCode() {
 		return code;
 	}
 	
 	/**
 	 * @param code the code to set
 	 */
-	public void setCode(String code) {
-		this.code = code;
+	public void setCode(/*~~>*/String code) {
+		/*~~>*/this.code = code;
 	}
 	
 	/**
 	 * @return the version
 	 */
-	public String getVersion() {
+	public /*~~>*/String getVersion() {
 		return version;
 	}
 	
 	/**
 	 * @param version the version to set
 	 */
-	public void setVersion(String version) {
-		this.version = version;
+	public void setVersion(/*~~>*/String version) {
+		/*~~>*/this.version = version;
 	}
 	
 	/**
@@ -195,7 +195,7 @@ public class ConceptReferenceTerm extends BaseChangeableOpenmrsMetadata {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		if (getCode() != null && getName() != null) {
 			return getName() + "(" + getCode() + ")";
 		} else if (getCode() == null) {

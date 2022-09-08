@@ -34,7 +34,7 @@ public interface OpenmrsObjectDAO<T extends BaseOpenmrsObject> {
 	 * @param uuid
 	 * @return the matching metadata object
 	 */
-	T getByUuid(String uuid);
+	T getByUuid(/*~~>*/String uuid);
 	
 	/**
 	 * Completely deletes a persistent from the database

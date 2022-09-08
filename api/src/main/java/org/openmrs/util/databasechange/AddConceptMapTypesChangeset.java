@@ -43,18 +43,18 @@ public class AddConceptMapTypesChangeset implements CustomTaskChange {
 	 * calling this class, it value is expected to be a comma separated list of concept map type
 	 * names to add as the visible ones
 	 */
-	private String visibleConceptMapTypes;
+	private /*~~>*/String visibleConceptMapTypes;
 	
 	/**
 	 * The "hiddenConceptMapTypes" parameter defined in the liquibase xml changeSet element that is
 	 * calling this class, it value is expected to be a comma separated list of concept map type
 	 * names to add as the hidden ones
 	 */
-	private String hiddenConceptMapTypes;
+	private /*~~>*/String hiddenConceptMapTypes;
 	
-	private String[] visibleConceptMapTypeArray;
+	private /*~~>*/String[] visibleConceptMapTypeArray;
 	
-	private String[] hiddenConceptMapTypeArray;
+	private /*~~>*/String[] hiddenConceptMapTypeArray;
 	
 	/**
 	 * Does the work of adding UUIDs to all rows.
@@ -93,10 +93,10 @@ public class AddConceptMapTypesChangeset implements CustomTaskChange {
 			
 			int mapTypeId = 1;
 			
-			for (String map : visibleConceptMapTypeArray) {
-				String[] mapTypeAndUuid = map.trim().split("\\|");
-				String mapType = mapTypeAndUuid[0];
-				String mapUuid = mapTypeAndUuid[1];
+			for (/*~~>*/String map : visibleConceptMapTypeArray) {
+				/*~~>*/String[] mapTypeAndUuid = map.trim().split("\\|");
+				/*~~>*/String mapType = mapTypeAndUuid[0];
+				/*~~>*/String mapUuid = mapTypeAndUuid[1];
 				
 				pStmt.setInt(1, mapTypeId);
 				pStmt.setString(2, mapType);
@@ -109,10 +109,10 @@ public class AddConceptMapTypesChangeset implements CustomTaskChange {
 				mapTypeId++;
 			}
 			
-			for (String map : hiddenConceptMapTypeArray) {
-				String[] mapTypeAndUuid = map.trim().split("\\|");
-				String mapType = mapTypeAndUuid[0];
-				String mapUuid = mapTypeAndUuid[1];
+			for (/*~~>*/String map : hiddenConceptMapTypeArray) {
+				/*~~>*/String[] mapTypeAndUuid = map.trim().split("\\|");
+				/*~~>*/String mapType = mapTypeAndUuid[0];
+				/*~~>*/String mapUuid = mapTypeAndUuid[1];
 				
 				pStmt.setInt(1, mapTypeId);
 				pStmt.setString(2, mapType);
@@ -196,7 +196,7 @@ public class AddConceptMapTypesChangeset implements CustomTaskChange {
 	 * @param sql the sql statement to execute
 	 * @return integer resulting from the execution of the sql statement
 	 */
-	private int getInt(JdbcConnection connection, String sql) {
+	private int getInt(JdbcConnection connection, /*~~>*/String sql) {
 		Statement stmt = null;
 		int result = 0;
 		try {
@@ -251,22 +251,22 @@ public class AddConceptMapTypesChangeset implements CustomTaskChange {
 	/**
 	 * @param visibleConceptMapTypes the visibleConceptMapTypes to set
 	 */
-	public void setVisibleConceptMapTypes(String visibleConceptMapTypes) {
-		this.visibleConceptMapTypes = visibleConceptMapTypes;
+	public void setVisibleConceptMapTypes(/*~~>*/String visibleConceptMapTypes) {
+		/*~~>*/this.visibleConceptMapTypes = visibleConceptMapTypes;
 	}
 	
 	/**
 	 * @param hiddenConceptMapTypes the hiddenConceptMapTypes to set
 	 */
-	public void setHiddenConceptMapTypes(String hiddenConceptMapTypes) {
-		this.hiddenConceptMapTypes = hiddenConceptMapTypes;
+	public void setHiddenConceptMapTypes(/*~~>*/String hiddenConceptMapTypes) {
+		/*~~>*/this.hiddenConceptMapTypes = hiddenConceptMapTypes;
 	}
 	
 	/**
 	 * @see liquibase.change.custom.CustomChange#getConfirmationMessage()
 	 */
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished inserting core concept map types";
 	}
 	

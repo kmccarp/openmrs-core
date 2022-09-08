@@ -23,9 +23,9 @@ public class ConceptNameTag extends BaseOpenmrsObject implements Auditable, Void
 	// Fields
 	private Integer conceptNameTagId;
 	
-	private String tag;
+	private /*~~>*/String tag;
 	
-	private String description;
+	private /*~~>*/String description;
 	
 	private User creator;
 	
@@ -37,7 +37,7 @@ public class ConceptNameTag extends BaseOpenmrsObject implements Auditable, Void
 	
 	private Date dateVoided;
 	
-	private String voidReason;
+	private /*~~>*/String voidReason;
 	
 	private User changedBy;
 	
@@ -57,7 +57,7 @@ public class ConceptNameTag extends BaseOpenmrsObject implements Auditable, Void
 	 * @param tag
 	 * @param description
 	 */
-	public ConceptNameTag(String tag, String description) {
+	public ConceptNameTag(/*~~>*/String tag, /*~~>*/String description) {
 		setTag(tag);
 		setDescription(description);
 	}
@@ -69,7 +69,7 @@ public class ConceptNameTag extends BaseOpenmrsObject implements Auditable, Void
 	 * 
 	 * @return the textual representation of this ConceptNameTag.
 	 */
-	public String getTag() {
+	public /*~~>*/String getTag() {
 		return tag;
 	}
 	
@@ -78,8 +78,8 @@ public class ConceptNameTag extends BaseOpenmrsObject implements Auditable, Void
 	 * 
 	 * @param tag the textual representation
 	 */
-	public void setTag(String tag) {
-		this.tag = tag;
+	public void setTag(/*~~>*/String tag) {
+		/*~~>*/this.tag = tag;
 	}
 	
 	/**
@@ -87,7 +87,7 @@ public class ConceptNameTag extends BaseOpenmrsObject implements Auditable, Void
 	 * 
 	 * @return the description of this tag
 	 */
-	public String getDescription() {
+	public /*~~>*/String getDescription() {
 		return description;
 	}
 	
@@ -96,8 +96,8 @@ public class ConceptNameTag extends BaseOpenmrsObject implements Auditable, Void
 	 * 
 	 * @param description
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(/*~~>*/String description) {
+		/*~~>*/this.description = description;
 	}
 	
 	/**
@@ -212,7 +212,7 @@ public class ConceptNameTag extends BaseOpenmrsObject implements Auditable, Void
 	 * @return the reason this ConceptName was voided
 	 */
 	@Override
-	public String getVoidReason() {
+	public /*~~>*/String getVoidReason() {
 		return voidReason;
 	}
 	
@@ -222,13 +222,13 @@ public class ConceptNameTag extends BaseOpenmrsObject implements Auditable, Void
 	 * @param voidReason the reason this ConceptName was voided
 	 */
 	@Override
-	public void setVoidReason(String voidReason) {
-		this.voidReason = voidReason;
+	public void setVoidReason(/*~~>*/String voidReason) {
+		/*~~>*/this.voidReason = voidReason;
 	}
 	
 	@Override
-	public String toString() {
-		return this.tag;
+	public /*~~>*/String toString() {
+		return /*~~>*/this.tag;
 	}
 	
 	/**

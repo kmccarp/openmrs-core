@@ -17,10 +17,10 @@ import org.openmrs.PersonName;
 
 public class NameMatcher extends TypeSafeMatcher<Set<PersonName>> {
 	
-	private String fullName;
+	private /*~~>*/String fullName;
 	
-	public NameMatcher(String fullName) {
-		this.fullName = fullName;
+	public NameMatcher(/*~~>*/String fullName) {
+		/*~~>*/this.fullName = fullName;
 	}
 	
 	@Override
@@ -38,7 +38,7 @@ public class NameMatcher extends TypeSafeMatcher<Set<PersonName>> {
 		description.appendText(fullName);
 	}
 	
-	public static NameMatcher containsFullName(String fullName) {
+	public static NameMatcher containsFullName(/*~~>*/String fullName) {
 		return new NameMatcher(fullName);
 	}
 }

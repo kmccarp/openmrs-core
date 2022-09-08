@@ -28,7 +28,7 @@ public class GraphTest {
 	@Test
 	public void topologicalSort_shouldSortGraphInTopologicalOrder() throws CycleException {
 		
-		Graph<String> graph = new Graph<>();
+		Graph</*~~>*/String> graph = new Graph<>();
 		
 		graph.addNode("E");
 		graph.addNode("D");
@@ -47,7 +47,7 @@ public class GraphTest {
 		graph.addEdge(graph.new Edge(
 		                             "D", "E"));
 		
-		List<String> sortedNodes = graph.topologicalSort();
+		List</*~~>*/String> sortedNodes = graph.topologicalSort();
 		assertTrue(sortedNodes.indexOf("A") < sortedNodes.indexOf("B"));
 		assertTrue(sortedNodes.indexOf("A") < sortedNodes.indexOf("C"));
 		assertTrue(sortedNodes.indexOf("B") < sortedNodes.indexOf("C"));
@@ -62,7 +62,7 @@ public class GraphTest {
 	@Test
 	public void topologicalSort_shouldThrowCycleException() throws CycleException {
 		
-		Graph<String> graph = new Graph<>();
+		Graph</*~~>*/String> graph = new Graph<>();
 		
 		graph.addNode("E");
 		graph.addNode("D");

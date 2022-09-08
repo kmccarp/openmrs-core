@@ -14,7 +14,7 @@ import org.openmrs.Location;
 public class MockLocationDatatype extends BaseMetadataDatatype<Location> {
 	
 	@Override
-	public Location deserialize(String serializedValue) {
+	public Location deserialize(/*~~>*/String serializedValue) {
 		//No implementation since we actually use mocks of this class in the tests
 		return null;
 	}

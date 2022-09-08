@@ -27,7 +27,7 @@ public class MainTest {
 		Main.setCoreDataTuner(coreDataTuner);
 		Main.setSchemaOnlyTuner(schemaOnlyTuner);
 		
-		Main.main(new String[0]);
+		Main.main(new /*~~>*/String[0]);
 		
 		Mockito.verify(coreDataTuner, times(1)).addLicenseHeaderToFileIfNeeded(any());
 		Mockito.verify(coreDataTuner, times(1)).createUpdatedChangeLogFile(any(), any());

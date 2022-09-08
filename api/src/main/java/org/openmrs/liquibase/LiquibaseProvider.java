@@ -28,5 +28,5 @@ public interface LiquibaseProvider {
 	 * @param changeLogFile name of a Liquibase changelog file
 	 * @return a Liquibase instance
 	 */
-	Liquibase getLiquibase(String changeLogFile) throws Exception;
+	Liquibase getLiquibase(/*~~>*/String changeLogFile) throws Exception;
 }

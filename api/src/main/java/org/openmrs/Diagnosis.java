@@ -85,7 +85,7 @@ public class Diagnosis extends BaseCustomizableData<DiagnosisAttribute> implemen
 	private Set<DiagnosisAttribute> attributes = new LinkedHashSet<>();
 
 	@Column(name="form_namespace_and_path")
-	private String formNamespaceAndPath;
+	private /*~~>*/String formNamespaceAndPath;
 
 	/**
 	 * Default no-arg Constructor; instantiates a new Diagnosis without passing any initial values.
@@ -117,13 +117,13 @@ public class Diagnosis extends BaseCustomizableData<DiagnosisAttribute> implemen
 	 * @param formNamespaceAndPath the form namespace and path
 	 * @since 2.5.0
 	 */
-	public Diagnosis(Encounter encounter, CodedOrFreeText diagnosis, ConditionVerificationStatus certainty, Integer rank, Patient patient, String formNamespaceAndPath) {
+	public Diagnosis(Encounter encounter, CodedOrFreeText diagnosis, ConditionVerificationStatus certainty, Integer rank, Patient patient, /*~~>*/String formNamespaceAndPath) {
 		this.encounter = encounter;
 		this.diagnosis = diagnosis;
 		this.certainty = certainty;
 		this.rank = rank;
 		this.patient = patient;
-		this.formNamespaceAndPath = formNamespaceAndPath;
+		/*~~>*/this.formNamespaceAndPath = formNamespaceAndPath;
 	}
 
 	/**
@@ -278,7 +278,7 @@ public class Diagnosis extends BaseCustomizableData<DiagnosisAttribute> implemen
 	 * @return Returns the formNamespaceAndPath.
 	 * @since 2.5.0
 	 */
-	public String getFormNamespaceAndPath() {
+	public /*~~>*/String getFormNamespaceAndPath() {
 		return formNamespaceAndPath;
 	}
 
@@ -288,8 +288,8 @@ public class Diagnosis extends BaseCustomizableData<DiagnosisAttribute> implemen
 	 * @param formNamespaceAndPath the form namespace and path to set
 	 * @since 2.5.0
 	 */
-	public void setFormNamespaceAndPath(String formNamespaceAndPath) {
-		this.formNamespaceAndPath = formNamespaceAndPath;
+	public void setFormNamespaceAndPath(/*~~>*/String formNamespaceAndPath) {
+		/*~~>*/this.formNamespaceAndPath = formNamespaceAndPath;
 	}
 
 	/**
@@ -300,7 +300,7 @@ public class Diagnosis extends BaseCustomizableData<DiagnosisAttribute> implemen
 	 * <strong>Should</strong> return the namespace for a form field with or without a path otherwise null
 	 */
 	@Override
-	public String getFormFieldNamespace() {
+	public /*~~>*/String getFormFieldNamespace() {
 		return BaseFormRecordableOpenmrsData.getFormFieldNamespace(formNamespaceAndPath);
 	}
 
@@ -312,7 +312,7 @@ public class Diagnosis extends BaseCustomizableData<DiagnosisAttribute> implemen
 	 * <strong>Should</strong> return the path for a form field with or without a namespace otherwise null
 	 */
 	@Override
-	public String getFormFieldPath() {
+	public /*~~>*/String getFormFieldPath() {
 		return BaseFormRecordableOpenmrsData.getFormFieldPath(formNamespaceAndPath);
 	}
 
@@ -325,7 +325,7 @@ public class Diagnosis extends BaseCustomizableData<DiagnosisAttribute> implemen
 	 * <strong>Should</strong> set the underlying formNamespaceAndPath in the correct pattern
 	 */
 	@Override
-	public void setFormField(String namespace, String formFieldPath) {
+	public void setFormField(/*~~>*/String namespace, /*~~>*/String formFieldPath) {
 		formNamespaceAndPath = BaseFormRecordableOpenmrsData.getFormNamespaceAndPath(namespace, formFieldPath);
 	}
 }

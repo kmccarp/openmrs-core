@@ -102,7 +102,7 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
 	 * @see org.openmrs.api.db.ProgramWorkflowDAO#getProgramsByName(String, boolean)
 	 */
 	@Override
-	public List<Program> getProgramsByName(String programName, boolean includeRetired) {
+	public List<Program> getProgramsByName(/*~~>*/String programName, boolean includeRetired) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Program.class);
 		criteria.add(Restrictions.eq("name", programName));
 		if (!includeRetired) {
@@ -120,7 +120,7 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Program> findPrograms(String nameFragment) throws DAOException {
+	public List<Program> findPrograms(/*~~>*/String nameFragment) throws DAOException {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Program.class, "program");
 		criteria.add(Restrictions.ilike("name", nameFragment, MatchMode.ANYWHERE));
 		criteria.addOrder(Order.asc("name"));
@@ -206,7 +206,7 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<PatientProgram> getPatientPrograms(Cohort cohort, Collection<Program> programs) {
-		String hql = "from PatientProgram ";
+		/*~~>*/String hql = "from PatientProgram ";
 		if (cohort != null || programs != null) {
 			hql += "where ";
 		}
@@ -299,7 +299,7 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
 	 * @see org.openmrs.api.db.ProgramWorkflowDAO#getConceptStateConversionByUuid(java.lang.String)
 	 */
 	@Override
-	public ConceptStateConversion getConceptStateConversionByUuid(String uuid) {
+	public ConceptStateConversion getConceptStateConversionByUuid(/*~~>*/String uuid) {
 		return (ConceptStateConversion) sessionFactory.getCurrentSession().createQuery(
 		    "from ConceptStateConversion csc where csc.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
@@ -308,7 +308,7 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
 	 * @see org.openmrs.api.db.ProgramWorkflowDAO#getPatientProgramByUuid(java.lang.String)
 	 */
 	@Override
-	public PatientProgram getPatientProgramByUuid(String uuid) {
+	public PatientProgram getPatientProgramByUuid(/*~~>*/String uuid) {
 		return (PatientProgram) sessionFactory.getCurrentSession().createQuery(
 		    "from PatientProgram pp where pp.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
@@ -317,7 +317,7 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
 	 * @see org.openmrs.api.db.ProgramWorkflowDAO#getProgramByUuid(java.lang.String)
 	 */
 	@Override
-	public Program getProgramByUuid(String uuid) {
+	public Program getProgramByUuid(/*~~>*/String uuid) {
 		return (Program) sessionFactory.getCurrentSession().createQuery("from Program p where p.uuid = :uuid").setString(
 		    "uuid", uuid).uniqueResult();
 	}
@@ -334,13 +334,13 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
 	 * @see org.openmrs.api.db.ProgramWorkflowDAO#getStateByUuid(java.lang.String)
 	 */
 	@Override
-	public ProgramWorkflowState getStateByUuid(String uuid) {
+	public ProgramWorkflowState getStateByUuid(/*~~>*/String uuid) {
 		return (ProgramWorkflowState) sessionFactory.getCurrentSession().createQuery(
 		    "from ProgramWorkflowState pws where pws.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 	
 	@Override
-	public PatientState getPatientStateByUuid(String uuid) {
+	public PatientState getPatientStateByUuid(/*~~>*/String uuid) {
 		return (PatientState) sessionFactory.getCurrentSession().createQuery("from PatientState pws where pws.uuid = :uuid")
 		        .setString("uuid", uuid).uniqueResult();
 	}
@@ -357,7 +357,7 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
 	 * @see org.openmrs.api.db.ProgramWorkflowDAO#getWorkflowByUuid(java.lang.String)
 	 */
 	@Override
-	public ProgramWorkflow getWorkflowByUuid(String uuid) {
+	public ProgramWorkflow getWorkflowByUuid(/*~~>*/String uuid) {
 		return (ProgramWorkflow) sessionFactory.getCurrentSession().createQuery(
 		    "from ProgramWorkflow pw where pw.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
@@ -367,7 +367,7 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
 	 */
 	@Override
 	public List<Program> getProgramsByConcept(Concept concept) {
-		String pq = "select distinct p from Program p where p.concept = :concept";
+		/*~~>*/String pq = "select distinct p from Program p where p.concept = :concept";
 		Query pquery = sessionFactory.getCurrentSession().createQuery(pq);
 		pquery.setEntity("concept", concept);
 		return pquery.list();
@@ -378,7 +378,7 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
 	 */
 	@Override
 	public List<ProgramWorkflow> getProgramWorkflowsByConcept(Concept concept) {
-		String wq = "select distinct w from ProgramWorkflow w where w.concept = :concept";
+		/*~~>*/String wq = "select distinct w from ProgramWorkflow w where w.concept = :concept";
 		Query wquery = sessionFactory.getCurrentSession().createQuery(wq);
 		wquery.setEntity("concept", concept);
 		return wquery.list();
@@ -389,7 +389,7 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
 	 */
 	@Override
 	public List<ProgramWorkflowState> getProgramWorkflowStatesByConcept(Concept concept) {
-		String sq = "select distinct s from ProgramWorkflowState s where s.concept = :concept";
+		/*~~>*/String sq = "select distinct s from ProgramWorkflowState s where s.concept = :concept";
 		Query squery = sessionFactory.getCurrentSession().createQuery(sq);
 		squery.setEntity("concept", concept);
 		return squery.list();
@@ -406,7 +406,7 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
         }
 
         @Override
-        public ProgramAttributeType getProgramAttributeTypeByUuid(String uuid) {
+        public ProgramAttributeType getProgramAttributeTypeByUuid(/*~~>*/String uuid) {
             return (ProgramAttributeType) sessionFactory.getCurrentSession().createCriteria(ProgramAttributeType.class).add(
                     Restrictions.eq("uuid", uuid)).uniqueResult();
         }
@@ -418,7 +418,7 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
         }
 
         @Override
-        public PatientProgramAttribute getPatientProgramAttributeByUuid(String uuid) {
+        public PatientProgramAttribute getPatientProgramAttributeByUuid(/*~~>*/String uuid) {
             return (PatientProgramAttribute) sessionFactory.getCurrentSession().createCriteria(PatientProgramAttribute.class).add(Restrictions.eq("uuid", uuid)).uniqueResult();
         }
 
@@ -428,7 +428,7 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
         }
 
         @Override
-        public List<PatientProgram> getPatientProgramByAttributeNameAndValue(String attributeName, String attributeValue) {
+        public List<PatientProgram> getPatientProgramByAttributeNameAndValue(/*~~>*/String attributeName, /*~~>*/String attributeValue) {
             FlushMode flushMode = sessionFactory.getCurrentSession().getHibernateFlushMode();
             sessionFactory.getCurrentSession().setHibernateFlushMode(FlushMode.MANUAL);
             Query query;
@@ -449,12 +449,12 @@ public class HibernateProgramWorkflowDAO implements ProgramWorkflowDAO {
         }
 
         @Override
-        public Map<Object, Object> getPatientProgramAttributeByAttributeName(List<Integer> patientIds, String attributeName) {
+        public Map<Object, Object> getPatientProgramAttributeByAttributeName(List<Integer> patientIds, /*~~>*/String attributeName) {
             Map<Object, Object> patientProgramAttributes = new HashMap<>();
             if (patientIds.isEmpty() || attributeName == null) {
                 return patientProgramAttributes;
             }
-            String commaSeperatedPatientIds = StringUtils.join(patientIds, ",");
+            /*~~>*/String commaSeperatedPatientIds = StringUtils.join(patientIds, ",");
             List<Object> list = sessionFactory.getCurrentSession().createSQLQuery(
                     "SELECT p.patient_id as person_id, " +
                             " concat('{',group_concat(DISTINCT (coalesce(concat('\"',ppt.name,'\":\"', COALESCE (cn.name, ppa.value_reference),'\"'))) SEPARATOR ','),'}') AS patientProgramAttributeValue  " +

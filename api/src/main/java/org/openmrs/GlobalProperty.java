@@ -25,24 +25,24 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String property = "";
+	private /*~~>*/String property = "";
 	
-	private String propertyValue = "";
+	private /*~~>*/String propertyValue = "";
 	
 	private transient Object typedValue;
 	
 	// if true, indicates that setValue has been called, and we need to invoke CustomDatatype's save
 	private boolean dirty = false;
 	
-	private String description = "";
+	private /*~~>*/String description = "";
 	
-	private String datatypeClassname;
+	private /*~~>*/String datatypeClassname;
 	
-	private String datatypeConfig;
+	private /*~~>*/String datatypeConfig;
 	
-	private String preferredHandlerClassname;
+	private /*~~>*/String preferredHandlerClassname;
 	
-	private String handlerConfig;
+	private /*~~>*/String handlerConfig;
 	
 	private User changedBy;
 	
@@ -59,8 +59,8 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 *
 	 * @param property key to name the property
 	 */
-	public GlobalProperty(String property) {
-		this.property = property;
+	public GlobalProperty(/*~~>*/String property) {
+		/*~~>*/this.property = property;
 	}
 	
 	/**
@@ -69,9 +69,9 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 * @param property key to name the property
 	 * @param value value to give to the property
 	 */
-	public GlobalProperty(String property, String value) {
+	public GlobalProperty(/*~~>*/String property, /*~~>*/String value) {
 		this(property);
-		this.propertyValue = value;
+		/*~~>*/this.propertyValue = value;
 	}
 	
 	/**
@@ -81,9 +81,9 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 * @param value value to give to the property
 	 * @param description description of how this property is used
 	 */
-	public GlobalProperty(String property, String value, String description) {
+	public GlobalProperty(/*~~>*/String property, /*~~>*/String value, /*~~>*/String description) {
 		this(property, value);
-		this.description = description;
+		/*~~>*/this.description = description;
 	}
 	
 	/**
@@ -97,53 +97,53 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 *
 	 * @since 1.9
 	 */
-	public GlobalProperty(String property, String value, String description,
-	    Class<? extends CustomDatatype<?>> datatypeClass, String datatypeConfig) {
+	public GlobalProperty(/*~~>*/String property, /*~~>*/String value, /*~~>*/String description,
+	    Class<? extends CustomDatatype<?>> datatypeClass, /*~~>*/String datatypeConfig) {
 		this(property, value, description);
-		this.datatypeClassname = datatypeClass.getName();
-		this.datatypeConfig = datatypeConfig;
+		/*~~>*/this.datatypeClassname = datatypeClass.getName();
+		/*~~>*/this.datatypeConfig = datatypeConfig;
 	}
 	
 	/**
 	 * @return Returns the property.
 	 */
-	public String getProperty() {
+	public /*~~>*/String getProperty() {
 		return property;
 	}
 	
 	/**
 	 * @param property The property to set.
 	 */
-	public void setProperty(String property) {
-		this.property = property;
+	public void setProperty(/*~~>*/String property) {
+		/*~~>*/this.property = property;
 	}
 	
 	/**
 	 * @return Returns the propertyValue.
 	 */
-	public String getPropertyValue() {
+	public /*~~>*/String getPropertyValue() {
 		return propertyValue;
 	}
 	
 	/**
 	 * @param propertyValue The propertyValue to set.
 	 */
-	public void setPropertyValue(String propertyValue) {
-		this.propertyValue = propertyValue;
+	public void setPropertyValue(/*~~>*/String propertyValue) {
+		/*~~>*/this.propertyValue = propertyValue;
 	}
 	
 	/**
 	 * @return the description
 	 */
-	public String getDescription() {
+	public /*~~>*/String getDescription() {
 		return description;
 	}
 	
 	/**
 	 * @param description the description to set
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(/*~~>*/String description) {
+		/*~~>*/this.description = description;
 	}
 	
 	/**
@@ -169,7 +169,7 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 * @since 1.9
 	 */
 	@Override
-	public String getDatatypeClassname() {
+	public /*~~>*/String getDatatypeClassname() {
 		return datatypeClassname;
 	}
 	
@@ -177,8 +177,8 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 * @param datatypeClassname the datatypeClassname to set
 	 * @since 1.9
 	 */
-	public void setDatatypeClassname(String datatypeClassname) {
-		this.datatypeClassname = datatypeClassname;
+	public void setDatatypeClassname(/*~~>*/String datatypeClassname) {
+		/*~~>*/this.datatypeClassname = datatypeClassname;
 	}
 	
 	/**
@@ -186,7 +186,7 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 * @since 1.9
 	 */
 	@Override
-	public String getDatatypeConfig() {
+	public /*~~>*/String getDatatypeConfig() {
 		return datatypeConfig;
 	}
 	
@@ -194,8 +194,8 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 * @param datatypeConfig the datatypeConfig to set
 	 * @since 1.9
 	 */
-	public void setDatatypeConfig(String datatypeConfig) {
-		this.datatypeConfig = datatypeConfig;
+	public void setDatatypeConfig(/*~~>*/String datatypeConfig) {
+		/*~~>*/this.datatypeConfig = datatypeConfig;
 	}
 	
 	/**
@@ -203,7 +203,7 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 * @since 1.9
 	 */
 	@Override
-	public String getPreferredHandlerClassname() {
+	public /*~~>*/String getPreferredHandlerClassname() {
 		return preferredHandlerClassname;
 	}
 	
@@ -211,8 +211,8 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 * @param preferredHandlerClassname the preferredHandlerClassname to set
 	 * @since 1.9
 	 */
-	public void setPreferredHandlerClassname(String preferredHandlerClassname) {
-		this.preferredHandlerClassname = preferredHandlerClassname;
+	public void setPreferredHandlerClassname(/*~~>*/String preferredHandlerClassname) {
+		/*~~>*/this.preferredHandlerClassname = preferredHandlerClassname;
 	}
 	
 	/**
@@ -220,7 +220,7 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 * @since 1.9
 	 */
 	@Override
-	public String getHandlerConfig() {
+	public /*~~>*/String getHandlerConfig() {
 		return handlerConfig;
 	}
 	
@@ -228,15 +228,15 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 * @param handlerConfig the handlerConfig to set
 	 * @since 1.9
 	 */
-	public void setHandlerConfig(String handlerConfig) {
-		this.handlerConfig = handlerConfig;
+	public void setHandlerConfig(/*~~>*/String handlerConfig) {
+		/*~~>*/this.handlerConfig = handlerConfig;
 	}
 	
 	/**
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		return "property: " + getProperty() + " value: " + getPropertyValue();
 	}
 	
@@ -256,7 +256,7 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 * @since 1.9
 	 */
 	@Override
-	public String getValueReference() {
+	public /*~~>*/String getValueReference() {
 		return getPropertyValue();
 	}
 	
@@ -266,7 +266,7 @@ public class GlobalProperty extends BaseOpenmrsObject implements CustomValueDesc
 	 * @since 1.9
 	 */
 	@Override
-	public void setValueReferenceInternal(String valueToPersist) {
+	public void setValueReferenceInternal(/*~~>*/String valueToPersist) {
 		setPropertyValue(valueToPersist);
 	}
 	

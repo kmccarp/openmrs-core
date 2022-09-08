@@ -29,7 +29,7 @@ public class LocationTagEditor extends OpenmrsPropertyEditor<LocationTag> {
 	}
 	
 	@Override
-	protected LocationTag getObjectByUuid(String uuid) {
+	protected LocationTag getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getLocationService().getLocationTagByUuid(uuid);
 	}
 }

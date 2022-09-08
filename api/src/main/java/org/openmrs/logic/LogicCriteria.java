@@ -65,7 +65,7 @@ public interface LogicCriteria {
 	/**
 	 * @see LogicCriteria#appendExpression(Operator, Operand)
 	 */
-	public LogicCriteria appendExpression(Operator operator, String operand);
+	public LogicCriteria appendExpression(Operator operator, /*~~>*/String operand);
 	
 	/**
 	 * @see LogicCriteria#appendExpression(Operator, Operand)
@@ -156,12 +156,12 @@ public interface LogicCriteria {
 	/**
 	 * @see LogicCriteria#first()
 	 */
-	public LogicCriteria first(String sortComponent);
+	public LogicCriteria first(/*~~>*/String sortComponent);
 	
 	/**
 	 * @see LogicCriteria#first()
 	 */
-	public LogicCriteria first(Integer numResults, String sortComponent);
+	public LogicCriteria first(Integer numResults, /*~~>*/String sortComponent);
 	
 	/**
 	 * Apply the {@link Distinct} operator to the LogicCriteria
@@ -239,7 +239,7 @@ public interface LogicCriteria {
 	 * @return LogicCriteria with Contains expression
 	 * @see org.openmrs.logic.op.Contains
 	 */
-	public LogicCriteria contains(String value);
+	public LogicCriteria contains(/*~~>*/String value);
 	
 	/**
 	 * @see LogicCriteria#equalTo(String)
@@ -268,7 +268,7 @@ public interface LogicCriteria {
 	 * @return LogicCriteria with Equals expression
 	 * @see org.openmrs.logic.op.Equals
 	 */
-	public LogicCriteria equalTo(String value);
+	public LogicCriteria equalTo(/*~~>*/String value);
 	
 	/**
 	 * @see LogicCriteria#gte(double)
@@ -378,12 +378,12 @@ public interface LogicCriteria {
 	/**
 	 * @return logic parameters
 	 */
-	public Map<String, Object> getLogicParameters();
+	public Map</*~~>*/String, Object> getLogicParameters();
 	
 	/**
 	 * @param logicParameters
 	 */
-	public void setLogicParameters(Map<String, Object> logicParameters);
+	public void setLogicParameters(Map</*~~>*/String, Object> logicParameters);
 	
 	/**
 	 * Method to get the root token of the current LogicCriteria. <code>
@@ -392,7 +392,7 @@ public interface LogicCriteria {
 	 * 
 	 * @return the root token of the LogicCriteria
 	 */
-	public String getRootToken();
+	public /*~~>*/String getRootToken();
 	
 	/**
 	 * Method to get the LogicExpression backing the current LogicCriteria

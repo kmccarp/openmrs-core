@@ -44,7 +44,7 @@ public class OrderValidatorTest extends BaseContextSensitiveTest {
 	
 	private OrderService orderService;
 	
-	protected static final String ORDER_SET = "org/openmrs/api/include/OrderSetServiceTest-general.xml";
+	protected static final /*~~>*/String ORDER_SET = "org/openmrs/api/include/OrderSetServiceTest-general.xml";
 	
 	@BeforeEach
 	public void setup() {

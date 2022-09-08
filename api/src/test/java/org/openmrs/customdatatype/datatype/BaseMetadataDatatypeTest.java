@@ -25,7 +25,7 @@ public class BaseMetadataDatatypeTest {
 	@Test
 	public void doGetTextSummary_shouldUseTheNameInSummaryInstance() {
 		OpenmrsMetadata location = new Location();
-		String expectedSummary = "some summary";
+		/*~~>*/String expectedSummary = "some summary";
 		location.setName(expectedSummary);
 		BaseMetadataDatatype datatype = new MockLocationDatatype();
 		CustomDatatype.Summary summary = datatype.doGetTextSummary(location);

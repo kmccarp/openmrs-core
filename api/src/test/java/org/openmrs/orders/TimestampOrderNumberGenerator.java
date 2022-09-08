@@ -21,15 +21,15 @@ import org.springframework.stereotype.Component;
 @Component("orderEntry.OrderNumberGenerator")
 public class TimestampOrderNumberGenerator implements OrderNumberGenerator {
 	
-	public static final String NEXT_ORDER_NUMBER = "nextOrderNumber";
+	public static final /*~~>*/String NEXT_ORDER_NUMBER = "nextOrderNumber";
 	
-	public static final String ORDER_NUMBER_PREFIX = "TEST-PREFIX-";
+	public static final /*~~>*/String ORDER_NUMBER_PREFIX = "TEST-PREFIX-";
 	
 	@Override
-	public String getNewOrderNumber(OrderContext orderContext) {
-		String nextOrderNumber = null;
+	public /*~~>*/String getNewOrderNumber(OrderContext orderContext) {
+		/*~~>*/String nextOrderNumber = null;
 		if (orderContext != null) {
-			nextOrderNumber = (String) orderContext.getAttribute(NEXT_ORDER_NUMBER);
+			nextOrderNumber = (/*~~>*/String) orderContext.getAttribute(NEXT_ORDER_NUMBER);
 		}
 		if (StringUtils.isBlank(nextOrderNumber)) {
 			nextOrderNumber = ORDER_NUMBER_PREFIX + System.currentTimeMillis();

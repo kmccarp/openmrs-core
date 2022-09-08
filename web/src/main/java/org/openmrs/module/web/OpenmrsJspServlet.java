@@ -37,7 +37,7 @@ public class OpenmrsJspServlet extends JspServlet {
 	
 	private static final Logger log = LoggerFactory.getLogger(OpenmrsJspServlet.class);
 	
-	public static final String OPENMRS_TLD_SCAN_NEEDED = "OPENMRS_TLD_SCAN_NEEDED";
+	public static final /*~~>*/String OPENMRS_TLD_SCAN_NEEDED = "OPENMRS_TLD_SCAN_NEEDED";
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
@@ -55,8 +55,8 @@ public class OpenmrsJspServlet extends JspServlet {
 		if (getBooleanAttribute(OPENMRS_TLD_SCAN_NEEDED, true)) {
 			log.warn("Rescanning TLDs");
 			boolean namespaceAware = true;
-			boolean validate = getBooleanParameter(Constants.XML_VALIDATION_TLD_INIT_PARAM, false);
-			boolean blockExternalString = getBooleanParameter(Constants.XML_BLOCK_EXTERNAL_INIT_PARAM, true);
+			boolean validate = getBooleanParameter(/*~~>*/Constants.XML_VALIDATION_TLD_INIT_PARAM, false);
+			boolean blockExternalString = getBooleanParameter(/*~~>*/Constants.XML_BLOCK_EXTERNAL_INIT_PARAM, true);
 			try {
 				TldScanner scanner = new TldScanner(getServletContext(), namespaceAware, validate, blockExternalString);
 				try {
@@ -65,12 +65,12 @@ public class OpenmrsJspServlet extends JspServlet {
 					throw new ServletException(e);
 				}
 				// add any listeners defined in TLDs
-				for (String listener : scanner.getListeners()) {
+				for (/*~~>*/String listener : scanner.getListeners()) {
 					getServletContext().addListener(listener);
 				}
 
 				TldCache tldCache = new TldCache(getServletContext(), scanner.getUriTldResourcePathMap(), scanner.getTldResourcePathTaglibXmlMap());
-				getServletContext().setAttribute(TldCache.SERVLET_CONTEXT_ATTRIBUTE_NAME, tldCache);
+				getServletContext().setAttribute(/*~~>*/TldCache.SERVLET_CONTEXT_ATTRIBUTE_NAME, tldCache);
 				log.info("TldCache updated on ServletContext");
 				try {
 					Options options = (Options) FieldUtils.readField(this, "options", true);
@@ -96,15 +96,15 @@ public class OpenmrsJspServlet extends JspServlet {
 		}
 	}
 
-	private boolean getBooleanParameter(String parameter, boolean defaultValue) {
-		String val = getServletContext().getInitParameter(parameter);
+	private boolean getBooleanParameter(/*~~>*/String parameter, boolean defaultValue) {
+		/*~~>*/String val = getServletContext().getInitParameter(parameter);
 		if (StringUtils.isNotBlank(val)) {
 			return Boolean.parseBoolean(val);
 		}
 		return defaultValue;
 	}
 
-	private boolean getBooleanAttribute(String attribute, boolean defaultValue) {
+	private boolean getBooleanAttribute(/*~~>*/String attribute, boolean defaultValue) {
 		Boolean val = (Boolean)getServletContext().getAttribute(attribute);
 		if (val != null) {
 			return val;

@@ -85,7 +85,7 @@ public class SchedulerServiceTest extends BaseContextSensitiveTest {
 	
 	@Test
 	public void shouldResolveValidTaskClass() throws Exception {
-		String className = "org.openmrs.scheduler.tasks.TestTask";
+		/*~~>*/String className = "org.openmrs.scheduler.tasks.TestTask";
 		Class<?> c = OpenmrsClassLoader.getInstance().loadClass(className);
 		Object o = c.newInstance();
 		if (o instanceof Task)
@@ -101,7 +101,7 @@ public class SchedulerServiceTest extends BaseContextSensitiveTest {
 			() -> OpenmrsClassLoader.getInstance().loadClass("org.openmrs.scheduler.tasks.InvalidTask"));
 	}
 	
-	private TaskDefinition makeRepeatingTaskThatStartsImmediately(String taskClassName) {
+	private TaskDefinition makeRepeatingTaskThatStartsImmediately(/*~~>*/String taskClassName) {
 		TaskDefinition taskDef = new TaskDefinition();
 		taskDef.setTaskClass(taskClassName);
 		taskDef.setStartOnStartup(false);
@@ -269,7 +269,7 @@ public class SchedulerServiceTest extends BaseContextSensitiveTest {
 		SchedulerService service = Context.getSchedulerService();
 		
 		TaskDefinition def = new TaskDefinition();
-		final String TASK_NAME = "This is my test! 123459876";
+		final /*~~>*/String TASK_NAME = "This is my test! 123459876";
 		def.setName(TASK_NAME);
 		def.setStartOnStartup(false);
 		def.setRepeatInterval(10000000L);
@@ -370,7 +370,7 @@ public class SchedulerServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void shouldSaveLastExecutionTime() throws Exception {
 		log.debug("shouldSaveLastExecutionTime start");
-		final String NAME = "StoreExecutionTime Task";
+		final /*~~>*/String NAME = "StoreExecutionTime Task";
 		SchedulerService service = Context.getSchedulerService();
 		
 		TaskDefinition td = new TaskDefinition();

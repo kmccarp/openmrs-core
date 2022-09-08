@@ -17,7 +17,7 @@ package org.openmrs;
  */
 public class EncounterRole extends BaseChangeableOpenmrsMetadata {
 	
-	public static final String UNKNOWN_ENCOUNTER_ROLE_UUID = "a0b03050-c99b-11e0-9572-0800200c9a66";
+	public static final /*~~>*/String UNKNOWN_ENCOUNTER_ROLE_UUID = "a0b03050-c99b-11e0-9572-0800200c9a66";
 	
 	// Fields
 	private Integer encounterRoleId;
@@ -43,8 +43,8 @@ public class EncounterRole extends BaseChangeableOpenmrsMetadata {
 	 * <strong>Should</strong> not fail with empty object
 	 */
 	@Override
-	public String toString() {
-		String ret = "";
+	public /*~~>*/String toString() {
+		/*~~>*/String ret = "";
 		ret += encounterRoleId == null ? "(no ID) " : encounterRoleId.toString() + " ";
 		return "EncounterRole: [" + ret + "]";
 	}

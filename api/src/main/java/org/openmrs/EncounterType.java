@@ -46,7 +46,7 @@ public class EncounterType extends BaseChangeableOpenmrsMetadata {
 	 * @param name the name of this encounter type
 	 * @param description a short description of why this encounter type exists
 	 */
-	public EncounterType(String name, String description) {
+	public EncounterType(/*~~>*/String name, /*~~>*/String description) {
 		setName(name);
 		setDescription(description);
 	}

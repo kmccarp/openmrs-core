@@ -119,13 +119,13 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class OrderServiceTest extends BaseContextSensitiveTest {
 
-	private static final String OTHER_ORDER_FREQUENCIES_XML = "org/openmrs/api/include/OrderServiceTest-otherOrderFrequencies.xml";
+	private static final /*~~>*/String OTHER_ORDER_FREQUENCIES_XML = "org/openmrs/api/include/OrderServiceTest-otherOrderFrequencies.xml";
 
-	protected static final String ORDER_SET = "org/openmrs/api/include/OrderSetServiceTest-general.xml";
+	protected static final /*~~>*/String ORDER_SET = "org/openmrs/api/include/OrderSetServiceTest-general.xml";
 
-	private static final String ORDER_GROUP_ATTRIBUTES = "org/openmrs/api/include/OrderServiceTest-createOrderGroupAttributes.xml";
+	private static final /*~~>*/String ORDER_GROUP_ATTRIBUTES = "org/openmrs/api/include/OrderServiceTest-createOrderGroupAttributes.xml";
 
-	private static final String ORDER_ATTRIBUTES = "org/openmrs/api/include/OrderServiceTest-createOrderAttributes.xml";
+	private static final /*~~>*/String ORDER_ATTRIBUTES = "org/openmrs/api/include/OrderServiceTest-createOrderAttributes.xml";
 
 	@Autowired
 	private ConceptService conceptService;
@@ -177,7 +177,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getOrderByUuid_shouldFindObjectGivenValidUuid() {
-		String uuid = "921de0a3-05c4-444a-be03-e01b4c4b9142";
+		/*~~>*/String uuid = "921de0a3-05c4-444a-be03-e01b4c4b9142";
 		Order order = orderService.getOrderByUuid(uuid);
 		assertEquals(1, (int) order.getOrderId());
 	}
@@ -196,8 +196,8 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void purgeOrder_shouldDeleteAnyObsAssociatedToTheOrderWhenCascadeIsTrue() {
 		executeDataSet("org/openmrs/api/include/OrderServiceTest-deleteObsThatReference.xml");
-		final String ordUuid = "0c96f25c-4949-4f72-9931-d808fbcdb612";
-		final String obsUuid = "be3a4d7a-f9ab-47bb-aaad-bc0b452fcda4";
+		final /*~~>*/String ordUuid = "0c96f25c-4949-4f72-9931-d808fbcdb612";
+		final /*~~>*/String obsUuid = "be3a4d7a-f9ab-47bb-aaad-bc0b452fcda4";
 		ObsService os = Context.getObsService();
 
 		Obs obs = os.getObsByUuid(obsUuid);
@@ -227,7 +227,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void purgeOrder_shouldDeleteOrderFromTheDatabase() {
-		final String uuid = "9c21e407-697b-11e3-bd76-0800271c1b75";
+		final /*~~>*/String uuid = "9c21e407-697b-11e3-bd76-0800271c1b75";
 		Order order = orderService.getOrderByUuid(uuid);
 		assertNotNull(order);
 		orderService.purgeOrder(order);
@@ -243,16 +243,16 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 		throws InterruptedException {
 
 		int N = 50;
-		final Set<String> uniqueOrderNumbers = new HashSet<>(50);
+		final Set</*~~>*/String> uniqueOrderNumbers = new HashSet<>(50);
 		List<Thread> threads = new ArrayList<>();
 		for (int i = 0; i < N; i++) {
 			threads.add(new Thread(() -> {
 				try {
 					Context.openSession();
-					Context.addProxyPrivilege(PrivilegeConstants.ADD_ORDERS);
+					Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.ADD_ORDERS);
 					uniqueOrderNumbers.add(((OrderNumberGenerator) orderService).getNewOrderNumber(null));
 				} finally {
-					Context.removeProxyPrivilege(PrivilegeConstants.ADD_ORDERS);
+					Context.removeProxyPrivilege(/*~~>*/PrivilegeConstants.ADD_ORDERS);
 					Context.closeSession();
 				}
 			}));
@@ -585,7 +585,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 		Provider orderer = providerService.getProvider(1);
 		assertTrue(OrderUtilTest.isActiveOrder(order, null));
 		Date discontinueDate = new Date();
-		String discontinueReasonNonCoded = "Test if I can discontinue this";
+		/*~~>*/String discontinueReasonNonCoded = "Test if I can discontinue this";
 
 		Order discontinueOrder = orderService.discontinueOrder(order, discontinueReasonNonCoded, discontinueDate, orderer,
 			encounter);
@@ -624,7 +624,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 		Encounter encounter = encounterService.getEncounter(3);
 		Provider orderer = providerService.getProvider(1);
 		Date discontinueDate = new Date();
-		String discontinueReasonNonCoded = "Test if I can discontinue this";
+		/*~~>*/String discontinueReasonNonCoded = "Test if I can discontinue this";
 
 		Order discontinueOrder = orderService.discontinueOrder(order, discontinueReasonNonCoded, discontinueDate, orderer,
 			encounter);
@@ -1177,7 +1177,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void updateOrderFulfillerStatus_shouldEditFulfillerStatusInOrder() {
 		Order originalOrder = orderService.getOrder(111);
-		String commentText = "We got the new order";
+		/*~~>*/String commentText = "We got the new order";
 		assertNotEquals(originalOrder.getFulfillerStatus(), Order.FulfillerStatus.IN_PROGRESS);
 
 		orderService.updateOrderFulfillerStatus(originalOrder, Order.FulfillerStatus.IN_PROGRESS, commentText);
@@ -1195,8 +1195,8 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void updateOrderFulfillerStatus_shouldEditFulfillerStatusWithAccessionNumberInOrder() {
 		Order originalOrder = orderService.getOrder(111);
-		String commentText = "We got the new order";
-		String accessionNumber = "12345";
+		/*~~>*/String commentText = "We got the new order";
+		/*~~>*/String accessionNumber = "12345";
 		assertNotEquals(originalOrder.getAccessionNumber(), accessionNumber);
 
 		orderService.updateOrderFulfillerStatus(originalOrder, Order.FulfillerStatus.IN_PROGRESS, commentText,
@@ -1215,8 +1215,8 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 
 		// set up the test data
 		Order originalOrder = orderService.getOrder(111);
-		String commentText = "We got the new order";
-		String accessionNumber = "12345";
+		/*~~>*/String commentText = "We got the new order";
+		/*~~>*/String accessionNumber = "12345";
 		assertNotEquals(originalOrder.getAccessionNumber(), accessionNumber);
 
 		orderService.updateOrderFulfillerStatus(originalOrder, Order.FulfillerStatus.IN_PROGRESS, commentText,
@@ -1238,8 +1238,8 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 
 		// set up the test data
 		Order originalOrder = orderService.getOrder(111);
-		String commentText = "We got the new order";
-		String accessionNumber = "12345";
+		/*~~>*/String commentText = "We got the new order";
+		/*~~>*/String accessionNumber = "12345";
 		assertNotEquals(originalOrder.getAccessionNumber(), accessionNumber);
 
 		orderService.updateOrderFulfillerStatus(originalOrder, Order.FulfillerStatus.IN_PROGRESS, commentText,
@@ -1362,7 +1362,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void getOrderFrequencies_shouldReturnUniqueFrequencies() {
 		executeDataSet("org/openmrs/api/include/OrderServiceTest-otherOrderFrequencies.xml");
-		final String searchPhrase = "once";
+		final /*~~>*/String searchPhrase = "once";
 		final Locale locale = Locale.ENGLISH;
 		List<OrderFrequency> orderFrequencies = orderService.getOrderFrequencies(searchPhrase, locale, true, false);
 		assertEquals(1, orderFrequencies.size());
@@ -1372,7 +1372,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 		//Add a new name to the frequency concept so that our search phrase matches on 2
 		//concept names for the same frequency concept
 		Concept frequencyConcept = expectedOrderFrequency.getConcept();
-		final String newConceptName = searchPhrase + " A Day";
+		final /*~~>*/String newConceptName = searchPhrase + " A Day";
 		frequencyConcept.addName(new ConceptName(newConceptName, locale));
 		frequencyConcept.addDescription(new ConceptDescription("some description", null));
 		conceptService.saveConcept(frequencyConcept);
@@ -1524,7 +1524,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void saveOrder_shouldSetOrderNumberSpecifiedInTheContextIfSpecified() {
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GP_ORDER_NUMBER_GENERATOR_BEAN_ID,
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GP_ORDER_NUMBER_GENERATOR_BEAN_ID,
 			"orderEntry.OrderNumberGenerator");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		Order order = new TestOrder();
@@ -1537,8 +1537,8 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 		order.setEncounter(encounterService.getEncounter(3));
 		order.setDateActivated(new Date());
 		OrderContext orderCtxt = new OrderContext();
-		final String expectedOrderNumber = "Testing";
-		orderCtxt.setAttribute(TimestampOrderNumberGenerator.NEXT_ORDER_NUMBER, expectedOrderNumber);
+		final /*~~>*/String expectedOrderNumber = "Testing";
+		orderCtxt.setAttribute(/*~~>*/TimestampOrderNumberGenerator.NEXT_ORDER_NUMBER, expectedOrderNumber);
 		order = orderService.saveOrder(order, orderCtxt);
 		assertEquals(expectedOrderNumber, order.getOrderNumber());
 	}
@@ -1548,7 +1548,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void saveOrder_shouldSetTheOrderNumberReturnedByTheConfiguredGenerator() {
-		GlobalProperty gp = new GlobalProperty(OpenmrsConstants.GP_ORDER_NUMBER_GENERATOR_BEAN_ID,
+		GlobalProperty gp = new GlobalProperty(/*~~>*/OpenmrsConstants.GP_ORDER_NUMBER_GENERATOR_BEAN_ID,
 			"orderEntry.OrderNumberGenerator");
 		Context.getAdministrationService().saveGlobalProperty(gp);
 		Order order = new TestOrder();
@@ -1560,7 +1560,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 		order.setEncounter(encounterService.getEncounter(3));
 		order.setDateActivated(new Date());
 		order = orderService.saveOrder(order, null);
-		assertTrue(order.getOrderNumber().startsWith(TimestampOrderNumberGenerator.ORDER_NUMBER_PREFIX));
+		assertTrue(order.getOrderNumber().startsWith(/*~~>*/TimestampOrderNumberGenerator.ORDER_NUMBER_PREFIX));
 	}
 
 	/**
@@ -2414,7 +2414,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 		OrderType orderType = orderService.getOrderType(1);
 		assertNull(orderType.getDateChanged());
 		assertNull(orderType.getChangedBy());
-		final String newDescription = "new";
+		final /*~~>*/String newDescription = "new";
 		orderType.setDescription(newDescription);
 
 		orderService.saveOrderType(orderType);
@@ -2944,8 +2944,8 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getDrugDispensingUnits_shouldReturnAnEmptyListIfNothingIsConfigured() {
-		adminService.saveGlobalProperty(new GlobalProperty(OpenmrsConstants.GP_DRUG_DISPENSING_UNITS_CONCEPT_UUID, ""));
-		adminService.saveGlobalProperty(new GlobalProperty(OpenmrsConstants.GP_DRUG_DOSING_UNITS_CONCEPT_UUID, ""));
+		adminService.saveGlobalProperty(new GlobalProperty(/*~~>*/OpenmrsConstants.GP_DRUG_DISPENSING_UNITS_CONCEPT_UUID, ""));
+		adminService.saveGlobalProperty(new GlobalProperty(/*~~>*/OpenmrsConstants.GP_DRUG_DOSING_UNITS_CONCEPT_UUID, ""));
 		assertThat(orderService.getDrugDispensingUnits(), is(empty()));
 	}
 
@@ -2964,7 +2964,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getDrugDosingUnits_shouldReturnAnEmptyListIfNothingIsConfigured() {
-		adminService.saveGlobalProperty(new GlobalProperty(OpenmrsConstants.GP_DRUG_DOSING_UNITS_CONCEPT_UUID, ""));
+		adminService.saveGlobalProperty(new GlobalProperty(/*~~>*/OpenmrsConstants.GP_DRUG_DOSING_UNITS_CONCEPT_UUID, ""));
 		assertThat(orderService.getDrugDosingUnits(), is(empty()));
 	}
 
@@ -2983,7 +2983,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getDurationUnits_shouldReturnAnEmptyListIfNothingIsConfigured() {
-		adminService.saveGlobalProperty(new GlobalProperty(OpenmrsConstants.GP_DURATION_UNITS_CONCEPT_UUID, ""));
+		adminService.saveGlobalProperty(new GlobalProperty(/*~~>*/OpenmrsConstants.GP_DURATION_UNITS_CONCEPT_UUID, ""));
 		assertThat(orderService.getDurationUnits(), is(empty()));
 	}
 
@@ -3039,7 +3039,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getTestSpecimenSources_shouldReturnAnEmptyListIfNothingIsConfigured() {
-		adminService.saveGlobalProperty(new GlobalProperty(OpenmrsConstants.GP_TEST_SPECIMEN_SOURCES_CONCEPT_UUID, ""));
+		adminService.saveGlobalProperty(new GlobalProperty(/*~~>*/OpenmrsConstants.GP_TEST_SPECIMEN_SOURCES_CONCEPT_UUID, ""));
 		assertThat(orderService.getTestSpecimenSources(), is(empty()));
 	}
 
@@ -3087,7 +3087,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 
 		orderService.saveOrder(drugOrder, null);
 		assertNotNull(drugOrder.getOrderType());
-		assertEquals(orderService.getOrderTypeByUuid(OrderType.DRUG_ORDER_TYPE_UUID), drugOrder.getOrderType());
+		assertEquals(orderService.getOrderTypeByUuid(/*~~>*/OrderType.DRUG_ORDER_TYPE_UUID), drugOrder.getOrderType());
 	}
 
 	/**
@@ -3113,7 +3113,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 
 		orderService.saveOrder(testOrder, null);
 		assertNotNull(testOrder.getOrderType());
-		assertEquals(orderService.getOrderTypeByUuid(OrderType.TEST_ORDER_TYPE_UUID), testOrder.getOrderType());
+		assertEquals(orderService.getOrderTypeByUuid(/*~~>*/OrderType.TEST_ORDER_TYPE_UUID), testOrder.getOrderType());
 	}
 
 	@Test
@@ -3223,7 +3223,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 		order.setQuantityUnits(conceptService.getConcept(51));
 		order.setNumRefills(2);
 		OrderContext orderContext = new OrderContext();
-		orderContext.setAttribute(OrderService.PARALLEL_ORDERS, new String[]{existingOrder.getUuid()});
+		orderContext.setAttribute(/*~~>*/OrderService.PARALLEL_ORDERS, new /*~~>*/String[]{existingOrder.getUuid()});
 		orderService.saveOrder(order, orderContext);
 		assertNotNull(orderService.getOrder(order.getOrderId()));
 	}
@@ -3233,7 +3233,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 	 */
 	@Test
 	public void getNonCodedDrugConcept_shouldReturnNullIfNothingIsConfigured() {
-		adminService.saveGlobalProperty(new GlobalProperty(OpenmrsConstants.GP_DRUG_ORDER_DRUG_OTHER, ""));
+		adminService.saveGlobalProperty(new GlobalProperty(/*~~>*/OpenmrsConstants.GP_DRUG_ORDER_DRUG_OTHER, ""));
 		assertNull(orderService.getNonCodedDrugConcept());
 	}
 
@@ -3324,7 +3324,7 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 		executeDataSet("org/openmrs/api/include/OrderServiceTest-nonCodedDrugs.xml");
 		DrugOrder previousOrder = (DrugOrder) orderService.getOrder(584);
 		DrugOrder order = previousOrder.cloneForRevision();
-		String drugNonCodedParacetemol = "non coded aspirin";
+		/*~~>*/String drugNonCodedParacetemol = "non coded aspirin";
 
 		order.setDateActivated(new Date());
 		order.setOrderer(providerService.getProvider(1));
@@ -3939,8 +3939,8 @@ public class OrderServiceTest extends BaseContextSensitiveTest {
 		order.setEncounter(encounterService.getEncounter(3));
 		order.setDateActivated(new Date());
 		
-		final String NAMESPACE = "namespace";
-		final String FORMFIELD_PATH = "formFieldPath";
+		final /*~~>*/String NAMESPACE = "namespace";
+		final /*~~>*/String FORMFIELD_PATH = "formFieldPath";
 		order.setFormField(NAMESPACE, FORMFIELD_PATH);
 		
 		order = orderService.saveOrder(order, null);

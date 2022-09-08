@@ -55,9 +55,9 @@ import org.openmrs.util.OpenmrsConstants;
  */
 public class VisitServiceTest extends BaseContextSensitiveTest {
 	
-	protected static final String VISITS_WITH_DATES_XML = "org/openmrs/api/include/VisitServiceTest-otherVisits.xml";
+	protected static final /*~~>*/String VISITS_WITH_DATES_XML = "org/openmrs/api/include/VisitServiceTest-otherVisits.xml";
 	
-	protected static final String VISITS_ATTRIBUTES_XML = "org/openmrs/api/include/VisitServiceTest-visitAttributes.xml";
+	protected static final /*~~>*/String VISITS_ATTRIBUTES_XML = "org/openmrs/api/include/VisitServiceTest-visitAttributes.xml";
 	
 	private GlobalPropertiesTestHelper globalPropertiesTestHelper;
 	
@@ -72,7 +72,7 @@ public class VisitServiceTest extends BaseContextSensitiveTest {
 		// overlapping visits) breaks existing tests of the visit service.
 		//
 		globalPropertiesTestHelper = new GlobalPropertiesTestHelper(Context.getAdministrationService());
-		globalPropertiesTestHelper.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_ALLOW_OVERLAPPING_VISITS, "true");
+		globalPropertiesTestHelper.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ALLOW_OVERLAPPING_VISITS, "true");
 	}
 	
 	@Test
@@ -856,10 +856,10 @@ public class VisitServiceTest extends BaseContextSensitiveTest {
 	@Test
 	public void stopVisits_shouldCloseAllUnvoidedActiveVisitMatchingTheSpecifiedVisitTypes() {
 		executeDataSet("org/openmrs/api/include/VisitServiceTest-includeVisitsAndTypeToAutoClose.xml");
-		String[] visitTypeNames = StringUtils.split(Context.getAdministrationService().getGlobalProperty(
-		    OpenmrsConstants.GP_VISIT_TYPES_TO_AUTO_CLOSE), ",");
+		/*~~>*/String[] visitTypeNames = StringUtils.split(Context.getAdministrationService().getGlobalProperty(
+		    /*~~>*/OpenmrsConstants.GP_VISIT_TYPES_TO_AUTO_CLOSE), ",");
 		
-		String openVisitsQuery = "SELECT visit_id FROM visit WHERE voided = 0 AND date_stopped IS NULL AND visit_type_id IN (SELECT visit_type_id FROM visit_type WHERE NAME IN ('"
+		/*~~>*/String openVisitsQuery = "SELECT visit_id FROM visit WHERE voided = 0 AND date_stopped IS NULL AND visit_type_id IN (SELECT visit_type_id FROM visit_type WHERE NAME IN ('"
 		        + StringUtils.join(visitTypeNames, "','") + "'))";
 		int activeVisitCount = Context.getAdministrationService().executeSQL(openVisitsQuery, true).size();
 		//sanity check

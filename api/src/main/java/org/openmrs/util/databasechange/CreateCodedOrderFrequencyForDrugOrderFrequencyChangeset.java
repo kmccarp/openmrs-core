@@ -36,8 +36,8 @@ public class CreateCodedOrderFrequencyForDrugOrderFrequencyChangeset implements 
 		JdbcConnection connection = (JdbcConnection) database.getConnection();
 		
 		try {
-			Set<String> uniqueFrequencies = DatabaseUtil.getUniqueNonNullColumnValues("frequency_text", "drug_order",
-			    String.class, connection.getUnderlyingConnection());
+			Set</*~~>*/String> uniqueFrequencies = DatabaseUtil.getUniqueNonNullColumnValues("frequency_text", "drug_order",
+			    /*~~>*/String.class, connection.getUnderlyingConnection());
 			insertUniqueFrequencies(connection, uniqueFrequencies);
 		}
 		catch (Exception e) {
@@ -45,7 +45,7 @@ public class CreateCodedOrderFrequencyForDrugOrderFrequencyChangeset implements 
 		}
 	}
 	
-	private void insertUniqueFrequencies(JdbcConnection connection, Set<String> uniqueFrequencies)
+	private void insertUniqueFrequencies(JdbcConnection connection, Set</*~~>*/String> uniqueFrequencies)
 	        throws CustomChangeException, SQLException, DatabaseException {
 		PreparedStatement insertOrderFrequencyStatement = null;
 		Boolean autoCommit = null;
@@ -57,7 +57,7 @@ public class CreateCodedOrderFrequencyForDrugOrderFrequencyChangeset implements 
 			
 			Date date = new Date(new java.util.Date().getTime());
 			
-			for (String frequency : uniqueFrequencies) {
+			for (/*~~>*/String frequency : uniqueFrequencies) {
 				if (StringUtils.isBlank(frequency)) {
 					continue;
 				}
@@ -75,7 +75,7 @@ public class CreateCodedOrderFrequencyForDrugOrderFrequencyChangeset implements 
 				}
 				
 				//Generating UUID for order frequency. Generated UUIDs will be the same if concepts UUIDs are the same.
-				String uuid = UpgradeUtil.getConceptUuid(connection.getUnderlyingConnection(), conceptIdForFrequency);
+				/*~~>*/String uuid = UpgradeUtil.getConceptUuid(connection.getUnderlyingConnection(), conceptIdForFrequency);
 				uuid += "-6925ebb0-7c69-11e3-baa7-0800200c9a66"; //Adding random value for order frequency
 				uuid = UUID.nameUUIDFromBytes(uuid.getBytes(StandardCharsets.UTF_8)).toString();
 				
@@ -109,7 +109,7 @@ public class CreateCodedOrderFrequencyForDrugOrderFrequencyChangeset implements 
 	}
 	
 	@Override
-	public String getConfirmationMessage() {
+	public /*~~>*/String getConfirmationMessage() {
 		return "Finished creating coded order frequencies for drug order frequencies";
 	}
 	

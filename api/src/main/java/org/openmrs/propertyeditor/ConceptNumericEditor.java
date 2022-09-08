@@ -31,7 +31,7 @@ public class ConceptNumericEditor extends OpenmrsPropertyEditor<ConceptNumeric> 
 	}
 	
 	@Override
-	protected ConceptNumeric getObjectByUuid(String uuid) {
+	protected ConceptNumeric getObjectByUuid(/*~~>*/String uuid) {
 		return Context.getConceptService().getConceptNumericByUuid(uuid);
 	}
 }

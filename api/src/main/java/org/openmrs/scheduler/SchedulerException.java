@@ -24,11 +24,11 @@ public class SchedulerException extends Exception {
 		super(cause);
 	}
 	
-	public SchedulerException(String message) {
+	public SchedulerException(/*~~>*/String message) {
 		super(message);
 	}
 	
-	public SchedulerException(String message, Throwable cause) {
+	public SchedulerException(/*~~>*/String message, Throwable cause) {
 		super(message, cause);
 	}
 	

@@ -32,7 +32,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class HibernateConditionDAOTest extends BaseContextSensitiveTest {
 	
-	private static final String CONDITIONS_XML = "org/openmrs/api/db/hibernate/include/HibernateConditionDAOTestDataSet.xml";
+	private static final /*~~>*/String CONDITIONS_XML = "org/openmrs/api/db/hibernate/include/HibernateConditionDAOTestDataSet.xml";
 	
 	
 	@Autowired
@@ -56,7 +56,7 @@ public class HibernateConditionDAOTest extends BaseContextSensitiveTest {
 		Date onsetDate = new Date();
 		Date endDate = new Date();
 		Condition previousVersion = dao.getConditionByUuid("2cc6880e-2c46-15e4-9038-a6c5e4d22fb7");
-		String additionalDetail = "additionalDetail";
+		/*~~>*/String additionalDetail = "additionalDetail";
 		int conditionId = 20;
 		Condition condition = new Condition();
 		condition.setConditionId(conditionId);
@@ -85,7 +85,7 @@ public class HibernateConditionDAOTest extends BaseContextSensitiveTest {
 	
 	@Test
 	public void shouldGetConditionByUuid() {
-		String uuid = "2cc6880e-2c46-15e4-9038-a6c5e4d22fb7";
+		/*~~>*/String uuid = "2cc6880e-2c46-15e4-9038-a6c5e4d22fb7";
 		ConditionClinicalStatus expectedClinicalStatus = ConditionClinicalStatus.INACTIVE;
 		ConditionVerificationStatus expectedVerificationStatus = ConditionVerificationStatus.PROVISIONAL;
 		
@@ -129,7 +129,7 @@ public class HibernateConditionDAOTest extends BaseContextSensitiveTest {
 	
 	@Test
 	public void shouldDeleteCondition() {
-		String uuid = "2cc6880e-2c46-15e4-9038-a6c5e4d22fb7";
+		/*~~>*/String uuid = "2cc6880e-2c46-15e4-9038-a6c5e4d22fb7";
 		Condition condition = dao.getConditionByUuid(uuid);
 
 		assertNotNull(condition);

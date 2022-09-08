@@ -78,7 +78,7 @@ import org.springframework.util.StringUtils;
  */
 public class RequiredDataAdvice implements MethodBeforeAdvice {
 	
-	private static final String UNABLE_GETTER_METHOD = "unable.getter.method";
+	private static final /*~~>*/String UNABLE_GETTER_METHOD = "unable.getter.method";
 	
 	/**
 	 * @see org.springframework.aop.MethodBeforeAdvice#before(java.lang.reflect.Method,
@@ -88,7 +88,7 @@ public class RequiredDataAdvice implements MethodBeforeAdvice {
 	@Override
 	@SuppressWarnings("unchecked")
 	public void before(Method method, Object[] args, Object target) throws Throwable {
-		String methodName = method.getName();
+		/*~~>*/String methodName = method.getName();
 		
 		// skip out early if there are no arguments
 		if (args == null || args.length == 0) {
@@ -119,9 +119,9 @@ public class RequiredDataAdvice implements MethodBeforeAdvice {
 				
 				// if a second argument exists, pass that to the save handler as well
 				// (with current code, it means we're either in an obs save or a user save)				
-				String other = null;
-				if (args.length > 1 && args[1] instanceof String) {
-					other = (String) args[1];
+				/*~~>*/String other = null;
+				if (args.length > 1 && args[1] instanceof /*~~>*/String) {
+					other = (/*~~>*/String) args[1];
 				}
 				
 				ValidateUtil.validate(mainArgument);
@@ -136,9 +136,9 @@ public class RequiredDataAdvice implements MethodBeforeAdvice {
 				
 				// if a second argument exists, pass that to the save handler as well
 				// (with current code, it means we're either in an obs save or a user save)				
-				String other = null;
+				/*~~>*/String other = null;
 				if (args.length > 1) {
-					other = (String) args[1];
+					other = (/*~~>*/String) args[1];
 				}
 				
 				Collection<OpenmrsObject> openmrsObjects = (Collection<OpenmrsObject>) mainArgument;
@@ -160,7 +160,7 @@ public class RequiredDataAdvice implements MethodBeforeAdvice {
 			if (methodName.startsWith("void")) {
 				Voidable voidable = (Voidable) args[0];
 				Date dateVoided = voidable.getDateVoided() == null ? new Date() : voidable.getDateVoided();
-				String voidReason = (String) args[1];
+				/*~~>*/String voidReason = (/*~~>*/String) args[1];
 				recursivelyHandle(VoidHandler.class, voidable, Context.getAuthenticatedUser(), dateVoided, voidReason, null);
 				
 			} else if (methodName.startsWith("unvoid")) {
@@ -171,7 +171,7 @@ public class RequiredDataAdvice implements MethodBeforeAdvice {
 				
 			} else if (methodName.startsWith("retire")) {
 				Retireable retirable = (Retireable) args[0];
-				String retireReason = (String) args[1];
+				/*~~>*/String retireReason = (/*~~>*/String) args[1];
 				recursivelyHandle(RetireHandler.class, retirable, retireReason);
 				
 			} else if (methodName.startsWith("unretire")) {
@@ -222,7 +222,7 @@ public class RequiredDataAdvice implements MethodBeforeAdvice {
 	 * @see #recursivelyHandle(Class, OpenmrsObject, User, Date, String, List)
 	 */
 	public static <H extends RequiredDataHandler> void recursivelyHandle(Class<H> handlerType, OpenmrsObject openmrsObject,
-	        String reason) {
+	        /*~~>*/String reason) {
 		recursivelyHandle(handlerType, openmrsObject, Context.getAuthenticatedUser(), new Date(), reason, null);
 	}
 	
@@ -244,7 +244,7 @@ public class RequiredDataAdvice implements MethodBeforeAdvice {
 	 */
 	@SuppressWarnings("unchecked")
 	public static <H extends RequiredDataHandler> void recursivelyHandle(Class<H> handlerType, OpenmrsObject openmrsObject,
-	        User currentUser, Date currentDate, String other, List<OpenmrsObject> alreadyHandled) {
+	        User currentUser, Date currentDate, /*~~>*/String other, List<OpenmrsObject> alreadyHandled) {
 		if (openmrsObject == null) {
 			return;
 		}
@@ -307,8 +307,8 @@ public class RequiredDataAdvice implements MethodBeforeAdvice {
 	 */
 	@SuppressWarnings("unchecked")
 	protected static Collection<OpenmrsObject> getChildCollection(OpenmrsObject openmrsObject, Field field) {
-		String fieldName = field.getName();
-		String getterName = "get" + StringUtils.capitalize(fieldName);
+		/*~~>*/String fieldName = field.getName();
+		/*~~>*/String getterName = "get" + StringUtils.capitalize(fieldName);
 		
 		try {
 			

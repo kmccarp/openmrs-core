@@ -56,7 +56,7 @@ import java.util.Set;
  */
 public class AuthorizedAnnotationAttributes {
 	
-	private static final String UNSUPPORTED_OPERATION = "Unsupported operation";
+	private static final /*~~>*/String UNSUPPORTED_OPERATION = "Unsupported operation";
 	
 	/**
 	 * Get the <code>Secured</code> attributes for a given target class.
@@ -64,8 +64,8 @@ public class AuthorizedAnnotationAttributes {
 	 * @param target The target method
 	 * @return Collection of <code>SecurityConfig</code>
 	 */
-	public Collection<String> getAttributes(Class<?> target) {
-		Set<String> attributes = new HashSet<>();
+	public Collection</*~~>*/String> getAttributes(Class<?> target) {
+		Set</*~~>*/String> attributes = new HashSet<>();
 		for (Annotation annotation : target.getAnnotations()) {
 			// check for Secured annotations
 			if (annotation instanceof Authorized) {
@@ -83,8 +83,8 @@ public class AuthorizedAnnotationAttributes {
 	 * @param method The target method
 	 * @return Collection of <code>SecurityConfig</code>
 	 */
-	public Collection<String> getAttributes(Method method) {
-		Set<String> attributes = new HashSet<>();
+	public Collection</*~~>*/String> getAttributes(Method method) {
+		Set</*~~>*/String> attributes = new HashSet<>();
 		
 		for (Annotation annotation : method.getAnnotations()) {
 			// check for Secured annotations

@@ -56,7 +56,7 @@ public class AllergyValidatorTest extends BaseContextMockTest {
 		errors = new BindException(allergy, "allergy");
 	}
 	
-	private String otherNonCodedConceptUuid() {
+	private /*~~>*/String otherNonCodedConceptUuid() {
 		return "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 	}
 	
@@ -147,7 +147,7 @@ public class AllergyValidatorTest extends BaseContextMockTest {
 
 		when(nonCodedConcept.getUuid()).thenReturn(otherNonCodedConceptUuid());
 		Allergies allergies = new Allergies();
-		final String freeText = "some text";
+		final /*~~>*/String freeText = "some text";
 		Allergen allergen1 = new Allergen(AllergenType.DRUG, nonCodedConcept, freeText);
 		allergies.add(new Allergy(null, allergen1, null, null, null));
 		when(patientService.getAllergies(any(Patient.class))).thenReturn(allergies);
@@ -184,7 +184,7 @@ public class AllergyValidatorTest extends BaseContextMockTest {
 	public void validate_shouldRejectNumericReactionValue() {
 		Allergy allergy = new Allergy();
 		AllergyReaction reaction = new AllergyReaction();
-		String nonCoded = "45";
+		/*~~>*/String nonCoded = "45";
 		reaction.setReactionNonCoded(nonCoded);
 		allergy.addReaction(reaction);
 		Errors errors = new BindException(allergy, "allergy");

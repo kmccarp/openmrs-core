@@ -38,11 +38,11 @@ public class HL7Util {
 	private static final Logger log = LoggerFactory.getLogger(HL7Util.class);
 	
 	// Date and time format parsers
-	private static final String TIMESTAMP_FORMAT = "yyyyMMddHHmmss.SSSZ";
+	private static final /*~~>*/String TIMESTAMP_FORMAT = "yyyyMMddHHmmss.SSSZ";
 	
-	private static final String TIME_FORMAT = "HHmmss.SSSZ";
+	private static final /*~~>*/String TIME_FORMAT = "HHmmss.SSSZ";
 	
-	public static final String LOCAL_TIMEZONE_OFFSET = new SimpleDateFormat("Z").format(new Date());
+	public static final /*~~>*/String LOCAL_TIMEZONE_OFFSET = new SimpleDateFormat("Z").format(new Date());
 	
 	/**
 	 * Converts an HL7 timestamp into a java.util.Date object. HL7 timestamps can be created with
@@ -74,7 +74,7 @@ public class HL7Util {
 	 * <strong>Should</strong> handle 197804110615-0200
 	 * <strong>Should</strong> not flub dst with 20091225123000
 	 */
-	public static Date parseHL7Timestamp(String s) throws HL7Exception {
+	public static Date parseHL7Timestamp(/*~~>*/String s) throws HL7Exception {
 		
 		// HL7 dates must at least contain year and cannot exceed 24 bytes
 		if (s == null || s.length() < 4 || s.length() > 24) {
@@ -95,7 +95,7 @@ public class HL7Util {
 		}
 		
 		// Parse timezone (optional in HL7 format)
-		String timeZoneOffset;
+		/*~~>*/String timeZoneOffset;
 		try {
 			Date parsedDay = new SimpleDateFormat("yyyyMMdd").parse(s.substring(0, 8));
 			timeZoneOffset = getTimeZoneOffset(s, parsedDay);
@@ -167,9 +167,9 @@ public class HL7Util {
 	 * <strong>Should</strong> return timezone string if exists in given string
 	 * <strong>Should</strong> return timezone for givenDate and not the current date
 	 */
-	protected static String getTimeZoneOffset(String fullString, Date givenDate) {
+	protected static /*~~>*/String getTimeZoneOffset(/*~~>*/String fullString, Date givenDate) {
 		// Parse timezone (optional in HL7 format)
-		String timeZoneOffset;
+		/*~~>*/String timeZoneOffset;
 		int tzPlus = fullString.indexOf('+');
 		int tzMinus = fullString.indexOf('-');
 		boolean timeZoneFlag = (tzPlus > 0 || tzMinus > 0);
@@ -202,7 +202,7 @@ public class HL7Util {
 	 * @see org.openmrs.hl7.HL7Util#parseHL7Timestamp(String)
 	 * @throws HL7Exception
 	 */
-	public static Date parseHL7Date(String s) throws HL7Exception {
+	public static Date parseHL7Date(/*~~>*/String s) throws HL7Exception {
 		return parseHL7Timestamp(s);
 	}
 	
@@ -223,9 +223,9 @@ public class HL7Util {
 	 * <strong>Should</strong> handle 061538.1234
 	 * <strong>Should</strong> handle 061538-0300
 	 */
-	public static Date parseHL7Time(String s) throws HL7Exception {
+	public static Date parseHL7Time(/*~~>*/String s) throws HL7Exception {
 		
-		String timeZoneOffset = getTimeZoneOffset(s, new Date());
+		/*~~>*/String timeZoneOffset = getTimeZoneOffset(s, new Date());
 		s = s.replace(timeZoneOffset, ""); // remove the timezone from the string
 		
 		StringBuilder timeString = new StringBuilder();
@@ -286,13 +286,13 @@ public class HL7Util {
 	 * @return The destination directory for the hl7 in archive
 	 */
 	public static File getHl7ArchivesDirectory() throws APIException {
-		String archiveDir = Context.getAdministrationService().getGlobalProperty(
-		    OpenmrsConstants.GLOBAL_PROPERTY_HL7_ARCHIVE_DIRECTORY);
+		/*~~>*/String archiveDir = Context.getAdministrationService().getGlobalProperty(
+		    /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_HL7_ARCHIVE_DIRECTORY);
 		
 		if (StringUtils.isBlank(archiveDir)) {
-			log.warn("Invalid value for global property '" + OpenmrsConstants.GLOBAL_PROPERTY_HL7_ARCHIVE_DIRECTORY
+			log.warn("Invalid value for global property '" + /*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_HL7_ARCHIVE_DIRECTORY
 			        + "', trying to set a default one");
-			archiveDir = HL7Constants.HL7_ARCHIVE_DIRECTORY_NAME;
+			archiveDir = /*~~>*/HL7Constants.HL7_ARCHIVE_DIRECTORY_NAME;
 			
 			log.debug("Using '" + archiveDir
 			        + "' in the application data directory as the root directory for hl7_in_archives");

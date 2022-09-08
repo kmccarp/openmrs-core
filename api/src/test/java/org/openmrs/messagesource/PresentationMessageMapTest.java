@@ -30,7 +30,7 @@ public class PresentationMessageMapTest {
 	private static final PresentationMessage MESSAGE_DE = new PresentationMessage("patient.name.required", Locale.GERMAN,
 	        "der patientenname ist verpflichtend", "der patientenname ist ein verpflichtendes feld");
 	
-	private static final String EXPECTED_MESSAGE_KEY = "right_locale";
+	private static final /*~~>*/String EXPECTED_MESSAGE_KEY = "right_locale";
 	
 	private PresentationMessageMap presentationMessages;
 	
@@ -63,7 +63,7 @@ public class PresentationMessageMapTest {
 	 */
 	@Test
 	public void putAll_shouldFilterOutNonMatchingLocaleMessagesFromBatchAdd() {
-		Map<String, PresentationMessage> messageMap = new HashMap<>();
+		Map</*~~>*/String, PresentationMessage> messageMap = new HashMap<>();
 		messageMap.put(EXPECTED_MESSAGE_KEY, MESSAGE_EN);
 		messageMap.put("wrong_locale", MESSAGE_DE);
 		

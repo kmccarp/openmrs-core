@@ -43,7 +43,7 @@ public class PatientDataVoidHandler implements VoidHandler<Patient> {
 	 * <strong>Should</strong> void the orders encounters and observations associated with the patient
 	 */
 	@Override
-	public void handle(Patient patient, User voidingUser, Date voidedDate, String voidReason) {
+	public void handle(Patient patient, User voidingUser, Date voidedDate, /*~~>*/String voidReason) {
 		//void all the encounters associated with this patient
 		EncounterService es = Context.getEncounterService();
 		List<Encounter> encounters = es.getEncountersByPatient(patient);
@@ -60,12 +60,12 @@ public class PatientDataVoidHandler implements VoidHandler<Patient> {
 			}
 		}
 
-		Context.addProxyPrivilege(PrivilegeConstants.EDIT_COHORTS);
+		Context.addProxyPrivilege(/*~~>*/PrivilegeConstants.EDIT_COHORTS);
 		try {
 			Context.getCohortService().notifyPatientVoided(patient);
 		}
 		finally {
-			Context.removeProxyPrivilege(PrivilegeConstants.EDIT_COHORTS);
+			Context.removeProxyPrivilege(/*~~>*/PrivilegeConstants.EDIT_COHORTS);
 		}
 	}
 }

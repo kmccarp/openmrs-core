@@ -59,7 +59,7 @@ public interface ObsService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> get obs matching given obsId
 	 */
-	@Authorized(PrivilegeConstants.GET_OBS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_OBS)
 	public Obs getObs(Integer obsId) throws APIException;
 	
 	/**
@@ -70,8 +70,8 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> find object given valid uuid
 	 * <strong>Should</strong> return null if no object found with given uuid
 	 */
-	@Authorized(PrivilegeConstants.GET_OBS)
-	public Obs getObsByUuid(String uuid) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_OBS)
+	public Obs getObsByUuid(/*~~>*/String uuid) throws APIException;
 
 	/**
 	 * Get Revision Obs for initial Obs
@@ -82,7 +82,7 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> find revision obs for given valid obs
 	 * <strong>Should</strong> return null if no revision obs found for given obs
 	 */
-	@Authorized(PrivilegeConstants.GET_OBS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_OBS)
 	public Obs getRevisionObs(Obs initialObs);
 
 	/**
@@ -124,8 +124,8 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> set void reason message to changeMessage
      * <strong>Should</strong> not void an Obs with no changes
 	 */
-	@Authorized( { PrivilegeConstants.ADD_OBS, PrivilegeConstants.EDIT_OBS })
-	public Obs saveObs(Obs obs, String changeMessage) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.ADD_OBS, /*~~>*/PrivilegeConstants.EDIT_OBS })
+	public Obs saveObs(Obs obs, /*~~>*/String changeMessage) throws APIException;
 	
 	/**
 	 * Equivalent to deleting an observation
@@ -136,8 +136,8 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> set voided bit on given obs
 	 * <strong>Should</strong> fail if reason parameter is empty
 	 */
-	@Authorized(PrivilegeConstants.EDIT_OBS)
-	public Obs voidObs(Obs obs, String reason) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.EDIT_OBS)
+	public Obs voidObs(Obs obs, /*~~>*/String reason) throws APIException;
 	
 	/**
 	 * Revive an observation (pull a Lazarus)
@@ -147,7 +147,7 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> unset voided bit on given obs
 	 * <strong>Should</strong> cascade unvoid to child grouped obs
 	 */
-	@Authorized(PrivilegeConstants.EDIT_OBS)
+	@Authorized(/*~~>*/PrivilegeConstants.EDIT_OBS)
 	public Obs unvoidObs(Obs obs) throws APIException;
 	
 	/**
@@ -161,7 +161,7 @@ public interface ObsService extends OpenmrsService {
 	 * @see #purgeObs(Obs, boolean)
 	 * <strong>Should</strong> delete the given obs from the database
 	 */
-	@Authorized(PrivilegeConstants.DELETE_OBS)
+	@Authorized(/*~~>*/PrivilegeConstants.DELETE_OBS)
 	public void purgeObs(Obs obs) throws APIException;
 	
 	/**
@@ -179,7 +179,7 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> delete any obsGroupMembers before deleting the obs
 	 * <strong>Should</strong> not delete referenced orders when purging obs
 	 */
-	@Authorized(PrivilegeConstants.DELETE_OBS)
+	@Authorized(/*~~>*/PrivilegeConstants.DELETE_OBS)
 	public void purgeObs(Obs obs, boolean cascade) throws APIException;
 
 	/**
@@ -192,7 +192,7 @@ public interface ObsService extends OpenmrsService {
 	 *      boolean)
 	 * <strong>Should</strong> get all observations assigned to given person
 	 */
-	@Authorized(PrivilegeConstants.GET_OBS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_OBS)
 	public List<Obs> getObservationsByPerson(Person who);
 	
 	/**
@@ -226,9 +226,9 @@ public interface ObsService extends OpenmrsService {
 	 * @return list of Observations that match all of the criteria given in the arguments
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.GET_OBS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_OBS)
 	public List<Obs> getObservations(List<Person> whom, List<Encounter> encounters, List<Concept> questions,
-	        List<Concept> answers, List<PERSON_TYPE> personTypes, List<Location> locations, List<String> sort,
+	        List<Concept> answers, List<PERSON_TYPE> personTypes, List<Location> locations, List</*~~>*/String> sort,
 	        Integer mostRecentN, Integer obsGroupId, Date fromDate, Date toDate, boolean includeVoidedObs)
 	        throws APIException;
 	
@@ -275,11 +275,11 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> include voided obs if includeVoidedObs is true
 	 * <strong>Should</strong> only return observations with matching accession number
 	 */
-	@Authorized(PrivilegeConstants.GET_OBS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_OBS)
 	public List<Obs> getObservations(List<Person> whom, List<Encounter> encounters, List<Concept> questions,
-	        List<Concept> answers, List<PERSON_TYPE> personTypes, List<Location> locations, List<String> sort,
+	        List<Concept> answers, List<PERSON_TYPE> personTypes, List<Location> locations, List</*~~>*/String> sort,
 	        Integer mostRecentN, Integer obsGroupId, Date fromDate, Date toDate, boolean includeVoidedObs,
-	        String accessionNumber) throws APIException;
+	        /*~~>*/String accessionNumber) throws APIException;
 	
 	/**
 	 * This method fetches the count of observations according to the criteria in the given
@@ -310,7 +310,7 @@ public interface ObsService extends OpenmrsService {
 	 * @return list of Observations that match all of the criteria given in the arguments
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.GET_OBS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_OBS)
 	public Integer getObservationCount(List<Person> whom, List<Encounter> encounters, List<Concept> questions,
 	        List<Concept> answers, List<PERSON_TYPE> personTypes, List<Location> locations, Integer obsGroupId,
 	        Date fromDate, Date toDate, boolean includeVoidedObs) throws APIException;
@@ -353,10 +353,10 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> include count of voided obs if includeVoidedObs is true
 	 * <strong>Should</strong> return count of obs with matching accession number
 	 */
-	@Authorized(PrivilegeConstants.GET_OBS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_OBS)
 	public Integer getObservationCount(List<Person> whom, List<Encounter> encounters, List<Concept> questions,
 	        List<Concept> answers, List<PERSON_TYPE> personTypes, List<Location> locations, Integer obsGroupId,
-	        Date fromDate, Date toDate, boolean includeVoidedObs, String accessionNumber) throws APIException;
+	        Date fromDate, Date toDate, boolean includeVoidedObs, /*~~>*/String accessionNumber) throws APIException;
 	
 	/**
 	 * This method searches the obs table based on the given <code>searchString</code>.
@@ -368,8 +368,8 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> get obs matching encounterId in searchString
 	 * <strong>Should</strong> get obs matching obsId in searchString
 	 */
-	@Authorized(PrivilegeConstants.GET_OBS)
-	public List<Obs> getObservations(String searchString) throws APIException;
+	@Authorized(/*~~>*/PrivilegeConstants.GET_OBS)
+	public List<Obs> getObservations(/*~~>*/String searchString) throws APIException;
 	
 	/**
 	 * Get all nonvoided observations for the given patient with the given concept as the question
@@ -384,7 +384,7 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> get observations matching person and question
 	 * <strong>Should</strong> not fail with null person parameter
 	 */
-	@Authorized(PrivilegeConstants.GET_OBS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_OBS)
 	public List<Obs> getObservationsByPersonAndConcept(Person who, Concept question) throws APIException;
 	
 	/**
@@ -399,8 +399,8 @@ public interface ObsService extends OpenmrsService {
 	 * @deprecated as of 2.1.0, use {@link #getObs(Integer)} 
 	 */
 	@Deprecated
-	@Authorized( { PrivilegeConstants.GET_OBS })
-	public Obs getComplexObs(Integer obsId, String view) throws APIException;
+	@Authorized( { /*~~>*/PrivilegeConstants.GET_OBS })
+	public Obs getComplexObs(Integer obsId, /*~~>*/String view) throws APIException;
 	
 	/**
 	 * Get the ComplexObsHandler that has been registered with the given key
@@ -411,7 +411,7 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> get handler with matching key
 	 * <strong>Should</strong> have default image and text handlers registered by spring
 	 */
-	public ComplexObsHandler getHandler(String key) throws APIException;
+	public ComplexObsHandler getHandler(/*~~>*/String key) throws APIException;
 	
 	/**
 	 * Get the ComplexObsHandler associated with a complex observation
@@ -438,7 +438,7 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> override handlers with same key
 	 * <strong>Should</strong> add new handlers with new keys
 	 */
-	public void setHandlers(Map<String, ComplexObsHandler> handlers) throws APIException;
+	public void setHandlers(Map</*~~>*/String, ComplexObsHandler> handlers) throws APIException;
 	
 	/**
 	 * Gets the handlers map registered
@@ -448,7 +448,7 @@ public interface ObsService extends OpenmrsService {
 	 * @throws APIException
 	 * <strong>Should</strong> never return null
 	 */
-	public Map<String, ComplexObsHandler> getHandlers() throws APIException;
+	public Map</*~~>*/String, ComplexObsHandler> getHandlers() throws APIException;
 	
 	/**
 	 * Registers the given handler with the given key If the given String key exists, that handler
@@ -460,7 +460,7 @@ public interface ObsService extends OpenmrsService {
 	 * @since 1.5
 	 * <strong>Should</strong> register handler with the given key
 	 */
-	public void registerHandler(String key, ComplexObsHandler handler) throws APIException;
+	public void registerHandler(/*~~>*/String key, ComplexObsHandler handler) throws APIException;
 	
 	/**
 	 * Convenience method for {@link #registerHandler(String, ComplexObsHandler)}
@@ -471,7 +471,7 @@ public interface ObsService extends OpenmrsService {
 	 * @since 1.5
 	 * <strong>Should</strong> load handler and register key
 	 */
-	public void registerHandler(String key, String handlerClass) throws APIException;
+	public void registerHandler(/*~~>*/String key, /*~~>*/String handlerClass) throws APIException;
 	
 	/**
 	 * Remove the handler associated with the key from list of available handlers
@@ -481,7 +481,7 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> remove handler with matching key
 	 * <strong>Should</strong> not fail with invalid key
 	 */
-	public void removeHandler(String key) throws APIException;
+	public void removeHandler(/*~~>*/String key) throws APIException;
 	
 	/**
 	 * Gets the number of observations(including voided ones) that are using the specified
@@ -495,7 +495,7 @@ public interface ObsService extends OpenmrsService {
 	 * <strong>Should</strong> return zero if no observation is using any of the concepNames in the list
 	 * @since Version 1.7
 	 */
-	@Authorized(PrivilegeConstants.GET_OBS)
+	@Authorized(/*~~>*/PrivilegeConstants.GET_OBS)
 	public Integer getObservationCount(List<ConceptName> conceptNames, boolean includeVoided);
 	
 }

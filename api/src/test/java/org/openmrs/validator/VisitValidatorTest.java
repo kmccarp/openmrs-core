@@ -42,7 +42,7 @@ import org.springframework.validation.Errors;
 
 public class VisitValidatorTest extends BaseContextSensitiveTest {
 	
-	protected static final String DATA_XML = "org/openmrs/validator/include/VisitValidatorTest.xml";
+	protected static final /*~~>*/String DATA_XML = "org/openmrs/validator/include/VisitValidatorTest.xml";
 	
 	private GlobalPropertiesTestHelper globalPropertiesTestHelper;
 	
@@ -71,14 +71,14 @@ public class VisitValidatorTest extends BaseContextSensitiveTest {
 		// Do not allow overlapping visits to test full validation of visit start and stop dates.
 		//
 		globalPropertiesTestHelper = new GlobalPropertiesTestHelper(Context.getAdministrationService());
-		globalPropertiesTestHelper.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_ALLOW_OVERLAPPING_VISITS, "false");
+		globalPropertiesTestHelper.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ALLOW_OVERLAPPING_VISITS, "false");
 		
 		calendar = Calendar.getInstance();
 	}
 	
 	@AfterEach
 	public void tearDown() {
-		globalPropertiesTestHelper.setGlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_ALLOW_OVERLAPPING_VISITS, "true");
+		globalPropertiesTestHelper.setGlobalProperty(/*~~>*/OpenmrsConstants.GLOBAL_PROPERTY_ALLOW_OVERLAPPING_VISITS, "true");
 	}
 	
 	/**

@@ -277,7 +277,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see org.openmrs.api.db.OrderDAO#getOrderByUuid(java.lang.String)
 	 */
 	@Override
-	public Order getOrderByUuid(String uuid) {
+	public Order getOrderByUuid(/*~~>*/String uuid) {
 		return (Order) sessionFactory.getCurrentSession().createQuery("from Order o where o.uuid = :uuid").setString("uuid",
 		    uuid).uniqueResult();
 	}
@@ -303,7 +303,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	
 	@Override
 	public List<Object[]> getOrderFromDatabase(Order order, boolean isOrderADrugOrder) throws APIException {
-		String sql = "SELECT patient_id, care_setting, concept_id FROM orders WHERE order_id = :orderId";
+		/*~~>*/String sql = "SELECT patient_id, care_setting, concept_id FROM orders WHERE order_id = :orderId";
 		
 		if (isOrderADrugOrder) {
 			sql = " SELECT o.patient_id, o.care_setting, o.concept_id, d.drug_inventory_id "
@@ -332,7 +332,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see org.openmrs.api.OrderService#getOrderGroupByUuid(String)
 	 */
 	@Override
-	public OrderGroup getOrderGroupByUuid(String uuid) throws DAOException {
+	public OrderGroup getOrderGroupByUuid(/*~~>*/String uuid) throws DAOException {
 		return (OrderGroup) sessionFactory.getCurrentSession().createQuery("from OrderGroup o where o.uuid = :uuid")
 		        .setString("uuid", uuid).uniqueResult();
 	}
@@ -361,7 +361,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see org.openmrs.api.db.OrderDAO#getOrderByOrderNumber(java.lang.String)
 	 */
 	@Override
-	public Order getOrderByOrderNumber(String orderNumber) {
+	public Order getOrderByOrderNumber(/*~~>*/String orderNumber) {
 		Criteria searchCriteria = sessionFactory.getCurrentSession().createCriteria(Order.class, "order");
 		searchCriteria.add(Restrictions.eq("order.orderNumber", orderNumber));
 		return (Order) searchCriteria.uniqueResult();
@@ -373,16 +373,16 @@ public class HibernateOrderDAO implements OrderDAO {
 	@Override
 	public Long getNextOrderNumberSeedSequenceValue() {
 		GlobalProperty globalProperty = (GlobalProperty) sessionFactory.getCurrentSession().get(GlobalProperty.class,
-		    OpenmrsConstants.GP_NEXT_ORDER_NUMBER_SEED, LockOptions.UPGRADE);
+		    /*~~>*/OpenmrsConstants.GP_NEXT_ORDER_NUMBER_SEED, LockOptions.UPGRADE);
 		
 		if (globalProperty == null) {
-			throw new APIException("GlobalProperty.missing", new Object[] { OpenmrsConstants.GP_NEXT_ORDER_NUMBER_SEED });
+			throw new APIException("GlobalProperty.missing", new Object[] { /*~~>*/OpenmrsConstants.GP_NEXT_ORDER_NUMBER_SEED });
 		}
 		
-		String gpTextValue = globalProperty.getPropertyValue();
+		/*~~>*/String gpTextValue = globalProperty.getPropertyValue();
 		if (StringUtils.isBlank(gpTextValue)) {
 			throw new APIException("GlobalProperty.invalid.value",
-			        new Object[] { OpenmrsConstants.GP_NEXT_ORDER_NUMBER_SEED });
+			        new Object[] { /*~~>*/OpenmrsConstants.GP_NEXT_ORDER_NUMBER_SEED });
 		}
 		
 		Long gpNumericValue;
@@ -391,10 +391,10 @@ public class HibernateOrderDAO implements OrderDAO {
 		}
 		catch (NumberFormatException ex) {
 			throw new APIException("GlobalProperty.invalid.value",
-			        new Object[] { OpenmrsConstants.GP_NEXT_ORDER_NUMBER_SEED });
+			        new Object[] { /*~~>*/OpenmrsConstants.GP_NEXT_ORDER_NUMBER_SEED });
 		}
 		
-		globalProperty.setPropertyValue(String.valueOf(gpNumericValue + 1));
+		globalProperty.setPropertyValue(/*~~>*/String.valueOf(gpNumericValue + 1));
 		
 		sessionFactory.getCurrentSession().save(globalProperty);
 		
@@ -471,7 +471,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see OrderDAO#getCareSettingByUuid(String)
 	 */
 	@Override
-	public CareSetting getCareSettingByUuid(String uuid) {
+	public CareSetting getCareSettingByUuid(/*~~>*/String uuid) {
 		return (CareSetting) sessionFactory.getCurrentSession().createQuery("from CareSetting cs where cs.uuid = :uuid")
 		        .setString("uuid", uuid).uniqueResult();
 	}
@@ -480,7 +480,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see OrderDAO#getCareSettingByName(String)
 	 */
 	@Override
-	public CareSetting getCareSettingByName(String name) {
+	public CareSetting getCareSettingByName(/*~~>*/String name) {
 		return (CareSetting) sessionFactory.getCurrentSession().createCriteria(CareSetting.class).add(
 		    Restrictions.ilike("name", name)).uniqueResult();
 	}
@@ -501,7 +501,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see OrderDAO#getOrderTypeByName
 	 */
 	@Override
-	public OrderType getOrderTypeByName(String orderTypeName) {
+	public OrderType getOrderTypeByName(/*~~>*/String orderTypeName) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(OrderType.class);
 		criteria.add(Restrictions.eq("name", orderTypeName));
 		return (OrderType) criteria.uniqueResult();
@@ -519,7 +519,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see OrderDAO#getOrderFrequencyByUuid
 	 */
 	@Override
-	public OrderFrequency getOrderFrequencyByUuid(String uuid) {
+	public OrderFrequency getOrderFrequencyByUuid(/*~~>*/String uuid) {
 		return (OrderFrequency) sessionFactory.getCurrentSession().createQuery("from OrderFrequency o where o.uuid = :uuid")
 		        .setString("uuid", uuid).uniqueResult();
 	}
@@ -540,7 +540,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see OrderDAO#getOrderFrequencies(String, java.util.Locale, boolean, boolean)
 	 */
 	@Override
-	public List<OrderFrequency> getOrderFrequencies(String searchPhrase, Locale locale, boolean exactLocale,
+	public List<OrderFrequency> getOrderFrequencies(/*~~>*/String searchPhrase, Locale locale, boolean exactLocale,
 	        boolean includeRetired) {
 		
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(OrderFrequency.class, "orderFreq");
@@ -643,7 +643,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see org.openmrs.api.db.OrderDAO#getOrderTypeByUuid(String)
 	 */
 	@Override
-	public OrderType getOrderTypeByUuid(String uuid) {
+	public OrderType getOrderTypeByUuid(/*~~>*/String uuid) {
 		return (OrderType) sessionFactory.getCurrentSession().createQuery("from OrderType o where o.uuid = :uuid")
 		        .setString("uuid", uuid).uniqueResult();
 	}
@@ -753,7 +753,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see org.openmrs.api.db.OrderDAO#getOrderGroupAttributeTypeByUuid(java.lang.String)
 	 */
 	@Override
-	public OrderGroupAttributeType getOrderGroupAttributeTypeByUuid(String uuid) throws DAOException{
+	public OrderGroupAttributeType getOrderGroupAttributeTypeByUuid(/*~~>*/String uuid) throws DAOException{
 		return (OrderGroupAttributeType) sessionFactory.getCurrentSession().createCriteria(OrderGroupAttributeType.class).add(
 			Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
@@ -779,7 +779,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see org.openmrs.api.db.OrderDAO#getOrderGroupAttributeByUuid(String)
 	 */
 	@Override
-	public OrderGroupAttribute getOrderGroupAttributeByUuid(String uuid)  throws DAOException{
+	public OrderGroupAttribute getOrderGroupAttributeByUuid(/*~~>*/String uuid)  throws DAOException{
 		return (OrderGroupAttribute) sessionFactory.getCurrentSession().createQuery("from OrderGroupAttribute d where d.uuid = :uuid")
 			.setString("uuid", uuid).uniqueResult();
 	}
@@ -788,7 +788,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see org.openmrs.api.db.OrderDAO#getOrderGroupAttributeTypeByName(String)
 	 */
 	@Override
-	public OrderGroupAttributeType getOrderGroupAttributeTypeByName(String name) throws DAOException{
+	public OrderGroupAttributeType getOrderGroupAttributeTypeByName(/*~~>*/String name) throws DAOException{
 		return (OrderGroupAttributeType) sessionFactory.getCurrentSession().createCriteria(OrderGroupAttributeType.class).add(
 			Restrictions.eq("name", name)).uniqueResult();
 	}
@@ -798,7 +798,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see org.openmrs.api.db.OrderDAO#getOrderAttributeByUuid(String)
 	 */
 	@Override
-	public OrderAttribute getOrderAttributeByUuid(String uuid) throws DAOException {
+	public OrderAttribute getOrderAttributeByUuid(/*~~>*/String uuid) throws DAOException {
 		return (OrderAttribute) sessionFactory.getCurrentSession()
 				.createQuery("from OrderAttribute a where a.uuid = :uuid")
 				.setString("uuid", uuid).uniqueResult();
@@ -827,7 +827,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see org.openmrs.api.db.OrderDAO#getOrderAttributeTypeByUuid(String)
 	 */
 	@Override
-	public OrderAttributeType getOrderAttributeTypeByUuid(String uuid) throws DAOException {
+	public OrderAttributeType getOrderAttributeTypeByUuid(/*~~>*/String uuid) throws DAOException {
 		return (OrderAttributeType) sessionFactory.getCurrentSession().createCriteria(OrderAttributeType.class)
 				.add(Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
@@ -856,7 +856,7 @@ public class HibernateOrderDAO implements OrderDAO {
 	 * @see org.openmrs.api.db.OrderDAO#getOrderAttributeTypeByName(String)
 	 */
 	@Override
-	public OrderAttributeType getOrderAttributeTypeByName(String name) throws DAOException {
+	public OrderAttributeType getOrderAttributeTypeByName(/*~~>*/String name) throws DAOException {
 		return (OrderAttributeType) sessionFactory.getCurrentSession().createCriteria(OrderAttributeType.class)
 				.add(Restrictions.eq("name", name)).uniqueResult();
 	}

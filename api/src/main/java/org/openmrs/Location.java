@@ -37,49 +37,49 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 
 	private Concept type;
 	
-	private String address1;
+	private /*~~>*/String address1;
 	
-	private String address2;
+	private /*~~>*/String address2;
 	
-	private String cityVillage;
+	private /*~~>*/String cityVillage;
 	
-	private String stateProvince;
+	private /*~~>*/String stateProvince;
 	
-	private String country;
+	private /*~~>*/String country;
 	
-	private String postalCode;
+	private /*~~>*/String postalCode;
 	
-	private String latitude;
+	private /*~~>*/String latitude;
 	
-	private String longitude;
+	private /*~~>*/String longitude;
 	
-	private String countyDistrict;
+	private /*~~>*/String countyDistrict;
 	
-	private String address3;
+	private /*~~>*/String address3;
 	
-	private String address4;
+	private /*~~>*/String address4;
 	
-	private String address6;
+	private /*~~>*/String address6;
 	
-	private String address5;
+	private /*~~>*/String address5;
 	
-	private String address7;
+	private /*~~>*/String address7;
 	
-	private String address8;
+	private /*~~>*/String address8;
 	
-	private String address9;
+	private /*~~>*/String address9;
 	
-	private String address10;
+	private /*~~>*/String address10;
 	
-	private String address11;
+	private /*~~>*/String address11;
 	
-	private String address12;
+	private /*~~>*/String address12;
 	
-	private String address13;
+	private /*~~>*/String address13;
 	
-	private String address14;
+	private /*~~>*/String address14;
 
-	private String address15;
+	private /*~~>*/String address15;
 
 	private Location parentLocation;
 	
@@ -105,7 +105,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @return Returns the address1.
 	 */
 	@Override
-	public String getAddress1() {
+	public /*~~>*/String getAddress1() {
 		return address1;
 	}
 	
@@ -113,15 +113,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @param address1 The address1 to set.
 	 */
 	@Override
-	public void setAddress1(String address1) {
-		this.address1 = address1;
+	public void setAddress1(/*~~>*/String address1) {
+		/*~~>*/this.address1 = address1;
 	}
 	
 	/**
 	 * @return Returns the address2.
 	 */
 	@Override
-	public String getAddress2() {
+	public /*~~>*/String getAddress2() {
 		return address2;
 	}
 	
@@ -129,15 +129,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @param address2 The address2 to set.
 	 */
 	@Override
-	public void setAddress2(String address2) {
-		this.address2 = address2;
+	public void setAddress2(/*~~>*/String address2) {
+		/*~~>*/this.address2 = address2;
 	}
 	
 	/**
 	 * @return Returns the cityVillage.
 	 */
 	@Override
-	public String getCityVillage() {
+	public /*~~>*/String getCityVillage() {
 		return cityVillage;
 	}
 	
@@ -145,15 +145,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @param cityVillage The cityVillage to set.
 	 */
 	@Override
-	public void setCityVillage(String cityVillage) {
-		this.cityVillage = cityVillage;
+	public void setCityVillage(/*~~>*/String cityVillage) {
+		/*~~>*/this.cityVillage = cityVillage;
 	}
 	
 	/**
 	 * @return Returns the country.
 	 */
 	@Override
-	public String getCountry() {
+	public /*~~>*/String getCountry() {
 		return country;
 	}
 	
@@ -161,15 +161,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @param country The country to set.
 	 */
 	@Override
-	public void setCountry(String country) {
-		this.country = country;
+	public void setCountry(/*~~>*/String country) {
+		/*~~>*/this.country = country;
 	}
 	
 	/**
 	 * @return Returns the latitude.
 	 */
 	@Override
-	public String getLatitude() {
+	public /*~~>*/String getLatitude() {
 		return latitude;
 	}
 	
@@ -177,8 +177,8 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @param latitude The latitude to set.
 	 */
 	@Override
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
+	public void setLatitude(/*~~>*/String latitude) {
+		/*~~>*/this.latitude = latitude;
 	}
 	
 	/**
@@ -199,7 +199,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @return Returns the longitude.
 	 */
 	@Override
-	public String getLongitude() {
+	public /*~~>*/String getLongitude() {
 		return longitude;
 	}
 	
@@ -207,15 +207,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @param longitude The longitude to set.
 	 */
 	@Override
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
+	public void setLongitude(/*~~>*/String longitude) {
+		/*~~>*/this.longitude = longitude;
 	}
 	
 	/**
 	 * @return Returns the postalCode.
 	 */
 	@Override
-	public String getPostalCode() {
+	public /*~~>*/String getPostalCode() {
 		return postalCode;
 	}
 	
@@ -223,15 +223,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @param postalCode The postalCode to set.
 	 */
 	@Override
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
+	public void setPostalCode(/*~~>*/String postalCode) {
+		/*~~>*/this.postalCode = postalCode;
 	}
 	
 	/**
 	 * @return Returns the stateProvince.
 	 */
 	@Override
-	public String getStateProvince() {
+	public /*~~>*/String getStateProvince() {
 		return stateProvince;
 	}
 	
@@ -239,12 +239,12 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @param stateProvince The stateProvince to set.
 	 */
 	@Override
-	public void setStateProvince(String stateProvince) {
-		this.stateProvince = stateProvince;
+	public void setStateProvince(/*~~>*/String stateProvince) {
+		/*~~>*/this.stateProvince = stateProvince;
 	}
 	
 	@Override
-	public String toString() {
+	public /*~~>*/String toString() {
 		if (getName() != null) {
 			return getName();
 		}
@@ -258,7 +258,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @return Returns the countyDistrict.
 	 */
 	@Override
-	public String getCountyDistrict() {
+	public /*~~>*/String getCountyDistrict() {
 		return countyDistrict;
 	}
 	
@@ -266,8 +266,8 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @param countyDistrict The countyDistrict to set.
 	 */
 	@Override
-	public void setCountyDistrict(String countyDistrict) {
-		this.countyDistrict = countyDistrict;
+	public void setCountyDistrict(/*~~>*/String countyDistrict) {
+		/*~~>*/this.countyDistrict = countyDistrict;
 	}
 
 	/**
@@ -291,7 +291,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 */
 	@Override
 	@Deprecated
-	public List<Location> findPossibleValues(String searchText) {
+	public List<Location> findPossibleValues(/*~~>*/String searchText) {
 		try {
 			return Context.getLocationService().getLocations(searchText);
 		}
@@ -318,7 +318,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @see org.openmrs.Attributable#hydrate(java.lang.String)
 	 */
 	@Override
-	public Location hydrate(String locationId) {
+	public Location hydrate(/*~~>*/String locationId) {
 		try {
 			return Context.getLocationService().getLocation(Integer.valueOf(locationId));
 		}
@@ -331,7 +331,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @see org.openmrs.Attributable#serialize()
 	 */
 	@Override
-	public String serialize() {
+	public /*~~>*/String serialize() {
 		if (getLocationId() != null) {
 			return "" + getLocationId();
 		} else {
@@ -343,7 +343,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @see org.openmrs.Attributable#getDisplayString()
 	 */
 	@Override
-	public String getDisplayString() {
+	public /*~~>*/String getDisplayString() {
 		return getName();
 	}
 	
@@ -545,7 +545,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * <strong>Should</strong> not fail given null parameter
 	 * <strong>Should</strong> return false given empty string parameter
 	 */
-	public Boolean hasTag(String tagToFind) {
+	public Boolean hasTag(/*~~>*/String tagToFind) {
 		if (tagToFind != null && getTags() != null) {
 			for (LocationTag locTag : getTags()) {
 				if (locTag.getName().equals(tagToFind)) {
@@ -562,7 +562,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @return the address3
 	 */
 	@Override
-	public String getAddress3() {
+	public /*~~>*/String getAddress3() {
 		return address3;
 	}
 	
@@ -571,8 +571,8 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @param address3 the address3 to set
 	 */
 	@Override
-	public void setAddress3(String address3) {
-		this.address3 = address3;
+	public void setAddress3(/*~~>*/String address3) {
+		/*~~>*/this.address3 = address3;
 	}
 	
 	/**
@@ -580,7 +580,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @return the address4
 	 */
 	@Override
-	public String getAddress4() {
+	public /*~~>*/String getAddress4() {
 		return address4;
 	}
 	
@@ -589,8 +589,8 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @param address4 the address4 to set
 	 */
 	@Override
-	public void setAddress4(String address4) {
-		this.address4 = address4;
+	public void setAddress4(/*~~>*/String address4) {
+		/*~~>*/this.address4 = address4;
 	}
 	
 	/**
@@ -598,7 +598,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @return the address6
 	 */
 	@Override
-	public String getAddress6() {
+	public /*~~>*/String getAddress6() {
 		return address6;
 	}
 	
@@ -607,8 +607,8 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @param address6 the address6 to set
 	 */
 	@Override
-	public void setAddress6(String address6) {
-		this.address6 = address6;
+	public void setAddress6(/*~~>*/String address6) {
+		/*~~>*/this.address6 = address6;
 	}
 	
 	/**
@@ -616,7 +616,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @return the address5
 	 */
 	@Override
-	public String getAddress5() {
+	public /*~~>*/String getAddress5() {
 		return address5;
 	}
 	
@@ -625,8 +625,8 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * @param address5 the address5 to set
 	 */
 	@Override
-	public void setAddress5(String address5) {
-		this.address5 = address5;
+	public void setAddress5(/*~~>*/String address5) {
+		/*~~>*/this.address5 = address5;
 	}
 	
 	/**
@@ -653,7 +653,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getAddress7() {
+	public /*~~>*/String getAddress7() {
 		return address7;
 	}
 
@@ -661,15 +661,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setAddress7(String address7) {
-		this.address7 = address7;
+	public void setAddress7(/*~~>*/String address7) {
+		/*~~>*/this.address7 = address7;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getAddress8() {
+	public /*~~>*/String getAddress8() {
 		return address8;
 	}
 
@@ -677,15 +677,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setAddress8(String address8) {
-		this.address8 = address8;
+	public void setAddress8(/*~~>*/String address8) {
+		/*~~>*/this.address8 = address8;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getAddress9() {
+	public /*~~>*/String getAddress9() {
 		return address9;
 	}
 
@@ -693,15 +693,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setAddress9(String address9) {
-		this.address9 = address9;
+	public void setAddress9(/*~~>*/String address9) {
+		/*~~>*/this.address9 = address9;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getAddress10() {
+	public /*~~>*/String getAddress10() {
 		return address10;
 	}
 
@@ -709,15 +709,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setAddress10(String address10) {
-		this.address10 = address10;
+	public void setAddress10(/*~~>*/String address10) {
+		/*~~>*/this.address10 = address10;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getAddress11() {
+	public /*~~>*/String getAddress11() {
 		return address11;
 	}
 
@@ -725,15 +725,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setAddress11(String address11) {
-		this.address11 = address11;
+	public void setAddress11(/*~~>*/String address11) {
+		/*~~>*/this.address11 = address11;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getAddress12() {
+	public /*~~>*/String getAddress12() {
 		return address12;
 	}
 
@@ -741,15 +741,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setAddress12(String address12) {
-		this.address12 = address12;
+	public void setAddress12(/*~~>*/String address12) {
+		/*~~>*/this.address12 = address12;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getAddress13() {
+	public /*~~>*/String getAddress13() {
 		return address13;
 	}
 
@@ -757,15 +757,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setAddress13(String address13) {
-		this.address13 = address13;
+	public void setAddress13(/*~~>*/String address13) {
+		/*~~>*/this.address13 = address13;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getAddress14() {
+	public /*~~>*/String getAddress14() {
 		return address14;
 	}
 
@@ -773,15 +773,15 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setAddress14(String address14) {
-		this.address14 = address14;
+	public void setAddress14(/*~~>*/String address14) {
+		/*~~>*/this.address14 = address14;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getAddress15() {
+	public /*~~>*/String getAddress15() {
 		return address15;
 	}
 
@@ -789,7 +789,7 @@ public class Location extends BaseCustomizableMetadata<LocationAttribute> implem
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setAddress15(String address15) {
-		this.address15 = address15;
+	public void setAddress15(/*~~>*/String address15) {
+		/*~~>*/this.address15 = address15;
 	}
 }

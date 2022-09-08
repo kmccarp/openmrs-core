@@ -41,7 +41,7 @@ public class VisitType extends BaseChangeableOpenmrsMetadata{
 	 * @param name the name of this visit type
 	 * @param description a short description of why this visit type exists
 	 */
-	public VisitType(String name, String description) {
+	public VisitType(/*~~>*/String name, /*~~>*/String description) {
 		setName(name);
 		setDescription(description);
 	}
